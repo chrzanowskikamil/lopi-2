@@ -4,7 +4,7 @@ import { Common } from '@lopi-2/common';
 export default async function Index() {
   return (
     <div className={styles.page}>
-      <span>Hello World Shop: LOPI-2</span>
+      <span>Hello World Admin Panel: LOPI-2</span>
       <Common />
     </div>
   );
