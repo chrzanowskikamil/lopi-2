@@ -6,8 +6,8 @@ yarn install
 
 ## Start commands
 
-To start the shop app in development mode run `yarn run-shop`. URL: http://localhost:4200/. </br>
-To start the admin-panel app in development mode run `yarn run-admin`. URL:  http://localhost:4201/. </br>
+To start the shop app in development mode run `yarn run-shop`. URL: http://localhost:4000/. </br>
+To start the admin-panel app in development mode run `yarn run-admin`. URL:  http://localhost:4001/. </br>
 To start `both` in development mode run `yarn run-all`.
 
 ## Build commands
