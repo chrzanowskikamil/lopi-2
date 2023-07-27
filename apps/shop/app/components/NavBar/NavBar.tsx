@@ -1,6 +1,6 @@
 'use client';
 
-import './navbarStyle.scss';
+import './NavBar.modules.scss';
 
 import Navbar from 'react-bootstrap/Navbar';
 

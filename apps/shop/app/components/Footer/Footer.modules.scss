@@ -7,14 +7,14 @@
   color: #868686;
   font-size: 15px;
   line-height: 25px;
-}
-.footer .footer-title {
-  padding-bottom: 15px;
-  color: white;
-  text-transform: uppercase;
-}
-div.footer > div > ul > li {
-  padding-bottom: 7px;
+  .footer-title {
+    padding-bottom: 15px;
+    color: white;
+    text-transform: uppercase;
+  }
+  > ul > li {
+    padding-bottom: 7px;
+  }
 }
 
 .footer-contact__info {

@@ -56,12 +56,11 @@
   background-color: #05f2f2;
   width: 15px;
   height: 15px;
-}
-
-.socials-counter span {
-  color: white;
-  font-size: 10px;
-  line-height: 15px;
+  span {
+    color: white;
+    font-size: 10px;
+    line-height: 15px;
+  }
 }
 
 .slider {
@@ -77,11 +76,10 @@
 .slider-arrows {
   padding: 0 20px;
   text-align: center;
-}
-
-.slider-arrows svg {
-  vertical-align: baseline;
-  line-height: 24px;
+  svg {
+    vertical-align: baseline;
+    line-height: 24px;
+  }
 }
 
 .slider-text {
