@@ -1,6 +1,6 @@
 'use client';
 
-import './NavBar.modules.scss';
+import style from './NavBar.module.scss';
 
 import Navbar from 'react-bootstrap/Navbar';
 
@@ -8,19 +8,19 @@ import Slider from './components/Slider';
 import Socials from './components/Socials';
 import Menu from './components/Menu';
 
-export default function NavBar() {
+const NavBar: FC = () => {
   return (
     <>
-      <div className="navbar">
-        <Navbar expand="lg" className="bg-black white" data-bs-theme="dark">
-          <Menu />
-          <Navbar.Brand href="#home" className="navbar-logo">
-            Logo
-          </Navbar.Brand>
-          <Socials />
-        </Navbar>
-      </div>
+      <Navbar expand="lg" className={style.navbar} data-bs-theme="dark">
+        <Menu />
+        <Navbar.Brand href="#home" className={style.navbarLogo}>
+          Logo
+        </Navbar.Brand>
+        <Socials />
+      </Navbar>
+
       <Slider />
     </>
   );
-}
+};
+export default NavBar;

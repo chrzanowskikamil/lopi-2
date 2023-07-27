@@ -1,25 +1,26 @@
-import {
-  InstagramIco,
-  FacebookIco,
-  TwitterIco,
-  YoutubeIco,
-} from '../../../assets/SvgIcons/SvgsFooter';
+import style from '../Footer.module.scss';
 
-export default function Socials() {
+import { InstagramIcon } from '../../../assets/SvgIcons/InstagramIcon';
+import { FacebookIcon } from 'apps/shop/app/assets/SvgIcons/FacebookIcon';
+import { TwitterIcon } from 'apps/shop/app/assets/SvgIcons/TwitterIcon';
+import { YoutubeIcon } from 'apps/shop/app/assets/SvgIcons/YoutubeIcon';
+
+const Socials: FC = () => {
   return (
-    <div className="footer-social flex-row">
-      <div className="footer-social--elements">
-        <InstagramIco />
+    <div className={style.footerSocial}>
+      <div className={style.footerSocialElements}>
+        <InstagramIcon />
       </div>
-      <div className="footer-social--elements">
-        <FacebookIco />
+      <div className={style.footerSocialElements}>
+        <FacebookIcon />
       </div>
-      <div className="footer-social--elements">
-        <TwitterIco />
+      <div className={style.footerSocialElements}>
+        <TwitterIcon />
       </div>
-      <div className="footer-social--elements">
-        <YoutubeIco />
+      <div className={style.footerSocialElements}>
+        <YoutubeIcon />
       </div>
     </div>
   );
-}
+};
+export default Socials;

@@ -1,3 +1,5 @@
+import style from '../Footer.module.scss';
+
 import { ReactNode } from 'react';
 
 interface FooterListProps {
@@ -13,7 +15,7 @@ const FooterList: React.FC<FooterListProps> = ({
 }) => {
   return (
     <ul className={className}>
-      <li className="footer-title">{title}</li>
+      <li className={style.footerTitle}>{title}</li>
       {children}
     </ul>
   );

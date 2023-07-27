@@ -5,7 +5,7 @@ import FormExample from '../components/form';
 import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
 
-export default async function Index() {
+const Index = async () => {
   return (
     <>
       <NavBar />
@@ -17,4 +17,5 @@ export default async function Index() {
       <Footer />
     </>
   );
-}
+};
+export default Index;

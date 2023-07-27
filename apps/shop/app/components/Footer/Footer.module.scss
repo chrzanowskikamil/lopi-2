@@ -1,4 +1,6 @@
 .footer {
+  display: flex;
+  flex-direction: row;
   justify-content: space-around;
   background-color: black;
   padding: 69px 0 0 0;
@@ -7,49 +9,54 @@
   color: #868686;
   font-size: 15px;
   line-height: 25px;
-  .footer-title {
+
+  .footerTitle {
     padding-bottom: 15px;
     color: white;
     text-transform: uppercase;
   }
+
   > ul > li {
     padding-bottom: 7px;
   }
 }
 
-.footer-contact__info {
+.footerContactInfo {
   padding-top: 15px;
 }
 
-.footer-social {
+.footerSocial {
+  display: flex;
   align-items: center;
   padding-top: 30px;
 }
 
-.footer-social--elements {
+.footerSocialElements {
   margin-right: 15px;
 }
 
-.footer-subscription {
+.footerSubscription {
   padding-left: 320px;
 }
 
-.footer-subscriptionForm {
+.footerSubscriptionForm {
+  display: flex;
+  flex-direction: row;
   padding-top: 25px;
 }
 
-.footer-subscriptionForm--input:enabled {
+.footerSubscriptionFormInput:enabled {
   border: none;
   border-bottom: white solid 1px;
 }
 
-.footer-subscriptionForm--input {
+.footerSubscriptionFormInput {
   background: #000;
   width: 120px;
   color: white;
 }
 
-.footer-subscriptionForm--button {
+.footerSubscriptionFormButton {
   margin-left: 10px;
   border-bottom: white solid 1px;
   width: 40px;
