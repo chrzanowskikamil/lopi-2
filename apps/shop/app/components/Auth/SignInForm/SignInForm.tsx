@@ -2,7 +2,7 @@
 import { FC, useState } from 'react';
 
 import { ModalComponent } from './components/ModalComponent';
-import { SignInFormComponenet } from './components/SignInFormComponent';
+import { SignInFormComponent } from './components/SignInFormComponent';
 
 import Button from 'react-bootstrap/Button';
 
@@ -22,7 +22,7 @@ const SignInForm: FC = () => {
         isModalOpen={isModalOpen}
         handleClose={handleClose}
       >
-        <SignInFormComponenet />
+        <SignInFormComponent />
       </ModalComponent>
     </>
   );

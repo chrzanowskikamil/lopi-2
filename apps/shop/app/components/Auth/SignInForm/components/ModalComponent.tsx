@@ -1,15 +1,14 @@
 import style from '../SignInForm.module.scss';
-import { FC, ReactNode } from 'react';
 import Modal from 'react-bootstrap/Modal';
+import { ChildrenFC } from '@lopi-2/common';
 
-interface ModalComponentProps {
+interface IModalComponentProps {
   title: string;
-  children: ReactNode;
   isModalOpen: boolean;
-  handleClose: () => void;
+  handleClose: VoidFunction;
 }
 
-export const ModalComponent: FC<ModalComponentProps> = ({
+export const ModalComponent: ChildrenFC<IModalComponentProps> = ({
   title,
   children,
   isModalOpen,

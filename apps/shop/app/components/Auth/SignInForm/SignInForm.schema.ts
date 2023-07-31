@@ -1,8 +1,14 @@
 import { object, string } from 'yup';
+import { validationMessages } from '@lopi-2/common';
 
 export const signInFormSchema = object({
-  email: string().email('Błędny adres e-mail').required('Uzupełnij pole'),
+  email: string()
+    .email(validationMessages.INVALID_EMAIL)
+    .required(validationMessages.REQUIRED_FIELD),
   password: string()
-    .required('Uzupełnij pole')
-    .min(8, 'Hasło musi posiadać co najmniej 8 znaków'),
+    .required(validationMessages.REQUIRED_FIELD)
+    .min(8, validationMessages.PASSWORD_MIN_LENGTH)
+    .test('no-whitespaces', validationMessages.PASSWORD_MIN_LENGTH, (value) =>
+      value ? value.trim().length !== 0 : true
+    ),
 });
