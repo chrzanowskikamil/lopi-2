@@ -8,6 +8,8 @@ import Slider from './components/Slider';
 import Socials from './components/Socials';
 import Menu from './components/Menu';
 
+import { FC } from 'react';
+
 const NavBar: FC = () => {
   return (
     <>
