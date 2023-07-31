@@ -1,3 +1,5 @@
+import { FC } from 'react';
+
 export const TwitterIcon: FC = () => {
   return (
     <svg

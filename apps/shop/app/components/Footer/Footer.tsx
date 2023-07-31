@@ -4,6 +4,8 @@ import Socials from './components/Socials';
 import Subscription from './components/Subscription';
 import FooterList from './components/FooterList';
 
+import { FC } from 'react';
+
 const Footer: FC = () => {
   return (
     <footer className={style.footer}>
