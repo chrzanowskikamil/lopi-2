@@ -7,8 +7,9 @@ import Navbar from 'react-bootstrap/Navbar';
 import Slider from './components/Slider';
 import Socials from './components/Socials';
 import Menu from './components/Menu';
+import { ChildrenFC, CustomButton } from '@lopi-2/common';
 
-export default function NavBar() {
+const NavBar: ChildrenFC<any> = () => {
   return (
     <>
       <div className="navbar">
@@ -17,10 +18,13 @@ export default function NavBar() {
           <Navbar.Brand href="#home" className="navbar-logo">
             Logo
           </Navbar.Brand>
+          <CustomButton>afs</CustomButton>
           <Socials />
         </Navbar>
       </div>
       <Slider />
     </>
   );
-}
+};
+
+export default NavBar;

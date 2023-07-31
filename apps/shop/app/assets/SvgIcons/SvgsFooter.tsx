@@ -1,3 +1,5 @@
+import { FC } from 'react';
+
 interface SvgProps {
   width: string;
   fill: string;
@@ -10,7 +12,7 @@ const props: SvgProps = {
   xmlns: 'http://www.w3.org/2000/svg',
 };
 
-export const InstagramIco = () => {
+export const InstagramIco: FC = () => {
   return (
     <svg {...props} height="16" viewBox="0 0 16 16">
       <path
