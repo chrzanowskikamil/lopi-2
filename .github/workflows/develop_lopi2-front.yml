@@ -27,11 +27,20 @@ jobs:
           npm run build-shop --if-present
           npm run test --if-present
 
+      - name: Zip all files for upload between jobs
+        run: |
+          cd ./dist/apps/shop
+          npm install next@13.4.1
+          sed -i 's/next start/node_modules\/next\/dist\/bin\/next start/g' package.json
+          zip next.zip ./* ./.next -qr
+          cd ../../../
+          mv ./dist/apps/shop/next.zip next.zip 
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: '${{ github.workspace }}/dist/apps/package.json'
+          path: ${{ github.workspace }}/next.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -53,4 +62,4 @@ jobs:
           app-name: 'lopi2-front'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_75734D87A5664D53B420F89E6A527B2C }}
-          package: .
+          package: '*.zip'
