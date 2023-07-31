@@ -1,11 +1,12 @@
+'use client';
 import { FC } from 'react';
 import { Button as BootstrapButton } from 'react-bootstrap';
 
 interface ButtonProps {
   title: string;
-  className: string;
+  className?: string;
   disabled?: boolean;
-  type?: 'button' | 'submit' | 'reset';
+  type?: 'button' | 'submit' | 'reset' | undefined;
   variant?: string;
 }
 

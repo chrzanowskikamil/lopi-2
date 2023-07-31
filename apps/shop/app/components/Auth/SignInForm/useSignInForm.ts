@@ -1,11 +1,10 @@
 import { signInFormSchema } from './SignInForm.schema';
-
 interface LoginFormValues {
   email: string;
   password: string;
 }
 
-export const useSignInForm = () => {
+export const useSignInForm = (openToast: VoidFunction) => {
   const initialValues: LoginFormValues = {
     email: '',
     password: '',
@@ -15,6 +14,7 @@ export const useSignInForm = () => {
 
   const onSubmit = (values: LoginFormValues) => {
     console.log(values);
+    openToast();
   };
 
   return { initialValues, validationSchema, onSubmit };

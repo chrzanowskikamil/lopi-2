@@ -1,4 +1,4 @@
-@import '../../../variables.scss';
+@import './variables.scss';
 
 .header {
   justify-content: center;
@@ -6,11 +6,11 @@
 }
 
 .title {
-  background-color: white;
+  background-color: $titleBackgroundColor;
   border-bottom: 1px solid $blue-light;
   position: relative;
   font-family: Inter;
-  font-size: 20px;
+  font-size: $titleFontSize;
   width: 160px;
   padding: 4px;
   text-align: center;
