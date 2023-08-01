@@ -1,0 +1,80 @@
+@import './variables.scss';
+
+.header {
+  justify-content: center;
+  border: none;
+}
+
+.title {
+  background-color: $titleBackgroundColor;
+  border-bottom: 1px solid $blue-light;
+  position: relative;
+  font-family: Inter;
+  font-size: $titleFontSize;
+  width: 160px;
+  padding: 4px;
+  text-align: center;
+  z-index: 1;
+  margin-bottom: -65px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  padding: 32px;
+  gap: 16px;
+  height: 377px;
+  border: 1px solid #d9d9d9;
+}
+
+.inputWithIcon {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.showPasswordButton {
+  font-size: 18px;
+  background: none;
+  border: none;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &:hover,
+  &:focus {
+    box-shadow: none;
+    color: $blue-light;
+    background: none;
+  }
+}
+
+.forgotPassword {
+  z-index: 1;
+  font-size: 15px;
+  text-decoration: none;
+  padding: 6px 16px;
+  width: 175px;
+  height: 40px;
+  border-bottom: 1px solid #868686;
+  color: #868686;
+  margin-top: 8px;
+  margin-bottom: 15px;
+}
+
+.submitButton {
+  background-color: $blue-light;
+
+  &:disabled {
+    cursor: not-allowed;
+    color: black;
+    background-color: gray;
+  }
+}
+
+.createAccount {
+  color: $blue-light;
+}
