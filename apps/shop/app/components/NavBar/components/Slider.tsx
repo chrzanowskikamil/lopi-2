@@ -3,6 +3,8 @@ import style from '../NavBar.module.scss';
 import { SliderArrowLeft } from '../../../assets/SvgIcons/SliderArrowLeft';
 import { SliderArrowRight } from '../../../assets/SvgIcons/SliderArrowRight';
 
+import { FC } from 'react';
+
 const Slider: FC = () => {
   return (
     <>

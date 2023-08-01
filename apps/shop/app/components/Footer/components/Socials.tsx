@@ -5,6 +5,8 @@ import { FacebookIcon } from 'apps/shop/app/assets/SvgIcons/FacebookIcon';
 import { TwitterIcon } from 'apps/shop/app/assets/SvgIcons/TwitterIcon';
 import { YoutubeIcon } from 'apps/shop/app/assets/SvgIcons/YoutubeIcon';
 
+import { FC } from 'react';
+
 const Socials: FC = () => {
   return (
     <div className={style.footerSocial}>
