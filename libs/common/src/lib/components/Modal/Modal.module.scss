@@ -1,0 +1,19 @@
+@import '../../../../../../apps/shop/app/components/Auth/SignInForm/variables.scss';
+
+.header {
+  justify-content: center;
+  border: none;
+}
+
+.title {
+  background-color: $titleBackgroundColor;
+  border-bottom: 1px solid $blue-light;
+  position: relative;
+  font-family: Inter;
+  font-size: $titleFontSize;
+  width: 160px;
+  padding: 4px;
+  text-align: center;
+  z-index: 1;
+  margin-bottom: -65px;
+}

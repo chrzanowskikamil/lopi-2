@@ -1,31 +1,26 @@
 'use client';
 import { FC, useState } from 'react';
-
+import { Button } from 'react-bootstrap';
+import { SignUpFormComponent } from './components/SignUpFormComponenet';
 import { Modal } from '@lopi-2/common';
-import { SignInFormComponent } from './components/SignInFormComponent';
 
-import Button from 'react-bootstrap/Button';
-
-const SignInForm: FC = () => {
+const SignUpForm: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const handleClose = () => setIsModalOpen(false);
   const handleShow = () => setIsModalOpen(true);
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Login
-      </Button>
+      <Button onClick={handleShow}>Register</Button>
       <Modal
-        title="LOGOWANIE"
+        title="REJESTRACJA"
         isModalOpen={isModalOpen}
         handleClose={handleClose}
       >
-        <SignInFormComponent />
+        <SignUpFormComponent />
       </Modal>
     </>
   );
 };
 
-export default SignInForm;
+export default SignUpForm;
