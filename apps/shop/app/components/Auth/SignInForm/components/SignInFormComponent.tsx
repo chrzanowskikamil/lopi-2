@@ -13,7 +13,7 @@ import { BsEye } from 'react-icons/bs';
 
 export const SignInFormComponent: FC = () => {
   const { showToast, openToast, closeToast } = useToastNotification();
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState<boolean>();
   const { initialValues, onSubmit, validationSchema } =
     useSignInForm(openToast);
   return (

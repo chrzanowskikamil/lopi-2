@@ -1,4 +1,6 @@
+const noWhiteSpacesRegex = /^\S+$/;
+
 export const noWhiteSpacesTest = {
   name: 'no-whitespaces',
-  testFunction: (value: string) => (value ? value.trim().length !== 0 : true),
+  testFunction: (value: string) => !!value.match(noWhiteSpacesRegex),
 };

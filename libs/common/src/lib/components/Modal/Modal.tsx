@@ -3,13 +3,13 @@ import style from './Modal.module.scss';
 import { Modal as BootstrapModal } from 'react-bootstrap';
 import { ChildrenFC } from '../../models';
 
-interface IModalComponentProps {
+interface ModalComponentProps {
   title: string;
   isModalOpen: boolean;
   handleClose: VoidFunction;
 }
 
-export const Modal: ChildrenFC<IModalComponentProps> = ({
+export const Modal: ChildrenFC<ModalComponentProps> = ({
   title,
   children,
   isModalOpen,

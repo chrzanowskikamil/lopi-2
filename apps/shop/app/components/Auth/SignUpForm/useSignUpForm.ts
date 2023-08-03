@@ -20,7 +20,6 @@ export const useSignUpForm = () => {
 
   const onSubmit = (values: RegisterFormValues) => {
     console.log(values);
-    // openToast();
   };
 
   return { initialValues, validationSchema, onSubmit };

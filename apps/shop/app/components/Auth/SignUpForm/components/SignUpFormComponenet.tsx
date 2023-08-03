@@ -10,8 +10,8 @@ import { useSignUpForm } from '../useSignUpForm';
 import { BsEye } from 'react-icons/bs';
 
 export const SignUpFormComponent: FC = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState<boolean>();
+  const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>();
   const { initialValues, validationSchema, onSubmit } = useSignUpForm();
   return (
     <>

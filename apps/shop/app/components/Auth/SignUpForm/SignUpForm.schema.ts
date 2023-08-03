@@ -1,34 +1,43 @@
 import { object, ref, string } from 'yup';
-import { validationMessages, noWhiteSpacesTest } from '@lopi-2/common';
+import { validationConstans, noWhiteSpacesTest } from '@lopi-2/common';
 
 export const signUpFormSchema = object({
   name: string()
-    .required(validationMessages.REQUIRED_FIELD)
-    .min(2, validationMessages.REQUIRED_FIELD)
+    .required(validationConstans.REQUIRED_FIELD_MESSAGE)
+    .min(
+      validationConstans.MIN_NAME_LENGTH,
+      validationConstans.REQUIRED_FIELD_MESSAGE
+    )
     .test(
       noWhiteSpacesTest.name,
-      validationMessages.REQUIRED_FIELD,
+      validationConstans.REQUIRED_FIELD_MESSAGE,
       noWhiteSpacesTest.testFunction
     ),
   lastName: string(),
   email: string()
-    .email(validationMessages.INVALID_EMAIL)
-    .required(validationMessages.REQUIRED_FIELD),
+    .email(validationConstans.INVALID_EMAIL_MESSAGE)
+    .required(validationConstans.REQUIRED_FIELD_MESSAGE),
   password: string()
-    .required(validationMessages.REQUIRED_FIELD)
-    .min(8, validationMessages.PASSWORD_MIN_LENGTH)
+    .required(validationConstans.REQUIRED_FIELD_MESSAGE)
+    .min(
+      validationConstans.MIN_PASSWORD_LENGTH,
+      validationConstans.PASSWORD_MIN_LENGTH_MESSAGE
+    )
     .test(
       noWhiteSpacesTest.name,
-      validationMessages.REQUIRED_FIELD,
+      validationConstans.PASSWORD_MIN_LENGTH_MESSAGE,
       noWhiteSpacesTest.testFunction
     ),
   confirmPassword: string()
-    .required(validationMessages.REQUIRED_FIELD)
-    .min(8, validationMessages.PASSWORD_MIN_LENGTH)
-    .oneOf([ref('password')], validationMessages.PASSWORD_NOT_MATCH)
+    .required(validationConstans.REQUIRED_FIELD_MESSAGE)
+    .min(
+      validationConstans.MIN_PASSWORD_LENGTH,
+      validationConstans.PASSWORD_MIN_LENGTH_MESSAGE
+    )
+    .oneOf([ref('password')], validationConstans.PASSWORD_NOT_MATCH_MESSAGE)
     .test(
       noWhiteSpacesTest.name,
-      validationMessages.REQUIRED_FIELD,
+      validationConstans.PASSWORD_MIN_LENGTH_MESSAGE,
       noWhiteSpacesTest.testFunction
     ),
 });
