@@ -2,7 +2,7 @@
 import { FC, useState } from 'react';
 
 import { Modal } from '@lopi-2/common';
-import { SignInFormComponent } from './components/SignInFormComponent';
+import { SignInFormComponent } from './components/SignInFormComponenet/SignInFormComponent';
 import { ExampleToast } from './components/ExampleToast';
 
 import Button from 'react-bootstrap/Button';

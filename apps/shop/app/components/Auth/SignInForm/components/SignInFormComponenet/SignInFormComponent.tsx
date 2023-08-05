@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Formik } from 'formik';
 import { Button as BootstrapButton, Form } from 'react-bootstrap';
 import { Button } from '@lopi-2/common';
-import { useSignInForm } from '../useSignInForm';
+import { useSignInForm } from '../../useSignInForm';
 import { BsEye } from 'react-icons/bs';
 
 interface SignInFormComponentProps {
