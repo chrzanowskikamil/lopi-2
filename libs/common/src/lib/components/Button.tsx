@@ -8,6 +8,7 @@ interface ButtonProps {
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset' | undefined;
   variant?: string;
+  onClick?: VoidFunction;
 }
 
 export const Button: FC<ButtonProps> = ({
@@ -16,6 +17,7 @@ export const Button: FC<ButtonProps> = ({
   disabled,
   type,
   variant,
+  onClick,
 }) => {
   return (
     <BootstrapButton
@@ -23,6 +25,7 @@ export const Button: FC<ButtonProps> = ({
       disabled={disabled}
       type={type}
       variant={variant}
+      onClick={onClick}
     >
       {title}
     </BootstrapButton>

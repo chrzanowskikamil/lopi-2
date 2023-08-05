@@ -1,21 +1,28 @@
 'use client';
 
-import style from '../SignInForm.module.scss';
+import style from './SignInFormComponent.module.scss';
 import { FC, useState } from 'react';
 import Link from 'next/link';
 import { Formik } from 'formik';
 import { Button as BootstrapButton, Form } from 'react-bootstrap';
 import { Button } from '@lopi-2/common';
-import { ExampleToast } from './ExampleToast';
 import { useSignInForm } from '../useSignInForm';
-import { useToastNotification } from '../useToastNotifiaction';
 import { BsEye } from 'react-icons/bs';
 
-export const SignInFormComponent: FC = () => {
-  const { showToast, openToast, closeToast } = useToastNotification();
-  const [showPassword, setShowPassword] = useState(false);
-  const { initialValues, onSubmit, validationSchema } =
-    useSignInForm(openToast);
+interface SignInFormComponentProps {
+  handleCloseModal: VoidFunction;
+  openToast: VoidFunction;
+}
+
+export const SignInFormComponent: FC<SignInFormComponentProps> = ({
+  handleCloseModal,
+  openToast,
+}) => {
+  const [showPassword, setShowPassword] = useState<boolean>();
+  const { initialValues, onSubmit, validationSchema } = useSignInForm(
+    openToast,
+    handleCloseModal
+  );
   return (
     <>
       <Formik
@@ -36,6 +43,7 @@ export const SignInFormComponent: FC = () => {
           <Form noValidate onSubmit={handleSubmit} className={style.form}>
             <Form.Group controlId="email">
               <Form.Control
+                className={style.input}
                 type="text"
                 name="email"
                 placeholder="E-mail*"
@@ -52,6 +60,7 @@ export const SignInFormComponent: FC = () => {
             <Form.Group controlId="password">
               <div className={style.inputWithIcon}>
                 <Form.Control
+                  className={style.input}
                   type={showPassword ? 'text' : 'password'}
                   name="password"
                   placeholder="Hasło*"
@@ -84,6 +93,7 @@ export const SignInFormComponent: FC = () => {
               className={style.submitButton}
               disabled={!isValid || !dirty}
               type="submit"
+              onClick={handleCloseModal}
             />
             <Button
               title="Stwórz konto"
@@ -94,7 +104,6 @@ export const SignInFormComponent: FC = () => {
           </Form>
         )}
       </Formik>
-      <ExampleToast showToast={showToast} handleCloseToast={closeToast} />
     </>
   );
 };

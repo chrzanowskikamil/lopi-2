@@ -4,7 +4,10 @@ interface LoginFormValues {
   password: string;
 }
 
-export const useSignInForm = (openToast: VoidFunction) => {
+export const useSignInForm = (
+  openToast: VoidFunction,
+  closeModal: VoidFunction
+) => {
   const initialValues: LoginFormValues = {
     email: '',
     password: '',
@@ -15,6 +18,7 @@ export const useSignInForm = (openToast: VoidFunction) => {
   const onSubmit = (values: LoginFormValues) => {
     console.log(values);
     openToast();
+    closeModal();
   };
 
   return { initialValues, validationSchema, onSubmit };

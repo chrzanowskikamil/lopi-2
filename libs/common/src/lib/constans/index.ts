@@ -1,1 +1,2 @@
-export * from './validation-messages';
+export * from './validation-constans';
+export * from './no-white-spaces-test';
