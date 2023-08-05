@@ -22,13 +22,17 @@ export const Modal: ChildrenFC<ModalComponentProps> = ({
       backdrop
       keyboard
       centered
+      className={style.container}
+      contentClassName={style.content}
     >
       <BootstrapModal.Header className={style.header}>
         <BootstrapModal.Title className={style.title}>
           {title}
         </BootstrapModal.Title>
       </BootstrapModal.Header>
-      <BootstrapModal.Body>{children}</BootstrapModal.Body>
+      <BootstrapModal.Body className={style.body}>
+        {children}
+      </BootstrapModal.Body>
     </BootstrapModal>
   );
 };

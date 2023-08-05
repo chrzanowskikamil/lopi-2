@@ -1,19 +1,38 @@
 @import './variables.scss';
 
+.container {
+  background: rgba(0, 0, 0, 0.4);
+}
+
 .header {
-  justify-content: center;
   border: none;
 }
 
 .title {
   background-color: $titleBackgroundColor;
+  color: $titleFontColor;
   border-bottom: 1px solid $blue-light;
   position: relative;
   font-family: Inter;
   font-size: $titleFontSize;
   width: 160px;
-  padding: 4px;
+  padding-bottom: 6px;
   text-align: center;
   z-index: 1;
-  margin-bottom: -65px;
+  margin-bottom: -130px;
+}
+
+.content {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+}
+
+.body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $titleBackgroundColor;
 }

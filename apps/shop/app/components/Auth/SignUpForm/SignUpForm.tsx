@@ -1,7 +1,7 @@
 'use client';
 import { FC, useState } from 'react';
 import { Button } from 'react-bootstrap';
-import { SignUpFormComponent } from './components/SignUpFormComponenet';
+import { SignUpFormComponent } from './components/SignUpFormComponent/SignUpFormComponenet';
 import { Modal } from '@lopi-2/common';
 
 const SignUpForm: FC = () => {

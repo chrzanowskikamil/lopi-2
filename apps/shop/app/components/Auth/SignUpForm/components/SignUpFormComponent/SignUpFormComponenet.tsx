@@ -1,12 +1,11 @@
 'use client';
 
-import style from '../../SignInForm/SignInForm.module.scss';
-import styl from '../SignUpForm.module.scss';
+import style from './SignUpForm.module.scss';
 import { FC, useState } from 'react';
 import { Formik } from 'formik';
 import { Button } from '@lopi-2/common';
 import { Button as BootstrapButton, Form } from 'react-bootstrap';
-import { useSignUpForm } from '../useSignUpForm';
+import { useSignUpForm } from '../../useSignUpForm';
 import { BsEye } from 'react-icons/bs';
 
 export const SignUpFormComponent: FC = () => {
@@ -30,9 +29,10 @@ export const SignUpFormComponent: FC = () => {
           values,
           isValid,
         }) => (
-          <Form noValidate onSubmit={handleSubmit} className={styl.form}>
+          <Form noValidate onSubmit={handleSubmit} className={style.form}>
             <Form.Group controlId="name">
               <Form.Control
+                className={style.input}
                 type="text"
                 name="name"
                 placeholder="Imię*"
@@ -48,6 +48,7 @@ export const SignUpFormComponent: FC = () => {
             </Form.Group>
             <Form.Group controlId="lastName">
               <Form.Control
+                className={style.input}
                 type="text"
                 name="lastName"
                 placeholder="Nazwisko"
@@ -63,6 +64,7 @@ export const SignUpFormComponent: FC = () => {
             </Form.Group>
             <Form.Group controlId="email">
               <Form.Control
+                className={style.input}
                 type="text"
                 name="email"
                 placeholder="Email*"
@@ -79,6 +81,7 @@ export const SignUpFormComponent: FC = () => {
             <Form.Group controlId="password">
               <div className={style.inputWithIcon}>
                 <Form.Control
+                  className={style.input}
                   type={showPassword ? 'text' : 'password'}
                   name="password"
                   placeholder="Hasło*"
@@ -89,7 +92,7 @@ export const SignUpFormComponent: FC = () => {
                   isInvalid={touched.password && !!errors.password}
                 />
                 <Form.Control.Feedback
-                  className="position-absolute top-100"
+                  className="position-absolute top-100 my-20"
                   type="invalid"
                 >
                   {errors.password}
@@ -106,6 +109,7 @@ export const SignUpFormComponent: FC = () => {
             <Form.Group controlId="confirmPassword">
               <div className={style.inputWithIcon}>
                 <Form.Control
+                  className={style.input}
                   type={showConfirmPassword ? 'text' : 'password'}
                   name="confirmPassword"
                   placeholder="Powtórz hasło*"
@@ -118,7 +122,7 @@ export const SignUpFormComponent: FC = () => {
                   }
                 />
                 <Form.Control.Feedback
-                  className="position-absolute top-100"
+                  className="position-absolute top-100 my-20"
                   type="invalid"
                 >
                   {errors.confirmPassword}
@@ -141,7 +145,7 @@ export const SignUpFormComponent: FC = () => {
             <Button
               title="Logowanie"
               type="button"
-              className={style.createAccount}
+              className={style.loginButton}
               variant="outline-secondary"
             />
           </Form>

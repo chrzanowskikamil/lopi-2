@@ -1,0 +1,90 @@
+@import '../../variables.scss';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $borderColor;
+  width: 450px;
+  min-height: 320px;
+  max-height: 402px;
+  margin: 30px 30px 20px 30px;
+  justify-content: space-between;
+  padding: 50px 32px 32px 32px;
+  gap: 20px;
+}
+
+.input {
+  display: flex;
+  padding: 12px;
+  align-items: center;
+  text-align: start;
+  font-size: 16px;
+  gap: 6px;
+}
+
+.inputWithIcon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+}
+
+.showPasswordButton {
+  align-self: center;
+  background: none;
+  border: none;
+  position: absolute;
+  right: 20px;
+  top: 45%;
+  font-size: 18px;
+  transform: translateY(-50%);
+
+  &:hover,
+  &:focus {
+    box-shadow: none;
+    color: $blue-light;
+    background: none;
+  }
+}
+
+.forgotPassword {
+  display: inline-flex;
+  padding: 6px 16px;
+  font-size: 15px;
+  text-decoration: none;
+  width: 175px;
+  border-bottom: 1px solid $borderColor;
+  color: #868686;
+  margin-top: 6px;
+  font-family: $fontFamily;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 28px;
+}
+
+.submitButton {
+  background-color: $blue-light;
+  border: none;
+  padding: 10px 16px;
+
+  &:disabled {
+    color: black;
+    background-color: gray;
+  }
+
+  &:hover {
+    background-color: $blue-light;
+  }
+
+  &:focus {
+    border: 0;
+    box-shadow: none;
+  }
+}
+
+.createAccount {
+  color: $blue-light;
+  border-color: $borderColor;
+  padding: 10px 16px;
+}
