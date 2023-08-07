@@ -1,5 +1,6 @@
+import { register } from '@lopi-2/common';
 import { signUpFormSchema } from './SignUpForm.schema';
-interface RegisterFormValues {
+export interface RegisterFormValues {
   name: string;
   lastName: string;
   email: string;
@@ -18,8 +19,22 @@ export const useSignUpForm = () => {
 
   const validationSchema = signUpFormSchema;
 
-  const onSubmit = (values: RegisterFormValues) => {
+  const onSubmit = async (values: RegisterFormValues) => {
     console.log(values);
+    try {
+      await register(values);
+      console.log(`Zarejestrowano z tymi danymi: ${values}`);
+    } catch (error) {
+      console.error(`Błąd rejestracji ${error}`);
+    }
+
+    // const resposne = await fetch('/api/signin', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(values),
+    // });
+    // const data = await resposne.json();
+    // console.log(data);
   };
 
   return { initialValues, validationSchema, onSubmit };

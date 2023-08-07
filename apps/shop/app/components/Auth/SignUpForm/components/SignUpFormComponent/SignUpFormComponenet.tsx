@@ -12,6 +12,7 @@ export const SignUpFormComponent: FC = () => {
   const [showPassword, setShowPassword] = useState<boolean>();
   const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>();
   const { initialValues, validationSchema, onSubmit } = useSignUpForm();
+
   return (
     <>
       <Formik
