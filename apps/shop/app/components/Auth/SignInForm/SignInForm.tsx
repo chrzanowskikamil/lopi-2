@@ -1,12 +1,10 @@
 'use client';
 import { FC, useState } from 'react';
-
+import { useToastNotification } from './useToastNotifiaction';
+import Button from 'react-bootstrap/Button';
 import { Modal } from '@lopi-2/common';
 import { SignInFormComponent } from './components/SignInFormComponent';
 import { ExampleToast } from './components/ExampleToast';
-
-import Button from 'react-bootstrap/Button';
-import { useToastNotification } from './useToastNotifiaction';
 
 const SignInForm: FC = () => {
   const { showToast, openToast, closeToast } = useToastNotification();
