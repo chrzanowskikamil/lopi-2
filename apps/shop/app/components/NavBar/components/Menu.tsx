@@ -15,7 +15,7 @@ const Menu: FC = () => {
         <Navbar.Collapse className={style.color} id="basic-navbar-nav">
           <Nav className="me-auto">
             <NavDropdown title="Kategorie" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item href="/products">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
                 Another action
               </NavDropdown.Item>
