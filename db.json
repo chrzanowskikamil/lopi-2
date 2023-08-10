@@ -1,0 +1,17 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "kamil-chrzanowski@gazeta.pl",
+      "password": "12345678"
+    },
+    {
+      "name": "Kamil",
+      "lastName": "",
+      "email": "kamil-chrzanowski@gazeta.pl",
+      "password": "12345678",
+      "confirmPassword": "12345678",
+      "id": 2
+    }
+  ]
+}
