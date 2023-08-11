@@ -1,12 +1,14 @@
+// @import '../../variables';
+
 .footer {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  background-color: black;
+  background-color: var(--theme-dark-green);
   padding: 69px 0 0 0;
   width: 100%;
   height: 348px;
-  color: #868686;
+  color: var(--theme-grey);
   font-size: 15px;
   line-height: 25px;
 
@@ -47,18 +49,18 @@
 
 .footerSubscriptionFormInput:enabled {
   border: none;
-  border-bottom: white solid 1px;
+  border-bottom: var(--theme-white) solid 1px;
 }
 
 .footerSubscriptionFormInput {
-  background: #000;
+  background: var(--theme-dark-green);
   width: 120px;
-  color: white;
+  color: var(--theme-white);
 }
 
 .footerSubscriptionFormButton {
   margin-left: 10px;
-  border-bottom: white solid 1px;
+  border-bottom: var(--theme-white) solid 1px;
   width: 40px;
   text-align: center;
 }

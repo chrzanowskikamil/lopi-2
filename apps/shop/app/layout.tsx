@@ -1,4 +1,4 @@
-import './global.scss';
+import './style/global.scss';
 
 export const metadata = {
   title: 'Welcome to shop',
