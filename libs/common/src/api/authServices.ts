@@ -1,6 +1,6 @@
 import apiClient from './apiClient';
 
-export const register = async (values) => {
+export const register = async (values: any) => {
   const response = await apiClient.post('/auth/signup', {
     firstName: values.name,
     lastName: values.lastName,
@@ -10,7 +10,7 @@ export const register = async (values) => {
   return response.data.token;
 };
 
-export const login = async (values) => {
+export const login = async (values: any) => {
   const response = await apiClient.post('/auth/signin', {
     username: values.email,
     userPass: values.password,
