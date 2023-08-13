@@ -4,12 +4,13 @@ import style from './NavBar.module.scss';
 
 import Navbar from 'react-bootstrap/Navbar';
 
-import Slider from './components/Slider';
+// import Slider from './components/Slider';
 import Socials from './components/Socials';
 import Menu from './components/Menu';
 
 import { Logo } from '../../assets/SvgIcons/Logo';
 import { FC } from 'react';
+import MenuDropdownMobile from './components/MenuDropdownMobile';
 
 const NavBar: FC = () => {
   return (
@@ -21,8 +22,8 @@ const NavBar: FC = () => {
         </Navbar.Brand>
         <Socials />
       </Navbar>
-
-      <Slider />
+      <MenuDropdownMobile />
+      {/* <Slider /> */}
     </>
   );
 };

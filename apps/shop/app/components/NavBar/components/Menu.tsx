@@ -1,46 +1,24 @@
 import style from '../NavBar.module.scss';
 
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import { SearchIcon } from 'apps/shop/app/assets/SvgIcons/SearchIcon';
+import { MenuIconMobile } from 'apps/shop/app/assets/SvgIcons/MenuIconMobile';
 
 import { FC } from 'react';
 
+// import MenuDropdownMobile from './MenuDropdownMobile';
+
 const Menu: FC = () => {
+  const icoWidth = 22;
+  const icoHeight = 22;
+
   return (
     <div className={style.menu}>
-      <Container>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse className={style.color} id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <NavDropdown title="Kategorie" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown
-              title="O nas"
-              id="basic-nav-dropdown"
-              className="hi menu-about"
-            >
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>{' '}
+      <div className={style.menuIconMobile}>
+        <MenuIconMobile />
+      </div>
+      <div className={style.socialsElements}>
+        <SearchIcon width={icoWidth} height={icoHeight} />
+      </div>
     </div>
   );
 };
