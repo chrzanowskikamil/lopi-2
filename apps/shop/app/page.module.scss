@@ -1,8 +1,8 @@
 .page {
-  width: 400px;
-  height: 300px;
-  background: #d3d3d3;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: var(--theme-grey);
+  width: 400px;
+  height: 300px;
 }

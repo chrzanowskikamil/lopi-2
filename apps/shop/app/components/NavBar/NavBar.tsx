@@ -8,6 +8,7 @@ import Slider from './components/Slider';
 import Socials from './components/Socials';
 import Menu from './components/Menu';
 
+import { Logo } from '../../assets/SvgIcons/Logo';
 import { FC } from 'react';
 
 const NavBar: FC = () => {
@@ -16,7 +17,7 @@ const NavBar: FC = () => {
       <Navbar expand="lg" className={style.navbar} data-bs-theme="dark">
         <Menu />
         <Navbar.Brand href="#home" className={style.navbarLogo}>
-          Logo
+          <Logo />
         </Navbar.Brand>
         <Socials />
       </Navbar>
