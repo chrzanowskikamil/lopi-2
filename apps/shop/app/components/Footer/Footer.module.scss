@@ -1,30 +1,58 @@
-// @import '../../variables';
-
-.footer {
+.footerDesktop {
+  display: None;
+}
+.footerMobile {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
   background-color: var(--theme-dark-green);
-  padding: 69px 0 0 0;
+  padding-top: 17px;
   width: 100%;
-  height: 348px;
-  color: var(--theme-grey);
-  font-size: 15px;
-  line-height: 25px;
-
+  max-height: 850px;
+  overflow: hidden;
+  color: var(--theme-white);
+  font-size: 12px;
+  line-height: 24px;
   .footerTitle {
-    padding-bottom: 15px;
-    color: white;
+    margin-bottom: 15px;
+    color: var(--theme-orange);
     text-transform: uppercase;
   }
-
   > ul > li {
-    padding-bottom: 7px;
+    margin-bottom: 7px;
   }
-}
-
-.footerContactInfo {
-  padding-top: 15px;
+  .footerContactInfo {
+    margin-top: 15px;
+  }
+  .footerTop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 24px;
+  }
+  .footerMiddle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 50px 54px 0 24px;
+  }
+  .element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .footerBottom {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      width: 290px;
+      height: 194px;
+      overflow: hidden;
+      @media (min-width: 375px) {
+        width: 320px;
+      }
+    }
+  }
 }
 
 .footerSocial {
@@ -35,32 +63,149 @@
 
 .footerSocialElements {
   margin-right: 15px;
-}
-
-.footerSubscription {
-  padding-left: 320px;
+  color: var(--theme-orange);
 }
 
 .footerSubscriptionForm {
   display: flex;
   flex-direction: row;
-  padding-top: 25px;
-}
-
-.footerSubscriptionFormInput:enabled {
-  border: none;
-  border-bottom: var(--theme-white) solid 1px;
+  color: var(--theme-orange);
 }
 
 .footerSubscriptionFormInput {
   background: var(--theme-dark-green);
-  width: 120px;
+  width: 272px;
+  &:enabled {
+    border: none;
+    border-bottom: var(--theme-orange) solid 1px;
+    color: var(--theme-white);
+  }
+}
+
+.footerSubscriptionFormInput::placeholder {
   color: var(--theme-white);
 }
 
 .footerSubscriptionFormButton {
   margin-left: 10px;
-  border-bottom: var(--theme-white) solid 1px;
+  border-bottom: var(--theme-orange) solid 1px;
   width: 40px;
+  color: var(--theme-orange);
   text-align: center;
+}
+
+@media (min-width: 425px) {
+  .footerMobile {
+    padding-top: 40px;
+    font-size: 16px;
+    .footerTop {
+      margin: 0 40px;
+    }
+    .footerMiddle {
+      margin: 50px 70px 0 40px;
+    }
+    .footerBottom {
+      padding-top: 70px;
+      padding-bottom: 60px;
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  .footerMobile {
+    padding-top: 40px;
+    font-size: 16px;
+    .footerTop {
+      margin: 0 90px;
+    }
+    .footerMiddle {
+      margin: 50px 120px 0 90px;
+    }
+    .footerBottom {
+      padding-top: 70px;
+      padding-bottom: 60px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .footerMobile {
+    padding-top: 40px;
+    font-size: 16px;
+    .footerTop {
+      margin: 0 120px;
+    }
+    .footerMiddle {
+      margin: 50px 150px 0 120px;
+    }
+    .footerBottom {
+      padding-top: 70px;
+      padding-bottom: 60px;
+    }
+  }
+}
+@media (min-width: 1000px) {
+  .footerMobile {
+    padding-top: 40px;
+    font-size: 16px;
+    .footerTop {
+      margin: 0 170px;
+    }
+    .footerMiddle {
+      margin: 50px 200px 0 170px;
+    }
+    .footerBottom {
+      padding-top: 80px;
+      padding-bottom: 60px;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .footerMobile {
+    display: none;
+  }
+  .footerDesktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--theme-dark-green);
+    padding: 69px 0;
+    padding-left: 80px;
+    width: 100%;
+    max-height: 850px;
+    overflow: hidden;
+    color: var(--theme-white);
+    font-size: 12px;
+    line-height: 24px;
+    .footerTitle {
+      margin-bottom: 15px;
+      color: var(--theme-orange);
+      text-transform: uppercase;
+    }
+    > ul > li {
+      margin-bottom: 7px;
+    }
+    .footerContactInfo {
+      margin-top: 15px;
+    }
+
+    .footerBottom {
+      margin: 0 40px 0 285px;
+      .footerSubscriptionForm {
+        width: 117px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .footerDesktop {
+    .footerBottom {
+      margin: 0 80px 0;
+      .footerSubscriptionForm {
+        width: 117px;
+      }
+    }
+  }
 }

@@ -10,20 +10,27 @@ $backgroud-light: #f2f2f2;
 
 //TODO: add left colors
 $theme-colors: (
-  "primary":    green,
-  "secondary":  pink,
+  'primary': green,
+  'secondary': pink,
   //"success":    $success,
   //"info":       $info,
   //"warning":    $warning,
   //"danger":     $danger,
   //"light":      $light,
-  "dark":       #000,
-  "custom-light": yellow
+  'dark': #000,
+  'custom-light': yellow,
+  'custom-dark-green': #0f2615,
+  'custom-green': #4b5945,
+  'custom-white': #f2efe9,
+  'custom-orange': #ff9a17,
+  'custom-brown': #592d1d,
+  'custom-grey': #c9cdc7,
+
   //custom-color: -> add new colors in this way then use it as normal css class like bg-custom-color
 );
 
 $globalConfig: (
-  palette: $theme-colors
+  palette: $theme-colors,
 );
 
 :root {
