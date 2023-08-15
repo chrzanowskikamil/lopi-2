@@ -4,26 +4,34 @@ import style from './NavBar.module.scss';
 
 import Navbar from 'react-bootstrap/Navbar';
 
-// import Slider from './components/Slider';
-import Socials from './components/Socials';
-import Menu from './components/Menu';
+import { useState, FC } from 'react';
 
-import { Logo } from '../../assets/SvgIcons/Logo';
-import { FC } from 'react';
+import Slider from './components/Slider';
+import Socials from './components/Socials';
+
+import MenuDesktop from './components/MenuDesktop';
+import MenuMobile from './components/MenuMobile';
 import MenuDropdownMobile from './components/MenuDropdownMobile';
 
+import { Logo } from '../../assets/SvgIcons/Logo';
+
 const NavBar: FC = () => {
+  const [menuMobileActive, setMenuMobileActive] = useState(false);
+
+  const mobileFlag = () => setMenuMobileActive(!menuMobileActive);
+
   return (
     <>
-      <Navbar expand="lg" className={style.navbar} data-bs-theme="dark">
-        <Menu />
+      <Navbar expand="lg" className={style.navbar}>
+        <MenuMobile mobileFlag={mobileFlag} />
+        <MenuDesktop />
         <Navbar.Brand href="#home" className={style.navbarLogo}>
           <Logo />
         </Navbar.Brand>
         <Socials />
       </Navbar>
-      <MenuDropdownMobile />
-      {/* <Slider /> */}
+      <MenuDropdownMobile visible={menuMobileActive} />
+      <Slider />
     </>
   );
 };
