@@ -1,0 +1,69 @@
+.tileContainer {
+  display: flex;
+  margin: 100px;
+  background-color: var(--theme-white);
+  list-style: none;
+}
+.tile {
+  position: relative;
+  border: 1px solid black;
+  width: 330px;
+  height: 423px;
+  .tileStatus {
+    position: absolute;
+    margin: 15px 0 0 15px;
+    background-color: var(--theme-orange);
+    width: 60px;
+    color: white;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 25px;
+    font-family: 'Outfit';
+    text-align: center;
+  }
+  .tileInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 22px;
+    margin-left: 3px;
+    .star {
+      margin-left: 3px;
+    }
+    span {
+      margin-left: 5px;
+      color: var(--theme-grey);
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      text-align: center;
+    }
+  }
+  .productName {
+    margin-top: 10px;
+    margin-left: 3px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 26px;
+  }
+  .productPrice {
+    display: flex;
+    flex-direction: row;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    font-family: 'Outfit';
+    text-align: center;
+    .normalPrice {
+      margin-top: 5px;
+      margin-left: 3px;
+      color: var(--theme-green);
+      text-decoration: line-through;
+    }
+    .currentPrice {
+      margin-top: 3px;
+      margin-left: 20px;
+      color: var(--theme-orange);
+    }
+  }
+}
