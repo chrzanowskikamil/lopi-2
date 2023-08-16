@@ -1,13 +1,21 @@
+'use client';
 import style from '../NavBar.module.scss';
 
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
 import { FC } from 'react';
+import Link from 'next/link';
+interface MenuProps {
+  categories: string[];
+}
 
-const Menu: FC = () => {
+export const Menu: FC<MenuProps> = ({ categories }) => {
+  const renderedCategories = categories.map((category) => (
+    <NavDropdown.Item key={category} as={Link} href={`${category}`} passHref>
+      {category}
+    </NavDropdown.Item>
+  ));
+
   return (
     <div className={style.menu}>
       <Container>
@@ -15,14 +23,7 @@ const Menu: FC = () => {
         <Navbar.Collapse className={style.color} id="basic-navbar-nav">
           <Nav className="me-auto">
             <NavDropdown title="Kategorie" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
+              {renderedCategories}
             </NavDropdown>
             <NavDropdown
               title="O nas"
@@ -40,9 +41,7 @@ const Menu: FC = () => {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
-      </Container>{' '}
+      </Container>
     </div>
   );
 };
-
-export default Menu;
