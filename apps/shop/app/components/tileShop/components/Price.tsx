@@ -12,8 +12,8 @@ const Price: FC<PriceProps> = ({ price, currentPrice }) => {
     <>
       {currentPrice ? (
         <>
-          <div className={style.normalPrice}>{price} zł</div>
-          <div className={style.currentPrice}>{currentPrice}</div>
+          <div className={style.previousPrice}>{price} zł</div>
+          <div className={style.currentPrice}>{currentPrice} zł</div>
         </>
       ) : (
         <div className={style.normalPrice}>{price} zł</div>

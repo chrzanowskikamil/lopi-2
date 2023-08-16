@@ -8,15 +8,17 @@ import Stars from './components/Stars';
 import Price from './components/Price';
 
 import Status from './components/Status';
+
 type TileProps = {
   picture: string | StaticImageData;
   stars: number;
   rewievs: number;
   name: string;
   price: number;
-  currentPrice: number;
-  status: string;
+  currentPrice: number | undefined;
+  status: string | undefined;
 };
+
 const Tile: FC<TileProps> = ({
   picture,
   stars,
@@ -28,9 +30,7 @@ const Tile: FC<TileProps> = ({
 }) => {
   return (
     <ul className={style.tile}>
-      <div className={style.tileStatus}>
-        <Status status={status} />
-      </div>
+      <Status status={status} />
       <Image src={picture} alt="picture" width={330} height={330} />
       <div className={style.tileInfo}>
         <Stars starsCount={stars} />

@@ -12,7 +12,7 @@
   .tileStatus {
     position: absolute;
     margin: 15px 0 0 15px;
-    background-color: var(--theme-orange);
+
     width: 60px;
     color: white;
     font-weight: 400;
@@ -20,7 +20,15 @@
     line-height: 25px;
     font-family: 'Outfit';
     text-align: center;
+    .price {
+      background-color: var(--theme-orange);
+    }
+    .new {
+      background-color: #05f2f2;
+      text-transform: uppercase;
+    }
   }
+
   .tileInfo {
     display: flex;
     flex-direction: row;
@@ -49,12 +57,19 @@
   .productPrice {
     display: flex;
     flex-direction: row;
+    margin-bottom: 20px;
     font-weight: 400;
     font-size: 16px;
     line-height: 16px;
     font-family: 'Outfit';
     text-align: center;
     .normalPrice {
+      margin-top: 5px;
+      margin-left: 3px;
+      color: var(--theme-dark-green);
+      text-decoration: none;
+    }
+    .previousPrice {
       margin-top: 5px;
       margin-left: 3px;
       color: var(--theme-green);

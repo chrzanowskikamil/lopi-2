@@ -11,7 +11,7 @@ const TileDisplay = () => {
     <li className={style.tileContainer}>
       <Tile
         picture={picture}
-        stars={4}
+        stars={2}
         rewievs={3}
         name={'Ethiopia Emerald'}
         price={150}
