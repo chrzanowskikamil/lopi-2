@@ -6,10 +6,10 @@ import SignInForm from './components/Auth/SignInForm/SignInForm';
 import SignUpForm from './components/Auth/SignUpForm/SignUpForm';
 import Footer from './components/Footer/Footer';
 
-import { fetchCategories } from './api/services/categoriesService';
+import { getCategoriesName } from '../actions/getCategoriesName';
 
 const Index = async () => {
-  const fetchedCategories = await fetchCategories();
+  const fetchedCategories = await getCategoriesName();
 
   return (
     <>

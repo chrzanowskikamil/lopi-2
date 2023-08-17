@@ -4,49 +4,23 @@ import { FC } from 'react';
 
 interface ProductsProps {
   product: string;
+  visibleProducts: [];
 }
 
-export const Products: FC<ProductsProps> = () => {
+export const Products: FC<ProductsProps> = ({ visibleProducts }) => {
   return (
     <>
       <Container>
         <Row xs="3" className={styles.products}>
-          <Col className={styles.product}>
-            <img src="https://via.placeholder.com/330" alt="product" />
-            <p>Product name</p>
-            <p>Product description</p>
-            <p>Price</p>
-          </Col>
-          <Col className={styles.product}>
-            <img src="https://via.placeholder.com/330" alt="product" />
-            <p>Product name</p>
-            <p>Product description</p>
-            <p>Price</p>
-          </Col>
-          <Col className={styles.product}>
-            <img src="https://via.placeholder.com/330" alt="product" />
-            <p>Product name</p>
-            <p>Product description</p>
-            <p>Price</p>
-          </Col>
-          <Col className={styles.product}>
-            <img src="https://via.placeholder.com/330" alt="product" />
-            <p>Product name</p>
-            <p>Product description</p>
-            <p>Price</p>
-          </Col>
-          <Col className={styles.product}>
-            <img src="https://via.placeholder.com/330" alt="product" />
-            <p>Product name</p>
-            <p>Product description</p>
-            <p>Price</p>
-          </Col>
-          <Col className={styles.product}>
-            <img src="https://via.placeholder.com/330" alt="product" />
-            <p>Product name</p>
-            <p>Product description</p>
-            <p>Price</p>
-          </Col>
+          {visibleProducts.map((product, id) => (
+            <Col className={styles.product} key={product.id}>
+              <img src="https://via.placeholder.com/330" alt="product" />
+              <p>{product.name}</p>
+              <p>{product.description}</p>
+              <p>{product.price}</p>
+            </Col>
+          ))}
+          ;
         </Row>
       </Container>
     </>

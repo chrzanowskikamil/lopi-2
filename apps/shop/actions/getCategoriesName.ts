@@ -1,6 +1,6 @@
 import { FetchedCategoryResponse } from '../types/FetchedCategoryResponse';
 
-export async function fetchCategories(): Promise<string[]> {
+export async function getCategoriesName(): Promise<string[]> {
   try {
     const res = await fetch('https://lopi2.azurewebsites.net/api/categories');
     if (!res.ok) throw new Error(`Server responsed with ${res.statusText}`);
