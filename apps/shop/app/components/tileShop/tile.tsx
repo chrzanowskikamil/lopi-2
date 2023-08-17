@@ -1,3 +1,5 @@
+'use client';
+
 import style from './tileShop.module.scss';
 
 import Image, { StaticImageData } from 'next/image';
@@ -8,6 +10,7 @@ import Stars from './components/Stars';
 import Price from './components/Price';
 
 import Status from './components/Status';
+import AddToCart from './components/AddtoCart';
 
 type TileProps = {
   picture: string | StaticImageData;
@@ -30,16 +33,17 @@ const Tile: FC<TileProps> = ({
 }) => {
   return (
     <ul className={style.tile}>
-      <Status status={status} />
-      <Image src={picture} alt="picture" width={330} height={330} />
+      <div className={style.imageArea}>
+        <Status status={status} />
+        <AddToCart />
+        <Image src={picture} alt="picture" width={330} height={330} />
+      </div>
       <div className={style.tileInfo}>
         <Stars starsCount={stars} />
         <span>({rewievs})</span>
       </div>
       <div className={style.productName}>{name}</div>
-      <div className={style.productPrice}>
-        <Price price={price} currentPrice={currentPrice} />
-      </div>
+      <Price price={price} currentPrice={currentPrice} />
     </ul>
   );
 };

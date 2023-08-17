@@ -1,3 +1,5 @@
+'use client';
+
 import style from '../tileShop.module.scss';
 
 import { FC } from 'react';

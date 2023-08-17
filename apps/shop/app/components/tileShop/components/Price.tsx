@@ -1,3 +1,5 @@
+'use client';
+
 import { FC } from 'react';
 
 import style from '../tileShop.module.scss';
@@ -9,7 +11,7 @@ type PriceProps = {
 
 const Price: FC<PriceProps> = ({ price, currentPrice }) => {
   return (
-    <>
+    <div className={style.productPrice}>
       {currentPrice ? (
         <>
           <div className={style.previousPrice}>{price} zł</div>
@@ -18,7 +20,7 @@ const Price: FC<PriceProps> = ({ price, currentPrice }) => {
       ) : (
         <div className={style.normalPrice}>{price} zł</div>
       )}
-    </>
+    </div>
   );
 };
 
