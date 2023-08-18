@@ -10,9 +10,7 @@ import { UserIcon } from 'apps/shop/app/assets/SvgIcons/UserIcon';
 import { FC } from 'react';
 
 const Socials: FC = () => {
-  const [matches, setMatches] = useState(
-    window.matchMedia('(min-width: 992px)').matches
-  );
+  const [matches, setMatches] = useState<boolean>();
 
   useEffect(() => {
     window
