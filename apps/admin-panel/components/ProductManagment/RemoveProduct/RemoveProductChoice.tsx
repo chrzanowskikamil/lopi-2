@@ -1,6 +1,6 @@
 'use client';
 
-import style from '../CategoryManagment.module.scss';
+import style from '../ProductManagment.module.scss';
 
 import * as formik from 'formik';
 
@@ -10,13 +10,14 @@ import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-import OnRemovePopup from './RemoveCategoryPopup';
+import OnRemovePopup from './RemoveProductPopup';
 
-const RemoveCategory: React.FC = () => {
+const RemoveProductChoice: React.FC = () => {
   const { Formik } = formik;
 
   const [modalShow, setModalShow] = useState(false);
   const [toEdit, setToEdit] = useState('');
+  const [toEditCategory, setToEditCategory] = useState('');
 
   return (
     <Container>
@@ -30,6 +31,19 @@ const RemoveCategory: React.FC = () => {
       >
         {({ handleSubmit, handleReset }) => (
           <Form noValidate onSubmit={handleSubmit}>
+            <Form.Label>Category:</Form.Label>
+            <Form.Select
+              aria-label="Default select example"
+              onChange={(e) => setToEditCategory(e.target.value)}
+            >
+              <option value={undefined}>
+                Choose category you want add product to.
+              </option>
+              <option>Shoes</option>
+              <option>T-shirts</option>
+              <option>Throusers</option>
+            </Form.Select>
+
             <Form.Select
               aria-label="Default select example"
               onChange={(e) => setToEdit(e.target.value)}
@@ -43,18 +57,18 @@ const RemoveCategory: React.FC = () => {
             <OnRemovePopup
               show={modalShow}
               onHide={() => setModalShow(false)}
-              category={toEdit}
+              product={toEdit}
               reset={handleReset}
             />
 
-            {toEdit === '' || toEdit === 'Choose category you want gone.' ? (
+            {toEdit === '' || toEdit === 'Choose product you want gone.' ? (
               <Button
                 variant="primary"
                 type="submit"
                 disabled
                 className={style.soloButton}
               >
-                Delete Category
+                Delete Product
               </Button>
             ) : (
               <Button
@@ -63,7 +77,7 @@ const RemoveCategory: React.FC = () => {
                 onClick={() => setModalShow(true)}
                 className={style.soloButton}
               >
-                Delete Category
+                Delete Product
               </Button>
             )}
           </Form>
@@ -73,4 +87,4 @@ const RemoveCategory: React.FC = () => {
   );
 };
 
-export default RemoveCategory;
+export default RemoveProductChoice;

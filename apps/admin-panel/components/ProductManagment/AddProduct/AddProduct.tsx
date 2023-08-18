@@ -1,10 +1,10 @@
 'use client';
 
-import style from '../CategoryManagment.module.scss';
+import style from '../ProductManagment.module.scss';
 
 import * as formik from 'formik';
 
-import { useReducer } from 'react';
+import { useReducer, useState } from 'react';
 
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
@@ -12,21 +12,23 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 
-import AddCategoryPopup from './AddCategoryPopup';
+import AddProductPopup from './AddProductPopup';
 
-import { CategorySchema } from '../Category.schema';
+import { ProductSchema } from '../Product.schema';
 
-import { initialState, categoryReducer } from '../CategoryReducerHook';
+import { initialState, productReducer } from '../ProductReducerHook';
 
-const AddCategory: React.FC = () => {
+const AddProduct: React.FC = () => {
   const { Formik } = formik;
-  const [state, dispatch] = useReducer(categoryReducer, initialState);
+  const [state, dispatch] = useReducer(productReducer, initialState);
+
+  const [toEditCategory, setToEditCategory] = useState('');
 
   return (
     <Container>
-      <h1>Add category:</h1>
+      <h1>Add product:</h1>
       <Formik
-        validationSchema={CategorySchema}
+        validationSchema={ProductSchema}
         onSubmit={(values) => {
           dispatch({
             type: 'on_submit',
@@ -34,7 +36,7 @@ const AddCategory: React.FC = () => {
           });
         }}
         initialValues={{
-          categoryName: '',
+          productName: '',
           productCount: '',
           terms: true,
           file: null,
@@ -50,21 +52,35 @@ const AddCategory: React.FC = () => {
         }) => (
           <Form noValidate onSubmit={handleSubmit}>
             <Row className="mb-3">
+              <Form.Group as={Col} md="12" controlId="validationFormik01">
+                <Form.Label>Category:</Form.Label>
+                <Form.Select
+                  aria-label="Default select example"
+                  onChange={(e) => setToEditCategory(e.target.value)}
+                >
+                  <option value={undefined}>
+                    Choose category you want add product to.
+                  </option>
+                  <option>Shoes</option>
+                  <option>T-shirts</option>
+                  <option>Throusers</option>
+                </Form.Select>
+              </Form.Group>
               <Form.Group as={Col} md="4" controlId="validationFormik01">
-                <Form.Label>Category name:</Form.Label>
+                <Form.Label>Product name:</Form.Label>
                 <Form.Control
                   type="text"
                   required
                   disabled={state.blocked}
-                  name="categoryName"
-                  placeholder="Category"
-                  value={values.categoryName}
+                  name="productName"
+                  placeholder="Product"
+                  value={values.productName}
                   onChange={handleChange}
-                  isInvalid={!!errors.categoryName && !!touched.categoryName}
-                  isValid={touched.categoryName && !errors.categoryName}
+                  isInvalid={!!errors.productName && !!touched.productName}
+                  isValid={touched.productName && !errors.productName}
                 />
                 <Form.Control.Feedback type="invalid">
-                  {errors.categoryName ? 'Please pick a name.' : ''}
+                  {errors.productName ? 'Please pick a name.' : ''}
                 </Form.Control.Feedback>
                 <Form.Control.Feedback>
                   Looks good! <br />
@@ -122,7 +138,7 @@ const AddCategory: React.FC = () => {
                 <Form.Control.Feedback>Looks good to me!</Form.Control.Feedback>
               </Form.Group>
             </Row>
-            <AddCategoryPopup
+            <AddProductPopup
               show={state.modalShow}
               state={state}
               onHide={() => {
@@ -146,7 +162,7 @@ const AddCategory: React.FC = () => {
                   handleSubmit();
                 }}
               >
-                Create category
+                Create product
               </Button>
               <Button
                 variant="secondary"
@@ -167,4 +183,4 @@ const AddCategory: React.FC = () => {
   );
 };
 
-export default AddCategory;
+export default AddProduct;
