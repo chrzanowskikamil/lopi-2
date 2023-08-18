@@ -1,11 +1,15 @@
+@use '../../styles/shop-variables';
+
+$palette: shop-variables.$theme-colors;
+
 .tileContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   margin: 100px;
-  max-width: 1640px;
-  background-color: var(--theme-white);
+  background-color: map-get($palette, custom-white);
   padding-top: 20px;
+  max-width: 1640px;
   list-style: none;
 }
 .tile {
@@ -28,7 +32,7 @@
       font-family: 'Outfit';
       text-align: center;
       .price {
-        background-color: var(--theme-orange);
+        background-color: map-get($palette, custom-orange);
       }
       .new {
         background-color: #05f2f2;
@@ -60,9 +64,13 @@
     .star {
       margin-left: 3px;
     }
+    .starOrange {
+      margin-left: 3px;
+      color: map-get($palette, custom-orange);
+    }
     span {
       margin-left: 5px;
-      color: var(--theme-grey);
+      color: map-get($palette, custom-grey);
       font-weight: 400;
       font-size: 12px;
       line-height: 16px;
@@ -88,7 +96,7 @@
     .normalPrice {
       margin-top: 5px;
       margin-left: 3px;
-      color: var(--theme-dark-green);
+      color: map-get($palette, custom-dark-green);
       text-decoration: none;
     }
     .previousPrice {
@@ -100,7 +108,7 @@
     .currentPrice {
       margin-top: 3px;
       margin-left: 20px;
-      color: var(--theme-orange);
+      color: map-get($palette, custom-orange);
     }
   }
 }
