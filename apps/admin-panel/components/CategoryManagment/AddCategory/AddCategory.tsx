@@ -1,3 +1,5 @@
+'use client';
+
 import style from '../ProductsManagment.module.scss';
 
 import * as formik from 'formik';

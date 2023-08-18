@@ -1,8 +1,8 @@
-import '../app/styles/admin-global.scss';
+'use client';
 
-import AddCategory from '../components/CategoryManagment/AddCategory/AddCategory';
-import EditCategoryChoice from '../components/CategoryManagment/EditCategory/EditCategoryChoice';
-import RemoveCategory from '../components/CategoryManagment/RemoveCategory/RemoveCategory';
+import AddCategory from '../../../components/CategoryManagment/AddCategory/AddCategory';
+import EditCategoryChoice from '../../../components/CategoryManagment/EditCategory/EditCategoryChoice';
+import RemoveCategory from '../../../components/CategoryManagment/RemoveCategory/RemoveCategory';
 
 import Accordion from 'react-bootstrap/Accordion';
 
