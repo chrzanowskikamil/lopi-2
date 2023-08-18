@@ -1,3 +1,7 @@
+@use '../../styles/shop-variables';
+
+$palette: shop-variables.$theme-colors;
+
 .footer {
   font-family: 'Outfit';
 }
@@ -17,18 +21,18 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background-color: var(--theme-dark-green);
+  background-color: map-get($palette, custom-dark-green);
   padding-top: 17px;
   width: 100%;
   max-height: 850px;
   overflow: hidden;
-  color: var(--theme-white);
+  color: map-get($palette, custom-white);
   font-weight: 400;
   font-size: 15px;
   line-height: 24px;
   .footerTitle {
     margin-bottom: 15px !important;
-    color: var(--theme-orange);
+    color: map-get($palette, custom-orange);
     font-weight: 700;
     font-size: 12px;
     text-transform: uppercase;
@@ -82,7 +86,7 @@
   padding-top: 30px;
   .footerSocialElements {
     margin-right: 15px;
-    color: var(--theme-orange);
+    color: map-get($palette, custom-orange);
   }
 }
 
@@ -90,24 +94,24 @@
   display: flex;
   flex-direction: row;
   margin-top: 25px;
-  color: var(--theme-orange);
+  color: map-get($palette, custom-orange);
   .footerSubscriptionFormInput {
-    background: var(--theme-dark-green);
+    background: map-get($palette, custom-dark-green);
     width: 272px;
     &:enabled {
       border: none;
-      border-bottom: var(--theme-orange) solid 1px;
-      color: var(--theme-white);
+      border-bottom: map-get($palette, custom-orange) solid 1px;
+      color: map-get($palette, custom-white);
     }
   }
   .footerSubscriptionFormInput::placeholder {
-    color: var(--theme-white);
+    color: map-get($palette, custom-white);
   }
   .footerSubscriptionFormButton {
     margin-left: 10px;
-    border-bottom: var(--theme-orange) solid 1px;
+    border-bottom: map-get($palette, custom-orange) solid 1px;
     width: 40px;
-    color: var(--theme-orange);
+    color: map-get($palette, custom-orange);
     text-align: center;
   }
 }
@@ -162,18 +166,18 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color: var(--theme-dark-green);
+    background-color: map-get($palette, custom-dark-green);
     padding: 69px 0;
     padding-left: 80px;
     width: 100%;
     max-height: 850px;
     overflow: hidden;
-    color: var(--theme-white);
+    color: map-get($palette, custom-white);
     font-size: 15px;
     line-height: 24px;
     .footerTitle {
       margin-bottom: 15px;
-      color: var(--theme-orange);
+      color: map-get($palette, custom-orange);
       font-size: 12px;
       text-transform: uppercase;
     }

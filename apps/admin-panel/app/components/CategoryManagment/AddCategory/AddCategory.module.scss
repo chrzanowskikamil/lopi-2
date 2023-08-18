@@ -7,8 +7,8 @@ $palette: admin-variables.$theme-colors;
 }
 
 .buttonsFlex {
-  background: map-get($palette, primary);
   display: flex;
   flex-direction: row;
   margin-left: 70%;
+  background: map-get($palette, custom-grey);
 }

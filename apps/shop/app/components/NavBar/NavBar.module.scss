@@ -1,3 +1,7 @@
+@use '../../styles/shop-variables';
+
+$palette: shop-variables.$theme-colors;
+
 .menuDesktop,
 .navbarLogo {
   display: none;
@@ -7,11 +11,11 @@
   display: flex;
   position: relative;
   justify-content: space-between;
-  background-color: var(--theme-dark-green);
+  background-color: map-get($palette, custom-dark-green);
   padding: 0;
   width: 100%;
   height: 100px;
-  color: var(--theme-white);
+  color: map-get($palette, custom-white);
 }
 
 .menuMobile {
@@ -21,10 +25,10 @@
     margin: 0 15px;
     :hover {
       cursor: pointer;
-      color: var(--theme-orange);
+      color: map-get($palette, custom-orange);
     }
     .active {
-      color: var(--theme-orange);
+      color: map-get($palette, custom-orange);
     }
   }
 }
@@ -52,11 +56,11 @@
     transform: translate(135%, -60%);
     z-index: 1;
     border-radius: 50%;
-    background-color: var(--theme-orange);
+    background-color: map-get($palette, custom-orange);
     width: 15px;
     height: 15px;
     span {
-      color: var(--theme-white);
+      color: map-get($palette, custom-white);
       font-size: 10px;
       line-height: 15px;
     }
@@ -68,7 +72,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: var(--theme-white);
+  background-color: map-get($palette, custom-white);
   width: 100%;
   height: 100px;
   font-size: 16px;
@@ -91,14 +95,14 @@
 .dropdownMobile {
   display: flex;
   position: absolute;
-  background-color: var(--theme-white);
+  background-color: map-get($palette, custom-white);
   width: 100%;
   height: 100px;
   color: black;
   font-size: 16px;
   button {
     border: none;
-    background-color: var(--theme-white);
+    background-color: map-get($palette, custom-white);
     color: black;
   }
   .dropdownGroup {
@@ -110,11 +114,11 @@
     :active,
     :focus,
     :checked {
-      background-color: var(--theme-white) !important;
-      color: var(--theme-orange) !important;
+      background-color: map-get($palette, custom-white) !important;
+      color: map-get($palette, custom-orange) !important;
     }
     :not(.btn-check) {
-      background-color: var(--theme-white);
+      background-color: map-get($palette, custom-white);
       color: black;
     }
   }
@@ -142,36 +146,36 @@
       display: flex;
       div {
         div {
-          background-color: var(--theme-dark-green);
+          background-color: map-get($palette, custom-dark-green);
           div {
             padding: 0 10px;
           }
           a {
-            color: var(--theme-white);
+            color: map-get($palette, custom-white);
           }
         }
       }
       .color {
         :not(.btn-check) {
-          background-color: var(--theme-dark-green);
-          color: var(--theme-white);
+          background-color: map-get($palette, custom-dark-green);
+          color: map-get($palette, custom-white);
         }
         :hover,
         :active,
         :focus,
         :checked {
-          background-color: var(--theme-dark-green);
-          color: var(--theme-orange);
+          background-color: map-get($palette, custom-dark-green);
+          color: map-get($palette, custom-orange);
         }
       }
       .navbar-nav {
         .nav-link.active,
         .nav-link.show {
-          color: var(--theme-white) !important;
+          color: map-get($palette, custom-white) !important;
         }
       }
       a#about-dropdown.dropdown-toggle.show.nav-link {
-        color: var(--theme-white) !important;
+        color: map-get($palette, custom-white) !important;
       }
     }
     .socials {
