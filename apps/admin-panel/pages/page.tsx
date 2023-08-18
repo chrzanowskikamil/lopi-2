@@ -11,19 +11,19 @@ const Categories: React.FC = () => {
     <>
       <Accordion defaultActiveKey="0">
         <Accordion.Item eventKey="0">
-          <Accordion.Header>Adding category area.</Accordion.Header>
+          <Accordion.Header>Adding product area.</Accordion.Header>
           <Accordion.Body>
             <AddCategory />
           </Accordion.Body>
         </Accordion.Item>
         <Accordion.Item eventKey="1">
-          <Accordion.Header>Editing category area.</Accordion.Header>
+          <Accordion.Header>Editing product area.</Accordion.Header>
           <Accordion.Body>
             <EditCategoryChoice />
           </Accordion.Body>
         </Accordion.Item>
         <Accordion.Item eventKey="2">
-          <Accordion.Header>Removeing category area.</Accordion.Header>
+          <Accordion.Header>Removing product area.</Accordion.Header>
           <Accordion.Body>
             <RemoveCategory />
           </Accordion.Body>
