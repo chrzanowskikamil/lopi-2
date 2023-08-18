@@ -1,4 +1,5 @@
-import './style/global.scss';
+import './styles/shop-global.scss';
+import NavBar from './components/NavBar/NavBar';
 
 export const metadata = {
   title: 'Welcome to shop',
@@ -8,7 +9,10 @@ export const metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <NavBar />
+        <main>{children}</main>
+      </body>
     </html>
   );
 };

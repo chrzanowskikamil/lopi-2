@@ -2,7 +2,7 @@
 
 import style from './NavBar.module.scss';
 
-import Navbar from 'react-bootstrap/Navbar';
+import BootstrapNavbar from 'react-bootstrap/Navbar';
 
 import Slider from './components/Slider';
 import Socials from './components/Socials';
@@ -14,14 +14,17 @@ import { FC } from 'react';
 const NavBar: FC = () => {
   return (
     <>
-      <Navbar expand="lg" className={style.navbar} data-bs-theme="dark">
+      <BootstrapNavbar
+        expand="lg"
+        className={style.navbar}
+        data-bs-theme="dark"
+      >
         <Menu />
-        <Navbar.Brand href="#home" className={style.navbarLogo}>
+        <BootstrapNavbar.Brand href="#home" className={style.navbarLogo}>
           <Logo />
-        </Navbar.Brand>
+        </BootstrapNavbar.Brand>
         <Socials />
-      </Navbar>
-
+      </BootstrapNavbar>
       <Slider />
     </>
   );

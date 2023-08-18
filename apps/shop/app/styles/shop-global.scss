@@ -1,6 +1,7 @@
-@import '_variables';
+//It is time consuming if bootstrap is importing in common first and the here...
+@import 'shop-variables';
 @import '~bootstrap/scss/bootstrap';
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Outfit:wght@100;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@100;400;500;700&display=swap');
 
 html {
   box-sizing: border-box;
@@ -41,8 +42,9 @@ img {
 body {
   display: block;
   margin: 0;
-  background: var(--theme-grey);
-  font-family: 'Quicksand', sans-serif;
+  background: #d9d9d9;
+  padding: 0;
+  font-family: 'Outfit', sans-serif;
 }
 
 .flex-column {
