@@ -1,6 +1,6 @@
 'use client';
 
-import style from '../CategoryManagment.module.scss';
+import style from '../ProductManagment.module.scss';
 
 import { useState } from 'react';
 
@@ -8,37 +8,37 @@ import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-import EditCategory from './EditCategory';
+import EditProduct from './EditProduct';
 
-const EditCategoryChoice: React.FC = () => {
+const EditProductChoice: React.FC = () => {
   const [toEdit, setToEdit] = useState('');
 
   return (
     <>
       <Container>
-        <h1>Edit category:</h1>
+        <h1>Edit product:</h1>
         <Form.Select
           aria-label="Default select example"
           onChange={(e) => setToEdit(e.target.value)}
         >
-          <option value={undefined}>Choose category you want to edit.</option>
+          <option value={undefined}>Choose product you want to edit.</option>
           <option>Shoes 3 true file.jpg</option>
           <option>T-shirts 7 false file.png</option>
           <option>Throusers 0 false file.svg</option>
         </Form.Select>
-        {toEdit == '' || toEdit == 'Choose category you want to edit.' ? (
+        {toEdit == '' || toEdit == 'Choose product you want to edit.' ? (
           <>
             <Button disabled type="submit" className={style.soloButton}>
-              Change category
+              Change product
             </Button>
           </>
         ) : (
           ''
         )}
       </Container>
-      <EditCategory category={toEdit} />
+      <EditProduct product={toEdit} />
     </>
   );
 };
 
-export default EditCategoryChoice;
+export default EditProductChoice;
