@@ -6,8 +6,14 @@ import BootstrapNavbar from 'react-bootstrap/Navbar';
 
 import { useState, FC } from 'react';
 
+import { useState, FC } from 'react';
+
 import Slider from './components/Slider';
 import Socials from './components/Socials';
+
+import MenuDesktop from './components/MenuDesktop';
+import MenuMobile from './components/MenuMobile';
+import MenuDropdownMobile from './components/MenuDropdownMobile';
 
 import MenuDesktop from './components/MenuDesktop';
 import MenuMobile from './components/MenuMobile';
@@ -16,6 +22,10 @@ import MenuDropdownMobile from './components/MenuDropdownMobile';
 import { Logo } from '../../assets/SvgIcons/Logo';
 
 const NavBar: FC = () => {
+  const [menuMobileActive, setMenuMobileActive] = useState(false);
+
+  const mobileFlag = () => setMenuMobileActive(!menuMobileActive);
+
   const [menuMobileActive, setMenuMobileActive] = useState(false);
 
   const mobileFlag = () => setMenuMobileActive(!menuMobileActive);
