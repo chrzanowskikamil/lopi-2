@@ -6,7 +6,7 @@ import style from '../tileShop.module.scss';
 
 type PriceProps = {
   price: number;
-  currentPrice: number | undefined;
+  currentPrice?: number;
 };
 
 const Price: FC<PriceProps> = ({ price, currentPrice }) => {

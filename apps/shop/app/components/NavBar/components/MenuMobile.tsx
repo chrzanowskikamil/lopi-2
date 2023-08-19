@@ -6,16 +6,14 @@ import { SearchIcon } from 'apps/shop/app/assets/SvgIcons/SearchIcon';
 import { MenuIconMobile } from 'apps/shop/app/assets/SvgIcons/MenuIconMobile';
 
 interface MenuProps {
-  mobileFlag: VoidFunction;
+  handleMenuSwitch: VoidFunction;
 }
 
-const Menu: FC<MenuProps> = ({ mobileFlag }) => {
-  const icoWidth = 22;
-  const icoHeight = 22;
-
+const Menu: FC<MenuProps> = ({ handleMenuSwitch }) => {
   const handleClick = () => {
-    mobileFlag();
+    handleMenuSwitch();
   };
+
   return (
     <>
       <div className={style.menuMobile}>
@@ -23,7 +21,7 @@ const Menu: FC<MenuProps> = ({ mobileFlag }) => {
           <MenuIconMobile />
         </div>
         <div>
-          <SearchIcon width={icoWidth} height={icoHeight} />
+          <SearchIcon />
         </div>
       </div>
     </>

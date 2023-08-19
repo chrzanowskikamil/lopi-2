@@ -7,12 +7,8 @@ import Nav from 'react-bootstrap/Nav';
 
 import Menu from './Menu';
 
-interface MenuDropdownMobileProps {
-  visible: boolean;
-}
-
-const MenuDropdownMobile: FC<MenuDropdownMobileProps> = ({ visible }) => {
-  return visible ? (
+const MenuDropdownMobile: FC = () => {
+  return (
     <section className={style.dropdownMobile}>
       <Nav className="me-auto">
         <ButtonGroup className={style.dropdownGroup}>
@@ -20,8 +16,6 @@ const MenuDropdownMobile: FC<MenuDropdownMobileProps> = ({ visible }) => {
         </ButtonGroup>
       </Nav>
     </section>
-  ) : (
-    ''
   );
 };
 

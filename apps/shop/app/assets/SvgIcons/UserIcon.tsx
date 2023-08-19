@@ -1,15 +1,8 @@
 import { FC } from 'react';
-import { SvgNavPropsTypes } from './SvgNavPropsTypes';
 
-export const UserIcon: FC<SvgNavPropsTypes> = ({ width, height }) => {
+export const UserIcon: FC = () => {
   return (
-    <svg
-      width={`${width}`}
-      height={`${height}`}
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M12 12C15.3137 12 18 9.31371 18 6C18 2.68629 15.3137 0 12 0C8.68629 0 6 2.68629 6 6C6 9.31371 8.68629 12 12 12ZM16 6C16 8.20914 14.2091 10 12 10C9.79086 10 8 8.20914 8 6C8 3.79086 9.79086 2 12 2C14.2091 2 16 3.79086 16 6Z"
         fill="white"

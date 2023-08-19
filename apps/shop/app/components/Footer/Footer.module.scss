@@ -1,5 +1,11 @@
 @use '../../styles/shop-variables';
 
+@import './variables.scss';
+
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins/breakpoints';
+
 $palette: shop-variables.$theme-colors;
 
 .footer {
@@ -21,18 +27,19 @@ $palette: shop-variables.$theme-colors;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background-color: map-get($palette, custom-dark-green);
+  background-color: map-get($palette, lopi-dark-green);
   padding-top: 17px;
   width: 100%;
-  max-height: 850px;
+  max-height: $footerMobileMaxHeight;
   overflow: hidden;
-  color: map-get($palette, custom-white);
+  color: map-get($palette, lopi-white);
   font-weight: 400;
   font-size: 15px;
   line-height: 24px;
+
   .footerTitle {
     margin-bottom: 15px !important;
-    color: map-get($palette, custom-orange);
+    color: map-get($palette, lopi-orange);
     font-weight: 700;
     font-size: 12px;
     text-transform: uppercase;
@@ -43,38 +50,45 @@ $palette: shop-variables.$theme-colors;
     flex-direction: row;
     justify-content: space-between;
     margin: 0 24px;
+
     > ul > li {
       margin-bottom: 7px;
     }
+
     .footerContactInfo {
       margin-top: 15px;
     }
   }
+
   .footerMiddle {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin: 50px 24px 0 24px;
+
     > ul > li {
       margin-bottom: 7px;
     }
   }
+
   .element {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+
     .footerBottom {
       display: flex;
       flex-direction: column;
       justify-content: center;
       box-sizing: border-box;
       width: 100%;
-      width: 290px;
+      width: $footerSubscriptionExtraSmall;
       height: 194px;
       overflow: hidden;
-      @media (min-width: 375px) {
-        width: 320px;
+
+      @include media-breakpoint-up(sm) {
+        width: $footerSubscriptionSmall;
       }
     }
   }
@@ -84,9 +98,10 @@ $palette: shop-variables.$theme-colors;
   display: flex;
   align-items: center;
   padding-top: 30px;
+
   .footerSocialElements {
     margin-right: 15px;
-    color: map-get($palette, custom-orange);
+    color: map-get($palette, lopi-orange);
   }
 }
 
@@ -94,37 +109,44 @@ $palette: shop-variables.$theme-colors;
   display: flex;
   flex-direction: row;
   margin-top: 25px;
-  color: map-get($palette, custom-orange);
+  color: map-get($palette, lopi-orange);
+
   .footerSubscriptionFormInput {
-    background: map-get($palette, custom-dark-green);
+    background: map-get($palette, lopi-dark-green);
     width: 272px;
+
     &:enabled {
       border: none;
-      border-bottom: map-get($palette, custom-orange) solid 1px;
-      color: map-get($palette, custom-white);
+      border-bottom: map-get($palette, lopi-orange) solid 1px;
+      color: map-get($palette, lopi-white);
     }
   }
+
   .footerSubscriptionFormInput::placeholder {
-    color: map-get($palette, custom-white);
+    color: map-get($palette, lopi-white);
   }
+
   .footerSubscriptionFormButton {
     margin-left: 10px;
-    border-bottom: map-get($palette, custom-orange) solid 1px;
+    border-bottom: map-get($palette, lopi-orange) solid 1px;
     width: 40px;
-    color: map-get($palette, custom-orange);
+    color: map-get($palette, lopi-orange);
     text-align: center;
   }
 }
 
-@media (min-width: 425px) {
+@include media-breakpoint-up(xs) {
   .footerMobile {
     padding-top: 40px;
+
     .footerTop {
       margin: 0 40px;
     }
+
     .footerMiddle {
       margin: 50px 40px 0 40px;
     }
+
     .footerBottom {
       padding-top: 70px;
       padding-bottom: 60px;
@@ -132,25 +154,29 @@ $palette: shop-variables.$theme-colors;
   }
 }
 
-@media (min-width: 576px) {
+@include media-breakpoint-up(sm) {
   .footerMobile {
     padding-top: 50px;
+
     .footerTop {
       margin: 0 90px;
     }
+
     .footerMiddle {
       margin: 50px 90px 0 90px;
     }
   }
 }
 
-@media (min-width: 768px) {
+@include media-breakpoint-up(md) {
   .footerMobile {
     padding-top: 60px;
+
     .footerTop {
       justify-content: space-around;
       margin: 0 100px;
     }
+
     .footerMiddle {
       justify-content: space-around;
       margin: 50px 100px 0 100px;
@@ -158,46 +184,53 @@ $palette: shop-variables.$theme-colors;
   }
 }
 
-@media (min-width: 992px) {
+@include media-breakpoint-up(lg) {
   .footerMobile {
     display: none;
   }
+
   .footerDesktop {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color: map-get($palette, custom-dark-green);
+    background-color: map-get($palette, lopi-dark-green);
     padding: 69px 0;
     padding-left: 80px;
     width: 100%;
-    max-height: 850px;
+    max-height: $footerMobileMaxHeight;
     overflow: hidden;
-    color: map-get($palette, custom-white);
+    color: map-get($palette, lopi-white);
     font-size: 15px;
     line-height: 24px;
+
     .footerTitle {
       margin-bottom: 15px;
-      color: map-get($palette, custom-orange);
-      font-size: 12px;
+      color: map-get($palette, lopi-orange);
+      font-size: $font-size-sm;
       text-transform: uppercase;
     }
+
     .footerGroup {
       display: flex;
       flex-grow: 4;
       flex-direction: row;
       justify-content: space-between;
       max-width: 1000px;
+
       > ul > li {
         margin-bottom: 7px;
       }
     }
+
     .footerContactInfo {
       margin-top: 15px;
     }
+
     .footerBottom {
       margin: 0 40px 0 150px;
       width: 167px;
       font-size: 15px;
+
       .footerSubscriptionFormInput {
         width: 117px;
       }
@@ -205,7 +238,7 @@ $palette: shop-variables.$theme-colors;
   }
 }
 
-@media (min-width: 1400px) {
+@include media-breakpoint-up(xxl) {
   .footerDesktop {
     .footerBottom {
       margin-right: 40px;

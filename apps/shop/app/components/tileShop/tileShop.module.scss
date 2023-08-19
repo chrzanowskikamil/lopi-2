@@ -1,114 +1,138 @@
 @use '../../styles/shop-variables';
 
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins/breakpoints';
+
 $palette: shop-variables.$theme-colors;
+$spacers: shop-variables.$spacers;
 
 .tileContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   margin: 100px;
-  background-color: map-get($palette, custom-white);
-  padding-top: 20px;min-width: 280px;
+  background-color: map-get($palette, lopi-white);
+  padding-top: map-get($spacers, 31);
+  min-width: 280px;
   max-width: 1640px;
   list-style: none;
 }
+
 .tile {
   float: left;
   margin-bottom: 90px;
   width: 330px;
   min-width: 280px;
-
   height: 423px;
+
   .imageArea {
     position: relative;
+
+    .tileImage {
+      width: 330px;
+      height: 330px;
+    }
+
     .tileStatus {
       position: absolute;
-      margin: 15px 0 0 15px;
+      margin: map-get($spacers, 3) 0 0 map-get($spacers, 3);
+      background-color: #05f2f2;
       width: 60px;
       color: white;
-      font-weight: 400;
-      font-size: 14px;
+      font-weight: $font-weight-normal;
+      font-size: $font-size-sm;
       line-height: 25px;
       font-family: 'Outfit';
       text-align: center;
-      .price {
-        background-color: map-get($palette, custom-orange);
-      }
-      .new {
-        background-color: #05f2f2;
-        text-transform: uppercase;
-      }
-    }
-    .buttonToCart {
-      display: none;
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translate(-50%, 40%);
-      width: 90%;
-      font-size: 1em;
       text-transform: uppercase;
-    }
-    &:hover {
-      .buttonToCart {
-        display: block;
+
+      .price {
+        background-color: map-get($palette, lopi-orange);
       }
     }
   }
-  .tileInfo {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 22px;
-    margin-left: 3px;
-    .star {
-      margin-left: 3px;
-    }
-    .starOrange {
-      margin-left: 3px;
-      color: map-get($palette, custom-orange);
-    }
-    span {
-      margin-left: 5px;
-      color: map-get($palette, custom-grey);
-      font-weight: 400;
-      font-size: 12px;
-      line-height: 16px;
-      text-align: center;
+
+  .buttonToCart {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 40%);
+    width: 90%;
+    font-size: $font-size-base;
+    text-transform: uppercase;
+  }
+
+  &:hover {
+    .buttonToCart {
+      display: block;
     }
   }
-  .productName {
-    margin-top: 10px;
-    margin-left: 3px;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 26px;
+}
+
+.tileInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: map-get($spacers, 4);
+  margin-left: map-get($spacers, 1);
+
+  .star {
+    margin-left: map-get($spacers, 1);
   }
-  .productPrice {
+
+  .starOrange {
+    margin-left: map-get($spacers, 1);
+    color: map-get($palette, lopi-orange);
+  }
+
+  span {
     display: flex;
-    flex-direction: row;
-    margin-bottom: 20px;
-    font-weight: 400;
-    font-size: 16px;
+    margin-left: map-get($spacers, 1);
+    color: map-get($palette, lopi-grey);
+    font-weight: $font-weight-normal;
+    font-size: $font-size-sm;
     line-height: 16px;
-    font-family: 'Outfit';
     text-align: center;
-    .normalPrice {
-      margin-top: 5px;
-      margin-left: 3px;
-      color: map-get($palette, custom-dark-green);
-      text-decoration: none;
-    }
-    .previousPrice {
-      margin-top: 5px;
-      margin-left: 3px;
-      color: var(--theme-green);
-      text-decoration: line-through;
-    }
-    .currentPrice {
-      margin-top: 3px;
-      margin-left: 20px;
-      color: map-get($palette, custom-orange);
-    }
+  }
+}
+
+.productName {
+  margin-top: map-get($spacers, 12);
+  margin-left: map-get($spacers, 1);
+  font-weight: $font-weight-normal;
+  font-size: $font-size-base;
+  line-height: 26px;
+}
+
+.productPrice {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: map-get($spacers, 31);
+  font-weight: $font-weight-normal;
+  font-size: $font-size-base;
+  line-height: 16px;
+  font-family: 'Outfit';
+  text-align: center;
+
+  .normalPrice {
+    margin-top: map-get($spacers, 12);
+    margin-left: map-get($spacers, 1);
+    color: map-get($palette, lopi-dark-green);
+    text-decoration: none;
+  }
+
+  .previousPrice {
+    margin-top: map-get($spacers, 12);
+    margin-left: map-get($spacers, 1);
+    color: var(--theme-green);
+    text-decoration: line-through;
+  }
+
+  .currentPrice {
+    margin-top: map-get($spacers, 1);
+    margin-left: map-get($spacers, 31);
+    color: map-get($palette, lopi-orange);
   }
 }

@@ -5,15 +5,17 @@ import { FC } from 'react';
 import style from '../tileShop.module.scss';
 
 type StatusProps = {
-  status: string | undefined;
+  status?: string;
 };
 
 const Status: FC<StatusProps> = ({ status }) => {
   return (
     <>
-      <div className={style.tileStatus}>
-        {status === 'new' ? (
-          <div className={style.new}>{status}</div>
+      <div className={`row ${style.tileStatus}`}>
+        {status === 'statusNew' ? (
+          <div className={style.statusNew}>
+            <span>new</span>
+          </div>
         ) : (
           <div className={style.price}>{status}</div>
         )}

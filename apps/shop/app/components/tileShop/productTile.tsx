@@ -12,17 +12,17 @@ import Price from './components/Price';
 import Status from './components/Status';
 import AddToCart from './components/AddtoCart';
 
-type TileProps = {
-  picture: string | StaticImageData;
+type ProductTileProps = {
+  picture: StaticImageData;
   stars: number;
   rewievs: number;
   name: string;
   price: number;
-  currentPrice: number | undefined;
-  status: string | undefined;
+  currentPrice?: number;
+  status?: string;
 };
 
-const Tile: FC<TileProps> = ({
+const ProductTile: FC<ProductTileProps> = ({
   picture,
   stars,
   rewievs,
@@ -36,7 +36,7 @@ const Tile: FC<TileProps> = ({
       <div className={style.imageArea}>
         <Status status={status} />
         <AddToCart />
-        <Image src={picture} alt="picture" width={330} height={330} />
+        <Image src={picture} alt="picture" className={style.tileImage} />
       </div>
       <div className={style.tileInfo}>
         <Stars starsCount={stars} />
@@ -48,4 +48,4 @@ const Tile: FC<TileProps> = ({
   );
 };
 
-export default Tile;
+export default ProductTile;
