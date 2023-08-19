@@ -1,0 +1,82 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  width: 267px;
+  height: 455px;
+  align-self: self-start;
+  margin: 0 0 15px 52px;
+}
+
+.title {
+  margin: 15px;
+  display: flex;
+  border-bottom: 1px solid #c9cdc7;
+  padding-bottom: 10px;
+  font-size: 15px;
+  text-transform: uppercase;
+
+  &:last-child {
+    border: none;
+  }
+}
+
+.categoryList {
+  text-transform: capitalize;
+  margin-bottom: 35px;
+  display: flex;
+  opacity: 0.7;
+}
+
+.listItem {
+  display: flex;
+  border: none;
+  justify-content: space-between;
+  background-color: transparent;
+}
+
+.activeListItem {
+  display: flex;
+  border: none;
+  justify-content: space-between;
+  background-color: transparent;
+  color: #ff9a17;
+}
+
+.badge {
+  display: flex;
+  background-color: transparent;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #4b5945;
+  border-radius: 50%;
+  color: #4b5945;
+}
+
+.activeBadge {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ff9a17;
+  border-radius: 50%;
+  color: #ff9a17;
+}
+
+.available {
+  font-size: 15px;
+  margin-top: 15px;
+  display: flex;
+  padding: 0 14px;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  box-shadow: none;
+
+  & input[type='checkbox'] {
+    border: none;
+    box-shadow: none;
+  }
+
+  & input:checked {
+    background-color: #ff9a17;
+    box-shadow: none;
+  }
+}

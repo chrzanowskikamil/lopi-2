@@ -11,7 +11,12 @@ interface MenuProps {
 
 export const Menu: FC<MenuProps> = ({ categories }) => {
   const renderedCategories = categories.map((category) => (
-    <NavDropdown.Item key={category} as={Link} href={`${category}`} passHref>
+    <NavDropdown.Item
+      key={category}
+      as={Link}
+      href={`/category/${category}`}
+      passHref
+    >
       {category}
     </NavDropdown.Item>
   ));

@@ -1,54 +1,33 @@
 'use client';
 import styles from './Categories.module.scss';
 import { FC, useState } from 'react';
-import { Breadcrumbs } from './components/Breadcrumb';
-import { SortDropdown } from './components/SortDropdown';
-import { Sidebar } from './components/Sidebar';
-import { Products } from './components/Products';
+import { Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs';
+import { Sidebar } from './components/Sidebar/Sidebar';
+import { SortDropdown } from './components/SortDropdown/SortDropdown';
+import { Products } from './components/Products/Products';
 import { Button } from 'react-bootstrap';
+import { ProductsResponse } from 'apps/shop/types/ProductsResponse';
+import { getProducts } from 'apps/shop/actions/getProducts';
 
 interface CategoriesProps {
   title: string;
   content: string[];
+  products: ProductsResponse;
 }
+export const Categories: FC<CategoriesProps> = ({
+  title,
+  content,
+  products: initalProducts,
+}) => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const [allProducts, setAllProducts] = useState(initalProducts.products);
+  const PRODUCTS_PER_PAGE = 6;
 
-const products = [
-  { id: 1, name: 'Coffe', description: 'Coffe description', price: 10 },
-  { id: 2, name: 'Tea', description: 'Tea description', price: 10 },
-  { id: 3, name: 'Coffe', description: 'Coffe description', price: 10 },
-  { id: 4, name: 'Tea', description: 'Tea description', price: 10 },
-  { id: 5, name: 'Coffe', description: 'Coffe description', price: 10 },
-  { id: 6, name: 'Tea', description: 'Tea description', price: 10 },
-  { id: 7, name: 'Coffe', description: 'Coffe description', price: 10 },
-  { id: 8, name: 'Tea', description: 'Tea description', price: 10 },
-  { id: 9, name: 'Coffe', description: 'Coffe description', price: 10 },
-  { id: 10, name: 'Tea', description: 'Tea description', price: 10 },
-  { id: 11, name: 'Coffe', description: 'Coffe description', price: 10 },
-  { id: 13, name: 'Tea', description: 'Tea description', price: 10 },
-  { id: 14, name: 'Tea', description: 'Tea description', price: 10 },
-  { id: 15, name: 'Tea', description: 'Tea description', price: 10 },
-  { id: 16, name: 'Tea', description: 'Tea description', price: 10 },
-  { id: 17, name: 'Tea', description: 'Tea description', price: 10 },
-  { id: 18, name: 'Tea', description: 'Tea description', price: 10 },
-  { id: 19, name: 'Tea', description: 'Tea description', price: 10 },
-  { id: 20, name: 'Tea', description: 'Tea description', price: 10 },
-  { id: 21, name: 'Tea', description: 'Tea description', price: 10 },
-  { id: 22, name: 'Tea', description: 'Tea description', price: 10 },
-  { id: 23, name: 'Tea', description: 'Tea description', price: 10 },
-  { id: 24, name: 'Tea', description: 'Tea description', price: 10 },
-  { id: 25, name: 'Tea', description: 'Tea description', price: 10 },
-  { id: 26, name: 'Tea', description: 'Tea description', price: 10 },
-];
-
-export const Categories: FC<CategoriesProps> = ({ title, content }) => {
-  const [visibleProducts, setVisibleProducts] = useState(products.slice(0, 6));
-
-  const loadMoreProducts = () => {
-    const nextProducts = products.slice(
-      visibleProducts.length,
-      visibleProducts.length + 6
-    );
-    setVisibleProducts([...visibleProducts, ...nextProducts]);
+  const loadMoreProducts = async () => {
+    const nextPage = currentPage + 1;
+    const newProducts = await getProducts(PRODUCTS_PER_PAGE, nextPage);
+    setAllProducts([...allProducts, ...newProducts.products]);
+    setCurrentPage(nextPage);
   };
 
   return (
@@ -59,8 +38,8 @@ export const Categories: FC<CategoriesProps> = ({ title, content }) => {
         <SortDropdown />
         <aside className={styles.aside}>
           <Sidebar activeCategory={title} list={content} />
-          <Products product={title} visibleProducts={visibleProducts} />
-          <Button className={styles.loadMoreButton} onClick={loadMoreProducts}>
+          <Products products={{ ...initalProducts, products: allProducts }} />
+          <Button className={styles.button} onClick={loadMoreProducts}>
             pokaż więcej
           </Button>
         </aside>

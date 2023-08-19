@@ -1,17 +1,17 @@
-import styles from '../Categories.module.scss';
+import styles from './Breadcrumbs.module.scss';
 import { Breadcrumb } from 'react-bootstrap';
+import { IoHomeOutline } from 'react-icons/io5';
 import { FC } from 'react';
 import Link from 'next/link';
-import { IoHomeOutline } from 'react-icons/io5';
 
-interface BreadcrumbProps {
+interface BreadcrumbsProps {
   category: string;
 }
 
-export const Breadcrumbs: FC<BreadcrumbProps> = ({ category }) => {
+export const Breadcrumbs: FC<BreadcrumbsProps> = ({ category }) => {
   return (
     <Breadcrumb className={styles.breadcrumb}>
-      <div className={styles.breadcrumbIcon}>
+      <div className={styles.icon}>
         <IoHomeOutline />
       </div>
       <Breadcrumb.Item href="/" linkAs={Link}>

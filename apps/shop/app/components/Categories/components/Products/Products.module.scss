@@ -1,0 +1,15 @@
+.products {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  padding: 20px 10px;
+  gap: 72px 6px;
+}
+
+.product {
+  width: 330px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+}

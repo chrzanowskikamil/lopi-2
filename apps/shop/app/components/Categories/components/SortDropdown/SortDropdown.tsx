@@ -1,10 +1,10 @@
-import styles from '../Categories.module.scss';
+import styles from './SortDropdown.module.scss';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 
 export const SortDropdown = () => {
   return (
     <DropdownButton
-      bsPrefix={styles.sortButton}
+      bsPrefix={styles.dropdown}
       id="sort-button"
       title="Sortowanie"
     >
