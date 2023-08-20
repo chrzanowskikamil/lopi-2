@@ -1,0 +1,94 @@
+.form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 1px solid #d9d9d9;
+  min-width: 518px;
+  min-height: 528px;
+  margin: 28px 30px 30px 30px;
+  padding: 50px 32px 32px 32px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 25px;
+}
+
+.input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 12px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: start;
+  font-size: 16px;
+  gap: 6px;
+}
+
+.inputWithIcon {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+.showPasswordButton {
+  -ms-flex-item-align: center;
+      align-self: center;
+  background: none;
+  border: none;
+  position: absolute;
+  right: 20px;
+  top: 43%;
+  font-size: 18px;
+  -webkit-transform: translateY(-45%);
+          transform: translateY(-45%);
+}
+.showPasswordButton:hover, .showPasswordButton:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  color: #05f2f2;
+  background: none;
+}
+
+.submitButton {
+  margin-top: 10px;
+  background-color: #05f2f2;
+  border: none;
+  padding: 10px 16px;
+}
+.submitButton:disabled {
+  color: black;
+  background-color: gray;
+}
+.submitButton:hover {
+  background-color: #05f2f2;
+}
+.submitButton:focus {
+  border: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.loginButton {
+  color: #05f2f2;
+  border-color: #d9d9d9;
+  padding: 10px 16px;
+}/*# sourceMappingURL=SignUpForm.module.css.map */

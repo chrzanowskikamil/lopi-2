@@ -1,0 +1,25 @@
+.header {
+  background-color: #0f2615;
+
+  > div {
+    order: 1;
+  }
+}
+
+.socialsCounter {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  transform: translate(135%, -60%);
+  z-index: 1;
+  border-radius: 50%;
+  background-color: #05f2f2;
+  width: 15px;
+  height: 15px;
+
+  span {
+    color: white;
+    font-size: 10px;
+    line-height: 15px;
+  }
+}

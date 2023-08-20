@@ -1,0 +1,27 @@
+.breadcrumb {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: center;
+      align-self: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 16px;
+  font-size: 16px;
+  text-transform: capitalize;
+  margin-bottom: 48px;
+}
+.breadcrumb a {
+  color: #592d1d;
+}
+
+.icon {
+  padding: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}/*# sourceMappingURL=Breadcrumbs.module.css.map */

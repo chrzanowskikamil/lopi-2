@@ -56,6 +56,17 @@
   padding: 26px 10px 18px 10px;
 }
 
+.socialsElements button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+
+  &:hover {
+    cursor: pointer;
+    background: none;
+  }
+}
+
 .socialsCounter {
   display: flex;
   position: absolute;

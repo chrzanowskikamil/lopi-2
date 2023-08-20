@@ -4,32 +4,51 @@ import { CartIcon } from '../../../assets/SvgIcons/CartIcon';
 import { HeartIcon } from 'apps/shop/app/assets/SvgIcons/HeartIcon';
 import { SearchIcon } from 'apps/shop/app/assets/SvgIcons/SearchIcon';
 import { UserIcon } from 'apps/shop/app/assets/SvgIcons/UserIcon';
-
-import { FC } from 'react';
+import { Button } from '@lopi-2/common';
+import { Cart } from './Cart/Cart';
+import { FC, useState } from 'react';
+import { CartProvider, useCart } from 'apps/shop/app/context/CartContext';
 
 const Socials: FC = () => {
-  return (
-    <div className={style.socials}>
-      <div className={style.socialsElements}>
-        <SearchIcon />
-      </div>
-      <div className={style.socialsElements}>
-        <UserIcon />
-      </div>
-      <div className={style.socialsElements}>
-        <div className={style.socialsCounter}>
-          <span>0</span>
-        </div>
-        <HeartIcon />
-      </div>
+  const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
+  const { productsInCart } = useCart();
+  const productsCounter = productsInCart.length;
 
-      <div className={style.socialsElements}>
-        <div className={style.socialsCounter}>
-          <span>0</span>
+  const handleOpenCart = () => {
+    setIsCartOpen(true);
+  };
+
+  const handleCloseCart = () => setIsCartOpen(false);
+
+  return (
+    <CartProvider>
+      <div className={style.socials}>
+        <div className={style.socialsElements}>
+          <SearchIcon />
         </div>
-        <CartIcon />
+        <div className={style.socialsElements}>
+          <UserIcon />
+        </div>
+        <div className={style.socialsElements}>
+          <div className={style.socialsCounter}>
+            <span>0</span>
+          </div>
+          <HeartIcon />
+        </div>
+
+        <div className={style.socialsElements}>
+          <div className={style.socialsCounter}>
+            <span>{productsCounter}</span>
+          </div>
+          <Button
+            title={<CartIcon />}
+            className={style.button}
+            onClick={handleOpenCart}
+          />
+        </div>
+        <Cart isOpen={isCartOpen} onClose={handleCloseCart} />
       </div>
-    </div>
+    </CartProvider>
   );
 };
 export default Socials;

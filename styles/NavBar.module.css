@@ -1,0 +1,127 @@
+.navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: black;
+  padding: 0;
+  width: 100%;
+  max-height: 67px;
+}
+
+.menu {
+  padding: 0 0 0 16px;
+}
+.menu div div {
+  background-color: black;
+}
+.menu div div a {
+  color: white;
+  text-transform: capitalize;
+}
+
+.color :hover {
+  background-color: black;
+  color: #05f2f2;
+}
+.color :active {
+  background-color: black;
+  color: #05f2f2;
+}
+
+.menuAbout {
+  padding-left: 20px;
+}
+
+.navbarLogo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.socials {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 36px;
+}
+
+.socialsElements {
+  position: relative;
+  padding: 26px 10px 18px 10px;
+}
+
+.socialsElements button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+.socialsElements button:hover {
+  cursor: pointer;
+  background: none;
+}
+
+.socialsCounter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transform: translate(135%, -60%);
+          transform: translate(135%, -60%);
+  z-index: 1;
+  border-radius: 50%;
+  background-color: #05f2f2;
+  width: 15px;
+  height: 15px;
+}
+.socialsCounter span {
+  color: white;
+  font-size: 10px;
+  line-height: 15px;
+}
+
+.slider {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: white;
+  width: 100%;
+  height: 52px;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.sliderArrows {
+  padding: 0 20px;
+  text-align: center;
+}
+.sliderArrows svg {
+  vertical-align: baseline;
+  line-height: 24px;
+}
+
+.sliderText {
+  font-weight: 400;
+  line-height: 27, 2px;
+}/*# sourceMappingURL=NavBar.module.css.map */

@@ -1,0 +1,77 @@
+.footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  background-color: black;
+  padding: 69px 0 0 0;
+  width: 100%;
+  height: 348px;
+  color: #868686;
+  font-size: 15px;
+  line-height: 25px;
+}
+.footer .footerTitle {
+  padding-bottom: 15px;
+  color: white;
+  text-transform: uppercase;
+}
+.footer > ul > li {
+  padding-bottom: 7px;
+}
+
+.footerContactInfo {
+  padding-top: 15px;
+}
+
+.footerSocial {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 30px;
+}
+
+.footerSocialElements {
+  margin-right: 15px;
+}
+
+.footerSubscription {
+  padding-left: 320px;
+}
+
+.footerSubscriptionForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding-top: 25px;
+}
+
+.footerSubscriptionFormInput:enabled {
+  border: none;
+  border-bottom: white solid 1px;
+}
+
+.footerSubscriptionFormInput {
+  background: #000;
+  width: 120px;
+  color: white;
+}
+
+.footerSubscriptionFormButton {
+  margin-left: 10px;
+  border-bottom: white solid 1px;
+  width: 40px;
+  text-align: center;
+}/*# sourceMappingURL=Footer.module.css.map */
