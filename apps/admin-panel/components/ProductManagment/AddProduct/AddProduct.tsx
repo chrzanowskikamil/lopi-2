@@ -58,7 +58,15 @@ const AddProduct: React.FC = () => {
               <Form.Select
                 required
                 name="categoryPick"
-                onChange={handleChange}
+                onChange={(e) => {
+                  handleChange(e);
+                  if (
+                    e.target.value ===
+                    'Choose category you want add product to.'
+                  ) {
+                    handleReset();
+                  }
+                }}
                 value={values.categoryPick}
               >
                 <option>Choose category you want add product to.</option>
