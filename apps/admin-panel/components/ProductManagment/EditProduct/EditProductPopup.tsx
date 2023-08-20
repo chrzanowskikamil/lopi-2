@@ -15,16 +15,6 @@ const OnEditPopup: React.FC<PopupProps> = ({
   const body = (
     <>
       <p>
-        Category name: <br />
-        From: Old product name
-        <br /> To: {state.inputData.categoryPick}
-      </p>
-      <p>
-        Product name: <br />
-        From: Old product name
-        <br /> To: {state.inputData.productName}
-      </p>
-      <p>
         Product name: <br />
         From: Old product name
         <br /> To: {state.inputData.productName}
