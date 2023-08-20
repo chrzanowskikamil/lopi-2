@@ -13,6 +13,7 @@ import Form from 'react-bootstrap/Form';
 
 import OnRemovePopup from './RemoveProductPopup';
 
+import { RemoveProductSchema } from '../Product.schema';
 import { initialState, productReducer } from '../ProductReducerHook';
 
 const RemoveProductChoice: React.FC = () => {
@@ -22,6 +23,7 @@ const RemoveProductChoice: React.FC = () => {
 
   return (
     <Formik
+      validationSchema={RemoveProductSchema}
       onSubmit={async (values) => {
         dispatch({
           type: 'on_submit',
