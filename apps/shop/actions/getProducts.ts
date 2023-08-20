@@ -6,7 +6,7 @@ export async function getProducts(
 ): Promise<ProductsResponse> {
   try {
     const res = await fetch(
-      `https://lopi2.azurewebsites.net/api/products?page=${page}&size=${size}`
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}products?page=${page}&size=${size}`
     );
     if (!res.ok) throw new Error(`Server responsed with ${res.statusText}`);
     const products: ProductsResponse = await res.json();

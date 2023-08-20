@@ -1,22 +1,31 @@
 import styles from './SortDropdown.module.scss';
+import { FC } from 'react';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 
-export const SortDropdown = () => {
+export const SortDropdown: FC = () => {
+  const dropdownItems = [
+    'Trafność',
+    'Ręczne',
+    'Alfabetycznie Z do A',
+    'Cena malejąca',
+    'Cena od najniższej do najwyższej',
+    'Od najnowszych do najstarszych',
+    'Alfabetycznie A do Z',
+    'Od najstarszych do najnowszych',
+    'Bestsellery',
+  ];
+
+  const items = dropdownItems.map((item) => (
+    <Dropdown.Item key={item}>{item}</Dropdown.Item>
+  ));
+
   return (
     <DropdownButton
       bsPrefix={styles.dropdown}
       id="sort-button"
       title="Sortowanie"
     >
-      <Dropdown.Item>Trafność</Dropdown.Item>
-      <Dropdown.Item>Ręczne</Dropdown.Item>
-      <Dropdown.Item>Alfabetycznie Z do A</Dropdown.Item>
-      <Dropdown.Item>Cena malejąca</Dropdown.Item>
-      <Dropdown.Item>Cena od najniższej do najwyższej</Dropdown.Item>
-      <Dropdown.Item>Od najnowszych do najstarszych</Dropdown.Item>
-      <Dropdown.Item>Alfabetycznie A do Z</Dropdown.Item>
-      <Dropdown.Item>Od najstarszych do najnowszych</Dropdown.Item>
-      <Dropdown.Item>Bestsellery</Dropdown.Item>
+      {items}
     </DropdownButton>
   );
 };

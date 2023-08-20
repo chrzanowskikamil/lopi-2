@@ -1,15 +1,19 @@
-'use client';
 import style from '../NavBar.module.scss';
 
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
 import { FC } from 'react';
 import Link from 'next/link';
-interface MenuProps {
-  categories: string[];
-}
+import { getCategoriesName } from 'apps/shop/actions/getCategoriesName';
 
-export const Menu: FC<MenuProps> = ({ categories }) => {
+const getData = async () => {
+  const res = await getCategoriesName();
+  const data = res;
+  return data;
+};
+
+export const Menu: FC = async () => {
+  const categories = await getData();
   const renderedCategories = categories.map((category) => (
     <NavDropdown.Item
       key={category}

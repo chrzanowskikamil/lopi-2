@@ -11,11 +11,7 @@ import { Logo } from '../../assets/SvgIcons/Logo';
 import { FC } from 'react';
 import Link from 'next/link';
 
-interface NavBarProps {
-  categories: string[];
-}
-
-const NavBar: FC<NavBarProps> = ({ categories }) => {
+const NavBar: FC = () => {
   return (
     <>
       <BootstrapNavbar
@@ -23,8 +19,13 @@ const NavBar: FC<NavBarProps> = ({ categories }) => {
         className={style.navbar}
         data-bs-theme="dark"
       >
-        <Menu categories={categories} />
-        <BootstrapNavbar.Brand href="/" className={style.navbarLogo} as={Link} passHref>
+        <Menu />
+        <BootstrapNavbar.Brand
+          href="/"
+          className={style.navbarLogo}
+          as={Link}
+          passHref
+        >
           <Logo />
         </BootstrapNavbar.Brand>
         <Socials />
