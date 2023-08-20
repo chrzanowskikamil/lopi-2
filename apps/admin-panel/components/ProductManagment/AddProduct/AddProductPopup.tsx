@@ -1,3 +1,5 @@
+'use client';
+
 import ModalSaveChanges from '../Components/ModalSaveChanges';
 import ModalCloseWindow from '../Components/ModalCloseWindow';
 
@@ -12,6 +14,10 @@ const AddProductPopup: React.FC<PopupProps> = ({
   const title = 'You have just created a new product.';
   const body = (
     <>
+      <p>
+        Category you are adding to is: &nbsp;
+        {state.inputData.categoryPick}.
+      </p>
       <p>
         Product name: &nbsp;
         {state.inputData.productName}.

@@ -4,7 +4,7 @@ import style from '../ProductManagment.module.scss';
 
 import * as formik from 'formik';
 
-import { useReducer, useState } from 'react';
+import { useReducer } from 'react';
 
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
@@ -22,11 +22,9 @@ const AddProduct: React.FC = () => {
   const { Formik } = formik;
   const [state, dispatch] = useReducer(productReducer, initialState);
 
-  const [toEditCategory, setToEditCategory] = useState('');
-
   return (
     <Container>
-      <h1>Add product:</h1>
+      <br />
       <Formik
         validationSchema={ProductSchema}
         onSubmit={(values) => {
@@ -36,6 +34,8 @@ const AddProduct: React.FC = () => {
           });
         }}
         initialValues={{
+          categoryPick: '',
+          productPick: '',
           productName: '',
           productCount: '',
           terms: true,
@@ -51,93 +51,87 @@ const AddProduct: React.FC = () => {
           errors,
         }) => (
           <Form noValidate onSubmit={handleSubmit}>
-            <Row className="mb-3">
-              <Form.Group as={Col} md="12" controlId="validationFormik01">
-                <Form.Label>Category:</Form.Label>
-                <Form.Select
-                  aria-label="Default select example"
-                  onChange={(e) => setToEditCategory(e.target.value)}
-                >
-                  <option value={undefined}>
-                    Choose category you want add product to.
-                  </option>
-                  <option>Shoes</option>
-                  <option>T-shirts</option>
-                  <option>Throusers</option>
-                </Form.Select>
-              </Form.Group>
-              <Form.Group as={Col} md="4" controlId="validationFormik01">
-                <Form.Label>Product name:</Form.Label>
-                <Form.Control
-                  type="text"
-                  required
-                  disabled={state.blocked}
-                  name="productName"
-                  placeholder="Product"
-                  value={values.productName}
-                  onChange={handleChange}
-                  isInvalid={!!errors.productName && !!touched.productName}
-                  isValid={touched.productName && !errors.productName}
-                />
-                <Form.Control.Feedback type="invalid">
-                  {errors.productName ? 'Please pick a name.' : ''}
-                </Form.Control.Feedback>
-                <Form.Control.Feedback>
-                  Looks good! <br />
-                </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group as={Col} md="2" controlId="validationFormik02">
-                <Form.Label>Product&apos;s count:</Form.Label>
-                <Form.Control
-                  required
-                  type="number"
-                  disabled={state.blocked}
-                  name="productCount"
-                  placeholder="How many?"
-                  value={values.productCount}
-                  onChange={handleChange}
-                  isInvalid={!!errors.productCount && !!touched.productCount}
-                  isValid={touched.productCount && !errors.productCount}
-                />
-                <Form.Control.Feedback type="invalid">
-                  {errors.productCount ? 'Please pick a number.' : ''}
-                </Form.Control.Feedback>
-                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group as={Col} className="mb-3">
-                <Form.Label>Product visibility (true by default):</Form.Label>
-                <Form.Check
-                  required
-                  type="switch"
-                  disabled={state.blocked}
-                  name="terms"
-                  feedback={errors.terms}
-                  onChange={handleChange}
-                  feedbackType="invalid"
-                  id="validationFormik0"
-                  label="Visible? (uncheck for invisible)"
-                  defaultChecked={true}
-                />
-              </Form.Group>
-              <Form.Group className="position-relative mb-3">
-                <Form.Label>Photo:</Form.Label>
-                <Form.Control
-                  required
-                  type="file"
-                  disabled={state.blocked}
-                  id="file"
-                  name="file"
-                  onChange={handleChange}
-                  isInvalid={!!errors.file && !!touched.file}
-                  isValid={touched.file && !errors.file}
-                  value={values.file || ''}
-                />
-                <Form.Control.Feedback type="invalid">
-                  {errors.file ? 'Please pick a photo.' : ''}
-                </Form.Control.Feedback>
-                <Form.Control.Feedback>Looks good to me!</Form.Control.Feedback>
-              </Form.Group>
-            </Row>
+            <h1>Add product:</h1>
+            <Form.Label>Pick category you want add product to:</Form.Label>
+            <Form.Select
+              required
+              name="categoryPick"
+              onChange={handleChange}
+              value={values.categoryPick}
+              placeholder="Choose category you want add product to."
+              isInvalid={!!errors.categoryPick && !!touched.categoryPick}
+              isValid={touched.categoryPick && !errors.categoryPick}
+            >
+              <option>Choose category you want add product to.</option>
+              <option>Shoes</option>
+              <option>T-shirts</option>
+              <option>Throusers</option>
+            </Form.Select>
+            {values.categoryPick !==
+            'Choose category you want add product to.' ? (
+              <Row className="mb-3">
+                <Form.Group as={Col} md="4" controlId="validationFormik01">
+                  <Form.Label>Product name:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    required
+                    disabled={state.blocked}
+                    name="productName"
+                    placeholder="Product"
+                    value={values.productName}
+                    onChange={handleChange}
+                    isInvalid={!!errors.productName && !!touched.productName}
+                    isValid={touched.productName && !errors.productName}
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    {errors.productName ? 'Please pick a name.' : ''}
+                  </Form.Control.Feedback>
+                  <Form.Control.Feedback>
+                    Looks good! <br />
+                  </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group as={Col} md="2" controlId="validationFormik02">
+                  <Form.Label>Product&apos;s count:</Form.Label>
+                  <Form.Control
+                    required
+                    type="number"
+                    disabled={state.blocked}
+                    name="productCount"
+                    placeholder="How many?"
+                    value={values.productCount}
+                    onChange={handleChange}
+                    isInvalid={!!errors.productCount && !!touched.productCount}
+                    isValid={touched.productCount && !errors.productCount}
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    {errors.productCount ? 'Please pick a number.' : ''}
+                  </Form.Control.Feedback>
+                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group className="position-relative mb-3">
+                  <Form.Label>Photo:</Form.Label>
+                  <Form.Control
+                    required
+                    type="file"
+                    disabled={state.blocked}
+                    id="file"
+                    name="file"
+                    onChange={handleChange}
+                    isInvalid={!!errors.file && !!touched.file}
+                    isValid={touched.file && !errors.file}
+                    value={values.file || ''}
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    {errors.file ? 'Please pick a photo.' : ''}
+                  </Form.Control.Feedback>
+                  <Form.Control.Feedback>
+                    Looks good to me!
+                  </Form.Control.Feedback>
+                </Form.Group>
+              </Row>
+            ) : (
+              ''
+            )}
             <AddProductPopup
               show={state.modalShow}
               state={state}
