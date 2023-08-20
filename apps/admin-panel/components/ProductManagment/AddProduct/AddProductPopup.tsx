@@ -23,7 +23,6 @@ const AddProductPopup: React.FC<PopupProps> = ({
         {state.inputData.productName}.
       </p>
       <p> Product count: &nbsp;{state.inputData.productCount}.</p>
-      <p>Product visibility: &nbsp;{state.inputData.terms ? 'Yes' : 'No'}.</p>
       <p>Picture: &nbsp;{state.inputData.file}.</p>
     </>
   );
