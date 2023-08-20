@@ -41,6 +41,7 @@ const RemoveProductChoice: React.FC = () => {
           <Form noValidate onSubmit={handleSubmit}>
             <h1>Edit product:</h1>
             <Form.Label>Pick category you want to edit product in:</Form.Label>
+            <Form.Group as={Col} md="12" controlId="validationFormik01">
             <Form.Select
               onChange={(e) => {
                 handleChange(e);
