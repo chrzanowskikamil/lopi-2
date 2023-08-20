@@ -9,15 +9,20 @@ const OnRemovePopup: React.FC<PopupProps> = ({
   closeSubmitedPopup,
   ...others
 }) => {
-  const title = ` Are you sure you want to remove product: ${state.inputData.productPick}
-  product from category: ${state.inputData.categoryPick}?`;
+  const title = `Remove`;
+  const body = (
+    <p>
+      Are you sure you want to remove product: ${state.inputData.productPick}
+      product from the shop?
+    </p>
+  );
 
   return !state.popupSubmited ? (
     <ModalSaveChanges
       handleInPopupSubmit={handleInPopupSubmit}
       others={others}
       title={title}
-      body={<></>}
+      body={body}
     />
   ) : (
     <ModalCloseWindow closeSubmitedPopup={closeSubmitedPopup} others={others} />

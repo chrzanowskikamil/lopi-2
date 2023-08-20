@@ -9,19 +9,9 @@ const OnEditPopup: React.FC<PopupProps> = ({
   closeSubmitedPopup,
   ...others
 }) => {
-  const title = 'Are you sure you want to change: ';
+  const title = `Are you sure you want to change product from category ${state.inputData.categoryPick} `;
   const body = (
     <>
-      <p>
-        Category name: <br />
-        From: Old product name
-        <br /> To: {state.inputData.categoryPick}
-      </p>
-      <p>
-        Product name: <br />
-        From: Old product name
-        <br /> To: {state.inputData.productName}
-      </p>
       <p>
         Product name: <br />
         From: Old product name
@@ -29,15 +19,8 @@ const OnEditPopup: React.FC<PopupProps> = ({
       </p>
       Product count: <br />
       <p>
-        {' '}
         From: Old product count
         <br /> To: {state.inputData.productCount}
-      </p>
-      Product visibility: <br />
-      <p>
-        From: Old product visibility
-        <br />
-        To: {state.inputData.terms ? 'Yes' : 'No'}
       </p>
       Picture: <br />
       <p>
