@@ -4,86 +4,104 @@ import style from '../ProductManagment.module.scss';
 
 import * as formik from 'formik';
 
-import { useState } from 'react';
+import { useReducer } from 'react';
 
-import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 import OnRemovePopup from './RemoveProductPopup';
+import { initialState, productReducer } from '../ProductReducerHook';
 
 const RemoveProductChoice: React.FC = () => {
   const { Formik } = formik;
 
-  const [modalShow, setModalShow] = useState(false);
-  const [toEdit, setToEdit] = useState('');
-  const [toEditCategory, setToEditCategory] = useState('');
+  const [state, dispatch] = useReducer(productReducer, initialState);
 
   return (
-    <Container>
-      <h1>Remove category:</h1>
+    <Formik
+      onSubmit={async (values) => {
+        dispatch({
+          type: 'on_submit',
+          values,
+        });
+      }}
+      initialValues={{
+        categoryPick: '',
+        productPick: '',
+        productName: '',
+        productCount: '',
+        terms: true,
+        file: null,
+      }}
+    >
+      {({ handleSubmit, handleReset, handleChange, values }) => (
+        <Form noValidate onSubmit={handleSubmit}>
+          <h1>Edit product:</h1>
+          <Form.Label>Pick category you want to edit product in:</Form.Label>
+          <Form.Select
+            onChange={handleChange}
+            value={values.categoryPick}
+            name="categoryPick"
+          >
+            <option>Choose category you want add product to.</option>
+            <option>Shoes</option>
+            <option>T-shirts</option>
+            <option>Throusers</option>
+          </Form.Select>
+          <Form.Label>Pick product to edit:</Form.Label>
+          <Form.Select
+            onChange={handleChange}
+            value={values.productPick}
+            name="productPick"
+          >
+            <option>Choose product you want to edit.</option>
+            <option>Shoe 3 file.jpg</option>
+            <option>T-shirt 7 file.png</option>
+            <option>Throuser 0 file.svg</option>
+          </Form.Select>
+          <OnRemovePopup
+            show={state.modalShow}
+            state={state}
+            onHide={() => {
+              dispatch({
+                type: 'on_hide',
+                values,
+              });
+            }}
+            handleInPopupSubmit={() => {
+              dispatch({ type: 'on_submit_popup', values });
+            }}
+            closeSubmitedPopup={() => {
+              dispatch({ type: 'close_submited_popup', values });
+              handleReset();
+            }}
+          />
 
-      <Formik
-        onSubmit={() => {
-          setModalShow(true);
-        }}
-        initialValues={{}}
-      >
-        {({ handleSubmit, handleReset }) => (
-          <Form noValidate onSubmit={handleSubmit}>
-            <Form.Label>Category:</Form.Label>
-            <Form.Select
-              aria-label="Default select example"
-              onChange={(e) => setToEditCategory(e.target.value)}
+          {values.categoryPick !== 'Choose category you want add product to.' &&
+          values.productPick !== 'Choose product you want to edit.' ? (
+            <Button
+              variant="primary"
+              type="submit"
+              onClick={() => {
+                handleSubmit();
+              }}
+              className={style.soloButton}
             >
-              <option value={undefined}>
-                Choose category you want add product to.
-              </option>
-              <option>Shoes</option>
-              <option>T-shirts</option>
-              <option>Throusers</option>
-            </Form.Select>
-
-            <Form.Select
-              aria-label="Default select example"
-              onChange={(e) => setToEdit(e.target.value)}
+              Delete Product
+            </Button>
+          ) : (
+            <Button
+              variant="primary"
+              type="submit"
+              disabled
+              className={style.soloButton}
             >
-              <option>Choose category you want gone.</option>
-              <option>Shoes</option>
-              <option>T-shirts</option>
-              <option>Throusers</option>
-            </Form.Select>
-            <br />
-            <OnRemovePopup
-              show={modalShow}
-              onHide={() => setModalShow(false)}
-              product={toEdit}
-              reset={handleReset}
-            />
-
-            {toEdit === '' || toEdit === 'Choose product you want gone.' ? (
-              <Button
-                variant="primary"
-                type="submit"
-                disabled
-                className={style.soloButton}
-              >
-                Delete Product
-              </Button>
-            ) : (
-              <Button
-                variant="primary"
-                type="submit"
-                onClick={() => setModalShow(true)}
-                className={style.soloButton}
-              >
-                Delete Product
-              </Button>
-            )}
-          </Form>
-        )}
-      </Formik>
-    </Container>
+              Delete Product
+            </Button>
+          )}
+        </Form>
+      )}
+    </Formik>
   );
 };
 
