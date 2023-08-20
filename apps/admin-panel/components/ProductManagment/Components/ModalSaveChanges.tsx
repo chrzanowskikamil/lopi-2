@@ -29,7 +29,7 @@ const SaveChanges: FC<SaveChangesProps> = ({
           <h4>{title}</h4>
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>{body}</Modal.Body>1
+      <Modal.Body>{body}</Modal.Body>
       <Modal.Footer>
         <Button
           variant="secondary"

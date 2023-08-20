@@ -2,7 +2,10 @@ interface StateProps {
   blocked: boolean;
   modalShow: boolean;
   popupSubmited: boolean;
+
   inputData: {
+    categoryPick: string;
+    productPick: string;
     productName: string;
     productCount: string | null | number;
     terms: boolean;
@@ -10,8 +13,15 @@ interface StateProps {
   };
 }
 interface ActionProps {
-  type: 'on_submit' | 'on_hide' | 'on_submit_popup' | 'close_submited_popup';
+  type:
+    | 'on_submit'
+    | 'on_hide'
+    | 'on_submit_popup'
+    | 'close_submited_popup'
+    | 'category_pick';
   values: {
+    categoryPick: string;
+    productPick: string;
     productName: string;
     productCount: string | null | number;
     terms: boolean;
@@ -24,6 +34,8 @@ export const initialState: StateProps = {
   modalShow: false,
   popupSubmited: false,
   inputData: {
+    categoryPick: 'Choose category you want add product to.',
+    productPick: 'Choose product you want to edit.',
     productName: '',
     productCount: null,
     terms: true,

@@ -6,6 +6,8 @@ export type PopupProps = {
     blocked: boolean;
     modalShow: boolean;
     inputData: {
+      categoryPick: string;
+      productPick: string;
       productName: string;
       productCount: string | null | number;
       terms: boolean;
