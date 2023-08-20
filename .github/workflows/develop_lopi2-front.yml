@@ -30,8 +30,7 @@ jobs:
       - name: Zip all files for upload between jobs
         run: |
           cd ./dist/apps/shop
-          npm install next@13.4.1
-          sed -i 's/next start/node_modules\/next\/dist\/bin\/next start/g' package.json
+          sed -i 's/next start/npm install \&\& next start/g' package.json
           zip next.zip ./* ./.next -qr
           cd ../../../
           mv ./dist/apps/shop/next.zip next.zip 

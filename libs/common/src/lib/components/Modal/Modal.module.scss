@@ -9,30 +9,30 @@
 }
 
 .title {
-  background-color: $titleBackgroundColor;
-  color: $titleFontColor;
-  border-bottom: 1px solid $blue-light;
   position: relative;
-  font-family: Inter;
-  font-size: $titleFontSize;
-  width: 160px;
-  padding-bottom: 6px;
-  text-align: center;
   z-index: 1;
   margin-bottom: -130px;
+  border-bottom: 1px solid var(--theme-orange);
+  background-color: $titleBackgroundColor;
+  padding-bottom: 6px;
+  width: 160px;
+  color: $titleFontColor;
+  font-size: $titleFontSize;
+  font-family: $fontFamily;
+  text-align: center;
 }
 
 .content {
-  background-color: transparent;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   border-radius: 0;
+  background-color: transparent;
 }
 
 .body {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   background-color: $titleBackgroundColor;
 }

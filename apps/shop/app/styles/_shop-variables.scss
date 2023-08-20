@@ -1,0 +1,36 @@
+//@import "bootstrap/scss/variables";
+//Implement configs according to the ones from bootstrap scss files
+
+$font-white: white;
+$blue-light: #05f2f2;
+
+$backgroud-light: #f2f2f2;
+
+//$secondary: 'blue';
+
+//TODO: add left colors
+$theme-colors: (
+  "primary":    green,
+  "secondary":  pink,
+  //"success":    $success,
+  //"info":       $info,
+  //"warning":    $warning,
+  //"danger":     $danger,
+  //"light":      $light,
+  "dark":       #000,
+  "custom-light": yellow
+  //custom-color: -> add new colors in this way then use it as normal css class like bg-custom-color
+);
+
+$globalConfig: (
+  palette: $theme-colors
+);
+
+:root {
+  --theme-dark-green: #0f2615;
+  --theme-green: #4b5945;
+  --theme-white: #f2efe9;
+  --theme-orange: #f28729;
+  --theme-brown: #592d1d;
+  --theme-grey: #c9cdc7;
+}

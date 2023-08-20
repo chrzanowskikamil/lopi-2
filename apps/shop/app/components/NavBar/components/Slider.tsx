@@ -12,9 +12,7 @@ const Slider: FC = () => {
         <div className={style.sliderArrows}>
           <SliderArrowLeft />
         </div>
-        <span className={style.sliderText}>
-          Lorem ipsum dolor sit amet consectetur
-        </span>
+        <span className={style.sliderText}>Darmowa wysyłka powyżej 200 zł</span>
         <div className={style.sliderArrows}>
           <SliderArrowRight />
         </div>

@@ -1,13 +1,13 @@
 'use client';
 
 import style from './NavBar.module.scss';
-
-import { Navbar } from 'react-bootstrap';
+import BootstrapNavbar from 'react-bootstrap/Navbar';
 
 import Slider from './components/Slider';
 import Socials from './components/Socials';
 import { Menu } from './components/Menu';
 
+import { Logo } from '../../assets/SvgIcons/Logo';
 import { FC } from 'react';
 import Link from 'next/link';
 
@@ -18,14 +18,17 @@ interface NavBarProps {
 const NavBar: FC<NavBarProps> = ({ categories }) => {
   return (
     <>
-      <Navbar expand="lg" className={style.navbar} data-bs-theme="dark">
+      <BootstrapNavbar
+        expand="lg"
+        className={style.navbar}
+        data-bs-theme="dark"
+      >
         <Menu categories={categories} />
-        <Navbar.Brand href="/" className={style.navbarLogo} as={Link} passHref>
-          Logo
-        </Navbar.Brand>
+        <BootstrapNavbar.Brand href="/" className={style.navbarLogo} as={Link} passHref>
+          <Logo />
+        </BootstrapNavbar.Brand>
         <Socials />
-      </Navbar>
-
+      </BootstrapNavbar>
       <Slider />
     </>
   );

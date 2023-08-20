@@ -1,7 +1,6 @@
 import styles from './page.module.scss';
 import { Common } from '@lopi-2/common';
 
-import NavBar from './components/NavBar/NavBar';
 import SignInForm from './components/Auth/SignInForm/SignInForm';
 import SignUpForm from './components/Auth/SignUpForm/SignUpForm';
 import Footer from './components/Footer/Footer';

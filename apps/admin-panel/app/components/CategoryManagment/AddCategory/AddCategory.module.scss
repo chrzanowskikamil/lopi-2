@@ -1,0 +1,14 @@
+@use '../../../styles/admin-variables';
+
+$palette: admin-variables.$theme-colors;
+
+.button {
+  margin: 2px;
+}
+
+.buttonsFlex {
+  background: map-get($palette, primary);
+  display: flex;
+  flex-direction: row;
+  margin-left: 70%;
+}

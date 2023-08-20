@@ -1,5 +1,6 @@
-$titleBackgroundColor: white;
+$titleBackgroundColor: var(--theme-white);
 $titleFontSize: 20px;
 $titleFontColor: #000000;
-$borderColor: #d9d9d9;
-$blue-light: #05f2f2;
+$borderColor: var(--theme-grey);
+$theme-orange: var(--theme-orange);
+$fontFamily: 'Quicksand', sans-serif;
