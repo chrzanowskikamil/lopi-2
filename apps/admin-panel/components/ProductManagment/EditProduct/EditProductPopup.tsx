@@ -1,3 +1,5 @@
+'use client';
+
 import ModalSaveChanges from '../Components/ModalSaveChanges';
 import ModalCloseWindow from '../Components/ModalCloseWindow';
 

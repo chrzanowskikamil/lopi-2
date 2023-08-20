@@ -8,6 +8,7 @@ import { useReducer } from 'react';
 
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 
 import OnRemovePopup from './RemoveProductPopup';
@@ -39,26 +40,28 @@ const RemoveProductChoice: React.FC = () => {
       {({ handleSubmit, handleReset, handleChange, values }) => (
         <Container>
           <Form noValidate onSubmit={handleSubmit}>
-            <h1>Edit product:</h1>
+            <h1>Remove product:</h1>
             <Form.Label>Pick category you want to edit product in:</Form.Label>
             <Form.Group as={Col} md="12" controlId="validationFormik01">
-            <Form.Select
-              onChange={(e) => {
-                handleChange(e);
-                if (
-                  e.target.value === 'Choose category you want add product to.'
-                ) {
-                  handleReset();
-                }
-              }}
-              value={values.categoryPick}
-              name="categoryPick"
-            >
-              <option>Choose category you want add product to.</option>
-              <option>Shoes</option>
-              <option>T-shirts</option>
-              <option>Throusers</option>
-            </Form.Select>
+              <Form.Select
+                onChange={(e) => {
+                  handleChange(e);
+                  if (
+                    e.target.value ===
+                    'Choose category you want add product to.'
+                  ) {
+                    handleReset();
+                  }
+                }}
+                value={values.categoryPick}
+                name="categoryPick"
+              >
+                <option>Choose category you want add product to.</option>
+                <option>Shoes</option>
+                <option>T-shirts</option>
+                <option>Throusers</option>
+              </Form.Select>
+            </Form.Group>
             {values.categoryPick !==
               'Choose category you want add product to.' &&
             values.categoryPick !== '' ? (

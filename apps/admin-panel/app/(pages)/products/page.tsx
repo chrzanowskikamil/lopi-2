@@ -2,7 +2,7 @@
 
 import AddProduct from '../../../components/ProductManagment/AddProduct/AddProduct';
 import EditProduct from '../../../components/ProductManagment/EditProduct/EditProduct';
-import RemoveProductChoice from '../../../components/ProductManagment/RemoveProduct/RemoveProductChoice';
+import RemoveProduct from '../../../components/ProductManagment/RemoveProduct/RemoveProduct';
 
 import Accordion from 'react-bootstrap/Accordion';
 
@@ -25,7 +25,7 @@ const Products: React.FC = () => {
         <Accordion.Item eventKey="2">
           <Accordion.Header>Removing product area.</Accordion.Header>
           <Accordion.Body>
-            <RemoveProductChoice />
+            <RemoveProduct />
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
