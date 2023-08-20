@@ -1,6 +1,13 @@
 @use '../../styles/shop-variables';
 
+@import './variables.scss';
+
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins/breakpoints';
+
 $palette: shop-variables.$theme-colors;
+$spacers: shop-variables.$spacers;
 
 .menuDesktop,
 .navbarLogo {

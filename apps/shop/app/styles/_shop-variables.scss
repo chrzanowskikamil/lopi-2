@@ -22,7 +22,14 @@ $spacers: (
   3: $spacer,
   31: $spacer * 1.25,
   4: $spacer * 1.5,
+  40: $spacer * 2,
+  41: $spacer * 2.5,
   5: $spacer * 3,
+  51: $spacer * 3.5,
+  52: $spacer * 4,
+  53: $spacer * 4.5,
+  54: $spacer * 5,
+  6: $spacer * 6,
 );
 
 $grid-breakpoints: (

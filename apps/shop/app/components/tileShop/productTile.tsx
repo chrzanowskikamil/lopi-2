@@ -6,11 +6,12 @@ import Image, { StaticImageData } from 'next/image';
 
 import { FC } from 'react';
 
-import Stars from './components/Stars';
+import Stars from './components/ProductRating';
 import Price from './components/Price';
 
 import Status from './components/Status';
 import AddToCart from './components/AddtoCart';
+import ProductRating from './components/ProductRating';
 
 type ProductTileProps = {
   picture: StaticImageData;
@@ -39,7 +40,7 @@ const ProductTile: FC<ProductTileProps> = ({
         <Image src={picture} alt="picture" className={style.tileImage} />
       </div>
       <div className={style.tileInfo}>
-        <Stars starsCount={stars} />
+        <ProductRating starsCount={stars} />
         <span>({rewievs})</span>
       </div>
       <div className={style.productName}>{name}</div>

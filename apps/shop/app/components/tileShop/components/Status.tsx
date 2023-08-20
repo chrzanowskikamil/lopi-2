@@ -11,7 +11,7 @@ type StatusProps = {
 const Status: FC<StatusProps> = ({ status }) => {
   return (
     <>
-      <div className={`row ${style.tileStatus}`}>
+      <div className={style.tileStatus}>
         {status === 'statusNew' ? (
           <div className={style.statusNew}>
             <span>new</span>

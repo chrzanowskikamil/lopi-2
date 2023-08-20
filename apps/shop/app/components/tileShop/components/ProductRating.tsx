@@ -6,11 +6,11 @@ import { FC } from 'react';
 
 import { StarIcon } from '../../../assets/SvgIcons/StarIcon';
 
-type StarsProps = {
+type ProductRatingProps = {
   starsCount: number;
 };
 
-const Stars: FC<StarsProps> = ({ starsCount }) => {
+const ProductRating: FC<ProductRatingProps> = ({ starsCount }) => {
   const fullStar = <StarIcon className={style.star && style.starOrange} />;
   const emptyStar = <StarIcon className={style.star} />;
   const ratingStar = Array.from({ length: 5 }, (elem, index) => {
@@ -21,4 +21,4 @@ const Stars: FC<StarsProps> = ({ starsCount }) => {
   return <>{ratingStar}</>;
 };
 
-export default Stars;
+export default ProductRating;

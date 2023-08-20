@@ -7,19 +7,20 @@
 @import '~bootstrap/scss/mixins/breakpoints';
 
 $palette: shop-variables.$theme-colors;
+$spacers: shop-variables.$spacers;
 
 .footer {
   font-family: 'Outfit';
 }
 
 .footerDesktop {
-  display: None;
+  display: none;
 }
 
 .footerMiddle,
 .footerTop {
   .footerElement {
-    margin: 5px;
+    margin: map-get($spacers, 12);
   }
 }
 
@@ -28,54 +29,51 @@ $palette: shop-variables.$theme-colors;
   flex-direction: column;
   justify-content: space-around;
   background-color: map-get($palette, lopi-dark-green);
-  padding-top: 17px;
+  padding-top: map-get($spacers, 3);
   width: 100%;
   max-height: $footerMobileMaxHeight;
   overflow: hidden;
   color: map-get($palette, lopi-white);
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 24px;
+  font-weight: $font-weight-normal;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
 
   .footerTitle {
-    margin-bottom: 15px !important;
+    margin-bottom: map-get($spacers, 3) !important;
     color: map-get($palette, lopi-orange);
-    font-weight: 700;
-    font-size: 12px;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-sm;
     text-transform: uppercase;
   }
 
-  .footerTop {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 0 24px;
-
-    > ul > li {
-      margin-bottom: 7px;
-    }
-
-    .footerContactInfo {
-      margin-top: 15px;
-    }
-  }
-
+  .footerTop,
   .footerMiddle {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 50px 24px 0 24px;
 
     > ul > li {
-      margin-bottom: 7px;
+      margin-bottom: map-get($spacers, 13);
     }
+  }
+
+  .footerTop {
+    margin: 0 map-get($spacers, 4);
+
+    .footerContactInfo {
+      margin-top: map-get($spacers, 3);
+    }
+  }
+
+  .footerMiddle {
+    margin: map-get($spacers, 5) map-get($spacers, 4) 0 map-get($spacers, 4);
   }
 
   .element {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: map-get($spacers, 31);
 
     .footerBottom {
       display: flex;
@@ -84,7 +82,7 @@ $palette: shop-variables.$theme-colors;
       box-sizing: border-box;
       width: 100%;
       width: $footerSubscriptionExtraSmall;
-      height: 194px;
+      height: $footerBottomMobileHeight;
       overflow: hidden;
 
       @include media-breakpoint-up(sm) {
@@ -97,10 +95,10 @@ $palette: shop-variables.$theme-colors;
 .footerSocial {
   display: flex;
   align-items: center;
-  padding-top: 30px;
+  padding-top: map-get($spacers, 40);
 
   .footerSocialElements {
-    margin-right: 15px;
+    margin-right: map-get($spacers, 3);
     color: map-get($palette, lopi-orange);
   }
 }
@@ -108,16 +106,16 @@ $palette: shop-variables.$theme-colors;
 .footerSubscriptionForm {
   display: flex;
   flex-direction: row;
-  margin-top: 25px;
+  margin-top: map-get($spacers, 4);
   color: map-get($palette, lopi-orange);
 
   .footerSubscriptionFormInput {
     background: map-get($palette, lopi-dark-green);
-    width: 272px;
+    width: $footerBottomMobileHeight;
 
     &:enabled {
       border: none;
-      border-bottom: map-get($palette, lopi-orange) solid 1px;
+      border-bottom: map-get($palette, lopi-orange) solid $border-width;
       color: map-get($palette, lopi-white);
     }
   }
@@ -127,9 +125,9 @@ $palette: shop-variables.$theme-colors;
   }
 
   .footerSubscriptionFormButton {
-    margin-left: 10px;
-    border-bottom: map-get($palette, lopi-orange) solid 1px;
-    width: 40px;
+    margin-left: map-get($spacers, 21);
+    border-bottom: map-get($palette, lopi-orange) solid $border-width;
+    width: map-get($spacers, 41);
     color: map-get($palette, lopi-orange);
     text-align: center;
   }
@@ -137,49 +135,49 @@ $palette: shop-variables.$theme-colors;
 
 @include media-breakpoint-up(xs) {
   .footerMobile {
-    padding-top: 40px;
+    padding-top: map-get($spacers, 41);
 
     .footerTop {
-      margin: 0 40px;
+      margin: 0 map-get($spacers, 41);
     }
 
     .footerMiddle {
-      margin: 50px 40px 0 40px;
+      margin: map-get($spacers, 5) map-get($spacers, 41) 0 map-get($spacers, 41);
     }
 
     .footerBottom {
-      padding-top: 70px;
-      padding-bottom: 60px;
+      padding-top: map-get($spacers, 53);
+      padding-bottom: map-get($spacers, 52);
     }
   }
 }
 
 @include media-breakpoint-up(sm) {
   .footerMobile {
-    padding-top: 50px;
+    padding-top: map-get($spacers, 5);
 
     .footerTop {
-      margin: 0 90px;
+      margin: 0 map-get($spacers, 6);
     }
 
     .footerMiddle {
-      margin: 50px 90px 0 90px;
+      margin: 50px map-get($spacers, 6) 0 map-get($spacers, 6);
     }
   }
 }
 
 @include media-breakpoint-up(md) {
   .footerMobile {
-    padding-top: 60px;
+    padding-top: map-get($spacers, 52);
 
     .footerTop {
       justify-content: space-around;
-      margin: 0 100px;
+      margin: 0 map-get($spacers, 6);
     }
 
     .footerMiddle {
       justify-content: space-around;
-      margin: 50px 100px 0 100px;
+      margin: map-get($spacers, 5) map-get($spacers, 6) 0 map-get($spacers, 6);
     }
   }
 }
@@ -194,17 +192,17 @@ $palette: shop-variables.$theme-colors;
     flex-direction: row;
     justify-content: center;
     background-color: map-get($palette, lopi-dark-green);
-    padding: 69px 0;
-    padding-left: 80px;
+    padding: map-get($spacers, 53) 0;
+    padding-left: map-get($spacers, 54);
     width: 100%;
     max-height: $footerMobileMaxHeight;
     overflow: hidden;
     color: map-get($palette, lopi-white);
-    font-size: 15px;
-    line-height: 24px;
+    font-size: map-get($spacers, 3);
+    line-height: $line-height-base;
 
     .footerTitle {
-      margin-bottom: 15px;
+      margin-bottom: map-get($spacers, 3);
       color: map-get($palette, lopi-orange);
       font-size: $font-size-sm;
       text-transform: uppercase;
@@ -215,24 +213,24 @@ $palette: shop-variables.$theme-colors;
       flex-grow: 4;
       flex-direction: row;
       justify-content: space-between;
-      max-width: 1000px;
+      max-width: $footerLGFooterGroupWidth;
 
       > ul > li {
-        margin-bottom: 7px;
+        margin-bottom: map-get($spacers, 2);
       }
     }
 
     .footerContactInfo {
-      margin-top: 15px;
+      margin-top: map-get($spacers, 3);
     }
 
     .footerBottom {
-      margin: 0 40px 0 150px;
-      width: 167px;
-      font-size: 15px;
+      margin: 0 map-get($spacers, 41) 0 $footerLGFooterBottomMarginLeft;
+      width: $footerLGFooterBottomWidth;
+      font-size: $font-size-base;
 
       .footerSubscriptionFormInput {
-        width: 117px;
+        width: $footerLGFooterSubscriptionFormInputWidth;
       }
     }
   }
@@ -241,8 +239,8 @@ $palette: shop-variables.$theme-colors;
 @include media-breakpoint-up(xxl) {
   .footerDesktop {
     .footerBottom {
-      margin-right: 40px;
-      margin-left: 245px;
+      margin-right: map-get($spacers, 41);
+      margin-left: $footerXXLFooterBottomWidth;
     }
   }
 }
