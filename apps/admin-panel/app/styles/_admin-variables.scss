@@ -1,0 +1,17 @@
+//@import "bootstrap/scss/variables";
+//Implement configs according to the ones from bootstrap scss files
+
+$font-white: white;
+$blue-light: #05f2f2;
+
+$backgroud-light: #f2f2f2;
+
+$theme-colors: (
+  'primary': green,
+  'secondary': pink,
+  'dark': #000,
+);
+
+$globalConfig: (
+  palette: $theme-colors,
+);

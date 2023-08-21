@@ -1,64 +1,246 @@
+@use '../../styles/shop-variables';
+
+@import './variables.scss';
+
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins/breakpoints';
+
+$palette: shop-variables.$theme-colors;
+$spacers: shop-variables.$spacers;
+
 .footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  background-color: black;
-  padding: 69px 0 0 0;
-  width: 100%;
-  height: 348px;
-  color: #868686;
-  font-size: 15px;
-  line-height: 25px;
+  font-family: 'Outfit';
+}
 
-  .footerTitle {
-    padding-bottom: 15px;
-    color: white;
-    text-transform: uppercase;
-  }
+.footerDesktop {
+  display: none;
+}
 
-  > ul > li {
-    padding-bottom: 7px;
+.footerMiddle,
+.footerTop {
+  .footerElement {
+    margin: map-get($spacers, 12);
   }
 }
 
-.footerContactInfo {
-  padding-top: 15px;
+.footerMobile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: map-get($palette, lopi-dark-green);
+  padding-top: map-get($spacers, 3);
+  width: 100%;
+  max-height: $footerMobileMaxHeight;
+  overflow: hidden;
+  color: map-get($palette, lopi-white);
+  font-weight: $font-weight-normal;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+
+  .footerTitle {
+    margin-bottom: map-get($spacers, 3) !important;
+    color: map-get($palette, lopi-orange);
+    font-weight: $font-weight-bold;
+    font-size: $font-size-sm;
+    text-transform: uppercase;
+  }
+
+  .footerTop,
+  .footerMiddle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    > ul > li {
+      margin-bottom: map-get($spacers, 13);
+    }
+  }
+
+  .footerTop {
+    margin: 0 map-get($spacers, 4);
+
+    .footerContactInfo {
+      margin-top: map-get($spacers, 3);
+    }
+  }
+
+  .footerMiddle {
+    margin: map-get($spacers, 5) map-get($spacers, 4) 0 map-get($spacers, 4);
+  }
+
+  .element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: map-get($spacers, 31);
+
+    .footerBottom {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-sizing: border-box;
+      width: 100%;
+      width: $footerSubscriptionExtraSmall;
+      height: $footerBottomMobileHeight;
+      overflow: hidden;
+
+      @include media-breakpoint-up(sm) {
+        width: $footerSubscriptionSmall;
+      }
+    }
+  }
 }
 
 .footerSocial {
   display: flex;
   align-items: center;
-  padding-top: 30px;
-}
+  padding-top: map-get($spacers, 40);
 
-.footerSocialElements {
-  margin-right: 15px;
-}
-
-.footerSubscription {
-  padding-left: 320px;
+  .footerSocialElements {
+    margin-right: map-get($spacers, 3);
+    color: map-get($palette, lopi-orange);
+  }
 }
 
 .footerSubscriptionForm {
   display: flex;
   flex-direction: row;
-  padding-top: 25px;
+  margin-top: map-get($spacers, 4);
+  color: map-get($palette, lopi-orange);
+
+  .footerSubscriptionFormInput {
+    background: map-get($palette, lopi-dark-green);
+    width: $footerBottomMobileHeight;
+
+    &:enabled {
+      border: none;
+      border-bottom: map-get($palette, lopi-orange) solid $border-width;
+      color: map-get($palette, lopi-white);
+    }
+  }
+
+  .footerSubscriptionFormInput::placeholder {
+    color: map-get($palette, lopi-white);
+  }
+
+  .footerSubscriptionFormButton {
+    margin-left: map-get($spacers, 21);
+    border-bottom: map-get($palette, lopi-orange) solid $border-width;
+    width: map-get($spacers, 41);
+    color: map-get($palette, lopi-orange);
+    text-align: center;
+  }
 }
 
-.footerSubscriptionFormInput:enabled {
-  border: none;
-  border-bottom: white solid 1px;
+@include media-breakpoint-up(xs) {
+  .footerMobile {
+    padding-top: map-get($spacers, 41);
+
+    .footerTop {
+      margin: 0 map-get($spacers, 41);
+    }
+
+    .footerMiddle {
+      margin: map-get($spacers, 5) map-get($spacers, 41) 0 map-get($spacers, 41);
+    }
+
+    .footerBottom {
+      padding-top: map-get($spacers, 53);
+      padding-bottom: map-get($spacers, 52);
+    }
+  }
 }
 
-.footerSubscriptionFormInput {
-  background: #000;
-  width: 120px;
-  color: white;
+@include media-breakpoint-up(sm) {
+  .footerMobile {
+    padding-top: map-get($spacers, 5);
+
+    .footerTop {
+      margin: 0 map-get($spacers, 6);
+    }
+
+    .footerMiddle {
+      margin: 50px map-get($spacers, 6) 0 map-get($spacers, 6);
+    }
+  }
 }
 
-.footerSubscriptionFormButton {
-  margin-left: 10px;
-  border-bottom: white solid 1px;
-  width: 40px;
-  text-align: center;
+@include media-breakpoint-up(md) {
+  .footerMobile {
+    padding-top: map-get($spacers, 52);
+
+    .footerTop {
+      justify-content: space-around;
+      margin: 0 map-get($spacers, 6);
+    }
+
+    .footerMiddle {
+      justify-content: space-around;
+      margin: map-get($spacers, 5) map-get($spacers, 6) 0 map-get($spacers, 6);
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .footerMobile {
+    display: none;
+  }
+
+  .footerDesktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: map-get($palette, lopi-dark-green);
+    padding: map-get($spacers, 53) 0;
+    padding-left: map-get($spacers, 54);
+    width: 100%;
+    max-height: $footerMobileMaxHeight;
+    overflow: hidden;
+    color: map-get($palette, lopi-white);
+    font-size: map-get($spacers, 3);
+    line-height: $line-height-base;
+
+    .footerTitle {
+      margin-bottom: map-get($spacers, 3);
+      color: map-get($palette, lopi-orange);
+      font-size: $font-size-sm;
+      text-transform: uppercase;
+    }
+
+    .footerGroup {
+      display: flex;
+      flex-grow: 4;
+      flex-direction: row;
+      justify-content: space-between;
+      max-width: $footerLGFooterGroupWidth;
+
+      > ul > li {
+        margin-bottom: map-get($spacers, 2);
+      }
+    }
+
+    .footerContactInfo {
+      margin-top: map-get($spacers, 3);
+    }
+
+    .footerBottom {
+      margin: 0 map-get($spacers, 41) 0 $footerLGFooterBottomMarginLeft;
+      width: $footerLGFooterBottomWidth;
+      font-size: $font-size-base;
+
+      .footerSubscriptionFormInput {
+        width: $footerLGFooterSubscriptionFormInputWidth;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(xxl) {
+  .footerDesktop {
+    .footerBottom {
+      margin-right: map-get($spacers, 41);
+      margin-left: $footerXXLFooterBottomWidth;
+    }
+  }
 }

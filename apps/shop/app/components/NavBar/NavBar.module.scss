@@ -1,87 +1,99 @@
+@use '../../styles/shop-variables';
+
+@import './variables.scss';
+
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins/breakpoints';
+
+$palette: shop-variables.$theme-colors;
+$spacers: shop-variables.$spacers;
+
+.menuDesktop,
+.navbarLogo {
+  display: none;
+}
+
 .navbar {
   display: flex;
   position: relative;
   justify-content: space-between;
-  background-color: black;
+  background-color: map-get($palette, lopi-dark-green);
   padding: 0;
   width: 100%;
-  max-height: 67px;
+  height: 100px;
+  color: map-get($palette, lopi-white);
 }
 
-.menu {
-  padding: 0 0 0 16px;
-  div {
-    div {
-      background-color: black;
-      a {
-        color: white;
-        text-transform: capitalize;
-      }
+.menuMobile {
+  display: flex;
+  align-items: center;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .menuIconMobile {
+    margin: 0 15px;
+
+    &:hover {
+      cursor: pointer;
+      color: map-get($palette, lopi-orange);
+    }
+
+    .active {
+      color: map-get($palette, lopi-orange);
     }
   }
 }
 
-.color {
-  :hover {
-    background-color: black;
-    color: #05f2f2;
-  }
-  :active {
-    background-color: black;
-    color: #05f2f2;
-  }
-}
-
-.menuAbout {
-  padding-left: 20px;
-}
-
-.navbarLogo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-weight: 700;
-  font-size: 16px;
-  text-transform: uppercase;
-}
-
 .socials {
   display: flex;
-  padding: 0 36px;
-}
+  align-items: center;
+  text-align: center;
 
-.socialsElements {
-  position: relative;
-  padding: 26px 10px 18px 10px;
-}
-
-.socialsElements button {
-  background-color: transparent;
-  border: none;
-  padding: 0;
-
-  &:hover {
-    cursor: pointer;
-    background: none;
+  svg {
+    width: 24px;
+    height: 24px;
   }
-}
 
-.socialsCounter {
-  display: flex;
-  position: absolute;
-  justify-content: center;
-  transform: translate(135%, -60%);
-  z-index: 1;
-  border-radius: 50%;
-  background-color: #05f2f2;
-  width: 15px;
-  height: 15px;
+  .sizeIcon {
+    width: 24px;
+    height: 24px;
+  }
 
-  span {
-    color: white;
-    font-size: 10px;
-    line-height: 15px;
+  .searchDesktop {
+    display: none;
+    position: relative;
+    margin-right: 12px;
+  }
+
+  .userIcon {
+    margin-right: 12px;
+  }
+
+  .heartIcon,
+  .cartIcon {
+    margin-right: 24px;
+  }
+
+  .socialsCounter {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    transform: translate(135%, -60%);
+    z-index: 1;
+    border-radius: 50%;
+    background-color: map-get($palette, lopi-orange);
+    width: 15px;
+    height: 15px;
+
+    span {
+      color: map-get($palette, lopi-white);
+      font-size: 10px;
+      line-height: 15px;
+    }
   }
 }
 
@@ -90,24 +102,165 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: map-get($palette, lopi-white);
   width: 100%;
-  height: 52px;
+  height: 100px;
   font-size: 16px;
-  text-transform: uppercase;
-}
-
-.sliderArrows {
-  padding: 0 20px;
   text-align: center;
+  text-transform: uppercase;
 
-  svg {
-    vertical-align: baseline;
-    line-height: 24px;
+  .sliderArrows {
+    padding: 0 20px;
+    text-align: center;
+
+    svg {
+      vertical-align: baseline;
+      line-height: 24px;
+    }
+  }
+
+  .sliderText {
+    font-weight: 400;
+    line-height: 27, 2px;
   }
 }
 
-.sliderText {
-  font-weight: 400;
-  line-height: 27, 2px;
+.dropdownMobile {
+  display: flex;
+  position: absolute;
+  background-color: map-get($palette, lopi-white);
+  width: 100%;
+  height: 100px;
+  color: black;
+  font-size: 16px;
+
+  button {
+    border: none;
+    background-color: map-get($palette, lopi-white);
+    color: black;
+  }
+
+  .dropdownGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px;
+
+    :hover,
+    :active,
+    :focus,
+    :checked {
+      background-color: map-get($palette, lopi-white) !important;
+      color: map-get($palette, lopi-orange) !important;
+    }
+
+    :not(.btn-check) {
+      background-color: map-get($palette, lopi-white);
+      color: black;
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  .navbarLogo {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -53%);
+  }
+}
+
+@media (min-width: 992px) {
+  .dropdownMobile,
+  .menuMobile {
+    display: none;
+  }
+
+  .navbar {
+    height: 69px;
+
+    .menuDesktop {
+      display: flex;
+
+      div {
+        div {
+          background-color: map-get($palette, lopi-dark-green);
+
+          div {
+            padding: 0 10px;
+          }
+
+          a {
+            color: map-get($palette, lopi-white);
+          }
+        }
+      }
+
+      .color {
+        :not(.btn-check) {
+          background-color: map-get($palette, lopi-dark-green);
+          color: map-get($palette, lopi-white);
+        }
+
+        :hover,
+        :active,
+        :focus,
+        :checked {
+          background-color: map-get($palette, lopi-dark-green);
+          color: map-get($palette, lopi-orange);
+        }
+      }
+
+      .navbar-nav {
+        .nav-link.active,
+        .nav-link.show {
+          color: map-get($palette, lopi-white) !important;
+        }
+      }
+
+      a#about-dropdown.dropdown-toggle.show.nav-link {
+        color: map-get($palette, lopi-white) !important;
+      }
+    }
+
+    .socials {
+      svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      .searchDesktop {
+        display: block;
+        margin-right: 20px;
+      }
+
+      .userIcon {
+        margin-right: 22px;
+      }
+
+      .heartIconm,
+      .cartIcon {
+        margin-right: 26px;
+      }
+    }
+  }
+
+  .slider {
+    height: 45px;
+
+    .sliderArrows {
+      padding: 0 47px;
+    }
+
+    .sliderText {
+      font-weight: 500;
+    }
+  }
+}
+
+@media (min-width: 2500px) {
+  .navbar {
+    justify-content: space-around;
+  }
 }

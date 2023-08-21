@@ -1,4 +1,5 @@
-import './global.scss';
+import './styles/admin-global.scss';
+import NavBar from '../components/NavBar/NavBar';
 
 export const metadata = {
   title: 'Welcome to admin-panel',
@@ -12,7 +13,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <NavBar />
+        <main>{children}</main>
+      </body>
     </html>
   );
 }

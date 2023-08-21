@@ -28,16 +28,16 @@ export const RangePriceSlider = () => {
       <div className={styles.slider}>
         <FormRange
           aria-label="Lower price range slider"
-          min="0" //INFO: mock, in feature it will be fetched from API
-          max="160" //INFO: mock, in feature it will be fetched from API
+          min="0" //INFO: mock, in future it will be fetched from API
+          max="160" //INFO: mock, in future it will be fetched from API
           value={lowerValue}
           onChange={handleLowerChange}
           className={styles.rangeInput}
         />
         <FormRange
           aria-label="Upper price range slider"
-          min="0" //INFO: mock, in feature it will be fetched from API
-          max="160" //INFO: mock, in feature it will be fetched from API
+          min="0" //INFO: mock, in future it will be fetched from API
+          max="160" //INFO: mock, in future it will be fetched from API
           value={upperValue}
           onChange={handleUpperChange}
           className={styles.rangeInput}

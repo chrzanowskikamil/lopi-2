@@ -1,0 +1,58 @@
+// @import 'bootstrap/scss/variables';
+//Implement configs according to the ones from bootstrap scss file
+
+$h1-font-size: 1.875rem;
+
+$btn-padding-y: 0.625rem;
+$btn-padding-x: 1rem;
+
+$theme-colors: (
+  'lopi-black': #000,
+  'lopi-dark-green': #0f2615,
+  'lopi-green': #4b5945,
+  'lopi-white': #f2efe9,
+  'lopi-orange': #ff9a17,
+  'lopi-brown': #592d1d,
+  'lopi-grey': #c9cdc7,
+  'lopi-blue-lighth': #05f2f2,
+  //$backgroud-light: #f2f2f2;
+);
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.2,
+  12: $spacer * 0.25,
+  13: $spacer * 0.4,
+  2: $spacer * 0.5,
+  7: $spacer * 0.625,
+  8: $spacer * 0.938,
+  21: $spacer * 0.75,
+  3: $spacer,
+  31: $spacer * 1.25,
+  4: $spacer * 1.5,
+  40: $spacer * 2,
+  41: $spacer * 2.5,
+  5: $spacer * 3,
+  51: $spacer * 3.5,
+  52: $spacer * 4,
+  53: $spacer * 4.5,
+  54: $spacer * 5,
+  6: $spacer * 6,
+  35: $spacer * 2.188,
+);
+
+$grid-breakpoints: (
+  xxxs: 0,
+  xxs: 375px,
+  xs: 425px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+
+$globalConfig: (
+  palette: $theme-colors,
+  spacers: $spacers,
+);

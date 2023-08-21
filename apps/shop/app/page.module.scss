@@ -1,8 +1,12 @@
+@use './styles/shop-variables';
+
+$palette: shop-variables.$theme-colors;
+
 .page {
-  width: 400px;
-  height: 300px;
-  background: #d3d3d3;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: map-get($palette, lopi-grey);
+  width: 100%;
+  height: 300px;
 }

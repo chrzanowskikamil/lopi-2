@@ -5,7 +5,7 @@ import { Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { SortDropdown } from './components/SortDropdown/SortDropdown';
 import { Products } from './components/Products/Products';
-import { Button } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import { ProductsResponse } from 'apps/shop/types/ProductsResponse';
 import { getProducts } from 'apps/shop/actions/getProducts';
 
@@ -31,19 +31,29 @@ export const Categories: FC<CategoriesProps> = ({
   };
 
   return (
-    <>
-      <h1 className={styles.title}>{title}</h1>
-      <main className={styles.main}>
+    <Container>
+      <Row>
+        <h1 className={styles.title}>{title}</h1>
+      </Row>
+      <Row>
         <Breadcrumbs category={title} />
+      </Row>
+      <Row>
         <SortDropdown />
-        <aside className={styles.aside}>
+      </Row>
+      <Row>
+        <Col xl={2}>
           <Sidebar activeCategory={title} list={content} />
+        </Col>
+        <Col xl={10}>
           <Products products={{ ...initalProducts, products: allProducts }} />
-          <Button className={styles.button} onClick={loadMoreProducts}>
-            pokaż więcej
-          </Button>
-        </aside>
-      </main>
-    </>
+          <Row className="justify-content-center">
+            <Button className={styles.button} onClick={loadMoreProducts}>
+              pokaż więcej
+            </Button>
+          </Row>
+        </Col>
+      </Row>
+    </Container>
   );
 };
