@@ -1,3 +1,8 @@
+@use '../../styles/shop-variables';
+
+$pallete: shop-variables.$theme-colors;
+$button-width: 155px;
+
 .main {
   display: flex;
   flex-direction: column;
@@ -6,28 +11,24 @@
 .title {
   margin-top: 40px;
   text-transform: uppercase;
-  color: #000;
-  font-size: 30px;
+  color: map-get($pallete, lopi-black);
   font-weight: 700;
   text-align: center;
 }
 
 .button {
-  grid-column: 2;
-  justify-self: center;
-  width: 155px;
-  padding: 10px 16px;
+  width: $button-width;
   margin: 60px 0;
   background-color: transparent;
-  border: 2px solid #ff9a17;
+  border: 2px solid map-get($pallete, lopi-orange);
   border-radius: 6px;
-  color: #ff9a17;
+  color: map-get($pallete, lopi-orange);
   font-size: 16px;
   cursor: pointer;
 
   &:hover {
-    border: 2px solid #ff9a17;
-    background-color: #ff9a17;
-    color: #fff;
+    border: 2px solid map-get($pallete, lopi-orange);
+    background-color: map-get($pallete, lopi-orange);
+    color: map-get($pallete, lopi-white);
   }
 }

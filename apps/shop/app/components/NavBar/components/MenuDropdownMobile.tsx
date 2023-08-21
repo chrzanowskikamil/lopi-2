@@ -4,8 +4,9 @@ import { FC } from 'react';
 
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Nav from 'react-bootstrap/Nav';
+import { Menu } from './Menu';
 
-import Menu from './Menu';
+// import Menu from './Menu';
 
 const MenuDropdownMobile: FC = () => {
   return (

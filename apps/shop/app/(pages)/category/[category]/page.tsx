@@ -13,6 +13,8 @@ export async function generateStaticParams() {
 const CategoriesPage = async ({ params }: { params: { category: string } }) => {
   const allCategories = await getCategoriesName();
   const products = await getProducts();
+  console.log(allCategories);
+  console.log(products);
   return (
     <>
       <Categories

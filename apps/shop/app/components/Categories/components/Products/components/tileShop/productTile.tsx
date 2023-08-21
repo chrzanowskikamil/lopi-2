@@ -6,7 +6,6 @@ import Image, { StaticImageData } from 'next/image';
 
 import { FC } from 'react';
 
-import Stars from './components/ProductRating';
 import Price from './components/Price';
 
 import Status from './components/Status';
@@ -16,8 +15,8 @@ import ProductRating from './components/ProductRating';
 type ProductTileProps = {
   picture: StaticImageData;
   stars: number;
-  rewievs: number;
-  name: string;
+  rewievs?: number;
+  name?: string;
   price: number;
   currentPrice?: number;
   status?: string;
