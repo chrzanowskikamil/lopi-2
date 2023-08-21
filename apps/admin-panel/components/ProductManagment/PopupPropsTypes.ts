@@ -9,7 +9,7 @@ export type PopupProps = {
       categoryPick: string;
       productPick: string;
       productName: string;
-      productCount: string | null | number;
+      productCount: string | number;
       terms: boolean;
       file: null | string;
     };

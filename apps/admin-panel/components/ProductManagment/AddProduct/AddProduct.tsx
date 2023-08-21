@@ -25,7 +25,6 @@ const AddProduct: React.FC = () => {
 
   return (
     <Container>
-      <br />
       <Formik
         validationSchema={ProductSchema}
         onSubmit={(values) => {
@@ -96,9 +95,7 @@ const AddProduct: React.FC = () => {
                     <Form.Control.Feedback type="invalid">
                       {errors.productName ? 'Please pick a name.' : ''}
                     </Form.Control.Feedback>
-                    <Form.Control.Feedback>
-                      Looks good! <br />
-                    </Form.Control.Feedback>
+                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group as={Col} md="2" controlId="validationFormik03">
                     <Form.Label>Product&apos;s count:</Form.Label>
@@ -171,9 +168,7 @@ const AddProduct: React.FC = () => {
                     variant="secondary"
                     className={style.button}
                     disabled={state.blocked}
-                    onClick={() => {
-                      handleReset();
-                    }}
+                    onClick={handleReset}
                   >
                     Reset form
                   </Button>
@@ -181,22 +176,13 @@ const AddProduct: React.FC = () => {
               </>
             ) : (
               <>
-                <br />
                 <div className={style.buttonsFlex}>
-                  <Button
-                    disabled
-                    className={style.button}
-                    onClick={() => {
-                      handleSubmit();
-                    }}
-                  >
+                  <Button disabled className={style.button}>
                     Create product
                   </Button>
                 </div>
               </>
             )}
-
-            <br />
           </Form>
         )}
       </Formik>

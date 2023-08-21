@@ -31,12 +31,7 @@ const SaveChanges: FC<SaveChangesProps> = ({
       </Modal.Header>
       <Modal.Body>{body}</Modal.Body>
       <Modal.Footer>
-        <Button
-          variant="secondary"
-          onClick={() => {
-            others.onHide();
-          }}
-        >
+        <Button variant="secondary" onClick={others.onHide}>
           Take a step back
         </Button>
         <Button variant="primary" onClick={handleInPopupSubmit}>

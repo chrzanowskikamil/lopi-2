@@ -14,16 +14,16 @@ const AddProductPopup: React.FC<PopupProps> = ({
   const title = 'You have just created a new product.';
   const body = (
     <>
-      <p>
+      <span>
         Category you are adding to is: &nbsp;
         {state.inputData.categoryPick}.
-      </p>
-      <p>
+      </span>
+      <span>
         Product name: &nbsp;
         {state.inputData.productName}.
-      </p>
-      <p> Product count: &nbsp;{state.inputData.productCount}.</p>
-      <p>Picture: &nbsp;{state.inputData.file}.</p>
+      </span>
+      <span> Product count: &nbsp;{state.inputData.productCount}.</span>
+      <span>Picture: &nbsp;{state.inputData.file}.</span>
     </>
   );
 

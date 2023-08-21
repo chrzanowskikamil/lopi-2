@@ -7,7 +7,7 @@ interface StateProps {
     categoryPick: string;
     productPick: string;
     productName: string;
-    productCount: string | null | number;
+    productCount: string | number;
     terms: boolean;
     file: null | string;
   };
@@ -23,7 +23,7 @@ interface ActionProps {
     categoryPick: string;
     productPick: string;
     productName: string;
-    productCount: string | null | number;
+    productCount: string | number;
     terms: boolean;
     file: null | string;
   };
@@ -37,7 +37,7 @@ export const initialState: StateProps = {
     categoryPick: 'Choose category you want add product to.',
     productPick: 'Choose product you want to edit.',
     productName: '',
-    productCount: null,
+    productCount: '',
     terms: true,
     file: null,
   },

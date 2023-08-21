@@ -14,21 +14,13 @@ const OnEditPopup: React.FC<PopupProps> = ({
   const title = `Are you sure you want to change product from category ${state.inputData.categoryPick} `;
   const body = (
     <>
-      <p>
-        Product name: <br />
-        From: Old product name
-        <br /> To: {state.inputData.productName}
-      </p>
-      Product count: <br />
-      <p>
-        From: Old product count
-        <br /> To: {state.inputData.productCount}
-      </p>
-      Picture: <br />
-      <p>
-        From: Old product picture <br />
-        To: {state.inputData.file}
-      </p>
+      <span>
+        Product name: From: Old product name To: {state.inputData.productName}
+      </span>
+      Product count:
+      <span>From: Old product count To: {state.inputData.productCount}</span>
+      Picture:
+      <span>From: Old product picture To: {state.inputData.file}</span>
     </>
   );
   return !state.popupSubmited ? (

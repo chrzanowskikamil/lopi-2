@@ -24,7 +24,6 @@ const ProductEdit: React.FC = () => {
 
   return (
     <Container>
-      <br />
       <Formik
         validationSchema={EditProductSchema}
         onSubmit={async (values) => {
@@ -201,9 +200,7 @@ const ProductEdit: React.FC = () => {
                         variant="secondary"
                         className={style.button}
                         disabled={state.blocked}
-                        onClick={() => {
-                          handleReset();
-                        }}
+                        onClick={handleReset}
                       >
                         Reset form
                       </Button>
@@ -211,7 +208,6 @@ const ProductEdit: React.FC = () => {
                   </>
                 ) : (
                   <>
-                    <br />
                     <div className={style.buttonsFlex}>
                       <Button disabled className={style.button}>
                         Change product
@@ -222,7 +218,6 @@ const ProductEdit: React.FC = () => {
               </>
             ) : (
               <>
-                <br />
                 <div className={style.buttonsFlex}>
                   <Button disabled className={style.button}>
                     Change product
@@ -230,7 +225,6 @@ const ProductEdit: React.FC = () => {
                 </div>
               </>
             )}
-            <br />
           </Form>
         )}
       </Formik>

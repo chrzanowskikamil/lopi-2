@@ -15,9 +15,7 @@ const CloseWindow: FC<CloseWindowProps> = ({ closeSubmitedPopup, others }) => {
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
-      onHide={() => {
-        closeSubmitedPopup();
-      }}
+      onHide={closeSubmitedPopup}
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">

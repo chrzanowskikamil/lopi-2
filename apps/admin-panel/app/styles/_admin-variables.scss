@@ -10,7 +10,7 @@ $backgroud-light: #f2f2f2;
 
 //TODO: add left colors
 $theme-colors: (
-  'primary': rgb(84, 84, 218),
+  'primary': #8b097a,
   'secondary': pink,
   //"success":    $success,
   //"info":       $info,
@@ -19,7 +19,7 @@ $theme-colors: (
   //"light":      $light,
   'dark': #000,
   'custom-light': yellow
-    //custom-color: -> add new colors in this way then use it as normal css class like bg-custom-color,,,,
+    //custom-color: -> add new colors in this way then use it as normal css class like bg-custom-color,,,,,,,
 );
 
 $globalConfig: (

@@ -13,10 +13,10 @@ const OnRemovePopup: React.FC<PopupProps> = ({
 }) => {
   const title = `Remove`;
   const body = (
-    <p>
+    <span>
       Are you sure you want to remove product: ${state.inputData.productPick}
       product from the shop?
-    </p>
+    </span>
   );
 
   return !state.popupSubmited ? (
