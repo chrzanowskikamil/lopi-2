@@ -4,8 +4,6 @@ import style from '../ProductManagment.module.scss';
 
 import * as formik from 'formik';
 
-import { useReducer } from 'react';
-
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
