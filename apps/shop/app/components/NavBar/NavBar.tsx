@@ -2,29 +2,35 @@
 
 import style from './NavBar.module.scss';
 
-import BootstrapNavbar from 'react-bootstrap/Navbar';
+import Navbar from 'react-bootstrap/Navbar';
+
+import { FC, useState } from 'react';
 
 import Slider from './components/Slider';
 import Socials from './components/Socials';
-import Menu from './components/Menu';
+
+import MenuDesktop from './components/MenuDesktop';
+import MenuMobile from './components/MenuMobile';
+import MenuDropdownMobile from './components/MenuDropdownMobile';
 
 import { Logo } from '../../assets/SvgIcons/Logo';
-import { FC } from 'react';
 
 const NavBar: FC = () => {
+  const [menuMobileActive, setMenuMobileActive] = useState<boolean>();
+
+  const handleMenuSwitch = () => setMenuMobileActive(!menuMobileActive);
+
   return (
     <>
-      <BootstrapNavbar
-        expand="lg"
-        className={style.navbar}
-        data-bs-theme="dark"
-      >
-        <Menu />
-        <BootstrapNavbar.Brand href="#home" className={style.navbarLogo}>
+      <Navbar expand="lg" className={style.navbar}>
+        <MenuMobile handleMenuSwitch={handleMenuSwitch} />
+        <MenuDesktop />
+        <Navbar.Brand href="#home" className={style.navbarLogo}>
           <Logo />
-        </BootstrapNavbar.Brand>
+        </Navbar.Brand>
         <Socials />
-      </BootstrapNavbar>
+      </Navbar>
+      {menuMobileActive ? <MenuDropdownMobile /> : ''}
       <Slider />
     </>
   );

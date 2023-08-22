@@ -33,7 +33,7 @@ jobs:
           sed -i 's/next start/npm install \&\& next start/g' package.json
           zip next.zip ./* ./.next -qr
           cd ../../../
-          mv ./dist/apps/shop/next.zip next.zip 
+          mv ./dist/apps/shop/next.zip next.zip
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2

@@ -6,6 +6,7 @@
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
+        "newline-before-return": "error",
         "@nx/enforce-module-boundaries": [
           "error",
           {

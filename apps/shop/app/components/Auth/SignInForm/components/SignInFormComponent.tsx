@@ -23,6 +23,7 @@ export const SignInFormComponent: FC<SignInFormComponentProps> = ({
     openToast,
     handleCloseModal
   );
+
   return (
     <>
       <Formik
