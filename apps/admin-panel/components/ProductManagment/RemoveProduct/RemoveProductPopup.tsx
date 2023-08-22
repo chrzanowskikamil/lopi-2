@@ -1,7 +1,7 @@
 'use client';
 
-import ModalSaveChanges from '../Components/ModalSaveChanges';
-import ModalCloseWindow from '../Components/ModalCloseWindow';
+import SaveChangesModal from '../Components/SaveChangesModal';
+import CloseWindowModal from '../Components/CloseWindowModal';
 
 import { PopupProps } from '../PopupPropsTypes';
 
@@ -20,14 +20,14 @@ const OnRemovePopup: React.FC<PopupProps> = ({
   );
 
   return !state.popupSubmited ? (
-    <ModalSaveChanges
+    <SaveChangesModal
       handleInPopupSubmit={handleInPopupSubmit}
       others={others}
       title={title}
       body={body}
     />
   ) : (
-    <ModalCloseWindow closeSubmitedPopup={closeSubmitedPopup} others={others} />
+    <CloseWindowModal closeSubmitedPopup={closeSubmitedPopup} others={others} />
   );
 };
 

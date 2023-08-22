@@ -1,45 +1,40 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-import React from 'react';
 import { FC } from 'react';
-type SaveChangesProps = {
-  title: string;
-  body: React.JSX.Element;
-  handleInPopupSubmit: VoidFunction;
+
+type CloseWindowModalProps = {
+  closeSubmitedPopup: VoidFunction;
   others: { show: boolean; onHide: VoidFunction };
 };
 
-const SaveChanges: FC<SaveChangesProps> = ({
+const CloseWindowModal: FC<CloseWindowModalProps> = ({
+  closeSubmitedPopup,
   others,
-  handleInPopupSubmit,
-  title,
-  body,
 }) => {
   return (
     <Modal
       {...others}
       size="lg"
-      backdrop="static"
       aria-labelledby="contained-modal-title-vcenter"
       centered
+      onHide={closeSubmitedPopup}
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          <h4>{title}</h4>
+          <h4>Data sent. </h4>
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>{body}</Modal.Body>
+      <Modal.Body>
+        <p>Success!</p>
+      </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={others.onHide}>
-          Take a step back
-        </Button>
-        <Button variant="primary" onClick={handleInPopupSubmit}>
-          Save Changes
+        <Button variant="primary" onClick={closeSubmitedPopup}>
+          Close the window.
         </Button>
       </Modal.Footer>
     </Modal>
   );
 };
 
-export default SaveChanges;
+export default CloseWindowModal;

@@ -75,7 +75,7 @@ export const productReducer = (state: StateProps, action: ActionProps) => {
       };
     }
     default: {
-      throw Error('Unknown action: ' + action.type);
+      return state;
     }
   }
 };

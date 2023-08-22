@@ -4,7 +4,7 @@ import style from '../ProductManagment.module.scss';
 
 import * as formik from 'formik';
 
-import { useReducer } from 'react';
+import { ChangeEvent, useReducer } from 'react';
 
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
@@ -17,7 +17,11 @@ import OnEditPopup from './EditProductPopup';
 import { EditProductSchema } from '../Product.schema';
 import { initialState, productReducer } from '../ProductReducerHook';
 
-const ProductEdit: React.FC = () => {
+interface MyComponentProps {
+  handleChange: (e: ChangeEvent<HTMLSelectElement>) => void;
+}
+
+const ProductEdit: React.FC<MyComponentProps> = () => {
   const { Formik } = formik;
 
   const [state, dispatch] = useReducer(productReducer, initialState);
@@ -57,7 +61,7 @@ const ProductEdit: React.FC = () => {
               </Form.Label>
               <Form.Select
                 required
-                onChange={(e) => {
+                onChange={(e: ChangeEvent<HTMLSelectElement>) => {
                   handleChange(e);
                   if (
                     e.target.value ===
