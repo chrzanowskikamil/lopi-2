@@ -17,11 +17,7 @@ import OnEditPopup from './EditProductPopup';
 import { EditProductSchema } from '../Product.schema';
 import { initialState, productReducer } from '../ProductReducerHook';
 
-interface MyComponentProps {
-  handleChange: (e: ChangeEvent<HTMLSelectElement>) => void;
-}
-
-const ProductEdit: React.FC<MyComponentProps> = () => {
+const ProductEdit: React.FC = () => {
   const { Formik } = formik;
 
   const [state, dispatch] = useReducer(productReducer, initialState);
