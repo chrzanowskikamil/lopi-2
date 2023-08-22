@@ -2,8 +2,8 @@ import style from '../NavBar.module.scss';
 
 import { FC } from 'react';
 
-import { SearchIcon } from 'apps/shop/app/assets/SvgIcons/SearchIcon';
-import { MenuIconMobile } from 'apps/shop/app/assets/SvgIcons/MenuIconMobile';
+import { SearchIcon } from '../../../assets/SvgIcons/SearchIcon';
+import { MenuIconMobile } from '../../../assets/SvgIcons/MenuIconMobile';
 
 interface MenuProps {
   handleMenuSwitch: VoidFunction;

@@ -1,6 +1,6 @@
 import style from '../Footer.module.scss';
 
-import { MailIcon } from 'apps/shop/app/assets/SvgIcons/MailIcon';
+import { MailIcon } from '../../../assets/SvgIcons/MailIcon';
 
 import { FC } from 'react';
 

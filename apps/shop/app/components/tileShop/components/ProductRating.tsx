@@ -18,6 +18,7 @@ const ProductRating: FC<ProductRatingProps> = ({ starsCount }) => {
       <span key={index}>{index <= starsCount - 1 ? fullStar : emptyStar}</span>
     );
   });
+
   return <>{ratingStar}</>;
 };
 

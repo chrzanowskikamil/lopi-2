@@ -4,7 +4,7 @@ import style from './NavBar.module.scss';
 
 import Navbar from 'react-bootstrap/Navbar';
 
-import { useState, FC } from 'react';
+import { FC, useState } from 'react';
 
 import Slider from './components/Slider';
 import Socials from './components/Socials';
