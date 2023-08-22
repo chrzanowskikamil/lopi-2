@@ -6,20 +6,10 @@ $blue-light: #05f2f2;
 
 $backgroud-light: #f2f2f2;
 
-//$secondary: 'blue';
-
-//TODO: add left colors
 $theme-colors: (
   'primary': #8b097a,
   'secondary': pink,
-  //"success":    $success,
-  //"info":       $info,
-  //"warning":    $warning,
-  //"danger":     $danger,
-  //"light":      $light,
   'dark': #000,
-  'custom-light': yellow
-    //custom-color: -> add new colors in this way then use it as normal css class like bg-custom-color,,,,,,,
 );
 
 $globalConfig: (
