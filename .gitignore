@@ -40,5 +40,4 @@ Thumbs.db
 
 # Next.js
 .next
-Lopi-2\apps\admin-panel\next-env.d.ts
-Lopi-2\apps\shop\next-env.d.ts
+/next-env.d.ts
