@@ -1,17 +1,14 @@
 @use '../../../../styles/shop-variables';
+@import '../../../../styles/mixins/flex-center';
 
 $pallete: shop-variables.$theme-colors;
 $spacer: shop-variables.$spacers;
 
 .breadcrumb {
-  display: flex;
-  justify-content: center;
-  align-self: center;
-  align-items: center;
+  @include flex-center();
   padding: map-get($spacer, 3);
-  font-size: 16px;
   text-transform: capitalize;
-  margin-bottom: 48px;
+  margin-bottom: map-get($spacer, 5);
 
   a {
     color: map-get($pallete, lopi-brown);
@@ -19,7 +16,6 @@ $spacer: shop-variables.$spacers;
 }
 
 .icon {
-  padding: 4px;
-  display: flex;
-  align-items: center;
+  @include flex-center();
+  padding: map-get($spacer, 12);
 }

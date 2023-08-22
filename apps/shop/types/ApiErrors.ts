@@ -1,0 +1,10 @@
+export const API_CONNECTION_ERROR = 'API_CONNECTION_ERROR';
+export const ENVIROMENT_ERROR = 'ENVIROMENT_ERROR';
+export const API_RESPONSE_ERROR = 'API_RESPONSE_ERROR';
+export const API_DATA_ERROR = 'API_DATA_ERROR';
+
+export type ErrorTypes =
+  | typeof API_CONNECTION_ERROR
+  | typeof ENVIROMENT_ERROR
+  | typeof API_RESPONSE_ERROR
+  | typeof API_DATA_ERROR;

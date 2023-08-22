@@ -4,6 +4,7 @@ $productsGap: 72px 6px;
 $productsMargin: 20px 67px;
 $productWidth: 330px;
 $productHeight: 400px;
+$productFontSize: 15px;
 
 $spacer: shop-variables.$spacers;
 
@@ -20,6 +21,6 @@ $spacer: shop-variables.$spacers;
   height: $productHeight;
   display: flex;
   flex-direction: column;
-  font-size: 15px;
+  font-size: $productFontSize;
   margin: auto;
 }

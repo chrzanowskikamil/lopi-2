@@ -1,5 +1,12 @@
 @use '../../../../../../styles/shop-variables';
 
+$sidebarTitleBorderWidth: 1px;
+$titleFontSize: 15px;
+$rangeInputHeight: 5px;
+$sliderTrackInputHeight: 2px;
+$sliderThumbSize: 8px;
+$sliderRangeThumbSize: 15px;
+
 $pallete: shop-variables.$theme-colors;
 $spacer: shop-variables.$spacers;
 
@@ -12,9 +19,9 @@ $spacer: shop-variables.$spacers;
 .title {
   margin: map-get($spacer, 8);
   display: flex;
-  border-bottom: 1px solid map-get($pallete, lopi-grey);
-  padding-bottom: 10px;
-  font-size: 15px;
+  border-bottom: $sidebarTitleBorderWidth solid map-get($pallete, lopi-grey);
+  padding-bottom: map-get($spacer, 7);
+  font-size: $titleFontSize;
   text-transform: uppercase;
 }
 
@@ -23,7 +30,7 @@ $spacer: shop-variables.$spacers;
 
   .rangeInput {
     position: absolute;
-    height: 5px;
+    height: $rangeInputHeight;
     margin: 0;
     padding: 0;
     appearance: none;
@@ -31,14 +38,14 @@ $spacer: shop-variables.$spacers;
     z-index: 1;
 
     &::-webkit-slider-runnable-track {
-      height: 2px;
+      height: $sliderTrackInputHeight;
       background: map-get($pallete, lopi-orange);
     }
 
     &::-webkit-slider-thumb {
       appearance: none;
-      width: 8px;
-      height: 8px;
+      width: $sliderThumbSize;
+      height: $sliderThumbSize;
       background: map-get($pallete, lopi-orange);
       border-radius: 50%;
       cursor: pointer;
@@ -51,13 +58,13 @@ $spacer: shop-variables.$spacers;
     }
 
     &::-moz-range-track {
-      height: 5px;
+      height: $rangeInputHeight;
       background: map-get($pallete, lopi-orange);
     }
 
     &::-moz-range-thumb {
-      width: 15px;
-      height: 15px;
+      width: $sliderRangeThumbSize;
+      height: $sliderRangeThumbSize;
       background: map-get($pallete, lopi-orange);
       border-radius: 50%;
       cursor: pointer;

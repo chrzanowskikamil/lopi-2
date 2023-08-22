@@ -45,7 +45,7 @@ export const Sidebar: FC<SidebarProps> = ({ activeCategory, list }) => {
         className={styles.available}
         label="DOSTĘPNOŚĆ"
         type="switch"
-        id="available"
+        id="productAvailabilitySwitch"
       />
     </aside>
   );

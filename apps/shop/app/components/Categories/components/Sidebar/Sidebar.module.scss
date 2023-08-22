@@ -1,5 +1,10 @@
 @use '../../../../styles/shop-variables';
 
+$sidebarWidth: 267px;
+$sidebarHeight: 455px;
+$sidebarTitleBorderWidth: 1px;
+$sidebarTitleFontSize: 15px;
+
 $spacer: shop-variables.$spacers;
 $pallete: shop-variables.$theme-colors;
 
@@ -7,17 +12,17 @@ $pallete: shop-variables.$theme-colors;
   display: flex;
   flex-direction: column;
   justify-content: stretch;
-  width: 267px;
-  height: 455px;
+  width: $sidebarWidth;
+  height: $sidebarHeight;
   align-self: self-start;
 }
 
 .title {
   margin: map-get($spacer, 8);
   display: flex;
-  border-bottom: 1px solid map-get($pallete, lopi-grey);
-  padding-bottom: 10px;
-  font-size: 15px;
+  border-bottom: $sidebarTitleBorderWidth solid map-get($pallete, lopi-grey);
+  padding-bottom: map-get($spacer, 7);
+  font-size: $sidebarTitleFontSize;
   text-transform: uppercase;
 
   &:last-child {
@@ -52,9 +57,9 @@ $pallete: shop-variables.$theme-colors;
   background-color: transparent;
   justify-content: center;
   align-items: center;
-  border: 1px solid #4b5945;
+  border: $sidebarTitleBorderWidth solid map-get($pallete, lopi-green);
   border-radius: 50%;
-  color: #4b5945;
+  color: map-get($pallete, lopi-green);
 }
 
 .activeBadge {

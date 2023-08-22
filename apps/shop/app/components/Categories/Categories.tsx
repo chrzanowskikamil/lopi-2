@@ -14,6 +14,7 @@ interface CategoriesProps {
   content: string[];
   products: ProductsResponse;
 }
+
 export const Categories: FC<CategoriesProps> = ({
   title,
   content,
@@ -33,13 +34,19 @@ export const Categories: FC<CategoriesProps> = ({
   return (
     <Container>
       <Row>
-        <h1 className={styles.title}>{title}</h1>
+        <Col>
+          <h1 className={styles.title}>{title}</h1>
+        </Col>
       </Row>
       <Row>
-        <Breadcrumbs category={title} />
+        <Col>
+          <Breadcrumbs category={title} />
+        </Col>
       </Row>
       <Row>
-        <SortDropdown />
+        <Col>
+          <SortDropdown />
+        </Col>
       </Row>
       <Row>
         <Col xl={2}>
@@ -47,11 +54,11 @@ export const Categories: FC<CategoriesProps> = ({
         </Col>
         <Col xl={10}>
           <Products products={{ ...initalProducts, products: allProducts }} />
-          <Row className="justify-content-center">
+          <Col className="text-center">
             <Button className={styles.button} onClick={loadMoreProducts}>
               pokaż więcej
             </Button>
-          </Row>
+          </Col>
         </Col>
       </Row>
     </Container>

@@ -1,10 +1,13 @@
 // @import 'bootstrap/scss/variables';
 //Implement configs according to the ones from bootstrap scss file
 
+//fonts:
 $h1-font-size: 1.875rem;
 
+//buttons
 $btn-padding-y: 0.625rem;
 $btn-padding-x: 1rem;
+$btn-border-width: 0.125rem;
 
 $theme-colors: (
   'lopi-black': #000,
@@ -39,6 +42,7 @@ $spacers: (
   54: $spacer * 5,
   6: $spacer * 6,
   35: $spacer * 2.188,
+  60: $spacer * 3.75,
 );
 
 $grid-breakpoints: (

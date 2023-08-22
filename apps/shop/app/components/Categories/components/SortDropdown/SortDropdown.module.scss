@@ -1,12 +1,22 @@
+@use '../../../../styles/shop-variables';
+
+$sortDropdownMargin: 355px;
+$sortDropdownBorderWidth: 1px;
+$sortDropdownFontSize: 15px;
+$sortDropdownWidth: 261px;
+$sortDropdownHeight: 53px;
+
+$pallete: shop-variables.$theme-colors;
+
 .dropdown {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 355px;
-  border: 1px solid #c9cdc7;
+  margin-left: $sortDropdownMargin;
+  border: $sortDropdownBorderWidth solid map-get($pallete, lopi-grey);
   background-color: transparent;
-  color: #4b5945;
-  width: 261px;
-  height: 53px;
-  font-size: 15px;
+  color: map-get($pallete, lopi-green);
+  width: $sortDropdownWidth;
+  height: $sortDropdownHeight;
+  font-size: $sortDropdownFontSize;
 }

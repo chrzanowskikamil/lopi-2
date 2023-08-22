@@ -1,5 +1,4 @@
 import { createContext, useContext, ReactNode, useState, FC } from 'react';
-
 interface Product {
   id: number;
   name: string;
@@ -17,6 +16,7 @@ interface CartContextProps {
   decreaseQuantity: (id: number) => void;
   getQuantityForProduct: (id: number) => number;
 }
+
 // INFO: This is mock data. It will be replaced by data from API in future ;).
 const data: Product[] = [
   { id: 1, name: 'Ethiopia Emerald', price: 120, quantity: 1 },
