@@ -16,23 +16,18 @@ import AddProductPopup from './AddProductPopup';
 
 import { ProductSchema } from '../Product.schema';
 
-import { initialState, productReducer } from '../ProductReducerHook';
+import useProductReducer from '../ProductReducerHook';
 
 const AddProduct: React.FC = () => {
   const { Formik } = formik;
 
-  const [state, dispatch] = useReducer(productReducer, initialState);
+  const productReducer = useProductReducer();
 
   return (
     <Container>
       <Formik
         validationSchema={ProductSchema}
-        onSubmit={(values) => {
-          dispatch({
-            type: 'on_submit',
-            values,
-          });
-        }}
+        onSubmit={(values) => productReducer.onSubmit(values)}
         initialValues={{
           categoryPick: '',
           productPick: '',
@@ -84,7 +79,7 @@ const AddProduct: React.FC = () => {
                     <Form.Control
                       type="text"
                       required
-                      disabled={state.blocked}
+                      disabled={productReducer.state.blocked}
                       name="productName"
                       placeholder="Product"
                       value={values.productName}
@@ -102,7 +97,7 @@ const AddProduct: React.FC = () => {
                     <Form.Control
                       required
                       type="number"
-                      disabled={state.blocked}
+                      disabled={productReducer.state.blocked}
                       name="productCount"
                       placeholder="How many?"
                       value={values.productCount}
@@ -122,7 +117,7 @@ const AddProduct: React.FC = () => {
                     <Form.Control
                       required
                       type="file"
-                      disabled={state.blocked}
+                      disabled={productReducer.state.blocked}
                       id="file"
                       name="file"
                       onChange={handleChange}
@@ -139,19 +134,14 @@ const AddProduct: React.FC = () => {
                   </Form.Group>
                 </Row>{' '}
                 <AddProductPopup
-                  show={state.modalShow}
-                  state={state}
-                  onHide={() => {
-                    dispatch({
-                      type: 'on_hide',
-                      values,
-                    });
-                  }}
-                  handleInPopupSubmit={() => {
-                    dispatch({ type: 'on_submit_popup', values });
-                  }}
+                  show={productReducer.state.modalShow}
+                  state={productReducer.state}
+                  onHide={() => productReducer.onHide(values)}
+                  handleInPopupSubmit={() =>
+                    productReducer.onSubmitPopup(values)
+                  }
                   closeSubmitedPopup={() => {
-                    dispatch({ type: 'close_submited_popup', values });
+                    productReducer.closeSubmitedPopup(values);
                     handleReset();
                   }}
                 />
@@ -167,7 +157,7 @@ const AddProduct: React.FC = () => {
                   <Button
                     variant="secondary"
                     className={style.button}
-                    disabled={state.blocked}
+                    disabled={productReducer.state.blocked}
                     onClick={handleReset}
                   >
                     Reset form

@@ -4,8 +4,6 @@ import style from '../ProductManagment.module.scss';
 
 import * as formik from 'formik';
 
-import { useReducer } from 'react';
-
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
@@ -14,22 +12,18 @@ import Form from 'react-bootstrap/Form';
 import OnRemovePopup from './RemoveProductPopup';
 
 import { RemoveProductSchema } from '../Product.schema';
-import { initialState, productReducer } from '../ProductReducerHook';
+
+import useProductReducer from '../ProductReducerHook';
 
 const RemoveProductChoice: React.FC = () => {
   const { Formik } = formik;
 
-  const [state, dispatch] = useReducer(productReducer, initialState);
+  const productReducer = useProductReducer();
 
   return (
     <Formik
       validationSchema={RemoveProductSchema}
-      onSubmit={async (values) => {
-        dispatch({
-          type: 'on_submit',
-          values,
-        });
-      }}
+      onSubmit={(values) => productReducer.onSubmit(values)}
       initialValues={{
         categoryPick: '',
         productPick: '',
@@ -80,21 +74,15 @@ const RemoveProductChoice: React.FC = () => {
                   <option>Throuser 0 file.svg</option>
                 </Form.Select>
                 <OnRemovePopup
-                  show={state.modalShow}
-                  state={state}
-                  onHide={() => {
-                    dispatch({
-                      type: 'on_hide',
-                      values,
-                    });
-                  }}
-                  handleInPopupSubmit={() => {
-                    dispatch({ type: 'on_submit_popup', values });
-                  }}
-                  closeSubmitedPopup={() => {
-                    dispatch({ type: 'close_submited_popup', values });
-                    handleReset();
-                  }}
+                  show={productReducer.state.modalShow}
+                  state={productReducer.state}
+                  onHide={() => productReducer.onHide(values)}
+                  handleInPopupSubmit={() =>
+                    productReducer.onSubmitPopup(values)
+                  }
+                  closeSubmitedPopup={() => (
+                    productReducer.closeSubmitedPopup(values), handleReset()
+                  )}
                 />
 
                 {values.categoryPick !==

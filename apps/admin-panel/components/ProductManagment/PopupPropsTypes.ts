@@ -1,6 +1,4 @@
 export type PopupProps = {
-  handleInPopupSubmit: VoidFunction;
-  closeSubmitedPopup: VoidFunction;
   state: {
     popupSubmited: boolean;
     blocked: boolean;
@@ -14,7 +12,8 @@ export type PopupProps = {
       file: null | string;
     };
   };
-
-  show: boolean;
+  closeSubmitedPopup: VoidFunction;
+  handleInPopupSubmit: VoidFunction;
   onHide: VoidFunction;
+  show: boolean;
 };

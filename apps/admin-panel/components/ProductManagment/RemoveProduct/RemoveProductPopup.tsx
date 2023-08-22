@@ -14,7 +14,7 @@ const OnRemovePopup: React.FC<PopupProps> = ({
   const title = `Remove`;
   const body = (
     <span>
-      Are you sure you want to remove product: ${state.inputData.productPick}
+      Are you sure you want to remove product: {state.inputData.productPick}
       product from the shop?
     </span>
   );

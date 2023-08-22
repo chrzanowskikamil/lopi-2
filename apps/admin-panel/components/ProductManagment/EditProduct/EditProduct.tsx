@@ -15,23 +15,19 @@ import Row from 'react-bootstrap/Row';
 import OnEditPopup from './EditProductPopup';
 
 import { EditProductSchema } from '../Product.schema';
-import { initialState, productReducer } from '../ProductReducerHook';
+
+import useProductReducer from '../ProductReducerHook';
 
 const ProductEdit: React.FC = () => {
   const { Formik } = formik;
 
-  const [state, dispatch] = useReducer(productReducer, initialState);
+  const productReducer = useProductReducer();
 
   return (
     <Container>
       <Formik
         validationSchema={EditProductSchema}
-        onSubmit={async (values) => {
-          dispatch({
-            type: 'on_submit',
-            values,
-          });
-        }}
+        onSubmit={(values) => productReducer.onSubmit(values)}
         initialValues={{
           categoryPick: '',
           productPick: '',
@@ -106,7 +102,7 @@ const ProductEdit: React.FC = () => {
                         <Form.Control
                           type="text"
                           required
-                          disabled={state.blocked}
+                          disabled={productReducer.state.blocked}
                           name="productName"
                           placeholder="Product"
                           value={values.productName}
@@ -132,7 +128,7 @@ const ProductEdit: React.FC = () => {
                         <Form.Control
                           required
                           type="number"
-                          disabled={state.blocked}
+                          disabled={productReducer.state.blocked}
                           name="productCount"
                           placeholder="How many?"
                           value={values.productCount}
@@ -154,7 +150,7 @@ const ProductEdit: React.FC = () => {
                         <Form.Control
                           required
                           type="file"
-                          disabled={state.blocked}
+                          disabled={productReducer.state.blocked}
                           id="file"
                           name="file"
                           onChange={handleChange}
@@ -171,21 +167,15 @@ const ProductEdit: React.FC = () => {
                       </Form.Group>
                     </Row>
                     <OnEditPopup
-                      show={state.modalShow}
-                      state={state}
-                      onHide={() => {
-                        dispatch({
-                          type: 'on_hide',
-                          values,
-                        });
-                      }}
-                      handleInPopupSubmit={() => {
-                        dispatch({ type: 'on_submit_popup', values });
-                      }}
-                      closeSubmitedPopup={() => {
-                        dispatch({ type: 'close_submited_popup', values });
-                        handleReset();
-                      }}
+                      show={productReducer.state.modalShow}
+                      state={productReducer.state}
+                      onHide={() => productReducer.onHide(values)}
+                      handleInPopupSubmit={() =>
+                        productReducer.onSubmitPopup(values)
+                      }
+                      closeSubmitedPopup={() => (
+                        productReducer.closeSubmitedPopup(values), handleReset()
+                      )}
                     />
                     <div className={style.buttonsFlex}>
                       <Button
@@ -199,7 +189,7 @@ const ProductEdit: React.FC = () => {
                       <Button
                         variant="secondary"
                         className={style.button}
-                        disabled={state.blocked}
+                        disabled={productReducer.state.blocked}
                         onClick={handleReset}
                       >
                         Reset form
