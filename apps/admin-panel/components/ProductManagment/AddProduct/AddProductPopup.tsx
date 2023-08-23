@@ -3,39 +3,36 @@
 import SaveChangesModal from '../Components/SaveChangesModal';
 import CloseWindowModal from '../Components/CloseWindowModal';
 
-import { PopupProps } from '../PopupPropsTypes';
+import { FormikValues, useFormikContext } from 'formik';
 
-const AddProductPopup: React.FC<PopupProps> = ({
-  handleInPopupSubmit,
-  closeSubmitedPopup,
-  state,
-  ...others
-}) => {
+import { ProductReducerProps } from '../ProductReducerHook';
+
+const AddProductPopup: React.FC<ProductReducerProps> = ({ productReducer }) => {
+  const { values } = useFormikContext<FormikValues>();
   const title = 'You have just created a new product.';
   const body = (
     <>
       <span>
         Category you are adding to is: &nbsp;
-        {state.inputData.categoryPick}.
+        {values.categoryPick}.
       </span>
       <span>
         Product name: &nbsp;
-        {state.inputData.productName}.
+        {values.productName}.
       </span>
-      <span> Product count: &nbsp;{state.inputData.productCount}.</span>
-      <span>Picture: &nbsp;{state.inputData.file}.</span>
+      <span> Product count: &nbsp;{values.productCount}.</span>
+      <span>Picture: &nbsp;{values.file}.</span>
     </>
   );
 
-  return !state.popupSubmited ? (
+  return !productReducer.state.popupSubmited ? (
     <SaveChangesModal
-      handleInPopupSubmit={handleInPopupSubmit}
-      others={others}
+      productReducer={productReducer}
       title={title}
       body={body}
     />
   ) : (
-    <CloseWindowModal closeSubmitedPopup={closeSubmitedPopup} others={others} />
+    <CloseWindowModal productReducer={productReducer} />
   );
 };
 

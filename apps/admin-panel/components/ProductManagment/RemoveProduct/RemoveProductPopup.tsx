@@ -3,31 +3,28 @@
 import SaveChangesModal from '../Components/SaveChangesModal';
 import CloseWindowModal from '../Components/CloseWindowModal';
 
-import { PopupProps } from '../PopupPropsTypes';
+import { FormikValues, useFormikContext } from 'formik';
 
-const OnRemovePopup: React.FC<PopupProps> = ({
-  state,
-  handleInPopupSubmit,
-  closeSubmitedPopup,
-  ...others
-}) => {
+import { ProductReducerProps } from '../ProductReducerHook';
+
+const OnRemovePopup: React.FC<ProductReducerProps> = ({ productReducer }) => {
+  const { values } = useFormikContext<FormikValues>();
   const title = `Remove`;
   const body = (
     <span>
-      Are you sure you want to remove product: {state.inputData.productPick}
+      Are you sure you want to remove product: {values.productPick}
       product from the shop?
     </span>
   );
 
-  return !state.popupSubmited ? (
+  return !productReducer.state.popupSubmited ? (
     <SaveChangesModal
-      handleInPopupSubmit={handleInPopupSubmit}
-      others={others}
+      productReducer={productReducer}
       title={title}
       body={body}
     />
   ) : (
-    <CloseWindowModal closeSubmitedPopup={closeSubmitedPopup} others={others} />
+    <CloseWindowModal productReducer={productReducer} />
   );
 };
 

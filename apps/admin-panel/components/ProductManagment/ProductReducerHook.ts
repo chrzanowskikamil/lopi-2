@@ -1,6 +1,15 @@
 import { useReducer } from 'react';
 
-interface StateProps {
+export interface ProductReducerProps {
+  productReducer: {
+    state: StateProps;
+    onSubmit: (values: ValuesOnDispatchProps) => Promise<void>;
+    onHide: (values: ValuesOnDispatchProps) => void;
+    onSubmitPopup: (values: ValuesOnDispatchProps) => void;
+    closeSubmitedPopup: (values: ValuesOnDispatchProps) => void;
+  };
+}
+export interface StateProps {
   blocked: boolean;
   modalShow: boolean;
   popupSubmited: boolean;
@@ -82,7 +91,7 @@ const initialState: StateProps = {
   },
 };
 
-interface ValuesProps {
+export interface ValuesOnDispatchProps {
   categoryPick: string;
   productPick: string;
   productName: string;
@@ -94,25 +103,25 @@ interface ValuesProps {
 const useProductReducer = () => {
   const [state, dispatch] = useReducer(productReducer, initialState);
 
-  const onSubmit = async (values: ValuesProps) => {
+  const onSubmit = async (values: ValuesOnDispatchProps) => {
     dispatch({
       type: 'on_submit',
       values,
     });
   };
 
-  const onSubmitPopup = (values: ValuesProps) => {
+  const onSubmitPopup = (values: ValuesOnDispatchProps) => {
     dispatch({
       type: 'on_submit_popup',
       values,
     });
   };
 
-  const closeSubmitedPopup = (values: ValuesProps) => {
+  const closeSubmitedPopup = (values: ValuesOnDispatchProps) => {
     dispatch({ type: 'close_submited_popup', values });
   };
 
-  const onHide = (values: ValuesProps) => {
+  const onHide = (values: ValuesOnDispatchProps) => {
     dispatch({ type: 'on_hide', values });
   };
 

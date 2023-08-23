@@ -3,34 +3,32 @@
 import SaveChangesModal from '../Components/SaveChangesModal';
 import CloseWindowModal from '../Components/CloseWindowModal';
 
-import { PopupProps } from '../PopupPropsTypes';
+import { FormikValues, useFormikContext } from 'formik';
 
-const OnEditPopup: React.FC<PopupProps> = ({
-  state,
-  handleInPopupSubmit,
-  closeSubmitedPopup,
-  ...others
-}) => {
-  const title = `Are you sure you want to change product from category ${state.inputData.categoryPick} `;
+import { ProductReducerProps } from '../ProductReducerHook';
+
+const OnEditPopup: React.FC<ProductReducerProps> = ({ productReducer }) => {
+  const { values } = useFormikContext<FormikValues>();
+  const title = `Are you sure you want to change product from category ${values.categoryPick} `;
   const body = (
     <>
       <span>Product name: </span>
-      <span>From: Old product name To: {state.inputData.productName}</span>
+      <span>From: Old product name To: {values.productName}</span>
       <span>Product count:</span>
-      <span>From: Old product count To: {state.inputData.productCount}</span>
+      <span>From: Old product count To: {values.productCount}</span>
       <span> Picture:</span>
-      <span>From: Old product picture To: {state.inputData.file}</span>
+      <span>From: Old product picture To: {values.file}</span>
     </>
   );
-  return !state.popupSubmited ? (
+
+  return !productReducer.state.popupSubmited ? (
     <SaveChangesModal
-      handleInPopupSubmit={handleInPopupSubmit}
-      others={others}
+      productReducer={productReducer}
       title={title}
       body={body}
     />
   ) : (
-    <CloseWindowModal closeSubmitedPopup={closeSubmitedPopup} others={others} />
+    <CloseWindowModal productReducer={productReducer} />
   );
 };
 

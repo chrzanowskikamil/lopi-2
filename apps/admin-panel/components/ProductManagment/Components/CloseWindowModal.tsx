@@ -3,22 +3,26 @@ import Modal from 'react-bootstrap/Modal';
 
 import { FC } from 'react';
 
-type CloseWindowModalProps = {
-  closeSubmitedPopup: VoidFunction;
-  others: { show: boolean; onHide: VoidFunction };
-};
+import { useFormikContext } from 'formik';
 
-const CloseWindowModal: FC<CloseWindowModalProps> = ({
-  closeSubmitedPopup,
-  others,
-}) => {
+import {
+  ProductReducerProps,
+  ValuesOnDispatchProps,
+} from '../ProductReducerHook';
+
+const CloseWindowModal: FC<ProductReducerProps> = ({ productReducer }) => {
+  const { handleReset, values } = useFormikContext<ValuesOnDispatchProps>();
+
   return (
     <Modal
-      {...others}
+      show={productReducer.state.modalShow}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
-      onHide={closeSubmitedPopup}
+      onHide={() => {
+        productReducer.closeSubmitedPopup(values);
+        handleReset();
+      }}
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
@@ -29,7 +33,13 @@ const CloseWindowModal: FC<CloseWindowModalProps> = ({
         <p>Success!</p>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="primary" onClick={closeSubmitedPopup}>
+        <Button
+          variant="primary"
+          onClick={() => {
+            productReducer.closeSubmitedPopup(values);
+            handleReset();
+          }}
+        >
           Close the window.
         </Button>
       </Modal.Footer>
