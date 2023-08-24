@@ -1,8 +1,7 @@
 import { createContext, useContext, ReactNode, useState, FC } from 'react';
-interface Product {
-  id: number;
-  name: string;
-  price: number;
+import { ProductCart } from 'apps/shop/types/ProductCart';
+
+interface Product extends ProductCart {
   quantity: number;
 }
 
@@ -68,18 +67,13 @@ export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const handleDecreaseQuantity = (id: number) => {
     setProductsInCart((prevProducts) =>
-      prevProducts
-        .map((product) => {
-          if (product.id === id) {
-            const newQuantity = product.quantity - 1;
-            if (newQuantity <= 0) {
-              return null;
-            }
-            return { ...product, quantity: newQuantity };
-          }
-          return product;
-        })
-        .filter((product): product is Product => product !== null)
+      prevProducts.map((product) => {
+        if (product.id === id && product.quantity > 1) {
+          const newQuantity = product.quantity - 1;
+          return { ...product, quantity: newQuantity };
+        }
+        return product;
+      })
     );
   };
 

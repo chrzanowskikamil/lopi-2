@@ -19,7 +19,7 @@ interface CartItemsProps {
 export const CartItems: FC<CartItemsProps> = ({ products }) => {
   return (
     <Container className={style.body}>
-      <h1 className={style.title}>Twój koszyk</h1>
+      <span className={style.title}>Twój koszyk</span>
       <CartProduct products={products} />
       <CartSummary />
     </Container>

@@ -6,15 +6,15 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border: 1px solid #d9d9d9;
-  min-width: 518px;
-  min-height: 528px;
-  margin: 28px 30px 30px 30px;
-  padding: 50px 32px 32px 32px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   gap: 25px;
+  margin: 28px 30px 30px 30px;
+  border: 1px solid var(--theme-brown);
+  padding: 50px 32px 32px 32px;
+  min-width: 518px;
+  min-height: 528px;
 }
 
 .input {
@@ -25,70 +25,71 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 12px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  text-align: start;
-  font-size: 16px;
   gap: 6px;
+  padding: 12px;
+  font-size: 16px;
+  text-align: start;
 }
 
 .inputWithIcon {
-  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  position: relative;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -ms-flex-item-align: center;
       align-self: center;
 }
 
 .showPasswordButton {
+  position: absolute;
+  top: 43%;
+  right: 20px;
   -ms-flex-item-align: center;
       align-self: center;
-  background: none;
-  border: none;
-  position: absolute;
-  right: 20px;
-  top: 43%;
-  font-size: 18px;
   -webkit-transform: translateY(-45%);
           transform: translateY(-45%);
+  border: none;
+  background: none;
+  font-size: 18px;
 }
 .showPasswordButton:hover, .showPasswordButton:focus {
   -webkit-box-shadow: none;
           box-shadow: none;
-  color: #05f2f2;
   background: none;
+  color: var(--theme-orange);
 }
 
 .submitButton {
   margin-top: 10px;
-  background-color: #05f2f2;
   border: none;
+  background-color: var(--theme-brown);
   padding: 10px 16px;
+  color: var(--theme-orange);
 }
 .submitButton:disabled {
-  color: black;
   background-color: gray;
+  color: black;
 }
 .submitButton:hover {
-  background-color: #05f2f2;
+  background-color: var(--theme-orange);
 }
 .submitButton:focus {
-  border: 0;
   -webkit-box-shadow: none;
           box-shadow: none;
+  border: 0;
 }
 
 .loginButton {
-  color: #05f2f2;
-  border-color: #d9d9d9;
+  border-color: var(--theme-orange);
   padding: 10px 16px;
+  color: var(--theme-orange);
 }/*# sourceMappingURL=SignUpForm.module.css.map */

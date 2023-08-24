@@ -1,16 +1,24 @@
+@use '../../../../../../../../../styles/shop-variables';
+@import '../../../../../../../../../styles/mixins/flex-center';
+
+$pallete: shop-variables.$theme-colors;
+$spacer: shop-variables.$spacers;
+$menu-width: 100%;
+$menu-height: 30px;
+$borderButtonWidth: 1px;
+$paragraphWidth: 65%;
+
 .menu {
   display: flex;
-  width: 100%;
-  height: 30px;
-  margin-bottom: 15px;
+  width: $menu-width;
+  height: $menu-height;
+  margin-bottom: map-get($spacer, 8);
 
   > button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center();
     flex-grow: 1;
     background-color: transparent;
-    border: 1px solid gray;
+    border: $borderButtonWidth solid map-get($pallete, lopi-grey);
 
     &:hover {
       cursor: pointer;
@@ -19,13 +27,10 @@
   }
 
   > p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-basis: 65%;
-    font-size: 14px;
+    @include flex-center();
+    flex-basis: $paragraphWidth;
     font-weight: 700;
     text-transform: uppercase;
-    border: 1px solid gray;
+    border: $borderButtonWidth solid map-get($pallete, lopi-grey);
   }
 }

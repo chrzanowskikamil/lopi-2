@@ -1,0 +1,6 @@
+@mixin sidebar-badge() {
+  display: flex;
+  background-color: transparent;
+  align-items: center;
+  border-radius: 50%;
+}

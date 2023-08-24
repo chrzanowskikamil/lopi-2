@@ -1,4 +1,45 @@
 .footer {
+  font-family: "Outfit";
+}
+
+.footerDesktop {
+  display: none;
+}
+
+.footerMiddle .footerElement,
+.footerTop .footerElement {
+  margin: 0.25rem;
+}
+
+.footerMobile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  background-color: #0f2615;
+  padding-top: 1rem;
+  width: 100%;
+  max-height: 850px;
+  overflow: hidden;
+  color: #f2efe9;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.footerMobile .footerTitle {
+  margin-bottom: 1rem !important;
+  color: #ff9a17;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+}
+.footerMobile .footerTop,
+.footerMobile .footerMiddle {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -6,27 +47,57 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  background-color: black;
-  padding: 69px 0 0 0;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.footerMobile .footerTop > ul > li,
+.footerMobile .footerMiddle > ul > li {
+  margin-bottom: 0.4rem;
+}
+.footerMobile .footerTop {
+  margin: 0 1.5rem;
+}
+.footerMobile .footerTop .footerContactInfo {
+  margin-top: 1rem;
+}
+.footerMobile .footerMiddle {
+  margin: 3rem 1.5rem 0 1.5rem;
+}
+.footerMobile .element {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 1.25rem;
+}
+.footerMobile .element .footerBottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   width: 100%;
-  height: 348px;
-  color: #868686;
-  font-size: 15px;
-  line-height: 25px;
+  width: 290px;
+  height: 272px;
+  overflow: hidden;
 }
-.footer .footerTitle {
-  padding-bottom: 15px;
-  color: white;
-  text-transform: uppercase;
-}
-.footer > ul > li {
-  padding-bottom: 7px;
-}
-
-.footerContactInfo {
-  padding-top: 15px;
+@media (min-width: 576px) {
+  .footerMobile .element .footerBottom {
+    width: 320px;
+  }
 }
 
 .footerSocial {
@@ -36,15 +107,11 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-top: 30px;
+  padding-top: 2rem;
 }
-
-.footerSocialElements {
-  margin-right: 15px;
-}
-
-.footerSubscription {
-  padding-left: 320px;
+.footerSocial .footerSocialElements {
+  margin-right: 1rem;
+  color: #ff9a17;
 }
 
 .footerSubscriptionForm {
@@ -55,23 +122,146 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  padding-top: 25px;
+  margin-top: 1.5rem;
+  color: #ff9a17;
 }
-
-.footerSubscriptionFormInput:enabled {
+.footerSubscriptionForm .footerSubscriptionFormInput {
+  background: #0f2615;
+  width: 272px;
+}
+.footerSubscriptionForm .footerSubscriptionFormInput:enabled {
   border: none;
-  border-bottom: white solid 1px;
+  border-bottom: #ff9a17 solid 1px;
+  color: #f2efe9;
 }
-
-.footerSubscriptionFormInput {
-  background: #000;
-  width: 120px;
-  color: white;
+.footerSubscriptionForm .footerSubscriptionFormInput::-webkit-input-placeholder {
+  color: #f2efe9;
 }
-
-.footerSubscriptionFormButton {
-  margin-left: 10px;
-  border-bottom: white solid 1px;
-  width: 40px;
+.footerSubscriptionForm .footerSubscriptionFormInput::-moz-placeholder {
+  color: #f2efe9;
+}
+.footerSubscriptionForm .footerSubscriptionFormInput:-ms-input-placeholder {
+  color: #f2efe9;
+}
+.footerSubscriptionForm .footerSubscriptionFormInput::-ms-input-placeholder {
+  color: #f2efe9;
+}
+.footerSubscriptionForm .footerSubscriptionFormInput::placeholder {
+  color: #f2efe9;
+}
+.footerSubscriptionForm .footerSubscriptionFormButton {
+  margin-left: 0.75rem;
+  border-bottom: #ff9a17 solid 1px;
+  width: 2.5rem;
+  color: #ff9a17;
   text-align: center;
+}
+
+.footerMobile {
+  padding-top: 2.5rem;
+}
+.footerMobile .footerTop {
+  margin: 0 2.5rem;
+}
+.footerMobile .footerMiddle {
+  margin: 3rem 2.5rem 0 2.5rem;
+}
+.footerMobile .footerBottom {
+  padding-top: 4.5rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 576px) {
+  .footerMobile {
+    padding-top: 3rem;
+  }
+  .footerMobile .footerTop {
+    margin: 0 6rem;
+  }
+  .footerMobile .footerMiddle {
+    margin: 50px 6rem 0 6rem;
+  }
+}
+@media (min-width: 768px) {
+  .footerMobile {
+    padding-top: 4rem;
+  }
+  .footerMobile .footerTop {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    margin: 0 6rem;
+  }
+  .footerMobile .footerMiddle {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    margin: 3rem 6rem 0 6rem;
+  }
+}
+@media (min-width: 992px) {
+  .footerMobile {
+    display: none;
+  }
+  .footerDesktop {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    background-color: #0f2615;
+    padding: 4.5rem 0;
+    padding-left: 5rem;
+    width: 100%;
+    max-height: 850px;
+    overflow: hidden;
+    color: #f2efe9;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .footerDesktop .footerTitle {
+    margin-bottom: 1rem;
+    color: #ff9a17;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+  }
+  .footerDesktop .footerGroup {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 4;
+        -ms-flex-positive: 4;
+            flex-grow: 4;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    max-width: 1000px;
+  }
+  .footerDesktop .footerGroup > ul > li {
+    margin-bottom: 0.5rem;
+  }
+  .footerDesktop .footerContactInfo {
+    margin-top: 1rem;
+  }
+  .footerDesktop .footerBottom {
+    margin: 0 2.5rem 0 150px;
+    width: 167px;
+    font-size: 1rem;
+  }
+  .footerDesktop .footerBottom .footerSubscriptionFormInput {
+    width: 117px;
+  }
+}
+@media (min-width: 1400px) {
+  .footerDesktop .footerBottom {
+    margin-right: 2.5rem;
+    margin-left: 400px;
+  }
 }/*# sourceMappingURL=Footer.module.css.map */

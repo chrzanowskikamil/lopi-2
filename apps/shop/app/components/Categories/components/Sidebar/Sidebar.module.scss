@@ -1,4 +1,6 @@
 @use '../../../../styles/shop-variables';
+@import '../../../../styles/mixins/sidebar-list-items';
+@import '../../../../styles/mixins/sidebar-badge';
 
 $sidebarWidth: 267px;
 $sidebarHeight: 455px;
@@ -18,8 +20,8 @@ $pallete: shop-variables.$theme-colors;
 }
 
 .title {
-  margin: map-get($spacer, 8);
   display: flex;
+  margin: map-get($spacer, 8);
   border-bottom: $sidebarTitleBorderWidth solid map-get($pallete, lopi-grey);
   padding-bottom: map-get($spacer, 7);
   font-size: $sidebarTitleFontSize;
@@ -31,53 +33,42 @@ $pallete: shop-variables.$theme-colors;
 }
 
 .categoryList {
+  display: flex;
   text-transform: capitalize;
   margin-bottom: map-get($spacer, 35);
-  display: flex;
   opacity: 0.7;
 }
 
 .listItem {
-  display: flex;
-  border: none;
-  justify-content: space-between;
-  background-color: transparent;
+  @include sidebar-list-items();
 }
 
 .activeListItem {
-  display: flex;
-  border: none;
-  justify-content: space-between;
-  background-color: transparent;
-  color: #ff9a17;
+  @include sidebar-list-items();
+  color: map-get($pallete, lopi-orange);
 }
 
 .badge {
-  display: flex;
-  background-color: transparent;
-  justify-content: center;
-  align-items: center;
+  @include sidebar-badge();
   border: $sidebarTitleBorderWidth solid map-get($pallete, lopi-green);
-  border-radius: 50%;
   color: map-get($pallete, lopi-green);
 }
 
 .activeBadge {
-  display: flex;
-  align-items: center;
-  border: 1px solid #ff9a17;
-  border-radius: 50%;
-  color: #ff9a17;
+  @include sidebar-badge();
+  border: $sidebarTitleBorderWidth solid map-get($pallete, lopi-orange);
+  color: map-get($pallete, lopi-orange);
 }
 
 .available {
-  font-size: 15px;
-  margin-top: 15px;
   display: flex;
-  padding: 0 14px;
+  font-size: $sidebarTitleFontSize;
+  margin-top: map-get($spacer, 22);
+  padding: 0 map-get($spacer, 22);
   justify-content: space-between;
   flex-direction: row-reverse;
   box-shadow: none;
+  z-index: 1;
 
   & input[type='checkbox'] {
     border: none;
@@ -85,7 +76,7 @@ $pallete: shop-variables.$theme-colors;
   }
 
   & input:checked {
-    background-color: #ff9a17;
+    background-color: map-get($pallete, lopi-orange);
     box-shadow: none;
   }
 }

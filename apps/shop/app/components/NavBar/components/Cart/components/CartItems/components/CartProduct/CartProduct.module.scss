@@ -1,18 +1,18 @@
+@use '../../../../../../../../styles/shop-variables';
+
+$spacer: shop-variables.$spacers;
+$productsContainerWidth: 100%;
+
 .products {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  margin-bottom: 5px;
+  width: $productsContainerWidth;
 }
 
 .product {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  > p:last-child {
-    font-weight: 700;
-  }
 }

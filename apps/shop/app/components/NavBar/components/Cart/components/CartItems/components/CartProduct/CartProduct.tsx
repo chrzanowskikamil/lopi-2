@@ -3,27 +3,20 @@ import style from './CartProduct.module.scss';
 import { Container } from 'react-bootstrap';
 import { CartMenu } from './CartMenu/CartMenu';
 import { FC, Fragment } from 'react';
-import { useCart } from 'apps/shop/app/context/CartContext';
-
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-}
+import { useCart } from 'apps/shop/app/contexts/CartContext';
+import { ProductCart } from 'apps/shop/types/ProductCart';
 
 interface CartProductProps {
-  products: Product[];
+  products: ProductCart[];
 }
 
 export const CartProduct: FC<CartProductProps> = ({ products }) => {
   const { getQuantityForProduct } = useCart();
   const productsList = products.map((product) => (
     <Fragment key={product.id}>
-      <Container className={style.product}>
-        <img src="https://via.placeholder.com/64" alt="Picture of the author" />
-        <p>{product.name}</p>
-        <p>{product.price * getQuantityForProduct(product.id)} PLN</p>
-      </Container>
+      <img src="https://via.placeholder.com/64" alt="Picture of the author" />
+      <p>{product.name}</p>
+      <p>{product.price * getQuantityForProduct(product.id)} PLN</p>
       <CartMenu productId={product.id} />
     </Fragment>
   ));

@@ -7,16 +7,14 @@ import { UserIcon } from 'apps/shop/app/assets/SvgIcons/UserIcon';
 import { Button } from '@lopi-2/common';
 import { Cart } from './Cart/Cart';
 import { FC, useState } from 'react';
-import { CartProvider, useCart } from 'apps/shop/app/context/CartContext';
+import { CartProvider, useCart } from 'apps/shop/app/contexts/CartContext';
 
 const Socials: FC = () => {
-  const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
+  const [isCartOpen, setIsCartOpen] = useState<boolean>();
   const { productsInCart } = useCart();
   const productsCounter = productsInCart.length;
 
-  const handleOpenCart = () => {
-    setIsCartOpen(true);
-  };
+  const handleOpenCart = () => setIsCartOpen(true);
 
   const handleCloseCart = () => setIsCartOpen(false);
 

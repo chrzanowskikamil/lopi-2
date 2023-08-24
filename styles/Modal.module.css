@@ -7,42 +7,42 @@
 }
 
 .title {
-  background-color: white;
-  color: #000000;
-  border-bottom: 1px solid #05f2f2;
   position: relative;
-  font-family: Inter;
-  font-size: 20px;
-  width: 160px;
-  padding-bottom: 6px;
-  text-align: center;
   z-index: 1;
   margin-bottom: -130px;
+  border-bottom: 1px solid var(--theme-orange);
+  background-color: var(--theme-white);
+  padding-bottom: 6px;
+  width: 160px;
+  color: #000000;
+  font-size: 20px;
+  font-family: "Quicksand", sans-serif;
+  text-align: center;
 }
 
 .content {
-  background-color: transparent;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border-radius: 0;
+  background-color: transparent;
 }
 
 .body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background-color: white;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: var(--theme-white);
 }/*# sourceMappingURL=Modal.module.css.map */

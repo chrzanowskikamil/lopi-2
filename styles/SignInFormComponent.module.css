@@ -6,102 +6,102 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border: 1px solid #d9d9d9;
-  width: 450px;
-  min-height: 320px;
-  max-height: 402px;
-  margin: 30px 30px 20px 30px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 50px 32px 32px 32px;
   gap: 20px;
+  margin: 30px 30px 20px 30px;
+  border: 1px solid var(--theme-brown);
+  padding: 50px 32px 32px 32px;
+  width: 450px;
+  min-height: 320px;
+  max-height: 432px;
 }
 
 .input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 12px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  text-align: start;
-  font-size: 16px;
   gap: 6px;
+  padding: 12px;
+  font-size: 16px;
+  text-align: start;
 }
 
 .inputWithIcon {
-  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  position: relative;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -ms-flex-item-align: center;
       align-self: center;
 }
 
 .showPasswordButton {
+  position: absolute;
+  top: 45%;
+  right: 20px;
   -ms-flex-item-align: center;
       align-self: center;
-  background: none;
-  border: none;
-  position: absolute;
-  right: 20px;
-  top: 45%;
-  font-size: 18px;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
+  border: none;
+  background: none;
+  font-size: 18px;
 }
 .showPasswordButton:hover, .showPasswordButton:focus {
   -webkit-box-shadow: none;
           box-shadow: none;
-  color: #05f2f2;
   background: none;
+  color: var(--theme-orange);
 }
 
 .forgotPassword {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  padding: 6px 16px;
-  font-size: 15px;
-  text-decoration: none;
-  width: 175px;
-  border-bottom: 1px solid #d9d9d9;
-  color: #868686;
   margin-top: 6px;
-  font-family: "Outfit", sans-serif;
+  border-bottom: 1px solid var(--theme-brown);
+  padding: 6px 16px;
+  width: 175px;
+  color: #868686;
   font-style: normal;
   font-weight: 300;
+  font-size: 15px;
   line-height: 28px;
+  font-family: "Quicksand", sans-serif;
+  text-decoration: none;
 }
 
 .submitButton {
-  background-color: #05f2f2;
   border: none;
+  background-color: var(--theme-orange);
   padding: 10px 16px;
 }
 .submitButton:disabled {
-  color: black;
   background-color: gray;
+  color: black;
 }
 .submitButton:hover {
-  background-color: #05f2f2;
+  background-color: var(--theme-orange);
 }
 .submitButton:focus {
-  border: 0;
   -webkit-box-shadow: none;
           box-shadow: none;
+  border: 0;
 }
 
 .createAccount {
-  color: #05f2f2;
-  border-color: #d9d9d9;
+  border-color: var(--theme-orange);
   padding: 10px 16px;
+  color: var(--theme-orange);
 }/*# sourceMappingURL=SignInFormComponent.module.css.map */

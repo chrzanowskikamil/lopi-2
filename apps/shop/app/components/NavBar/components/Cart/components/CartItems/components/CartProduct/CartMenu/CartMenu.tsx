@@ -2,7 +2,7 @@
 import style from './CartMenu.module.scss';
 import { Container } from 'react-bootstrap';
 import { FC } from 'react';
-import { useCart } from 'apps/shop/app/context/CartContext';
+import { useCart } from 'apps/shop/app/contexts/CartContext';
 
 interface CartMenuProps {
   productId: number;

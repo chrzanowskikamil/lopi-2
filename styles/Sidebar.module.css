@@ -13,16 +13,15 @@
   height: 455px;
   -ms-flex-item-align: self-start;
       align-self: self-start;
-  margin: 0 0 15px 52px;
 }
 
 .title {
-  margin: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin: 0.938rem;
   border-bottom: 1px solid #c9cdc7;
-  padding-bottom: 10px;
+  padding-bottom: 0.625rem;
   font-size: 15px;
   text-transform: uppercase;
 }
@@ -31,11 +30,11 @@
 }
 
 .categoryList {
-  text-transform: capitalize;
-  margin-bottom: 35px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  text-transform: capitalize;
+  margin-bottom: 2.188rem;
   opacity: 0.7;
 }
 
@@ -67,14 +66,11 @@
   display: -ms-flexbox;
   display: flex;
   background-color: transparent;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: 1px solid #4b5945;
   border-radius: 50%;
+  border: 1px solid #4b5945;
   color: #4b5945;
 }
 
@@ -82,21 +78,22 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  background-color: transparent;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: 1px solid #ff9a17;
   border-radius: 50%;
+  border: 1px solid #ff9a17;
   color: #ff9a17;
 }
 
 .available {
-  font-size: 15px;
-  margin-top: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 0 14px;
+  font-size: 15px;
+  margin-top: 0.875rem;
+  padding: 0 0.875rem;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -106,6 +103,7 @@
           flex-direction: row-reverse;
   -webkit-box-shadow: none;
           box-shadow: none;
+  z-index: 1;
 }
 .available input[type=checkbox] {
   border: none;

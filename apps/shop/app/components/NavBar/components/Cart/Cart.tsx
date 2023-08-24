@@ -5,10 +5,10 @@ import { Offcanvas } from 'react-bootstrap';
 import { CartIcon } from 'apps/shop/app/assets/SvgIcons/CartIcon';
 import { EmptyCartMessage } from './components/EmptyCartMessage/EmptyCartMessage';
 import { CartItems } from './components/CartItems/CartItems';
-import { useCart } from 'apps/shop/app/context/CartContext';
+import { useCart } from 'apps/shop/app/contexts/CartContext';
 
 interface CartProps {
-  isOpen: boolean;
+  isOpen: boolean | undefined;
   onClose: VoidFunction;
 }
 
@@ -16,12 +16,11 @@ export const Cart: FC<CartProps> = ({ isOpen, onClose }) => {
   const { productsInCart } = useCart();
   const productsCounter = productsInCart.length;
 
-  const cartView =
-    productsInCart.length === 0 ? (
-      <EmptyCartMessage />
-    ) : (
-      <CartItems products={productsInCart} />
-    );
+  const cartView = !productsInCart.length ? (
+    <EmptyCartMessage />
+  ) : (
+    <CartItems products={productsInCart} />
+  );
 
   return (
     <Offcanvas show={isOpen} onHide={onClose} placement="end">
@@ -32,7 +31,7 @@ export const Cart: FC<CartProps> = ({ isOpen, onClose }) => {
         closeVariant="white"
       >
         <Offcanvas.Title>
-          <div>
+          <div className={style.icon}>
             <div className={style.socialsCounter}>
               <span>{productsCounter}</span>
             </div>

@@ -1,0 +1,6 @@
+@mixin sidebar-list-items() {
+  display: flex;
+  border: none;
+  justify-content: space-between;
+  background-color: transparent;
+}
