@@ -23,6 +23,7 @@ const TileDisplay = () => {
       />
     );
   }
+
   return <li className={style.tileContainer}>{productsDisplay}</li>;
 };
 

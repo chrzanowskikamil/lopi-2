@@ -25,7 +25,9 @@ const NavBar: React.FC = () => {
             <Nav.Link href="/category" as={Link}>
               Category Edit
             </Nav.Link>
-            <Nav.Link href="/page">Page</Nav.Link>
+            <Nav.Link href="/products" as={Link}>
+              Products Edit
+            </Nav.Link>
             <NavDropdown title="Empty" id="collasible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Empty</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Empty</NavDropdown.Item>

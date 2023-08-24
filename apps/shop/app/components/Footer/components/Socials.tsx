@@ -1,9 +1,9 @@
 import style from '../Footer.module.scss';
 
 import { InstagramIcon } from '../../../assets/SvgIcons/InstagramIcon';
-import { FacebookIcon } from 'apps/shop/app/assets/SvgIcons/FacebookIcon';
-import { TwitterIcon } from 'apps/shop/app/assets/SvgIcons/TwitterIcon';
-import { YoutubeIcon } from 'apps/shop/app/assets/SvgIcons/YoutubeIcon';
+import { FacebookIcon } from '../../../assets/SvgIcons/FacebookIcon';
+import { TwitterIcon } from '../../../assets/SvgIcons/TwitterIcon';
+import { YoutubeIcon } from '../../../assets/SvgIcons/YoutubeIcon';
 
 import { FC } from 'react';
 

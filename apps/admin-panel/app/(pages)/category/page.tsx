@@ -23,7 +23,7 @@ const Categories: React.FC = () => {
           </Accordion.Body>
         </Accordion.Item>
         <Accordion.Item eventKey="2">
-          <Accordion.Header>Removeing category area.</Accordion.Header>
+          <Accordion.Header>Removing category area.</Accordion.Header>
           <Accordion.Body>
             <RemoveCategory />
           </Accordion.Body>
