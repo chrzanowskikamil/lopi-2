@@ -1,6 +1,6 @@
 'use client';
 
-import style from '../ProductsManagment.module.scss';
+import style from '../CategoryManagment.module.scss';
 
 import * as formik from 'formik';
 

@@ -1,0 +1,23 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins/breakpoints';
+
+.button {
+  margin: 2px;
+  margin-top: map-get($spacers, 3);
+}
+
+.buttonsFlex {
+  display: flex;
+  flex-direction: row;
+  margin-left: 70%;
+}
+
+.soloButton {
+  margin-top: map-get($spacers, 3);
+  margin-left: 80%;
+}
+
+.saveChangesModal span {
+  display: block;
+}
