@@ -1,0 +1,22 @@
+@use '../../../../styles/shop-variables';
+
+$sortDropdownMargin: 355px;
+$sortDropdownBorderWidth: 1px;
+$sortDropdownFontSize: 15px;
+$sortDropdownWidth: 261px;
+$sortDropdownHeight: 53px;
+
+$pallete: shop-variables.$theme-colors;
+
+.dropdown {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: $sortDropdownMargin;
+  border: $sortDropdownBorderWidth solid map-get($pallete, lopi-grey);
+  background-color: transparent;
+  color: map-get($pallete, lopi-green);
+  width: $sortDropdownWidth;
+  height: $sortDropdownHeight;
+  font-size: $sortDropdownFontSize;
+}

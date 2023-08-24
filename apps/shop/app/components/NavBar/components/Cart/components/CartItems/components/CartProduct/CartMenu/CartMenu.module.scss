@@ -1,0 +1,36 @@
+@use '../../../../../../../../../styles/shop-variables';
+@import '../../../../../../../../../styles/mixins/flex-center';
+
+$pallete: shop-variables.$theme-colors;
+$spacer: shop-variables.$spacers;
+$menu-width: 100%;
+$menu-height: 30px;
+$borderButtonWidth: 1px;
+$paragraphWidth: 65%;
+
+.menu {
+  display: flex;
+  width: $menu-width;
+  height: $menu-height;
+  margin-bottom: map-get($spacer, 8);
+
+  > button {
+    @include flex-center();
+    flex-grow: 1;
+    background-color: transparent;
+    border: $borderButtonWidth solid map-get($pallete, lopi-grey);
+
+    &:hover {
+      cursor: pointer;
+      background: none;
+    }
+  }
+
+  > p {
+    @include flex-center();
+    flex-basis: $paragraphWidth;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: $borderButtonWidth solid map-get($pallete, lopi-grey);
+  }
+}

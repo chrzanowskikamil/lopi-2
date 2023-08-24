@@ -1,0 +1,44 @@
+@use '../../../../styles/shop-variables';
+
+$pallette: shop-variables.$theme-colors;
+$spacer: shop-variables.$spacers;
+$header-width: 433px;
+$header-height: 80px;
+$icon-size: 24px;
+$counter-size: 15px;
+$counter-font-size: 10px;
+
+.header {
+  width: $header-width;
+  height: $header-height;
+  background-color: map-get($pallette, lopi-dark-green);
+
+  > div {
+    order: 1;
+    padding: map-get($spacer, 5);
+    margin-bottom: map-get($spacer, 21);
+  }
+}
+
+.icon {
+  width: $icon-size;
+  height: $icon-size;
+  color: map-get($pallette, lopi-white);
+}
+
+.socialsCounter {
+  width: $counter-size;
+  height: $counter-size;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  z-index: 1;
+  border-radius: 50%;
+  background-color: map-get($pallette, lopi-orange);
+  transform: translate(120%, -25%);
+
+  span {
+    color: map-get($pallette, lopi-black);
+    font-size: $counter-font-size;
+  }
+}

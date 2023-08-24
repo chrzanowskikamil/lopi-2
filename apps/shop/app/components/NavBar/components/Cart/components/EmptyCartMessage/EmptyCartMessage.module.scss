@@ -1,0 +1,25 @@
+@use '../../../../../../styles/shop-variables';
+@import '../../../../../../styles/mixins/flex-center';
+
+$pallete: shop-variables.$theme-colors;
+$spacer: shop-variables.$spacers;
+$bodyHeight: 100%;
+$iconSize: 100px;
+
+.body {
+  @include flex-center;
+  height: $bodyHeight;
+  flex-direction: column;
+}
+
+.icon {
+  @include flex-center;
+  background-color: map-get($pallete, lopi-black);
+  border-radius: 50%;
+  width: $iconSize;
+  height: $iconSize;
+}
+
+.title {
+  margin: map-get($spacer, 31);
+}

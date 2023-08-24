@@ -1,0 +1,82 @@
+@use '../../../../styles/shop-variables';
+@import '../../../../styles/mixins/sidebar-list-items';
+@import '../../../../styles/mixins/sidebar-badge';
+
+$sidebarWidth: 267px;
+$sidebarHeight: 455px;
+$sidebarTitleBorderWidth: 1px;
+$sidebarTitleFontSize: 15px;
+
+$spacer: shop-variables.$spacers;
+$pallete: shop-variables.$theme-colors;
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  width: $sidebarWidth;
+  height: $sidebarHeight;
+  align-self: self-start;
+}
+
+.title {
+  display: flex;
+  margin: map-get($spacer, 8);
+  border-bottom: $sidebarTitleBorderWidth solid map-get($pallete, lopi-grey);
+  padding-bottom: map-get($spacer, 7);
+  font-size: $sidebarTitleFontSize;
+  text-transform: uppercase;
+
+  &:last-child {
+    border: none;
+  }
+}
+
+.categoryList {
+  display: flex;
+  text-transform: capitalize;
+  margin-bottom: map-get($spacer, 35);
+  opacity: 0.7;
+}
+
+.listItem {
+  @include sidebar-list-items();
+}
+
+.activeListItem {
+  @include sidebar-list-items();
+  color: map-get($pallete, lopi-orange);
+}
+
+.badge {
+  @include sidebar-badge();
+  border: $sidebarTitleBorderWidth solid map-get($pallete, lopi-green);
+  color: map-get($pallete, lopi-green);
+}
+
+.activeBadge {
+  @include sidebar-badge();
+  border: $sidebarTitleBorderWidth solid map-get($pallete, lopi-orange);
+  color: map-get($pallete, lopi-orange);
+}
+
+.available {
+  display: flex;
+  font-size: $sidebarTitleFontSize;
+  margin-top: map-get($spacer, 22);
+  padding: 0 map-get($spacer, 22);
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  box-shadow: none;
+  z-index: 1;
+
+  & input[type='checkbox'] {
+    border: none;
+    box-shadow: none;
+  }
+
+  & input:checked {
+    background-color: map-get($pallete, lopi-orange);
+    box-shadow: none;
+  }
+}

@@ -1,9 +1,9 @@
 'use client';
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import { Button as BootstrapButton } from 'react-bootstrap';
 
 interface ButtonProps {
-  title: string;
+  title: string | ReactNode;
   className?: string;
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset' | undefined;

@@ -2,6 +2,7 @@ import picture from './pictures/picture.png';
 
 export const products = [
   {
+    id: 1,
     picture: picture,
     stars: 2,
     rewievs: 3,
@@ -11,6 +12,7 @@ export const products = [
     status: '-20%',
   },
   {
+    id: 2,
     picture: picture,
     stars: 5,
     rewievs: 10,
@@ -19,6 +21,7 @@ export const products = [
     status: 'statusNew',
   },
   {
+    id: 3,
     picture: picture,
     stars: 0,
     rewievs: 0,
@@ -28,6 +31,7 @@ export const products = [
     status: '-15%',
   },
   {
+    id: 4,
     picture: picture,
     stars: 2,
     rewievs: 1,
@@ -37,6 +41,7 @@ export const products = [
     status: '-10%',
   },
   {
+    id: 5,
     picture: picture,
     stars: 2,
     rewievs: 5,
@@ -44,6 +49,7 @@ export const products = [
     price: 150,
   },
   {
+    id: 6,
     picture: picture,
     stars: 5,
     rewievs: 6,
@@ -51,5 +57,24 @@ export const products = [
     price: 160,
     currentPrice: 128,
     status: '-20%',
+  },
+  {
+    id: 7,
+    picture: picture,
+    stars: 2,
+    rewievs: 3,
+    name: 'Ethiopia Emerald',
+    price: 150,
+    currentPrice: 90,
+    status: '-20%',
+  },
+  {
+    id: 8,
+    picture: picture,
+    stars: 5,
+    rewievs: 10,
+    name: 'Ethiopia Tradition',
+    price: 90,
+    status: 'statusNew',
   },
 ];

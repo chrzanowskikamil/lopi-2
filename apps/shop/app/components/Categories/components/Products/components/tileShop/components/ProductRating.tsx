@@ -4,7 +4,7 @@ import style from '../tileShop.module.scss';
 
 import { FC } from 'react';
 
-import { StarIcon } from '../../../assets/SvgIcons/StarIcon';
+import { StarIcon } from 'apps/shop/app/assets/SvgIcons/StarIcon';
 
 type ProductRatingProps = {
   starsCount: number;

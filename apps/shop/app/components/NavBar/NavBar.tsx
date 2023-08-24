@@ -4,7 +4,8 @@ import style from './NavBar.module.scss';
 
 import Navbar from 'react-bootstrap/Navbar';
 
-import { FC, useState } from 'react';
+import { useState, FC } from 'react';
+import Link from 'next/link';
 
 import Slider from './components/Slider';
 import Socials from './components/Socials';
@@ -25,7 +26,7 @@ const NavBar: FC = () => {
       <Navbar expand="lg" className={style.navbar}>
         <MenuMobile handleMenuSwitch={handleMenuSwitch} />
         <MenuDesktop />
-        <Navbar.Brand href="#home" className={style.navbarLogo}>
+        <Navbar.Brand href="/" className={style.navbarLogo} as={Link} passHref>
           <Logo />
         </Navbar.Brand>
         <Socials />

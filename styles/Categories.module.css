@@ -1,0 +1,20 @@
+.title {
+  margin-top: 2rem;
+  text-transform: uppercase;
+  color: #000;
+  font-weight: 700;
+  text-align: center;
+}
+
+.button {
+  width: 155px;
+  margin: 3.75rem 0;
+  background-color: transparent;
+  border-color: #ff9a17;
+  color: #ff9a17;
+}
+.button:hover {
+  border-color: #ff9a17;
+  background-color: #ff9a17;
+  color: #f2efe9;
+}/*# sourceMappingURL=Categories.module.css.map */

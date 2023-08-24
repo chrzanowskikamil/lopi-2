@@ -4,7 +4,6 @@ import { Common } from '@lopi-2/common';
 import SignInForm from './components/Auth/SignInForm/SignInForm';
 import SignUpForm from './components/Auth/SignUpForm/SignUpForm';
 import Footer from './components/Footer/Footer';
-import TileDisplay from './components/tileShop/tileDisplay';
 
 const Index = async () => {
   return (
@@ -16,7 +15,6 @@ const Index = async () => {
         <SignInForm />
         <SignUpForm />
       </div>
-      <TileDisplay />
       <Footer />
     </>
   );

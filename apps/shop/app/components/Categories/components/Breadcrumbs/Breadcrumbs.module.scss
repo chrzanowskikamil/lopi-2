@@ -1,0 +1,21 @@
+@use '../../../../styles/shop-variables';
+@import '../../../../styles/mixins/flex-center';
+
+$pallete: shop-variables.$theme-colors;
+$spacer: shop-variables.$spacers;
+
+.breadcrumb {
+  @include flex-center();
+  padding: map-get($spacer, 3);
+  text-transform: capitalize;
+  margin-bottom: map-get($spacer, 5);
+
+  a {
+    color: map-get($pallete, lopi-brown);
+  }
+}
+
+.icon {
+  @include flex-center();
+  padding: map-get($spacer, 12);
+}
