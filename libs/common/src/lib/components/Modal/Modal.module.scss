@@ -1,7 +1,18 @@
-@import './variables.scss';
+@use '../../../../../../apps/shop/app/styles/shop-variables';
+@import '../../../../../..//apps/shop/app/styles/mixins/flex-center';
+
+$pallette: shop-variables.$theme-colors;
+$backdropColor: rgba(0, 0, 0, 0.4);
+$titleMarginBottom: -130px;
+$titleBorderWidth: 1px;
+$titleSpacer: 6px;
+$titleWidth: 160px;
+$titleFontColor: #212529;
+$titleFontSize: 20px;
+$fontFamily: 'Quicksand', sans-serif;
 
 .container {
-  background: rgba(0, 0, 0, 0.4);
+  background: $backdropColor;
 }
 
 .header {
@@ -11,11 +22,11 @@
 .title {
   position: relative;
   z-index: 1;
-  margin-bottom: -130px;
-  border-bottom: 1px solid var(--theme-orange);
-  background-color: $titleBackgroundColor;
-  padding-bottom: 6px;
-  width: 160px;
+  background-color: map-get($pallette, lopi-white);
+  margin-bottom: $titleMarginBottom;
+  border-bottom: $titleBorderWidth solid map-get($pallette, lopi-orange);
+  padding-bottom: $titleSpacer;
+  width: $titleWidth;
   color: $titleFontColor;
   font-size: $titleFontSize;
   font-family: $fontFamily;
@@ -23,16 +34,13 @@
 }
 
 .content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center();
   border-radius: 0;
+  border: none;
   background-color: transparent;
 }
 
 .body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: $titleBackgroundColor;
+  @include flex-center();
+  background-color: map-get($pallette, lopi-white);
 }
