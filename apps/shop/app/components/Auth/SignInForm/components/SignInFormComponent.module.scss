@@ -7,10 +7,15 @@ $formBorderWidth: 1px;
 $formWidth: 450px;
 $formMinHeight: 320px;
 $formMaxHeight: 432px;
+$formTopPadding: 50px;
+$formMargin: 30px;
+$inputGap: 6px;
 $buttonTopPosition: 45%;
 $buttonTransformY: translateY(-45%);
+$forgotPasswordMarginTop: 6px;
 $forgotButtonWidth: 175px;
 $forgotButtonFontSize: 15px;
+$forgotPasswordLineHeight: 28px;
 $fontFamily: 'Quicksand', sans-serif;
 
 .form {
@@ -18,10 +23,9 @@ $fontFamily: 'Quicksand', sans-serif;
   flex-direction: column;
   justify-content: space-between;
   gap: map-get($spacer, 31);
-  margin: map-get($spacer, 34) map-get($spacer, 34) map-get($spacer, 31)
-    map-get($spacer, 34);
+  margin: $formMargin $formMargin map-get($spacer, 31) $formMargin;
   border: $formBorderWidth solid map-get($pallette, lopi-grey-light);
-  padding: map-get($spacer, 55) map-get($spacer, 40) map-get($spacer, 40)
+  padding: $formTopPadding map-get($spacer, 40) map-get($spacer, 40)
     map-get($spacer, 40);
   width: $formWidth;
   min-height: $formMinHeight;
@@ -31,7 +35,7 @@ $fontFamily: 'Quicksand', sans-serif;
 .input {
   display: flex;
   align-items: center;
-  gap: map-get($spacer, 10);
+  gap: $inputGap;
   padding: map-get($spacer, 21);
   text-align: start;
 }
@@ -61,15 +65,14 @@ $fontFamily: 'Quicksand', sans-serif;
 
 .forgotPassword {
   display: inline-flex;
-  margin-top: map-get($spacer, 10);
+  margin-top: $forgotPasswordMarginTop;
   border-bottom: $formBorderWidth solid map-get($pallette, lopi-green);
   padding: map-get($spacer, 10) map-get($spacer, 22);
   width: $forgotButtonWidth;
   color: map-get($pallette, lopi-green);
   font-style: normal;
-  font-weight: 300;
   font-size: $forgotButtonFontSize;
-  line-height: map-get($spacer, 33);
+  line-height: $forgotPasswordLineHeight;
   font-family: $fontFamily;
   text-decoration: none;
 }

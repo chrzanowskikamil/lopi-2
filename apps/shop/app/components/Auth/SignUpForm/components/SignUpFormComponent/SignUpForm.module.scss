@@ -4,8 +4,12 @@
 $pallette: shop-variables.$theme-colors;
 $spacer: shop-variables.$spacers;
 $formBorderWidth: 1px;
+$formGap: 25px;
+$formMargin: 30px;
+$formTopPadding: 50px;
 $formWidth: 518px;
 $formHeight: 528px;
+$inputGap: 6px;
 $buttonTopPosition: 45%;
 $buttonTransformY: translateY(-45%);
 
@@ -13,11 +17,10 @@ $buttonTransformY: translateY(-45%);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: map-get($spacer, 32);
-  margin: map-get($spacer, 34) map-get($spacer, 34) map-get($spacer, 34)
-    map-get($spacer, 34);
+  gap: $formGap;
+  margin: $formMargin;
   border: $formBorderWidth solid map-get($pallette, lopi-grey-light);
-  padding: map-get($spacer, 55) map-get($spacer, 40) map-get($spacer, 40)
+  padding: $formTopPadding map-get($spacer, 40) map-get($spacer, 40)
     map-get($spacer, 40);
   min-width: $formWidth;
   min-height: $formHeight;
@@ -27,7 +30,7 @@ $buttonTransformY: translateY(-45%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: map-get($spacer, 10);
+  gap: $inputGap;
   padding: map-get($spacer, 21);
   text-align: start;
 }
@@ -59,7 +62,6 @@ $buttonTransformY: translateY(-45%);
   margin-top: map-get($spacer, 7);
   border: $formBorderWidth solid map-get($pallette, lopi-orange);
   background-color: map-get($pallette, lopi-brown);
-  padding: map-get($spacer, 7 $spacer);
   color: map-get($pallette, lopi-orange);
   &:disabled {
     background-color: map-get($pallette, lopi-grey);

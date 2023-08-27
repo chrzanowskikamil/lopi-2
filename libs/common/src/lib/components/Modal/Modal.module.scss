@@ -2,10 +2,10 @@
 @import '../../../../../..//apps/shop/app/styles/mixins/flex-center';
 
 $pallette: shop-variables.$theme-colors;
-$spacer: shop-variables.$spacers;
 $backdropColor: rgba(0, 0, 0, 0.4);
 $titleMarginBottom: -130px;
 $titleBorderWidth: 1px;
+$titleSpacer: 6px;
 $titleWidth: 160px;
 $titleFontColor: #212529;
 $titleFontSize: 20px;
@@ -25,7 +25,7 @@ $fontFamily: 'Quicksand', sans-serif;
   background-color: map-get($pallette, lopi-white);
   margin-bottom: $titleMarginBottom;
   border-bottom: $titleBorderWidth solid map-get($pallette, lopi-orange);
-  padding-bottom: map-get($spacer, 10);
+  padding-bottom: $titleSpacer;
   width: $titleWidth;
   color: $titleFontColor;
   font-size: $titleFontSize;
