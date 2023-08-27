@@ -18,10 +18,10 @@ interface SidebarProps {
 export const Sidebar: FC<SidebarProps> = ({ activeCategory, list }) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [availability, setAvailability] = useState<boolean>(() =>
-    searchParams.get('availibilty') === 'false' ? false : true
+  const [availability, setAvailability] = useState<string | null | boolean>(
+    searchParams.get('availibilty')
   );
-  // console.log(availability);
+
   const getItemClassName = (item: string) =>
     activeCategory === item ? styles.activeListItem : styles.listItem;
 
@@ -61,22 +61,19 @@ export const Sidebar: FC<SidebarProps> = ({ activeCategory, list }) => {
         {renderedList}
       </ListGroup>
       <RangePriceSlider />
-      <Link
+      <Form.Check
+        aria-label="Available"
+        className={styles.available}
+        label="DOSTĘPNOŚĆ"
+        type="switch"
+        id="productAvailabilitySwitch"
+        checked={availability}
+        as={Link}
         onClick={() => setAvailability(!availability)}
         href={
-          pathname + '?' + createQueryString('availability', `${!availability}`)
+          pathname + '?' + createQueryString('availability', `${availability}`)
         }
-        className={styles.anchor}
-      >
-        <Form.Check
-          aria-label="Available"
-          className={styles.available}
-          label="DOSTĘPNOŚĆ"
-          type="switch"
-          id="productAvailabilitySwitch"
-          // defaultChecked
-        />
-      </Link>
+      />
     </aside>
   );
 };

@@ -1,6 +1,8 @@
+'use client';
+
 import style from './tileShop.module.scss';
 import styles from '../../Products.module.scss';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 import { FC } from 'react';
 
@@ -11,50 +13,41 @@ import AddToCart from './components/AddtoCart';
 import ProductRating from './components/ProductRating';
 import { Col } from 'react-bootstrap';
 
-import { Product } from '../../../../,./../../../../types/ProductsResponse';
-
-interface Image {
-  imageUrl: string;
-}
 type ProductTileProps = {
-  name: string;
-  imageUrls: Image[];
-  sku: string;
-  regularPrice: number;
-  discountPrice: number;
+  id: number;
+  picture: StaticImageData;
+  stars: number;
+  rewievs: number;
+  name?: string;
+  price: number;
+  currentPrice?: number;
+  status?: string;
 };
 
 const ProductTile: FC<ProductTileProps> = ({
+  id,
+  picture,
+  stars,
+  rewievs,
   name,
-  sku,
-  imageUrls,
-  regularPrice,
-  discountPrice,
+  price,
+  currentPrice,
+  status,
 }) => {
   return (
-    <Col className={styles.product} xl={4} key={sku}>
+    <Col className={styles.product} xl={4} key={id}>
       <ul className={style.tile}>
         <div className={style.imageArea}>
-          {/* <Status status={status} /> */}
+          <Status status={status} />
           <AddToCart />
-          <Image
-            src={
-              imageUrls[0] !== undefined
-                ? imageUrls[0].imageUrl
-                : 'https://storage.googleapis.com/download/storage/v1/b/lopi-2-dev.appspot.com/o/images%2F13018714-7a1c-4708-ba39-004c5121678a.png?generation=1692295691288884&alt=media'
-            }
-            width={300}
-            height={300}
-            alt="picture"
-            className={style.tileImage}
-          />
+          <Image src={picture} alt="picture" className={style.tileImage} />
         </div>
         <div className={style.tileInfo}>
-          {/* <ProductRating starsCount={stars} />
-          <span>({rewievs})</span> */}
+          <ProductRating starsCount={stars} />
+          <span>({rewievs})</span>
         </div>
         <div className={style.productName}>{name}</div>
-        <Price price={regularPrice} currentPrice={discountPrice} />
+        <Price price={price} currentPrice={currentPrice} />
       </ul>
     </Col>
   );

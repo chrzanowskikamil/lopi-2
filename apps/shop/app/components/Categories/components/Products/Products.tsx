@@ -1,141 +1,109 @@
 import styles from './Products.module.scss';
 import { Container, Row } from 'react-bootstrap';
 import { FC } from 'react';
-import { ProductsResponse } from '../../../../../types/ProductsResponse';
+import { ProductsResponse } from 'apps/shop/types/ProductsResponse';
 import ProductTile from './components/tileShop/productTile';
+import { products } from './components/tileShop/products';
 
-import { useState, useEffect } from 'react';
-import Spinner from 'react-bootstrap/Spinner';
 import { useSearchParams } from 'next/navigation';
+
 interface ProductsProps {
   products: ProductsResponse;
 }
 
-export const Products: FC<ProductsProps> = ({ products }) => {
-  const [isClient, setIsClient] = useState(false);
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
+export const Products: FC<ProductsProps> = () => {
   const searchParams = useSearchParams();
-
+  const sorting = searchParams.get('sort');
   const filterPriceLow = searchParams.get('filterPriceLow');
   const filterPriceHight = searchParams.get('filterPriceHight');
-  const availible = searchParams.get('availability');
+  const availiblity = searchParams.get('availibilty');
 
-  const sortBySearchParams = () => {
-    const table = [...products.products];
-    console.table(table);
+  const sortProductsFromCheap = products
+    .slice()
+    .sort(
+      (a, b) =>
+        (a.currentPrice !== undefined ? a.currentPrice : a.price) -
+        (b.currentPrice !== undefined ? b.currentPrice : b.price)
+    );
 
-    if (filterPriceHight !== null) {
-      for (let i = table.length - 1; i >= 0; i -= 1) {
-        if (
-          (table[i].discountPrice !== null
-            ? table[i].discountPrice
-            : table[i].regularPrice) >= parseInt(filterPriceHight)
-        ) {
-          table.splice(i, 1);
-        }
-      }
+  const sortProductsFromExpensive = products
+    .slice()
+    .sort(
+      (a, b) =>
+        (b.currentPrice !== undefined ? b.currentPrice : b.price) -
+        (a.currentPrice !== undefined ? a.currentPrice : a.price)
+    );
+
+  const sortProductsFromAToZ = products.slice().sort((a, b) => {
+    const fa = a.name.toLowerCase();
+    const fb = b.name.toLowerCase();
+    if (fa < fb) {
+      return -1;
+    }
+    if (fa > fb) {
+      return 1;
     }
 
-    if (filterPriceLow !== null) {
-      for (let i = table.length - 1; i >= 0; i -= 1) {
-        if (
-          (table[i].discountPrice !== null
-            ? table[i].discountPrice
-            : table[i].regularPrice) < parseInt(filterPriceLow)
-        ) {
-          table.splice(i, 1);
-        }
-      }
+    return 0;
+  });
+
+  const sortProductsFromZToA = products.slice().sort((a, b) => {
+    const fa = a.name.toLowerCase();
+    const fb = b.name.toLowerCase();
+    if (fa > fb) {
+      return -1;
+    }
+    if (fa < fb) {
+      return 1;
     }
 
-    if (availible !== null) {
-      for (let i = table.length - 1; i >= 0; i -= 1) {
-        if (availible === 'true') {
-          if (table[i].status !== 'ACTIVE') {
-            table.splice(i, 1);
-          }
-        }
-        if (availible === 'false') {
-          if (table[i].status === 'ACTIVE') {
-            table.splice(i, 1);
-          }
-        }
-      }
-    }
+    return 0;
+  });
 
-    return console.table(table), table;
+  const currentSerach = () => {
+    if (sorting === null) {
+      return products;
+    } else if (sorting === 'Cena rosnąca') {
+      return sortProductsFromCheap;
+    } else if (sorting === 'Cena malejąca') {
+      return sortProductsFromExpensive;
+    } else if (sorting === 'Alfabetycznie A do Z') {
+      return sortProductsFromAToZ;
+    } else if (sorting === 'Alfabetycznie Z do A') {
+      return sortProductsFromZToA;
+    } else return [];
   };
 
-  const renderedProducts = sortBySearchParams().map((product) => {
+  const renderedProducts = currentSerach().map((product) => {
     return (
       <ProductTile
-        key={product.uid}
-        sku={product.sku}
+        key={product.id}
+        id={product.id}
+        rewievs={product.rewievs}
+        picture={product.picture}
         name={product.name}
-        imagesUrls={product.imagesUrls}
-        regularPrice={product.regularPrice}
-        discountPrice={product.discountPrice}
+        price={product.price}
+        currentPrice={product.currentPrice}
+        status={product.status}
+        stars={product.stars}
       />
     );
   });
 
   return (
     <>
+      {sorting}
       <Container>
-        {isClient ? (
-          <Row className={styles.products}>{...renderedProducts}</Row>
-        ) : (
-          <Row className={styles.products}>
-            <Spinner animation="border" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </Spinner>
-          </Row>
-        )}
+        <Row className={styles.products}>{...renderedProducts}</Row>
       </Container>
     </>
   );
 };
-// if (filterPriceHight !== null) {
-//   table.forEach((el, index) => {
-//     if (
-//       (el.discountPrice !== null ? el.discountPrice : el.regularPrice) <=
-//       parseInt(filterPriceHight)
-//     ) {
-//       return;
-//     } else return table.splice(index, 1);
-//   });
-// }
 
-// if (filterPriceLow !== null) {
-//   table.forEach((el, index) => {
-//     if (
-//       (el.discountPrice !== null ? el.discountPrice : el.regularPrice) >=
-//       parseInt(filterPriceLow)
-//     ) {
-//       return;
-//     } else return table.splice(index, 1);
-//   });
-// }
-
-// if (filterPriceLow !== null) {
-//   if (availible === null || availible == 'true') {
-//     table.forEach((el, index) => {
-//       if (el.status == 'ACTIVE') {
-//         return table.splice(index, 1);
-//       } else {
-//         return;
-//       }
-//     });
-//   } else if (availible == 'false') {
-//     table.forEach((el, index) => {
-//       if (el.status == 'ACTIVE') {
-//         return;
-//       } else {
-//         return table.splice(index, 1);
-//       }
-//     });
-//   }
-// }
+// 'Cena rosnąca',
+// 'Cena malejąca',
+// 'Alfabetycznie A do Z',
+// 'Alfabetycznie Z do A',
+// 'Od najnowszych do najstarszych',
+// 'Od najstarszych do najnowszych',
+// https://www.javascripttutorial.net/array/javascript-sort-an-array-of-objects/
