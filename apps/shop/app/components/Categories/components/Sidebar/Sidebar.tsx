@@ -34,6 +34,16 @@ export const Sidebar: FC<SidebarProps> = ({
   const getBadgeClassName = (item: string) =>
     activeCategory === item ? styles.activeBadge : styles.badge;
 
+  const createQueryString = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams);
+      params.set(name, value);
+
+      return params.toString();
+    },
+    [searchParams]
+  );
+
   const renderedList = list.map((item) => (
     <ListGroup.Item
       active={false}

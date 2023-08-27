@@ -4,9 +4,7 @@ import { Container, Row } from 'react-bootstrap';
 import { FC } from 'react';
 import { ProductsResponse } from '../../../../../types/ProductsResponse';
 import ProductTile from './components/tileShop/productTile';
-
-import { useState, useEffect } from 'react';
-import Spinner from 'react-bootstrap/Spinner';
+import { products } from './components/tileShop/products';
 
 interface ProductsProps {
   products: ProductsResponse;
@@ -15,67 +13,8 @@ interface ProductsProps {
   availabilityToFilterBy: boolean;
 }
 
-export const Products: FC<ProductsProps> = ({
-  products,
-  priceToFilterByLow,
-  priceToFilterByHigh,
-  availabilityToFilterBy,
-}) => {
-  const [isClient, setIsClient] = useState(false);
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  const filterPriceLow = priceToFilterByLow;
-  const filterPriceHight = priceToFilterByHigh;
-  const availible = availabilityToFilterBy;
-
-  const sortBySearchParams = () => {
-    const table = [...products.products];
-
-    if (filterPriceHight !== null) {
-      for (let i = table.length - 1; i >= 0; i -= 1) {
-        if (
-          (table[i].discountPrice !== null
-            ? table[i].discountPrice
-            : table[i].regularPrice) >= filterPriceHight
-        ) {
-          table.splice(i, 1);
-        }
-      }
-    }
-
-    if (filterPriceLow !== null) {
-      for (let i = table.length - 1; i >= 0; i -= 1) {
-        if (
-          (table[i].discountPrice !== null
-            ? table[i].discountPrice
-            : table[i].regularPrice) < filterPriceLow
-        ) {
-          table.splice(i, 1);
-        }
-      }
-    }
-
-    if (availible !== null) {
-      for (let i = table.length - 1; i >= 0; i -= 1) {
-        if (availible === true) {
-          if (table[i].status !== 'ACTIVE') {
-            table.splice(i, 1);
-          }
-        }
-        if (availible === false) {
-          if (table[i].status === 'ACTIVE') {
-            table.splice(i, 1);
-          }
-        }
-      }
-    }
-
-    return table;
-  };
-
-  const renderedProducts = sortBySearchParams().map((product) => {
+export const Products: FC<ProductsProps> = () => {
+  const renderedProducts = products.map((product) => {
     return (
       <ProductTile
         key={product.uid}
@@ -90,6 +29,7 @@ export const Products: FC<ProductsProps> = ({
 
   return (
     <>
+      {sorting}
       <Container>
         {isClient ? (
           <Row className={styles.products}>{...renderedProducts}</Row>
@@ -104,3 +44,11 @@ export const Products: FC<ProductsProps> = ({
     </>
   );
 };
+
+// 'Cena rosnąca',
+// 'Cena malejąca',
+// 'Alfabetycznie A do Z',
+// 'Alfabetycznie Z do A',
+// 'Od najnowszych do najstarszych',
+// 'Od najstarszych do najnowszych',
+// https://www.javascripttutorial.net/array/javascript-sort-an-array-of-objects/
