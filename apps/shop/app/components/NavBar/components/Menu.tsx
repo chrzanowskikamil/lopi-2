@@ -9,6 +9,7 @@ import { getCategoriesName } from 'apps/shop/actions/getCategoriesName';
 const getData = async () => {
   const res = await getCategoriesName();
   const data = res;
+
   return data;
 };
 

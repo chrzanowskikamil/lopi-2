@@ -1,21 +1,42 @@
 'use client';
+
 import styles from './Sidebar.module.scss';
 import { Badge, Form, ListGroup } from 'react-bootstrap';
 import { RangePriceSlider } from './componenets/RangePriceSlider/RangePriceSlider';
 import { FC } from 'react';
 import Link from 'next/link';
+import { usePathname, useSearchParams } from 'next/navigation';
 
+import { useState } from 'react';
+
+import { useCallback } from 'react';
 interface SidebarProps {
   activeCategory: string;
   list: string[];
 }
 
 export const Sidebar: FC<SidebarProps> = ({ activeCategory, list }) => {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const [availability, setAvailability] = useState<string | null | boolean>(
+    searchParams.get('availibilty')
+  );
+
   const getItemClassName = (item: string) =>
     activeCategory === item ? styles.activeListItem : styles.listItem;
 
   const getBadgeClassName = (item: string) =>
     activeCategory === item ? styles.activeBadge : styles.badge;
+
+  const createQueryString = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams);
+      params.set(name, value);
+
+      return params.toString();
+    },
+    [searchParams]
+  );
 
   const renderedList = list.map((item) => (
     <ListGroup.Item
@@ -46,6 +67,12 @@ export const Sidebar: FC<SidebarProps> = ({ activeCategory, list }) => {
         label="DOSTĘPNOŚĆ"
         type="switch"
         id="productAvailabilitySwitch"
+        checked={availability}
+        as={Link}
+        onClick={() => setAvailability(!availability)}
+        href={
+          pathname + '?' + createQueryString('availability', `${availability}`)
+        }
       />
     </aside>
   );

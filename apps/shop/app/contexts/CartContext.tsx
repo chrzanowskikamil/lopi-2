@@ -70,8 +70,10 @@ export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
       prevProducts.map((product) => {
         if (product.id === id && product.quantity > 1) {
           const newQuantity = product.quantity - 1;
+
           return { ...product, quantity: newQuantity };
         }
+
         return product;
       })
     );
@@ -79,6 +81,7 @@ export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const getQuantityForProduct = (id: number) => {
     const product = productsInCart.find((product) => product.id === id);
+
     return product?.quantity ?? 0;
   };
 
@@ -113,5 +116,6 @@ export const useCart = () => {
   if (!context) {
     throw new Error('useCart must be used within a CartProvider');
   }
+
   return context;
 };

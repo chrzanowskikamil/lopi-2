@@ -4,6 +4,7 @@ import { Categories } from '../../../components/Categories/Categories';
 
 export async function generateStaticParams() {
   const categories = await getCategoriesName();
+
   return categories.map((categoryName) => ({
     category: categoryName,
   }));
@@ -12,6 +13,7 @@ export async function generateStaticParams() {
 const CategoriesPage = async ({ params }: { params: { category: string } }) => {
   const allCategories = await getCategoriesName();
   const products = await getProducts();
+
   return (
     <>
       <Categories
