@@ -6,7 +6,6 @@ export async function getCategoriesName(): Promise<string[]> {
   try {
     const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
     if (!apiUrl) throw new Error(ErrorTypes.ENVIROMENT_ERROR);
-
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}categories`,
       { next: { revalidate: REVALIDATE_TIME } }
