@@ -28,6 +28,11 @@ export const Sidebar: FC<SidebarProps> = ({
   setLowerMoneyValue,
 }) => {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const [availability, setAvailability] = useState<boolean>(() =>
+    searchParams.get('availibilty') === 'false' ? false : true
+  );
+  // console.log(availability);
   const getItemClassName = (item: string) =>
     activeCategory === item ? styles.activeListItem : styles.listItem;
 

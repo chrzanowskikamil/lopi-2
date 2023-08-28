@@ -13,12 +13,9 @@ import { Col } from 'react-bootstrap';
 
 import { Product } from '../../../../,./../../../../types/ProductsResponse';
 
-interface Image {
-  imageUrl: string;
-}
 type ProductTileProps = {
   name: string;
-  imageUrls: Image[];
+  imageUrl: string;
   sku: string;
   regularPrice: number;
   discountPrice: number;
@@ -27,7 +24,7 @@ type ProductTileProps = {
 const ProductTile: FC<ProductTileProps> = ({
   name,
   sku,
-  imageUrls,
+  imageUrl,
   regularPrice,
   discountPrice,
 }) => {
@@ -50,10 +47,11 @@ const ProductTile: FC<ProductTileProps> = ({
           />
         </div>
         <div className={style.tileInfo}>
-          {/* <ProductRating starsCount={stars} />
-          <span>({rewievs})</span> */}
+          <ProductRating starsCount={stars} />
+          <span>({rewievs})</span>
         </div>
         <div className={style.productName}>{name}</div>
+        <Price price={regularPrice} currentPrice={discountPrice} />
         <Price price={regularPrice} currentPrice={discountPrice} />
       </ul>
     </Col>
