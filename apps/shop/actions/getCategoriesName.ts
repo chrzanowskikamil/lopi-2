@@ -17,6 +17,7 @@ export async function getCategoriesName(): Promise<string[]> {
       );
 
     const allCategories: Array<FetchedCategoryResponse> = await res.json();
+    console.table(allCategories);
     if (!Array.isArray(allCategories)) {
       throw new Error(ErrorTypes.API_DATA_ERROR);
     }

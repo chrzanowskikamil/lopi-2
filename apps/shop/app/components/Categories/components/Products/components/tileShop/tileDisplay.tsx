@@ -12,6 +12,7 @@ const TileDisplay = () => {
   for (let i = 0; i < products.length; i++) {
     productsDisplay.push(
       <ProductTile
+        id={products[i].id}
         key={i}
         picture={products[i].picture}
         stars={products[i].stars}
