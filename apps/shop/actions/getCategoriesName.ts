@@ -7,7 +7,7 @@ export async function getCategoriesName(): Promise<string[]> {
     const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
     if (!apiUrl) throw new Error(ErrorTypes.ENVIROMENT_ERROR);
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/categories`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}categories`,
       { next: { revalidate: REVALIDATE_TIME } }
     );
 
@@ -17,6 +17,7 @@ export async function getCategoriesName(): Promise<string[]> {
       );
 
     const allCategories: Array<FetchedCategoryResponse> = await res.json();
+    console.table(allCategories);
     if (!Array.isArray(allCategories)) {
       throw new Error(ErrorTypes.API_DATA_ERROR);
     }

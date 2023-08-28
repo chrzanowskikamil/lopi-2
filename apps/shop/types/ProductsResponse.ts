@@ -11,7 +11,7 @@ interface Image {
   imageUrl: string;
 }
 
-interface Product extends ItemDetails {
+export interface Product extends ItemDetails {
   sku: string;
   regularPrice: number;
   discountPrice: number;

@@ -13,41 +13,37 @@ import AddToCart from './components/AddtoCart';
 import ProductRating from './components/ProductRating';
 import { Col } from 'react-bootstrap';
 
+import { Product } from '../../../../,./../../../../types/ProductsResponse';
+
 type ProductTileProps = {
-  id: number;
-  picture: StaticImageData;
-  stars: number;
-  rewievs: number;
-  name?: string;
-  price: number;
-  currentPrice?: number;
-  status?: string;
+  name: string;
+  imageUrl: string;
+  sku: string;
+  regularPrice: number;
+  discountPrice: number;
 };
 
 const ProductTile: FC<ProductTileProps> = ({
-  id,
-  picture,
-  stars,
-  rewievs,
   name,
-  price,
-  currentPrice,
-  status,
+  sku,
+  imageUrl,
+  regularPrice,
+  discountPrice,
 }) => {
   return (
-    <Col className={styles.product} xl={4} key={id}>
+    <Col className={styles.product} xl={4} key={sku}>
       <ul className={style.tile}>
         <div className={style.imageArea}>
-          <Status status={status} />
+          {/* <Status status={status} /> */}
           <AddToCart />
-          <Image src={picture} alt="picture" className={style.tileImage} />
+          <Image src={imageUrl} alt="picture" className={style.tileImage} />
         </div>
         <div className={style.tileInfo}>
-          <ProductRating starsCount={stars} />
-          <span>({rewievs})</span>
+          {/* <ProductRating starsCount={stars} />
+          <span>({rewievs})</span> */}
         </div>
         <div className={style.productName}>{name}</div>
-        <Price price={price} currentPrice={currentPrice} />
+        <Price price={regularPrice} currentPrice={discountPrice} />
       </ul>
     </Col>
   );
