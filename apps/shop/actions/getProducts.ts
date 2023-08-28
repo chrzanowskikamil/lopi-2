@@ -16,6 +16,7 @@ export async function getProducts(
     if (!res.ok) throw new Error(`Server responsed with ${res.statusText}`);
 
     const products: ProductsResponse = await res.json();
+
     return products;
   } catch (error) {
     console.error(`Fetching error: ${error}`);
