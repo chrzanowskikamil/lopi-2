@@ -10,6 +10,7 @@ export const products = [
     price: 150,
     currentPrice: 90,
     status: '-20%',
+    availiblity: true,
   },
   {
     id: 2,
@@ -19,6 +20,7 @@ export const products = [
     name: 'Ethiopia Tradition',
     price: 90,
     status: 'statusNew',
+    availiblity: false,
   },
   {
     id: 3,
@@ -29,6 +31,7 @@ export const products = [
     price: 120,
     currentPrice: 102,
     status: '-15%',
+    availiblity: true,
   },
   {
     id: 4,
@@ -39,6 +42,7 @@ export const products = [
     price: 80,
     currentPrice: 72,
     status: '-10%',
+    availiblity: false,
   },
   {
     id: 5,
@@ -47,6 +51,7 @@ export const products = [
     rewievs: 5,
     name: 'Ethiopia Aroma',
     price: 150,
+    availiblity: true,
   },
   {
     id: 6,
@@ -57,7 +62,9 @@ export const products = [
     price: 160,
     currentPrice: 128,
     status: '-20%',
+    availiblity: false,
   },
+
   // {
   //   id: 7,
   //   picture: picture,

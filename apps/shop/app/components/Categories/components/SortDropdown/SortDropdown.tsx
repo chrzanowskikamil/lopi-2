@@ -21,8 +21,8 @@ export const SortDropdown: FC = () => {
   );
 
   const dropdownItems = [
-    'Cena rosnąca',
-    'Cena malejąca',
+    'Cena rosnaca',
+    'Cena malejaca',
     'Alfabetycznie A do Z',
     'Alfabetycznie Z do A',
   ];
