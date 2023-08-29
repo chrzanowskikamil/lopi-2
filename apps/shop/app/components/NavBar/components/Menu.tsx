@@ -5,16 +5,16 @@ import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { FC } from 'react';
 import Link from 'next/link';
 import { getCategoriesName } from 'apps/shop/actions/getCategoriesName';
-
+import { use } from 'react';
 const getData = async () => {
   const res = await getCategoriesName();
   const data = res;
 
   return data;
 };
-
-export const Menu: FC = async () => {
-  const categories = await getData();
+const dataPromise = getData();
+export const Menu: FC = () => {
+  const categories = use(dataPromise);
   const renderedCategories = categories.map((category) => (
     <NavDropdown.Item
       key={category}
