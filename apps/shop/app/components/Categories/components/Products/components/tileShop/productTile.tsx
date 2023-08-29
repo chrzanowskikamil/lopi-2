@@ -13,9 +13,12 @@ import { Col } from 'react-bootstrap';
 
 import { Product } from '../../../../,./../../../../types/ProductsResponse';
 
+interface Image {
+  imageUrl: string;
+}
 type ProductTileProps = {
   name: string;
-  imageUrl: string;
+  imagesUrls: Image[];
   sku: string;
   regularPrice: number;
   discountPrice: number;
@@ -24,7 +27,7 @@ type ProductTileProps = {
 const ProductTile: FC<ProductTileProps> = ({
   name,
   sku,
-  imageUrl,
+  imagesUrls,
   regularPrice,
   discountPrice,
 }) => {
