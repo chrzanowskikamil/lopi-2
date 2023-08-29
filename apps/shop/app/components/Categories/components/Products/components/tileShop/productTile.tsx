@@ -1,8 +1,6 @@
-'use client';
-
 import style from './tileShop.module.scss';
 import styles from '../../Products.module.scss';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 
 import { FC } from 'react';
 
@@ -15,9 +13,12 @@ import { Col } from 'react-bootstrap';
 
 import { Product } from '../../../../,./../../../../types/ProductsResponse';
 
+interface Image {
+  imageUrl: string;
+}
 type ProductTileProps = {
   name: string;
-  imageUrl: string;
+  imagesUrls: Image[];
   sku: string;
   regularPrice: number;
   discountPrice: number;
@@ -26,7 +27,7 @@ type ProductTileProps = {
 const ProductTile: FC<ProductTileProps> = ({
   name,
   sku,
-  imageUrl,
+  imagesUrls,
   regularPrice,
   discountPrice,
 }) => {
@@ -36,7 +37,15 @@ const ProductTile: FC<ProductTileProps> = ({
         <div className={style.imageArea}>
           {/* <Status status={status} /> */}
           <AddToCart />
-          <Image src={imageUrl} alt="picture" className={style.tileImage} />
+          <Image
+            src={
+              'https://storage.googleapis.com/download/storage/v1…218f388.jpg?generation=1692295048031287&alt=media'
+            }
+            width={300}
+            height={300}
+            alt="picture"
+            className={style.tileImage}
+          />
         </div>
         <div className={style.tileInfo}>
           {/* <ProductRating starsCount={stars} />

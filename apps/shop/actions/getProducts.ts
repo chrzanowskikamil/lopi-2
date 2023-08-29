@@ -1,7 +1,7 @@
 import { REVALIDATE_TIME } from '@lopi-2/common';
 import { ProductsResponse } from '../types/ProductsResponse';
 
-const DEFAULT_PAGE_SIZE = 6;
+const DEFAULT_PAGE_SIZE = 4;
 
 export async function getProducts(
   size = DEFAULT_PAGE_SIZE,
