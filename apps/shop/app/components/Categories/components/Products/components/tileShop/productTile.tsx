@@ -18,7 +18,7 @@ interface Image {
 }
 type ProductTileProps = {
   name: string;
-  imagesUrls: Image[];
+  imageUrls: Image[];
   sku: string;
   regularPrice: number;
   discountPrice: number;
@@ -27,7 +27,7 @@ type ProductTileProps = {
 const ProductTile: FC<ProductTileProps> = ({
   name,
   sku,
-  imagesUrls,
+  imageUrls,
   regularPrice,
   discountPrice,
 }) => {

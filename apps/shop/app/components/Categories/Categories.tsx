@@ -86,6 +86,14 @@ export const Categories: FC<CategoriesProps> = ({
     setAllProducts([...newSort.products]);
   };
 
+    const newSort = await getProducts(
+      PRODUCTS_PER_PAGE,
+      currentPage,
+      sortType,
+      sortOrder
+    );
+    setAllProducts([...newSort.products]);
+  };
   const loadMoreProducts = async () => {
     const nextPage = currentPage + 1;
     const newProducts = await getProducts(
@@ -114,6 +122,7 @@ export const Categories: FC<CategoriesProps> = ({
       </Row>
       <Row>
         <Col>
+          <SortDropdown sort={sortProductsByParams} />
           <SortDropdown sort={sortProductsByParams} />
         </Col>
       </Row>
