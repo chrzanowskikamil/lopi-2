@@ -6,7 +6,11 @@ import { Dropdown, DropdownButton } from 'react-bootstrap';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 
-export const SortDropdown: FC = () => {
+interface SortDropdownProps {
+  sort: (item: string) => void;
+}
+
+export const SortDropdown: FC<SortDropdownProps> = ({ sort }) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -32,6 +36,7 @@ export const SortDropdown: FC = () => {
       key={item}
       as={Link}
       href={pathname + '?' + createQueryString('sort', `${item}`)}
+      onClick={() => sort(item)}
     >
       {item}
     </Dropdown.Item>
