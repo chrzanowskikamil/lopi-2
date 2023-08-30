@@ -18,7 +18,7 @@ interface Image {
 }
 type ProductTileProps = {
   name: string;
-  imagesUrls: Image[];
+  imageUrls: Image[];
   sku: string;
   regularPrice: number;
   discountPrice: number;
@@ -27,7 +27,7 @@ type ProductTileProps = {
 const ProductTile: FC<ProductTileProps> = ({
   name,
   sku,
-  imagesUrls,
+  imageUrls,
   regularPrice,
   discountPrice,
 }) => {
@@ -39,7 +39,9 @@ const ProductTile: FC<ProductTileProps> = ({
           <AddToCart />
           <Image
             src={
-              'https://storage.googleapis.com/download/storage/v1…218f388.jpg?generation=1692295048031287&alt=media'
+              imageUrls[0] !== undefined
+                ? imageUrls[0].imageUrl
+                : 'https://storage.googleapis.com/download/storage/v1/b/lopi-2-dev.appspot.com/o/images%2F13018714-7a1c-4708-ba39-004c5121678a.png?generation=1692295691288884&alt=media'
             }
             width={300}
             height={300}
