@@ -1,5 +1,5 @@
 @use '../../../../../styles/shop-variables';
-@import '../../../../../styles/mixins/flex-center';
+@use '../../../../../styles/mixins/shop-mixins';
 
 $pallette: shop-variables.$theme-colors;
 $spacer: shop-variables.$spacers;
@@ -36,7 +36,7 @@ $buttonTransformY: translateY(-45%);
 }
 
 .inputWithIcon {
-  @include flex-center();
+  @include shop-mixins.flex-center();
   position: relative;
   align-self: center;
 }

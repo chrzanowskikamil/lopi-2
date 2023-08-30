@@ -1,5 +1,5 @@
 @use '../../../../../../../../../styles/shop-variables';
-@import '../../../../../../../../../styles/mixins/flex-center';
+@use '../../../../../../../../../styles/mixins/shop-mixins';
 
 $pallete: shop-variables.$theme-colors;
 $spacer: shop-variables.$spacers;
@@ -15,7 +15,7 @@ $paragraphWidth: 65%;
   margin-bottom: map-get($spacer, 8);
 
   > button {
-    @include flex-center();
+    @include shop-mixins.flex-center();
     flex-grow: 1;
     background-color: transparent;
     border: $borderButtonWidth solid map-get($pallete, lopi-grey);
@@ -27,7 +27,7 @@ $paragraphWidth: 65%;
   }
 
   > p {
-    @include flex-center();
+    @include shop-mixins.flex-center();
     flex-basis: $paragraphWidth;
     font-weight: 700;
     text-transform: uppercase;

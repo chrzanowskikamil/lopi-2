@@ -1,6 +1,6 @@
 @use '../../../../styles/shop-variables';
-@import '../../../../styles/mixins/sidebar-list-items';
-@import '../../../../styles/mixins/sidebar-badge';
+
+@use '../../../../styles/mixins/shop-mixins';
 
 $sidebarWidth: 267px;
 $sidebarHeight: 455px;
@@ -40,22 +40,22 @@ $pallete: shop-variables.$theme-colors;
 }
 
 .listItem {
-  @include sidebar-list-items();
+  @include shop-mixins.sidebar-list-items();
 }
 
 .activeListItem {
-  @include sidebar-list-items();
+  @include shop-mixins.sidebar-list-items();
   color: map-get($pallete, lopi-orange);
 }
 
 .badge {
-  @include sidebar-badge();
+  @include shop-mixins.sidebar-badge();
   border: $sidebarTitleBorderWidth solid map-get($pallete, lopi-green);
   color: map-get($pallete, lopi-green);
 }
 
 .activeBadge {
-  @include sidebar-badge();
+  @include shop-mixins.sidebar-badge();
   border: $sidebarTitleBorderWidth solid map-get($pallete, lopi-orange);
   color: map-get($pallete, lopi-orange);
 }

@@ -6,8 +6,8 @@ import { Sidebar } from './components/Sidebar/Sidebar';
 import { SortDropdown } from './components/SortDropdown/SortDropdown';
 import { Products } from './components/Products/Products';
 import { Button, Col, Container, Row } from 'react-bootstrap';
-import { ProductsResponse } from 'apps/shop/types/ProductsResponse';
-import { getProducts } from 'apps/shop/actions/getProducts';
+import { ProductsResponse } from '../../../types/ProductsResponse';
+import { getProducts } from '../../../actions/getProducts';
 
 interface CategoriesProps {
   title: string;

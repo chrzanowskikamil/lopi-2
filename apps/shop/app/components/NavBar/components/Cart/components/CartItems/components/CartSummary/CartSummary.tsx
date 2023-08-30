@@ -1,5 +1,5 @@
 import style from './CartSummary.module.scss';
-import { useCart } from 'apps/shop/app/contexts/CartContext';
+import { useCart } from '../../../../../../../../contexts/CartContext';
 
 export const CartSummary = () => {
   const { totalPrice, deliveryPrice, totalCost } = useCart();

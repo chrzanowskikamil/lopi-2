@@ -1,5 +1,5 @@
 @use '../../../../../../styles/shop-variables';
-@import '../../../../../../styles/mixins/flex-center';
+@use '../../../../../../styles/mixins/shop-mixins';
 
 $pallete: shop-variables.$theme-colors;
 $spacer: shop-variables.$spacers;
@@ -7,13 +7,13 @@ $bodyHeight: 100%;
 $iconSize: 100px;
 
 .body {
-  @include flex-center;
+  @include shop-mixins.flex-center;
   height: $bodyHeight;
   flex-direction: column;
 }
 
 .icon {
-  @include flex-center;
+  @include shop-mixins.flex-center;
   background-color: map-get($pallete, lopi-black);
   border-radius: 50%;
   width: $iconSize;

@@ -1,39 +1,52 @@
 'use client';
 
-import style from './NavBar.module.scss';
-
 import Navbar from 'react-bootstrap/Navbar';
 
-import { useState, FC } from 'react';
+import { FC } from 'react';
 import Link from 'next/link';
 
-import Slider from './components/Slider';
-import Socials from './components/Socials';
-
-import MenuDesktop from './components/MenuDesktop';
-import MenuMobile from './components/MenuMobile';
-import MenuDropdownMobile from './components/MenuDropdownMobile';
-
 import { Logo } from '../../assets/SvgIcons/Logo';
+import { Container, Nav } from 'react-bootstrap';
+import { CategoryDropdown } from './CategoryDropdown';
+import { RightNavIcons } from './RightNavIcons';
+import { SearchComponent } from './SearchComponent';
 
 const NavBar: FC = () => {
-  const [menuMobileActive, setMenuMobileActive] = useState<boolean>();
-
-  const handleMenuSwitch = () => setMenuMobileActive(!menuMobileActive);
-
   return (
-    <>
-      <Navbar expand="lg" className={style.navbar}>
-        <MenuMobile handleMenuSwitch={handleMenuSwitch} />
-        <MenuDesktop />
-        <Navbar.Brand href="/" className={style.navbarLogo} as={Link} passHref>
-          <Logo />
-        </Navbar.Brand>
-        <Socials />
-      </Navbar>
-      {menuMobileActive ? <MenuDropdownMobile /> : ''}
-      <Slider />
-    </>
+    <Navbar expand="lg" variant={'dark'} className={'lopi-navbar'}>
+      <Container fluid>
+        <Navbar.Toggle aria-controls="lopi-nav" className={''} />
+
+        {/*FOR LARGE SCREEN ONLY*/}
+        <SearchComponent className={'ms-2 me-auto d-block d-sm-none'} />
+
+        {/*FOR SMALL SCREENS*/}
+        <RightNavIcons className={'d-flex align-items-center d-sm-none'} />
+
+        <Navbar.Collapse id="lopi-nav">
+          <Nav>
+            <CategoryDropdown />
+
+            <NavLogo />
+          </Nav>
+        </Navbar.Collapse>
+
+        {/*LARGE SCREENS*/}
+        <RightNavIcons className={'d-none d-sm-flex align-items-center'} />
+      </Container>
+    </Navbar>
   );
 };
+
+const NavLogo = () => (
+  <Navbar.Brand
+    href="/"
+    as={Link as any}
+    passHref
+    className={'d-none d-md-block position-absolute lopi-nav-logo'}
+  >
+    <Logo />
+  </Navbar.Brand>
+);
+
 export default NavBar;

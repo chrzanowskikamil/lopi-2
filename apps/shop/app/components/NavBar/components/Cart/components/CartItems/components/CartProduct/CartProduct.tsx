@@ -3,8 +3,8 @@ import style from './CartProduct.module.scss';
 import { Container } from 'react-bootstrap';
 import { CartMenu } from './CartMenu/CartMenu';
 import { FC, Fragment } from 'react';
-import { useCart } from 'apps/shop/app/contexts/CartContext';
-import { ProductCart } from 'apps/shop/types/ProductCart';
+import { useCart } from '../../../../../../../../contexts/CartContext';
+import { ProductCart } from '../../../../../../../../../types/ProductCart';
 
 interface CartProductProps {
   products: ProductCart[];
@@ -20,6 +20,7 @@ export const CartProduct: FC<CartProductProps> = ({ products }) => {
       <CartMenu productId={product.id} />
     </Fragment>
   ));
+
   return (
     <>
       <Container className={style.products}>{productsList}</Container>

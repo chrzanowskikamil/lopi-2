@@ -1,5 +1,8 @@
 import './styles/shop-global.scss';
+
 import NavBar from './components/NavBar/NavBar';
+import { Footer } from './components/Footer/Footer';
+import { InfoBanner } from './components/InfoBanner/InfoBanner';
 
 export const metadata = {
   title: 'Welcome to shop',
@@ -11,7 +14,12 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <html lang="en">
       <body>
         <NavBar />
-        <main>{children}</main>
+        <main>
+          <InfoBanner />
+
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

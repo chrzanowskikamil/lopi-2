@@ -1,18 +1,18 @@
 'use client';
 import style from './Cart.module.scss';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { Offcanvas } from 'react-bootstrap';
-import { CartIcon } from 'apps/shop/app/assets/SvgIcons/CartIcon';
 import { EmptyCartMessage } from './components/EmptyCartMessage/EmptyCartMessage';
 import { CartItems } from './components/CartItems/CartItems';
-import { useCart } from 'apps/shop/app/contexts/CartContext';
+import { useCart } from '../../../../contexts/CartContext';
+import { IconWrapper } from '../../../Icons/IconWrapper';
+import { Button } from '@lopi-2/common';
 
-interface CartProps {
-  isOpen: boolean | undefined;
-  onClose: VoidFunction;
-}
+export const Cart: FC = () => {
+  const [isCartOpen, setIsCartOpen] = useState<boolean>();
+  const handleOpenCart = () => setIsCartOpen(true);
+  const handleCloseCart = () => setIsCartOpen(false);
 
-export const Cart: FC<CartProps> = ({ isOpen, onClose }) => {
   const { productsInCart } = useCart();
   const productsCounter = productsInCart.length;
 
@@ -23,23 +23,34 @@ export const Cart: FC<CartProps> = ({ isOpen, onClose }) => {
   );
 
   return (
-    <Offcanvas show={isOpen} onHide={onClose} placement="end">
-      <Offcanvas.Header
-        className={style.header}
-        closeButton
-        closeLabel="Close modal"
-        closeVariant="white"
-      >
-        <Offcanvas.Title>
-          <div className={style.icon}>
-            <div className={style.socialsCounter}>
-              <span>{productsCounter}</span>
+    <>
+      <div className={style.cartBlock}>
+        {/*TODO: handle that*/}
+        <span className={style.supper}>{productsCounter}</span>
+        <Button
+          className={'m-0 p-0'}
+          title={<IconWrapper icon={<i className="bi bi-cart3" />} />}
+          onClick={handleOpenCart}
+        />
+      </div>
+
+      <Offcanvas show={isCartOpen} onHide={handleCloseCart} placement="end">
+        <Offcanvas.Header
+          closeButton
+          closeLabel="Close modal"
+          closeVariant="white"
+        >
+          <Offcanvas.Title>
+            <div>
+              <div>
+                <span>{productsCounter}</span>
+              </div>
+              <IconWrapper icon={<i className="bi bi-cart3"></i>} />
             </div>
-            <CartIcon />
-          </div>
-        </Offcanvas.Title>
-      </Offcanvas.Header>
-      <Offcanvas.Body>{cartView}</Offcanvas.Body>
-    </Offcanvas>
+          </Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>{cartView}</Offcanvas.Body>
+      </Offcanvas>
+    </>
   );
 };

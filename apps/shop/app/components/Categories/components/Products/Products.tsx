@@ -1,7 +1,7 @@
 import styles from './Products.module.scss';
 import { Col, Container, Row } from 'react-bootstrap';
 import { FC } from 'react';
-import { ProductsResponse } from 'apps/shop/types/ProductsResponse';
+import { ProductsResponse } from '../../../../../types/ProductsResponse';
 import ProductTile from './components/tileShop/productTile';
 import { products } from './components/tileShop/products';
 
@@ -17,8 +17,11 @@ export const Products: FC<ProductsProps> = () => {
           picture={product.picture}
           name={product.name}
           price={product.price}
-          currentPrice={product.currentPrice}
-          status={product.status}
+          // TODO: handle that
+          // currentPrice={product.currentPrice}
+          currentPrice={100}
+          // status={product.status}
+          status={'test'}
           stars={product.stars}
         />
       </Col>

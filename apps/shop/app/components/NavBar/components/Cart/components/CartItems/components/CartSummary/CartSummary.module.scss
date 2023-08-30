@@ -1,5 +1,5 @@
 @use '../../../../../../../../styles/shop-variables';
-@import '../../../../../../../../styles/mixins/flex-center';
+@use '../../../../../../../../styles/mixins/shop-mixins';
 
 $pallete: shop-variables.$theme-colors;
 $spacer: shop-variables.$spacers;
@@ -20,7 +20,7 @@ $buttonHeight: 40px;
   }
 
   > button {
-    @include flex-center;
+    @include shop-mixins.flex-center;
     background-color: map-get($pallete, lopi-brown);
     border: $buttonBorderWidth solid map-get($pallete, lopi-orange);
     border-radius: $buttonBorderRadius;

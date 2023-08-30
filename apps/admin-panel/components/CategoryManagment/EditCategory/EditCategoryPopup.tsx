@@ -36,6 +36,7 @@ const OnEditPopup: React.FC<PopupProps> = ({
       </p>
     </>
   );
+
   return !state.popupSubmited ? (
     <ModalSaveChanges
       handleInPopupSubmit={handleInPopupSubmit}

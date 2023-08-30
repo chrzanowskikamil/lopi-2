@@ -8,12 +8,11 @@ interface FooterListProps {
   className?: string;
 }
 
-const FooterList: React.FC<FooterListProps> = ({ title, children }) => {
+export const FooterList: React.FC<FooterListProps> = ({ title, children }) => {
   return (
-    <ul className={style.footerElement}>
-      <li className={style.footerTitle}>{title}</li>
-      {children}
-    </ul>
+    <>
+      <h5 className={style.footerTitle + ' mb-2'}>{title}</h5>
+      <ul className={style.footerElement}>{children}</ul>
+    </>
   );
 };
-export default FooterList;

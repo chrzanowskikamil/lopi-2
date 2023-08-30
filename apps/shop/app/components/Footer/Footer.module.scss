@@ -1,16 +1,26 @@
 @use '../../styles/shop-variables';
 
-@import './variables.scss';
-
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-@import '~bootstrap/scss/mixins/breakpoints';
+$footerMobileMaxHeight: 850px;
+$footerSubscriptionExtraSmall: 290px;
+$footerSubscriptionSmall: 320px;
+$footerBottomMobileHeight: 194px;
+$footerBottomMobileHeight: 272px;
+$footerLGFooterGroupWidth: 1000px;
+$footerLGFooterBottomWidth: 167px;
+$footerLGFooterBottomMarginLeft: 150px;
+$footerLGFooterSubscriptionFormInputWidth: 117px;
+$footerXXLFooterBottomWidth: 400px;
 
 $palette: shop-variables.$theme-colors;
 $spacers: shop-variables.$spacers;
 
 .footer {
-  font-family: 'Outfit';
+  background: map-get($palette, lopi-dark-green);
+  color: map-get($palette, lopi-white);
+
+  .footerCol {
+    margin-top: map-get($spacers, 5);
+  }
 }
 
 .footerDesktop {
@@ -34,15 +44,15 @@ $spacers: shop-variables.$spacers;
   max-height: $footerMobileMaxHeight;
   overflow: hidden;
   color: map-get($palette, lopi-white);
-  font-weight: $font-weight-normal;
-  font-size: $font-size-base;
-  line-height: $line-height-base;
+  font-weight: shop-variables.$font-weight-normal;
+  font-size: shop-variables.$font-size-base;
+  line-height: shop-variables.$line-height-base;
 
   .footerTitle {
     margin-bottom: map-get($spacers, 3) !important;
     color: map-get($palette, lopi-orange);
-    font-weight: $font-weight-bold;
-    font-size: $font-size-sm;
+    font-weight: shop-variables.$font-weight-bold;
+    font-size: shop-variables.$font-size-sm;
     text-transform: uppercase;
   }
 
@@ -80,14 +90,15 @@ $spacers: shop-variables.$spacers;
       flex-direction: column;
       justify-content: center;
       box-sizing: border-box;
-      width: 100%;
+      //width: 100%;
       width: $footerSubscriptionExtraSmall;
       height: $footerBottomMobileHeight;
       overflow: hidden;
 
-      @include media-breakpoint-up(sm) {
-        width: $footerSubscriptionSmall;
-      }
+      //TODO: handle
+      //@include media-breakpoint-up(sm) {
+      //  width: $footerSubscriptionSmall;
+      //}
     }
   }
 }
@@ -115,7 +126,7 @@ $spacers: shop-variables.$spacers;
 
     &:enabled {
       border: none;
-      border-bottom: map-get($palette, lopi-orange) solid $border-width;
+      border-bottom: map-get($palette, lopi-orange) solid shop-variables.$border-width;
       color: map-get($palette, lopi-white);
     }
   }
@@ -126,121 +137,9 @@ $spacers: shop-variables.$spacers;
 
   .footerSubscriptionFormButton {
     margin-left: map-get($spacers, 21);
-    border-bottom: map-get($palette, lopi-orange) solid $border-width;
+    border-bottom: map-get($palette, lopi-orange) solid shop-variables.$border-width;
     width: map-get($spacers, 41);
     color: map-get($palette, lopi-orange);
     text-align: center;
-  }
-}
-
-@include media-breakpoint-up(xs) {
-  .footerMobile {
-    padding-top: map-get($spacers, 41);
-
-    .footerTop {
-      margin: 0 map-get($spacers, 41);
-    }
-
-    .footerMiddle {
-      margin: map-get($spacers, 5) map-get($spacers, 41) 0 map-get($spacers, 41);
-    }
-
-    .footerBottom {
-      padding-top: map-get($spacers, 53);
-      padding-bottom: map-get($spacers, 52);
-    }
-  }
-}
-
-@include media-breakpoint-up(sm) {
-  .footerMobile {
-    padding-top: map-get($spacers, 5);
-
-    .footerTop {
-      margin: 0 map-get($spacers, 6);
-    }
-
-    .footerMiddle {
-      margin: 50px map-get($spacers, 6) 0 map-get($spacers, 6);
-    }
-  }
-}
-
-@include media-breakpoint-up(md) {
-  .footerMobile {
-    padding-top: map-get($spacers, 52);
-
-    .footerTop {
-      justify-content: space-around;
-      margin: 0 map-get($spacers, 6);
-    }
-
-    .footerMiddle {
-      justify-content: space-around;
-      margin: map-get($spacers, 5) map-get($spacers, 6) 0 map-get($spacers, 6);
-    }
-  }
-}
-
-@include media-breakpoint-up(lg) {
-  .footerMobile {
-    display: none;
-  }
-
-  .footerDesktop {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    background-color: map-get($palette, lopi-dark-green);
-    padding: map-get($spacers, 53) 0;
-    padding-left: map-get($spacers, 54);
-    width: 100%;
-    max-height: $footerMobileMaxHeight;
-    overflow: hidden;
-    color: map-get($palette, lopi-white);
-    font-size: map-get($spacers, 3);
-    line-height: $line-height-base;
-
-    .footerTitle {
-      margin-bottom: map-get($spacers, 3);
-      color: map-get($palette, lopi-orange);
-      font-size: $font-size-sm;
-      text-transform: uppercase;
-    }
-
-    .footerGroup {
-      display: flex;
-      flex-grow: 4;
-      flex-direction: row;
-      justify-content: space-between;
-      max-width: $footerLGFooterGroupWidth;
-
-      > ul > li {
-        margin-bottom: map-get($spacers, 2);
-      }
-    }
-
-    .footerContactInfo {
-      margin-top: map-get($spacers, 3);
-    }
-
-    .footerBottom {
-      margin: 0 map-get($spacers, 41) 0 $footerLGFooterBottomMarginLeft;
-      width: $footerLGFooterBottomWidth;
-      font-size: $font-size-base;
-
-      .footerSubscriptionFormInput {
-        width: $footerLGFooterSubscriptionFormInputWidth;
-      }
-    }
-  }
-}
-
-@include media-breakpoint-up(xxl) {
-  .footerDesktop {
-    .footerBottom {
-      margin-right: map-get($spacers, 41);
-      margin-left: $footerXXLFooterBottomWidth;
-    }
   }
 }

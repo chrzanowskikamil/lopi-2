@@ -1,5 +1,5 @@
-import { createContext, useContext, ReactNode, useState, FC } from 'react';
-import { ProductCart } from 'apps/shop/types/ProductCart';
+import { createContext, FC, ReactNode, useContext, useState } from 'react';
+import { ProductCart } from '../../types/ProductCart';
 
 interface Product extends ProductCart {
   quantity: number;
@@ -25,7 +25,7 @@ const data: Product[] = [
   { id: 5, name: 'Ethiopia Adventure', price: 128, quantity: 1 },
 ];
 
-const defaultContextValues: CartContextProps = {
+const defaultContextValues = {
   productsInCart: data,
   totalPrice: 0,
   deliveryPrice: 0,
@@ -44,7 +44,10 @@ const defaultContextValues: CartContextProps = {
   },
 };
 
-const CartContext = createContext<CartContextProps>(defaultContextValues);
+// TODO: apply type
+const CartContext = createContext<CartContextProps>(
+  defaultContextValues as any
+);
 
 export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [productsInCart, setProductsInCart] = useState<Product[]>(data);
@@ -70,8 +73,10 @@ export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
       prevProducts.map((product) => {
         if (product.id === id && product.quantity > 1) {
           const newQuantity = product.quantity - 1;
+
           return { ...product, quantity: newQuantity };
         }
+
         return product;
       })
     );
@@ -79,6 +84,7 @@ export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const getQuantityForProduct = (id: number) => {
     const product = productsInCart.find((product) => product.id === id);
+
     return product?.quantity ?? 0;
   };
 
@@ -113,5 +119,6 @@ export const useCart = () => {
   if (!context) {
     throw new Error('useCart must be used within a CartProvider');
   }
+
   return context;
 };

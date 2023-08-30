@@ -1,44 +1,28 @@
 @use '../../../../styles/shop-variables';
 
-$pallette: shop-variables.$theme-colors;
+$palette: shop-variables.$theme-colors;
 $spacer: shop-variables.$spacers;
-$header-width: 433px;
-$header-height: 80px;
-$icon-size: 24px;
-$counter-size: 15px;
-$counter-font-size: 10px;
 
-.header {
-  width: $header-width;
-  height: $header-height;
-  background-color: map-get($pallette, lopi-dark-green);
+.cartBlock {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: none;
+  line-height: 0;
 
-  > div {
-    order: 1;
-    padding: map-get($spacer, 5);
-    margin-bottom: map-get($spacer, 21);
-  }
-}
-
-.icon {
-  width: $icon-size;
-  height: $icon-size;
-  color: map-get($pallette, lopi-white);
-}
-
-.socialsCounter {
-  width: $counter-size;
-  height: $counter-size;
-  display: flex;
-  position: absolute;
-  justify-content: center;
-  z-index: 1;
-  border-radius: 50%;
-  background-color: map-get($pallette, lopi-orange);
-  transform: translate(120%, -25%);
-
-  span {
-    color: map-get($pallette, lopi-black);
-    font-size: $counter-font-size;
+  .supper {
+    position: absolute;
+    color: black;
+    font-size: 8px;
+    background: map-get($palette, lopi-orange);
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    top: -7px;
+    left: 8px;
   }
 }

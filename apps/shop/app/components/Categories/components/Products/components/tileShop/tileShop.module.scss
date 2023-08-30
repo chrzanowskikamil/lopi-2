@@ -1,9 +1,5 @@
 @use '../../../../../.././styles/shop-variables';
 
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-@import '~bootstrap/scss/mixins/breakpoints';
-
 $palette: shop-variables.$theme-colors;
 $spacers: shop-variables.$spacers;
 
@@ -40,10 +36,9 @@ $spacers: shop-variables.$spacers;
       background-color: #05f2f2;
       width: 60px;
       color: white;
-      font-weight: $font-weight-normal;
-      font-size: $font-size-sm;
+      font-weight: shop-variables.$font-weight-normal;
+      font-size: shop-variables.$font-size-sm;
       line-height: 25px;
-      font-family: 'Outfit';
       text-align: center;
       text-transform: uppercase;
 
@@ -60,7 +55,7 @@ $spacers: shop-variables.$spacers;
     left: 50%;
     transform: translate(-50%, 40%);
     width: 90%;
-    font-size: $font-size-base;
+    font-size: shop-variables.$font-size-base;
     text-transform: uppercase;
   }
 
@@ -91,8 +86,8 @@ $spacers: shop-variables.$spacers;
     display: flex;
     margin-left: map-get($spacers, 1);
     color: map-get($palette, lopi-grey);
-    font-weight: $font-weight-normal;
-    font-size: $font-size-sm;
+    font-weight: shop-variables.$font-weight-normal;
+    font-size: shop-variables.$font-size-sm;
     line-height: 16px;
     text-align: center;
   }
@@ -101,8 +96,8 @@ $spacers: shop-variables.$spacers;
 .productName {
   margin-top: map-get($spacers, 12);
   margin-left: map-get($spacers, 1);
-  font-weight: $font-weight-normal;
-  font-size: $font-size-base;
+  font-weight: shop-variables.$font-weight-normal;
+  font-size: shop-variables.$font-size-base;
   line-height: 26px;
 }
 
@@ -110,10 +105,9 @@ $spacers: shop-variables.$spacers;
   display: flex;
   flex-direction: row;
   margin-bottom: map-get($spacers, 31);
-  font-weight: $font-weight-normal;
-  font-size: $font-size-base;
+  font-weight: shop-variables.$font-weight-normal;
+  font-size: shop-variables.$font-size-base;
   line-height: 16px;
-  font-family: 'Outfit';
   text-align: center;
 
   .normalPrice {

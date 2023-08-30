@@ -1,0 +1,33 @@
+@mixin NavbarComponent($config) {
+  $palette: map-get($config, palette);
+  $spacers: map-get($config, spacers);
+
+  .lopi-navbar {
+    background: map-get($palette, primary);
+
+    .navbar-toggler {
+      border: none;
+    }
+
+    .navbar-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .lopi-nav-logo {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      width: fit-content;
+    }
+
+    .right-nav-icons {
+      .lopi-icon-wrapper {
+        margin-left: map-get($spacers, 3);
+      }
+    }
+  }
+}
