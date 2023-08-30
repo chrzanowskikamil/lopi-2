@@ -6,6 +6,7 @@ import FormRange from 'react-bootstrap/esm/FormRange';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export const RangePriceSlider = () => {
   const searchParams = useSearchParams();
@@ -50,34 +51,44 @@ export const RangePriceSlider = () => {
     <div className={styles.priceContainer}>
       <h3 className={styles.title}>Cena</h3>
       <div className={styles.slider}>
-        <FormRange
-          aria-label="Lower price range slider"
-          min="0" //INFO: mock, in future it will be fetched from API
-          max="160" //INFO: mock, in future it will be fetched from API
-          value={lowerValue}
-          onChange={handleLowerChange}
-          onMouseUp={() =>
-            (window.location.href =
-              pathname +
-              '?' +
-              createQueryString('filterPriceLow', `${lowerValue}`))
+        <Link
+          href={
+            pathname +
+            '?' +
+            createQueryString('filterPriceLow', `${lowerValue}`)
           }
-          className={styles.rangeInput}
-        />
-        <FormRange
-          aria-label="Upper price range slider"
-          min="0" //INFO: mock, in future it will be fetched from API
-          max="160" //INFO: mock, in future it will be fetched from API
-          value={upperValue}
-          onChange={handleUpperChange}
-          className={styles.rangeInput}
-          onMouseUp={() =>
-            (window.location.href =
-              pathname +
-              '?' +
-              createQueryString('filterPriceHight', `${upperValue}`))
+        >
+          <FormRange
+            aria-label="Lower price range slider"
+            min="0" //INFO: mock, in future it will be fetched from API
+            max="160" //INFO: mock, in future it will be fetched from API
+            value={lowerValue}
+            onChange={handleLowerChange}
+            // onMouseUp={() =>
+            //   (window.location.href =
+            //     pathname +
+            //     '?' +
+            //     createQueryString('filterPriceLow', `${lowerValue}`))
+            // }
+            className={styles.rangeInput}
+          ></FormRange>
+        </Link>
+        <Link
+          href={
+            pathname +
+            '?' +
+            createQueryString('filterPriceHight', `${upperValue}`)
           }
-        />
+        >
+          <FormRange
+            aria-label="Upper price range slider"
+            min="0" //INFO: mock, in future it will be fetched from API
+            max="160" //INFO: mock, in future it will be fetched from API
+            value={upperValue}
+            onChange={handleUpperChange}
+            className={styles.rangeInput}
+          />
+        </Link>
       </div>
       <Form.Label className={styles.label}>
         Cena: {lowerValue} PLN - {upperValue} PLN
