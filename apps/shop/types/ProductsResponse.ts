@@ -26,7 +26,7 @@ export interface Product extends ItemDetails {
   updatedAt: string;
   archivedAt: string;
   categories: Category[];
-  imagesUrls: Image[];
+  imageUrls: Image[];
 }
 
 export interface ProductsResponse {

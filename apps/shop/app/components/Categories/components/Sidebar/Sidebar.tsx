@@ -61,7 +61,7 @@ export const Sidebar: FC<SidebarProps> = ({ activeCategory, list }) => {
         {renderedList}
       </ListGroup>
       <RangePriceSlider />
-      {/* <Link
+      <Link
         onClick={() => setAvailability(!availability)}
         href={
           pathname + '?' + createQueryString('availability', `${!availability}`)
@@ -74,9 +74,9 @@ export const Sidebar: FC<SidebarProps> = ({ activeCategory, list }) => {
           label="DOSTĘPNOŚĆ"
           type="switch"
           id="productAvailabilitySwitch"
-          checked={availability}
+          defaultChecked
         />
-      </Link> */}
+      </Link>
     </aside>
   );
 };

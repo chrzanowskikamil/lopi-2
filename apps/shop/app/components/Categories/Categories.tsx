@@ -8,7 +8,6 @@ import { Products } from './components/Products/Products';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { ProductsResponse } from 'apps/shop/types/ProductsResponse';
 import { getProducts } from 'apps/shop/actions/getProducts';
-
 interface CategoriesProps {
   title: string;
   content: string[];
@@ -22,8 +21,36 @@ export const Categories: FC<CategoriesProps> = ({
 }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [allProducts, setAllProducts] = useState(initalProducts.products);
-  const PRODUCTS_PER_PAGE = 6;
 
+  const PRODUCTS_PER_PAGE = 4;
+
+  const sortProductsByParams = async (item: string) => {
+    setCurrentPage(0);
+    const sortParams = item;
+    let sortType;
+    let sortOrder;
+    if (sortParams === 'Cena rosnaca') {
+      sortType = 'regularPrice';
+      sortOrder = 'asc';
+    } else if (sortParams === 'Cena malejaca') {
+      sortType = 'regularPrice';
+      sortOrder = 'desc';
+    } else if (sortParams === 'Alfabetycznie A do Z') {
+      sortType = 'name';
+      sortOrder = 'asc';
+    } else if (sortParams === 'Alfabetycznie Z do A') {
+      sortType = 'name';
+      sortOrder = 'desc';
+    }
+
+    const newSort = await getProducts(
+      PRODUCTS_PER_PAGE,
+      currentPage,
+      sortType,
+      sortOrder
+    );
+    setAllProducts([...newSort.products]);
+  };
   const loadMoreProducts = async () => {
     const nextPage = currentPage + 1;
     const newProducts = await getProducts(PRODUCTS_PER_PAGE, nextPage);
@@ -45,7 +72,7 @@ export const Categories: FC<CategoriesProps> = ({
       </Row>
       <Row>
         <Col>
-          <SortDropdown />
+          <SortDropdown sort={sortProductsByParams} />
         </Col>
       </Row>
       <Row>
