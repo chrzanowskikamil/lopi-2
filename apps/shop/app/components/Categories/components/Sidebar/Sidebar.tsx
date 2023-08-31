@@ -74,7 +74,7 @@ export const Sidebar: FC<SidebarProps> = ({ activeCategory, list }) => {
           label="DOSTĘPNOŚĆ"
           type="switch"
           id="productAvailabilitySwitch"
-          defaultChecked
+          // defaultChecked
         />
       </Link>
     </aside>

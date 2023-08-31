@@ -23,7 +23,7 @@ export const Categories: FC<CategoriesProps> = ({
   const [currentPage, setCurrentPage] = useState(0);
   const [allProducts, setAllProducts] = useState(initalProducts.products);
 
-  const PRODUCTS_PER_PAGE = 7;
+  const PRODUCTS_PER_PAGE = 4;
 
   const sortProductsByParams = async (item: string) => {
     setCurrentPage(0);
