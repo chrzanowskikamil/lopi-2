@@ -8,6 +8,7 @@ import { Products } from './components/Products/Products';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { ProductsResponse } from 'apps/shop/types/ProductsResponse';
 import { getProducts } from 'apps/shop/actions/getProducts';
+
 interface CategoriesProps {
   title: string;
   content: string[];
@@ -22,7 +23,7 @@ export const Categories: FC<CategoriesProps> = ({
   const [currentPage, setCurrentPage] = useState(0);
   const [allProducts, setAllProducts] = useState(initalProducts.products);
 
-  const PRODUCTS_PER_PAGE = 7;
+  const PRODUCTS_PER_PAGE = 4;
 
   const sortProductsByParams = async (item: string) => {
     setCurrentPage(0);
