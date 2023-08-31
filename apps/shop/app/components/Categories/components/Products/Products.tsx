@@ -1,7 +1,8 @@
 import styles from './Products.module.scss';
 import { Container, Row } from 'react-bootstrap';
+
 import { FC } from 'react';
-import { ProductsResponse } from 'apps/shop/types/ProductsResponse';
+import { ProductsResponse } from '../../../../../types/ProductsResponse';
 import ProductTile from './components/tileShop/productTile';
 
 import { useState, useEffect } from 'react';
@@ -94,10 +95,60 @@ export const Products: FC<ProductsProps> = ({ products }) => {
             </Spinner>
           </Row>
         )}
+        {isClient ? (
+          <Row className={styles.products}>{...renderedProducts}</Row>
+        ) : (
+          <Row className={styles.products}>
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          </Row>
+        )}
       </Container>
     </>
   );
 };
+// if (filterPriceHight !== null) {
+//   table.forEach((el, index) => {
+//     if (
+//       (el.discountPrice !== null ? el.discountPrice : el.regularPrice) <=
+//       parseInt(filterPriceHight)
+//     ) {
+//       return;
+//     } else return table.splice(index, 1);
+//   });
+// }
+
+// if (filterPriceLow !== null) {
+//   table.forEach((el, index) => {
+//     if (
+//       (el.discountPrice !== null ? el.discountPrice : el.regularPrice) >=
+//       parseInt(filterPriceLow)
+//     ) {
+//       return;
+//     } else return table.splice(index, 1);
+//   });
+// }
+
+// if (filterPriceLow !== null) {
+//   if (availible === null || availible == 'true') {
+//     table.forEach((el, index) => {
+//       if (el.status == 'ACTIVE') {
+//         return table.splice(index, 1);
+//       } else {
+//         return;
+//       }
+//     });
+//   } else if (availible == 'false') {
+//     table.forEach((el, index) => {
+//       if (el.status == 'ACTIVE') {
+//         return;
+//       } else {
+//         return table.splice(index, 1);
+//       }
+//     });
+//   }
+// }
 // if (filterPriceHight !== null) {
 //   table.forEach((el, index) => {
 //     if (
