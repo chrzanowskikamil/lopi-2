@@ -4,15 +4,15 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: stretch;
-      -ms-flex-pack: stretch;
-          justify-content: stretch;
+  -ms-flex-pack: stretch;
+  justify-content: stretch;
   width: 267px;
   height: 455px;
   -ms-flex-item-align: self-start;
-      align-self: self-start;
+  align-self: self-start;
 }
 
 .title {
@@ -44,8 +44,8 @@
   display: flex;
   border: none;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   background-color: transparent;
 }
 
@@ -55,8 +55,8 @@
   display: flex;
   border: none;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   background-color: transparent;
   color: #ff9a17;
 }
@@ -67,8 +67,8 @@
   display: flex;
   background-color: transparent;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-radius: 50%;
   border: 1px solid #4b5945;
   color: #4b5945;
@@ -80,8 +80,8 @@
   display: flex;
   background-color: transparent;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-radius: 50%;
   border: 1px solid #ff9a17;
   color: #ff9a17;
@@ -95,23 +95,23 @@
   margin-top: 0.875rem;
   padding: 0 0.875rem;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   z-index: 1;
 }
-.available input[type=checkbox] {
+.available input[type='checkbox'] {
   border: none;
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 .available input:checked {
   background-color: #ff9a17;
   -webkit-box-shadow: none;
-          box-shadow: none;
-}/*# sourceMappingURL=Sidebar.module.css.map */
+  box-shadow: none;
+} /*# sourceMappingURL=Sidebar.module.css.map */

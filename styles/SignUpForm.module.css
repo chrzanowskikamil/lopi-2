@@ -4,11 +4,11 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   gap: 25px;
   margin: 28px 30px 30px 30px;
   border: 1px solid var(--theme-brown);
@@ -23,11 +23,11 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   gap: 6px;
   padding: 12px;
   font-size: 16px;
@@ -40,13 +40,13 @@
   display: flex;
   position: relative;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -ms-flex-item-align: center;
-      align-self: center;
+  align-self: center;
 }
 
 .showPasswordButton {
@@ -54,16 +54,17 @@
   top: 43%;
   right: 20px;
   -ms-flex-item-align: center;
-      align-self: center;
+  align-self: center;
   -webkit-transform: translateY(-45%);
-          transform: translateY(-45%);
+  transform: translateY(-45%);
   border: none;
   background: none;
   font-size: 18px;
 }
-.showPasswordButton:hover, .showPasswordButton:focus {
+.showPasswordButton:hover,
+.showPasswordButton:focus {
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   background: none;
   color: var(--theme-orange);
 }
@@ -84,7 +85,7 @@
 }
 .submitButton:focus {
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   border: 0;
 }
 
@@ -92,4 +93,4 @@
   border-color: var(--theme-orange);
   padding: 10px 16px;
   color: var(--theme-orange);
-}/*# sourceMappingURL=SignUpForm.module.css.map */
+} /*# sourceMappingURL=SignUpForm.module.css.map */

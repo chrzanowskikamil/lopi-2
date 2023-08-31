@@ -8,7 +8,7 @@
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   margin-left: 70%;
-}/*# sourceMappingURL=AddCategory.module.css.map */
+} /*# sourceMappingURL=AddCategory.module.css.map */

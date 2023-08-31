@@ -3,9 +3,9 @@
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
   margin: 100px;
   background-color: #f2efe9;
   padding-top: 1.25rem;
@@ -37,7 +37,7 @@
   font-weight: 400;
   font-size: 0.875rem;
   line-height: 25px;
-  font-family: "Outfit";
+  font-family: 'Outfit';
   text-align: center;
   text-transform: uppercase;
 }
@@ -50,7 +50,7 @@
   bottom: 0;
   left: 50%;
   -webkit-transform: translate(-50%, 40%);
-          transform: translate(-50%, 40%);
+  transform: translate(-50%, 40%);
   width: 90%;
   font-size: 1rem;
   text-transform: uppercase;
@@ -65,11 +65,11 @@
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin-top: 1.5rem;
   margin-left: 0.2rem;
 }
@@ -106,13 +106,13 @@
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   margin-bottom: 1.25rem;
   font-weight: 400;
   font-size: 1rem;
   line-height: 16px;
-  font-family: "Outfit";
+  font-family: 'Outfit';
   text-align: center;
 }
 .productPrice .normalPrice {
@@ -131,4 +131,4 @@
   margin-top: 0.2rem;
   margin-left: 1.25rem;
   color: #ff9a17;
-}/*# sourceMappingURL=tileShop.module.css.map */
+} /*# sourceMappingURL=tileShop.module.css.map */

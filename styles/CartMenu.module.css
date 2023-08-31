@@ -11,14 +11,14 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
   background-color: transparent;
   border: 1px solid #c9cdc7;
 }
@@ -31,14 +31,14 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -ms-flex-preferred-size: 65%;
-      flex-basis: 65%;
+  flex-basis: 65%;
   font-weight: 700;
   text-transform: uppercase;
   border: 1px solid #c9cdc7;
-}/*# sourceMappingURL=CartMenu.module.css.map */
+} /*# sourceMappingURL=CartMenu.module.css.map */

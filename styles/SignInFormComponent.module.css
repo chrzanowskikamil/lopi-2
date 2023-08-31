@@ -4,11 +4,11 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   gap: 20px;
   margin: 30px 30px 20px 30px;
   border: 1px solid var(--theme-brown);
@@ -23,8 +23,8 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   gap: 6px;
   padding: 12px;
   font-size: 16px;
@@ -37,13 +37,13 @@
   display: flex;
   position: relative;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -ms-flex-item-align: center;
-      align-self: center;
+  align-self: center;
 }
 
 .showPasswordButton {
@@ -51,16 +51,17 @@
   top: 45%;
   right: 20px;
   -ms-flex-item-align: center;
-      align-self: center;
+  align-self: center;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   border: none;
   background: none;
   font-size: 18px;
 }
-.showPasswordButton:hover, .showPasswordButton:focus {
+.showPasswordButton:hover,
+.showPasswordButton:focus {
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   background: none;
   color: var(--theme-orange);
 }
@@ -78,7 +79,7 @@
   font-weight: 300;
   font-size: 15px;
   line-height: 28px;
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Quicksand', sans-serif;
   text-decoration: none;
 }
 
@@ -96,7 +97,7 @@
 }
 .submitButton:focus {
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   border: 0;
 }
 
@@ -104,4 +105,4 @@
   border-color: var(--theme-orange);
   padding: 10px 16px;
   color: var(--theme-orange);
-}/*# sourceMappingURL=SignInFormComponent.module.css.map */
+} /*# sourceMappingURL=SignInFormComponent.module.css.map */

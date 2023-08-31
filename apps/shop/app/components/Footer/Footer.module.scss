@@ -126,7 +126,8 @@ $spacers: shop-variables.$spacers;
 
     &:enabled {
       border: none;
-      border-bottom: map-get($palette, lopi-orange) solid shop-variables.$border-width;
+      border-bottom: map-get($palette, lopi-orange) solid
+        shop-variables.$border-width;
       color: map-get($palette, lopi-white);
     }
   }
@@ -137,7 +138,8 @@ $spacers: shop-variables.$spacers;
 
   .footerSubscriptionFormButton {
     margin-left: map-get($spacers, 21);
-    border-bottom: map-get($palette, lopi-orange) solid shop-variables.$border-width;
+    border-bottom: map-get($palette, lopi-orange) solid
+      shop-variables.$border-width;
     width: map-get($spacers, 41);
     color: map-get($palette, lopi-orange);
     text-align: center;

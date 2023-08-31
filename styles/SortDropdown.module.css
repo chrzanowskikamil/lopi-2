@@ -3,11 +3,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin-left: 355px;
   border: 1px solid #c9cdc7;
   background-color: transparent;
@@ -15,4 +15,4 @@
   width: 261px;
   height: 53px;
   font-size: 15px;
-}/*# sourceMappingURL=SortDropdown.module.css.map */
+} /*# sourceMappingURL=SortDropdown.module.css.map */
