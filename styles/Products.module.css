@@ -1,0 +1,23 @@
+.products {
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  width: 100%;
+  padding: 1rem 0.625rem;
+  gap: 72px 6px;
+  margin: 20px 67px;
+}
+
+.product {
+  width: 330px;
+  height: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  font-size: 15px;
+  margin: auto;
+} /*# sourceMappingURL=Products.module.css.map */
