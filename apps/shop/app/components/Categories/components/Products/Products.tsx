@@ -88,6 +88,7 @@ export const Products: FC<ProductsProps> = ({ products }) => {
         sku={product.sku}
         name={product.name}
         imageUrls={product.imageUrls}
+        imageUrls={product.imageUrls}
         regularPrice={product.regularPrice}
         discountPrice={product.discountPrice}
       />
