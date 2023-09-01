@@ -95,15 +95,6 @@ export const Products: FC<ProductsProps> = ({ products }) => {
             </Spinner>
           </Row>
         )}
-        {isClient ? (
-          <Row className={styles.products}>{...renderedProducts}</Row>
-        ) : (
-          <Row className={styles.products}>
-            <Spinner animation="border" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </Spinner>
-          </Row>
-        )}
       </Container>
     </>
   );

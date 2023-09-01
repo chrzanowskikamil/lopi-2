@@ -17,8 +17,8 @@ $spacer: shop-variables.$spacers;
 }
 
 .title {
-  margin: map-get($spacer, 8);
   display: flex;
+  margin: map-get($spacer, 8);
   border-bottom: $sidebarTitleBorderWidth solid map-get($pallete, lopi-grey);
   padding-bottom: map-get($spacer, 7);
   font-size: $titleFontSize;
@@ -26,31 +26,36 @@ $spacer: shop-variables.$spacers;
 }
 
 .slider {
+  display: flex;
   position: relative;
+  align-items: center;
+
+  background-color: map-get($pallete, lopi-orange);
+  height: 3px;
 
   .rangeInput {
     position: absolute;
-    height: $rangeInputHeight;
-    margin: 0;
-    padding: 0;
     appearance: none;
-    outline: none;
     z-index: 1;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    height: $rangeInputHeight;
 
     &::-webkit-slider-runnable-track {
-      height: $sliderTrackInputHeight;
       background: map-get($pallete, lopi-orange);
+      height: $sliderTrackInputHeight;
     }
 
     &::-webkit-slider-thumb {
       appearance: none;
+      transition: background 0.3s;
+      cursor: pointer;
+      margin-top: -3px;
+      border-radius: 50%;
+      background: map-get($pallete, lopi-orange);
       width: $sliderThumbSize;
       height: $sliderThumbSize;
-      background: map-get($pallete, lopi-orange);
-      border-radius: 50%;
-      cursor: pointer;
-      transition: background 0.3s;
-      margin-top: -3px;
     }
 
     &:active::-webkit-slider-thumb {
@@ -58,21 +63,47 @@ $spacer: shop-variables.$spacers;
     }
 
     &::-moz-range-track {
-      height: $rangeInputHeight;
       background: map-get($pallete, lopi-orange);
+      height: $rangeInputHeight;
     }
 
     &::-moz-range-thumb {
+      cursor: pointer;
+      border-radius: 50%;
+      background: map-get($pallete, lopi-orange);
       width: $sliderRangeThumbSize;
       height: $sliderRangeThumbSize;
-      background: map-get($pallete, lopi-orange);
-      border-radius: 50%;
-      cursor: pointer;
     }
+  }
+
+  .dotLeft {
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    background-color: map-get($pallete, lopi-orange);
+    width: 20px;
+    height: 20px;
+    .anchor {
+      z-index: 2;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      overflow: hidden;
+    }
+  }
+
+  .dotRight {
+    display: inline-block;
+    position: absolute;
+    margin-left: 227px;
+    border-radius: 50%;
+    background-color: map-get($pallete, lopi-orange);
+    width: 20px;
+    height: 20px;
   }
 }
 
 .label {
-  margin: map-get($spacer, 31) 0 map-get($spacer, 7) map-get($spacer, 8);
   opacity: 0.7;
+  margin: map-get($spacer, 31) 0 map-get($spacer, 7) map-get($spacer, 8);
 }
