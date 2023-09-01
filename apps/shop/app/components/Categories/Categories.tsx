@@ -22,26 +22,26 @@ export const Categories: FC<CategoriesProps> = ({
 }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [allProducts, setAllProducts] = useState(initalProducts.products);
+  const [sortType, setSortType] = useState('regularPrice');
+  const [sortOrder, setSortOrder] = useState('asc');
 
   const PRODUCTS_PER_PAGE = 4;
 
   const sortProductsByParams = async (item: string) => {
     setCurrentPage(0);
     const sortParams = item;
-    let sortType;
-    let sortOrder;
     if (sortParams === 'Cena rosnaca') {
-      sortType = 'regularPrice';
-      sortOrder = 'asc';
+      setSortType('regularPrice');
+      setSortOrder('asc');
     } else if (sortParams === 'Cena malejaca') {
-      sortType = 'regularPrice';
-      sortOrder = 'desc';
+      setSortType('regularPrice');
+      setSortOrder('desc');
     } else if (sortParams === 'Alfabetycznie A do Z') {
-      sortType = 'name';
-      sortOrder = 'asc';
+      setSortType('name');
+      setSortOrder('asc');
     } else if (sortParams === 'Alfabetycznie Z do A') {
-      sortType = 'name';
-      sortOrder = 'desc';
+      setSortType('name');
+      setSortOrder('desc');
     }
 
     const newSort = await getProducts(
@@ -54,7 +54,12 @@ export const Categories: FC<CategoriesProps> = ({
   };
   const loadMoreProducts = async () => {
     const nextPage = currentPage + 1;
-    const newProducts = await getProducts(PRODUCTS_PER_PAGE, nextPage);
+    const newProducts = await getProducts(
+      PRODUCTS_PER_PAGE,
+      nextPage,
+      sortType,
+      sortOrder
+    );
     setAllProducts([...allProducts, ...newProducts.products]);
     setCurrentPage(nextPage);
   };
