@@ -1,132 +1,127 @@
 'use client';
 
 import styles from './RangePriceSlider.module.scss';
+
+import { useState, useRef, FC } from 'react';
 import { Form } from 'react-bootstrap';
+interface RangePriceSlider {
+  higherMoneyValue: number;
+  lowerMoneyValue: number;
+  setHigherMoneyValue: (higherMoneyValue: number) => void;
+  setLowerMoneyValue: (lowerMoneyValue: number) => void;
+}
 
-import { usePathname, useSearchParams } from 'next/navigation';
-import { useCallback, useState, useRef, FC } from 'react';
+export const RangePriceSlider: FC<RangePriceSlider> = ({
+  higherMoneyValue,
+  lowerMoneyValue,
+  setHigherMoneyValue,
+  setLowerMoneyValue,
+}) => {
+  const THE_HIGHEST_MONEY_VALUE = 160;
+  const PIXEL_WIDTH = 247;
 
-export const RangePriceSlider: FC = () => {
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
+  const pxValueToMoneyValue = (pxValue: number) => {
+    const divider = Math.ceil((PIXEL_WIDTH * 100) / THE_HIGHEST_MONEY_VALUE);
 
-  const [result, setResult] = useState(
-    searchParams.get('filterPriceLow') !== null
-      ? parseInt(searchParams.get('filterPriceLow'))
-      : 0
+    return Math.ceil((pxValue * 100) / divider);
+  };
+
+  const moneyValueToPixel = (moneyValue: number) => {
+    const divider = Math.ceil((PIXEL_WIDTH * 100) / THE_HIGHEST_MONEY_VALUE);
+
+    return Math.ceil((moneyValue * divider) / 100);
+  };
+
+  const [mouseDown, setMouseDown] = useState(false);
+  const [lowerPXValue, setLowerPXValue] = useState(
+    moneyValueToPixel(lowerMoneyValue) ? moneyValueToPixel(lowerMoneyValue) : 0
   );
   const dragging = useRef(false);
   const previousClientX = useRef(0);
 
-  const [upperValue, setUpperValue] = useState(
-    searchParams.get('filterPriceHigh') !== null
-      ? parseInt(searchParams.get('filterPriceHigh'))
-      : 247
+  const [higherPXValue, setHigherPXValue] = useState(
+    moneyValueToPixel(higherMoneyValue)
   );
   const draggingUpperValue = useRef(false);
   const previousClientXUpperValue = useRef(0);
 
-  const handleMouseDown = useCallback(
-    (e) => {
-      window.addEventListener('mousedown', handleMouseDown);
-      window.addEventListener('mouseup', handleMouseUp);
-      window.addEventListener('mousemove', handleMouseMove);
-      previousClientX.current = e.clientX;
-      dragging.current = true;
-    },
-    [upperValue]
-  );
+  const handleMouseDown = (e: { clientX: number }) => {
+    previousClientX.current = e.clientX;
+    dragging.current = true;
+    setMouseDown(true);
+  };
 
-  const handleMouseDownUpperValue = useCallback(
-    (e) => {
-      window.addEventListener('mousedown', handleMouseDownUpperValue);
-      window.addEventListener('mouseup', handleMouseUpUpperValue);
-      window.addEventListener('mousemove', handleMouseMoveUpperValue);
-      previousClientXUpperValue.current = e.clientX;
-      draggingUpperValue.current = true;
-    },
-    [result]
-  );
-
-  const handleMouseMove = (e) => {
+  const handleMouseDownUpperValue = (e: { clientX: number }) => {
+    previousClientXUpperValue.current = e.clientX;
+    draggingUpperValue.current = true;
+    setMouseDown(true);
+  };
+  const handleMouseMove = (e: { clientX: number }) => {
     if (!dragging.current) {
       return;
     }
-    console.log(upperValue);
-    setResult((result) => {
-      if (result >= 0 && result < upperValue) {
+
+    setLowerPXValue((lowerPXValue) => {
+      if (lowerPXValue >= 0 && lowerPXValue < higherPXValue) {
         const change = e.clientX - previousClientX.current;
         previousClientX.current = e.clientX;
 
-        return result + change;
-      } else if (result < 0) {
-        return (result = 0);
-      } else if (result >= upperValue) {
-        return (result = upperValue - 1);
-      }
+        return lowerPXValue + change;
+      } else if (lowerPXValue < 0) {
+        return (lowerPXValue = 0);
+      } else return (lowerPXValue = higherPXValue - 1);
     });
+
+    setLowerMoneyValue(moneyValueToPixel(lowerPXValue));
   };
 
-  const handleMouseMoveUpperValue = (e) => {
+  const handleMouseMoveUpperValue = (e: { clientX: number }) => {
     if (!draggingUpperValue.current) {
       return;
     }
 
-    setUpperValue((upperValue) => {
-      if (upperValue <= 247 && upperValue > result) {
+    setHigherPXValue((higherPXValue) => {
+      if (higherPXValue <= PIXEL_WIDTH && higherPXValue > lowerPXValue) {
         const change = e.clientX - previousClientXUpperValue.current;
         previousClientXUpperValue.current = e.clientX;
-        console.log(upperValue);
 
-        return upperValue + change;
-      } else if (upperValue > 247) {
-        return (upperValue = 247);
-      } else if (upperValue <= result) {
-        return (upperValue = result + 1);
-      }
+        return higherPXValue + change;
+      } else if (higherPXValue > PIXEL_WIDTH) {
+        return (higherPXValue = PIXEL_WIDTH);
+      } else return (higherPXValue = lowerPXValue + 1);
     });
+
+    setHigherMoneyValue(pxValueToMoneyValue(higherPXValue));
   };
 
-  const handleMouseUp = useCallback(
-    (e) => {
-      dragging.current = false;
-      window.removeEventListener('mousedown', handleMouseDown);
-      window.removeEventListener('mouseup', handleMouseUp);
-      window.removeEventListener('mousemove', handleMouseMove);
-    },
-    [upperValue]
-  );
+  const handleMouseUp = () => {
+    dragging.current = false;
+  };
 
-  const handleMouseUpUpperValue = useCallback(
-    (e) => {
-      draggingUpperValue.current = false;
-      window.removeEventListener('mousedown', handleMouseDownUpperValue);
-      window.removeEventListener('mouseup', handleMouseUpUpperValue);
-      window.removeEventListener('mousemove', handleMouseMoveUpperValue);
-    },
-    [result]
-  );
+  const handleMouseUpUpperValue = () => {
+    draggingUpperValue.current = false;
+  };
 
-  const createQueryString = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams);
-      params.set(name, value);
-
-      return params.toString();
-    },
-    [searchParams]
-  );
+  const goToQueryStringHref = (query: string, value: number) => {
+    const url = new URL(location.href);
+    url.searchParams.set(`${query}`, `${value}`);
+    history.pushState({}, '', url);
+  };
 
   const displayLowValue = () => {
-    if (result > 0 && result < upperValue) return result;
-    else if (result <= 0) return 0;
-    else if (result >= upperValue) return upperValue - 1;
+    if (lowerPXValue > 0 && lowerPXValue < higherPXValue)
+      return pxValueToMoneyValue(lowerPXValue);
+    else if (lowerPXValue <= 0) return 0;
+    else if (lowerPXValue >= higherPXValue)
+      return pxValueToMoneyValue(higherPXValue) - 1;
   };
 
   const displayHighValue = () => {
-    if (upperValue < 274 && result < upperValue) return upperValue;
-    else if (upperValue >= 274) return 274;
-    else if (upperValue <= result) return result + 1;
+    if (higherPXValue <= PIXEL_WIDTH && lowerPXValue < higherPXValue)
+      return pxValueToMoneyValue(higherPXValue);
+    else if (higherPXValue >= PIXEL_WIDTH) return THE_HIGHEST_MONEY_VALUE;
+    else if (higherPXValue <= lowerPXValue)
+      return pxValueToMoneyValue(lowerPXValue) + 1;
   };
 
   return (
@@ -135,27 +130,62 @@ export const RangePriceSlider: FC = () => {
       <div className={styles.slider}>
         <div
           className={styles.dotLeft}
-          style={{ marginLeft: `${result}px` }}
+          style={{ marginLeft: `${lowerPXValue}px` }}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
-          onMouseUp={(e) => {
-            handleMouseUp(e);
-            window.location.href =
-              pathname + '?' + createQueryString('filterPriceLow', `${result}`);
+          onMouseUp={() => {
+            goToQueryStringHref(
+              'filterPriceLow',
+              pxValueToMoneyValue(lowerPXValue)
+            );
+            setMouseDown(false);
+
+            setLowerPXValue(lowerPXValue);
+            setLowerMoneyValue(pxValueToMoneyValue(lowerPXValue));
+
+            handleMouseUp();
+          }}
+          onPointerLeave={() => {
+            if (mouseDown) {
+              handleMouseUp();
+              goToQueryStringHref(
+                'filterPriceLow',
+                pxValueToMoneyValue(lowerPXValue)
+              );
+
+              setLowerPXValue(lowerPXValue);
+              setLowerMoneyValue(pxValueToMoneyValue(lowerPXValue));
+
+              setMouseDown(false);
+            }
           }}
         ></div>
 
         <div
           className={styles.dotRight}
-          style={{ marginLeft: `${upperValue}px` }}
+          style={{ marginLeft: `${higherPXValue}px` }}
           onMouseDown={handleMouseDownUpperValue}
           onMouseMove={handleMouseMoveUpperValue}
-          onMouseUp={(e) => {
-            handleMouseUpUpperValue(e);
-            window.location.href =
-              pathname +
-              '?' +
-              createQueryString('filterPriceHigh', `${upperValue}`);
+          onMouseUp={() => {
+            handleMouseUpUpperValue();
+            goToQueryStringHref(
+              'filterPriceHigh',
+              pxValueToMoneyValue(higherPXValue)
+            );
+
+            setHigherPXValue(higherPXValue);
+            setHigherMoneyValue(pxValueToMoneyValue(higherPXValue));
+            setMouseDown(false);
+          }}
+          onPointerLeave={() => {
+            if (mouseDown) {
+              handleMouseUpUpperValue();
+              goToQueryStringHref(
+                'filterPriceHigh',
+                pxValueToMoneyValue(higherPXValue)
+              );
+              setMouseDown(false);
+            }
           }}
         ></div>
       </div>

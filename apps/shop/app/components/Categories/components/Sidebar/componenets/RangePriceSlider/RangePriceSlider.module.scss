@@ -84,11 +84,13 @@ $spacer: shop-variables.$spacers;
     width: 20px;
     height: 20px;
     .anchor {
+      display: block;
       z-index: 2;
       border-radius: 50%;
       width: 20px;
       height: 20px;
       overflow: hidden;
+      color: red;
     }
   }
 
