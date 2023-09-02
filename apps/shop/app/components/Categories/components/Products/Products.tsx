@@ -7,33 +7,38 @@ import ProductTile from './components/tileShop/productTile';
 
 import { useState, useEffect } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
-import { useSearchParams } from 'next/navigation';
+
 interface ProductsProps {
   products: ProductsResponse;
+  priceToFilterByLow: number;
+  priceToFilterByHigh: number;
+  availabilityToFilterBy: boolean;
 }
 
-export const Products: FC<ProductsProps> = ({ products }) => {
+export const Products: FC<ProductsProps> = ({
+  products,
+  priceToFilterByLow,
+  priceToFilterByHigh,
+  availabilityToFilterBy,
+}) => {
   const [isClient, setIsClient] = useState(false);
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  const searchParams = useSearchParams();
-
-  const filterPriceLow = searchParams.get('filterPriceLow');
-  const filterPriceHight = searchParams.get('filterPriceHight');
-  const availible = searchParams.get('availability');
+  const filterPriceLow = priceToFilterByLow;
+  const filterPriceHight = priceToFilterByHigh;
+  const availible = availabilityToFilterBy;
 
   const sortBySearchParams = () => {
     const table = [...products.products];
-    console.table(table);
 
     if (filterPriceHight !== null) {
       for (let i = table.length - 1; i >= 0; i -= 1) {
         if (
           (table[i].discountPrice !== null
             ? table[i].discountPrice
-            : table[i].regularPrice) >= parseInt(filterPriceHight)
+            : table[i].regularPrice) >= filterPriceHight
         ) {
           table.splice(i, 1);
         }
@@ -45,7 +50,7 @@ export const Products: FC<ProductsProps> = ({ products }) => {
         if (
           (table[i].discountPrice !== null
             ? table[i].discountPrice
-            : table[i].regularPrice) < parseInt(filterPriceLow)
+            : table[i].regularPrice) < filterPriceLow
         ) {
           table.splice(i, 1);
         }
@@ -54,12 +59,12 @@ export const Products: FC<ProductsProps> = ({ products }) => {
 
     if (availible !== null) {
       for (let i = table.length - 1; i >= 0; i -= 1) {
-        if (availible === 'true') {
+        if (availible === true) {
           if (table[i].status !== 'ACTIVE') {
             table.splice(i, 1);
           }
         }
-        if (availible === 'false') {
+        if (availible === false) {
           if (table[i].status === 'ACTIVE') {
             table.splice(i, 1);
           }
@@ -67,7 +72,7 @@ export const Products: FC<ProductsProps> = ({ products }) => {
       }
     }
 
-    return console.table(table), table;
+    return table;
   };
 
   const renderedProducts = sortBySearchParams().map((product) => {
@@ -99,85 +104,3 @@ export const Products: FC<ProductsProps> = ({ products }) => {
     </>
   );
 };
-// if (filterPriceHight !== null) {
-//   table.forEach((el, index) => {
-//     if (
-//       (el.discountPrice !== null ? el.discountPrice : el.regularPrice) <=
-//       parseInt(filterPriceHight)
-//     ) {
-//       return;
-//     } else return table.splice(index, 1);
-//   });
-// }
-
-// if (filterPriceLow !== null) {
-//   table.forEach((el, index) => {
-//     if (
-//       (el.discountPrice !== null ? el.discountPrice : el.regularPrice) >=
-//       parseInt(filterPriceLow)
-//     ) {
-//       return;
-//     } else return table.splice(index, 1);
-//   });
-// }
-
-// if (filterPriceLow !== null) {
-//   if (availible === null || availible == 'true') {
-//     table.forEach((el, index) => {
-//       if (el.status == 'ACTIVE') {
-//         return table.splice(index, 1);
-//       } else {
-//         return;
-//       }
-//     });
-//   } else if (availible == 'false') {
-//     table.forEach((el, index) => {
-//       if (el.status == 'ACTIVE') {
-//         return;
-//       } else {
-//         return table.splice(index, 1);
-//       }
-//     });
-//   }
-// }
-// if (filterPriceHight !== null) {
-//   table.forEach((el, index) => {
-//     if (
-//       (el.discountPrice !== null ? el.discountPrice : el.regularPrice) <=
-//       parseInt(filterPriceHight)
-//     ) {
-//       return;
-//     } else return table.splice(index, 1);
-//   });
-// }
-
-// if (filterPriceLow !== null) {
-//   table.forEach((el, index) => {
-//     if (
-//       (el.discountPrice !== null ? el.discountPrice : el.regularPrice) >=
-//       parseInt(filterPriceLow)
-//     ) {
-//       return;
-//     } else return table.splice(index, 1);
-//   });
-// }
-
-// if (filterPriceLow !== null) {
-//   if (availible === null || availible == 'true') {
-//     table.forEach((el, index) => {
-//       if (el.status == 'ACTIVE') {
-//         return table.splice(index, 1);
-//       } else {
-//         return;
-//       }
-//     });
-//   } else if (availible == 'false') {
-//     table.forEach((el, index) => {
-//       if (el.status == 'ACTIVE') {
-//         return;
-//       } else {
-//         return table.splice(index, 1);
-//       }
-//     });
-//   }
-// }
