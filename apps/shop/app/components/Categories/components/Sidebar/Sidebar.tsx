@@ -28,26 +28,11 @@ export const Sidebar: FC<SidebarProps> = ({
   setLowerMoneyValue,
 }) => {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const [availability, setAvailability] = useState<boolean>(() =>
-    searchParams.get('availibilty') === 'false' ? false : true
-  );
-  // console.log(availability);
   const getItemClassName = (item: string) =>
     activeCategory === item ? styles.activeListItem : styles.listItem;
 
   const getBadgeClassName = (item: string) =>
     activeCategory === item ? styles.activeBadge : styles.badge;
-
-  const createQueryString = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams);
-      params.set(name, value);
-
-      return params.toString();
-    },
-    [searchParams]
-  );
 
   const renderedList = list.map((item) => (
     <ListGroup.Item

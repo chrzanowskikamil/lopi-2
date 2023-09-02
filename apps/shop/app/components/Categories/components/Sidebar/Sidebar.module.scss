@@ -63,6 +63,8 @@ $pallete: shop-variables.$theme-colors;
   color: map-get($pallete, lopi-orange);
 }
 .anchor {
+  width: 20px;
+  height: 20px;
   text-decoration: none;
   :hover {
     cursor: pointer;

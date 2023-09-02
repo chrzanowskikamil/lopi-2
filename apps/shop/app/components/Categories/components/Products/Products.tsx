@@ -7,36 +7,41 @@ import ProductTile from './components/tileShop/productTile';
 
 import { useState, useEffect } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
-import { useSearchParams } from 'next/navigation';
+
 interface ProductsProps {
   products: ProductsResponse;
   priceToFilterByLow: number;
   priceToFilterByHigh: number;
   availabilityToFilterBy: boolean;
+  priceToFilterByLow: number;
+  priceToFilterByHigh: number;
+  availabilityToFilterBy: boolean;
 }
 
-export const Products: FC<ProductsProps> = ({ products }) => {
+export const Products: FC<ProductsProps> = ({
+  products,
+  priceToFilterByLow,
+  priceToFilterByHigh,
+  availabilityToFilterBy,
+}) => {
   const [isClient, setIsClient] = useState(false);
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  const searchParams = useSearchParams();
-
-  const filterPriceLow = searchParams.get('filterPriceLow');
-  const filterPriceHight = searchParams.get('filterPriceHight');
-  const availible = searchParams.get('availability');
+  const filterPriceLow = priceToFilterByLow;
+  const filterPriceHight = priceToFilterByHigh;
+  const availible = availabilityToFilterBy;
 
   const sortBySearchParams = () => {
     const table = [...products.products];
-    console.table(table);
 
     if (filterPriceLow !== null) {
       table.forEach((el, index) => {
         if (
-          (el.discountPrice !== undefined
-            ? el.discountPrice
-            : el.regularPrice) >= parseInt(filterPriceLow)
+          (table[i].discountPrice !== null
+            ? table[i].discountPrice
+            : table[i].regularPrice) >= filterPriceHight
         ) {
           return;
         } else return table.splice(index, 1);
@@ -46,39 +51,31 @@ export const Products: FC<ProductsProps> = ({ products }) => {
     if (filterPriceHight !== null) {
       table.forEach((el, index) => {
         if (
-          (el.discountPrice !== undefined
-            ? el.discountPrice
-            : el.regularPrice) <= parseInt(filterPriceHight)
+          (table[i].discountPrice !== null
+            ? table[i].discountPrice
+            : table[i].regularPrice) < filterPriceLow
         ) {
           return;
         } else return table.splice(index, 1);
       });
     }
 
-    if (availible === null || availible === 'true') {
-      console.table('null lub true' + table);
-      table.forEach((el, index) => {
-        console.log(typeof el.quantity);
-        if (el.quantity > 0) {
-          return;
-        } else {
-          return table.splice(index, 1);
+    if (availible !== null) {
+      for (let i = table.length - 1; i >= 0; i -= 1) {
+        if (availible === true) {
+          if (table[i].status !== 'ACTIVE') {
+            table.splice(i, 1);
+          }
         }
-      });
-    } else if (availible === 'false') {
-      console.table('false' + table);
-
-      table.forEach((el, index) => {
-        console.log(typeof el.quantity);
-        if (el.quantity <= 0) {
-          return;
-        } else {
-          return table.splice(index, 1);
+        if (availible === false) {
+          if (table[i].status === 'ACTIVE') {
+            table.splice(i, 1);
+          }
         }
       });
     }
 
-    return console.table(table), table;
+    return table;
   };
 
   const renderedProducts = sortBySearchParams().map((product) => {

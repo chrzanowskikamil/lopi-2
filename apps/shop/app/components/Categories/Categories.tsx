@@ -10,6 +10,7 @@ import { ProductsResponse } from 'apps/shop/types/ProductsResponse';
 import { getProducts } from 'apps/shop/actions/getProducts';
 
 import { useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 interface CategoriesProps {
   title: string;
   content: string[];
@@ -21,6 +22,9 @@ export const Categories: FC<CategoriesProps> = ({
   content,
   products: initalProducts,
 }) => {
+  const THE_HIGHEST_MONEY_VALUE = 160;
+  const PRODUCTS_PER_PAGE = 4;
+
   const THE_HIGHEST_MONEY_VALUE = 160;
   const PRODUCTS_PER_PAGE = 4;
 
@@ -46,7 +50,28 @@ export const Categories: FC<CategoriesProps> = ({
       ? changeToNumber(searchParams.get('filterPriceHigh'))
       : THE_HIGHEST_MONEY_VALUE
   );
+  const searchParams = useSearchParams();
 
+  const changeToNumber = (param: string | null) => {
+    if (param !== null) {
+      return parseInt(param);
+    } else return 0;
+  };
+
+  const [lowerMoneyValue, setLowerMoneyValue] = useState<number>(
+    searchParams.get('filterPriceLow') !== null
+      ? changeToNumber(searchParams.get('filterPriceLow'))
+      : 0
+  );
+  const [higherMoneyValue, setHigherMoneyValue] = useState<number>(
+    searchParams.get('filterPriceHigh') !== null
+      ? changeToNumber(searchParams.get('filterPriceHigh'))
+      : THE_HIGHEST_MONEY_VALUE
+  );
+
+  const [availability, setAvailability] = useState<boolean>(() =>
+    searchParams.get('availability') === 'false' ? false : true
+  );
   const [availability, setAvailability] = useState<boolean>(() =>
     searchParams.get('availability') === 'false' ? false : true
   );
@@ -57,16 +82,27 @@ export const Categories: FC<CategoriesProps> = ({
 
     let sortType = 'regularPrice';
     let sortOrder = 'asc';
+
+    let sortType = 'regularPrice';
+    let sortOrder = 'asc';
     if (sortParams === 'Cena rosnaca') {
+      sortType = 'regularPrice';
+      sortOrder = 'asc';
       sortType = 'regularPrice';
       sortOrder = 'asc';
     } else if (sortParams === 'Cena malejaca') {
       sortType = 'regularPrice';
       sortOrder = 'desc';
+      sortType = 'regularPrice';
+      sortOrder = 'desc';
     } else if (sortParams === 'Alfabetycznie A do Z') {
       sortType = 'name';
       sortOrder = 'asc';
+      sortType = 'name';
+      sortOrder = 'asc';
     } else if (sortParams === 'Alfabetycznie Z do A') {
+      sortType = 'name';
+      sortOrder = 'desc';
       sortType = 'name';
       sortOrder = 'desc';
     }
@@ -94,6 +130,7 @@ export const Categories: FC<CategoriesProps> = ({
     );
     setAllProducts([...newSort.products]);
   };
+
   const loadMoreProducts = async () => {
     const nextPage = currentPage + 1;
     const newProducts = await getProducts(
@@ -138,8 +175,24 @@ export const Categories: FC<CategoriesProps> = ({
             setHigherMoneyValue={setHigherMoneyValue}
             setLowerMoneyValue={setLowerMoneyValue}
           />
+          <Sidebar
+            activeCategory={title}
+            list={content}
+            availability={availability}
+            setAvailability={setAvailability}
+            higherMoneyValue={higherMoneyValue}
+            lowerMoneyValue={lowerMoneyValue}
+            setHigherMoneyValue={setHigherMoneyValue}
+            setLowerMoneyValue={setLowerMoneyValue}
+          />
         </Col>
         <Col xl={10}>
+          <Products
+            products={{ ...initalProducts, products: allProducts }}
+            priceToFilterByLow={lowerMoneyValue}
+            priceToFilterByHigh={higherMoneyValue}
+            availabilityToFilterBy={availability}
+          />
           <Products
             products={{ ...initalProducts, products: allProducts }}
             priceToFilterByLow={lowerMoneyValue}
