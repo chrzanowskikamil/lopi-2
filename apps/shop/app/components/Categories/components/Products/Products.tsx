@@ -24,7 +24,7 @@ export const Products: FC<ProductsProps> = ({
   priceToFilterByHigh,
   availabilityToFilterBy,
 }) => {
-  const [isClient, setIsClient] = useState(false);
+  const [isClient, setIsClient] = useState<boolean>();
   useEffect(() => {
     setIsClient(true);
   }, []);
@@ -34,7 +34,8 @@ export const Products: FC<ProductsProps> = ({
   const availible = availabilityToFilterBy;
 
   const sortBySearchParams = () => {
-    const table = [...products.products];
+    console.log(products);
+    const table = [...(products !== undefined ? products : [])];
 
     if (filterPriceLow !== null) {
       table.forEach((el, index) => {

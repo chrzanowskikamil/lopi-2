@@ -10,11 +10,11 @@ import { ProductsResponse } from 'apps/shop/types/ProductsResponse';
 import { getProducts } from 'apps/shop/actions/getProducts';
 
 import { useSearchParams } from 'next/navigation';
-import { useSearchParams } from 'next/navigation';
 interface CategoriesProps {
   title: string;
   content: string[];
   products: ProductsResponse;
+  newSort: ProductsResponse;
 }
 
 export const Categories: FC<CategoriesProps> = ({
@@ -22,14 +22,15 @@ export const Categories: FC<CategoriesProps> = ({
   content,
   products: initalProducts,
 }) => {
-  const THE_HIGHEST_MONEY_VALUE = 160;
-  const PRODUCTS_PER_PAGE = 4;
+  const categoriesReducer = useCategoriesReducer(initalProducts);
+  console.log(initalProducts);
 
   const THE_HIGHEST_MONEY_VALUE = 160;
   const PRODUCTS_PER_PAGE = 4;
+
+  const [allProducts, setAllProducts] = useState(initalProducts.products);
 
   const [currentPage, setCurrentPage] = useState(0);
-  const [allProducts, setAllProducts] = useState(initalProducts.products);
   const [sortType, setSortType] = useState('regularPrice');
   const [sortOrder, setSortOrder] = useState('asc');
   const searchParams = useSearchParams();
@@ -114,20 +115,10 @@ export const Categories: FC<CategoriesProps> = ({
       sortOrder
     );
 
-    console.table(
-      await getProducts(PRODUCTS_PER_PAGE, currentPage, sortType, sortOrder)
-    );
+    console.log(newSort);
+    // categoriesReducer.onProductsSet(newSort);
     setSortType(sortType);
     setSortOrder(sortOrder);
-    setAllProducts([...newSort.products]);
-  };
-
-    const newSort = await getProducts(
-      PRODUCTS_PER_PAGE,
-      currentPage,
-      sortType,
-      sortOrder
-    );
     setAllProducts([...newSort.products]);
   };
 
@@ -188,13 +179,13 @@ export const Categories: FC<CategoriesProps> = ({
         </Col>
         <Col xl={10}>
           <Products
-            products={{ ...initalProducts, products: allProducts }}
+            products={categoriesReducer.state.allProducts}
             priceToFilterByLow={lowerMoneyValue}
             priceToFilterByHigh={higherMoneyValue}
             availabilityToFilterBy={availability}
           />
           <Products
-            products={{ ...initalProducts, products: allProducts }}
+            products={categoriesReducer.state.allProducts}
             priceToFilterByLow={lowerMoneyValue}
             priceToFilterByHigh={higherMoneyValue}
             availabilityToFilterBy={availability}
