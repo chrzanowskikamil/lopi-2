@@ -6,28 +6,21 @@ import { RangePriceSlider } from './componenets/RangePriceSlider/RangePriceSlide
 import { FC } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+
+import { CategoriesReducerProps } from '../../CategoriesReducerHook';
 interface SidebarProps {
+  categoriesReducer: CategoriesReducerProps;
   activeCategory: string;
   list: string[];
-  availability: boolean;
-  setAvailability: (availability: boolean) => void;
-  higherMoneyValue: number;
-  lowerMoneyValue: number;
-  setHigherMoneyValue: (higherMoneyValue: number) => void;
-  setLowerMoneyValue: (lowerMoneyValue: number) => void;
 }
 
 export const Sidebar: FC<SidebarProps> = ({
+  categoriesReducer,
   activeCategory,
   list,
-  availability,
-  setAvailability,
-  higherMoneyValue,
-  lowerMoneyValue,
-  setHigherMoneyValue,
-  setLowerMoneyValue,
 }) => {
   const pathname = usePathname();
+
   const getItemClassName = (item: string) =>
     activeCategory === item ? styles.activeListItem : styles.listItem;
 
@@ -63,12 +56,7 @@ export const Sidebar: FC<SidebarProps> = ({
       <ListGroup as="ol" className={styles.categoryList}>
         {renderedList}
       </ListGroup>
-      <RangePriceSlider
-        setHigherMoneyValue={setHigherMoneyValue}
-        setLowerMoneyValue={setLowerMoneyValue}
-        higherMoneyValue={higherMoneyValue}
-        lowerMoneyValue={lowerMoneyValue}
-      />
+      <RangePriceSlider categoriesReducer={categoriesReducer} />
 
       <Form.Check
         aria-label="Available"
@@ -77,10 +65,15 @@ export const Sidebar: FC<SidebarProps> = ({
         type="switch"
         id="productAvailabilitySwitch"
         onChange={() => {
-          goToQueryStringHref('availability', (!availability).toString());
-          setAvailability(!availability);
+          categoriesReducer.onAvailabilityFilterChange(
+            !categoriesReducer.state.availability
+          );
+          goToQueryStringHref(
+            'availability',
+            (!categoriesReducer.state.availability).toString()
+          );
         }}
-        checked={availability}
+        checked={categoriesReducer.state.availability}
       />
     </aside>
   );

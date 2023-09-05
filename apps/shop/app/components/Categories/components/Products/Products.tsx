@@ -2,37 +2,30 @@ import styles from './Products.module.scss';
 import { Container, Row } from 'react-bootstrap';
 
 import { FC } from 'react';
-import { ProductsResponse } from '../../../../../types/ProductsResponse';
+
 import ProductTile from './components/tileShop/productTile';
 
 import { useState, useEffect } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 
+import { CategoriesReducerProps } from '../../CategoriesReducerHook';
+
 interface ProductsProps {
-  products: ProductsResponse;
-  priceToFilterByLow: number;
-  priceToFilterByHigh: number;
-  availabilityToFilterBy: boolean;
+  categoriesReducer: CategoriesReducerProps;
 }
 
-export const Products: FC<ProductsProps> = ({
-  products,
-  priceToFilterByLow,
-  priceToFilterByHigh,
-  availabilityToFilterBy,
-}) => {
+export const Products: FC<ProductsProps> = ({ categoriesReducer }) => {
   const [isClient, setIsClient] = useState<boolean>();
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  const filterPriceLow = priceToFilterByLow;
-  const filterPriceHight = priceToFilterByHigh;
-  const availible = availabilityToFilterBy;
+  const filterPriceLow = categoriesReducer.state.lowerMoneyValueFilter;
+  const filterPriceHight = categoriesReducer.state.higherMoneyValueFilter;
+  const availible = categoriesReducer.state.availability;
 
   const sortBySearchParams = () => {
-    console.log(products);
-    const table = [...(products !== undefined ? products : [])];
+    const table = [...categoriesReducer.state.allProducts];
 
     if (filterPriceHight !== null) {
       for (let i = table.length - 1; i >= 0; i -= 1) {
