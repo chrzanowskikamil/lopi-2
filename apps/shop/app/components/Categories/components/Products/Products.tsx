@@ -2,59 +2,53 @@ import styles from './Products.module.scss';
 import { Container, Row } from 'react-bootstrap';
 
 import { FC } from 'react';
-import { ProductsResponse } from '../../../../../types/ProductsResponse';
+
 import ProductTile from './components/tileShop/productTile';
 
 import { useState, useEffect } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 
+import { CategoriesReducerProps } from '../../CategoriesReducerHook';
+
 interface ProductsProps {
-  products: ProductsResponse;
-  priceToFilterByLow: number;
-  priceToFilterByHigh: number;
-  availabilityToFilterBy: boolean;
+  categoriesReducer: CategoriesReducerProps;
 }
 
-export const Products: FC<ProductsProps> = ({
-  products,
-  priceToFilterByLow,
-  priceToFilterByHigh,
-  availabilityToFilterBy,
-}) => {
-  const [isClient, setIsClient] = useState(false);
+export const Products: FC<ProductsProps> = ({ categoriesReducer }) => {
+  const [isClient, setIsClient] = useState<boolean>();
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  const filterPriceLow = priceToFilterByLow;
-  const filterPriceHight = priceToFilterByHigh;
-  const availible = availabilityToFilterBy;
+  const filterPriceLow = categoriesReducer.state.lowerMoneyValueFilter;
+  const filterPriceHight = categoriesReducer.state.higherMoneyValueFilter;
+  const availible = categoriesReducer.state.availability;
 
   const sortBySearchParams = () => {
-    const table = [...products.products];
+    const table = [...categoriesReducer.state.allProducts];
 
-    if (filterPriceHight !== null) {
-      for (let i = table.length - 1; i >= 0; i -= 1) {
+    if (filterPriceLow !== null) {
+      table.forEach((el, index) => {
         if (
           (table[i].discountPrice !== null
             ? table[i].discountPrice
             : table[i].regularPrice) >= filterPriceHight
         ) {
-          table.splice(i, 1);
-        }
-      }
+          return;
+        } else return table.splice(index, 1);
+      });
     }
 
-    if (filterPriceLow !== null) {
-      for (let i = table.length - 1; i >= 0; i -= 1) {
+    if (filterPriceHight !== null) {
+      table.forEach((el, index) => {
         if (
           (table[i].discountPrice !== null
             ? table[i].discountPrice
             : table[i].regularPrice) < filterPriceLow
         ) {
-          table.splice(i, 1);
-        }
-      }
+          return;
+        } else return table.splice(index, 1);
+      });
     }
 
     if (availible !== null) {
@@ -69,7 +63,7 @@ export const Products: FC<ProductsProps> = ({
             table.splice(i, 1);
           }
         }
-      }
+      });
     }
 
     return table;
@@ -81,6 +75,7 @@ export const Products: FC<ProductsProps> = ({
         key={product.uid}
         sku={product.sku}
         name={product.name}
+        imageUrls={product.imageUrls}
         imageUrls={product.imageUrls}
         regularPrice={product.regularPrice}
         discountPrice={product.discountPrice}

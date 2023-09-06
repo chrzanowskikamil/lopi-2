@@ -47,10 +47,11 @@ const ProductTile: FC<ProductTileProps> = ({
           />
         </div>
         <div className={style.tileInfo}>
-          {/* <ProductRating starsCount={stars} />
-          <span>({rewievs})</span> */}
+          <ProductRating starsCount={stars} />
+          <span>({rewievs})</span>
         </div>
         <div className={style.productName}>{name}</div>
+        <Price price={regularPrice} currentPrice={discountPrice} />
         <Price price={regularPrice} currentPrice={discountPrice} />
       </ul>
     </Col>

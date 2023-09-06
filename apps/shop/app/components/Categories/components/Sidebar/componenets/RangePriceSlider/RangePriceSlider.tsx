@@ -4,18 +4,13 @@ import styles from './RangePriceSlider.module.scss';
 
 import { useState, useRef, FC } from 'react';
 import { Form } from 'react-bootstrap';
+import { CategoriesReducerProps } from '../../../../CategoriesReducerHook';
 interface RangePriceSlider {
-  higherMoneyValue: number;
-  lowerMoneyValue: number;
-  setHigherMoneyValue: (higherMoneyValue: number) => void;
-  setLowerMoneyValue: (lowerMoneyValue: number) => void;
+  categoriesReducer: CategoriesReducerProps;
 }
 
 export const RangePriceSlider: FC<RangePriceSlider> = ({
-  higherMoneyValue,
-  lowerMoneyValue,
-  setHigherMoneyValue,
-  setLowerMoneyValue,
+  categoriesReducer,
 }) => {
   const THE_HIGHEST_MONEY_VALUE = 160;
   const PIXEL_WIDTH = 247;
@@ -34,13 +29,15 @@ export const RangePriceSlider: FC<RangePriceSlider> = ({
 
   const [mouseDown, setMouseDown] = useState(false);
   const [lowerPXValue, setLowerPXValue] = useState(
-    moneyValueToPixel(lowerMoneyValue) ? moneyValueToPixel(lowerMoneyValue) : 0
+    moneyValueToPixel(categoriesReducer.state.lowerMoneyValueFilter)
+      ? moneyValueToPixel(categoriesReducer.state.lowerMoneyValueFilter)
+      : 0
   );
   const dragging = useRef(false);
   const previousClientX = useRef(0);
 
   const [higherPXValue, setHigherPXValue] = useState(
-    moneyValueToPixel(higherMoneyValue)
+    moneyValueToPixel(categoriesReducer.state.higherMoneyValueFilter)
   );
   const draggingUpperValue = useRef(false);
   const previousClientXUpperValue = useRef(0);
@@ -72,7 +69,9 @@ export const RangePriceSlider: FC<RangePriceSlider> = ({
       } else return (lowerPXValue = higherPXValue - 1);
     });
 
-    setLowerMoneyValue(moneyValueToPixel(lowerPXValue));
+    categoriesReducer.onLowerMoneyValueFilterChange(
+      pxValueToMoneyValue(lowerPXValue)
+    );
   };
 
   const handleMouseMoveUpperValue = (e: { clientX: number }) => {
@@ -91,7 +90,9 @@ export const RangePriceSlider: FC<RangePriceSlider> = ({
       } else return (higherPXValue = lowerPXValue + 1);
     });
 
-    setHigherMoneyValue(pxValueToMoneyValue(higherPXValue));
+    categoriesReducer.onHigherMoneyValueFilterChange(
+      pxValueToMoneyValue(higherPXValue)
+    );
   };
 
   const handleMouseUp = () => {
@@ -141,7 +142,9 @@ export const RangePriceSlider: FC<RangePriceSlider> = ({
             setMouseDown(false);
 
             setLowerPXValue(lowerPXValue);
-            setLowerMoneyValue(pxValueToMoneyValue(lowerPXValue));
+            categoriesReducer.onLowerMoneyValueFilterChange(
+              pxValueToMoneyValue(lowerPXValue)
+            );
 
             handleMouseUp();
           }}
@@ -154,7 +157,9 @@ export const RangePriceSlider: FC<RangePriceSlider> = ({
               );
 
               setLowerPXValue(lowerPXValue);
-              setLowerMoneyValue(pxValueToMoneyValue(lowerPXValue));
+              categoriesReducer.onLowerMoneyValueFilterChange(
+                pxValueToMoneyValue(lowerPXValue)
+              );
 
               setMouseDown(false);
             }
@@ -174,7 +179,10 @@ export const RangePriceSlider: FC<RangePriceSlider> = ({
             );
 
             setHigherPXValue(higherPXValue);
-            setHigherMoneyValue(pxValueToMoneyValue(higherPXValue));
+
+            categoriesReducer.onHigherMoneyValueFilterChange(
+              pxValueToMoneyValue(higherPXValue)
+            );
             setMouseDown(false);
           }}
           onPointerLeave={() => {

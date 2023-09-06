@@ -1,0 +1,134 @@
+.tileContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  margin: 100px;
+  background-color: #f2efe9;
+  padding-top: 1.25rem;
+  min-width: 280px;
+  max-width: 1640px;
+  list-style: none;
+}
+
+.tile {
+  float: left;
+  margin-bottom: 90px;
+  width: 330px;
+  min-width: 280px;
+  height: 423px;
+}
+.tile .imageArea {
+  position: relative;
+}
+.tile .imageArea .tileImage {
+  width: 330px;
+  height: 330px;
+}
+.tile .imageArea .tileStatus {
+  position: absolute;
+  margin: 1rem 0 0 1rem;
+  background-color: #05f2f2;
+  width: 60px;
+  color: white;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 25px;
+  font-family: 'Outfit';
+  text-align: center;
+  text-transform: uppercase;
+}
+.tile .imageArea .tileStatus .price {
+  background-color: #ff9a17;
+}
+.tile .buttonToCart {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, 40%);
+  transform: translate(-50%, 40%);
+  width: 90%;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+.tile:hover .buttonToCart {
+  display: block;
+}
+
+.tileInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-top: 1.5rem;
+  margin-left: 0.2rem;
+}
+.tileInfo .star {
+  margin-left: 0.2rem;
+}
+.tileInfo .starOrange {
+  margin-left: 0.2rem;
+  color: #ff9a17;
+}
+.tileInfo span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 0.2rem;
+  color: #c9cdc7;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 16px;
+  text-align: center;
+}
+
+.productName {
+  margin-top: 0.25rem;
+  margin-left: 0.2rem;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 26px;
+}
+
+.productPrice {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  margin-bottom: 1.25rem;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 16px;
+  font-family: 'Outfit';
+  text-align: center;
+}
+.productPrice .normalPrice {
+  margin-top: 0.25rem;
+  margin-left: 0.2rem;
+  color: #0f2615;
+  text-decoration: none;
+}
+.productPrice .previousPrice {
+  margin-top: 0.25rem;
+  margin-left: 0.2rem;
+  color: var(--theme-green);
+  text-decoration: line-through;
+}
+.productPrice .currentPrice {
+  margin-top: 0.2rem;
+  margin-left: 1.25rem;
+  color: #ff9a17;
+} /*# sourceMappingURL=tileShop.module.css.map */
