@@ -6,12 +6,9 @@ import { FC } from 'react';
 
 import Price from './components/Price';
 
-import Status from './components/Status';
 import AddToCart from './components/AddtoCart';
-import ProductRating from './components/ProductRating';
-import { Col } from 'react-bootstrap';
 
-import { Product } from '../../../../,./../../../../types/ProductsResponse';
+import { Col } from 'react-bootstrap';
 
 interface Image {
   imageUrl: string;
