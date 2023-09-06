@@ -81,7 +81,9 @@ $spacers: shop-variables.$spacers;
     margin-left: map-get($spacers, 1);
     color: map-get($palette, lopi-orange);
   }
-
+  .starGrey {
+    color: map-get($palette, lopi-grey);
+  }
   span {
     display: flex;
     margin-left: map-get($spacers, 1);

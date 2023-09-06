@@ -111,6 +111,10 @@ $spacers: shop-variables.$spacers;
   .footerSocialElements {
     margin-right: map-get($spacers, 3);
     color: map-get($palette, lopi-orange);
+    .footerIcon {
+      color: map-get($palette, lopi-orange);
+      font-size: shop-variables.$font-size-base;
+    }
   }
 }
 
@@ -143,5 +147,9 @@ $spacers: shop-variables.$spacers;
     width: map-get($spacers, 41);
     color: map-get($palette, lopi-orange);
     text-align: center;
+    .mailIcon {
+      color: map-get($palette, lopi-orange);
+      font-size: shop-variables.$font-size-lg;
+    }
   }
 }

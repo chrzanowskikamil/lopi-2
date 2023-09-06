@@ -1,26 +1,29 @@
 import style from '../Footer.module.scss';
-
-import { InstagramIcon } from '../../../assets/SvgIcons/InstagramIcon';
-import { FacebookIcon } from '../../../assets/SvgIcons/FacebookIcon';
-import { TwitterIcon } from '../../../assets/SvgIcons/TwitterIcon';
-import { YoutubeIcon } from '../../../assets/SvgIcons/YoutubeIcon';
-
+import { IconWrapper } from '../../Icons/IconWrapper';
 import { FC } from 'react';
 
 const Socials: FC = () => {
   return (
     <div className={style.footerSocial}>
       <div className={style.footerSocialElements}>
-        <InstagramIcon />
+        <IconWrapper
+          icon={<i className={`${style.footerIcon} bi bi-instagram`}></i>}
+        />
       </div>
       <div className={style.footerSocialElements}>
-        <FacebookIcon />
+        <IconWrapper
+          icon={<i className={`${style.footerIcon} bi bi-facebook`}></i>}
+        />
       </div>
       <div className={style.footerSocialElements}>
-        <TwitterIcon />
+        <IconWrapper
+          icon={<i className={`${style.footerIcon} bi bi-twitter`}></i>}
+        />
       </div>
       <div className={style.footerSocialElements}>
-        <YoutubeIcon />
+        <IconWrapper
+          icon={<i className={`${style.footerIcon} bi bi-youtube `}></i>}
+        />
       </div>
     </div>
   );

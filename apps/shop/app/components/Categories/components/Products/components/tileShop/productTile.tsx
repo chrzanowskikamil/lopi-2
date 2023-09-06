@@ -11,6 +11,7 @@ import AddToCart from './components/AddtoCart';
 import { Col } from 'react-bootstrap';
 
 import { ProductTileProps } from '../../../../CategoriesTypesProps';
+import ProductRating from './components/ProductRating';
 
 const ProductTile: FC<ProductTileProps> = ({
   name,
@@ -38,8 +39,8 @@ const ProductTile: FC<ProductTileProps> = ({
           />
         </div>
         <div className={style.tileInfo}>
-          {/* <ProductRating starsCount={stars} />
-          <span>({rewievs})</span> */}
+          <ProductRating starsCount={4} />
+          {/* <span>({rewievs})</span> */}
         </div>
         <div className={style.productName}>{name}</div>
         <Price price={regularPrice} currentPrice={discountPrice} />
