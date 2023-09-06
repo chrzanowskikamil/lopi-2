@@ -4,7 +4,7 @@ import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
 import { FC } from 'react';
 import Link from 'next/link';
-import { getCategoriesName } from 'apps/shop/actions/getCategoriesName';
+import { getCategoriesName } from '../../../../actions/getCategoriesName';
 import { use } from 'react';
 const getData = async () => {
   const res = await getCategoriesName();
