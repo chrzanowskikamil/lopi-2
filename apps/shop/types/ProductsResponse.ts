@@ -7,10 +7,6 @@ interface Category extends ItemDetails {
   subCategories: string[];
 }
 
-interface Image {
-  imageUrl: string;
-}
-
 export interface Product extends ItemDetails {
   sku: string;
   regularPrice: number;
@@ -26,7 +22,7 @@ export interface Product extends ItemDetails {
   updatedAt: string;
   archivedAt: string;
   categories: Category[];
-  imageUrls: Image[];
+  imageUrls: string;
 }
 
 export interface ProductsResponse {

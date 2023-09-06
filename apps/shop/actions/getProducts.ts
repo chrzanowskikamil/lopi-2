@@ -3,11 +3,24 @@ import { ProductsResponse } from '../types/ProductsResponse';
 
 const DEFAULT_PAGE_SIZE = 4;
 
+const SortType = {
+  REGULAR_PRICE: 'regularPrice',
+  DISCOUNT_PRICE: 'discountPrice',
+  // Add other sorting options here as needed
+};
+
+// Enum for sortOrder
+const SortOrder = {
+  ASCENDING: 'asc',
+  DESCENDING: 'desc',
+  // Add other sorting orders here as needed
+};
+
 export async function getProducts(
   size = DEFAULT_PAGE_SIZE,
   page = 0,
-  sortType = 'regularPrice',
-  sortOrder = 'asc'
+  sortType = SortType.REGULAR_PRICE,
+  sortOrder = SortOrder.ASCENDING
 ): Promise<ProductsResponse> {
   try {
     const res = await fetch(

@@ -25,48 +25,34 @@ export const Products: FC<ProductsProps> = ({ categoriesReducer }) => {
   const availible = categoriesReducer.state.availability;
 
   const sortBySearchParams = () => {
-    const table = [...categoriesReducer.state.allProducts];
+    const productArray = [...categoriesReducer.state.allProducts];
 
-    if (filterPriceLow !== null) {
-      table.forEach((el, index) => {
+    const filteredProducts = productArray.filter((product) => {
+      const price =
+        product.discountPrice !== null
+          ? product.discountPrice
+          : product.regularPrice;
+
+      if (
+        (!!filterPriceLow && price < filterPriceLow) ||
+        (!!filterPriceHight && price >= filterPriceHight)
+      ) {
+        return false;
+      }
+
+      if (availible !== null) {
         if (
-          (table[i].discountPrice !== null
-            ? table[i].discountPrice
-            : table[i].regularPrice) >= filterPriceHight
+          (availible && product.status !== 'ACTIVE') ||
+          (!availible && product.status === 'ACTIVE')
         ) {
-          return;
-        } else return table.splice(index, 1);
-      });
-    }
-
-    if (filterPriceHight !== null) {
-      table.forEach((el, index) => {
-        if (
-          (table[i].discountPrice !== null
-            ? table[i].discountPrice
-            : table[i].regularPrice) < filterPriceLow
-        ) {
-          return;
-        } else return table.splice(index, 1);
-      });
-    }
-
-    if (availible !== null) {
-      for (let i = table.length - 1; i >= 0; i -= 1) {
-        if (availible === true) {
-          if (table[i].status !== 'ACTIVE') {
-            table.splice(i, 1);
-          }
+          return false;
         }
-        if (availible === false) {
-          if (table[i].status === 'ACTIVE') {
-            table.splice(i, 1);
-          }
-        }
-      });
-    }
+      }
 
-    return table;
+      return true;
+    });
+
+    return filteredProducts;
   };
 
   const renderedProducts = sortBySearchParams().map((product) => {
@@ -75,7 +61,6 @@ export const Products: FC<ProductsProps> = ({ categoriesReducer }) => {
         key={product.uid}
         sku={product.sku}
         name={product.name}
-        imageUrls={product.imageUrls}
         imageUrls={product.imageUrls}
         regularPrice={product.regularPrice}
         discountPrice={product.discountPrice}

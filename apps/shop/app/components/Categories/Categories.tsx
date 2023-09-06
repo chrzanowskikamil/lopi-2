@@ -16,7 +16,6 @@ interface CategoriesProps {
   title: string;
   content: string[];
   products: ProductsResponse;
-  newSort: ProductsResponse;
 }
 
 export const Categories: FC<CategoriesProps> = ({
@@ -28,29 +27,21 @@ export const Categories: FC<CategoriesProps> = ({
 
   const PRODUCTS_PER_PAGE = 4;
 
-  const sortProductsByParams = async (item: string) => {
-    const sortParams = item;
+  const sortProductsByParams = async (sortParam: string) => {
+    const sortParams = sortParam;
 
     let sortType = 'regularPrice';
     let sortOrder = 'asc';
     if (sortParams === 'Cena rosnaca') {
       sortType = 'regularPrice';
       sortOrder = 'asc';
-      sortType = 'regularPrice';
-      sortOrder = 'asc';
     } else if (sortParams === 'Cena malejaca') {
-      sortType = 'regularPrice';
-      sortOrder = 'desc';
       sortType = 'regularPrice';
       sortOrder = 'desc';
     } else if (sortParams === 'Alfabetycznie A do Z') {
       sortType = 'name';
       sortOrder = 'asc';
-      sortType = 'name';
-      sortOrder = 'asc';
     } else if (sortParams === 'Alfabetycznie Z do A') {
-      sortType = 'name';
-      sortOrder = 'desc';
       sortType = 'name';
       sortOrder = 'desc';
     }
@@ -83,8 +74,6 @@ export const Categories: FC<CategoriesProps> = ({
       [...categoriesReducer.state.allProducts, ...newProducts.products],
       nextPage
     );
-
-    return;
   };
 
   return (
@@ -102,16 +91,10 @@ export const Categories: FC<CategoriesProps> = ({
       <Row>
         <Col>
           <SortDropdown sort={sortProductsByParams} />
-          <SortDropdown sort={sortProductsByParams} />
         </Col>
       </Row>
       <Row>
         <Col xl={2}>
-          <Sidebar
-            categoriesReducer={categoriesReducer}
-            activeCategory={title}
-            list={content}
-          />
           <Sidebar
             categoriesReducer={categoriesReducer}
             activeCategory={title}

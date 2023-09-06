@@ -62,14 +62,7 @@ $pallete: shop-variables.$theme-colors;
   border: $sidebarTitleBorderWidth solid map-get($pallete, lopi-orange);
   color: map-get($pallete, lopi-orange);
 }
-.anchor {
-  width: 20px;
-  height: 20px;
-  text-decoration: none;
-  :hover {
-    cursor: pointer;
-  }
-}
+
 .available {
   display: flex;
   flex-direction: row-reverse;
@@ -84,7 +77,7 @@ $pallete: shop-variables.$theme-colors;
   padding: 0 map-get($spacer, 22);
   font-size: $sidebarTitleFontSize;
   font-size: $sidebarTitleFontSize;
-  :hover {
+  & :hover {
     cursor: pointer;
   }
   > label {
@@ -93,7 +86,7 @@ $pallete: shop-variables.$theme-colors;
       text-decoration: none;
     }
   }
-  :hover {
+  & :hover {
     cursor: pointer;
   }
   > label {
