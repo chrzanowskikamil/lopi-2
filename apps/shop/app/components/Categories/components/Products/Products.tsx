@@ -8,11 +8,7 @@ import ProductTile from './components/tileShop/productTile';
 import { useState, useEffect } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 
-import { CategoriesReducerProps } from '../../CategoriesReducerHook';
-
-interface ProductsProps {
-  categoriesReducer: CategoriesReducerProps;
-}
+import { ProductsProps } from '../../CategoriesTypesProps';
 
 export const Products: FC<ProductsProps> = ({ categoriesReducer }) => {
   const [isClient, setIsClient] = useState<boolean>();
@@ -56,6 +52,8 @@ export const Products: FC<ProductsProps> = ({ categoriesReducer }) => {
   };
 
   const renderedProducts = sortBySearchParams().map((product) => {
+    console.log(product.imageUrls);
+
     return (
       <ProductTile
         key={product.uid}

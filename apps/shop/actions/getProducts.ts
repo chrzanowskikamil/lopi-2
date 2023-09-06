@@ -1,25 +1,18 @@
 import { REVALIDATE_TIME } from '@lopi-2/common';
 import { ProductsResponse } from '../types/ProductsResponse';
-
-const DEFAULT_PAGE_SIZE = 4;
-
-const SortType = {
-  REGULAR_PRICE: 'regularPrice',
-  DISCOUNT_PRICE: 'discountPrice',
-  // Add other sorting options here as needed
-};
-
-// Enum for sortOrder
-const SortOrder = {
-  ASCENDING: 'asc',
-  DESCENDING: 'desc',
-  // Add other sorting orders here as needed
-};
+import {
+  SortType,
+  SortOrder,
+} from '../app/components/Categories/CategoriesEnums';
+import {
+  DEFAULT_PAGE_SIZE,
+  INITIAL_CURRENT_PAGE,
+} from '../app/components/Categories/CategoriesVariables';
 
 export async function getProducts(
   size = DEFAULT_PAGE_SIZE,
-  page = 0,
-  sortType = SortType.REGULAR_PRICE,
+  page = INITIAL_CURRENT_PAGE,
+  sortType = SortType.PRICE,
   sortOrder = SortOrder.ASCENDING
 ): Promise<ProductsResponse> {
   try {

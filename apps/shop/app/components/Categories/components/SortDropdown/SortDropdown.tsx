@@ -5,10 +5,8 @@ import { Dropdown, DropdownButton } from 'react-bootstrap';
 
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
-
-interface SortDropdownProps {
-  sort: (item: string) => void;
-}
+import { SortParams } from '../../CategoriesEnums';
+import { SortDropdownProps } from '../../CategoriesTypesProps';
 
 export const SortDropdown: FC<SortDropdownProps> = ({ sort }) => {
   const pathname = usePathname();
@@ -25,10 +23,10 @@ export const SortDropdown: FC<SortDropdownProps> = ({ sort }) => {
   );
 
   const dropdownItems = [
-    'Cena rosnaca',
-    'Cena malejaca',
-    'Alfabetycznie A do Z',
-    'Alfabetycznie Z do A',
+    SortParams.PRICE_INCREASING,
+    SortParams.PRICE_DECREASING,
+    SortParams.ALFABEICLY_INCREASING,
+    SortParams.ALFABEICLY_DECREASING,
   ];
 
   const items = dropdownItems.map((item) => (

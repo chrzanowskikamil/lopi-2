@@ -1,11 +1,13 @@
 import { useReducer } from 'react';
 import { Product } from '../../../types/ProductsResponse';
 
-const THE_HIGHEST_MONEY_VALUE = 160;
-const THE_LOWEST_MONEY_VALUE = 0;
-const CURRENT_PAGE = 0;
+import {
+  THE_HIGHEST_MONEY_VALUE,
+  THE_LOWEST_MONEY_VALUE,
+  INITIAL_CURRENT_PAGE,
+} from './CategoriesVariables';
 
-// const PRODUCTS_PER_PAGE = 4;
+import { SortType, SortOrder, ActionTypes } from './CategoriesEnums';
 
 export interface CategoriesReducerProps {
   state: StateProps;
@@ -30,13 +32,7 @@ interface StateProps {
 }
 
 interface ActionProps {
-  type:
-    | 'on_product_sort'
-    | 'on_show_more'
-    | 'on_higher_money_value_filter_change'
-    | 'on_lower_money_value_filter_change'
-    | 'on_availability_filter_change';
-
+  type: string;
   sortType: string;
   sortOrder: string;
   pageNumber: number;
@@ -48,35 +44,35 @@ interface ActionProps {
 
 const categoriesReducer = (state: StateProps, action: ActionProps) => {
   switch (action.type) {
-    case 'on_product_sort': {
+    case ActionTypes.ON_PRODUCT_SORT: {
       return {
         ...state,
-        currentPage: 0,
+        currentPage: INITIAL_CURRENT_PAGE,
         allProducts: action.allProducts,
         sortType: action.sortType,
         sortOrder: action.sortOrder,
       };
     }
-    case 'on_show_more': {
+    case ActionTypes.ON_SHOW_MORE: {
       return {
         ...state,
         allProducts: action.allProducts,
         currentPage: action.pageNumber,
       };
     }
-    case 'on_higher_money_value_filter_change': {
+    case ActionTypes.ON_HIGHER_MONEY_VALUE_FILTER_CHANGE: {
       return {
         ...state,
         higherMoneyValueFilter: action.higherMoneyValue,
       };
     }
-    case 'on_lower_money_value_filter_change': {
+    case ActionTypes.ON_LOWER_MONEY_VALUE_FILTER_CHANGE: {
       return {
         ...state,
         lowerMoneyValueFilter: action.lowerMoneyValue,
       };
     }
-    case 'on_availability_filter_change': {
+    case ActionTypes.ON_AVAILABILITY_FILTER_CHANGE: {
       return {
         ...state,
         availability: action.availabilityValue,
@@ -92,9 +88,9 @@ const categoriesReducer = (state: StateProps, action: ActionProps) => {
 export const useCategoriesReducer = ({ products }: { products: Product[] }) => {
   const initialState = {
     allProducts: products,
-    sortType: 'regularPrice',
-    sortOrder: 'asc',
-    currentPage: CURRENT_PAGE,
+    sortType: SortType.PRICE,
+    sortOrder: SortOrder.ASCENDING,
+    currentPage: INITIAL_CURRENT_PAGE,
     lowerMoneyValueFilter: THE_LOWEST_MONEY_VALUE,
     higherMoneyValueFilter: THE_HIGHEST_MONEY_VALUE,
     availability: true,
@@ -108,7 +104,7 @@ export const useCategoriesReducer = ({ products }: { products: Product[] }) => {
     sortOrder: string
   ) => {
     dispatch({
-      type: 'on_product_sort',
+      type: ActionTypes.ON_PRODUCT_SORT,
       allProducts,
       sortType,
       sortOrder,
@@ -121,7 +117,7 @@ export const useCategoriesReducer = ({ products }: { products: Product[] }) => {
 
   const onShowMore = (allProducts: Product[], pageNumber: number) => {
     dispatch({
-      type: 'on_show_more',
+      type: ActionTypes.ON_SHOW_MORE,
       allProducts,
       pageNumber,
       sortType: state.sortType,
@@ -133,7 +129,7 @@ export const useCategoriesReducer = ({ products }: { products: Product[] }) => {
   };
   const onHigherMoneyValueFilterChange = (higherMoneyValue: number) => {
     dispatch({
-      type: 'on_higher_money_value_filter_change',
+      type: ActionTypes.ON_HIGHER_MONEY_VALUE_FILTER_CHANGE,
       higherMoneyValue,
       sortType: state.sortType,
       sortOrder: state.sortOrder,
@@ -145,7 +141,7 @@ export const useCategoriesReducer = ({ products }: { products: Product[] }) => {
   };
   const onLowerMoneyValueFilterChange = (lowerMoneyValue: number) => {
     dispatch({
-      type: 'on_lower_money_value_filter_change',
+      type: ActionTypes.ON_LOWER_MONEY_VALUE_FILTER_CHANGE,
       lowerMoneyValue,
       sortType: state.sortType,
       sortOrder: state.sortOrder,
@@ -157,7 +153,7 @@ export const useCategoriesReducer = ({ products }: { products: Product[] }) => {
   };
   const onAvailabilityFilterChange = (availabilityValue: boolean) => {
     dispatch({
-      type: 'on_availability_filter_change',
+      type: ActionTypes.ON_AVAILABILITY_FILTER_CHANGE,
       availabilityValue,
       sortType: state.sortType,
       sortOrder: state.sortOrder,

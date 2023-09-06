@@ -10,16 +10,7 @@ import AddToCart from './components/AddtoCart';
 
 import { Col } from 'react-bootstrap';
 
-interface Image {
-  imageUrl: string;
-}
-type ProductTileProps = {
-  name: string;
-  imageUrls: Image[];
-  sku: string;
-  regularPrice: number;
-  discountPrice: number;
-};
+import { ProductTileProps } from '../../../../CategoriesTypesProps';
 
 const ProductTile: FC<ProductTileProps> = ({
   name,

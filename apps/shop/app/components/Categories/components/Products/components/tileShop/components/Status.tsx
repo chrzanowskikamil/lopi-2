@@ -4,9 +4,7 @@ import { FC } from 'react';
 
 import style from '../tileShop.module.scss';
 
-type StatusProps = {
-  status?: string;
-};
+import { StatusProps } from '../../../../../CategoriesTypesProps';
 
 const Status: FC<StatusProps> = ({ status }) => {
   return (

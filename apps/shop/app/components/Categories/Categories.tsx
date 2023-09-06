@@ -7,16 +7,15 @@ import { Sidebar } from './components/Sidebar/Sidebar';
 import { SortDropdown } from './components/SortDropdown/SortDropdown';
 import { Products } from './components/Products/Products';
 import { Button, Col, Container, Row } from 'react-bootstrap';
-import { ProductsResponse } from '../../../types/ProductsResponse';
+
 import { getProducts } from '../../../actions/getProducts';
+
+import { SortType, SortOrder, SortParams } from './CategoriesEnums';
 
 import { useCategoriesReducer } from './CategoriesReducerHook';
 
-interface CategoriesProps {
-  title: string;
-  content: string[];
-  products: ProductsResponse;
-}
+import { DEFAULT_PAGE_SIZE, INITIAL_CURRENT_PAGE } from './CategoriesVariables';
+import { CategoriesProps } from './CategoriesTypesProps';
 
 export const Categories: FC<CategoriesProps> = ({
   title,
@@ -25,30 +24,28 @@ export const Categories: FC<CategoriesProps> = ({
 }) => {
   const categoriesReducer = useCategoriesReducer(initalProducts);
 
-  const PRODUCTS_PER_PAGE = 4;
-
   const sortProductsByParams = async (sortParam: string) => {
     const sortParams = sortParam;
 
-    let sortType = 'regularPrice';
-    let sortOrder = 'asc';
-    if (sortParams === 'Cena rosnaca') {
-      sortType = 'regularPrice';
-      sortOrder = 'asc';
-    } else if (sortParams === 'Cena malejaca') {
-      sortType = 'regularPrice';
-      sortOrder = 'desc';
-    } else if (sortParams === 'Alfabetycznie A do Z') {
-      sortType = 'name';
-      sortOrder = 'asc';
-    } else if (sortParams === 'Alfabetycznie Z do A') {
-      sortType = 'name';
-      sortOrder = 'desc';
+    let sortType = SortType.PRICE;
+    let sortOrder = SortOrder.ASCENDING;
+    if (sortParams === SortParams.PRICE_INCREASING) {
+      sortType = SortType.PRICE;
+      sortOrder = SortOrder.ASCENDING;
+    } else if (sortParams === SortParams.PRICE_DECREASING) {
+      sortType = SortType.PRICE;
+      sortOrder = SortOrder.DESCENDING;
+    } else if (sortParams === SortParams.ALFABEICLY_INCREASING) {
+      sortType = SortType.NAME;
+      sortOrder = SortOrder.ASCENDING;
+    } else if (sortParams === SortParams.ALFABEICLY_DECREASING) {
+      sortType = SortType.NAME;
+      sortOrder = SortOrder.DESCENDING;
     }
 
     const newSort = await getProducts(
-      PRODUCTS_PER_PAGE,
-      0,
+      DEFAULT_PAGE_SIZE,
+      INITIAL_CURRENT_PAGE,
       sortType,
       sortOrder
     );
@@ -64,7 +61,7 @@ export const Categories: FC<CategoriesProps> = ({
     const nextPage = categoriesReducer.state.currentPage + 1;
 
     const newProducts = await getProducts(
-      PRODUCTS_PER_PAGE,
+      DEFAULT_PAGE_SIZE,
       nextPage,
       categoriesReducer.state.sortType,
       categoriesReducer.state.sortOrder

@@ -5,22 +5,14 @@ import { Badge, Form, ListGroup } from 'react-bootstrap';
 import { RangePriceSlider } from './componenets/RangePriceSlider/RangePriceSlider';
 import { FC } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
-import { CategoriesReducerProps } from '../../CategoriesReducerHook';
-interface SidebarProps {
-  categoriesReducer: CategoriesReducerProps;
-  activeCategory: string;
-  list: string[];
-}
+import { SidebarProps } from '../../CategoriesTypesProps';
 
 export const Sidebar: FC<SidebarProps> = ({
   categoriesReducer,
   activeCategory,
   list,
 }) => {
-  const pathname = usePathname();
-
   const getItemClassName = (item: string) =>
     activeCategory === item ? styles.activeListItem : styles.listItem;
 
@@ -47,7 +39,6 @@ export const Sidebar: FC<SidebarProps> = ({
     const url = new URL(location.href);
     url.searchParams.set(`${query}`, `${value}`);
     history.pushState({}, '', url);
-    console.log(pathname);
   };
 
   return (

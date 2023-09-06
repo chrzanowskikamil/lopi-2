@@ -6,9 +6,7 @@ import { FC } from 'react';
 
 import { StarIcon } from '../../../../../../../assets/SvgIcons/StarIcon';
 
-type ProductRatingProps = {
-  starsCount: number;
-};
+import { ProductRatingProps } from '../../../../../CategoriesTypesProps';
 
 const ProductRating: FC<ProductRatingProps> = ({ starsCount }) => {
   const fullStar = <StarIcon className={style.star && style.starOrange} />;
