@@ -2,7 +2,7 @@
 
 import styles from './Sidebar.module.scss';
 import { Badge, Form, ListGroup } from 'react-bootstrap';
-import { RangePriceSlider } from './componenets/RangePriceSlider/RangePriceSlider';
+import TimeRangeSlider from '../../components/MultiRangeSlider/TimeRangeSlider';
 import { FC } from 'react';
 import Link from 'next/link';
 
@@ -47,7 +47,9 @@ export const Sidebar: FC<SidebarProps> = ({
       <ListGroup as="ol" className={styles.categoryList}>
         {renderedList}
       </ListGroup>
-      <RangePriceSlider categoriesReducer={categoriesReducer} />
+      <TimeRangeSlider onChange={(e) => console.log('A', e)} />
+
+      {/* categoriesReducer={categoriesReducer}  */}
 
       <Form.Check
         aria-label="Available"
