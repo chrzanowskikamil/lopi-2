@@ -172,7 +172,7 @@ const Index = ({ onChange }) => {
             );
           }}
         </Tracks>
-        {/* <Ticks count={2}>
+        <Ticks count={2}>
           {({ ticks }) => (
             <div className="slider-ticks">
               {ticks.map((tick) => (
@@ -180,7 +180,7 @@ const Index = ({ onChange }) => {
               ))}
             </div>
           )}
-        </Ticks> */}
+        </Ticks>
       </Slider>
     </div>
   );
