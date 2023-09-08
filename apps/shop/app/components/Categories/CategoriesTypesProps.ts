@@ -49,3 +49,14 @@ export type PriceProps = {
   price: number;
   currentPrice?: number;
 };
+
+export interface RangeSliderValues {
+  min: number;
+  max: number;
+}
+
+export interface MultiRangeSliderProps {
+  min: number;
+  max: number;
+  onChange: (value: RangeSliderValues) => void;
+}

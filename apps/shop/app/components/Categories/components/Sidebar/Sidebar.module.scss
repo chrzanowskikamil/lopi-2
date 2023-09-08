@@ -41,6 +41,14 @@ $pallete: shop-variables.$theme-colors;
   text-transform: capitalize;
   text-transform: capitalize;
 }
+.timeRangeSlider {
+  margin-left: 5%;
+  width: 90%;
+}
+.label {
+  opacity: 0.7;
+  margin: map-get($spacer, 31) 0 map-get($spacer, 7) map-get($spacer, 8);
+}
 
 .listItem {
   @include shop-mixins.sidebar-list-items();

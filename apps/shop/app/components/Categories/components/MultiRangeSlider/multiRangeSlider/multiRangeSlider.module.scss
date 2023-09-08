@@ -1,12 +1,16 @@
-@use '../../../../../styles/shop-variables';
-
-$pallete: shop-variables.$theme-colors;
-
-.container {
-  display: flex;
+.label {
+  opacity: 0.7;
+  // margin: map-get($spacer, 31) 0 map-get($spacer, 7) map-get($spacer, 8);
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.containerSlider {
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  /* display: flex; */
+  margin-top: 20px;
+  margin-left: 10%;
+  height: 100px;
 }
 
 .slider {
@@ -14,35 +18,25 @@ $pallete: shop-variables.$theme-colors;
   width: 200px;
 }
 
-.slider__track,
-.slider__range,
-.slider__left-value,
-.slider__right-value {
+.sliderTrack,
+.sliderRange {
   position: absolute;
 }
 
-.slider__track,
-.slider__range {
+.sliderTrack,
+.sliderRange {
   border-radius: 3px;
   height: 5px;
 }
-
-.slider__track {
+.sliderTrack {
   z-index: 1;
   background-color: #ced4da;
   width: 100%;
 }
 
-.slider__range {
+.sliderRange {
   z-index: 2;
-  background-color: #9fe5e1;
-}
-
-.slider__left-value,
-.slider__right-value {
-  margin-top: 20px;
-  color: #dee2e6;
-  font-size: 12px;
+  background-color: #ff9a17;
 }
 
 .slider__left-value {
@@ -68,15 +62,15 @@ $pallete: shop-variables.$theme-colors;
   pointer-events: none;
 }
 
-.thumb--zindex-3 {
+.thumbZindexThree {
   z-index: 3;
 }
 
-.thumb--zindex-4 {
+.thumbZindexFour {
   z-index: 4;
 }
 
-.thumb--zindex-5 {
+.thumbZindexFive {
   z-index: 5;
 }
 
@@ -88,7 +82,7 @@ $pallete: shop-variables.$theme-colors;
   box-shadow: 0 0 1px 1px #ced4da;
   border: none;
   border-radius: 50%;
-  background-color: #f1f5f7;
+  background-color: #ff9a17;
   width: 18px;
   height: 18px;
   pointer-events: all;

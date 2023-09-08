@@ -1,217 +1,111 @@
-@use '../../../../../../styles/shop-variables';
+@use '../../../../../styles/shop-variables';
 
-.container {
+$sidebarTitleBorderWidth: 1px;
+$titleFontSize: 15px;
+$rangeInputHeight: 5px;
+$sliderTrackInputHeight: 2px;
+$sliderThumbSize: 8px;
+$sliderRangeThumbSize: 15px;
+
+$pallete: shop-variables.$theme-colors;
+$spacer: shop-variables.$spacers;
+
+.priceContainer {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  flex-direction: column;
+  margin-bottom: map-get($spacer, 35);
+}
+
+.title {
+  display: flex;
+  margin: map-get($spacer, 8);
+  border-bottom: $sidebarTitleBorderWidth solid map-get($pallete, lopi-grey);
+  padding-bottom: map-get($spacer, 7);
+  font-size: $titleFontSize;
+  text-transform: uppercase;
 }
 
 .slider {
+  display: flex;
   position: relative;
-  width: 200px;
+  align-items: center;
+
+  background-color: map-get($pallete, lopi-orange);
+  height: 3px;
+
+  .rangeInput {
+    position: absolute;
+    appearance: none;
+    z-index: 1;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    height: $rangeInputHeight;
+
+    &::-webkit-slider-runnable-track {
+      background: map-get($pallete, lopi-orange);
+      height: $sliderTrackInputHeight;
+    }
+
+    &::-webkit-slider-thumb {
+      appearance: none;
+      transition: background 0.3s;
+      cursor: pointer;
+      margin-top: -3px;
+      border-radius: 50%;
+      background: map-get($pallete, lopi-orange);
+      width: $sliderThumbSize;
+      height: $sliderThumbSize;
+    }
+
+    &:active::-webkit-slider-thumb {
+      background: map-get($pallete, lopi-orange);
+    }
+
+    &::-moz-range-track {
+      background: map-get($pallete, lopi-orange);
+      height: $rangeInputHeight;
+    }
+
+    &::-moz-range-thumb {
+      cursor: pointer;
+      border-radius: 50%;
+      background: map-get($pallete, lopi-orange);
+      width: $sliderRangeThumbSize;
+      height: $sliderRangeThumbSize;
+    }
+  }
+
+  .dotLeft {
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    background-color: map-get($pallete, lopi-orange);
+    width: 20px;
+    height: 20px;
+    .anchor {
+      display: block;
+      z-index: 2;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      overflow: hidden;
+      color: red;
+    }
+  }
+
+  .dotRight {
+    display: inline-block;
+    position: absolute;
+    margin-left: 227px;
+    border-radius: 50%;
+    background-color: map-get($pallete, lopi-orange);
+    width: 20px;
+    height: 20px;
+  }
 }
 
-.slider__track,
-.slider__range,
-.slider__left-value,
-.slider__right-value {
-  position: absolute;
+.label {
+  opacity: 0.7;
+  margin: map-get($spacer, 31) 0 map-get($spacer, 7) map-get($spacer, 8);
 }
-
-.slider__track,
-.slider__range {
-  border-radius: 3px;
-  height: 5px;
-}
-
-.slider__track {
-  z-index: 1;
-  background-color: #ced4da;
-  width: 100%;
-}
-
-.slider__range {
-  z-index: 2;
-  background-color: #9fe5e1;
-}
-
-.slider__left-value,
-.slider__right-value {
-  margin-top: 20px;
-  color: #dee2e6;
-  font-size: 12px;
-}
-
-.slider__left-value {
-  left: 6px;
-}
-
-.slider__right-value {
-  right: -4px;
-}
-
-/* Removing the default appearance */
-.thumb,
-.thumb::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.thumb {
-  position: absolute;
-  outline: none;
-  width: 200px;
-  height: 0;
-  pointer-events: none;
-}
-
-.thumb--zindex-3 {
-  z-index: 3;
-}
-
-.thumb--zindex-4 {
-  z-index: 4;
-}
-
-.thumb--zindex-5 {
-  z-index: 5;
-}
-
-/* For Chrome browsers */
-.thumb::-webkit-slider-thumb {
-  position: relative;
-  cursor: pointer;
-  margin-top: 4px;
-  box-shadow: 0 0 1px 1px #ced4da;
-  border: none;
-  border-radius: 50%;
-  background-color: #f1f5f7;
-  width: 18px;
-  height: 18px;
-  pointer-events: all;
-}
-
-/* For Firefox browsers */
-.thumb::-moz-range-thumb {
-  position: relative;
-  cursor: pointer;
-  margin-top: 4px;
-  box-shadow: 0 0 1px 1px #ced4da;
-  border: none;
-  border-radius: 50%;
-  background-color: #f1f5f7;
-  width: 18px;
-  height: 18px;
-  pointer-events: all;
-}
-
-// $sidebarTitleBorderWidth: 1px;
-// $titleFontSize: 15px;
-// $rangeInputHeight: 5px;
-// $sliderTrackInputHeight: 2px;
-// $sliderThumbSize: 8px;
-// $sliderRangeThumbSize: 15px;
-
-// $pallete: shop-variables.$theme-colors;
-// $spacer: shop-variables.$spacers;
-
-// .priceContainer {
-//   display: flex;
-//   flex-direction: column;
-//   margin-bottom: map-get($spacer, 35);
-// }
-
-// .title {
-//   display: flex;
-//   margin: map-get($spacer, 8);
-//   border-bottom: $sidebarTitleBorderWidth solid map-get($pallete, lopi-grey);
-//   padding-bottom: map-get($spacer, 7);
-//   font-size: $titleFontSize;
-//   text-transform: uppercase;
-// }
-
-// .slider {
-//   display: flex;
-//   position: relative;
-//   align-items: center;
-
-//   background-color: map-get($pallete, lopi-orange);
-//   height: 3px;
-
-//   .rangeInput {
-//     position: absolute;
-//     appearance: none;
-//     z-index: 1;
-//     margin: 0;
-//     outline: none;
-//     padding: 0;
-//     height: $rangeInputHeight;
-
-//     &::-webkit-slider-runnable-track {
-//       background: map-get($pallete, lopi-orange);
-//       height: $sliderTrackInputHeight;
-//     }
-
-//     &::-webkit-slider-thumb {
-//       appearance: none;
-//       transition: background 0.3s;
-//       cursor: pointer;
-//       margin-top: -3px;
-//       border-radius: 50%;
-//       background: map-get($pallete, lopi-orange);
-//       width: $sliderThumbSize;
-//       height: $sliderThumbSize;
-//     }
-
-//     &:active::-webkit-slider-thumb {
-//       background: map-get($pallete, lopi-orange);
-//     }
-
-//     &::-moz-range-track {
-//       background: map-get($pallete, lopi-orange);
-//       height: $rangeInputHeight;
-//     }
-
-//     &::-moz-range-thumb {
-//       cursor: pointer;
-//       border-radius: 50%;
-//       background: map-get($pallete, lopi-orange);
-//       width: $sliderRangeThumbSize;
-//       height: $sliderRangeThumbSize;
-//     }
-//   }
-
-//   .dotLeft {
-//     display: inline-block;
-//     position: absolute;
-//     border-radius: 50%;
-//     background-color: map-get($pallete, lopi-orange);
-//     width: 20px;
-//     height: 20px;
-//     .anchor {
-//       display: block;
-//       z-index: 2;
-//       border-radius: 50%;
-//       width: 20px;
-//       height: 20px;
-//       overflow: hidden;
-//       color: red;
-//     }
-//   }
-
-//   .dotRight {
-//     display: inline-block;
-//     position: absolute;
-//     margin-left: 227px;
-//     border-radius: 50%;
-//     background-color: map-get($pallete, lopi-orange);
-//     width: 20px;
-//     height: 20px;
-//   }
-// }
-
-// .label {
-//   opacity: 0.7;
-//   margin: map-get($spacer, 31) 0 map-get($spacer, 7) map-get($spacer, 8);
-// }

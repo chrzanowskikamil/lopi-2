@@ -52,8 +52,6 @@ export const Products: FC<ProductsProps> = ({ categoriesReducer }) => {
   };
 
   const renderedProducts = sortBySearchParams().map((product) => {
-    console.log(product.imageUrls);
-
     return (
       <ProductTile
         key={product.uid}
