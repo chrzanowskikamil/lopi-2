@@ -1,3 +1,7 @@
+interface ImageUrl{
+  imageUrl:string;
+}
+
 export interface Product {
   name: string;
   description: string;
@@ -16,9 +20,8 @@ export interface Product {
   updatedAt: string;
   archivedAt: string;
   categories: string[];
-  imageUrls: string[];
+  imageUrls: ImageUrl[];
 }
-
 export interface ProductsResponse {
   products: Product[];
   totalPages: number;

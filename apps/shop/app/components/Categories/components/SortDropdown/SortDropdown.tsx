@@ -8,18 +8,12 @@ import { useCallback } from 'react';
 import { SortParams } from '../../CategoriesEnums';
 import { SortDropdownProps } from '../../CategoriesTypesProps';
 
-type paramsValuesType =
-  | 'Cena rosnaca'
-  | 'Cena malejaca'
-  | 'Alfabetycznie A do Z'
-  | 'Alfabetycznie Z do A';
-
 export const SortDropdown: FC<SortDropdownProps> = ({ productsSortOrder }) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   const createQueryString = useCallback(
-    (value: paramsValuesType) => {
+    (value: string) => {
       const params = new URLSearchParams(searchParams);
       params.set('sort', value);
 

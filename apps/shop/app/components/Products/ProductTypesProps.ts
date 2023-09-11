@@ -12,10 +12,12 @@ export type PriceProps = {
   price: number;
   currentPrice?: number;
 };
-
+interface ImageUrl {
+  imageUrl: string;
+}
 export type ProductTileColProps = {
   name: string;
-  imageUrls: string[];
+  imageUrls: ImageUrl[];
   sku: string;
   regularPrice: number;
   discountPrice: number;

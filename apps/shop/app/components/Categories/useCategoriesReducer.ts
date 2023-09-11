@@ -7,7 +7,7 @@ import {
   INITIAL_CURRENT_PAGE,
 } from './CategoriesVariables';
 
-import { SortType, SortOrder, ActionTypes } from './CategoriesEnums';
+import { SortType, SortOrder } from './CategoriesEnums';
 
 export interface CategoriesReducerProps {
   state: StateProps;
@@ -21,6 +21,7 @@ export interface CategoriesReducerProps {
   onLowerMoneyValueFilterChange: (lowerMoneyValue: number) => void;
   onAvailabilityFilterChange: (availabilityValue: boolean) => void;
 }
+
 export interface StateProps {
   higherMoneyValueFilter: number;
   sortType: string;
@@ -31,20 +32,22 @@ export interface StateProps {
   allProducts: Product[];
 }
 
-interface ActionProps {
-  type: string;
-  sortType: string;
-  sortOrder: string;
-  pageNumber: number;
-  higherMoneyValue: number;
-  lowerMoneyValue: number;
-  allProducts: Product[];
-  availabilityValue: boolean;
-}
+type ActionProps =
+  | {
+      type: 'on_product_sort';
+      allProducts: Product[];
+      sortType: string;
+      sortOrder: string;
+    }
+  | { type: 'on_show_more'; allProducts: Product[]; pageNumber: number }
+  | { type: 'on_higher_money_value_filter_change'; higherMoneyValue: number }
+  | { type: 'on_lower_money_value_filter_change'; lowerMoneyValue: number }
+  | { type: 'on_availability_filter_change'; availabilityValue: boolean };
 
 const categoriesReducer = (state: StateProps, action: ActionProps) => {
+  console.log(action);
   switch (action.type) {
-    case ActionTypes.ON_PRODUCT_SORT: {
+    case 'on_product_sort': {
       return {
         ...state,
         currentPage: INITIAL_CURRENT_PAGE,
@@ -53,26 +56,26 @@ const categoriesReducer = (state: StateProps, action: ActionProps) => {
         sortOrder: action.sortOrder,
       };
     }
-    case ActionTypes.ON_SHOW_MORE: {
+    case 'on_show_more': {
       return {
         ...state,
         allProducts: action.allProducts,
         currentPage: action.pageNumber,
       };
     }
-    case ActionTypes.ON_HIGHER_MONEY_VALUE_FILTER_CHANGE: {
+    case 'on_higher_money_value_filter_change': {
       return {
         ...state,
         higherMoneyValueFilter: action.higherMoneyValue,
       };
     }
-    case ActionTypes.ON_LOWER_MONEY_VALUE_FILTER_CHANGE: {
+    case 'on_lower_money_value_filter_change': {
       return {
         ...state,
         lowerMoneyValueFilter: action.lowerMoneyValue,
       };
     }
-    case ActionTypes.ON_AVAILABILITY_FILTER_CHANGE: {
+    case 'on_availability_filter_change': {
       return {
         ...state,
         availability: action.availabilityValue,
@@ -104,66 +107,39 @@ export const useCategoriesReducer = ({ products }: { products: Product[] }) => {
     sortOrder: string
   ) => {
     dispatch({
-      type: ActionTypes.ON_PRODUCT_SORT,
+      type: 'on_product_sort',
       allProducts,
       sortType,
       sortOrder,
-      pageNumber: state.currentPage,
-      higherMoneyValue: state.higherMoneyValueFilter,
-      lowerMoneyValue: state.lowerMoneyValueFilter,
-      availabilityValue: state.availability,
     });
   };
 
   const onShowMore = (allProducts: Product[], pageNumber: number) => {
     dispatch({
-      type: ActionTypes.ON_SHOW_MORE,
+      type: 'on_show_more',
       allProducts,
       pageNumber,
-      sortType: state.sortType,
-      sortOrder: state.sortOrder,
-      higherMoneyValue: state.higherMoneyValueFilter,
-      lowerMoneyValue: state.lowerMoneyValueFilter,
-      availabilityValue: state.availability,
     });
   };
 
   const onHigherMoneyValueFilterChange = (higherMoneyValue: number) => {
     dispatch({
-      type: ActionTypes.ON_HIGHER_MONEY_VALUE_FILTER_CHANGE,
+      type: 'on_higher_money_value_filter_change',
       higherMoneyValue,
-      sortType: state.sortType,
-      sortOrder: state.sortOrder,
-      pageNumber: state.currentPage,
-      lowerMoneyValue: state.lowerMoneyValueFilter,
-      allProducts: state.allProducts,
-      availabilityValue: false,
     });
   };
 
   const onLowerMoneyValueFilterChange = (lowerMoneyValue: number) => {
     dispatch({
-      type: ActionTypes.ON_LOWER_MONEY_VALUE_FILTER_CHANGE,
+      type: 'on_lower_money_value_filter_change',
       lowerMoneyValue,
-      sortType: state.sortType,
-      sortOrder: state.sortOrder,
-      pageNumber: state.currentPage,
-      higherMoneyValue: state.higherMoneyValueFilter,
-      allProducts: state.allProducts,
-      availabilityValue: false,
     });
   };
 
   const onAvailabilityFilterChange = (availabilityValue: boolean) => {
     dispatch({
-      type: ActionTypes.ON_AVAILABILITY_FILTER_CHANGE,
+      type: 'on_availability_filter_change',
       availabilityValue,
-      sortType: state.sortType,
-      sortOrder: state.sortOrder,
-      pageNumber: state.currentPage,
-      higherMoneyValue: state.higherMoneyValueFilter,
-      lowerMoneyValue: state.lowerMoneyValueFilter,
-      allProducts: state.allProducts,
     });
   };
 

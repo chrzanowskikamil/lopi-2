@@ -3,21 +3,13 @@ import { Container, Row } from 'react-bootstrap';
 
 import { FC } from 'react';
 
-import ProductTile from './components/tileShop/ProductTileCol';
-
-import { useState, useEffect } from 'react';
-import Spinner from 'react-bootstrap/Spinner';
+import ProductTileCol from './components/tileShop/ProductTileCol';
 
 import { ProductsDisplayProps } from './ProductTypesProps';
 
 export const ProductsDisplay: FC<ProductsDisplayProps> = ({
   categoriesReducer,
 }) => {
-  const [isClient, setIsClient] = useState<boolean>();
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
   const filterPriceLow = categoriesReducer.state.lowerMoneyValueFilter;
   const filterPriceHight = categoriesReducer.state.higherMoneyValueFilter;
   const availible = categoriesReducer.state.availability;
@@ -31,20 +23,19 @@ export const ProductsDisplay: FC<ProductsDisplayProps> = ({
           ? product.discountPrice
           : product.regularPrice;
 
-      if (
+      const priceInFilterRange =
         (!!filterPriceLow && price < filterPriceLow) ||
-        (!!filterPriceHight && price >= filterPriceHight)
-      ) {
+        (!!filterPriceHight && price >= filterPriceHight);
+
+      const availabilityInFilterRange =
+        (availible && product.status !== 'ACTIVE') ||
+        (!availible && product.status === 'ACTIVE');
+
+      if (priceInFilterRange) {
         return false;
       }
-
-      if (availible !== null) {
-        if (
-          (availible && product.status !== 'ACTIVE') ||
-          (!availible && product.status === 'ACTIVE')
-        ) {
-          return false;
-        }
+      if (availabilityInFilterRange) {
+        return false;
       }
 
       return true;
@@ -55,7 +46,7 @@ export const ProductsDisplay: FC<ProductsDisplayProps> = ({
 
   const renderedProducts = sortBySearchParams().map((product) => {
     return (
-      <ProductTile
+      <ProductTileCol
         key={product.uid}
         sku={product.sku}
         name={product.name}
@@ -69,15 +60,7 @@ export const ProductsDisplay: FC<ProductsDisplayProps> = ({
   return (
     <>
       <Container>
-        {isClient ? (
-          <Row className={styles.products}>{...renderedProducts}</Row>
-        ) : (
-          <Row className={styles.products}>
-            <Spinner animation="border" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </Spinner>
-          </Row>
-        )}
+        <Row className={styles.products}>{...renderedProducts}</Row>
       </Container>
     </>
   );

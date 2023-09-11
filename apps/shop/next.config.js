@@ -7,6 +7,8 @@ const { composePlugins, withNx } = require('@nx/next');
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
  **/
 const nextConfig = {
+  /* This is required if we want to upload images from our backend. We store our images there and this adds this adress to
+  trusted ones. */
   images: {
     domains: ['storage.googleapis.com'],
   },
