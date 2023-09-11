@@ -15,7 +15,6 @@ $pallete: shop-variables.$theme-colors;
   flex-direction: column;
   justify-content: stretch;
   align-self: self-start;
-  align-self: self-start;
   width: $sidebarWidth;
   height: $sidebarHeight;
 }
@@ -39,12 +38,13 @@ $pallete: shop-variables.$theme-colors;
   opacity: 0.7;
   margin-bottom: map-get($spacer, 35);
   text-transform: capitalize;
-  text-transform: capitalize;
 }
+
 .timeRangeSlider {
   margin-left: 5%;
   width: 90%;
 }
+
 .label {
   opacity: 0.7;
   margin: map-get($spacer, 31) 0 map-get($spacer, 7) map-get($spacer, 8);
@@ -74,31 +74,34 @@ $pallete: shop-variables.$theme-colors;
 .available {
   display: flex;
   flex-direction: row-reverse;
-  flex-direction: row-reverse;
   justify-content: space-between;
-  justify-content: space-between;
-  z-index: 1;
   z-index: 1;
   margin-top: map-get($spacer, 22);
   box-shadow: none;
-  box-shadow: none;
+
   padding: 0 map-get($spacer, 22);
+
   font-size: $sidebarTitleFontSize;
-  font-size: $sidebarTitleFontSize;
+
   & :hover {
     cursor: pointer;
   }
+
   > label {
     color: black;
+
     .formchecklabel {
       text-decoration: none;
     }
   }
+
   & :hover {
     cursor: pointer;
   }
+
   > label {
     color: black;
+
     .formchecklabel {
       text-decoration: none;
     }
@@ -107,11 +110,9 @@ $pallete: shop-variables.$theme-colors;
   & input[type='checkbox'] {
     box-shadow: none;
     border: none;
-    border: none;
   }
 
   & input:checked {
-    box-shadow: none;
     box-shadow: none;
     background-color: map-get($pallete, lopi-orange);
   }

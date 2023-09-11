@@ -1,4 +1,4 @@
-import style from './tileShop.module.scss';
+import style from './tileProduct.module.scss';
 import styles from '../../Products.module.scss';
 import Image from 'next/image';
 
@@ -10,10 +10,11 @@ import AddToCart from './components/AddtoCart';
 
 import { Col } from 'react-bootstrap';
 
-import { ProductTileProps } from '../../../../CategoriesTypesProps';
+import { ProductTileColProps } from '../../ProductTypesProps';
 import ProductRating from './components/ProductRating';
+import Status from './components/Status';
 
-const ProductTile: FC<ProductTileProps> = ({
+const ProductTileCol: FC<ProductTileColProps> = ({
   name,
   sku,
   imageUrls,
@@ -24,7 +25,7 @@ const ProductTile: FC<ProductTileProps> = ({
     <Col className={styles.product} xl={4} key={sku}>
       <ul className={style.tile}>
         <div className={style.imageArea}>
-          {/* <Status status={status} /> */}
+          <Status status={'Current'} />
           <AddToCart />
           <Image
             src={
@@ -40,7 +41,7 @@ const ProductTile: FC<ProductTileProps> = ({
         </div>
         <div className={style.tileInfo}>
           <ProductRating starsCount={4} />
-          {/* <span>({rewievs})</span> */}
+          <span>(4)</span>
         </div>
         <div className={style.productName}>{name}</div>
         <Price price={regularPrice} currentPrice={discountPrice} />
@@ -49,4 +50,4 @@ const ProductTile: FC<ProductTileProps> = ({
   );
 };
 
-export default ProductTile;
+export default ProductTileCol;

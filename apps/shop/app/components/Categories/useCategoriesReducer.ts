@@ -21,7 +21,7 @@ export interface CategoriesReducerProps {
   onLowerMoneyValueFilterChange: (lowerMoneyValue: number) => void;
   onAvailabilityFilterChange: (availabilityValue: boolean) => void;
 }
-interface StateProps {
+export interface StateProps {
   higherMoneyValueFilter: number;
   sortType: string;
   sortOrder: string;
@@ -127,6 +127,7 @@ export const useCategoriesReducer = ({ products }: { products: Product[] }) => {
       availabilityValue: state.availability,
     });
   };
+
   const onHigherMoneyValueFilterChange = (higherMoneyValue: number) => {
     dispatch({
       type: ActionTypes.ON_HIGHER_MONEY_VALUE_FILTER_CHANGE,
@@ -139,6 +140,7 @@ export const useCategoriesReducer = ({ products }: { products: Product[] }) => {
       availabilityValue: false,
     });
   };
+
   const onLowerMoneyValueFilterChange = (lowerMoneyValue: number) => {
     dispatch({
       type: ActionTypes.ON_LOWER_MONEY_VALUE_FILTER_CHANGE,
@@ -151,6 +153,7 @@ export const useCategoriesReducer = ({ products }: { products: Product[] }) => {
       availabilityValue: false,
     });
   };
+
   const onAvailabilityFilterChange = (availabilityValue: boolean) => {
     dispatch({
       type: ActionTypes.ON_AVAILABILITY_FILTER_CHANGE,

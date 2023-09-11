@@ -3,14 +3,16 @@ import { Container, Row } from 'react-bootstrap';
 
 import { FC } from 'react';
 
-import ProductTile from './components/tileShop/productTile';
+import ProductTile from './components/tileShop/ProductTileCol';
 
 import { useState, useEffect } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 
-import { ProductsProps } from '../../CategoriesTypesProps';
+import { ProductsDisplayProps } from './ProductTypesProps';
 
-export const Products: FC<ProductsProps> = ({ categoriesReducer }) => {
+export const ProductsDisplay: FC<ProductsDisplayProps> = ({
+  categoriesReducer,
+}) => {
   const [isClient, setIsClient] = useState<boolean>();
   useEffect(() => {
     setIsClient(true);

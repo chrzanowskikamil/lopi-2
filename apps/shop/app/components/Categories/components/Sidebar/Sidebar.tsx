@@ -6,7 +6,7 @@ import { Badge, Form, ListGroup } from 'react-bootstrap';
 import { FC } from 'react';
 import Link from 'next/link';
 
-import MultiRangeSlider from '../MultiRangeSlider/multiRangeSlider';
+import MultiRangeSlider from '../MultiRangeSlider/MultiRangeSlider';
 import { useState } from 'react';
 import { RangeSliderValues, SidebarProps } from '../../CategoriesTypesProps';
 import {
@@ -23,14 +23,17 @@ export const Sidebar: FC<SidebarProps> = ({
 
   const setupFunction = () => {
     const url = new URL(location.href);
+
     if (url.searchParams.get('availability') === 'false') {
       categoriesReducer.onAvailabilityFilterChange(false);
     }
     setSetup(true);
   };
+
   if (!setup) {
     setupFunction();
   }
+
   const getItemClassName = (item: string) =>
     activeCategory === item ? styles.activeListItem : styles.listItem;
 
@@ -60,7 +63,6 @@ export const Sidebar: FC<SidebarProps> = ({
   };
 
   const handleRangeSlider = (e: RangeSliderValues) => {
-    console.log(typeof e);
     const url = new URL(location.href);
     if (categoriesReducer.state.lowerMoneyValueFilter !== e.min) {
       if (url.searchParams.get('filterPriceLow') !== e.min.toString()) {

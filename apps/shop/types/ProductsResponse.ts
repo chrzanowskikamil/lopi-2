@@ -1,15 +1,7 @@
-interface ItemDetails {
+export interface Product {
   name: string;
   description: string;
   uid: string;
-}
-interface Category extends ItemDetails {
-  subCategories: string[];
-}
-interface Image {
-  imageUrl: string;
-}
-export interface Product extends ItemDetails {
   sku: string;
   regularPrice: number;
   discountPrice: number;
@@ -23,8 +15,8 @@ export interface Product extends ItemDetails {
   createdAt: string;
   updatedAt: string;
   archivedAt: string;
-  categories: Category[];
-  imageUrls: Image[];
+  categories: string[];
+  imageUrls: string[];
 }
 
 export interface ProductsResponse {

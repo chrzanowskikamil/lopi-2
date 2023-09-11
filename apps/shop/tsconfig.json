@@ -1,7 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "lib": ["es5", "es6", "dom", "dom.iterable"],
     "jsx": "preserve",
     "allowJs": true,
     "esModuleInterop": true,
@@ -17,15 +16,17 @@
         "name": "next"
       }
     ],
-    "types": ["jest", "node"]
+    "types": [
+      "jest",
+      "node"
+    ]
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     "**/*.js",
     "**/*.jsx",
-    "../../apps/shop/.next/types/**/*.ts",
-    "../../dist/apps/shop/.next/types/**/*.ts"
+    "../../apps/shop/.next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",

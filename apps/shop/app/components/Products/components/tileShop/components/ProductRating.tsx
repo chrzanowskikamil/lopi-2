@@ -1,11 +1,11 @@
 'use client';
 
-import style from '../tileShop.module.scss';
+import style from '../tileProduct.module.scss';
 
 import { FC } from 'react';
-import { IconWrapper } from '../../../../../../Icons/IconWrapper';
+import { IconWrapper } from '../../../../Icons/IconWrapper';
 
-import { ProductRatingProps } from '../../../../../CategoriesTypesProps';
+import { ProductRatingProps } from '../../../ProductTypesProps';
 
 const ProductRating: FC<ProductRatingProps> = ({ starsCount }) => {
   const fullStar = (

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState, useRef, FC } from 'react';
 import PropTypes from 'prop-types';
 import style from './multiRangeSlider.module.scss';
-import { MultiRangeSliderProps } from '../../../CategoriesTypesProps';
+import { MultiRangeSliderProps } from '../../CategoriesTypesProps';
 
 const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
   min,
@@ -13,11 +13,12 @@ const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
   const initialMaxVal = url.searchParams.get('filterPriceHigh');
 
   const [minVal, setMinVal] = useState<number>(
-    initialMinVal !== null ? +initialMinVal : min
+    initialMinVal ? +initialMinVal : min
   );
   const [maxVal, setMaxVal] = useState<number>(
-    initialMaxVal !== null ? +initialMaxVal : max
+    initialMaxVal ? +initialMaxVal : max
   );
+
   const minValRef = useRef<HTMLInputElement>(null);
   const maxValRef = useRef<HTMLInputElement>(null);
   const range = useRef<HTMLInputElement>(null);

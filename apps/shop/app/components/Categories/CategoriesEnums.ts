@@ -9,10 +9,10 @@ export const SortOrder = {
 };
 
 export const SortParams = {
-  PRICE_INCREASING: 'Cena rosnaca',
-  PRICE_DECREASING: 'Cena malejaca',
-  ALFABEICLY_INCREASING: 'Alfabetycznie A do Z',
-  ALFABEICLY_DECREASING: 'Alfabetycznie Z do A',
+  PRICE_ASC: 'Cena rosnaca',
+  PRICE_DSC: 'Cena malejaca',
+  PRODUCT_NAME_ASC: 'Alfabetycznie A do Z',
+  PRODUCT_NAME_DSC: 'Alfabetycznie Z do A',
 };
 
 export const ActionTypes = {

@@ -6,17 +6,17 @@ $button-width: 155px;
 
 .title {
   margin-top: map-get($spacer, 40);
-  text-transform: uppercase;
   color: map-get($pallete, lopi-black);
   font-weight: 700;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .button {
-  width: $button-width;
   margin: map-get($spacer, 60) 0;
-  background-color: transparent;
   border-color: map-get($pallete, lopi-orange);
+  background-color: transparent;
+  width: $button-width;
   color: map-get($pallete, lopi-orange);
 
   &:hover {

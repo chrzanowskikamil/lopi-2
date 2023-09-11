@@ -2,9 +2,9 @@
 
 import { FC } from 'react';
 
-import style from '../tileShop.module.scss';
+import style from '../tileProduct.module.scss';
 
-import { PriceProps } from '../../../../../CategoriesTypesProps';
+import { PriceProps } from '../../../ProductTypesProps';
 
 const Price: FC<PriceProps> = ({ price, currentPrice }) => {
   return (

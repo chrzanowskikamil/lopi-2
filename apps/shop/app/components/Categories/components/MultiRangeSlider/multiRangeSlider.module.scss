@@ -1,21 +1,30 @@
+@use '../../../../styles/shop-variables';
+
+$spacer: shop-variables.$spacers;
+$border-widths: shop-variables.$border-widths;
+
+$slider-height: 5px;
+$thumb-width: 18px;
+$thumb-height: 18px;
+$thumb_whole_width: 200px;
+$container-heigth: 100px;
+
 .label {
   opacity: 0.7;
-  // margin: map-get($spacer, 31) 0 map-get($spacer, 7) map-get($spacer, 8);
-  margin-top: 20px;
-  margin-left: 20px;
+  margin-top: map-get($spacer, 31);
+  margin-left: map-get($spacer, 31);
 }
 .containerSlider {
   justify-content: center;
   align-items: center;
-  /* display: flex; */
-  margin-top: 20px;
+  margin-top: map-get($spacer, 31);
   margin-left: 10%;
-  height: 100px;
+  height: $container-heigth;
 }
 
 .slider {
   position: relative;
-  width: 200px;
+  width: $thumb_whole_width;
 }
 
 .sliderTrack,
@@ -25,8 +34,8 @@
 
 .sliderTrack,
 .sliderRange {
-  border-radius: 3px;
-  height: 5px;
+  border-radius: map-get($border-widths, 3);
+  height: $slider-height;
 }
 .sliderTrack {
   z-index: 1;
@@ -39,14 +48,6 @@
   background-color: #ff9a17;
 }
 
-.slider__left-value {
-  left: 6px;
-}
-
-.slider__right-value {
-  right: -4px;
-}
-
 /* Removing the default appearance */
 .thumb,
 .thumb::-webkit-slider-thumb {
@@ -57,7 +58,7 @@
 .thumb {
   position: absolute;
   outline: none;
-  width: 200px;
+  width: $thumb_whole_width;
   height: 0;
   pointer-events: none;
 }
@@ -78,13 +79,13 @@
 .thumb::-webkit-slider-thumb {
   position: relative;
   cursor: pointer;
-  margin-top: 4px;
-  box-shadow: 0 0 1px 1px #ced4da;
+  margin-top: map-get($spacer, 12);
+  box-shadow: 0 0 map-get($border-widths, 1) map-get($border-widths, 1) #ced4da;
   border: none;
   border-radius: 50%;
   background-color: #ff9a17;
-  width: 18px;
-  height: 18px;
+  width: $thumb-width;
+  height: $thumb-height;
   pointer-events: all;
 }
 
@@ -92,12 +93,12 @@
 .thumb::-moz-range-thumb {
   position: relative;
   cursor: pointer;
-  margin-top: 4px;
-  box-shadow: 0 0 1px 1px #ced4da;
+  margin-top: map-get($spacer, 12);
+  box-shadow: 0 0 map-get($border-widths, 1) map-get($border-widths, 1) #ced4da;
   border: none;
   border-radius: 50%;
   background-color: #f1f5f7;
-  width: 18px;
-  height: 18px;
+  width: $thumb-width;
+  height: $thumb-height;
   pointer-events: all;
 }
