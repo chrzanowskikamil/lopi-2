@@ -1,5 +1,5 @@
-interface ImageUrl{
-  imageUrl:string;
+interface ImageUrl {
+  imageUrl: string;
 }
 
 export interface Product {
