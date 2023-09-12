@@ -4,18 +4,26 @@ import { Container, Row } from 'react-bootstrap';
 import { FC } from 'react';
 
 import ProductTileCol from './components/tileShop/ProductTileCol';
+import { Product } from '../../../../shop/types/ProductsResponse';
 
-import { ProductsDisplayProps } from './ProductTypesProps';
+interface ProductsDisplayProps {
+  onProductsDisplay: {
+    lowerMoneyValueFilter: number;
+    higherMoneyValueFilter: number;
+    availability: boolean;
+    allProducts: Product[];
+  };
+}
 
 export const ProductsDisplay: FC<ProductsDisplayProps> = ({
-  categoriesReducer,
+  onProductsDisplay,
 }) => {
-  const filterPriceLow = categoriesReducer.state.lowerMoneyValueFilter;
-  const filterPriceHight = categoriesReducer.state.higherMoneyValueFilter;
-  const availible = categoriesReducer.state.availability;
+  const filterPriceLow = onProductsDisplay.lowerMoneyValueFilter;
+  const filterPriceHight = onProductsDisplay.higherMoneyValueFilter;
+  const availible = onProductsDisplay.availability;
 
   const sortBySearchParams = () => {
-    const productArray = [...categoriesReducer.state.allProducts];
+    const productArray = [...onProductsDisplay.allProducts];
 
     const filteredProducts = productArray.filter((product) => {
       const price =

@@ -1,5 +1,3 @@
-import { CategoriesReducerProps } from '../Categories/useCategoriesReducer';
-
 export type ProductRatingProps = {
   starsCount: number;
 };
@@ -22,7 +20,3 @@ export type ProductTileColProps = {
   regularPrice: number;
   discountPrice: number;
 };
-
-export interface ProductsDisplayProps {
-  categoriesReducer: CategoriesReducerProps;
-}

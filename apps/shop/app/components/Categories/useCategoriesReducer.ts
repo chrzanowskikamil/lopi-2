@@ -144,11 +144,30 @@ export const useCategoriesReducer = ({ products }: { products: Product[] }) => {
   };
 
   return {
-    state,
+    onLoadMoreProducts: {
+      sortOrder: state.sortOrder,
+      sortType: state.sortType,
+      currentPage: state.currentPage,
+      allProducts: state.allProducts,
+      onShowMore,
+    },
+
+    onProductsDisplay: {
+      lowerMoneyValueFilter: state.lowerMoneyValueFilter,
+      higherMoneyValueFilter: state.higherMoneyValueFilter,
+      availability: state.availability,
+      allProducts: state.allProducts,
+    },
+
+    onSidebarFilter: {
+      onAvailabilityFilterChange,
+      lowerMoneyValueFilter: state.lowerMoneyValueFilter,
+      higherMoneyValueFilter: state.higherMoneyValueFilter,
+      onLowerMoneyValueFilterChange,
+      onHigherMoneyValueFilterChange,
+      availability: state.availability,
+    },
+
     onProductsSort,
-    onShowMore,
-    onHigherMoneyValueFilterChange,
-    onLowerMoneyValueFilterChange,
-    onAvailabilityFilterChange,
   };
 };

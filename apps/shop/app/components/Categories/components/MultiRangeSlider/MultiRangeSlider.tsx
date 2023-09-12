@@ -1,7 +1,17 @@
 import React, { useCallback, useEffect, useState, useRef, FC } from 'react';
 import PropTypes from 'prop-types';
 import style from './multiRangeSlider.module.scss';
-import { MultiRangeSliderProps } from '../../CategoriesTypesProps';
+
+export interface RangeSliderValues {
+  min: number;
+  max: number;
+}
+
+interface MultiRangeSliderProps {
+  min: number;
+  max: number;
+  onChange: (value: RangeSliderValues) => void;
+}
 
 const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
   min,

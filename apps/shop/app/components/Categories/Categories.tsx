@@ -15,8 +15,15 @@ import { SortType, SortOrder, SortParams } from './CategoriesEnums';
 import { useCategoriesReducer } from './useCategoriesReducer';
 
 import { DEFAULT_PAGE_SIZE, INITIAL_CURRENT_PAGE } from './CategoriesVariables';
-import { CategoriesProps } from './CategoriesTypesProps';
+
 import { loadMoreProducts } from './useCategoriesPagination';
+import { ProductsResponse } from '../../../../shop/types/ProductsResponse';
+
+interface CategoriesProps {
+  title: string;
+  content: string[];
+  products: ProductsResponse;
+}
 
 export const Categories: FC<CategoriesProps> = ({
   title,
@@ -76,23 +83,27 @@ export const Categories: FC<CategoriesProps> = ({
       </Row>
       <Row>
         <Col>
-          <SortDropdown productsSortOrder={sortProductsByParams} />
+          <SortDropdown sortedProducts={sortProductsByParams} />
         </Col>
       </Row>
       <Row>
         <Col xl={2}>
           <Sidebar
-            categoriesReducer={categoriesReducer}
+            onSidebarFilter={categoriesReducer.onSidebarFilter}
             activeCategory={title}
             list={content}
           />
         </Col>
         <Col xl={10}>
-          <ProductsDisplay categoriesReducer={categoriesReducer} />
+          <ProductsDisplay
+            onProductsDisplay={categoriesReducer.onProductsDisplay}
+          />
           <Col className="text-center">
             <Button
               className={styles.button}
-              onClick={() => loadMoreProducts(categoriesReducer)}
+              onClick={() =>
+                loadMoreProducts(categoriesReducer.onLoadMoreProducts)
+              }
             >
               pokaż więcej
             </Button>

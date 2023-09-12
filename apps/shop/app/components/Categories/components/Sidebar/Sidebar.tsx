@@ -6,16 +6,31 @@ import { Badge, Form, ListGroup } from 'react-bootstrap';
 import { FC } from 'react';
 import Link from 'next/link';
 
-import MultiRangeSlider from '../MultiRangeSlider/MultiRangeSlider';
+import MultiRangeSlider, {
+  RangeSliderValues,
+} from '../MultiRangeSlider/MultiRangeSlider';
 import { useState } from 'react';
-import { RangeSliderValues, SidebarProps } from '../../CategoriesTypesProps';
+
 import {
   THE_HIGHEST_MONEY_VALUE,
   THE_LOWEST_MONEY_VALUE,
 } from '../../CategoriesVariables';
 
+interface SidebarProps {
+  onSidebarFilter: {
+    onAvailabilityFilterChange: (param: boolean) => void;
+    availability: boolean;
+    lowerMoneyValueFilter: number;
+    onLowerMoneyValueFilterChange: (param: number) => void;
+    higherMoneyValueFilter: number;
+    onHigherMoneyValueFilterChange: (param: number) => void;
+  };
+  activeCategory: string;
+  list: string[];
+}
+
 export const Sidebar: FC<SidebarProps> = ({
-  categoriesReducer,
+  onSidebarFilter,
   activeCategory,
   list,
 }) => {
@@ -25,7 +40,7 @@ export const Sidebar: FC<SidebarProps> = ({
     const url = new URL(location.href);
 
     if (url.searchParams.get('availability') === 'false') {
-      categoriesReducer.onAvailabilityFilterChange(false);
+      onSidebarFilter.onAvailabilityFilterChange(false);
     }
     setSetup(true);
   };
@@ -64,15 +79,15 @@ export const Sidebar: FC<SidebarProps> = ({
 
   const handleRangeSlider = (e: RangeSliderValues) => {
     const url = new URL(location.href);
-    if (categoriesReducer.state.lowerMoneyValueFilter !== e.min) {
+    if (onSidebarFilter.lowerMoneyValueFilter !== e.min) {
       if (url.searchParams.get('filterPriceLow') !== e.min.toString()) {
-        categoriesReducer.onLowerMoneyValueFilterChange(e.min);
+        onSidebarFilter.onLowerMoneyValueFilterChange(e.min);
         goToQueryStringHref('filterPriceLow', e.min.toString());
       }
     }
-    if (categoriesReducer.state.higherMoneyValueFilter !== e.max) {
+    if (onSidebarFilter.higherMoneyValueFilter !== e.max) {
       if (url.searchParams.get('filterPriceHigh') !== e.max.toString()) {
-        categoriesReducer.onHigherMoneyValueFilterChange(e.max);
+        onSidebarFilter.onHigherMoneyValueFilterChange(e.max);
         goToQueryStringHref('filterPriceHigh', e.max.toString());
       }
     }
@@ -96,15 +111,15 @@ export const Sidebar: FC<SidebarProps> = ({
         type="switch"
         id="productAvailabilitySwitch"
         onChange={() => {
-          categoriesReducer.onAvailabilityFilterChange(
-            !categoriesReducer.state.availability
+          onSidebarFilter.onAvailabilityFilterChange(
+            !onSidebarFilter.availability
           );
           goToQueryStringHref(
             'availability',
-            (!categoriesReducer.state.availability).toString()
+            (!onSidebarFilter.availability).toString()
           );
         }}
-        checked={categoriesReducer.state.availability}
+        checked={onSidebarFilter.availability}
       />
     </aside>
   );
