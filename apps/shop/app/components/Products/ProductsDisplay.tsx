@@ -52,23 +52,14 @@ export const ProductsDisplay: FC<ProductsDisplayProps> = ({
     return filteredProducts;
   };
 
-  const renderedProducts = sortBySearchParams().map((product) => {
-    return (
-      <ProductTileCol
-        key={product.uid}
-        sku={product.sku}
-        name={product.name}
-        imageUrls={product.imageUrls}
-        regularPrice={product.regularPrice}
-        discountPrice={product.discountPrice}
-      />
-    );
+  const RenderedProducts = sortBySearchParams().map((product) => {
+    return <ProductTileCol product={product} key={product.uid} />;
   });
 
   return (
     <>
       <Container>
-        <Row className={styles.products}>{...renderedProducts}</Row>
+        <Row className={styles.products}>{...RenderedProducts}</Row>
       </Container>
     </>
   );

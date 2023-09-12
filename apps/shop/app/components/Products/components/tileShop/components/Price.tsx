@@ -4,7 +4,10 @@ import { FC } from 'react';
 
 import style from '../tileProduct.module.scss';
 
-import { PriceProps } from '../../../ProductTypesProps';
+type PriceProps = {
+  price: number;
+  currentPrice?: number;
+};
 
 const Price: FC<PriceProps> = ({ price, currentPrice }) => {
   return (
