@@ -14,6 +14,7 @@ interface ImageUrl {
   imageUrl: string;
 }
 export type ProductTileColProps = {
+  uid: string;
   name: string;
   imageUrls: ImageUrl[];
   sku: string;

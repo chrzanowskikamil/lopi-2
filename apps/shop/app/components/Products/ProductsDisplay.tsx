@@ -56,6 +56,7 @@ export const ProductsDisplay: FC<ProductsDisplayProps> = ({
     return (
       <ProductTileCol
         key={product.uid}
+        uid={product.uid}
         sku={product.sku}
         name={product.name}
         imageUrls={product.imageUrls}

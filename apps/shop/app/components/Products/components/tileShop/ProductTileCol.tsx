@@ -1,3 +1,4 @@
+'use client';
 import style from './tileProduct.module.scss';
 import styles from '../../Products.module.scss';
 import Image from 'next/image';
@@ -14,13 +15,18 @@ import { ProductTileColProps } from '../../ProductTypesProps';
 import ProductRating from './components/ProductRating';
 import Status from './components/Status';
 
+import { useRouter } from 'next/navigation';
+
 const ProductTileCol: FC<ProductTileColProps> = ({
+  uid,
   name,
   sku,
   imageUrls,
   regularPrice,
   discountPrice,
 }) => {
+  const router = useRouter();
+
   return (
     <Col className={styles.product} xl={4} key={sku}>
       <ul className={style.tile}>
@@ -37,6 +43,7 @@ const ProductTileCol: FC<ProductTileColProps> = ({
             height={300}
             alt="picture"
             className={style.tileImage}
+            onClick={() => router.push(`/productdetails/${uid}`)}
           />
         </div>
         <div className={style.tileInfo}>
