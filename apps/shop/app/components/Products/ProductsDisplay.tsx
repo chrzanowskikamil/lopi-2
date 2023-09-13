@@ -39,7 +39,10 @@ export const ProductsDisplay: FC<ProductsDisplayProps> = ({
         (availible && product.status !== 'ACTIVE') ||
         (!availible && product.status === 'ACTIVE');
 
-      if (priceInFilterRange && productAvailiblityFilter) {
+      if (priceInFilterRange) {
+        return false;
+      }
+      if (productAvailiblityFilter) {
         return false;
       }
 
