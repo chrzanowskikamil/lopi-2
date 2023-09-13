@@ -35,14 +35,11 @@ export const ProductsDisplay: FC<ProductsDisplayProps> = ({
         (!!filterPriceLow && price < filterPriceLow) ||
         (!!filterPriceHight && price >= filterPriceHight);
 
-      const availabilityInFilterRange =
+      const productAvailiblityFilter =
         (availible && product.status !== 'ACTIVE') ||
         (!availible && product.status === 'ACTIVE');
 
-      if (priceInFilterRange) {
-        return false;
-      }
-      if (availabilityInFilterRange) {
+      if (priceInFilterRange && productAvailiblityFilter) {
         return false;
       }
 

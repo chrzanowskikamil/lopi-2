@@ -7,9 +7,7 @@ export interface RangeSliderValues {
   max: number;
 }
 
-interface MultiRangeSliderProps {
-  min: number;
-  max: number;
+interface MultiRangeSliderProps extends RangeSliderValues {
   onChange: (value: RangeSliderValues) => void;
 }
 
