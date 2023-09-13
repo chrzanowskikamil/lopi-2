@@ -3,11 +3,23 @@
 import { FC } from 'react';
 
 import style from '../tileProduct.module.scss';
+import { useCart } from '../../../../../contexts/CartContext';
 
-const AddToCart: FC = () => {
+interface AddToCartProps {
+  productUid: string;
+}
+
+const AddToCart: FC<AddToCartProps> = ({ productUid }) => {
+  const { addProduct } = useCart();
+
   return (
     <>
-      <button className={style.buttonToCart}>add to cart</button>
+      <button
+        onClick={() => addProduct(productUid, 1)}
+        className={style.buttonToCart}
+      >
+        add to cart
+      </button>
     </>
   );
 };

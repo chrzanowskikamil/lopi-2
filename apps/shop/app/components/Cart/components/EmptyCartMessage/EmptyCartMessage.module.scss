@@ -1,0 +1,27 @@
+@use '../../../../styles/shop-variables';
+@use '../../../../styles/mixins/shop-mixins';
+
+$pallete: shop-variables.$theme-colors;
+$spacer: shop-variables.$spacers;
+$bodyHeight: 100%;
+$bgIconSize: 100px;
+$iconSize: 35px;
+
+.body {
+  @include shop-mixins.flex-center;
+  height: $bodyHeight;
+  flex-direction: column;
+}
+
+.icon {
+  @include shop-mixins.flex-center;
+  background-color: map-get($pallete, lopi-black);
+  border-radius: 50%;
+  width: $bgIconSize;
+  height: $bgIconSize;
+  font-size: $iconSize;
+}
+
+.title {
+  margin: map-get($spacer, 31);
+}

@@ -15,6 +15,7 @@ import Status from './components/Status';
 
 interface ProductTileColProps {
   product: {
+    uid: string;
     name: string;
     imageUrls: ImageUrl[];
     sku: string;
@@ -32,7 +33,7 @@ const ProductTileCol: FC<ProductTileColProps> = ({ product }) => {
       <ul className={style.tile}>
         <div className={style.imageArea}>
           <Status status={'Current'} />
-          <AddToCart />
+          <AddToCart productUid={product.uid} />
           <Image
             src={
               product.imageUrls[0] !== undefined

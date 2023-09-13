@@ -1,96 +1,132 @@
-import { createContext, FC, ReactNode, useContext, useState } from 'react';
-import { ProductCart } from '../../types/ProductCart';
-
-interface Product extends ProductCart {
-  quantity: number;
-}
+import {
+  createContext,
+  FC,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+import { CartProductsResponse } from '../../types/CartProductsResponse';
+import {
+  addToCart,
+  getCartProducts,
+  removeFromCart,
+  updateCartQuantity,
+} from '../../actions/cartApi';
 
 interface CartContextProps {
-  productsInCart: Product[];
+  cartData: CartProductsResponse | null;
   totalPrice: number;
   deliveryPrice: number;
   totalCost: number;
-  deleteProduct: (id: number) => void;
-  increaseQuantity: (id: number) => void;
-  decreaseQuantity: (id: number) => void;
-  getQuantityForProduct: (id: number) => number;
+  addProduct: (uid: string, quantity: number) => void;
+  deleteProduct: (uid: string) => void;
+  increaseQuantity: (uid: string) => void;
+  decreaseQuantity: (uid: string) => void;
+  getQuantityForProduct: (uid: string) => number;
+  getPriceDetails: (uid: string) => {
+    regularPrice: number;
+    discountPrice: number | null;
+  };
 }
 
-// INFO: This is mock data. It will be replaced by data from API in future ;).
-const data: Product[] = [
-  { id: 1, name: 'Ethiopia Emerald', price: 120, quantity: 1 },
-  { id: 2, name: 'Ethiopia Tradition', price: 90, quantity: 1 },
-  { id: 3, name: 'Golden Hills of Ethiopia', price: 102, quantity: 1 },
-  { id: 4, name: 'Ethiopia Sunrise', price: 72, quantity: 1 },
-  { id: 5, name: 'Ethiopia Adventure', price: 128, quantity: 1 },
-];
+const CartContext = createContext<CartContextProps | null>(null);
 
-const defaultContextValues = {
-  productsInCart: data,
-  totalPrice: 0,
-  deliveryPrice: 0,
-  totalCost: 0,
-  getQuantityForProduct: () => {
-    throw new Error('getQuantityForProduct must be used within a CartProvider');
-  },
-  deleteProduct: () => {
-    throw new Error('deleteProduct must be used within a CartProvider');
-  },
-  increaseQuantity: () => {
-    throw new Error('increaseQuantity must be used within a CartProvider');
-  },
-  decreaseQuantity: () => {
-    throw new Error('decreaseQuantity must be used within a CartProvider');
-  },
+export const useCart = () => {
+  const context = useContext(CartContext);
+
+  if (!context) {
+    throw new Error('useCart must be used within a CartProvider');
+  }
+
+  return context;
 };
 
-// TODO: apply type
-const CartContext = createContext<CartContextProps>(
-  defaultContextValues as any
-);
-
 export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [productsInCart, setProductsInCart] = useState<Product[]>(data);
+  const [cartData, setCartData] = useState<CartProductsResponse | null>(null);
+  const cartItems = cartData?.cartItems || [];
 
-  const handleDeleteProduct = (id: number) => {
-    setProductsInCart((prevProducts) =>
-      prevProducts.filter((product) => product.id !== id)
-    );
-  };
-
-  const handleIncreaseQuantity = (id: number) => {
-    setProductsInCart((prevProducts) =>
-      prevProducts.map((product) =>
-        product.id === id
-          ? { ...product, quantity: product.quantity + 1 }
-          : product
-      )
-    );
-  };
-
-  const handleDecreaseQuantity = (id: number) => {
-    setProductsInCart((prevProducts) =>
-      prevProducts.map((product) => {
-        if (product.id === id && product.quantity > 1) {
-          const newQuantity = product.quantity - 1;
-
-          return { ...product, quantity: newQuantity };
-        }
-
-        return product;
+  useEffect(() => {
+    getCartProducts()
+      .then((res) => {
+        setCartData(res);
       })
-    );
+      .catch((error) => {
+        console.error('Failed to get cart products', error);
+      });
+  }, []);
+
+  const handleAddProduct = async (uid: string, quantity: number) => {
+    try {
+      await addToCart(uid, quantity);
+      const updatedCart = await getCartProducts();
+      setCartData(updatedCart);
+    } catch (error) {
+      console.error('Failed to add product to cart', error);
+    }
   };
 
-  const getQuantityForProduct = (id: number) => {
-    const product = productsInCart.find((product) => product.id === id);
-
-    return product?.quantity ?? 0;
+  const handleDeleteProduct = async (uid: string) => {
+    try {
+      await removeFromCart(uid);
+      const updatedCart = await getCartProducts();
+      setCartData(updatedCart);
+    } catch (error) {
+      console.error('Failed to delete product from cart', error);
+    }
   };
 
-  const totalPrice = productsInCart.reduce((acc, product) => {
-    return acc + product.price * product.quantity;
-  }, 0);
+  const updateQuantity = async (uid: string, quantity: number) => {
+    try {
+      const cartItem = cartItems.find((item) => item.product.uid === uid);
+
+      if (cartItem) {
+        const newQuantity = cartItem.quantity + quantity;
+
+        if (newQuantity > 0) {
+          await updateCartQuantity(uid, newQuantity);
+          const updatedCart = await getCartProducts();
+          setCartData(updatedCart);
+        }
+      }
+    } catch (error) {
+      console.error('Failed to update quantity', error);
+    }
+  };
+
+  const handleIncreaseQuantity = async (uid: string) => {
+    updateQuantity(uid, 1);
+  };
+
+  const handleDecreaseQuantity = async (uid: string) => {
+    updateQuantity(uid, -1);
+  };
+
+  const getPriceDetails = (uid: string) => {
+    const cartItem = cartItems.find((item) => item.product.uid === uid);
+
+    if (!cartItem) return { regularPrice: 0, discountPrice: null };
+
+    return {
+      regularPrice: cartItem.product.regularPrice * cartItem.quantity,
+      discountPrice: (cartItem.product.discountPrice || 0) * cartItem.quantity,
+    };
+  };
+
+  const getQuantityForProduct = (uid: string) => {
+    const cartItem = cartItems.find((item) => item.product.uid === uid);
+
+    return cartItem?.quantity ?? 0;
+  };
+
+  let totalPrice = 0;
+  if (cartItems) {
+    totalPrice = cartItems.reduce<number>((acc, item) => {
+      const price = item.product.discountPrice ?? item.product.regularPrice;
+
+      return acc + price * item.quantity;
+    }, 0);
+  }
 
   const deliveryPrice = 0;
 
@@ -99,10 +135,12 @@ export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <CartContext.Provider
       value={{
-        productsInCart,
+        cartData,
         totalPrice,
         deliveryPrice,
         totalCost,
+        addProduct: handleAddProduct,
+        getPriceDetails,
         getQuantityForProduct,
         deleteProduct: handleDeleteProduct,
         increaseQuantity: handleIncreaseQuantity,
@@ -112,13 +150,4 @@ export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
       {children}
     </CartContext.Provider>
   );
-};
-
-export const useCart = () => {
-  const context = useContext(CartContext);
-  if (!context) {
-    throw new Error('useCart must be used within a CartProvider');
-  }
-
-  return context;
 };
