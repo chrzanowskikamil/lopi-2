@@ -1,7 +1,5 @@
 import style from '../Footer.module.scss';
-
-import { MailIcon } from '../../../assets/SvgIcons/MailIcon';
-
+import { IconWrapper } from '../../Icons/IconWrapper';
 import { FC } from 'react';
 
 const SubscriptionForm: FC = () => {
@@ -15,7 +13,9 @@ const SubscriptionForm: FC = () => {
         placeholder="Emali"
       />
       <div className={style.footerSubscriptionFormButton}>
-        <MailIcon />
+        <IconWrapper
+          icon={<i className={`${style.mailIcon} bi bi-envelope`}></i>}
+        />
       </div>
     </div>
   );

@@ -1,22 +1,46 @@
+import Link from 'next/link';
 import styles from './SortDropdown.module.scss';
 import { FC } from 'react';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 
-export const SortDropdown: FC = () => {
+import { usePathname, useSearchParams } from 'next/navigation';
+import { useCallback } from 'react';
+import { SortParams } from '../../CategoriesEnums';
+
+interface SortDropdownProps {
+  sortedProducts: (item: string) => void;
+}
+
+export const SortDropdown: FC<SortDropdownProps> = ({ sortedProducts }) => {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const createQueryString = useCallback(
+    (value: string) => {
+      const params = new URLSearchParams(searchParams);
+      params.set('sort', value);
+
+      return params.toString();
+    },
+    [searchParams]
+  );
+
   const dropdownItems = [
-    'Trafność',
-    'Ręczne',
-    'Alfabetycznie Z do A',
-    'Cena malejąca',
-    'Cena od najniższej do najwyższej',
-    'Od najnowszych do najstarszych',
-    'Alfabetycznie A do Z',
-    'Od najstarszych do najnowszych',
-    'Bestsellery',
+    SortParams.PRICE_ASC,
+    SortParams.PRICE_DSC,
+    SortParams.PRODUCT_NAME_ASC,
+    SortParams.PRODUCT_NAME_DSC,
   ];
 
   const items = dropdownItems.map((item) => (
-    <Dropdown.Item key={item}>{item}</Dropdown.Item>
+    <Dropdown.Item
+      key={item}
+      as={Link}
+      href={pathname + '?' + createQueryString(`${item}`)}
+      onClick={() => sortedProducts(item)}
+    >
+      {item}
+    </Dropdown.Item>
   ));
 
   return (

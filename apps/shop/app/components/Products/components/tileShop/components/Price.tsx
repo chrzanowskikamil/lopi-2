@@ -2,7 +2,7 @@
 
 import { FC } from 'react';
 
-import style from '../tileShop.module.scss';
+import style from '../tileProduct.module.scss';
 
 type PriceProps = {
   price: number;

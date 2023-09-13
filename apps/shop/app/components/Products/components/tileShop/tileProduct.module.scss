@@ -1,4 +1,4 @@
-@use '../../../../../.././styles/shop-variables';
+@use '../../../.././styles/shop-variables';
 
 $palette: shop-variables.$theme-colors;
 $spacers: shop-variables.$spacers;
@@ -80,6 +80,10 @@ $spacers: shop-variables.$spacers;
   .starOrange {
     margin-left: map-get($spacers, 1);
     color: map-get($palette, lopi-orange);
+  }
+
+  .starGrey {
+    color: map-get($palette, lopi-grey);
   }
 
   span {

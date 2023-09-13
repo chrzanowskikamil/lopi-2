@@ -2,12 +2,11 @@
 
 import { FC } from 'react';
 
-import style from '../tileShop.module.scss';
+import style from '../tileProduct.module.scss';
 
 type StatusProps = {
   status?: string;
 };
-
 const Status: FC<StatusProps> = ({ status }) => {
   return (
     <>

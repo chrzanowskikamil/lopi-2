@@ -1,13 +1,23 @@
 'use client';
+
 import styles from './Categories.module.scss';
-import { FC, useState } from 'react';
+import { FC, useCallback } from 'react';
 import { Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { SortDropdown } from './components/SortDropdown/SortDropdown';
-import { Products } from './components/Products/Products';
+import { ProductsDisplay } from '../Products/ProductsDisplay';
 import { Button, Col, Container, Row } from 'react-bootstrap';
-import { ProductsResponse } from '../../../types/ProductsResponse';
+
 import { getProducts } from '../../../actions/getProducts';
+
+import { SortType, SortOrder, SortParams } from './CategoriesEnums';
+
+import { useCategoriesReducer } from './useCategoriesReducer';
+
+import { DEFAULT_PAGE_SIZE, INITIAL_CURRENT_PAGE } from './CategoriesVariables';
+
+import { loadMoreProducts } from './useCategoriesPagination';
+import { ProductsResponse } from '../../../../shop/types/ProductsResponse';
 
 interface CategoriesProps {
   title: string;
@@ -20,16 +30,44 @@ export const Categories: FC<CategoriesProps> = ({
   content,
   products: initalProducts,
 }) => {
-  const [currentPage, setCurrentPage] = useState(0);
-  const [allProducts, setAllProducts] = useState(initalProducts.products);
-  const PRODUCTS_PER_PAGE = 6;
+  const categoriesReducer = useCategoriesReducer(initalProducts);
 
-  const loadMoreProducts = async () => {
-    const nextPage = currentPage + 1;
-    const newProducts = await getProducts(PRODUCTS_PER_PAGE, nextPage);
-    setAllProducts([...allProducts, ...newProducts.products]);
-    setCurrentPage(nextPage);
-  };
+  const sortProductsByParams = useCallback(
+    async (sortParam: string) => {
+      const sortParams = sortParam;
+
+      let sortType = SortType.PRICE;
+      let sortOrder = SortOrder.ASCENDING;
+
+      if (sortParams === SortParams.PRICE_ASC) {
+        sortType = SortType.PRICE;
+        sortOrder = SortOrder.ASCENDING;
+      } else if (sortParams === SortParams.PRICE_DSC) {
+        sortType = SortType.PRICE;
+        sortOrder = SortOrder.DESCENDING;
+      } else if (sortParams === SortParams.PRODUCT_NAME_ASC) {
+        sortType = SortType.NAME;
+        sortOrder = SortOrder.ASCENDING;
+      } else if (sortParams === SortParams.PRODUCT_NAME_DSC) {
+        sortType = SortType.NAME;
+        sortOrder = SortOrder.DESCENDING;
+      }
+
+      const newSort = await getProducts(
+        DEFAULT_PAGE_SIZE,
+        INITIAL_CURRENT_PAGE,
+        sortType,
+        sortOrder
+      );
+
+      categoriesReducer.onProductsSort(
+        [...newSort.products],
+        sortType,
+        sortOrder
+      );
+    },
+    [categoriesReducer]
+  );
 
   return (
     <Container>
@@ -45,17 +83,28 @@ export const Categories: FC<CategoriesProps> = ({
       </Row>
       <Row>
         <Col>
-          <SortDropdown />
+          <SortDropdown sortedProducts={sortProductsByParams} />
         </Col>
       </Row>
       <Row>
         <Col xl={2}>
-          <Sidebar activeCategory={title} list={content} />
+          <Sidebar
+            onSidebarFilter={categoriesReducer.onSidebarFilter}
+            activeCategory={title}
+            list={content}
+          />
         </Col>
         <Col xl={10}>
-          <Products products={{ ...initalProducts, products: allProducts }} />
+          <ProductsDisplay
+            onProductsDisplay={categoriesReducer.onProductsDisplay}
+          />
           <Col className="text-center">
-            <Button className={styles.button} onClick={loadMoreProducts}>
+            <Button
+              className={styles.button}
+              onClick={() =>
+                loadMoreProducts(categoriesReducer.onLoadMoreProducts)
+              }
+            >
               pokaż więcej
             </Button>
           </Col>
