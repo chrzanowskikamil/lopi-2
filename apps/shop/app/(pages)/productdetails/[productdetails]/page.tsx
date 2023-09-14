@@ -1,3 +1,4 @@
+import { ProductsDetailed } from '../../../components/Products/ProductsDetailed/ProductsDetailed';
 import { getProduct } from '../../../../actions/getProduct';
 
 const ProductDetailsPage = async ({
@@ -7,7 +8,7 @@ const ProductDetailsPage = async ({
 }) => {
   const product = await getProduct(params.productdetails);
 
-  return <>{JSON.stringify(product)}</>;
+  return <>{<ProductsDetailed product={product} />}</>;
 };
 
 export default ProductDetailsPage;
