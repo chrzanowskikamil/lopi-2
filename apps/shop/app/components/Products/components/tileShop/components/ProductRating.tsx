@@ -5,17 +5,20 @@ import style from '../tileProduct.module.scss';
 import { FC } from 'react';
 import { IconWrapper } from '../../../../Icons/IconWrapper';
 
-import { ProductRatingProps } from '../../../ProductTypesProps';
+type ProductRatingProps = {
+  starsCount: number;
+};
 
 const ProductRating: FC<ProductRatingProps> = ({ starsCount }) => {
-  const fullStar = (
+  const FullStar = (
     <IconWrapper
       icon={
         <i className={`${style.star && style.starOrange} bi bi-star-fill`}></i>
       }
     />
   );
-  const emptyStar = (
+
+  const EmptyStar = (
     <IconWrapper
       icon={
         <i className={`${style.star && style.starGrey} bi bi-star-fill`}></i>
@@ -23,13 +26,13 @@ const ProductRating: FC<ProductRatingProps> = ({ starsCount }) => {
     />
   );
 
-  const ratingStar = Array.from({ length: 5 }, (elem, index) => {
+  const RatingStar = Array.from({ length: 5 }, (elem, index) => {
     return (
-      <span key={index}>{index <= starsCount - 1 ? fullStar : emptyStar}</span>
+      <span key={index}>{index <= starsCount - 1 ? FullStar : EmptyStar}</span>
     );
   });
 
-  return <>{ratingStar}</>;
+  return <>{RatingStar}</>;
 };
 
 export default ProductRating;

@@ -35,14 +35,14 @@ export const ProductsDisplay: FC<ProductsDisplayProps> = ({
         (!!filterPriceLow && price < filterPriceLow) ||
         (!!filterPriceHight && price >= filterPriceHight);
 
-      const availabilityInFilterRange =
+      const productAvailiblityFilter =
         (availible && product.status !== 'ACTIVE') ||
         (!availible && product.status === 'ACTIVE');
 
       if (priceInFilterRange) {
         return false;
       }
-      if (availabilityInFilterRange) {
+      if (productAvailiblityFilter) {
         return false;
       }
 
@@ -52,24 +52,14 @@ export const ProductsDisplay: FC<ProductsDisplayProps> = ({
     return filteredProducts;
   };
 
-  const renderedProducts = sortBySearchParams().map((product) => {
-    return (
-      <ProductTileCol
-        key={product.uid}
-        uid={product.uid}
-        sku={product.sku}
-        name={product.name}
-        imageUrls={product.imageUrls}
-        regularPrice={product.regularPrice}
-        discountPrice={product.discountPrice}
-      />
-    );
+  const RenderedProducts = sortBySearchParams().map((product) => {
+    return <ProductTileCol product={product} key={product.uid} />;
   });
 
   return (
     <>
       <Container>
-        <Row className={styles.products}>{...renderedProducts}</Row>
+        <Row className={styles.products}>{...RenderedProducts}</Row>
       </Container>
     </>
   );

@@ -1,0 +1,45 @@
+@use '../../../../styles/shop-variables';
+@use '../../../../styles/mixins/shop-mixins';
+
+$palette: shop-variables.$theme-colors;
+$spacer: shop-variables.$spacers;
+$containerHeight: 100%;
+$titleFontWeight: 500;
+$borderWidth: 1px;
+$buttonBorderRadius: 6px;
+$body-height: 70%;
+$buttonHeight: 40px;
+
+.cartItems {
+  height: $containerHeight;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.title {
+  align-self: flex-start;
+  font-weight: $titleFontWeight;
+  margin-bottom: map-get($spacer, 41);
+}
+
+.link {
+  text-decoration: none;
+  @include shop-mixins.flex-center;
+  background-color: map-get($palette, lopi-brown);
+  border: $borderWidth solid map-get($palette, lopi-orange);
+  border-radius: $buttonBorderRadius;
+  height: $buttonHeight;
+  color: map-get($palette, lopi-orange);
+  margin-top: map-get($spacer, 7);
+
+  &:hover {
+    cursor: pointer;
+    background-color: map-get($palette, lopi-black);
+  }
+
+  > a {
+    text-decoration: none;
+    color: map-get($palette, lopi-orange);
+  }
+}

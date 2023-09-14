@@ -2,6 +2,7 @@
 
 $spacer: shop-variables.$spacers;
 $border-widths: shop-variables.$border-widths;
+$pallete: shop-variables.$theme-colors;
 
 $slider-height: 5px;
 $thumb-width: 18px;
@@ -39,13 +40,13 @@ $container-heigth: 100px;
 }
 .sliderTrack {
   z-index: 1;
-  background-color: #ced4da;
+  background-color: map-get($pallete, lopi-grey);
   width: 100%;
 }
 
 .sliderRange {
   z-index: 2;
-  background-color: #ff9a17;
+  background-color: map-get($pallete, lopi-orange);
 }
 
 /* Removing the default appearance */
@@ -80,7 +81,8 @@ $container-heigth: 100px;
   position: relative;
   cursor: pointer;
   margin-top: map-get($spacer, 12);
-  box-shadow: 0 0 map-get($border-widths, 1) map-get($border-widths, 1) #ced4da;
+  box-shadow: 0 0 map-get($border-widths, 1) map-get($border-widths, 1)
+    map-get($pallete, lopi-grey);
   border: none;
   border-radius: 50%;
   background-color: #ff9a17;
@@ -94,7 +96,8 @@ $container-heigth: 100px;
   position: relative;
   cursor: pointer;
   margin-top: map-get($spacer, 12);
-  box-shadow: 0 0 map-get($border-widths, 1) map-get($border-widths, 1) #ced4da;
+  box-shadow: 0 0 map-get($border-widths, 1) map-get($border-widths, 1)
+    map-get($pallete, lopi-grey);
   border: none;
   border-radius: 50%;
   background-color: #f1f5f7;

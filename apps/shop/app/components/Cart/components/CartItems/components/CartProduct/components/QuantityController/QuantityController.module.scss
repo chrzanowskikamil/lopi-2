@@ -1,0 +1,25 @@
+@use '../../../../../../../../styles/shop-variables';
+@use '../../../../../../../../styles/mixins/shop-mixins';
+
+$pallete: shop-variables.$theme-colors;
+$borderButtonWidth: 1px;
+$menuBorderRadius: 5px;
+$menuWidth: 118px;
+$menuHeight: 36px;
+$paragraphFontWeight: 500;
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: $menuWidth;
+  height: $menuHeight;
+  border: $borderButtonWidth solid map-get($pallete, lopi-orange);
+  border-radius: $menuBorderRadius;
+
+  > p {
+    margin: 0;
+    padding: 0;
+    font-weight: $paragraphFontWeight;
+  }
+}

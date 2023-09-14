@@ -1,0 +1,51 @@
+@use '../../../../../../styles/shop-variables';
+@use '../../../../../../styles/mixins/shop-mixins';
+
+$pallete: shop-variables.$theme-colors;
+$spacer: shop-variables.$spacers;
+$productNameWidth: 30%;
+$productContainerHeight: 65px;
+$productsContainerWidth: 100%;
+$productNameFontSize: 14px;
+$priceStrikeThroughFontSize: 12px;
+$priceStrikeThroughSpacer: 4px;
+$buttonFontSize: 25px;
+$menuBorderSize: 1px;
+
+.products {
+  width: $productsContainerWidth;
+}
+
+.product {
+  display: flex;
+  height: $productContainerHeight;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  margin-bottom: map-get($spacer, 4);
+}
+
+.productName {
+  width: $productNameWidth;
+  font-size: $productNameFontSize;
+  align-self: flex-start;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: $menuBorderSize solid map-get($pallete, lopi-grey);
+  padding-bottom: map-get($spacer, 8);
+  margin-bottom: map-get($spacer, 8);
+
+  > button {
+    @include shop-mixins.flex-center();
+    font-size: $buttonFontSize;
+    background-color: transparent;
+
+    &:hover {
+      cursor: pointer;
+      background: none;
+    }
+  }
+}

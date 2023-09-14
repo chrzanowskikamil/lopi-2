@@ -1,0 +1,80 @@
+@use '../../../../../../styles/shop-variables';
+@use '../../../../../../styles/mixins/shop-mixins';
+
+$palette: shop-variables.$theme-colors;
+$spacer: shop-variables.$spacers;
+$summaryWidth: 482px;
+$summaryHeight: 776px;
+$summaryBorderRadius: 4px;
+$summaryPadding: 40px 60px;
+$summaryMarginLeft: 40px;
+$summaryMarginBottom: 50px;
+$summaryH2FontSize: 26px;
+$summaryH2FontWeight: 400;
+$summaryParagraphFontWeight: 700;
+$summarySpanMarginLeft: 150px;
+$summaryTotalMarginTop: 50px;
+$summaryTotalMargin: 42px 0;
+$summaryTotalButtonWidth: 362px;
+$summaryTotalButtonHeight: 53px;
+$summaryTotalButtonBorderRadius: 6px;
+$summaryTotalButtonFontWeight: 600;
+$borderWidth: 1px;
+
+.summary {
+  width: $summaryWidth;
+  height: $summaryHeight;
+  border: $borderWidth solid map-get($palette, lopi-green);
+  border-radius: $summaryBorderRadius;
+  padding: $summaryPadding;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-left: $summaryMarginLeft;
+  margin-bottom: $summaryMarginBottom;
+
+  > h2 {
+    font-weight: $summaryH2FontWeight;
+    font-size: $summaryH2FontSize;
+    margin-bottom: map-get($spacer, 40);
+  }
+
+  > p {
+    color: map-get($palette, lopi-dark-gray);
+    display: flex;
+    text-transform: uppercase;
+    justify-content: space-around;
+
+    > span {
+      text-transform: lowercase;
+      margin-left: $summarySpanMarginLeft;
+    }
+  }
+
+  .total {
+    margin-top: $summaryTotalMarginTop;
+    padding: 0;
+    border-top: $borderWidth solid map-get($palette, lopi-grey);
+    display: flex;
+    flex-direction: column;
+
+    > p {
+      margin: $summaryTotalMargin;
+      text-transform: uppercase;
+      font-weight: $summaryParagraphFontWeight;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    > button {
+      width: $summaryTotalButtonWidth;
+      height: $summaryTotalButtonHeight;
+      background-color: map-get($palette, lopi-brown);
+      border: 1px solid map-get($palette, lopi-orange);
+      border-radius: $summaryBorderRadius;
+      color: map-get($palette, lopi-orange);
+      font-weight: $summaryTotalButtonFontWeight;
+      cursor: pointer;
+    }
+  }
+}

@@ -4,6 +4,7 @@
 dist
 tmp
 /out-tsc
+/styles/
 
 # dependencies
 node_modules
@@ -43,8 +44,4 @@ Thumbs.db
 next-env.d.ts
 
 # Environment variables
-.env
 .env.local
-/styles/
-
-

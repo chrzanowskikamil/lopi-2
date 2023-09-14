@@ -1,0 +1,38 @@
+@use '../../styles/shop-variables';
+@use '../../styles/mixins/shop-mixins';
+
+$palette: shop-variables.$theme-colors;
+$supperFontSize: 10px;
+$supperSize: 18px;
+$supperPosition: -10px;
+$cartHeaderHeight: 80px;
+$supperBorderRadius: 50%;
+
+.cartBlock {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: none;
+  line-height: 0;
+
+  .supper {
+    @include shop-mixins.flex-center();
+    position: absolute;
+    color: map-get($palette, lopi-black);
+    font-size: $supperFontSize;
+    background: map-get($palette, lopi-orange);
+    width: $supperSize;
+    height: $supperSize;
+    border-radius: $supperBorderRadius;
+    font-weight: 600;
+    top: $supperPosition;
+    right: $supperPosition;
+  }
+}
+
+.cartHeader {
+  display: flex;
+  flex-direction: row-reverse;
+  height: $cartHeaderHeight;
+  background-color: map-get($palette, lopi-dark-green);
+}
