@@ -1,4 +1,5 @@
 'use client';
+
 import style from './tileProduct.module.scss';
 import styles from '../../Products.module.scss';
 import Image from 'next/image';
@@ -13,7 +14,7 @@ import { Col } from 'react-bootstrap';
 
 import ProductRating from './components/ProductRating';
 import Status from './components/Status';
-import router from 'next/router';
+import { useRouter } from 'next/navigation';
 
 interface ProductTileColProps {
   product: {
@@ -30,6 +31,8 @@ interface ImageUrl {
 }
 
 const ProductTileCol: FC<ProductTileColProps> = ({ product }) => {
+  const router = useRouter();
+
   return (
     <Col className={styles.product} xl={4} key={product.sku}>
       <ul className={style.tile}>
