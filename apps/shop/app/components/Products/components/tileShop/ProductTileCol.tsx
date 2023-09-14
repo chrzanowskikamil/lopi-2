@@ -1,5 +1,3 @@
-'use client';
-
 import style from './tileProduct.module.scss';
 import styles from '../../Products.module.scss';
 import Image from 'next/image';

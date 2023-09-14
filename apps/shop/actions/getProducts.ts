@@ -21,7 +21,6 @@ export async function getProducts(
       `,
       { next: { revalidate: REVALIDATE_TIME } }
     );
-    console.log(res);
 
     if (!res.ok) throw new Error(`Server responsed with ${res.statusText}`);
 
