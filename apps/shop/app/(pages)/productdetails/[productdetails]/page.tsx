@@ -1,11 +1,13 @@
-// import { getProduct } from '../../../../actions/getProduct';
+import { getProduct } from '../../../../actions/getProduct';
 
-const ProductDetailsPage = async ({ params }: { params: { uid: string } }) => {
-  // const product = await getProduct(params.uid);
-  console.log(params.uid);
-  // const param = params;
+const ProductDetailsPage = async ({
+  params,
+}: {
+  params: { productdetails: string };
+}) => {
+  const product = await getProduct(params.productdetails);
 
-  return <>{typeof params.uid}</>;
+  return <>{JSON.stringify(product)}</>;
 };
 
 export default ProductDetailsPage;

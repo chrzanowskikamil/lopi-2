@@ -43,7 +43,7 @@ const ProductTileCol: FC<ProductTileColProps> = ({
             height={300}
             alt="picture"
             className={style.tileImage}
-            onClick={() => router.push(`/productdetails/${uid}`)}
+            onClick={() => router.push(`productdetails/${uid}`)}
           />
         </div>
         <div className={style.tileInfo}>
