@@ -1,0 +1,27 @@
+@use '../../../../../../../styles/shop-variables';
+
+$palette: shop-variables.$theme-colors;
+$spacer: shop-variables.$spacers;
+$descriptionFontSize: 12px;
+$descriptionMargin: 5px 0;
+
+.listContainer {
+  > div {
+    background-color: transparent;
+    border: none;
+    margin: map-get($spacer, 31) 0;
+    padding: 0;
+
+    div > input {
+      background-color: transparent;
+      border-color: map-get($palette, lopi-dark-green);
+    }
+
+    > p {
+      color: map-get($palette, lopi-green);
+      font-size: $descriptionFontSize;
+      margin: $descriptionMargin;
+      padding: 0;
+    }
+  }
+}

@@ -1,0 +1,75 @@
+@use '../../../../../styles/shop-variables';
+
+$palette: shop-variables.$theme-colors;
+$spacer: shop-variables.$spacers;
+$checkoutFormMargin: 30px;
+$titleFontWeight: 400;
+$titleMarginBottom: 30px;
+$titleFontSize: 26px;
+$borderBottomSize: 1px;
+$borderRadiusTextarea: 4px;
+$formCheckMargin: 30px 0;
+$inputCheckTransform: scale(0.6);
+$inputCheckMarginBottom: 30px;
+$inputCheckBorderRadius: 2px;
+$linkFontWeight: 700;
+
+.checkoutFormContainer {
+  margin-right: $checkoutFormMargin;
+
+  h2 {
+    font-weight: $titleFontSize;
+    margin-bottom: $checkoutFormMargin;
+    font-size: $titleFontSize;
+    color: map-get($palette, lopi-dark-green);
+  }
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+
+  div > input,
+  select {
+    border-radius: 0;
+    padding: map-get($spacer, 21);
+    margin: map-get($spacer, 7);
+    background-color: transparent;
+    border: none;
+    border-bottom: $borderBottomSize solid map-get($palette, lopi-grey-light);
+  }
+
+  div > textarea {
+    border-radius: $borderRadiusTextarea;
+    margin: map-get($spacer, 8);
+    background-color: transparent;
+    color: map-get($palette, lopi-green);
+    border: $borderBottomSize solid map-get($palette, lopi-grey-light);
+  }
+}
+
+.formCheck {
+  margin: $formCheckMargin;
+
+  > div {
+    display: flex;
+
+    > input[type='checkbox'] {
+      transform: $inputCheckTransform;
+      margin-right: map-get($spacer, 8);
+      margin-bottom: $inputCheckMarginBottom;
+      border-radius: $inputCheckBorderRadius;
+      border: $borderBottomSize solid map-get($palette, lopi-dark-green);
+    }
+
+    > label {
+      margin: map-get($spacer, 7) 0;
+      color: map-get($palette, lopi-green);
+
+      > a {
+        color: map-get($palette, lopi-black);
+        font-weight: $linkFontWeight;
+      }
+    }
+  }
+}
