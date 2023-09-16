@@ -7,18 +7,24 @@ import { useCart } from '../../../../../contexts/CartContext';
 
 interface AddToCartProps {
   productUid: string;
+  children?: string;
+  customClassName?: string;
 }
 
-const AddToCart: FC<AddToCartProps> = ({ productUid }) => {
+const AddToCart: FC<AddToCartProps> = ({
+  productUid,
+  children = 'addtocart',
+  customClassName,
+}) => {
   const { addProduct } = useCart();
 
   return (
     <>
       <button
         onClick={() => addProduct(productUid, 1)}
-        className={style.buttonToCart}
+        className={customClassName ? customClassName : style.buttonToCart}
       >
-        add to cart
+        {children}
       </button>
     </>
   );

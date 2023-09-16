@@ -6,9 +6,11 @@ import { QuantityButton } from './components/QuantityButton';
 
 interface QuantityControllerProps {
   productId: string;
+  customClassName?: string;
 }
 
 export const QuantityController: FC<QuantityControllerProps> = ({
+  customClassName,
   productId,
 }) => {
   const { increaseQuantity, decreaseQuantity, getQuantityForProduct } =
@@ -17,7 +19,7 @@ export const QuantityController: FC<QuantityControllerProps> = ({
   const quantity = getQuantityForProduct(productId);
 
   return (
-    <div className={style.menu}>
+    <div className={customClassName ? customClassName : style.menu}>
       <QuantityButton title="-" onClick={() => decreaseQuantity(productId)} />
       <p>{quantity}</p>
       <QuantityButton title="+" onClick={() => increaseQuantity(productId)} />

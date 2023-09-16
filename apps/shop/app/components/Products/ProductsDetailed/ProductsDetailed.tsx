@@ -6,14 +6,25 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { Breadcrumbs } from '../../Categories/components/Breadcrumbs/Breadcrumbs';
 import Image from 'next/image';
 import Price from '../components/tileShop/components/Price';
-import ProductRating from '../components/tileShop/components/ProductRating';
+import ProductRating from './components/ProductRating';
+import { QuantityController } from '../../Cart/components/CartItems/components/CartProduct/components/QuantityController/QuantityController';
+import AddToCart from '../components/tileShop/components/AddtoCart';
+import { IconWrapper } from '../../Icons/IconWrapper';
 
 export const ProductsDetailed = ({ product }: any) => {
   return (
     <Container>
       <Row>
         <Col>
-          <Breadcrumbs category={'kategoria / brakuje danych z BE?'} />
+          <div className={style.breadcrumbs}>
+            <Breadcrumbs
+              category={
+                product.categories[0] !== undefined
+                  ? product.categories[0].name
+                  : 'No data'
+              }
+            />
+          </div>
         </Col>
       </Row>
       <Row>
@@ -31,16 +42,74 @@ export const ProductsDetailed = ({ product }: any) => {
           />
         </Col>
         <Col xl={6}>
-          <div className={style.productName}>{product.name}</div>
-          <Price
-            price={product.regularPrice}
-            currentPrice={product.discountPrice}
-          />
-          <div className={style.tileInfo}>
-            <ProductRating starsCount={4} />
-            <span>(4)</span>
-          </div>
-          {product.description}
+          <Container>
+            <div className={style.productName}>{product.name}</div>
+            <div className={style.productPrice}>
+              <Price
+                price={product.regularPrice}
+                currentPrice={product.discountPrice}
+              />
+            </div>
+            <div className={style.productRating}>
+              <ProductRating starsCount={4} />
+              <div className={style.productOpinions}>
+                <span>5 opini</span>
+              </div>
+            </div>
+            <div className={style.productDescription}>
+              {product.description}
+            </div>
+            <div className={style.cartInteraction}>
+              <QuantityController
+                productId={product.uid}
+                customClassName={style.productDetailsQuantityController}
+              />
+              <AddToCart
+                productUid={product.uid}
+                customClassName={style.productDetailsAddToCartButton}
+              >
+                Dodaj do koszyka
+              </AddToCart>
+            </div>
+            <div className={style.detailsIconsArea}>
+              <div className={style.detailsIconsHeart}>
+                <IconWrapper
+                  icon={<i className="bi bi-heart"></i>}
+                  className={style.detailsIcon}
+                />
+              </div>
+              <div className={style.detailsIconsSocials}>
+                <IconWrapper
+                  icon={
+                    <i className={`${style.detailsIcon} bi bi-envelope`}></i>
+                  }
+                />
+                <IconWrapper
+                  icon={
+                    <i className={`${style.detailsIcon} bi bi-facebook`}></i>
+                  }
+                />
+                <IconWrapper
+                  icon={
+                    <i className={`${style.detailsIcon} bi bi-instagram`}></i>
+                  }
+                />
+                <IconWrapper
+                  icon={
+                    <i className={`${style.detailsIcon} bi bi-twitter`}></i>
+                  }
+                />
+              </div>
+            </div>
+            <div className={style.categories}>
+              <div className={style.categoryIntro}>Kategorie:</div>
+              <div className={style.categoryName}>
+                {product.categories[0] !== undefined
+                  ? product.categories[0].name
+                  : 'No data'}
+              </div>
+            </div>
+          </Container>
         </Col>
       </Row>
       {JSON.stringify(product)}

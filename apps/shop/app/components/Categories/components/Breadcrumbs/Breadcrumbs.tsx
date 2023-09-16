@@ -9,6 +9,8 @@ interface BreadcrumbsProps {
 }
 
 export const Breadcrumbs: FC<BreadcrumbsProps> = ({ category }) => {
+  console.log(category);
+
   return (
     <Breadcrumb className={styles.breadcrumb}>
       <div className={styles.icon}>

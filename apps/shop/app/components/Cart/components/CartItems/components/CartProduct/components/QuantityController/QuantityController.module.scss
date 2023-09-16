@@ -10,12 +10,12 @@ $paragraphFontWeight: 500;
 
 .menu {
   display: flex;
-  align-items: center;
   justify-content: space-evenly;
-  width: $menuWidth;
-  height: $menuHeight;
+  align-items: center;
   border: $borderButtonWidth solid map-get($pallete, lopi-orange);
   border-radius: $menuBorderRadius;
+  width: $menuWidth;
+  height: $menuHeight;
 
   > p {
     margin: 0;
