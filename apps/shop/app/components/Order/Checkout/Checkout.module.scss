@@ -1,0 +1,18 @@
+@use '../../../styles/shop-variables';
+@use '../../../styles/mixins/shop-mixins';
+
+$palette: shop-variables.$theme-colors;
+$checkoutContainerSpacer: 60px 40px;
+$titleFontWeight: 700;
+$titleMarginBottom: 40px;
+
+.checkoutContainer {
+  padding: $checkoutContainerSpacer;
+
+  .title {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: $titleFontWeight;
+    margin-bottom: $titleMarginBottom;
+  }
+}

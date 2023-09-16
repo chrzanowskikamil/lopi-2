@@ -1,0 +1,36 @@
+@use '../../../../styles/shop-variables';
+
+$palette: shop-variables.$theme-colors;
+$spacer: shop-variables.$spacers;
+$borderBottomSize: 1px;
+$spanPadding: 6px 0;
+$spanFontWeight: 400;
+$lastSpanFontWeight: 700;
+
+.costListGroup {
+  margin-top: auto;
+  margin-bottom: map-get($spacer, 7);
+
+  .costListGroupItem {
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
+    border: none;
+    border-bottom: $borderBottomSize solid map-get($palette, lopi-grey-light);
+    padding-left: 0;
+
+    > span {
+      padding: $spanPadding;
+      font-weight: $spanFontWeight;
+    }
+
+    &:last-child {
+      border: none;
+
+      > span {
+        padding: 0;
+        font-weight: $lastSpanFontWeight;
+      }
+    }
+  }
+}
