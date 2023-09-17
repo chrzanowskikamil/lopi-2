@@ -3,6 +3,19 @@
 $palette: shop-variables.$theme-colors;
 $spacers: shop-variables.$spacers;
 
+$productWidth: 330px;
+$productHeight: 400px;
+$productFontSize: 15px;
+
+.product {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: $productWidth;
+  height: $productHeight;
+  font-size: $productFontSize;
+}
+
 .tileContainer {
   display: flex;
   flex-wrap: wrap;
@@ -63,37 +76,6 @@ $spacers: shop-variables.$spacers;
     .buttonToCart {
       display: block;
     }
-  }
-}
-
-.tileInfo {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: map-get($spacers, 4);
-  margin-left: map-get($spacers, 1);
-
-  .star {
-    margin-left: map-get($spacers, 1);
-  }
-
-  .starOrange {
-    margin-left: map-get($spacers, 1);
-    color: map-get($palette, lopi-orange);
-  }
-
-  .starGrey {
-    color: map-get($palette, lopi-grey);
-  }
-
-  span {
-    display: flex;
-    margin-left: map-get($spacers, 1);
-    color: map-get($palette, lopi-grey);
-    font-weight: shop-variables.$font-weight-normal;
-    font-size: shop-variables.$font-size-sm;
-    line-height: 16px;
-    text-align: center;
   }
 }
 

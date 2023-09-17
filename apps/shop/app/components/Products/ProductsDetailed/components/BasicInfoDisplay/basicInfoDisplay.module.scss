@@ -1,0 +1,41 @@
+@use '../../../../../styles/shop-variables';
+
+$palette: shop-variables.$theme-colors;
+$spacers: shop-variables.$spacers;
+
+.productName {
+  color: map-get($palette, lopi-dark-green);
+  font-size: shop-variables.$font-size-xl;
+}
+
+.productPrice {
+  margin-top: map-get($spacers, 4);
+}
+
+.productDescription {
+  margin-top: map-get($spacers, 3);
+}
+
+.productRating {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: map-get($spacers, 5);
+  margin-left: map-get($spacers, 1);
+
+  .productOpinions {
+    margin-top: map-get($spacers, 4);
+    margin-bottom: map-get($spacers, 1);
+    margin-left: map-get($spacers, 3);
+  }
+
+  span {
+    display: flex;
+    margin-right: map-get($spacers, 2);
+    color: map-get($palette, lopi-dark-grey);
+    font-weight: shop-variables.$font-weight-normal;
+    font-size: shop-variables.$font-size-sm;
+    line-height: shop-variables.$line-height-small;
+    text-align: center;
+  }
+}

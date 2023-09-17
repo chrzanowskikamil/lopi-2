@@ -1,7 +1,3 @@
-interface ImageUrl {
-  imageUrl: string;
-}
-
 export interface Product {
   name: string;
   description: string;
@@ -19,8 +15,19 @@ export interface Product {
   createdAt: string;
   updatedAt: string;
   archivedAt: string;
-  categories: string[];
-  imageUrls: ImageUrl[];
+  categories: [
+    {
+      name: string;
+      description: string;
+      subcategories: [];
+      uid: string;
+    }
+  ];
+  imageUrls: [
+    {
+      imageUrl: string;
+    }
+  ];
 }
 export interface ProductsResponse {
   products: Product[];

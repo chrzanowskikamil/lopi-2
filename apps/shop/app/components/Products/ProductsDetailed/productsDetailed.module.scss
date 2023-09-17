@@ -3,125 +3,26 @@
 $palette: shop-variables.$theme-colors;
 $spacers: shop-variables.$spacers;
 
-$pallete: shop-variables.$theme-colors;
-$borderButtonWidth: 1px;
-$menuBorderRadius: 5px;
-$menuWidth: 118px;
-$menuHeight: 50px;
-$paragraphFontWeight: 500;
+$imageSize: 600px;
 
 .breadcrumbs {
   margin-top: map-get($spacers, 5);
 }
 
 .detailsImage {
-  width: 600px;
-  height: 600px;
-}
-
-.productName {
-  color: map-get($palette, lopi-dark-green);
-  font-size: 26px;
-}
-
-.productPrice {
-  margin-top: map-get($spacers, 4);
-}
-
-.productRating {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: map-get($spacers, 5);
-  margin-left: map-get($spacers, 1);
-
-  .star {
-    margin-left: map-get($spacers, 1);
-  }
-
-  .starOrange {
-    margin-left: map-get($spacers, 1);
-    color: map-get($palette, lopi-orange);
-  }
-
-  .starGrey {
-    color: map-get($palette, lopi-grey);
-  }
-
-  .productOpinions {
-    margin-bottom: map-get($spacers, 2);
-    margin-left: map-get($spacers, 3);
-  }
-
-  span {
-    display: flex;
-    margin-right: map-get($spacers, 2);
-    color: #707070;
-    font-weight: shop-variables.$font-weight-normal;
-    font-size: shop-variables.$font-size-sm;
-    line-height: 16px;
-    text-align: center;
-  }
-}
-
-.productDescription {
-  margin-top: map-get($spacers, 3);
-}
-
-.cartInteraction {
-  display: flex;
-  margin-top: map-get($spacers, 41);
-  height: $menuHeight;
-}
-
-.productDetailsQuantityController {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  border: $borderButtonWidth solid map-get($pallete, lopi-orange);
-  border-radius: $menuBorderRadius;
-  width: $menuWidth;
-  height: $menuHeight;
-
-  > p {
-    margin: 0;
-    padding: 0;
-    font-weight: $paragraphFontWeight;
-  }
-}
-
-.productDetailsAddToCartButton {
-  margin-left: map-get($spacers, 3);
-  background-color: map-get($pallete, lopi-brown);
-  width: 360px;
-  color: map-get($pallete, lopi-orange);
-}
-
-.detailsIconsArea {
-  display: flex;
-  margin-top: map-get($spacers, 6);
-  font-size: 18px;
-  .detailsIconsHeart {
-    margin-right: map-get($spacers, 4);
-  }
-  .detailsIconsSocials {
-    display: flex;
-    border-left: $borderButtonWidth solid map-get($pallete, lopi-grey);
-    padding-left: map-get($spacers, 4);
-  }
-  .detailsIcon {
-    padding: 0 map-get($spacers, 2);
-    color: map-get($palette, lopi-orange);
-  }
+  width: $imageSize;
+  height: $imageSize;
 }
 
 .categories {
   display: flex;
   margin-top: map-get($spacers, 5);
-}
-.categoryIntro {
-  color: map-get($palette, lopi-dark-green);
-}
-.categoryName {
-  margin-left: map-get($spacers, 3);
+
+  .categoryIntro {
+    color: map-get($palette, lopi-dark-green);
+  }
+
+  .categoryName {
+    margin-left: map-get($spacers, 3);
+  }
 }

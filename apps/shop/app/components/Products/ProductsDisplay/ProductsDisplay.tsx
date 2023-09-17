@@ -1,10 +1,10 @@
-import styles from './Products.module.scss';
+import style from './Products.module.scss';
 import { Container, Row } from 'react-bootstrap';
 
 import { FC } from 'react';
 
-import ProductTileCol from './components/tileShop/ProductTileCol';
-import { Product } from '../../../../shop/types/ProductsResponse';
+import ProductTileCol from '../components/tileShop/ProductTileCol';
+import { Product } from '../../../../types/ProductsResponse';
 
 interface ProductsDisplayProps {
   onProductsDisplay: {
@@ -59,7 +59,7 @@ export const ProductsDisplay: FC<ProductsDisplayProps> = ({
   return (
     <>
       <Container>
-        <Row className={styles.products}>{...RenderedProducts}</Row>
+        <Row className={style.products}>{...RenderedProducts}</Row>
       </Container>
     </>
   );

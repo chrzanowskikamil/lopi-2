@@ -1,5 +1,5 @@
 import style from './tileProduct.module.scss';
-import styles from '../../Products.module.scss';
+
 import Image from 'next/image';
 
 import { FC } from 'react';
@@ -10,7 +10,7 @@ import AddToCart from './components/AddtoCart';
 
 import { Col } from 'react-bootstrap';
 
-import ProductRating from './components/ProductRating';
+import ProductRating from '../ProductRating/ProductRating';
 import Status from './components/Status';
 import { useRouter } from 'next/navigation';
 
@@ -32,7 +32,7 @@ const ProductTileCol: FC<ProductTileColProps> = ({ product }) => {
   const router = useRouter();
 
   return (
-    <Col className={styles.product} xl={4} key={product.sku}>
+    <Col className={style.product} xl={4} key={product.sku}>
       <ul className={style.tile}>
         <div className={style.imageArea}>
           <Status status={'Current'} />
@@ -50,10 +50,7 @@ const ProductTileCol: FC<ProductTileColProps> = ({ product }) => {
             onClick={() => router.push(`productdetails/${product.uid}`)}
           />
         </div>
-        <div className={style.tileInfo}>
-          <ProductRating starsCount={4} />
-          <span>(4)</span>
-        </div>
+        <ProductRating starsCount={4} review={4} />
         <div className={style.productName}>{product.name}</div>
         <Price
           price={product.regularPrice}

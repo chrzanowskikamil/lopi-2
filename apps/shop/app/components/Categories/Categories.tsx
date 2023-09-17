@@ -2,10 +2,10 @@
 
 import styles from './Categories.module.scss';
 import { FC, useCallback } from 'react';
-import { Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs';
+import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { SortDropdown } from './components/SortDropdown/SortDropdown';
-import { ProductsDisplay } from '../Products/ProductsDisplay';
+import { ProductsDisplay } from '../Products/ProductsDisplay/ProductsDisplay';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 
 import { getProducts } from '../../../actions/getProducts';

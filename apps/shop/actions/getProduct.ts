@@ -1,7 +1,7 @@
 import { REVALIDATE_TIME } from '@lopi-2/common';
-import { ProductsResponse } from '../types/ProductsResponse';
+import { Product } from '../types/ProductsResponse';
 
-export async function getProduct(uid: string): Promise<ProductsResponse> {
+export async function getProduct(uid: string): Promise<Product> {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}products/${uid}
@@ -11,7 +11,7 @@ export async function getProduct(uid: string): Promise<ProductsResponse> {
 
     if (!res.ok) throw new Error(`Server responsed with ${res.statusText}`);
 
-    const product: ProductsResponse = await res.json();
+    const product: Product = await res.json();
 
     return product;
   } catch (error) {

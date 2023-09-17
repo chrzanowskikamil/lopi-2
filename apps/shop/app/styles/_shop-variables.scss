@@ -1,10 +1,12 @@
-// @use 'bootstrap/scss/variables';
+// @use 'bootstrap/scss/variables';boo
 //Implement configs according to the ones from bootstrap scss file
 
 //fonts:
 $font-size-base: 1rem;
 $font-size-sm: $font-size-base * 0.875;
 $font-size-lg: $font-size-base * 1.25 !default;
+$font-size-xl: $font-size-base * 1.6 !default;
+$line-height-small: 1;
 $line-height-base: 1.5;
 $font-size-sm: $font-size-base * 0.875;
 $font-weight-bold: 700;
@@ -17,6 +19,7 @@ $font-weight-normal: 400;
 $btn-padding-y: 0.625rem;
 $btn-padding-x: 1rem;
 $btn-border-width: 0.125rem;
+$btn-border-width-sm: 1px;
 
 $theme-colors: (
   //BOOTSTRAP COLORS
@@ -31,6 +34,8 @@ $theme-colors: (
   'lopi-brown': #592d1d,
   'lopi-grey': #c9cdc7,
   'lopi-grey-light': #d9d9d9,
+  'lopi-grey-dark': #707070,
+
   'lopi-blue-lighth': #05f2f2,
   //$backgroud-light: #f2f2f2;
 );
@@ -62,6 +67,7 @@ $spacers: (
   53: $spacer * 4.5,
   54: $spacer * 5,
   60: $spacer * 3.75,
+  70: $spacer * 8,
 );
 
 $grid-breakpoints: (

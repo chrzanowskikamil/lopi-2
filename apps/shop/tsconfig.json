@@ -24,7 +24,8 @@
     "**/*.js",
     "**/*.jsx",
     "../../apps/shop/.next/types/**/*.ts",
-    "../../dist/apps/shop/.next/types/**/*.ts"
+    "../../dist/apps/shop/.next/types/**/*.ts",
+    "app/components/Products/ProductsDetailed/components/SimilarProducts"
   ],
   "exclude": [
     "node_modules",
