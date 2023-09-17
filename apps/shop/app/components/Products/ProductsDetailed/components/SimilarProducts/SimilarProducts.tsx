@@ -14,9 +14,9 @@ export const SimilarProducts: FC = async () => {
       <span>Podobne produkty</span>
       <div className={style.container}>
         <Row className={style.products}>
-          <ProductTileCol product={productOne} />
-          <ProductTileCol product={productTwo} />
-          <ProductTileCol product={productThree} />
+          <ProductTileCol product={productOne} col={3} />
+          <ProductTileCol product={productTwo} col={3} />
+          <ProductTileCol product={productThree} col={3} />
         </Row>
       </div>
     </div>

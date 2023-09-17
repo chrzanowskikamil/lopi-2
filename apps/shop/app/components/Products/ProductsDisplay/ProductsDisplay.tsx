@@ -53,7 +53,7 @@ export const ProductsDisplay: FC<ProductsDisplayProps> = ({
   };
 
   const RenderedProducts = sortBySearchParams().map((product) => {
-    return <ProductTileCol product={product} key={product.uid} />;
+    return <ProductTileCol col={4} product={product} key={product.uid} />;
   });
 
   return (

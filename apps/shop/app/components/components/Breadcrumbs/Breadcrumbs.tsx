@@ -22,7 +22,9 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
         <Breadcrumb.Item href="/" linkAs={Link}>
           Home
         </Breadcrumb.Item>
-        <Breadcrumb.Item active>{category}</Breadcrumb.Item>
+        <Breadcrumb.Item href={`category/${category}`} linkAs={Link}>
+          {category}
+        </Breadcrumb.Item>
       </Breadcrumb>
     </div>
   );

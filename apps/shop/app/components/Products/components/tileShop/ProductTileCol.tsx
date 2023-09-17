@@ -23,16 +23,17 @@ interface ProductTileColProps {
     regularPrice: number;
     discountPrice: number;
   };
+  col: number;
 }
 interface ImageUrl {
   imageUrl: string;
 }
 
-const ProductTileCol: FC<ProductTileColProps> = ({ product }) => {
+const ProductTileCol: FC<ProductTileColProps> = ({ product, col }) => {
   const router = useRouter();
 
   return (
-    <Col className={style.product} xl={4} key={product.sku}>
+    <Col className={style.product} xl={col} key={product.sku}>
       <ul className={style.tile}>
         <div className={style.imageArea}>
           <Status status={'Current'} />
