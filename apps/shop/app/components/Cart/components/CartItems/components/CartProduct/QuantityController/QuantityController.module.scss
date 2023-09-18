@@ -1,9 +1,8 @@
-@use '../../../../../../../../styles/shop-variables';
+@use '../../../../../../../../styles/shop-variables' as var;
 @use '../../../../../../../../styles/mixins/shop-mixins';
 
-$pallete: shop-variables.$theme-colors;
-$borderButtonWidth: 1px;
-$menuBorderRadius: 5px;
+$pallete: var.$theme-colors;
+
 $menuWidth: 118px;
 $menuHeight: 36px;
 $paragraphFontWeight: 500;
@@ -12,14 +11,14 @@ $paragraphFontWeight: 500;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  border: $borderButtonWidth solid map-get($pallete, lopi-orange);
-  border-radius: $menuBorderRadius;
+  border: var.$btn-border-width-sm solid map-get($pallete, lopi-orange);
+  border-radius: var.$border-radius;
   width: $menuWidth;
   height: $menuHeight;
 
   > p {
     margin: 0;
     padding: 0;
-    font-weight: $paragraphFontWeight;
+    font-weight: var.$font-weight-medium;
   }
 }

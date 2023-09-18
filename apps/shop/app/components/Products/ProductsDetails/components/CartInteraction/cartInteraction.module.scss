@@ -1,39 +1,23 @@
-@use '../../../../../styles/shop-variables';
+@use '../../../../../styles/shop-variables' as var;
 
-$palette: shop-variables.$theme-colors;
-$spacers: shop-variables.$spacers;
+$palette: var.$theme-colors;
+$spacers: var.$spacers;
 
-$menuHeight: 50px;
-$borderButtonWidth: 1px;
-$menuBorderRadius: 5px;
-$menuWidth: 118px;
-$paragraphFontWeight: 500;
 $buttonAddToCartWidth: 360px;
+$menuHeight: 50px;
 
 .cartInteraction {
   display: flex;
   margin-top: map-get($spacers, 41);
   height: $menuHeight;
   .productDetailsQuantityController {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    border: $borderButtonWidth solid map-get($palette, lopi-orange);
-    border-radius: $menuBorderRadius;
-    width: $menuWidth;
     height: $menuHeight;
-
-    > p {
-      margin: 0;
-      padding: 0;
-      font-weight: $paragraphFontWeight;
-    }
   }
 
   .productDetailsAddToCartButton {
     margin-left: map-get($spacers, 3);
-    border: $borderButtonWidth solid map-get($palette, lopi-orange);
-    border-radius: $menuBorderRadius;
+    border: var.$btn-border-width-sm solid map-get($palette, lopi-orange);
+    border-radius: var.$border-radius;
     background-color: map-get($palette, lopi-brown);
     width: $buttonAddToCartWidth;
     color: map-get($palette, lopi-orange);

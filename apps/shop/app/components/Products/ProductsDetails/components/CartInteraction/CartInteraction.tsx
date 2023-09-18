@@ -12,7 +12,7 @@ export const CartInteraction: FC<CartInteractionProps> = ({ uid }) => {
     <div className={style.cartInteraction}>
       <QuantityController
         productId={uid}
-        customClassName={style.productDetailsQuantityController}
+        className={style.productDetailsQuantityController}
       />
       <AddToCart
         productUid={uid}

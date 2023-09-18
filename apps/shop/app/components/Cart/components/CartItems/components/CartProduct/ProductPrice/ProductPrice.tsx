@@ -1,7 +1,7 @@
 import style from './ProductPrice.module.scss';
 import { FC } from 'react';
 import { displayPrice } from '@lopi-2/common';
-import { useCart } from '../../../../../../../../contexts/CartContext';
+import { useCart } from '../../../../../../../contexts/CartContext';
 
 interface ProductPriceProps {
   productUid: string;
