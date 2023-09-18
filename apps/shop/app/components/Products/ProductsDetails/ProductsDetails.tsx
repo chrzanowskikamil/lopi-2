@@ -34,7 +34,7 @@ interface ProductsResponseProps {
   };
 }
 
-export const ProductsDetailed: FC<ProductsResponseProps> = ({ product }) => {
+export const ProductsDetails: FC<ProductsResponseProps> = ({ product }) => {
   return (
     <Container>
       <Row>

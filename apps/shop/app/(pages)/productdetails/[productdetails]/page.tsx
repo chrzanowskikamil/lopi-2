@@ -1,4 +1,4 @@
-import { ProductsDetailed } from '../../../components/Products/ProductsDetailed/ProductsDetailed';
+import { ProductsDetails } from '../../../components/Products/ProductsDetails/ProductsDetails';
 import { getProduct } from '../../../../actions/getProduct';
 
 const ProductDetailsPage = async ({
@@ -8,7 +8,7 @@ const ProductDetailsPage = async ({
 }) => {
   const product = await getProduct(params.productdetails);
 
-  return <>{<ProductsDetailed product={product} />}</>;
+  return <>{<ProductsDetails product={product} />}</>;
 };
 
 export default ProductDetailsPage;
