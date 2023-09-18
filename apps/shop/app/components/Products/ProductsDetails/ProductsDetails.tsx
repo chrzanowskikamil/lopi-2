@@ -28,7 +28,7 @@ export const ProductsDetails: FC<ProductsDetailsProps> = ({ product }) => {
                 ? product.categories[0].name
                 : 'No data'
             }
-            customClassName={style.breadcrumbs}
+            className={style.breadcrumbs}
           />
         </Col>
       </Row>
