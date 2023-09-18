@@ -19,9 +19,9 @@ export async function getProducts(
     if (
       el.name === 'SyntaxError' &&
       el.message.includes('Unexpected end of JSON input')
-    )
+    ) {
       return true;
-    else return false;
+    } else return false;
   };
 
   try {
