@@ -1,7 +1,7 @@
 'use client';
 import style from './QuantityController.module.scss';
 import { FC } from 'react';
-import { useCart } from '../../../../../../../../contexts/CartContext';
+import { useCart } from '../../../../../../../contexts/CartContext';
 import { QuantityButton } from './components/QuantityButton';
 
 interface QuantityControllerProps {

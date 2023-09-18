@@ -6,15 +6,12 @@ import Link from 'next/link';
 
 interface BreadcrumbsProps {
   category: string;
-  customClassName?: string;
+  className?: string;
 }
 
-export const Breadcrumbs: FC<BreadcrumbsProps> = ({
-  category,
-  customClassName,
-}) => {
+export const Breadcrumbs: FC<BreadcrumbsProps> = ({ category, className }) => {
   return (
-    <div className={customClassName}>
+    <div className={className}>
       <Breadcrumb className={styles.breadcrumb}>
         <div className={styles.icon}>
           <IoHomeOutline />

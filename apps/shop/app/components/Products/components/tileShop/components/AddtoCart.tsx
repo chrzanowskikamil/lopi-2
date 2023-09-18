@@ -7,14 +7,14 @@ import { useCart } from '../../../../../contexts/CartContext';
 
 interface AddToCartProps {
   productUid: string;
-  children?: string;
-  customClassName?: string;
+  buttonText?: string;
+  className?: string;
 }
 
 const AddToCart: FC<AddToCartProps> = ({
   productUid,
-  children = 'addtocart',
-  customClassName,
+  buttonText = 'addtocart',
+  className,
 }) => {
   const { addProduct } = useCart();
 
@@ -22,9 +22,9 @@ const AddToCart: FC<AddToCartProps> = ({
     <>
       <button
         onClick={() => addProduct(productUid, 1)}
-        className={customClassName ? customClassName : style.buttonToCart}
+        className={`${style.buttonToCart} ${className ? className : ''}`}
       >
-        {children}
+        {buttonText}
       </button>
     </>
   );

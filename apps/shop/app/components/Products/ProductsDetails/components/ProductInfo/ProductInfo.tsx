@@ -1,16 +1,16 @@
 import { FC } from 'react';
 import Price from '../../../components/tileShop/components/Price';
 import ProductRating from '../../../components/ProductRating/ProductRating';
-import style from './basicInfoDisplay.module.scss';
+import style from './productInfo.module.scss';
 
-interface BasicInfoDisplayProps {
+interface ProductInfoProps {
   name: string;
   regularPrice: number;
   discountPrice: number;
   description: string;
 }
 
-export const BasicInfoDisplay: FC<BasicInfoDisplayProps> = ({
+export const ProductInfo: FC<ProductInfoProps> = ({
   name,
   regularPrice,
   discountPrice,

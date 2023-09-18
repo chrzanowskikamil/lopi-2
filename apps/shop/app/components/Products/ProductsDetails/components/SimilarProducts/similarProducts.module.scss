@@ -23,7 +23,5 @@ $spacer: shop-variables.$spacers;
   line-height: shop-variables.$line-height-base;
 }
 .container {
-  // display: flex;
-  // flex-direction: row;
   margin-top: map-get($spacers, 6);
 }

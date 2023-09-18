@@ -1,14 +1,12 @@
 import { FC, useState } from 'react';
 import { Row } from 'react-bootstrap';
-import style from './detailedInfoDisplay.module.scss';
+import style from './detailedInfo.module.scss';
 
-interface DetailedInfoDisplayProps {
+interface DetailedInfoProps {
   description: string;
 }
 
-export const DetailedInfoDisplay: FC<DetailedInfoDisplayProps> = ({
-  description,
-}) => {
+export const DetailedInfo: FC<DetailedInfoProps> = ({ description }) => {
   const [detailsCurrentChoice, setDetailsCurrentChoice] =
     useState<string>('Description');
 
@@ -49,7 +47,7 @@ export const DetailedInfoDisplay: FC<DetailedInfoDisplayProps> = ({
         </div>
       </Row>
       <Row>
-        <div className={style.infoDisplay}>
+        <div className={style.info}>
           {detailsCurrentChoice === 'Description' ? description : ''}
           {detailsCurrentChoice === 'Addational info'
             ? 'Dodatkowe informacje'

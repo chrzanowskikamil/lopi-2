@@ -1,7 +1,7 @@
-@use '../../../.././styles/shop-variables';
+@use '../../../.././styles/shop-variables' as var;
 
-$palette: shop-variables.$theme-colors;
-$spacers: shop-variables.$spacers;
+$palette: var.$theme-colors;
+$spacers: var.$spacers;
 
 .tileInfo {
   display: flex;
@@ -27,9 +27,9 @@ $spacers: shop-variables.$spacers;
     display: flex;
     margin-left: map-get($spacers, 1);
     color: map-get($palette, lopi-grey);
-    font-weight: shop-variables.$font-weight-normal;
-    font-size: shop-variables.$font-size-sm;
-    line-height: 16px;
+    font-weight: var.$font-weight-normal;
+    font-size: var.$font-size-sm;
+    line-height: var.$line-height-small;
     text-align: center;
   }
 }

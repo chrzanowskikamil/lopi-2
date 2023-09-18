@@ -10,6 +10,7 @@ $menuHeight: 50px;
   display: flex;
   margin-top: map-get($spacers, 41);
   height: $menuHeight;
+
   .productDetailsQuantityController {
     height: $menuHeight;
   }

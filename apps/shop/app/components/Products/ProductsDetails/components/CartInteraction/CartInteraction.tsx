@@ -1,4 +1,4 @@
-import { QuantityController } from '../../../../Cart/components/CartItems/components/CartProduct/components/QuantityController/QuantityController';
+import { QuantityController } from '../../../../Cart/components/CartItems/components/CartProduct/QuantityController/QuantityController';
 import AddToCart from '../../../components/tileShop/components/AddtoCart';
 import style from './cartInteraction.module.scss';
 import { FC } from 'react';
@@ -16,10 +16,9 @@ export const CartInteraction: FC<CartInteractionProps> = ({ uid }) => {
       />
       <AddToCart
         productUid={uid}
-        customClassName={style.productDetailsAddToCartButton}
-      >
-        Dodaj do koszyka
-      </AddToCart>
+        className={style.productDetailsAddToCartButton}
+        buttonText={' Dodaj do koszyka'}
+      />
     </div>
   );
 };

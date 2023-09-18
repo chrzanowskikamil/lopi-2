@@ -1,11 +1,11 @@
-@use '../../../../../styles/shop-variables';
+@use '../../../../../styles/shop-variables' as var;
 
-$palette: shop-variables.$theme-colors;
-$spacers: shop-variables.$spacers;
+$palette: var.$theme-colors;
+$spacers: var.$spacers;
 
 .productName {
   color: map-get($palette, lopi-dark-green);
-  font-size: shop-variables.$font-size-xl;
+  font-size: var.$font-size-xl;
 }
 
 .productPrice {
@@ -33,9 +33,9 @@ $spacers: shop-variables.$spacers;
     display: flex;
     margin-right: map-get($spacers, 2);
     color: map-get($palette, lopi-dark-grey);
-    font-weight: shop-variables.$font-weight-normal;
-    font-size: shop-variables.$font-size-sm;
-    line-height: shop-variables.$line-height-small;
+    font-weight: var.$font-weight-normal;
+    font-size: var.$font-size-sm;
+    line-height: var.$line-height-small;
     text-align: center;
   }
 }

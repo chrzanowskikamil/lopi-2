@@ -1,5 +1,5 @@
-@use '../../../../../../../../styles/shop-variables';
-@use '../../../../../../../../styles/mixins/shop-mixins';
+@use '../../../../../../../styles/shop-variables';
+@use '../../../../../../../styles/mixins/shop-mixins';
 
 $pallete: shop-variables.$theme-colors;
 $priceStrikeThroughFontSize: 12px;
@@ -13,7 +13,7 @@ $priceStrikeThroughSpacer: 4px;
 .priceStrikeThrough {
   align-self: flex-end;
   padding: $priceStrikeThroughSpacer 0;
+  color: map-get($pallete, lopi-grey);
   font-size: $priceStrikeThroughFontSize;
   text-decoration: line-through;
-  color: map-get($pallete, lopi-grey);
 }

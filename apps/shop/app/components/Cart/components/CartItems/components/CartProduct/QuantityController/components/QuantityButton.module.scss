@@ -1,17 +1,17 @@
-@use '../../../../../../../../../styles/shop-variables';
-@use '../../../../../../../../../styles/mixins/shop-mixins';
+@use '../../../../../../../../styles/shop-variables';
+@use '../../../../../../../../styles/mixins/shop-mixins';
 
 $pallete: shop-variables.$theme-colors;
 $buttonFontWeight: 500;
 
 .quantityButton {
   @include shop-mixins.flex-center();
+  margin: 0;
+  border: none;
+  background-color: transparent;
+  padding: 0;
   color: map-get($pallete, lopi-black);
   font-weight: $buttonFontWeight;
-  background-color: transparent;
-  margin: 0;
-  padding: 0;
-  border: none;
 
   &:hover {
     cursor: pointer;

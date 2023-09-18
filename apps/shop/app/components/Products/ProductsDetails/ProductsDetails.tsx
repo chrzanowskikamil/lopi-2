@@ -3,38 +3,21 @@
 import style from './productsDetailed.module.scss';
 
 import { Col, Container, Row } from 'react-bootstrap';
-import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
+import { Breadcrumbs } from '../../Breadcrumbs/Breadcrumbs';
 import Image from 'next/image';
 import { SimilarProducts } from './components/SimilarProducts/SimilarProducts';
-import { DetailedInfoDisplay } from './components/DetailedInfoDisplay/DetailedInfoDisplay';
+import { DetailedInfo } from './components/DetailedInfo/DetailedInfo';
 import { SocialsArea } from './components/SocialsArea/SocialsArea';
 import { CartInteraction } from './components/CartInteraction/CartInteraction';
-import { BasicInfoDisplay } from './components/BasicInfoDisplay/BasicInfoDisplay';
+import { ProductInfo } from './components/ProductInfo/ProductInfo';
 import { FC } from 'react';
+import { Product } from '../../../../types/ProductsResponse';
 
-interface ProductsResponseProps {
-  product: {
-    name: string;
-    regularPrice: number;
-    discountPrice: number;
-    lowestPrice: number;
-    description: string;
-    quantity: number;
-    categories: [
-      {
-        name: string;
-      }
-    ];
-    imageUrls: [
-      {
-        imageUrl: string;
-      }
-    ];
-    uid: string;
-  };
+interface ProductsDetailsProps {
+  product: Product;
 }
 
-export const ProductsDetails: FC<ProductsResponseProps> = ({ product }) => {
+export const ProductsDetails: FC<ProductsDetailsProps> = ({ product }) => {
   return (
     <Container>
       <Row>
@@ -65,7 +48,7 @@ export const ProductsDetails: FC<ProductsResponseProps> = ({ product }) => {
         </Col>
         <Col xl={6}>
           <Container>
-            <BasicInfoDisplay
+            <ProductInfo
               name={product.name}
               regularPrice={product.regularPrice}
               discountPrice={product.discountPrice}
@@ -85,7 +68,7 @@ export const ProductsDetails: FC<ProductsResponseProps> = ({ product }) => {
         </Col>
       </Row>
 
-      <DetailedInfoDisplay description={product.description} />
+      <DetailedInfo description={product.description} />
       <SimilarProducts />
     </Container>
   );
