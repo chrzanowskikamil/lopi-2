@@ -58,7 +58,10 @@ export const ProductsDetails: FC<ProductsDetailsProps> = ({
               discountPrice={product.discountPrice}
               description={product.description}
             />
-            <CartInteraction uid={product.uid} />
+            <CartInteraction
+              uid={product.uid}
+              productQuantity={product.quantity}
+            />
             <SocialsArea />
             <div className={style.categories}>
               <div className={style.categoryIntro}>Kategorie:</div>
