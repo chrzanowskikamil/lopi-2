@@ -81,7 +81,7 @@ $productFontSize: 15px;
 .buttonToCart:disabled {
   border-color: map-get($palette, lopi-grey);
   background-color: map-get($palette, lopi-grey-light);
-  color: map-get($palette, lopi-grey); ;
+  color: map-get($palette, lopi-grey);
 }
 .productName {
   margin-top: map-get($spacers, 12);
