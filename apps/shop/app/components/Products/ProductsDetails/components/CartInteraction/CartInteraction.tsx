@@ -13,7 +13,7 @@ export const CartInteraction: FC<CartInteractionProps> = ({
   uid,
   productQuantity,
 }) => {
-  const [productCount, setProductCount] = useState<number>(0);
+  const [productCount, setProductCount] = useState<number>(1);
 
   const { getQuantityForProduct } = useCart();
 
@@ -30,7 +30,14 @@ export const CartInteraction: FC<CartInteractionProps> = ({
   };
 
   const handleClick = () => {
-    setProductCount(0);
+    alert(
+      `Dodałeś do koszyka${
+        productCount === 1 ? ' jedną sztukę' : `${productCount} sztuki`
+      }.`
+    );
+    if (getQuantityForProduct(uid) + productCount === productQuantity) {
+      setProductCount(0);
+    } else setProductCount(1);
   };
 
   const isButtonActive = () => {

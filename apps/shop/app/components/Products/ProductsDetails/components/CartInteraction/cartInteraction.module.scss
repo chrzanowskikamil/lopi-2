@@ -11,7 +11,9 @@ $menuWidth: 118px;
   display: flex;
   margin-top: map-get($spacers, 41);
   height: $menuHeight;
-
+  .height {
+    height: 200px !important;
+  }
   .productDetailsQuantityController {
     height: $menuHeight;
   }
@@ -23,6 +25,11 @@ $menuWidth: 118px;
     background-color: map-get($palette, lopi-brown);
     width: $buttonAddToCartWidth;
     color: map-get($palette, lopi-orange);
+  }
+  .productDetailsAddToCartButton:disabled {
+    border-color: map-get($palette, lopi-grey);
+    background-color: map-get($palette, lopi-grey-light);
+    color: map-get($palette, lopi-grey);
   }
 }
 
