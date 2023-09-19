@@ -32,7 +32,7 @@ export const CartInteraction: FC<CartInteractionProps> = ({
   const handleClick = () => {
     alert(
       `Dodałeś do koszyka${
-        productCount === 1 ? ' jedną sztukę' : `${productCount} sztuki`
+        productCount === 1 ? ' jedną sztukę' : ` ${productCount} sztuki`
       }.`
     );
     if (getQuantityForProduct(uid) + productCount === productQuantity) {
