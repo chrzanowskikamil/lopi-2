@@ -46,7 +46,11 @@ export const SortDropdown: FC<SortDropdownProps> = ({ sortedProducts }) => {
     <DropdownButton
       bsPrefix={styles.dropdown}
       id="sort-button"
-      title="Sortowanie"
+      title={
+        searchParams.get('sort') === null
+          ? 'Sortowanie'
+          : searchParams.get('sort')
+      }
     >
       {items}
     </DropdownButton>
