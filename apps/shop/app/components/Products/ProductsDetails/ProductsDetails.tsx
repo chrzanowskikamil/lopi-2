@@ -15,9 +15,13 @@ import { Product } from '../../../../types/ProductsResponse';
 
 interface ProductsDetailsProps {
   product: Product;
+  productArray: Product[];
 }
 
-export const ProductsDetails: FC<ProductsDetailsProps> = ({ product }) => {
+export const ProductsDetails: FC<ProductsDetailsProps> = ({
+  product,
+  productArray,
+}) => {
   return (
     <Container>
       <Row>
@@ -69,7 +73,7 @@ export const ProductsDetails: FC<ProductsDetailsProps> = ({ product }) => {
       </Row>
 
       <DetailedInfo description={product.description} />
-      <SimilarProducts />
+      <SimilarProducts productArray={productArray} />
     </Container>
   );
 };
