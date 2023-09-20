@@ -3,25 +3,41 @@
 $palette: shop-variables.$theme-colors;
 $spacer: shop-variables.$spacers;
 $descriptionFontSize: 12px;
-$descriptionMargin: 5px 0;
+$borderWidth: 2px;
+$inputPadding: 6px;
+$labelPadding: 5px;
+$errorColor: #dc3545;
 
-.listContainer {
+.listContainer > div {
+  background-color: transparent;
+
   > div {
-    background-color: transparent;
     border: none;
-    margin: map-get($spacer, 31) 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: transparent;
     padding: 0;
-
-    div > input {
-      background-color: transparent;
-      border-color: map-get($palette, lopi-dark-green);
-    }
 
     > p {
       color: map-get($palette, lopi-green);
       font-size: $descriptionFontSize;
-      margin: $descriptionMargin;
       padding: 0;
     }
+
+    div > input {
+      background-color: transparent;
+      border: $borderWidth solid map-get($palette, lopi-dark-green);
+      padding: $inputPadding;
+    }
+
+    label {
+      margin-top: $labelPadding;
+      color: map-get($palette, lopi-dark-green);
+    }
+  }
+
+  .formError {
+    color: $errorColor;
   }
 }

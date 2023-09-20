@@ -3,7 +3,7 @@
 
 $palette: shop-variables.$theme-colors;
 $summaryContainerMinHeight: 864px;
-$summaryContainerSpacer: 40px 60px;
+$summaryContainerSpacer: 60px 80px;
 $borderBottomSize: 1px;
 $summaryButtonWidth: 462px;
 $summaryButtonHeight: 53px;
@@ -18,7 +18,7 @@ $summaryButtonFontWeight: 600;
   padding: $summaryContainerSpacer;
   border: $borderBottomSize solid map-get($palette, $key: lopi-green);
 
-  > a {
+  > button {
     @include shop-mixins.flex-center();
     width: $summaryButtonWidth;
     height: $summaryButtonHeight;

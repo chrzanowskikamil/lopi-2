@@ -1,7 +1,7 @@
 import { OrderConfirmation } from '../../components/Order/OrderConfirmation/OrderConfirmation';
 
-const OrderConfirmationPage = async () => {
+const OrderSummaryPage = async () => {
   return <OrderConfirmation />;
 };
 
-export default OrderConfirmationPage;
+export default OrderSummaryPage;

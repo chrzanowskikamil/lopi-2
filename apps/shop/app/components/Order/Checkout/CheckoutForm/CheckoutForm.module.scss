@@ -1,4 +1,4 @@
-@use '../../../../../styles/shop-variables';
+@use '../../../../styles/shop-variables';
 
 $palette: shop-variables.$theme-colors;
 $spacer: shop-variables.$spacers;
@@ -7,7 +7,6 @@ $titleFontWeight: 400;
 $titleMarginBottom: 30px;
 $titleFontSize: 26px;
 $borderBottomSize: 1px;
-$borderRadiusTextarea: 4px;
 $formCheckMargin: 30px 0;
 $inputCheckTransform: scale(0.6);
 $inputCheckMarginBottom: 30px;
@@ -25,29 +24,6 @@ $linkFontWeight: 700;
   }
 }
 
-.formContainer {
-  display: flex;
-  flex-direction: column;
-
-  div > input,
-  select {
-    border-radius: 0;
-    padding: map-get($spacer, 21);
-    margin: map-get($spacer, 7);
-    background-color: transparent;
-    border: none;
-    border-bottom: $borderBottomSize solid map-get($palette, lopi-grey-light);
-  }
-
-  div > textarea {
-    border-radius: $borderRadiusTextarea;
-    margin: map-get($spacer, 8);
-    background-color: transparent;
-    color: map-get($palette, lopi-green);
-    border: $borderBottomSize solid map-get($palette, lopi-grey-light);
-  }
-}
-
 .formCheck {
   margin: $formCheckMargin;
 
@@ -60,6 +36,7 @@ $linkFontWeight: 700;
       margin-bottom: $inputCheckMarginBottom;
       border-radius: $inputCheckBorderRadius;
       border: $borderBottomSize solid map-get($palette, lopi-dark-green);
+      padding: map-get($spacer, 21);
     }
 
     > label {

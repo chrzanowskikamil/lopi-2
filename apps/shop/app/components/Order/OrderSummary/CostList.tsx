@@ -1,6 +1,6 @@
 import style from './CostList.module.scss';
 import { ListGroup } from 'react-bootstrap';
-import { useCart } from '../../../../contexts/CartContext';
+import { useCart } from '../../../contexts/CartContext';
 import { FC, useMemo } from 'react';
 
 export const CostList: FC = () => {
@@ -11,6 +11,7 @@ export const CostList: FC = () => {
     label: string;
     value?: number;
   }
+
   const costList: CostItem[] = useMemo(
     () => [
       { label: 'SUMA', value: totalCost },

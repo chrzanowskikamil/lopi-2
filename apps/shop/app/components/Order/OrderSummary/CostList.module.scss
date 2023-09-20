@@ -1,4 +1,4 @@
-@use '../../../../styles/shop-variables';
+@use '../../../styles/shop-variables';
 
 $palette: shop-variables.$theme-colors;
 $spacer: shop-variables.$spacers;
@@ -9,7 +9,7 @@ $lastSpanFontWeight: 700;
 
 .costListGroup {
   margin-top: auto;
-  margin-bottom: map-get($spacer, 7);
+  margin-bottom: map-get($spacer, 4);
 
   .costListGroupItem {
     display: flex;
