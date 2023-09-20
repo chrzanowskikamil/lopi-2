@@ -15,6 +15,15 @@ export async function getProducts(
   sortType = SortType.PRICE,
   sortOrder = SortOrder.ASCENDING
 ): Promise<ProductsResponse> {
+  const isSyntaxError = (el: any) => {
+    if (
+      el.name === 'SyntaxError' &&
+      el.message.includes('Unexpected end of JSON input')
+    ) {
+      return true;
+    } else return false;
+  };
+
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}products?page=${page}&size=${size}&sortType=${sortType}&sortOrder=${sortOrder}
@@ -28,7 +37,11 @@ export async function getProducts(
 
     return products;
   } catch (error) {
-    console.error(`Fetching error: ${error}`);
-    throw error;
+    if (isSyntaxError(error)) {
+      throw alert('No more products in this category.');
+    } else {
+      console.error(`Fetching error: ${error}`);
+      throw error;
+    }
   }
 }

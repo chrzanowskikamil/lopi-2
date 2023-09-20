@@ -45,7 +45,6 @@ type ActionProps =
   | { type: 'on_availability_filter_change'; availabilityValue: boolean };
 
 const categoriesReducer = (state: StateProps, action: ActionProps) => {
-  console.log(action);
   switch (action.type) {
     case 'on_product_sort': {
       return {

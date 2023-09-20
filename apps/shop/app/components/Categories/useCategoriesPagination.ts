@@ -18,9 +18,10 @@ export const loadMoreProducts = async (onLoadMoreProducts: {
     onLoadMoreProducts.sortType,
     onLoadMoreProducts.sortOrder
   );
-
-  onLoadMoreProducts.onShowMore(
-    [...onLoadMoreProducts.allProducts, ...newProducts.products],
-    nextPage
-  );
+  if (newProducts !== undefined) {
+    onLoadMoreProducts.onShowMore(
+      [...onLoadMoreProducts.allProducts, ...newProducts.products],
+      nextPage
+    );
+  }
 };
