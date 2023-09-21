@@ -5,16 +5,18 @@ import { FC } from 'react';
 import { Product } from '../../../../../../types/ProductsResponse';
 
 interface SimilarProductsProps {
-  productArray: Product[];
+  similarProducts: Product[];
 }
 
-export const SimilarProducts: FC<SimilarProductsProps> = ({ productArray }) => {
+export const SimilarProducts: FC<SimilarProductsProps> = ({
+  similarProducts,
+}) => {
   return (
     <div className={style.similarProducts}>
       <span>Podobne produkty</span>
       <div className={style.container}>
         <Row className={style.products}>
-          {productArray.map((el, index) => (
+          {similarProducts.map((el, index) => (
             <ProductTileCol product={el} col={3} key={index} />
           ))}
         </Row>

@@ -26,23 +26,30 @@ export const CartInteraction: FC<CartInteractionProps> = ({
   const handleSubtraction = () => {
     if (getQuantityForProduct(uid) + productCount < productQuantity) {
       setProductCount(productCount + 1);
-    } else return alert('Dodałeś już wszystkie dostępne produkty');
+    } else return alert('Dodałeś już wszystkie dostępne produkty.');
+  };
+
+  const addEnding = (productCount: number) => {
+    if (productCount === 1) {
+      return 'sztukę';
+    } else if (
+      [2, 3, 4].includes(productCount % 10) &&
+      ![12, 13, 14].includes(productCount % 100)
+    ) {
+      return 'sztuki';
+    } else return 'sztuk';
   };
 
   const handleClick = () => {
-    alert(
-      `Dodałeś do koszyka${
-        productCount === 1 ? ' jedną sztukę' : ` ${productCount} sztuki`
-      }.`
-    );
+    alert(`Dodałeś do koszyka ${productCount} ${addEnding(productCount)}.`);
+
     if (getQuantityForProduct(uid) + productCount === productQuantity) {
       setProductCount(0);
     } else setProductCount(1);
   };
 
   const isButtonActive = () => {
-    if (productCount === 0) return true;
-    else return false;
+    return !productCount;
   };
 
   return (

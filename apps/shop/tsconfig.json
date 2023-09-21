@@ -16,7 +16,10 @@
         "name": "next"
       }
     ],
-    "types": ["jest", "node"]
+    "types": [
+      "jest",
+      "node"
+    ]
   },
   "include": [
     "**/*.ts",
@@ -24,8 +27,7 @@
     "**/*.js",
     "**/*.jsx",
     "../../apps/shop/.next/types/**/*.ts",
-    "../../dist/apps/shop/.next/types/**/*.ts",
-    "app/components/Products/ProductsDetailed/components/SimilarProducts"
+    "../../dist/apps/shop/.next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",

@@ -45,8 +45,6 @@ export const DetailedInfo: FC<DetailedInfoProps> = ({ description }) => {
             Opinie
           </div>
         </div>
-      </Row>
-      <Row>
         <div className={style.info}>
           {detailsCurrentChoice === 'Description' ? description : ''}
           {detailsCurrentChoice === 'Addational info'
