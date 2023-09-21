@@ -6,8 +6,12 @@ import { Col, Container, Form, Row } from 'react-bootstrap';
 import { CheckoutForm } from './CheckoutForm/CheckoutForm';
 import { CheckoutSummary } from './components/CheckoutSummary/CheckoutSummary';
 import { useCheckoutForm } from './CheckoutForm/useCheckoutForm';
+import { PaymentMethodResponse } from '../../../../types/PaymentMethodResponse';
+interface CheckoutProps {
+  paymentMethod: PaymentMethodResponse;
+}
 
-export const Checkout: FC = () => {
+export const Checkout: FC<CheckoutProps> = ({ paymentMethod }) => {
   const formik = useCheckoutForm();
 
   return (
@@ -23,7 +27,7 @@ export const Checkout: FC = () => {
             <CheckoutForm formik={formik} />
           </Col>
           <Col>
-            <CheckoutSummary formik={formik} />
+            <CheckoutSummary formik={formik} paymentMethod={paymentMethod} />
           </Col>
         </Row>
       </Form>

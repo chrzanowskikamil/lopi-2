@@ -146,12 +146,9 @@ export const CheckoutFormSchema = Yup.object().shape({
           ),
       }),
   }),
-  paymentMethodName: Yup.string()
-    .required(validationConstans.REQUIRED_FIELD_MESSAGE)
-    .oneOf(
-      ['Przelew bankowy', 'Płatność przy odbiorze', 'BLIK', 'PayPal'],
-      validationConstans.REQUIRED_FIELD_MESSAGE
-    ),
+  paymentMethodName: Yup.string().required(
+    validationConstans.REQUIRED_FIELD_MESSAGE
+  ),
   termsAccepted: Yup.boolean().oneOf(
     [true],
     validationConstans.REQUIRED_FIELD_MESSAGE

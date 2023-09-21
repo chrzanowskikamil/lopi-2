@@ -2,42 +2,49 @@
 
 $palette: shop-variables.$theme-colors;
 $spacer: shop-variables.$spacers;
+$listContainerWidth: 100%;
 $descriptionFontSize: 12px;
 $borderWidth: 2px;
 $inputPadding: 6px;
 $labelPadding: 5px;
 $errorColor: #dc3545;
 
-.listContainer > div {
-  background-color: transparent;
+.listContainer {
+  width: $listContainerWidth;
 
   > div {
-    border: none;
+    background-color: transparent;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    background-color: transparent;
-    padding: 0;
 
-    > p {
-      color: map-get($palette, lopi-green);
-      font-size: $descriptionFontSize;
-      padding: 0;
-    }
-
-    div > input {
+    > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       background-color: transparent;
-      border: $borderWidth solid map-get($palette, lopi-dark-green);
-      padding: $inputPadding;
+      padding: 0;
+      border: none;
+
+      > p {
+        color: map-get($palette, lopi-green);
+        font-size: $descriptionFontSize;
+        padding: 0;
+      }
+
+      div > input {
+        background-color: transparent;
+        border: $borderWidth solid map-get($palette, lopi-dark-green);
+        padding: $inputPadding;
+      }
+
+      label {
+        margin-top: $labelPadding;
+        color: map-get($palette, lopi-dark-green);
+      }
     }
 
-    label {
-      margin-top: $labelPadding;
-      color: map-get($palette, lopi-dark-green);
+    .formError {
+      color: $errorColor;
     }
-  }
-
-  .formError {
-    color: $errorColor;
   }
 }
