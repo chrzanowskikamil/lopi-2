@@ -2,9 +2,9 @@ import { getProduct } from './getProduct';
 
 export const getUpsellProducts = async () => {
   const similarProducts = await Promise.all([
-    getProduct('b5fba84e-1729-4d99-8412-8421d44a2a85'),
-    getProduct('143a761d-2015-48fb-96bf-b02e04752bd4'),
-    getProduct('b5fba84e-1729-4d99-8412-8421d44a2a85'),
+    getProduct('deacbd60-9d26-4d4c-bc08-af872a0245d6'),
+    getProduct('f7d21472-688c-4049-95ce-a466a14cfcf0'),
+    getProduct('dc8ba2a5-ae58-4494-a429-e59c0eee1617'),
   ]);
 
   return similarProducts;

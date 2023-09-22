@@ -5,9 +5,9 @@ import { getUpsellProducts } from '../../../../actions/getUpsellProducts';
 const ProductDetailsPage = async ({
   params,
 }: {
-  params: { productDetails: string };
+  params: { productdetails: string };
 }) => {
-  const product = await getProduct(params.productDetails);
+  const product = await getProduct(params.productdetails);
   const upSellProducts = await getUpsellProducts();
 
   return (
