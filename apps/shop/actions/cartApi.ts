@@ -18,7 +18,7 @@ export async function getCartProducts() {
 export async function addToCart(uid: string, quantity = 1) {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}cart/add?productUuid=${uid}&quantity=${quantity}`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}cart?productUuid=${uid}&quantity=${quantity}`,
       {
         method: 'POST',
         credentials: 'include',

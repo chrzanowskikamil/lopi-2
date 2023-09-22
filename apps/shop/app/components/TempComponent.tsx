@@ -6,7 +6,7 @@ export const TempComponent = () => {
   const addToCart = () => {
     console.log('add to cart');
     fetch(
-      'https://lopi2-backend-5517f8f04d28.herokuapp.com/api/cart/add?productUuid=b5fba84e-1729-4d99-8412-8421d44a2a85&quantity=1',
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}cart?productUuid=b5fba84e-1729-4d99-8412-8421d44a2a85&quantity=1`,
       {
         method: 'POST',
         credentials: 'include',
@@ -16,13 +16,10 @@ export const TempComponent = () => {
 
   const getCart = async () => {
     console.log('get cart');
-    const res = await fetch(
-      'https://lopi2-backend-5517f8f04d28.herokuapp.com/api/cart',
-      {
-        method: 'GET',
-        credentials: 'include',
-      }
-    );
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}cart`, {
+      method: 'GET',
+      credentials: 'include',
+    });
 
     const data = await res.json();
     console.log('body ', data);

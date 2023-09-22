@@ -1,5 +1,6 @@
 import { register } from '@lopi-2/common';
 import { signUpFormSchema } from './SignUpForm.schema';
+
 export interface RegisterFormValues {
   name: string;
   lastName: string;

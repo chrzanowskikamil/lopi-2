@@ -19,7 +19,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: 'https://lopi2.azurewebsites.net/api',
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
 });
 
 apiClient.interceptors.request.use((config) => {
@@ -27,6 +27,7 @@ apiClient.interceptors.request.use((config) => {
   if (token) {
     config.headers['Authorization'] = 'Bearer ' + token;
   }
+
   return config;
 });
 
