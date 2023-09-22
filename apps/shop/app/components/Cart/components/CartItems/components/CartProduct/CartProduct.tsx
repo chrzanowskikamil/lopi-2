@@ -3,8 +3,8 @@ import { FC, Fragment } from 'react';
 import Image from 'next/image';
 import { Button } from '@lopi-2/common';
 import { Container } from 'react-bootstrap';
-import { ProductPrice } from './components/ProductPrice/ProductPrice';
-import { QuantityController } from './components/QuantityController/QuantityController';
+import { ProductPrice } from './ProductPrice/ProductPrice';
+import { QuantityController } from './QuantityController/QuantityController';
 import { IconWrapper } from '../../../../../../components/Icons/IconWrapper';
 import { useCart } from '../../../../../../contexts/CartContext';
 

@@ -1,14 +1,14 @@
-@use '../../../../styles/shop-variables';
-@use '../../../../styles/mixins/shop-mixins';
+@use '../../styles/shop-variables';
+@use '../../styles/mixins/shop-mixins';
 
 $pallete: shop-variables.$theme-colors;
 $spacer: shop-variables.$spacers;
 
 .breadcrumb {
   @include shop-mixins.flex-center();
+  margin-bottom: map-get($spacer, 5);
   padding: map-get($spacer, 3);
   text-transform: capitalize;
-  margin-bottom: map-get($spacer, 5);
 
   a {
     color: map-get($pallete, lopi-brown);

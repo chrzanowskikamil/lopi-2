@@ -1,0 +1,26 @@
+@use '../../../../../styles/shop-variables';
+
+$palette: shop-variables.$theme-colors;
+$spacers: shop-variables.$spacers;
+
+.detailsIconsArea {
+  display: flex;
+  margin-top: map-get($spacers, 6);
+  font-size: shop-variables.$font-size-base;
+
+  .detailsIconsHeart {
+    margin-right: map-get($spacers, 4);
+  }
+
+  .detailsIconsSocials {
+    display: flex;
+    border-left: shop-variables.$btn-border-width-sm solid
+      map-get($palette, lopi-grey);
+    padding-left: map-get($spacers, 4);
+  }
+
+  .detailsIcon {
+    padding: 0 map-get($spacers, 2);
+    color: map-get($palette, lopi-orange);
+  }
+}
