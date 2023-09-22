@@ -10,9 +10,7 @@ const ProductDetailsPage = async ({
   const product = await getProduct(params.productdetails);
   const upSellProducts = await getUpsellProducts();
 
-  return (
-    <>{<ProductsDetails product={product} upSellProducts={upSellProducts} />}</>
-  );
+  return <ProductsDetails product={product} upSellProducts={upSellProducts} />;
 };
 
 export default ProductDetailsPage;
