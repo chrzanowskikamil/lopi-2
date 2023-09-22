@@ -1,6 +1,10 @@
-import { useRouter } from 'next/navigation';
 import { CheckoutFormSchema } from './CheckoutForm.schema';
+import { OrderResponse } from '../../../../../types/OrderResponse';
+import { createOrder } from '../../../../../actions/orderApi';
 import { useFormik } from 'formik';
+import { useRouter } from 'next/navigation';
+import { useCart } from '../../../../contexts/CartContext';
+import { useOrder } from '../../../../contexts/OrderContext';
 
 interface AddressSchema {
   street: string;
@@ -29,6 +33,8 @@ export interface CheckoutFormValues {
 }
 
 export const useCheckoutForm = () => {
+  const { cartData } = useCart();
+  const { setOrderData } = useOrder();
   const router = useRouter();
 
   const initialShippingAddress: AddressSchema = {
@@ -64,7 +70,16 @@ export const useCheckoutForm = () => {
       values.billingAddress = { ...values.shippingAddress };
     }
 
-    router.push('/order-summary');
+    try {
+      const orderResponse: OrderResponse = await createOrder(
+        cartData?.uuid as string,
+        values
+      );
+      setOrderData(orderResponse);
+      router.push('/order-summary');
+    } catch (error) {
+      console.error(`Failed to create order: ${error}`);
+    }
   };
 
   const formik = useFormik({

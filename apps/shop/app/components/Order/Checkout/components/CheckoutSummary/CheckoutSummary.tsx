@@ -8,22 +8,22 @@ import { CheckoutFormValues } from '../../CheckoutForm/useCheckoutForm';
 import { PaymentMethodResponse } from '../../../../../../types/PaymentMethodResponse';
 
 interface CheckoutSummaryProps {
-  formik: FormikProps<CheckoutFormValues>;
+  formRef: FormikProps<CheckoutFormValues>;
   paymentMethod: PaymentMethodResponse;
 }
 
 export const CheckoutSummary: FC<CheckoutSummaryProps> = ({
-  formik,
+  formRef,
   paymentMethod,
 }) => {
   return (
     <div className={style.summaryContainer}>
       <OrderSummary />
-      <PaymentMethods formik={formik} paymentMethod={paymentMethod} />
+      <PaymentMethods formRef={formRef} paymentMethod={paymentMethod} />
       <Button
         type="submit"
         title="Złóż zamówienie"
-        disabled={!formik.isValid || !formik.dirty}
+        disabled={!formRef.isValid || !formRef.dirty}
       />
     </div>
   );

@@ -6,12 +6,12 @@ import { CheckoutFormValues } from '../../../../CheckoutForm/useCheckoutForm';
 import { PaymentMethodResponse } from '../../../../../../../../types/PaymentMethodResponse';
 
 interface PaymentMethodsProps {
-  formik: FormikProps<CheckoutFormValues>;
+  formRef: FormikProps<CheckoutFormValues>;
   paymentMethod: PaymentMethodResponse;
 }
 
 export const PaymentMethods: FC<PaymentMethodsProps> = ({
-  formik,
+  formRef,
   paymentMethod,
 }) => {
   const paymentMethodsList = paymentMethod.methodResponseDTOList.map(
@@ -23,16 +23,16 @@ export const PaymentMethods: FC<PaymentMethodsProps> = ({
             name="paymentMethodName"
             value={method.name}
             label={method.name}
-            checked={formik.values.paymentMethodName === method.name}
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
+            checked={formRef.values.paymentMethodName === method.name}
+            onBlur={formRef.handleBlur}
+            onChange={formRef.handleChange}
             isValid={
-              formik.touched.paymentMethodName &&
-              !formik.errors.paymentMethodName
+              formRef.touched.paymentMethodName &&
+              !formRef.errors.paymentMethodName
             }
             isInvalid={
-              formik.touched.paymentMethodName &&
-              !!formik.errors.paymentMethodName
+              formRef.touched.paymentMethodName &&
+              !!formRef.errors.paymentMethodName
             }
           />
           <p>{method.description}</p>
@@ -45,7 +45,9 @@ export const PaymentMethods: FC<PaymentMethodsProps> = ({
     <ListGroup className={style.listContainer}>
       <Form.Group controlId="paymentMethodName">
         {paymentMethodsList}
-        <div className={style.formError}>{formik.errors.paymentMethodName}</div>
+        <div className={style.formError}>
+          {formRef.errors.paymentMethodName}
+        </div>
       </Form.Group>
     </ListGroup>
   );

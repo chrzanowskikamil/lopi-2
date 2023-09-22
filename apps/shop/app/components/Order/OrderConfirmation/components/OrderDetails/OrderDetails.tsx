@@ -1,22 +1,29 @@
 import style from './OrderDetails.module.scss';
 import { FC, useMemo } from 'react';
+import { useOrder } from '../../../../../contexts/OrderContext';
 
 export const OrderDetails: FC = () => {
+  const { orderData } = useOrder();
+
   const OrderInfoList = useMemo(
     () => [
-      { label: 'Numer zamówienia', value: '123456789' },
-      { label: 'Dostawa', value: 'InPost' },
-      { label: 'Email', value: 'john.d@gmail.com' },
-      { label: 'Forma płatności', value: 'Przelew bankowy' },
-      { label: 'Data zamówienia', value: '11.08.2023r' },
-      { label: 'Nr telefonu', value: '+48 8749790988' },
+      { label: 'Numer zamówienia', value: orderData?.orderUid },
+      { label: 'Dostawa', value: orderData?.deliveryMethod },
+      { label: 'Email', value: orderData?.customerEmail },
+      { label: 'Forma płatności', value: orderData?.paymentMethod },
+      {
+        label: 'Data zamówienia',
+        value: orderData?.orderDate
+          ? new Date(orderData?.orderDate).toLocaleString()
+          : '-',
+      },
+      { label: 'Nr telefonu', value: orderData?.customerPhone || '-' },
       {
         label: 'Adres dostawy',
-        value:
-          'Paczkomat ALL06M, Wojska Polskiego 153 95-070 Aleksandrów Łódzki',
+        value: `${orderData?.deliveryAddress.country}, ${orderData?.deliveryAddress.postalCode} ${orderData?.deliveryAddress.city}, ${orderData?.deliveryAddress.street} ${orderData?.deliveryAddress?.houseNumber}/${orderData?.deliveryAddress?.apartmentNumber}`,
       },
     ],
-    []
+    [orderData]
   );
 
   return (

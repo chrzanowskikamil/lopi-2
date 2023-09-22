@@ -3,7 +3,8 @@
 $palette: shop-variables.$theme-colors;
 $containerWidth: 550px;
 $containerHeight: 441px;
-$containerItemWidth: 160px;
+$containerItemWidth: 250px;
+$itemMargin: 10px 0;
 $detailValuePadding: 6px 0;
 
 .orderDetailsContainer {
@@ -22,6 +23,7 @@ $detailValuePadding: 6px 0;
   flex-direction: column;
   width: $containerItemWidth;
   word-wrap: break-word;
+  margin: $itemMargin;
 }
 
 .detailLabel {

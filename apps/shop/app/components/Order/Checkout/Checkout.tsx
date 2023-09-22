@@ -7,6 +7,7 @@ import { CheckoutForm } from './CheckoutForm/CheckoutForm';
 import { CheckoutSummary } from './components/CheckoutSummary/CheckoutSummary';
 import { useCheckoutForm } from './CheckoutForm/useCheckoutForm';
 import { PaymentMethodResponse } from '../../../../types/PaymentMethodResponse';
+
 interface CheckoutProps {
   paymentMethod: PaymentMethodResponse;
 }
@@ -24,10 +25,10 @@ export const Checkout: FC<CheckoutProps> = ({ paymentMethod }) => {
         </Row>
         <Row>
           <Col>
-            <CheckoutForm formik={formik} />
+            <CheckoutForm formRef={formik} />
           </Col>
           <Col>
-            <CheckoutSummary formik={formik} paymentMethod={paymentMethod} />
+            <CheckoutSummary formRef={formik} paymentMethod={paymentMethod} />
           </Col>
         </Row>
       </Form>
