@@ -16,7 +16,7 @@ interface OrderContextProps {
 
 const OrderContext = createContext<OrderContextProps | null>(null);
 
-export const useOrder = () => {
+export const useOrderContext = () => {
   const context = useContext(OrderContext);
 
   if (!context) {

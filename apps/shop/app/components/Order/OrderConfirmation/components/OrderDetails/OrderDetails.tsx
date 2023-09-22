@@ -1,9 +1,9 @@
 import style from './OrderDetails.module.scss';
 import { FC, useMemo } from 'react';
-import { useOrder } from '../../../../../contexts/OrderContext';
+import { useOrderContext } from '../../../../../contexts/OrderContext';
 
 export const OrderDetails: FC = () => {
-  const { orderData } = useOrder();
+  const { orderData } = useOrderContext();
 
   const OrderInfoList = useMemo(
     () => [

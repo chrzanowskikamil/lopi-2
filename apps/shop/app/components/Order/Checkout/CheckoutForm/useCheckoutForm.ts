@@ -4,7 +4,7 @@ import { createOrder } from '../../../../../actions/orderApi';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/navigation';
 import { useCart } from '../../../../contexts/CartContext';
-import { useOrder } from '../../../../contexts/OrderContext';
+import { useOrderContext } from '../../../../contexts/OrderContext';
 
 interface AddressSchema {
   street: string;
@@ -34,7 +34,7 @@ export interface CheckoutFormValues {
 
 export const useCheckoutForm = () => {
   const { cartData } = useCart();
-  const { setOrderData } = useOrder();
+  const { setOrderData } = useOrderContext();
   const router = useRouter();
 
   const initialShippingAddress: AddressSchema = {
