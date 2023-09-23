@@ -66,7 +66,8 @@ $borderWidth: 1px;
       justify-content: space-between;
     }
 
-    > button {
+    > a {
+      @include shop-mixins.flex-center();
       width: $summaryTotalButtonWidth;
       height: $summaryTotalButtonHeight;
       background-color: map-get($palette, lopi-brown);
@@ -74,6 +75,7 @@ $borderWidth: 1px;
       border-radius: $summaryBorderRadius;
       color: map-get($palette, lopi-orange);
       font-weight: $summaryTotalButtonFontWeight;
+      text-decoration: none;
       cursor: pointer;
     }
   }

@@ -1,0 +1,34 @@
+@use '../../../../../styles/shop-variables';
+@use '../../../../../styles/mixins/shop-mixins';
+
+$palette: shop-variables.$theme-colors;
+$summaryContainerMinHeight: 864px;
+$summaryContainerSpacer: 60px 80px;
+$borderBottomSize: 1px;
+$summaryButtonWidth: 462px;
+$summaryButtonHeight: 53px;
+$summaryBorderRadius: 4px;
+$summaryButtonFontWeight: 600;
+
+.summaryContainer {
+  min-height: $summaryContainerMinHeight;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $summaryContainerSpacer;
+  border: $borderBottomSize solid map-get($palette, $key: lopi-green);
+
+  > button {
+    @include shop-mixins.flex-center();
+    width: $summaryButtonWidth;
+    height: $summaryButtonHeight;
+    background-color: map-get($palette, lopi-brown);
+    border: $borderBottomSize solid map-get($palette, lopi-orange);
+    border-radius: $summaryBorderRadius;
+    color: map-get($palette, lopi-orange);
+    font-weight: $summaryButtonFontWeight;
+    text-decoration: none;
+    cursor: pointer;
+    margin: auto 0;
+  }
+}

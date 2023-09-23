@@ -1,0 +1,37 @@
+@use '../../../../../styles/shop-variables';
+
+$palette: shop-variables.$theme-colors;
+$containerWidth: 550px;
+$containerHeight: 441px;
+$containerItemWidth: 250px;
+$itemMargin: 10px 0;
+$detailValuePadding: 6px 0;
+
+.orderDetailsContainer {
+  max-width: $containerWidth;
+  max-height: $containerHeight;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.detailItem {
+  display: flex;
+  flex-direction: column;
+  width: $containerItemWidth;
+  word-wrap: break-word;
+  margin: $itemMargin;
+}
+
+.detailLabel {
+  color: map-get($palette, lopi-dark-green);
+}
+
+.detailValue {
+  color: map-get($palette, lopi-dark-gray);
+  word-wrap: break-word;
+  padding: $detailValuePadding 0;
+}

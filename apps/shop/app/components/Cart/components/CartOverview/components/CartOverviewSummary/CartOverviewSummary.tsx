@@ -1,4 +1,5 @@
 import style from './CartOverviewSummary.module.scss';
+import Link from 'next/link';
 import { Container } from 'react-bootstrap';
 import { useCart } from '../../../../../../contexts/CartContext';
 
@@ -18,7 +19,7 @@ export const CartOverviewSummary = () => {
         <p>
           Razem <span>{totalCost.toFixed(2)} PLN</span>
         </p>
-        <button>Przejdz do finalizacji zamowienia</button>
+        <Link href={'/checkout'}>Przejdz do finalizacji zamowienia</Link>
       </div>
     </Container>
   );
