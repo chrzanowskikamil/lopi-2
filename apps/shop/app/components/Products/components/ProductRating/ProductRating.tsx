@@ -1,15 +1,16 @@
 'use client';
 
-import style from '../tileProduct.module.scss';
+import style from './productRating.module.scss';
 
 import { FC } from 'react';
-import { IconWrapper } from '../../../../Icons/IconWrapper';
+import { IconWrapper } from '../../../Icons/IconWrapper';
 
 type ProductRatingProps = {
   starsCount: number;
+  review?: number;
 };
 
-const ProductRating: FC<ProductRatingProps> = ({ starsCount }) => {
+const ProductRating: FC<ProductRatingProps> = ({ starsCount, review }) => {
   const FullStar = (
     <IconWrapper
       icon={
@@ -32,7 +33,14 @@ const ProductRating: FC<ProductRatingProps> = ({ starsCount }) => {
     );
   });
 
-  return <>{RatingStar}</>;
+  return (
+    <>
+      <div className={style.tileInfo}>
+        {RatingStar}
+        {review ? <span>({review})</span> : ''}
+      </div>
+    </>
+  );
 };
 
 export default ProductRating;

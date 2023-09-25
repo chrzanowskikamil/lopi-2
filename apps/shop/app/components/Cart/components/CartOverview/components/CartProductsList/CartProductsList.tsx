@@ -2,7 +2,7 @@ import style from './CartProductsList.module.scss';
 import Image from 'next/image';
 import { Button } from '@lopi-2/common';
 import { Container } from 'react-bootstrap';
-import { QuantityController } from '../../../CartItems/components/CartProduct/components/QuantityController/QuantityController';
+import { QuantityController } from '../../../CartItems/components/CartProduct/QuantityController/QuantityController';
 import { useCart } from '../../../../../../contexts/CartContext';
 
 export const CartProductsList = () => {

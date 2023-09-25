@@ -1,0 +1,28 @@
+@use '../../../styles/shop-variables';
+
+$palette: shop-variables.$theme-colors;
+$spacers: shop-variables.$spacers;
+
+$imageSize: 600px;
+
+.breadcrumbs {
+  margin-top: map-get($spacers, 5);
+}
+
+.detailsImage {
+  width: $imageSize;
+  height: $imageSize;
+}
+
+.categories {
+  display: flex;
+  margin-top: map-get($spacers, 5);
+
+  .categoryIntro {
+    color: map-get($palette, lopi-dark-green);
+  }
+
+  .categoryName {
+    margin-left: map-get($spacers, 3);
+  }
+}

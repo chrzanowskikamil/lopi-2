@@ -1,0 +1,50 @@
+@use '../../../../../styles/shop-variables' as var;
+
+$palette: var.$theme-colors;
+$spacers: var.$spacers;
+
+$buttonAddToCartWidth: 360px;
+$menuHeight: 50px;
+$menuWidth: 118px;
+
+.cartInteraction {
+  display: flex;
+  margin-top: map-get($spacers, 41);
+  height: $menuHeight;
+  .height {
+    height: 200px !important;
+  }
+  .productDetailsQuantityController {
+    height: $menuHeight;
+  }
+
+  .productDetailsAddToCartButton {
+    margin-left: map-get($spacers, 3);
+    border: var.$btn-border-width-sm solid map-get($palette, lopi-orange);
+    border-radius: var.$border-radius;
+    background-color: map-get($palette, lopi-brown);
+    width: $buttonAddToCartWidth;
+    color: map-get($palette, lopi-orange);
+  }
+  .productDetailsAddToCartButton:disabled {
+    border-color: map-get($palette, lopi-grey);
+    background-color: map-get($palette, lopi-grey-light);
+    color: map-get($palette, lopi-grey);
+  }
+}
+
+.menu {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border: var.$btn-border-width-sm solid map-get($palette, lopi-orange);
+  border-radius: var.$border-radius;
+  width: $menuWidth;
+  height: $menuHeight;
+
+  > p {
+    margin: 0;
+    padding: 0;
+    font-weight: var.$font-weight-medium;
+  }
+}

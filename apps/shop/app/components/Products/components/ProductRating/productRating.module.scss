@@ -1,0 +1,35 @@
+@use '../../../.././styles/shop-variables' as var;
+
+$palette: var.$theme-colors;
+$spacers: var.$spacers;
+
+.tileInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: map-get($spacers, 4);
+  margin-left: map-get($spacers, 1);
+
+  .star {
+    margin-left: map-get($spacers, 1);
+  }
+
+  .starOrange {
+    margin-left: map-get($spacers, 1);
+    color: map-get($palette, lopi-orange);
+  }
+
+  .starGrey {
+    color: map-get($palette, lopi-grey);
+  }
+
+  span {
+    display: flex;
+    margin-left: map-get($spacers, 1);
+    color: map-get($palette, lopi-grey);
+    font-weight: var.$font-weight-normal;
+    font-size: var.$font-size-sm;
+    line-height: var.$line-height-small;
+    text-align: center;
+  }
+}
