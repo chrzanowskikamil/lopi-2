@@ -1,10 +1,22 @@
+'use client';
+
 import style from './CartOverviewSummary.module.scss';
-import Link from 'next/link';
+import { Button } from '@lopi-2/common';
 import { Container } from 'react-bootstrap';
 import { useCart } from '../../../../../../contexts/CartContext';
+import { useRouter } from 'next/navigation';
 
 export const CartOverviewSummary = () => {
-  const { totalPrice, deliveryPrice, totalCost } = useCart();
+  const { totalPrice, totalCost, cartData } = useCart();
+  const router = useRouter();
+
+  const isCartEmpty = !cartData?.cartItems.length;
+
+  const handleClick = () => {
+    if (isCartEmpty) return;
+
+    router.push('/checkout');
+  };
 
   return (
     <Container className={style.summary}>
@@ -12,14 +24,15 @@ export const CartOverviewSummary = () => {
       <p>
         Suma <span>{totalPrice.toFixed(2)} zł</span>
       </p>
-      <p>
-        dostawa <span>{deliveryPrice} zł</span>
-      </p>
       <div className={style.total}>
         <p>
           Razem <span>{totalCost.toFixed(2)} PLN</span>
         </p>
-        <Link href={'/checkout'}>Przejdz do finalizacji zamowienia</Link>
+        <Button
+          title="Przejdź do finalizacji zamówienia"
+          disabled={isCartEmpty}
+          onClick={handleClick}
+        />
       </div>
     </Container>
   );

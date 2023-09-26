@@ -1,4 +1,5 @@
 import { PaymentMethodResponse } from '../types/PaymentMethodResponse';
+import { DeliveryMethodResponse } from '../types/DeliveryMethodResponse';
 import { CheckoutFormValues } from '../app/components/Order/Checkout/CheckoutForm/useCheckoutForm';
 
 export async function getPaymentMethod() {
@@ -15,6 +16,26 @@ export async function getPaymentMethod() {
     const paymentMethod: PaymentMethodResponse = await res.json();
 
     return paymentMethod;
+  } catch (error) {
+    console.error(`Fetching error: ${error}`);
+    throw error;
+  }
+}
+
+export async function getDeliveryMethod() {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}orders-setting/delivery-method`,
+      {
+        method: 'GET',
+        credentials: 'include',
+      }
+    );
+    if (!res.ok) throw new Error('Failed to fetch delivery method');
+
+    const deliveryMethod: DeliveryMethodResponse = await res.json();
+
+    return deliveryMethod;
   } catch (error) {
     console.error(`Fetching error: ${error}`);
     throw error;

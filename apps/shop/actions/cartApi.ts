@@ -6,6 +6,7 @@ export async function getCartProducts() {
       method: 'GET',
       credentials: 'include',
     });
+
     const productsInCart: CartProductsResponse = await res.json();
 
     return productsInCart;
@@ -24,8 +25,10 @@ export async function addToCart(uid: string, quantity = 1) {
         credentials: 'include',
       }
     );
+
     if (!res.ok) return;
   } catch (error) {
+    alert('Reached maximum quantity of product in cart');
     console.error(`Fetching error: ${error}`);
     throw error;
   }
@@ -60,7 +63,21 @@ export async function updateCartQuantity(uid: string, quantity: number) {
       throw new Error('Something went wrong' + res.statusText);
     }
   } catch (error) {
+    alert('Reached maximum quantity of product in cart');
     console.error(`Fetching error: ${error}`);
     throw error;
+  }
+}
+
+export async function clearCart() {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}cart`, {
+      method: 'DELETE',
+      credentials: 'include',
+    });
+
+    if (!res.ok) throw new Error('Failed to clear cart' + res.statusText);
+  } catch (error) {
+    console.error(`Cannot clear cart: ${error}`);
   }
 }

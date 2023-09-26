@@ -14,9 +14,9 @@ export const CostList: FC = () => {
 
   const costList: CostItem[] = useMemo(
     () => [
-      { label: 'SUMA', value: totalCost },
+      { label: 'SUMA', value: totalPrice },
       { label: 'DOSTAWA', value: deliveryPrice },
-      { label: 'RAZEM', value: totalPrice },
+      { label: 'RAZEM', value: totalCost },
     ],
     [totalPrice, deliveryPrice, totalCost]
   );

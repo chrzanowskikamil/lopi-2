@@ -7,12 +7,15 @@ import {
   useState,
 } from 'react';
 import { CartProductsResponse } from '../../types/CartProductsResponse';
+import { DeliveryMethodResponse } from '../../types/DeliveryMethodResponse';
 import {
   addToCart,
+  clearCart,
   getCartProducts,
   removeFromCart,
   updateCartQuantity,
 } from '../../actions/cartApi';
+import { getDeliveryMethod } from '../../actions/orderApi';
 
 interface CartContextProps {
   cartData: CartProductsResponse | null;
@@ -28,6 +31,8 @@ interface CartContextProps {
     regularPrice: number;
     discountPrice: number | null;
   };
+  handleDeliveryPrice: (selectedMethod: string) => void;
+  handleClearCart: () => void;
 }
 
 const CartContext = createContext<CartContextProps | null>(null);
@@ -44,6 +49,9 @@ export const useCart = () => {
 
 export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [cartData, setCartData] = useState<CartProductsResponse | null>(null);
+  const [deliveryMethod, setDeliveryMethod] =
+    useState<DeliveryMethodResponse | null>(null);
+  const [deliveryPrice, setDeliveryPrice] = useState(0);
   const cartItems = cartData?.cartItems || [];
 
   useEffect(() => {
@@ -55,6 +63,26 @@ export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
         console.error('Failed to get cart products', error);
       });
   }, []);
+
+  useEffect(() => {
+    getDeliveryMethod()
+      .then((res) => {
+        setDeliveryMethod(res);
+      })
+      .catch((error) => {
+        console.error('Failed to get delivery method', error);
+      });
+  }, []);
+
+  const handleClearCart = async () => {
+    try {
+      await clearCart();
+      const updatedCart = await getCartProducts();
+      setCartData(updatedCart);
+    } catch (error) {
+      console.error('Failed to clear cart', error);
+    }
+  };
 
   const handleAddProduct = async (uid: string, quantity: number) => {
     try {
@@ -128,7 +156,14 @@ export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
     }, 0);
   }
 
-  const deliveryPrice = 0;
+  const handleDeliveryPrice = (selectedMethod: string) => {
+    const selectedDeliveryMethod = deliveryMethod?.find(
+      (method) => method.name === selectedMethod
+    );
+    if (selectedDeliveryMethod) {
+      setDeliveryPrice(selectedDeliveryMethod.cost);
+    }
+  };
 
   const totalCost = totalPrice + deliveryPrice;
 
@@ -145,6 +180,8 @@ export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
         deleteProduct: handleDeleteProduct,
         increaseQuantity: handleIncreaseQuantity,
         decreaseQuantity: handleDecreaseQuantity,
+        handleDeliveryPrice,
+        handleClearCart,
       }}
     >
       {children}

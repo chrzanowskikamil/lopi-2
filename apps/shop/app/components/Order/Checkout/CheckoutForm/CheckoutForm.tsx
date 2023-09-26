@@ -5,24 +5,40 @@ import { FC, Fragment } from 'react';
 import { Form } from 'react-bootstrap';
 import { FormikProps } from 'formik';
 import { CheckoutFormValues } from './useCheckoutForm';
+import { DeliveryMethodResponse } from '../../../../../types/DeliveryMethodResponse';
+import { useCart } from '../../../../../app/contexts/CartContext';
 
 interface CheckoutFormProps {
   formRef: FormikProps<CheckoutFormValues>;
+  deliveryMethod: DeliveryMethodResponse;
 }
 
-export const CheckoutForm: FC<CheckoutFormProps> = ({ formRef }) => {
+export const CheckoutForm: FC<CheckoutFormProps> = ({
+  formRef,
+  deliveryMethod,
+}) => {
+  const { handleDeliveryPrice } = useCart();
+
   const links = {
     privacyPolicy: <Link href="/privacy-policy">Politykę Prywatności</Link>,
     rodo: <Link href="/rodo">RODO</Link>,
     statute: <Link href="/statute">Regulaminem</Link>,
   };
 
+  const deliveryMethodOptions = deliveryMethod.map((method) => {
+    return (
+      <option key={method.name} value={method.name}>
+        {method.name} - {method.cost.toFixed(2)} zł
+      </option>
+    );
+  });
+
   return (
     <div className={style.checkoutFormContainer}>
       <h2>Dane do wysyłki</h2>
       <Form.Group controlId="customerType">
         <Form.Select
-          aria-label="choose coutomer type"
+          aria-label="choose customer type"
           placeholder={'Wybierz typ klienta'}
           value={formRef.values.customerType}
           onChange={formRef.handleChange}
@@ -142,13 +158,13 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({ formRef }) => {
         <Form.Select
           aria-label="choose delivery method"
           value={formRef.values.deliveryMethodName}
-          onChange={formRef.handleChange}
+          onChange={(e) => {
+            formRef.handleChange(e);
+            handleDeliveryPrice(e.target.value);
+          }}
         >
           <option>Rodzaj dostawy</option>
-          <option value="IN_POST">InPost</option>
-          <option value="COURIER_SERVICE">DPD</option>
-          <option value="IN_POST">Paczkomaty</option>
-          <option value="IN_STORE_PICKUP">Odbiór osobisty</option>
+          {deliveryMethodOptions}
         </Form.Select>
       </Form.Group>
       <Form.Group controlId="shippingAddressStreet">
@@ -457,7 +473,7 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({ formRef }) => {
           </Form.Group>
         </>
       )}
-      <Form.Group className={style.formCheck}>
+      <Form.Group className={style.formCheck} controlId="termsAccepted">
         <Form.Check
           name="termsAccepted"
           label={

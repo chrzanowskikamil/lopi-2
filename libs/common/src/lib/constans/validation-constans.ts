@@ -10,8 +10,8 @@ interface ValidationConstansType {
 export const validationConstans: ValidationConstansType = {
   MIN_NAME_LENGTH: 2,
   MIN_PASSWORD_LENGTH: 8,
-  INVALID_EMAIL_MESSAGE: 'Błędny adres e-mail',
-  REQUIRED_FIELD_MESSAGE: 'Uzupełnij pole',
-  PASSWORD_MIN_LENGTH_MESSAGE: 'Hasło musi posiadać co najmniej 8 znaków',
-  PASSWORD_NOT_MATCH_MESSAGE: 'Wprowadzone hasła nie są identyczne',
+  INVALID_EMAIL_MESSAGE: 'Błędny adres e-mail.',
+  REQUIRED_FIELD_MESSAGE: 'Uzupełnij pole.',
+  PASSWORD_MIN_LENGTH_MESSAGE: 'Hasło musi posiadać co najmniej 8 znaków.',
+  PASSWORD_NOT_MATCH_MESSAGE: 'Wprowadzone hasła nie są identyczne.',
 };
