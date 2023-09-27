@@ -77,6 +77,14 @@ export const useCheckoutForm = () => {
       );
       setOrderData(orderResponse);
       router.push('/order-summary');
+
+      // TODO: Implement function to clear cart
+      // At the moment we havent information
+      // about products in cart from orderResponse.
+      // Now if we clear cart, we will not see products
+      // in order-summary page.
+
+      // handleClearCart();
     } catch (error) {
       console.error(`Failed to create order: ${error}`);
     }

@@ -32,9 +32,17 @@ $errorColor: #dc3545;
       }
 
       div > input {
-        background-color: transparent;
+        appearance: none;
+        background: transparent;
         border: $borderWidth solid map-get($palette, lopi-dark-green);
         padding: $inputPadding;
+        box-shadow: map-get($palette, lopi-dark-green);
+
+        &:checked {
+          background: map-get($palette, lopi-dark-green);
+          box-shadow: 0 solid map-get($palette, lopi-dark-green);
+          border: none;
+        }
       }
 
       label {

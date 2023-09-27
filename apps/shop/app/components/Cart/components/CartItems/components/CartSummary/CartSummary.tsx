@@ -10,15 +10,14 @@ interface SummaryItem {
 }
 
 export const CartSummary: FC = () => {
-  const { totalPrice, deliveryPrice, totalCost } = useCart();
+  const { totalPrice, totalCost } = useCart();
 
   const summaryItems: SummaryItem[] = useMemo(
     () => [
       { label: 'Cena produktów', value: totalPrice },
-      { label: 'Dostawa', value: deliveryPrice },
       { label: 'Łączna kwota', value: totalCost },
     ],
-    [totalPrice, deliveryPrice, totalCost]
+    [totalPrice, totalCost]
   );
 
   const renderedSummaryItems = summaryItems.map((item) => (

@@ -37,6 +37,10 @@ $linkFontWeight: 700;
       border-radius: $inputCheckBorderRadius;
       border: $borderBottomSize solid map-get($palette, lopi-dark-green);
       padding: map-get($spacer, 21);
+
+      &:checked {
+        background-color: map-get($palette, lopi-dark-green);
+      }
     }
 
     > label {
