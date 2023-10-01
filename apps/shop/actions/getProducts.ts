@@ -15,13 +15,15 @@ export async function getProducts(
   sortType = SortType.PRICE,
   sortOrder = SortOrder.ASCENDING
 ): Promise<ProductsResponse> {
-  const isSyntaxError = (el: any) => {
-    if (
-      el.name === 'SyntaxError' &&
-      el.message.includes('Unexpected end of JSON input')
-    ) {
-      return true;
-    } else return false;
+  const isSyntaxError = (error: unknown) => {
+    if (error instanceof Error) {
+      if (
+        error.name === 'SyntaxError' &&
+        error.message.includes('Unexpected end of JSON input')
+      ) {
+        return true;
+      } else return false;
+    }
   };
 
   try {
