@@ -6,6 +6,8 @@ import { Dropdown, DropdownButton } from 'react-bootstrap';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { SortParams } from '../../CategoriesEnums';
 
+import { useSearchParamsCustom } from '../../useSearchParamsCustom';
+
 interface SortDropdownProps {
   sortedProducts: (item: string) => void;
 }
@@ -23,6 +25,8 @@ export const SortDropdown: FC<SortDropdownProps> = ({ sortedProducts }) => {
     },
     [searchParams]
   );
+
+  useSearchParamsCustom.get();
 
   const dropdownItems = [
     SortParams.PRICE_ASC,
