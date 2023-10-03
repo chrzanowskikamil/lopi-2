@@ -4,6 +4,13 @@
 
 yarn install
 
+## Test commands
+
+`yarn test-shop` for run shop tests<br>
+`yarn test-shop-watch` for run shop tests in watch mode<br>
+`yarn test-admin` for run admin tests<br>
+`yarn test-admin-watch` for run admin tests in watch mode<br>
+
 ## Start commands
 
 To start the shop app in development mode run `yarn run-shop`. URL: http://localhost:4000/. </br>
