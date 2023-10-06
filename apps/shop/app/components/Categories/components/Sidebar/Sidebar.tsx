@@ -36,12 +36,10 @@ export const Sidebar: FC<SidebarProps> = ({
   list,
 }) => {
   const [setup, setSetup] = useState<boolean>();
-
-  const { getParam, createHrefCategory, setParamNoReload } =
-    useCategoriesSearchParams();
+  const { getParam, setParam } = useCategoriesSearchParams();
 
   const setupFunction = () => {
-    if (getParam('availability') === 'false') {
+    if (getParam.availability() === 'false') {
       onSidebarFilter.onAvailabilityFilterChange(false);
     }
     setSetup(true);
@@ -63,7 +61,15 @@ export const Sidebar: FC<SidebarProps> = ({
       className={getItemClassName(item)}
       key={item}
       as={Link}
-      href={createHrefCategory(item)}
+      href={
+        `/category/${item}` +
+        '?' +
+        `${
+          location.href.split('?')[1] !== undefined
+            ? location.href.split('?')[1]
+            : ''
+        }`
+      }
       passHref
     >
       {item}
@@ -75,15 +81,15 @@ export const Sidebar: FC<SidebarProps> = ({
 
   const handleRangeSlider = (e: RangeSliderValues) => {
     if (onSidebarFilter.lowerMoneyValueFilter !== e.min) {
-      if (getParam('filterPriceLow') !== e.min.toString()) {
+      if (getParam.filterPriceLow() !== e.min.toString()) {
         onSidebarFilter.onLowerMoneyValueFilterChange(e.min);
-        setParamNoReload('filterPriceLow', e.min.toString());
+        setParam('filterPriceLow', e.min.toString());
       }
     }
     if (onSidebarFilter.higherMoneyValueFilter !== e.max) {
-      if (getParam('filterPriceHigh') !== e.max.toString()) {
+      if (getParam.filterPriceHigh() !== e.max.toString()) {
         onSidebarFilter.onHigherMoneyValueFilterChange(e.max);
-        setParamNoReload('filterPriceHigh', e.max.toString());
+        setParam('filterPriceHigh', e.max.toString());
       }
     }
   };
@@ -109,10 +115,7 @@ export const Sidebar: FC<SidebarProps> = ({
           onSidebarFilter.onAvailabilityFilterChange(
             !onSidebarFilter.availability
           );
-          setParamNoReload(
-            'availability',
-            (!onSidebarFilter.availability).toString()
-          );
+          setParam('availability', (!onSidebarFilter.availability).toString());
         }}
         checked={onSidebarFilter.availability}
       />

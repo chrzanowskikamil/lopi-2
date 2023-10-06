@@ -1,4 +1,5 @@
 'use client';
+
 import { useCart } from '../../../../../../../contexts/CartContext';
 import style from '../tileShop.module.scss';
 import { FC } from 'react';

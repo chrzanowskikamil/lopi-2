@@ -17,11 +17,10 @@ const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
   max,
   onChange,
 }) => {
-  const { getParam, currentPath, displayCurentPath } =
-    useCategoriesSearchParams();
+  const { getParam } = useCategoriesSearchParams();
 
-  const initialMinVal = getParam('filterPriceLow');
-  const initialMaxVal = getParam('filterPriceHigh');
+  const initialMinVal = getParam.filterPriceLow();
+  const initialMaxVal = getParam.filterPriceHigh();
 
   const [minVal, setMinVal] = useState<number>(
     initialMinVal ? +initialMinVal : min
@@ -95,6 +94,7 @@ const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
         }}
         className={`${style.thumb} ${style.thumbZindexFour}`}
       />
+
       <div className={`${style.slider}`}>
         <div className={`${style.sliderTrack}`} />
         <div ref={range} className={`${style.sliderRange}`} />
@@ -103,7 +103,6 @@ const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
         Cena: {minVal} PLN - {maxVal}
         PLN
       </div>
-      <button onClick={displayCurentPath}>BUTTOn</button>
     </div>
   );
 };
