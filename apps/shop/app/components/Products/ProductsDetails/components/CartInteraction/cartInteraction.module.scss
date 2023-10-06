@@ -26,6 +26,9 @@ $menuWidth: 118px;
     width: $buttonAddToCartWidth;
     color: map-get($palette, lopi-orange);
   }
+  .productDetailsAddToCartButton:hover {
+    background-color: map-get($palette, lopi-black);
+  }
   .productDetailsAddToCartButton:disabled {
     border-color: map-get($palette, lopi-grey);
     background-color: map-get($palette, lopi-grey-light);
