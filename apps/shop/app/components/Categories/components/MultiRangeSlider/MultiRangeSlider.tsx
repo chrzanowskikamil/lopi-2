@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState, useRef, FC } from 'react';
 import PropTypes from 'prop-types';
 import style from './multiRangeSlider.module.scss';
+import { useCategoriesSearchParams } from '../../useCategoriesSearchParams';
 
 export interface RangeSliderValues {
   min: number;
@@ -16,9 +17,11 @@ const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
   max,
   onChange,
 }) => {
-  const url = new URL(location.href);
-  const initialMinVal = url.searchParams.get('filterPriceLow');
-  const initialMaxVal = url.searchParams.get('filterPriceHigh');
+  const { getParam, currentPath, displayCurentPath } =
+    useCategoriesSearchParams();
+
+  const initialMinVal = getParam('filterPriceLow');
+  const initialMaxVal = getParam('filterPriceHigh');
 
   const [minVal, setMinVal] = useState<number>(
     initialMinVal ? +initialMinVal : min
@@ -92,7 +95,6 @@ const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
         }}
         className={`${style.thumb} ${style.thumbZindexFour}`}
       />
-
       <div className={`${style.slider}`}>
         <div className={`${style.sliderTrack}`} />
         <div ref={range} className={`${style.sliderRange}`} />
@@ -101,6 +103,7 @@ const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
         Cena: {minVal} PLN - {maxVal}
         PLN
       </div>
+      <button onClick={displayCurentPath}>BUTTOn</button>
     </div>
   );
 };
