@@ -1,14 +1,8 @@
-import { useSearchParams } from 'next/navigation';
-import { useCallback } from 'react';
 import { setParamNameType } from './CategoriesTypes';
 
-export const useCategoriesSearchParams = () => {
-  const searchParams = useSearchParams();
-
+export const useCategoriesSearchParams = (searchParams: URLSearchParams) => {
   const getParam = {
     sort: () => {
-      console.log(searchParams.get('sort'));
-
       return searchParams.get('sort');
     },
     availability: () => {
@@ -28,15 +22,5 @@ export const useCategoriesSearchParams = () => {
     history.pushState({}, '', url);
   };
 
-  const createQueryString = useCallback(
-    (value: string) => {
-      const params = new URLSearchParams(searchParams as unknown as any);
-      params.set('sort', value);
-
-      return params.toString();
-    },
-    [searchParams]
-  );
-
-  return { getParam, setParam, createQueryString, searchParams };
+  return { getParam, setParam };
 };

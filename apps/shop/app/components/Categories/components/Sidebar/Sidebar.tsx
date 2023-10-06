@@ -16,6 +16,7 @@ import {
   THE_LOWEST_MONEY_VALUE,
 } from '../../CategoriesVariables';
 import { useCategoriesSearchParams } from '../../useCategoriesSearchParams';
+import { useSearchParams } from 'next/navigation';
 
 interface SidebarProps {
   onSidebarFilter: {
@@ -36,7 +37,8 @@ export const Sidebar: FC<SidebarProps> = ({
   list,
 }) => {
   const [setup, setSetup] = useState<boolean>();
-  const { getParam, setParam } = useCategoriesSearchParams();
+  const searchParams = useSearchParams();
+  const { getParam, setParam } = useCategoriesSearchParams(searchParams);
 
   const setupFunction = () => {
     if (getParam.availability() === 'false') {
