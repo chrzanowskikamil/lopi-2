@@ -1,8 +1,9 @@
 'use client';
 
 import styles from './Categories.module.scss';
-import { FC, useCallback } from 'react';
-import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
+import { FC, useCallback, useMemo } from 'react';
+import { Breadcrumbs } from '@lopi-2/common';
+import { CrumbsFactory } from '@lopi-2/common';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { SortDropdown } from './components/SortDropdown/SortDropdown';
 import { ProductsDisplay } from '../Products/ProductsDisplay/ProductsDisplay';
@@ -69,6 +70,11 @@ export const Categories: FC<CategoriesProps> = ({
     [categoriesReducer]
   );
 
+  const crumbs = useMemo(
+    () => CrumbsFactory.createSpecifedCategoryCrumb(title),
+    [title]
+  );
+
   return (
     <Container>
       <Row>
@@ -78,7 +84,7 @@ export const Categories: FC<CategoriesProps> = ({
       </Row>
       <Row>
         <Col>
-          <Breadcrumbs category={title} />
+          <Breadcrumbs crumbs={crumbs} />
         </Col>
       </Row>
       <Row>

@@ -15,6 +15,7 @@ import {
   THE_HIGHEST_MONEY_VALUE,
   THE_LOWEST_MONEY_VALUE,
 } from '../../CategoriesVariables';
+import { AppRoutes } from '@lopi-2/common';
 
 interface SidebarProps {
   onSidebarFilter: {
@@ -61,7 +62,7 @@ export const Sidebar: FC<SidebarProps> = ({
       className={getItemClassName(item)}
       key={item}
       as={Link}
-      href={`/category/${item}`}
+      href={AppRoutes.getSpecifedCategoryPath(item)}
       passHref
     >
       {item}
