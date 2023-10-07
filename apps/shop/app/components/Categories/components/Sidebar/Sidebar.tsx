@@ -16,6 +16,7 @@ import {
   THE_LOWEST_MONEY_VALUE,
 } from '../../CategoriesVariables';
 import { useCategoriesSearchParams } from '../../../../hooks/useSearchParams';
+import { AppRoutes } from '@lopi-2/common';
 
 interface SidebarProps {
   onSidebarFilter: {
@@ -62,7 +63,7 @@ export const Sidebar: FC<SidebarProps> = ({
       key={item}
       as={Link}
       href={
-        `/category/${item}` +
+        AppRoutes.getSpecifedCategoryPath(item) +
         '?' +
         `${
           location.href.split('?')[1] !== undefined

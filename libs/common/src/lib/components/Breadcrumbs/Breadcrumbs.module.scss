@@ -1,5 +1,5 @@
-@use '../../styles/shop-variables';
-@use '../../styles/mixins/shop-mixins';
+@use '../../../../../../apps/shop/app/styles/shop-variables';
+@use '../../../../../../apps/shop/app/styles/mixins/shop-mixins';
 
 $pallete: shop-variables.$theme-colors;
 $spacer: shop-variables.$spacers;

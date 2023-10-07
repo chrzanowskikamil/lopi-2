@@ -3,16 +3,16 @@
 import style from './productsDetailed.module.scss';
 
 import { Col, Container, Row } from 'react-bootstrap';
-import { Breadcrumbs } from '../../Breadcrumbs/Breadcrumbs';
+import { Breadcrumbs } from '@lopi-2/common';
 import Image from 'next/image';
 import { SimilarProducts } from './components/SimilarProducts/SimilarProducts';
 import { DetailedInfo } from './components/DetailedInfo/DetailedInfo';
 import { SocialsArea } from './components/SocialsArea/SocialsArea';
 import { CartInteraction } from './components/CartInteraction/CartInteraction';
 import { ProductInfo } from './components/ProductInfo/ProductInfo';
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 import { Product } from '../../../../types/ProductsResponse';
-
+import { CrumbsFactory } from '@lopi-2/common';
 interface ProductsDetailsProps {
   product: Product;
   upSellProducts: Product[];
@@ -22,18 +22,16 @@ export const ProductsDetails: FC<ProductsDetailsProps> = ({
   product,
   upSellProducts,
 }) => {
+  const crumbs = useMemo(
+    () => CrumbsFactory.createProductCrumb(product, product.categories[0].name),
+    [product]
+  );
+
   return (
     <Container>
       <Row>
         <Col>
-          <Breadcrumbs
-            category={
-              product.categories[0] !== undefined
-                ? product.categories[0].name
-                : 'No data'
-            }
-            className={style.breadcrumbs}
-          />
+          <Breadcrumbs crumbs={crumbs} className={style.breadcrumbs} />
         </Col>
       </Row>
       <Row>
