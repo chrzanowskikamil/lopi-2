@@ -15,8 +15,7 @@ import {
   THE_HIGHEST_MONEY_VALUE,
   THE_LOWEST_MONEY_VALUE,
 } from '../../CategoriesVariables';
-import { useCategoriesSearchParams } from '../../useCategoriesSearchParams';
-import { useSearchParams } from 'next/navigation';
+import { useCategoriesSearchParams } from '../../../../hooks/useSearchParams';
 
 interface SidebarProps {
   onSidebarFilter: {
@@ -37,8 +36,7 @@ export const Sidebar: FC<SidebarProps> = ({
   list,
 }) => {
   const [setup, setSetup] = useState<boolean>();
-  const searchParams = useSearchParams();
-  const { getParam, setParam } = useCategoriesSearchParams(searchParams);
+  const { getParam, setParam } = useCategoriesSearchParams();
 
   const setupFunction = () => {
     if (getParam.availability() === 'false') {

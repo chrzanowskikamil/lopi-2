@@ -1,72 +1,58 @@
 import { renderHook } from '@testing-library/react';
-import { useCategoriesSearchParams } from '../useCategoriesSearchParams';
+import { useCategoriesSearchParams } from '../../../hooks/useSearchParams';
 
-describe('useCategoriesSearchParams', () => {
-  test('schould render', () => {
-    renderHook(useCategoriesSearchParams);
-  });
-  test('getParam.sort should return the sort parameter', () => {
-    const mockGet = jest.fn();
-    const searchParams = { get: mockGet };
-    const { result } = renderHook(() =>
-      useCategoriesSearchParams(searchParams as any)
-    );
+const mockSearchParams = {
+  get: jest.fn(),
+  set: jest.fn(),
+};
 
-    mockGet.mockReturnValue('someSortValue');
+jest.mock('next/navigation', () => ({
+  useSearchParams: () => mockSearchParams,
+}));
+describe('useCategoriesSearch params', () => {
+  it('should check all possible params', () => {
+    mockSearchParams.get.mockReturnValueOnce('someSortValue');
+    mockSearchParams.get.mockReturnValueOnce('true');
+    mockSearchParams.get.mockReturnValueOnce('50');
+    mockSearchParams.get.mockReturnValueOnce('100');
+
+    const { result } = renderHook(() => useCategoriesSearchParams());
 
     expect(result.current.getParam.sort()).toBe('someSortValue');
-    expect(mockGet).toHaveBeenCalledWith('sort');
-  });
-
-  test('getParam.availability should return the availability parameter', () => {
-    const mockGet = jest.fn();
-    const searchParams = { get: mockGet };
-    const { result } = renderHook(() =>
-      useCategoriesSearchParams(searchParams as any)
-    );
-
-    mockGet.mockReturnValue('true');
-
     expect(result.current.getParam.availability()).toBe('true');
-    expect(mockGet).toHaveBeenCalledWith('availability');
-  });
-
-  test('getParam.filterPriceLow should return the filterPriceLow parameter', () => {
-    const mockGet = jest.fn();
-    const searchParams = { get: mockGet };
-    const { result } = renderHook(() =>
-      useCategoriesSearchParams(searchParams as any)
-    );
-
-    mockGet.mockReturnValue('50');
-
     expect(result.current.getParam.filterPriceLow()).toBe('50');
-    expect(mockGet).toHaveBeenCalledWith('filterPriceLow');
-  });
-
-  test('getParam.filterPriceHigh should return the filterPriceHigh parameter', () => {
-    const mockGet = jest.fn();
-    const searchParams = { get: mockGet };
-    const { result } = renderHook(() =>
-      useCategoriesSearchParams(searchParams as any)
-    );
-
-    mockGet.mockReturnValue('100');
-
     expect(result.current.getParam.filterPriceHigh()).toBe('100');
-    expect(mockGet).toHaveBeenCalledWith('filterPriceHigh');
   });
 
-  test('setParam should set the specified parameter in the URL', () => {
-    const mockGet = jest.fn();
-    const searchParams = { get: mockGet };
-    const { result } = renderHook(() =>
-      useCategoriesSearchParams(searchParams as any)
+  it('should set all possible params', () => {
+    const { result } = renderHook(() => useCategoriesSearchParams());
+
+    const newAvailabilityValue = 'false';
+    const newFilterPriceLowValue = '25';
+    const newFilterPriceHighValue = '75';
+
+    result.current.setParam('availability', newAvailabilityValue);
+    result.current.setParam('filterPriceLow', newFilterPriceLowValue);
+    result.current.setParam('filterPriceHigh', newFilterPriceHighValue);
+
+    expect(window.location.search).toContain(
+      `availability=${newAvailabilityValue}`
     );
+    expect(window.location.search).toContain(
+      `filterPriceLow=${newFilterPriceLowValue}`
+    );
+    expect(window.location.search).toContain(
+      `filterPriceHigh=${newFilterPriceHighValue}`
+    );
+  });
 
-    result.current.setParam('availability', 'newSortValue');
+  it('createQueryString should create a query string with the specified value', () => {
+    const { result } = renderHook(() => useCategoriesSearchParams());
 
-    expect(mockGet).not.toHaveBeenCalled();
-    expect(window.location.search).toContain('availability=newSortValue');
+    const paramValue = 'newSortValue';
+
+    expect(result.current.createSortQueryString(paramValue)).toContain(
+      `sort=${paramValue}`
+    );
   });
 });
