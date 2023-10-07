@@ -62,15 +62,7 @@ export const Sidebar: FC<SidebarProps> = ({
       className={getItemClassName(item)}
       key={item}
       as={Link}
-      href={
-        AppRoutes.getSpecifedCategoryPath(item) +
-        '?' +
-        `${
-          location.href.split('?')[1] !== undefined
-            ? location.href.split('?')[1]
-            : ''
-        }`
-      }
+      href={AppRoutes.getSpecifedCategoryPath(item) + '?' + location.search}
       passHref
     >
       {item}
