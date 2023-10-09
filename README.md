@@ -6,6 +6,8 @@ yarn install
 
 ## Test commands
 
+`yarn test-common` for run common lib tests<br>
+`yarn test-common-watch` for run common lib tests in watch mode<br>
 `yarn test-shop` for run shop tests<br>
 `yarn test-shop-watch` for run shop tests in watch mode<br>
 `yarn test-admin` for run admin tests<br>
