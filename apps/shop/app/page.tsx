@@ -3,6 +3,7 @@ import { Common } from '@lopi-2/common';
 import SignInForm from './components/Auth/SignInForm/SignInForm';
 import SignUpForm from './components/Auth/SignUpForm/SignUpForm';
 import { TempComponent } from './components/TempComponent';
+import { ThirdSection } from './components/MainPage/ThirdSection/ThirdSection';
 
 const Index = async () => {
   return (
@@ -15,6 +16,7 @@ const Index = async () => {
         <SignUpForm />
 
         <TempComponent />
+        <ThirdSection />
       </div>
     </>
   );
