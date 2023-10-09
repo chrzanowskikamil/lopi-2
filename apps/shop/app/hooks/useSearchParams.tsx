@@ -1,23 +1,15 @@
-import { useSearchParams } from 'next/navigation';
-import { setParamNameType } from '../components/Categories/CategoriesTypes';
-import { GetParams } from '../components/Categories/CategoriesEnums';
+import { useSearchParams as nextSearchParams } from 'next/navigation';
+import { setParamNameType } from './AppSearchParams';
+import { GetParams } from './AppSearchParams';
 
-export const useCategoriesSearchParams = () => {
-  const searchParams = useSearchParams();
+export const useSearchParams = () => {
+  const searchParams = nextSearchParams();
 
   const getParam = {
-    sort: () => {
-      return searchParams.get(GetParams.SORT);
-    },
-    availability: () => {
-      return searchParams.get(GetParams.AVAILABILITY);
-    },
-    filterPriceLow: () => {
-      return searchParams.get(GetParams.FILTER_PRICE_LOW);
-    },
-    filterPriceHigh: () => {
-      return searchParams.get(GetParams.FILTER_PRICE_HIGH);
-    },
+    sort: searchParams.get(GetParams.SORT),
+    availability: searchParams.get(GetParams.AVAILABILITY),
+    filterPriceLow: searchParams.get(GetParams.FILTER_PRICE_LOW),
+    filterPriceHigh: searchParams.get(GetParams.FILTER_PRICE_HIGH),
   };
 
   const setParam = (name: setParamNameType, value: string) => {

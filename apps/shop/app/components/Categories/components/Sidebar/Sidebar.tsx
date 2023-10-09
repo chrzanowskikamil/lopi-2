@@ -15,7 +15,7 @@ import {
   THE_HIGHEST_MONEY_VALUE,
   THE_LOWEST_MONEY_VALUE,
 } from '../../CategoriesVariables';
-import { useCategoriesSearchParams } from '../../../../hooks/useSearchParams';
+import { useSearchParams } from '../../../../hooks/useSearchParams';
 import { AppRoutes } from '@lopi-2/common';
 
 interface SidebarProps {
@@ -37,10 +37,10 @@ export const Sidebar: FC<SidebarProps> = ({
   list,
 }) => {
   const [setup, setSetup] = useState<boolean>();
-  const { getParam, setParam } = useCategoriesSearchParams();
+  const { getParam, setParam } = useSearchParams();
 
   const setupFunction = () => {
-    if (getParam.availability() === 'false') {
+    if (getParam.availability === 'false') {
       onSidebarFilter.onAvailabilityFilterChange(false);
     }
     setSetup(true);
@@ -74,13 +74,13 @@ export const Sidebar: FC<SidebarProps> = ({
 
   const handleRangeSlider = (e: RangeSliderValues) => {
     if (onSidebarFilter.lowerMoneyValueFilter !== e.min) {
-      if (getParam.filterPriceLow() !== e.min.toString()) {
+      if (getParam.filterPriceLow !== e.min.toString()) {
         onSidebarFilter.onLowerMoneyValueFilterChange(e.min);
         setParam('filterPriceLow', e.min.toString());
       }
     }
     if (onSidebarFilter.higherMoneyValueFilter !== e.max) {
-      if (getParam.filterPriceHigh() !== e.max.toString()) {
+      if (getParam.filterPriceHigh !== e.max.toString()) {
         onSidebarFilter.onHigherMoneyValueFilterChange(e.max);
         setParam('filterPriceHigh', e.max.toString());
       }

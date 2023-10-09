@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react';
-import { useCategoriesSearchParams } from '../../../hooks/useSearchParams';
+import { useSearchParams } from '../useSearchParams';
 
 const mockSearchParams = {
   get: jest.fn(),
@@ -16,16 +16,16 @@ describe('useCategoriesSearch params', () => {
     mockSearchParams.get.mockReturnValueOnce('50');
     mockSearchParams.get.mockReturnValueOnce('100');
 
-    const { result } = renderHook(() => useCategoriesSearchParams());
+    const { result } = renderHook(() => useSearchParams());
 
-    expect(result.current.getParam.sort()).toBe('someSortValue');
-    expect(result.current.getParam.availability()).toBe('true');
-    expect(result.current.getParam.filterPriceLow()).toBe('50');
-    expect(result.current.getParam.filterPriceHigh()).toBe('100');
+    expect(result.current.getParam.sort).toBe('someSortValue');
+    expect(result.current.getParam.availability).toBe('true');
+    expect(result.current.getParam.filterPriceLow).toBe('50');
+    expect(result.current.getParam.filterPriceHigh).toBe('100');
   });
 
   it('should set all possible params', () => {
-    const { result } = renderHook(() => useCategoriesSearchParams());
+    const { result } = renderHook(() => useSearchParams());
 
     const newAvailabilityValue = 'false';
     const newFilterPriceLowValue = '25';
@@ -36,18 +36,12 @@ describe('useCategoriesSearch params', () => {
     result.current.setParam('filterPriceHigh', newFilterPriceHighValue);
 
     expect(window.location.search).toContain(
-      `availability=${newAvailabilityValue}`
-    );
-    expect(window.location.search).toContain(
-      `filterPriceLow=${newFilterPriceLowValue}`
-    );
-    expect(window.location.search).toContain(
-      `filterPriceHigh=${newFilterPriceHighValue}`
+      `availability=${newAvailabilityValue}&filterPriceLow=${newFilterPriceLowValue}&filterPriceHigh=${newFilterPriceHighValue}`
     );
   });
 
   it('createQueryString should create a query string with the specified value', () => {
-    const { result } = renderHook(() => useCategoriesSearchParams());
+    const { result } = renderHook(() => useSearchParams());
 
     const paramValue = 'newSortValue';
 

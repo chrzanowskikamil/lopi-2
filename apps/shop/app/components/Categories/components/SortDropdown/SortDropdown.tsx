@@ -4,7 +4,7 @@ import { FC } from 'react';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 import { usePathname } from 'next/navigation';
 import { SortParams } from '../../CategoriesEnums';
-import { useCategoriesSearchParams } from '../../../../hooks/useSearchParams';
+import { useSearchParams } from '../../../../hooks/useSearchParams';
 
 interface SortDropdownProps {
   sortedProducts: (item: string) => void;
@@ -13,7 +13,7 @@ interface SortDropdownProps {
 export const SortDropdown: FC<SortDropdownProps> = ({ sortedProducts }) => {
   const pathname = usePathname();
 
-  const { getParam, createSortQueryString } = useCategoriesSearchParams();
+  const { getParam, createSortQueryString } = useSearchParams();
 
   const dropdownItems = [
     SortParams.PRICE_ASC,
@@ -37,7 +37,7 @@ export const SortDropdown: FC<SortDropdownProps> = ({ sortedProducts }) => {
     <DropdownButton
       bsPrefix={styles.dropdown}
       id="sort-button"
-      title={getParam.sort() === null ? 'Sortowanie' : getParam.sort()}
+      title={getParam.sort === null ? 'Sortowanie' : getParam.sort}
     >
       {items}
     </DropdownButton>
