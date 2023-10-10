@@ -8,7 +8,6 @@ export const loadMoreProducts = async (
     sortType: string;
     currentPage: number;
     allProducts: Product[];
-
     onShowMore: (allProducts: Product[], pageNumber: number) => void;
   },
   categoryUUID: string
