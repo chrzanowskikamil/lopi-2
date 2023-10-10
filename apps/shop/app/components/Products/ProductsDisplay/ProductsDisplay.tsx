@@ -1,10 +1,9 @@
-import style from './Products.module.scss';
 import { Container, Row } from 'react-bootstrap';
 
 import { FC } from 'react';
-
-import ProductTileCol from '../components/tileShop/ProductTileCol';
 import { Product } from '../../../../types/ProductsResponse';
+import ProductTileCol from '../components/tileShop/ProductTileCol';
+import style from './Products.module.scss';
 
 interface ProductsDisplayProps {
   onProductsDisplay: {
@@ -23,7 +22,6 @@ export const ProductsDisplay: FC<ProductsDisplayProps> = ({
   const availible = onProductsDisplay.availability;
 
   const sortBySearchParams = () => {
-    console.log('PRODUCT DISPLAY' + [...onProductsDisplay.allProducts]);
     const productArray = [...onProductsDisplay.allProducts];
 
     const filteredProducts = productArray.filter((product) => {

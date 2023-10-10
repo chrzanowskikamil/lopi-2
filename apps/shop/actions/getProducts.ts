@@ -12,11 +12,11 @@ import { ProductsResponse } from '../types/ProductsResponse';
 import { REVALIDATE_TIME } from '@lopi-2/common';
 
 export async function getProducts(
+  categoryUUID = INITIAL_CATEGORY_UUID,
   size = DEFAULT_PAGE_SIZE,
   page = INITIAL_CURRENT_PAGE,
   sortType = SortType.NAME,
-  sortOrder = SortOrder.ASCENDING,
-  categoryUUID = INITIAL_CATEGORY_UUID
+  sortOrder = SortOrder.ASCENDING
 ): Promise<ProductsResponse> {
   const isSyntaxError = (error: unknown) => {
     if (error instanceof Error) {

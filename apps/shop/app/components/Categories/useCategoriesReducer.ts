@@ -7,6 +7,7 @@ import { SortOrder, SortType } from './CategoriesEnums';
 
 import { Product } from '../../../types/ProductsResponse';
 import { useReducer } from 'react';
+import { useSearchParams } from '../../hooks/useSearchParams';
 
 export interface CategoriesReducerProps {
   state: StateProps;
@@ -87,14 +88,30 @@ const categoriesReducer = (state: StateProps, action: ActionProps) => {
 };
 
 export const useCategoriesReducer = ({ content }: { content: Product[] }) => {
+  const { getParam } = useSearchParams();
+
+  const stringToBoolan = (arg: string): boolean => {
+    if (arg === 'true') return true;
+    else return false;
+  };
+
   const initialState = {
     allProducts: content,
     sortType: SortType.PRICE,
     sortOrder: SortOrder.ASCENDING,
     currentPage: INITIAL_CURRENT_PAGE,
-    lowerMoneyValueFilter: THE_LOWEST_MONEY_VALUE,
-    higherMoneyValueFilter: THE_HIGHEST_MONEY_VALUE,
-    availability: true,
+    lowerMoneyValueFilter:
+      getParam.filterPriceLow === null
+        ? THE_LOWEST_MONEY_VALUE
+        : parseInt(getParam.filterPriceLow),
+    higherMoneyValueFilter:
+      getParam.filterPriceHigh === null
+        ? THE_HIGHEST_MONEY_VALUE
+        : parseInt(getParam.filterPriceHigh),
+    availability:
+      getParam.availability === null
+        ? true
+        : stringToBoolan(getParam.availability),
   };
 
   const [state, dispatch] = useReducer(categoriesReducer, initialState);

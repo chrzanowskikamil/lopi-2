@@ -51,6 +51,7 @@ export const Categories: FC<CategoriesProps> = ({
       }
 
       const newSort = await getProducts(
+        title,
         DEFAULT_PAGE_SIZE,
         INITIAL_CURRENT_PAGE,
         sortType,
