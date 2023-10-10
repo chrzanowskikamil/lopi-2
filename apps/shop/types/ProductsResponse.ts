@@ -30,8 +30,6 @@ export interface Product {
   ];
 }
 export interface ProductsResponse {
-  // categotyUUID: string;
-
   content: Product[];
   pageable: {
     sort: {
