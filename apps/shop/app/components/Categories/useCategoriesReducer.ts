@@ -1,13 +1,12 @@
-import { useReducer } from 'react';
-import { Product } from '../../../types/ProductsResponse';
-
 import {
+  INITIAL_CURRENT_PAGE,
   THE_HIGHEST_MONEY_VALUE,
   THE_LOWEST_MONEY_VALUE,
-  INITIAL_CURRENT_PAGE,
 } from './CategoriesVariables';
+import { SortOrder, SortType } from './CategoriesEnums';
 
-import { SortType, SortOrder } from './CategoriesEnums';
+import { Product } from '../../../types/ProductsResponse';
+import { useReducer } from 'react';
 
 export interface CategoriesReducerProps {
   state: StateProps;
@@ -87,9 +86,9 @@ const categoriesReducer = (state: StateProps, action: ActionProps) => {
   }
 };
 
-export const useCategoriesReducer = ({ products }: { products: Product[] }) => {
+export const useCategoriesReducer = ({ content }: { content: Product[] }) => {
   const initialState = {
-    allProducts: products,
+    allProducts: content,
     sortType: SortType.PRICE,
     sortOrder: SortOrder.ASCENDING,
     currentPage: INITIAL_CURRENT_PAGE,

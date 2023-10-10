@@ -1,6 +1,6 @@
-import { getProducts } from '../../../../shop/actions/getProducts';
 import { DEFAULT_PAGE_SIZE } from './CategoriesVariables';
 import { Product } from '../../../../shop/types/ProductsResponse';
+import { getProducts } from '../../../../shop/actions/getProducts';
 
 export const loadMoreProducts = async (onLoadMoreProducts: {
   sortOrder: string;
@@ -20,7 +20,7 @@ export const loadMoreProducts = async (onLoadMoreProducts: {
   );
   if (newProducts !== undefined) {
     onLoadMoreProducts.onShowMore(
-      [...onLoadMoreProducts.allProducts, ...newProducts.products],
+      [...onLoadMoreProducts.allProducts, ...newProducts.content],
       nextPage
     );
   }
