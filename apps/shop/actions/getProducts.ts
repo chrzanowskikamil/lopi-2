@@ -1,13 +1,14 @@
-import { REVALIDATE_TIME } from '@lopi-2/common';
-import { ProductsResponse } from '../types/ProductsResponse';
-import {
-  SortType,
-  SortOrder,
-} from '../app/components/Categories/CategoriesEnums';
 import {
   DEFAULT_PAGE_SIZE,
   INITIAL_CURRENT_PAGE,
 } from '../app/components/Categories/CategoriesVariables';
+import {
+  SortOrder,
+  SortType,
+} from '../app/components/Categories/CategoriesEnums';
+
+import { ProductsResponse } from '../types/ProductsResponse';
+import { REVALIDATE_TIME } from '@lopi-2/common';
 
 export async function getProducts(
   size = DEFAULT_PAGE_SIZE,
@@ -28,7 +29,7 @@ export async function getProducts(
 
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}products?page=${page}&size=${size}&sortType=${sortType}&sortOrder=${sortOrder}
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}products?page=${page}&size=${size}&sort=${sortType}%2C${sortOrder}
       `,
       { next: { revalidate: REVALIDATE_TIME } }
     );
