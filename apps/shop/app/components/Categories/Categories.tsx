@@ -20,12 +20,14 @@ interface CategoriesProps {
   title: string;
   content: string[];
   products: ProductsResponse;
+  categoryUUID: string;
 }
 
 export const Categories: FC<CategoriesProps> = ({
   title,
   content,
   products: initalProducts,
+  categoryUUID,
 }) => {
   const categoriesReducer = useCategoriesReducer(initalProducts);
 
@@ -51,7 +53,7 @@ export const Categories: FC<CategoriesProps> = ({
       }
 
       const newSort = await getProducts(
-        title,
+        categoryUUID,
         DEFAULT_PAGE_SIZE,
         INITIAL_CURRENT_PAGE,
         sortType,
@@ -64,7 +66,7 @@ export const Categories: FC<CategoriesProps> = ({
         sortOrder
       );
     },
-    [categoriesReducer]
+    [categoriesReducer, categoryUUID]
   );
 
   const crumbs = useMemo(

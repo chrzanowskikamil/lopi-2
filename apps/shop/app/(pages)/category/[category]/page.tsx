@@ -13,8 +13,8 @@ export async function generateStaticParams() {
 
 const CategoriesPage = async ({ params }: { params: { category: string } }) => {
   const allCategories = await getCategoriesName();
-  const categoruUUID = await getCategoryUUIDByName(params.category);
-  const products = await getProducts(categoruUUID);
+  const categoryUUID = await getCategoryUUIDByName(params.category);
+  const products = await getProducts(categoryUUID);
 
   return (
     <>
@@ -22,6 +22,7 @@ const CategoriesPage = async ({ params }: { params: { category: string } }) => {
         title={params.category}
         content={allCategories}
         products={products}
+        categoryUUID={categoryUUID}
       />
     </>
   );
