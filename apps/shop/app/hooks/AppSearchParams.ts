@@ -5,7 +5,7 @@ export const SearchParams = {
   FILTER_PRICE_HIGH: 'filterPriceHigh',
 };
 
-export type sortParamTypes =
+export type searchParamTypes =
   | 'availability'
   | 'filterPriceLow'
   | 'filterPriceHigh';
