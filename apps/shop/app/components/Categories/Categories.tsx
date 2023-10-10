@@ -107,7 +107,10 @@ export const Categories: FC<CategoriesProps> = ({
             <Button
               className={styles.button}
               onClick={() =>
-                loadMoreProducts(categoriesReducer.onLoadMoreProducts)
+                loadMoreProducts(
+                  categoriesReducer.onLoadMoreProducts,
+                  categoryUUID
+                )
               }
             >
               pokaż więcej
