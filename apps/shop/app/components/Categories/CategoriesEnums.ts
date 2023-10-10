@@ -4,8 +4,8 @@ export const SortType = {
 };
 
 export const SortOrder = {
-  ASCENDING: 'asc',
-  DESCENDING: 'desc',
+  ASCENDING: 'true',
+  DESCENDING: 'false',
 };
 
 export const SortParams = {

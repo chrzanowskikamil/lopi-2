@@ -23,6 +23,7 @@ export const ProductsDisplay: FC<ProductsDisplayProps> = ({
   const availible = onProductsDisplay.availability;
 
   const sortBySearchParams = () => {
+    console.log('PRODUCT DISPLAY' + [...onProductsDisplay.allProducts]);
     const productArray = [...onProductsDisplay.allProducts];
 
     const filteredProducts = productArray.filter((product) => {
