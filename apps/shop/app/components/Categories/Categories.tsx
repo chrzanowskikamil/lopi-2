@@ -1,24 +1,20 @@
 'use client';
 
-import styles from './Categories.module.scss';
+import { Button, Col, Container, Row } from 'react-bootstrap';
+import { DEFAULT_PAGE_SIZE, INITIAL_CURRENT_PAGE } from './CategoriesVariables';
 import { FC, useCallback, useMemo } from 'react';
+import { SortOrder, SortParams, SortType } from './CategoriesEnums';
+
 import { Breadcrumbs } from '@lopi-2/common';
 import { CrumbsFactory } from '@lopi-2/common';
+import { ProductsDisplay } from '../Products/ProductsDisplay/ProductsDisplay';
+import { ProductsResponse } from '../../../../shop/types/ProductsResponse';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { SortDropdown } from './components/SortDropdown/SortDropdown';
-import { ProductsDisplay } from '../Products/ProductsDisplay/ProductsDisplay';
-import { Button, Col, Container, Row } from 'react-bootstrap';
-
 import { getProducts } from '../../../actions/getProducts';
-
-import { SortType, SortOrder, SortParams } from './CategoriesEnums';
-
-import { useCategoriesReducer } from './useCategoriesReducer';
-
-import { DEFAULT_PAGE_SIZE, INITIAL_CURRENT_PAGE } from './CategoriesVariables';
-
 import { loadMoreProducts } from './useCategoriesPagination';
-import { ProductsResponse } from '../../../../shop/types/ProductsResponse';
+import styles from './Categories.module.scss';
+import { useCategoriesReducer } from './useCategoriesReducer';
 
 interface CategoriesProps {
   title: string;
@@ -62,7 +58,7 @@ export const Categories: FC<CategoriesProps> = ({
       );
 
       categoriesReducer.onProductsSort(
-        [...newSort.products],
+        [...newSort.content],
         sortType,
         sortOrder
       );
