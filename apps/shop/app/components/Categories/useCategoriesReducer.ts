@@ -96,7 +96,7 @@ export const useCategoriesReducer = ({ content }: { content: Product[] }) => {
   };
 
   const initialState = {
-    allProducts: products,
+    allProducts: content,
     sortType:
       getParam.sort === SortParams.PRICE_ASC ||
       getParam.sort === SortParams.PRICE_DSC
