@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import styles from './SortDropdown.module.scss';
-import { FC, useCallback } from 'react';
+import { FC } from 'react';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
-
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { SortParams } from '../../CategoriesEnums';
+import { useSearchParams } from '../../../../hooks/useSearchParams';
 
 interface SortDropdownProps {
   sortedProducts: (item: string) => void;
@@ -12,17 +12,8 @@ interface SortDropdownProps {
 
 export const SortDropdown: FC<SortDropdownProps> = ({ sortedProducts }) => {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
-  const createQueryString = useCallback(
-    (value: string) => {
-      const params = new URLSearchParams(searchParams as unknown as any);
-      params.set('sort', value);
-
-      return params.toString();
-    },
-    [searchParams]
-  );
+  const { getParam, createSortQueryString } = useSearchParams();
 
   const dropdownItems = [
     SortParams.PRICE_ASC,
@@ -35,7 +26,7 @@ export const SortDropdown: FC<SortDropdownProps> = ({ sortedProducts }) => {
     <Dropdown.Item
       key={item}
       as={Link}
-      href={pathname + '?' + createQueryString(`${item}`)}
+      href={pathname + '?' + createSortQueryString(item)}
       onClick={() => sortedProducts(item)}
     >
       {item}
@@ -46,11 +37,7 @@ export const SortDropdown: FC<SortDropdownProps> = ({ sortedProducts }) => {
     <DropdownButton
       bsPrefix={styles.dropdown}
       id="sort-button"
-      title={
-        searchParams.get('sort') === null
-          ? 'Sortowanie'
-          : searchParams.get('sort')
-      }
+      title={getParam.sort === null ? 'Sortowanie' : getParam.sort}
     >
       {items}
     </DropdownButton>
