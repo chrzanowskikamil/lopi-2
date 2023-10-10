@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState, useRef, FC } from 'react';
 import PropTypes from 'prop-types';
 import style from './multiRangeSlider.module.scss';
+import { useSearchParams } from '../../../../hooks/useSearchParams';
 
 export interface RangeSliderValues {
   min: number;
@@ -16,9 +17,10 @@ const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
   max,
   onChange,
 }) => {
-  const url = new URL(location.href);
-  const initialMinVal = url.searchParams.get('filterPriceLow');
-  const initialMaxVal = url.searchParams.get('filterPriceHigh');
+  const { getParam } = useSearchParams();
+
+  const initialMinVal = getParam.filterPriceLow;
+  const initialMaxVal = getParam.filterPriceHigh;
 
   const [minVal, setMinVal] = useState<number>(
     initialMinVal ? +initialMinVal : min

@@ -15,6 +15,7 @@ import {
   THE_HIGHEST_MONEY_VALUE,
   THE_LOWEST_MONEY_VALUE,
 } from '../../CategoriesVariables';
+import { useSearchParams } from '../../../../hooks/useSearchParams';
 import { AppRoutes } from '@lopi-2/common';
 
 interface SidebarProps {
@@ -36,11 +37,10 @@ export const Sidebar: FC<SidebarProps> = ({
   list,
 }) => {
   const [setup, setSetup] = useState<boolean>();
+  const { getParam, setParam } = useSearchParams();
 
   const setupFunction = () => {
-    const url = new URL(location.href);
-
-    if (url.searchParams.get('availability') === 'false') {
+    if (getParam.availability === 'false') {
       onSidebarFilter.onAvailabilityFilterChange(false);
     }
     setSetup(true);
@@ -62,7 +62,7 @@ export const Sidebar: FC<SidebarProps> = ({
       className={getItemClassName(item)}
       key={item}
       as={Link}
-      href={AppRoutes.getSpecifedCategoryPath(item)}
+      href={AppRoutes.getSpecifedCategoryPath(item) + location.search}
       passHref
     >
       {item}
@@ -72,24 +72,17 @@ export const Sidebar: FC<SidebarProps> = ({
     </ListGroup.Item>
   ));
 
-  const goToQueryStringHref = (query: string, value: string) => {
-    const url = new URL(location.href);
-    url.searchParams.set(`${query}`, `${value}`);
-    history.pushState({}, '', url);
-  };
-
   const handleRangeSlider = (e: RangeSliderValues) => {
-    const url = new URL(location.href);
     if (onSidebarFilter.lowerMoneyValueFilter !== e.min) {
-      if (url.searchParams.get('filterPriceLow') !== e.min.toString()) {
+      if (getParam.filterPriceLow !== e.min.toString()) {
         onSidebarFilter.onLowerMoneyValueFilterChange(e.min);
-        goToQueryStringHref('filterPriceLow', e.min.toString());
+        setParam('filterPriceLow', e.min.toString());
       }
     }
     if (onSidebarFilter.higherMoneyValueFilter !== e.max) {
-      if (url.searchParams.get('filterPriceHigh') !== e.max.toString()) {
+      if (getParam.filterPriceHigh !== e.max.toString()) {
         onSidebarFilter.onHigherMoneyValueFilterChange(e.max);
-        goToQueryStringHref('filterPriceHigh', e.max.toString());
+        setParam('filterPriceHigh', e.max.toString());
       }
     }
   };
@@ -115,10 +108,7 @@ export const Sidebar: FC<SidebarProps> = ({
           onSidebarFilter.onAvailabilityFilterChange(
             !onSidebarFilter.availability
           );
-          goToQueryStringHref(
-            'availability',
-            (!onSidebarFilter.availability).toString()
-          );
+          setParam('availability', (!onSidebarFilter.availability).toString());
         }}
         checked={onSidebarFilter.availability}
       />

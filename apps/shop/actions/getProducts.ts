@@ -1,14 +1,15 @@
-import { REVALIDATE_TIME } from '@lopi-2/common';
-import { ProductsResponse } from '../types/ProductsResponse';
-import {
-  SortType,
-  SortOrder,
-} from '../app/components/Categories/CategoriesEnums';
 import {
   DEFAULT_PAGE_SIZE,
   INITIAL_CATEGORY_UUID,
   INITIAL_CURRENT_PAGE,
 } from '../app/components/Categories/CategoriesVariables';
+import {
+  SortOrder,
+  SortType,
+} from '../app/components/Categories/CategoriesEnums';
+
+import { ProductsResponse } from '../types/ProductsResponse';
+import { REVALIDATE_TIME } from '@lopi-2/common';
 
 export async function getProducts(
   size = DEFAULT_PAGE_SIZE,
