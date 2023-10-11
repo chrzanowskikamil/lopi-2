@@ -3,9 +3,7 @@ import * as ErrorTypes from '../types/ApiErrors';
 import { FetchedCategoryResponse } from '../types/FetchedCategoryResponse';
 import { REVALIDATE_TIME } from '@lopi-2/common';
 
-export async function getCategoryUUIDByName(
-  categoryName: string
-): Promise<string | undefined> {
+export async function getCategories(): Promise<FetchedCategoryResponse[]> {
   try {
     const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
     if (!apiUrl) throw new Error(ErrorTypes.ENVIROMENT_ERROR);
@@ -24,11 +22,7 @@ export async function getCategoryUUIDByName(
       throw new Error(ErrorTypes.API_DATA_ERROR);
     }
 
-    const categoryUUID = allCategories.find(
-      (category) => category.name === `${categoryName}`
-    )?.uid;
-
-    return categoryUUID;
+    return allCategories;
   } catch (error: unknown) {
     if (error instanceof TypeError) {
       console.error(ErrorTypes.API_CONNECTION_ERROR);

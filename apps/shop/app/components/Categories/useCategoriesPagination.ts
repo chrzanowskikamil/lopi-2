@@ -10,7 +10,7 @@ export const loadMoreProducts = async (
     allProducts: Product[];
     onShowMore: (allProducts: Product[], pageNumber: number) => void;
   },
-  categoryUUID: string
+  categoryUUID?: string
 ) => {
   const nextPage = onLoadMoreProducts.currentPage + 1;
 

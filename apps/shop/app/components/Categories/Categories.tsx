@@ -7,6 +7,7 @@ import { SortOrder, SortParams, SortType } from './CategoriesEnums';
 
 import { Breadcrumbs } from '@lopi-2/common';
 import { CrumbsFactory } from '@lopi-2/common';
+import { FetchedCategoryResponse } from '../../../../shop/types/FetchedCategoryResponse';
 import { ProductsDisplay } from '../Products/ProductsDisplay/ProductsDisplay';
 import { ProductsResponse } from '../../../../shop/types/ProductsResponse';
 import { Sidebar } from './components/Sidebar/Sidebar';
@@ -18,9 +19,9 @@ import { useCategoriesReducer } from './useCategoriesReducer';
 
 interface CategoriesProps {
   title: string;
-  content: string[];
+  content: FetchedCategoryResponse[];
   products: ProductsResponse;
-  categoryUUID: string;
+  categoryUUID?: string;
 }
 
 export const Categories: FC<CategoriesProps> = ({
@@ -96,7 +97,7 @@ export const Categories: FC<CategoriesProps> = ({
           <Sidebar
             onSidebarFilter={categoriesReducer.onSidebarFilter}
             activeCategory={title}
-            list={content}
+            content={content}
           />
         </Col>
         <Col xl={10}>

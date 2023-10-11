@@ -1,22 +1,22 @@
 'use client';
 
-import styles from './Sidebar.module.scss';
 import { Badge, Form, ListGroup } from 'react-bootstrap';
-
-import { FC } from 'react';
-import Link from 'next/link';
-
+import { FC, useEffect } from 'react';
 import MultiRangeSlider, {
   RangeSliderValues,
 } from '../MultiRangeSlider/MultiRangeSlider';
-import { useState } from 'react';
-
 import {
   THE_HIGHEST_MONEY_VALUE,
   THE_LOWEST_MONEY_VALUE,
 } from '../../CategoriesVariables';
-import { useSearchParams } from '../../../../hooks/useSearchParams';
+
 import { AppRoutes } from '@lopi-2/common';
+import { FetchedCategoryResponse } from '../../../../../../shop/types/FetchedCategoryResponse';
+import Link from 'next/link';
+import { getCategoryQuantityByUUID } from '../../../../../../shop/actions/getCategoryQuantityByUUID';
+import styles from './Sidebar.module.scss';
+import { useSearchParams } from '../../../../hooks/useSearchParams';
+import { useState } from 'react';
 
 interface SidebarProps {
   onSidebarFilter: {
@@ -28,16 +28,34 @@ interface SidebarProps {
     onHigherMoneyValueFilterChange: (param: number) => void;
   };
   activeCategory: string;
-  list: string[];
+  content: FetchedCategoryResponse[];
 }
+type allCategoriesAndCoutArrayTypes = {
+  count: number;
+}[];
 
 export const Sidebar: FC<SidebarProps> = ({
   onSidebarFilter,
   activeCategory,
-  list,
+  content,
 }) => {
   const [setup, setSetup] = useState<boolean>();
   const { getParam, setParam } = useSearchParams();
+  const [allCategoriesAndCoutArray, setAllCategoriesAndCountArray] =
+    useState<allCategoriesAndCoutArrayTypes>();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = [];
+      for (let i = 0; i < content.length; i++) {
+        const number = await getCategoryQuantityByUUID(content[i].uid);
+        data.push({ count: number });
+      }
+      setAllCategoriesAndCountArray(data);
+    };
+
+    fetchData();
+  }, [content]);
 
   const setupFunction = () => {
     if (getParam.availability === 'false') {
@@ -56,18 +74,20 @@ export const Sidebar: FC<SidebarProps> = ({
   const getBadgeClassName = (item: string) =>
     activeCategory === item ? styles.activeBadge : styles.badge;
 
-  const renderedList = list.map((item) => (
+  const renderedList = content.map((item, i) => (
     <ListGroup.Item
       active={false}
-      className={getItemClassName(item)}
-      key={item}
+      className={getItemClassName(item.name)}
+      key={item.name}
       as={Link}
-      href={AppRoutes.getSpecifedCategoryPath(item) + location.search}
+      href={AppRoutes.getSpecifedCategoryPath(item.name) + location.search}
       passHref
     >
-      {item}
-      <Badge bg="none" className={getBadgeClassName(item)}>
-        3
+      {item.name}
+      <Badge bg="none" className={getBadgeClassName(item.name)}>
+        {allCategoriesAndCoutArray !== undefined
+          ? allCategoriesAndCoutArray[i].count
+          : '?'}
       </Badge>
     </ListGroup.Item>
   ));
