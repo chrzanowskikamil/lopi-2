@@ -91,8 +91,7 @@ export const useCategoriesReducer = ({ content }: { content: Product[] }) => {
   const { getParam } = useSearchParams();
 
   const stringToBoolan = (arg: string): boolean => {
-    if (arg === 'true') return true;
-    else return false;
+    return arg === 'true';
   };
 
   const initialState = {
