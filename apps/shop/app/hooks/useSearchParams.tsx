@@ -1,6 +1,6 @@
+import { SearchParamTypes } from './AppSearchParams';
 import { SearchParams } from './AppSearchParams';
 import { useSearchParams as nextSearchParams } from 'next/navigation';
-import { searchParamTypes } from './AppSearchParams';
 
 export const useSearchParams = () => {
   const searchParams = nextSearchParams();
@@ -12,7 +12,7 @@ export const useSearchParams = () => {
     filterPriceHigh: searchParams.get(SearchParams.FILTER_PRICE_HIGH),
   };
 
-  const setParam = (name: searchParamTypes, value: string) => {
+  const setParam = (name: SearchParamTypes, value: string) => {
     const url = new URL(location.href);
     url.searchParams.set(name, value);
     history.pushState({}, '', url);
