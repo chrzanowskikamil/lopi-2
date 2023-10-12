@@ -18,6 +18,7 @@ export const loadMoreProducts = async (
     sortOrder: onLoadMoreProducts.sortType,
     ascending: onLoadMoreProducts.sortOrder,
   });
+
   if (newProducts !== undefined) {
     onLoadMoreProducts.onShowMore(
       [...onLoadMoreProducts.allProducts, ...newProducts.content],
