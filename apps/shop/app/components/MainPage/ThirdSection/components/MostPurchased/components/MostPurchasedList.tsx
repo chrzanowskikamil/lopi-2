@@ -3,14 +3,14 @@
 import { Container, Row } from 'react-bootstrap';
 
 import { FC } from 'react';
-import { Product } from '../../../../../../shop/types/ProductsResponse';
-import ProductTileCol from '../../../Products/components/tileShop/ProductTileCol';
+import { Product } from '../../../../../../../types/ProductsResponse';
+import ProductTileCol from '../../../../../Products/components/tileShop/ProductTileCol';
 
-type MostPurchasedTypes = {
+type MostPurchasedListTypes = {
   productList: Product[];
 };
 
-const MostPurchased: FC<MostPurchasedTypes> = ({ productList }) => {
+const MostPurchasedList: FC<MostPurchasedListTypes> = ({ productList }) => {
   const preparedProductList = () => {
     const pickedProductList = [];
     for (let i = 0; i <= 3; i++) {
@@ -33,4 +33,4 @@ const MostPurchased: FC<MostPurchasedTypes> = ({ productList }) => {
   );
 };
 
-export default MostPurchased;
+export default MostPurchasedList;

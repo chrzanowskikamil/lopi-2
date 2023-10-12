@@ -1,13 +1,20 @@
 'use client';
 
 import { Container, Row } from 'react-bootstrap';
-
-import { ReassuranceBrick } from './ReassuranceBrick';
+import Image from 'next/image';
+import { ReassuranceBrick } from './components/ReassuranceBrick';
+import style from '../../mostPurchased.module.scss';
+import bgCoffeCheriesBottom from '../../../../../../../assets/PNG/thirdsection/bg-coffee-cheries-bottom.png';
 
 export const ReassuranceSection = () => {
   return (
     <>
-      <Container>
+      <Container className={style.brickContainer}>
+        <Image
+          src={bgCoffeCheriesBottom}
+          alt={'Background picture. Coffee beans. Coffee cherries.'}
+          className={style.bgPictureBottom}
+        />
         <Row>
           <ReassuranceBrick
             icon={<i className="bi bi-truck"></i>}

@@ -1,0 +1,104 @@
+@use '../../../../../styles/shop-variables' as var;
+
+$spacer: var.$spacers;
+$theme-colors: var.$theme-colors;
+$border-widths: var.$border-widths;
+$breakpoint: var.$grid-breakpoints;
+
+.mostPurchased {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+  .bgPictureUpper {
+    display: flex;
+    position: absolute;
+    transform: translateX(-50%);
+    margin-left: 50%;
+  }
+
+  .bgPictureBottom {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    align-items: flex-end;
+    transform: translate(-50%, 0);
+    z-index: 2;
+    margin-left: 50%;
+    // @media (min-width: map-get($breakpoint, xxxs)) {
+    //   transform: translate(-50%, -310%);
+    // }
+    // @media (min-width: map-get($breakpoint, xxs)) {
+    //   transform: translate(-50%, -200%);
+    // }
+    // @media (min-width: map-get($breakpoint, xs)) {
+    //   transform: translate(-50%, -120%);
+    // }
+    // @media (min-width: map-get($breakpoint, sm)) {
+    //   transform: translate(-50%, -90%);
+    // }
+    // @media (min-width: map-get($breakpoint, md)) {
+    //   transform: translate(-50%, -23%);
+    // }
+    // @media (min-width: map-get($breakpoint, lg)) {
+    //   transform: translate(-50%, -10%);
+    // }
+    // @media (min-width: map-get($breakpoint, xl)) {
+    //   transform: translate(-50%, -2%);
+    // }
+  }
+
+  .title {
+    position: relative;
+    padding-top: map-get($spacer, 6);
+    padding-bottom: map-get($spacer, 5);
+    text-align: center;
+  }
+
+  .buttonContainer {
+    width: 100%;
+
+    .button {
+      transform: translateX(-50%);
+      margin-top: map-get($spacer, 6);
+      margin-left: 50%;
+      border: map-get($border-widths, 2) solid
+        map-get($theme-colors, lopi-brown);
+      background-color: map-get($theme-colors, lopi-white);
+      width: map-get($spacer, 75);
+      color: map-get($theme-colors, lopi-brown);
+      font-weight: 700;
+    }
+  }
+}
+
+.brickContainer {
+  margin-top: map-get($spacer, 6);
+
+  .brick {
+    display: flex;
+    align-items: center;
+    opacity: 100%;
+    z-index: 2;
+    margin: map-get($spacer, 3);
+    box-shadow: 0px 4px 16px 10px #0000000d;
+    background-color: map-get($theme-colors, lopi-white);
+    height: 160px;
+
+    .iconBrick {
+      color: map-get($theme-colors, lopi-orange);
+      font-size: 40px;
+    }
+
+    .textBrick {
+      padding-left: map-get($spacer, 3);
+
+      .titleBrick {
+        color: map-get($theme-colors, lopi-dark-green);
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import { Col } from 'react-bootstrap';
 import { FC } from 'react';
-import style from '../thirdSection.module.scss';
+import style from '../../../mostPurchased.module.scss';
 
 type ReassuranceBrickTypes = {
   icon: JSX.Element;
