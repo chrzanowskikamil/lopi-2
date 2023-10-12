@@ -1,23 +1,46 @@
 import {
+  Ascending,
+  SortOrder,
+} from '../app/components/Categories/CategoriesEnums';
+import {
   DEFAULT_PAGE_SIZE,
-  INITIAL_CATEGORY_UUID,
   INITIAL_CURRENT_PAGE,
 } from '../app/components/Categories/CategoriesVariables';
-import {
-  SortOrder,
-  SortType,
-} from '../app/components/Categories/CategoriesEnums';
 
 import { ProductsResponse } from '../types/ProductsResponse';
 import { REVALIDATE_TIME } from '@lopi-2/common';
 
+type GetProductType = {
+  size?: number;
+  page?: number;
+  sortOrder?: string;
+  ascending?: string;
+};
+
 export async function getProducts(
-  categoryUUID = INITIAL_CATEGORY_UUID,
-  size = DEFAULT_PAGE_SIZE,
-  page = INITIAL_CURRENT_PAGE,
-  sortType = SortType.NAME,
-  sortOrder = SortOrder.ASCENDING
+  categoryUUID: string,
+  possibleSearchOptions: GetProductType = {}
 ): Promise<ProductsResponse> {
+  const {
+    size = DEFAULT_PAGE_SIZE,
+    page = INITIAL_CURRENT_PAGE,
+    sortOrder = SortOrder.NAME,
+    ascending = Ascending.ASCENDING,
+  } = possibleSearchOptions;
+
+  const queryParams = new URLSearchParams({
+    pageIndex: String(page),
+    pageSize: String(size),
+    orderColumn: String(sortOrder),
+    ascending: String(ascending),
+  });
+
+  const url = `
+  ${
+    process.env.NEXT_PUBLIC_API_BASE_URL
+  }products/by-category/${categoryUUID}/sorted?${queryParams.toString()}
+    `;
+
   const isSyntaxError = (error: unknown) => {
     if (error instanceof Error) {
       if (
@@ -30,11 +53,7 @@ export async function getProducts(
   };
 
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}products/by-category/${categoryUUID}/sorted?pageIndex=${page}&pageSize=${size}&orderColumn=${sortType}&ascending=${sortOrder}
-      `,
-      { next: { revalidate: REVALIDATE_TIME } }
-    );
+    const res = await fetch(url, { next: { revalidate: REVALIDATE_TIME } });
 
     if (!res.ok) throw new Error(`Server responsed with ${res.statusText}`);
 

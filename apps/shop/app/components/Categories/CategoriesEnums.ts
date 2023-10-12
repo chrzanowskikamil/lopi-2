@@ -1,9 +1,9 @@
-export const SortType = {
+export const SortOrder = {
   PRICE: 'regularPrice',
   NAME: 'name',
 };
 
-export const SortOrder = {
+export const Ascending = {
   ASCENDING: 'true',
   DESCENDING: 'false',
 };

@@ -1,9 +1,9 @@
 'use client';
 
+import { Ascending, SortOrder, SortParams } from './CategoriesEnums';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { DEFAULT_PAGE_SIZE, INITIAL_CURRENT_PAGE } from './CategoriesVariables';
 import { FC, useCallback, useMemo } from 'react';
-import { SortOrder, SortParams, SortType } from './CategoriesEnums';
 
 import { Breadcrumbs } from '@lopi-2/common';
 import { CrumbsFactory } from '@lopi-2/common';
@@ -19,14 +19,14 @@ import { useCategoriesReducer } from './useCategoriesReducer';
 
 interface CategoriesProps {
   title: string;
-  content: FetchedCategoryResponse[];
+  categories: FetchedCategoryResponse[];
   products: ProductsResponse;
-  categoryUUID?: string;
+  categoryUUID: string;
 }
 
 export const Categories: FC<CategoriesProps> = ({
   title,
-  content,
+  categories,
   products: initalProducts,
   categoryUUID,
 }) => {
@@ -36,35 +36,32 @@ export const Categories: FC<CategoriesProps> = ({
     async (sortParam: string) => {
       const sortParams = sortParam;
 
-      let sortType = SortType.PRICE;
-      let sortOrder = SortOrder.ASCENDING;
+      let orderColumn = SortOrder.PRICE;
+      let ascending = Ascending.ASCENDING;
 
       if (sortParams === SortParams.PRICE_ASC) {
-        sortType = SortType.PRICE;
-        sortOrder = SortOrder.ASCENDING;
+        orderColumn = SortOrder.PRICE;
+        ascending = Ascending.ASCENDING;
       } else if (sortParams === SortParams.PRICE_DSC) {
-        sortType = SortType.PRICE;
-        sortOrder = SortOrder.DESCENDING;
+        orderColumn = SortOrder.PRICE;
+        ascending = Ascending.DESCENDING;
       } else if (sortParams === SortParams.PRODUCT_NAME_ASC) {
-        sortType = SortType.NAME;
-        sortOrder = SortOrder.ASCENDING;
+        orderColumn = SortOrder.NAME;
+        ascending = Ascending.ASCENDING;
       } else if (sortParams === SortParams.PRODUCT_NAME_DSC) {
-        sortType = SortType.NAME;
-        sortOrder = SortOrder.DESCENDING;
+        orderColumn = SortOrder.NAME;
+        ascending = Ascending.DESCENDING;
       }
 
-      const newSort = await getProducts(
-        categoryUUID,
-        DEFAULT_PAGE_SIZE,
-        INITIAL_CURRENT_PAGE,
-        sortType,
-        sortOrder
-      );
+      const newSort = await getProducts(categoryUUID, {
+        sortOrder: orderColumn,
+        ascending: ascending,
+      });
 
       categoriesReducer.onProductsSort(
         [...newSort.content],
-        sortType,
-        sortOrder
+        orderColumn,
+        ascending
       );
     },
     [categoriesReducer, categoryUUID]
@@ -97,7 +94,7 @@ export const Categories: FC<CategoriesProps> = ({
           <Sidebar
             onSidebarFilter={categoriesReducer.onSidebarFilter}
             activeCategory={title}
-            content={content}
+            categories={categories}
           />
         </Col>
         <Col xl={10}>

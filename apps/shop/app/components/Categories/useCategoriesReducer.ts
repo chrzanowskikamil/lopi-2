@@ -1,9 +1,9 @@
+import { Ascending, SortOrder, SortParams } from './CategoriesEnums';
 import {
   INITIAL_CURRENT_PAGE,
   THE_HIGHEST_MONEY_VALUE,
   THE_LOWEST_MONEY_VALUE,
 } from './CategoriesVariables';
-import { SortOrder, SortParams, SortType } from './CategoriesEnums';
 
 import { Product } from '../../../types/ProductsResponse';
 import { useReducer } from 'react';
@@ -99,13 +99,13 @@ export const useCategoriesReducer = ({ content }: { content: Product[] }) => {
     sortType:
       getParam.sort === SortParams.PRICE_ASC ||
       getParam.sort === SortParams.PRICE_DSC
-        ? SortType.PRICE
-        : SortType.NAME,
+        ? SortOrder.PRICE
+        : SortOrder.NAME,
     sortOrder:
       getParam.sort === SortParams.PRODUCT_NAME_ASC ||
       getParam.sort === SortParams.PRODUCT_NAME_DSC
-        ? SortOrder.ASCENDING
-        : SortOrder.DESCENDING,
+        ? Ascending.ASCENDING
+        : Ascending.DESCENDING,
     currentPage: INITIAL_CURRENT_PAGE,
     lowerMoneyValueFilter:
       getParam.filterPriceLow === null

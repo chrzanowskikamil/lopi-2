@@ -1,5 +1,6 @@
 'use client';
 
+import { AppRoutes, Countable } from '@lopi-2/common';
 import { Badge, Form, ListGroup } from 'react-bootstrap';
 import { FC, useEffect } from 'react';
 import MultiRangeSlider, {
@@ -10,7 +11,6 @@ import {
   THE_LOWEST_MONEY_VALUE,
 } from '../../CategoriesVariables';
 
-import { AppRoutes } from '@lopi-2/common';
 import { FetchedCategoryResponse } from '../../../../../../shop/types/FetchedCategoryResponse';
 import Link from 'next/link';
 import { getCategoryQuantityByUUID } from '../../../../../../shop/actions/getCategoryQuantityByUUID';
@@ -28,34 +28,31 @@ interface SidebarProps {
     onHigherMoneyValueFilterChange: (param: number) => void;
   };
   activeCategory: string;
-  content: FetchedCategoryResponse[];
+  categories: FetchedCategoryResponse[];
 }
-type allCategoriesAndCoutArrayTypes = {
-  count: number;
-}[];
 
 export const Sidebar: FC<SidebarProps> = ({
   onSidebarFilter,
   activeCategory,
-  content,
+  categories,
 }) => {
   const [setup, setSetup] = useState<boolean>();
   const { getParam, setParam } = useSearchParams();
   const [allCategoriesAndCoutArray, setAllCategoriesAndCountArray] =
-    useState<allCategoriesAndCoutArrayTypes>();
+    useState<Countable>();
 
   useEffect(() => {
     const fetchData = async () => {
       const data = [];
-      for (let i = 0; i < content.length; i++) {
-        const number = await getCategoryQuantityByUUID(content[i].uid);
+      for (let i = 0; i < categories.length; i++) {
+        const number = await getCategoryQuantityByUUID(categories[i].uid);
         data.push({ count: number });
       }
       setAllCategoriesAndCountArray(data);
     };
 
     fetchData();
-  }, [content]);
+  }, [categories]);
 
   const setupFunction = () => {
     if (getParam.availability === 'false') {
@@ -74,7 +71,7 @@ export const Sidebar: FC<SidebarProps> = ({
   const getBadgeClassName = (item: string) =>
     activeCategory === item ? styles.activeBadge : styles.badge;
 
-  const renderedList = content.map((item, i) => (
+  const renderedList = categories.map((item, i) => (
     <ListGroup.Item
       active={false}
       className={getItemClassName(item.name)}
