@@ -2,7 +2,6 @@
 
 import { Ascending, SortOrder, SortParams } from './CategoriesEnums';
 import { Button, Col, Container, Row } from 'react-bootstrap';
-import { DEFAULT_PAGE_SIZE, INITIAL_CURRENT_PAGE } from './CategoriesVariables';
 import { FC, useCallback, useMemo } from 'react';
 
 import { Breadcrumbs } from '@lopi-2/common';

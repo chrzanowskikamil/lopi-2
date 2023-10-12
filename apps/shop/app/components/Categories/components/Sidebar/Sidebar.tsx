@@ -36,9 +36,10 @@ export const Sidebar: FC<SidebarProps> = ({
   activeCategory,
   categories,
 }) => {
-  const [setup, setSetup] = useState<boolean>();
   const { getParam, setParam } = useSearchParams();
-  const [allCategoriesAndCoutArray, setAllCategoriesAndCountArray] =
+
+  const [setup, setSetup] = useState<boolean>();
+  const [productCountInCategoriesArray, setProductCountInCategoriesArray] =
     useState<Countable>();
 
   useEffect(() => {
@@ -48,7 +49,7 @@ export const Sidebar: FC<SidebarProps> = ({
         const number = await getCategoryQuantityByUUID(categories[i].uid);
         data.push({ count: number });
       }
-      setAllCategoriesAndCountArray(data);
+      setProductCountInCategoriesArray(data);
     };
 
     fetchData();
@@ -82,8 +83,8 @@ export const Sidebar: FC<SidebarProps> = ({
     >
       {item.name}
       <Badge bg="none" className={getBadgeClassName(item.name)}>
-        {allCategoriesAndCoutArray !== undefined
-          ? allCategoriesAndCoutArray[i].count
+        {productCountInCategoriesArray !== undefined
+          ? productCountInCategoriesArray[i].count
           : '?'}
       </Badge>
     </ListGroup.Item>
