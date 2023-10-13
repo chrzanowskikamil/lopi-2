@@ -1,6 +1,6 @@
 'use client';
 
-import { AppRoutes, Countable } from '@lopi-2/common';
+import { AppRoutes, CountableArray } from '@lopi-2/common';
 import { Badge, Form, ListGroup } from 'react-bootstrap';
 import { FC, useEffect } from 'react';
 import MultiRangeSlider, {
@@ -40,7 +40,7 @@ export const Sidebar: FC<SidebarProps> = ({
 
   const [setup, setSetup] = useState<boolean>();
   const [productCountInCategoriesArray, setProductCountInCategoriesArray] =
-    useState<Countable>();
+    useState<CountableArray>();
 
   useEffect(() => {
     const fetchData = async () => {

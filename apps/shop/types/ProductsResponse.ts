@@ -30,30 +30,25 @@ export interface Product {
   ];
 }
 export interface ProductsResponse {
-  content: Product[];
+  totalPages: number;
+  totalProducts: number;
   pageable: {
+    pageNumber: number;
+    pageSize: number;
+    offset: number;
     sort: {
       sorted: boolean;
       empty: boolean;
       unsorted: boolean;
     };
-    pageNumber: number;
-    pageSize: number;
-    offset: number;
     paged: boolean;
     unpaged: boolean;
   };
-  totalPages: number;
-  totalProducts: number;
-  last: boolean;
   size: number;
+  content: Product[];
   number: number;
-  sort: {
-    sorted: boolean;
-    empty: boolean;
-    unsorted: boolean;
-  };
-  numberOfElements: number;
   first: boolean;
+  last: boolean;
+  numberOfElements: number;
   empty: boolean;
 }

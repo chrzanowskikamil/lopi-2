@@ -1,1 +1,1 @@
-export * from './Countable';
+export * from './CountableArray';

@@ -1,12 +1,13 @@
 'use client';
 
-import { Ascending, SortOrder, SortParams } from './CategoriesEnums';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { FC, useCallback, useMemo } from 'react';
+import { SortOrder, SortParams } from './CategoriesEnums';
 
 import { Breadcrumbs } from '@lopi-2/common';
 import { CrumbsFactory } from '@lopi-2/common';
 import { FetchedCategoryResponse } from '../../../../shop/types/FetchedCategoryResponse';
+import { INITIAL_ASCENDING_VALUE } from './CategoriesVariables';
 import { ProductsDisplay } from '../Products/ProductsDisplay/ProductsDisplay';
 import { ProductsResponse } from '../../../../shop/types/ProductsResponse';
 import { Sidebar } from './components/Sidebar/Sidebar';
@@ -36,20 +37,20 @@ export const Categories: FC<CategoriesProps> = ({
       const sortParams = sortParam;
 
       let orderColumn = SortOrder.PRICE;
-      let ascending = Ascending.ASCENDING;
+      let ascending = INITIAL_ASCENDING_VALUE;
 
       if (sortParams === SortParams.PRICE_ASC) {
         orderColumn = SortOrder.PRICE;
-        ascending = Ascending.ASCENDING;
+        ascending = true;
       } else if (sortParams === SortParams.PRICE_DSC) {
         orderColumn = SortOrder.PRICE;
-        ascending = Ascending.DESCENDING;
+        ascending = false;
       } else if (sortParams === SortParams.PRODUCT_NAME_ASC) {
         orderColumn = SortOrder.NAME;
-        ascending = Ascending.ASCENDING;
+        ascending = true;
       } else if (sortParams === SortParams.PRODUCT_NAME_DSC) {
         orderColumn = SortOrder.NAME;
-        ascending = Ascending.DESCENDING;
+        ascending = false;
       }
 
       const newSort = await getProducts(categoryUUID, {

@@ -3,7 +3,7 @@ import { getProducts } from '../../../../shop/actions/getProducts';
 
 export const loadMoreProducts = async (
   onLoadMoreProducts: {
-    sortOrder: string;
+    sortOrder: boolean;
     sortType: string;
     currentPage: number;
     allProducts: Product[];

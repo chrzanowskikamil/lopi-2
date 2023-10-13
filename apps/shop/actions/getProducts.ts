@@ -1,20 +1,18 @@
 import {
-  Ascending,
-  SortOrder,
-} from '../app/components/Categories/CategoriesEnums';
-import {
   DEFAULT_PAGE_SIZE,
+  INITIAL_ASCENDING_VALUE,
   INITIAL_CURRENT_PAGE,
 } from '../app/components/Categories/CategoriesVariables';
 
 import { ProductsResponse } from '../types/ProductsResponse';
 import { REVALIDATE_TIME } from '@lopi-2/common';
+import { SortOrder } from '../app/components/Categories/CategoriesEnums';
 
 type GetProductType = {
   size?: number;
   page?: number;
   sortOrder?: string;
-  ascending?: string;
+  ascending?: boolean;
 };
 
 export async function getProducts(
@@ -25,7 +23,7 @@ export async function getProducts(
     size = DEFAULT_PAGE_SIZE,
     page = INITIAL_CURRENT_PAGE,
     sortOrder = SortOrder.NAME,
-    ascending = Ascending.ASCENDING,
+    ascending = INITIAL_ASCENDING_VALUE,
   } = possibleSearchOptions;
 
   const queryParams = new URLSearchParams({

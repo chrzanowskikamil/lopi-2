@@ -3,11 +3,6 @@ export const SortOrder = {
   NAME: 'name',
 };
 
-export const Ascending = {
-  ASCENDING: 'true',
-  DESCENDING: 'false',
-};
-
 export const SortParams = {
   PRICE_ASC: 'Cena rosnaca',
   PRICE_DSC: 'Cena malejaca',
