@@ -10,18 +10,15 @@ $breakpoint: var.$grid-breakpoints;
   display: flex;
   position: relative;
   padding-top: map-get($spacer, 5);
-  //   height: 952px;
+
   .bgPicture {
     display: flex;
     position: absolute;
     bottom: 0;
     transform: translateX(-50%);
     margin-left: 50%;
-    // padding-top: 500px;
     width: 100%;
     max-width: 1440px;
-    @media (min-width: map-get($breakpoint, md)) {
-    }
   }
 
   .contentContainer {
@@ -73,11 +70,10 @@ $breakpoint: var.$grid-breakpoints;
   .bannerPictureContainer {
     display: flex;
     align-content: flex-end;
+
     .bannerPicture {
-      //   width: 100%;
       min-width: 300px;
       max-width: 720px;
-      //   height: 100%;
       min-height: 300px;
       max-height: 800px;
     }
