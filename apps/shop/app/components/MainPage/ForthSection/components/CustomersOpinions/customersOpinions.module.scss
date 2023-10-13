@@ -1,0 +1,35 @@
+@use '../../../../../styles/shop-variables' as var;
+
+$theme-colors: var.$theme-colors;
+$spacer: var.$spacers;
+
+$bgImageHeigth: 824px;
+
+.customersOpinions {
+  display: flex;
+  justify-content: center;
+  .bgImage {
+    max-height: $bgImageHeigth;
+  }
+
+  .titleArea {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    padding-top: map-get($spacer, 53);
+    text-align: center;
+
+    .title {
+      color: map-get($theme-colors, lopi-dark-green);
+      font-weight: var.$font-weight-bold;
+      font-size: var.$font-size-xxl;
+      line-height: var.$line-height-lg;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      color: map-get($theme-colors, lopi-green);
+      line-height: var.$line-height-base;
+    }
+  }
+}

@@ -15,7 +15,8 @@ $h1-font-size: 1.875rem;
 //lineheights:
 $line-height-small: 1;
 $line-height-base: 1.5;
-$font-size-sm: $font-size-base * 0.875;
+$line-height-lg: 2;
+$line-height-xl: 3;
 
 //font-weigths:
 $font-weight-normal: 400;
@@ -46,8 +47,7 @@ $theme-colors: (
   'lopi-grey': #c9cdc7,
   'lopi-grey-light': #d9d9d9,
   'lopi-grey-dark': #707070,
-
-  'lopi-blue-lighth': #05f2f2,
+  'lopi-blue-light': #05f2f2,
   //$backgroud-light: #f2f2f2;
 );
 
