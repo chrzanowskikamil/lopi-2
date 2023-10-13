@@ -46,6 +46,7 @@ $productFontSize: 15px;
     .tileStatus {
       position: absolute;
       margin: map-get($spacers, 3) 0 0 map-get($spacers, 3);
+
       background-color: #05f2f2;
       width: 60px;
       color: white;
@@ -80,6 +81,7 @@ $productFontSize: 15px;
 }
 
 .buttonToCart:disabled {
+  opacity: 100%;
   border-color: map-get($palette, lopi-grey);
   background-color: map-get($palette, lopi-grey-light);
   color: map-get($palette, lopi-grey);

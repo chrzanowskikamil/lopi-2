@@ -1,0 +1,88 @@
+@use '../../../../../styles/shop-variables' as var;
+
+$palette: var.$theme-colors;
+$spacer: var.$spacers;
+$theme-colors: var.$theme-colors;
+$border-widths: var.$border-widths;
+$breakpoint: var.$grid-breakpoints;
+
+$max-bgPicture-width: 1440px;
+$button-width: 140px;
+$max-bannerPicture-width: 720px;
+$max-bannerPicture-height: 800px;
+$min-bannerPicture-width: 300px;
+$min-bannerPicture-height: 300px;
+
+.buyNewBilboard {
+  display: flex;
+  position: relative;
+  padding-top: map-get($spacer, 5);
+
+  .bgPicture {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    transform: translateX(-50%);
+    margin-left: 50%;
+    width: 100%;
+    max-width: $max-bgPicture-width;
+  }
+
+  .contentContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: map-get($spacer, 6);
+    width: 100%;
+
+    .title {
+      color: map-get($theme-colors, lopi-dark-green);
+      font-weight: var.$font-weight-bold;
+      font-size: var.$font-size-xxxl;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      padding-top: map-get($spacer, 2);
+      color: map-get($theme-colors, lopi-dark-green);
+    }
+
+    .description {
+      padding-top: map-get($spacer, 4);
+      color: map-get($theme-colors, lopi-green);
+    }
+
+    .button {
+      margin-top: map-get($spacer, 7);
+      border: var.$btn-border-width-sm solid map-get($palette, lopi-orange);
+      border-radius: var.$border-radius;
+      background-color: map-get($palette, lopi-brown);
+      width: $button-width;
+      height: var.$btn-height;
+      color: map-get($palette, lopi-orange);
+      text-decoration: none;
+
+      &:hover {
+        cursor: pointer;
+        background-color: map-get($palette, lopi-black);
+      }
+
+      > a {
+        color: map-get($palette, lopi-orange);
+        text-decoration: none;
+      }
+    }
+  }
+
+  .bannerPictureContainer {
+    display: flex;
+    align-content: flex-end;
+
+    .bannerPicture {
+      min-width: $min-bannerPicture-width;
+      max-width: $max-bannerPicture-width;
+      min-height: $min-bannerPicture-height;
+      max-height: $max-bannerPicture-height;
+    }
+  }
+}
