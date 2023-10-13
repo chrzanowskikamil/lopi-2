@@ -1,16 +1,19 @@
 'use client';
 
-import { NavDropdown } from 'react-bootstrap';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { getCategoriesName } from '../../../actions/getCategoriesName';
+
 import { AppRoutes } from '@lopi-2/common';
+import Link from 'next/link';
+import { NavDropdown } from 'react-bootstrap';
+import { getCategories } from '../../../actions/getCategories';
 
 export const CategoryDropdown = () => {
   const [categories, setCategories] = useState<string[]>([]);
 
   useEffect(() => {
-    getCategoriesName().then((res) => setCategories(res));
+    getCategories().then((res) =>
+      setCategories(res.map((category) => category.name))
+    );
   }, []);
 
   return (

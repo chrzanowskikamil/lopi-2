@@ -17,7 +17,7 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({ crumbs, className }) => {
     <div className={className}>
       <Breadcrumb className={styles.breadcrumb}>
         <div className={styles.icon}>
-          <IoHomeOutline />
+          <IoHomeOutline data-testid="home-icon" />
         </div>
         <BreadcrumbsItems crumbs={crumbs} />
       </Breadcrumb>

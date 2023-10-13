@@ -77,6 +77,7 @@ $pallete: shop-variables.$theme-colors;
   justify-content: space-between;
   z-index: 1;
   margin-top: map-get($spacer, 22);
+  margin-bottom: map-get($spacer, 4);
   box-shadow: none;
 
   padding: 0 map-get($spacer, 22);

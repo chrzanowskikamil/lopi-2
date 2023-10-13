@@ -1,20 +1,20 @@
-import { useReducer } from 'react';
-import { Product } from '../../../types/ProductsResponse';
-
 import {
+  INITIAL_CURRENT_PAGE,
   THE_HIGHEST_MONEY_VALUE,
   THE_LOWEST_MONEY_VALUE,
-  INITIAL_CURRENT_PAGE,
 } from './CategoriesVariables';
+import { SortOrder, SortParams } from './CategoriesEnums';
 
-import { SortType, SortOrder } from './CategoriesEnums';
+import { Product } from '../../../types/ProductsResponse';
+import { useReducer } from 'react';
+import { useSearchParams } from '../../hooks/useSearchParams';
 
 export interface CategoriesReducerProps {
   state: StateProps;
   onProductsSort: (
     allProducts: Product[],
     sortType: string,
-    sortOrder: string
+    sortOrder: boolean
   ) => void;
   onShowMore: (allProducts: Product[], pageNumber: number) => void;
   onHigherMoneyValueFilterChange: (higherMoneyValue: number) => void;
@@ -25,7 +25,7 @@ export interface CategoriesReducerProps {
 export interface StateProps {
   higherMoneyValueFilter: number;
   sortType: string;
-  sortOrder: string;
+  sortOrder: boolean;
   currentPage: number;
   lowerMoneyValueFilter: number;
   availability: boolean;
@@ -37,7 +37,7 @@ type ActionProps =
       type: 'on_product_sort';
       allProducts: Product[];
       sortType: string;
-      sortOrder: string;
+      sortOrder: boolean;
     }
   | { type: 'on_show_more'; allProducts: Product[]; pageNumber: number }
   | { type: 'on_higher_money_value_filter_change'; higherMoneyValue: number }
@@ -87,15 +87,38 @@ const categoriesReducer = (state: StateProps, action: ActionProps) => {
   }
 };
 
-export const useCategoriesReducer = ({ products }: { products: Product[] }) => {
+export const useCategoriesReducer = ({ content }: { content: Product[] }) => {
+  const { getParam } = useSearchParams();
+
+  const stringToBoolan = (arg: string): boolean => {
+    return arg === 'true';
+  };
+
   const initialState = {
-    allProducts: products,
-    sortType: SortType.PRICE,
-    sortOrder: SortOrder.ASCENDING,
+    allProducts: content,
+    sortType:
+      getParam.sort === SortParams.PRICE_ASC ||
+      getParam.sort === SortParams.PRICE_DSC
+        ? SortOrder.PRICE
+        : SortOrder.NAME,
+    sortOrder:
+      getParam.sort === SortParams.PRODUCT_NAME_ASC ||
+      getParam.sort === SortParams.PRODUCT_NAME_DSC
+        ? true
+        : false,
     currentPage: INITIAL_CURRENT_PAGE,
-    lowerMoneyValueFilter: THE_LOWEST_MONEY_VALUE,
-    higherMoneyValueFilter: THE_HIGHEST_MONEY_VALUE,
-    availability: true,
+    lowerMoneyValueFilter:
+      getParam.filterPriceLow === null
+        ? THE_LOWEST_MONEY_VALUE
+        : parseInt(getParam.filterPriceLow),
+    higherMoneyValueFilter:
+      getParam.filterPriceHigh === null
+        ? THE_HIGHEST_MONEY_VALUE
+        : parseInt(getParam.filterPriceHigh),
+    availability:
+      getParam.availability === null
+        ? true
+        : stringToBoolan(getParam.availability),
   };
 
   const [state, dispatch] = useReducer(categoriesReducer, initialState);
@@ -103,7 +126,7 @@ export const useCategoriesReducer = ({ products }: { products: Product[] }) => {
   const onProductsSort = (
     allProducts: Product[],
     sortType: string,
-    sortOrder: string
+    sortOrder: boolean
   ) => {
     dispatch({
       type: 'on_product_sort',
