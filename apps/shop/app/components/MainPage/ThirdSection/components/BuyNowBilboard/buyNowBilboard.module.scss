@@ -6,6 +6,13 @@ $theme-colors: var.$theme-colors;
 $border-widths: var.$border-widths;
 $breakpoint: var.$grid-breakpoints;
 
+$max-bgPicture-width: 1440px;
+$button-width: 140px;
+$max-bannerPicture-width: 720px;
+$max-bannerPicture-height: 800px;
+$min-bannerPicture-width: 300px;
+$min-bannerPicture-height: 300px;
+
 .buyNewBilboard {
   display: flex;
   position: relative;
@@ -18,19 +25,19 @@ $breakpoint: var.$grid-breakpoints;
     transform: translateX(-50%);
     margin-left: 50%;
     width: 100%;
-    max-width: 1440px;
+    max-width: $max-bgPicture-width;
   }
 
   .contentContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 100px;
+    padding-bottom: map-get($spacer, 6);
     width: 100%;
 
     .title {
       color: map-get($theme-colors, lopi-dark-green);
-      font-weight: 700;
+      font-weight: var.$font-weight-bold;
       font-size: var.$font-size-xxxl;
       text-transform: uppercase;
     }
@@ -50,7 +57,7 @@ $breakpoint: var.$grid-breakpoints;
       border: var.$btn-border-width-sm solid map-get($palette, lopi-orange);
       border-radius: var.$border-radius;
       background-color: map-get($palette, lopi-brown);
-      width: 140px;
+      width: $button-width;
       height: var.$btn-height;
       color: map-get($palette, lopi-orange);
       text-decoration: none;
@@ -72,10 +79,10 @@ $breakpoint: var.$grid-breakpoints;
     align-content: flex-end;
 
     .bannerPicture {
-      min-width: 300px;
-      max-width: 720px;
-      min-height: 300px;
-      max-height: 800px;
+      min-width: $min-bannerPicture-width;
+      max-width: $max-bannerPicture-width;
+      min-height: $min-bannerPicture-height;
+      max-height: $max-bannerPicture-height;
     }
   }
 }
