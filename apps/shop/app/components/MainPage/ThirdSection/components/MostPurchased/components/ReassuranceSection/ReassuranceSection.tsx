@@ -5,8 +5,27 @@ import Image from 'next/image';
 import { ReassuranceBrick } from './components/ReassuranceBrick';
 import style from '../../mostPurchased.module.scss';
 import bgCoffeCheriesBottom from '../../../../../../../assets/PNG/thirdsection/bg-coffee-cheries-bottom.png';
+import { ReassuranceDataProps } from './reassuranceSectionData';
+import { FC } from 'react';
 
-export const ReassuranceSection = () => {
+type ReassuranceSectionDataProps = {
+  reassuranceData: ReassuranceDataProps[];
+};
+
+export const ReassuranceSection: FC<ReassuranceSectionDataProps> = ({
+  reassuranceData,
+}) => {
+  const displayData = reassuranceData.map((brick, i) => {
+    return (
+      <ReassuranceBrick
+        key={i}
+        icon={brick.icon}
+        title={brick.title}
+        description={brick.description}
+      />
+    );
+  });
+
   return (
     <>
       <Container className={style.brickContainer}>
@@ -15,23 +34,7 @@ export const ReassuranceSection = () => {
           alt={'Background picture. Coffee beans. Coffee cherries.'}
           className={style.bgPictureBottom}
         />
-        <Row>
-          <ReassuranceBrick
-            icon={<i className="bi bi-truck"></i>}
-            title={'szybka i bezpieczna dostawa'}
-            description={'Darmowa dostawa przy zamówieniach powyżej 200 zł'}
-          />
-          <ReassuranceBrick
-            icon={<i className="bi bi-lock"></i>}
-            title={'zakupy bez zmartwień'}
-            description={'Proces płatności jest szybki, łatwy i bezpieczny.'}
-          />
-          <ReassuranceBrick
-            icon={<i className="bi bi-arrow-counterclockwise"></i>}
-            title={'gwarancja zadowolenia'}
-            description={'Możliwość zwrotu lub reklamacji w ciągu 14 dni'}
-          />
-        </Row>
+        <Row>{...displayData}</Row>
       </Container>
     </>
   );

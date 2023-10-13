@@ -3,12 +3,31 @@
 import { Col, Container, Row } from 'react-bootstrap';
 
 import AddToCart from '../../../../Products/components/tileShop/components/AddtoCart';
+import { FC } from 'react';
 import Image from 'next/image';
 import bannerPicture from '../../../../../assets/PNG/thirdsection/bilboard-coffee-packed.png';
 import coffeLeaves from '../../../../../assets/PNG/thirdsection/bg-coffee-leaves.png';
 import style from './buyNowBilboard.module.scss';
 
-export const BuyNowBilboard = () => {
+type BuyNowBilboardProps = {
+  bilboardProduct: { name: string; shortDescription: string; uid: string };
+};
+
+export const BuyNowBilboard: FC<BuyNowBilboardProps> = ({
+  bilboardProduct,
+}) => {
+  let subtitle = '';
+
+  const splitDescriptionSubtitle = () => {
+    const output = bilboardProduct.shortDescription.split('.')[0] + '. ';
+
+    return (subtitle = output);
+  };
+
+  const splitDescriptionDescription = () => {
+    return bilboardProduct.shortDescription.replace(subtitle, '');
+  };
+
   return (
     <>
       <section className={style.buyNewBilboard}>
@@ -21,16 +40,15 @@ export const BuyNowBilboard = () => {
           <Row className={style.contentContainer}>
             <Col xxl={4} md={5} sm={12}>
               <div>
-                <div className={style.title}>ETHIOPIA EMERALD</div>
+                <div className={style.title}>{bilboardProduct.name}</div>
                 <div className={style.subtitle}>
-                  wyjątkowy napój pochodzący z Etiopii
+                  {splitDescriptionSubtitle()}
                 </div>
                 <p className={style.description}>
-                  Ceniona za wyważony smak, bogate ciało i wysoką jakość. To
-                  prawdziwy klejnot w świecie kawy. klejnot w świecie kawy.
+                  {splitDescriptionDescription()}
                 </p>
                 <AddToCart
-                  productUid={'dc8ba2a5-ae58-4494-a429-e59c0eee1617'}
+                  productUid={bilboardProduct.uid}
                   className={style.button}
                   buttonText="KUP TERAZ"
                 />

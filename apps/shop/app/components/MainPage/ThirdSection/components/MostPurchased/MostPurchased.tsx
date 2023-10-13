@@ -1,12 +1,12 @@
 import { Button } from '@lopi-2/common';
 import { FC } from 'react';
 import Image from 'next/image';
-
+import MostPurchasedList from './components/MostPurchasedList';
 import { Product } from '../../../../../../types/ProductsResponse';
 import { ReassuranceSection } from './components/ReassuranceSection/ReassuranceSection';
 import bgCoffeCheriesUpper from '../../../../../assets/PNG/thirdsection/bg-coffee-cheries-upper.png';
+import { reassuranceData } from './components/ReassuranceSection/reassuranceSectionData';
 import style from './mostPurchased.module.scss';
-import MostPurchasedList from './components/MostPurchasedList';
 
 type MostPurchasedTypes = {
   productList: Product[];
@@ -25,7 +25,7 @@ export const MostPurchased: FC<MostPurchasedTypes> = ({ productList }) => {
       <div className={style.buttonContainer}>
         <Button title={'KUPUJ BESTSELLERY'} className={style.button} />
       </div>
-      <ReassuranceSection />
+      <ReassuranceSection reassuranceData={reassuranceData} />
     </section>
   );
 };

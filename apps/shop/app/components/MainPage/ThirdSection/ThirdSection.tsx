@@ -5,11 +5,12 @@ import { getProductsMostPurchased } from '../../../../../shop/actions/getProduct
 
 export const ThirdSection = async () => {
   const mostPurchasedList: Product[] = await getProductsMostPurchased();
+  const bilboardProduct = mostPurchasedList[0];
 
   return (
     <>
       <MostPurchased productList={mostPurchasedList} />
-      <BuyNowBilboard />
+      <BuyNowBilboard bilboardProduct={bilboardProduct} />
     </>
   );
 };
