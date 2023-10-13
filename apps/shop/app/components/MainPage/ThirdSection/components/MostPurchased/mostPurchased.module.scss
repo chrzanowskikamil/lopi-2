@@ -18,7 +18,9 @@ $brickHeight: 160px;
     transform: translateX(-50%);
     margin-left: 50%;
   }
-
+  .mostPurchaseedList {
+    z-index: 3;
+  }
   .bgPictureBottom {
     display: flex;
     position: absolute;

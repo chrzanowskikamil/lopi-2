@@ -2,12 +2,13 @@
 
 import { Col, Container, Row } from 'react-bootstrap';
 
-import AddToCart from '../../../../Products/components/tileShop/components/AddtoCart';
+import { Button } from '@lopi-2/common';
 import { FC } from 'react';
 import Image from 'next/image';
 import bannerPicture from '../../../../../assets/PNG/thirdsection/bilboard-coffee-packed.png';
 import coffeLeaves from '../../../../../assets/PNG/thirdsection/bg-coffee-leaves.png';
 import style from './buyNowBilboard.module.scss';
+import { useRouter } from 'next/navigation';
 
 type BuyNowBilboardProps = {
   bilboardProduct: { name: string; shortDescription: string; uid: string };
@@ -16,6 +17,7 @@ type BuyNowBilboardProps = {
 export const BuyNowBilboard: FC<BuyNowBilboardProps> = ({
   bilboardProduct,
 }) => {
+  const router = useRouter();
   let subtitle = '';
 
   const splitDescriptionSubtitle = () => {
@@ -47,10 +49,12 @@ export const BuyNowBilboard: FC<BuyNowBilboardProps> = ({
                 <p className={style.description}>
                   {splitDescriptionDescription()}
                 </p>
-                <AddToCart
-                  productUid={bilboardProduct.uid}
+                <Button
                   className={style.button}
-                  buttonText="KUP TERAZ"
+                  onClick={() =>
+                    router.push(`productdetails/${bilboardProduct.uid}`)
+                  }
+                  title={'KUP TERAZ'}
                 />
               </div>
             </Col>
