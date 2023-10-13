@@ -1,35 +1,34 @@
 'use client';
 
-import styles from './Categories.module.scss';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import { FC, useCallback, useMemo } from 'react';
+import { SortOrder, SortParams } from './CategoriesEnums';
+
 import { Breadcrumbs } from '@lopi-2/common';
 import { CrumbsFactory } from '@lopi-2/common';
+import { FetchedCategoryResponse } from '../../../../shop/types/FetchedCategoryResponse';
+import { INITIAL_ASCENDING_VALUE } from './CategoriesVariables';
+import { ProductsDisplay } from '../Products/ProductsDisplay/ProductsDisplay';
+import { ProductsResponse } from '../../../../shop/types/ProductsResponse';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { SortDropdown } from './components/SortDropdown/SortDropdown';
-import { ProductsDisplay } from '../Products/ProductsDisplay/ProductsDisplay';
-import { Button, Col, Container, Row } from 'react-bootstrap';
-
 import { getProducts } from '../../../actions/getProducts';
-
-import { SortType, SortOrder, SortParams } from './CategoriesEnums';
-
-import { useCategoriesReducer } from './useCategoriesReducer';
-
-import { DEFAULT_PAGE_SIZE, INITIAL_CURRENT_PAGE } from './CategoriesVariables';
-
 import { loadMoreProducts } from './useCategoriesPagination';
-import { ProductsResponse } from '../../../../shop/types/ProductsResponse';
+import styles from './Categories.module.scss';
+import { useCategoriesReducer } from './useCategoriesReducer';
 
 interface CategoriesProps {
   title: string;
-  content: string[];
+  categories: FetchedCategoryResponse[];
   products: ProductsResponse;
+  categoryUUID: string;
 }
 
 export const Categories: FC<CategoriesProps> = ({
   title,
-  content,
+  categories,
   products: initalProducts,
+  categoryUUID,
 }) => {
   const categoriesReducer = useCategoriesReducer(initalProducts);
 
@@ -37,37 +36,35 @@ export const Categories: FC<CategoriesProps> = ({
     async (sortParam: string) => {
       const sortParams = sortParam;
 
-      let sortType = SortType.PRICE;
-      let sortOrder = SortOrder.ASCENDING;
+      let orderColumn = SortOrder.PRICE;
+      let ascending = INITIAL_ASCENDING_VALUE;
 
       if (sortParams === SortParams.PRICE_ASC) {
-        sortType = SortType.PRICE;
-        sortOrder = SortOrder.ASCENDING;
+        orderColumn = SortOrder.PRICE;
+        ascending = true;
       } else if (sortParams === SortParams.PRICE_DSC) {
-        sortType = SortType.PRICE;
-        sortOrder = SortOrder.DESCENDING;
+        orderColumn = SortOrder.PRICE;
+        ascending = false;
       } else if (sortParams === SortParams.PRODUCT_NAME_ASC) {
-        sortType = SortType.NAME;
-        sortOrder = SortOrder.ASCENDING;
+        orderColumn = SortOrder.NAME;
+        ascending = true;
       } else if (sortParams === SortParams.PRODUCT_NAME_DSC) {
-        sortType = SortType.NAME;
-        sortOrder = SortOrder.DESCENDING;
+        orderColumn = SortOrder.NAME;
+        ascending = false;
       }
 
-      const newSort = await getProducts(
-        DEFAULT_PAGE_SIZE,
-        INITIAL_CURRENT_PAGE,
-        sortType,
-        sortOrder
-      );
+      const newSort = await getProducts(categoryUUID, {
+        sortOrder: orderColumn,
+        ascending: ascending,
+      });
 
       categoriesReducer.onProductsSort(
-        [...newSort.products],
-        sortType,
-        sortOrder
+        [...newSort.content],
+        orderColumn,
+        ascending
       );
     },
-    [categoriesReducer]
+    [categoriesReducer, categoryUUID]
   );
 
   const crumbs = useMemo(
@@ -97,7 +94,7 @@ export const Categories: FC<CategoriesProps> = ({
           <Sidebar
             onSidebarFilter={categoriesReducer.onSidebarFilter}
             activeCategory={title}
-            list={content}
+            categories={categories}
           />
         </Col>
         <Col xl={10}>
@@ -108,7 +105,10 @@ export const Categories: FC<CategoriesProps> = ({
             <Button
               className={styles.button}
               onClick={() =>
-                loadMoreProducts(categoriesReducer.onLoadMoreProducts)
+                loadMoreProducts(
+                  categoriesReducer.onLoadMoreProducts,
+                  categoryUUID
+                )
               }
             >
               pokaż więcej

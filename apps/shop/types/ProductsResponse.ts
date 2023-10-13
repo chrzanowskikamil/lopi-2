@@ -30,7 +30,25 @@ export interface Product {
   ];
 }
 export interface ProductsResponse {
-  products: Product[];
   totalPages: number;
   totalProducts: number;
+  pageable: {
+    pageNumber: number;
+    pageSize: number;
+    offset: number;
+    sort: {
+      sorted: boolean;
+      empty: boolean;
+      unsorted: boolean;
+    };
+    paged: boolean;
+    unpaged: boolean;
+  };
+  size: number;
+  content: Product[];
+  number: number;
+  first: boolean;
+  last: boolean;
+  numberOfElements: number;
+  empty: boolean;
 }
