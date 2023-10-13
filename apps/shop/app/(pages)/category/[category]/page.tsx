@@ -1,6 +1,6 @@
 import { Categories } from '../../../components/Categories/Categories';
 import { getCategories } from '../../../../actions/getCategories';
-import { getCategoryQuantityByUUID } from 'apps/shop/actions/getCategoryQuantityByUUID';
+import { getCategoryQuantityByUUID } from '../../../../actions/getCategoryQuantityByUUID';
 import { getProducts } from '../../../../actions/getProducts';
 
 export async function generateStaticParams() {

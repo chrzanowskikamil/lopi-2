@@ -2,7 +2,6 @@
 
 import { AppRoutes, CountableArray } from '@lopi-2/common';
 import { Badge, Form, ListGroup } from 'react-bootstrap';
-import { FC, useEffect } from 'react';
 import MultiRangeSlider, {
   RangeSliderValues,
 } from '../MultiRangeSlider/MultiRangeSlider';
@@ -11,9 +10,9 @@ import {
   THE_LOWEST_MONEY_VALUE,
 } from '../../CategoriesVariables';
 
+import { FC } from 'react';
 import { FetchedCategoryResponse } from '../../../../../../shop/types/FetchedCategoryResponse';
 import Link from 'next/link';
-import { getCategoryQuantityByUUID } from '../../../../../../shop/actions/getCategoryQuantityByUUID';
 import styles from './Sidebar.module.scss';
 import { useSearchParams } from '../../../../hooks/useSearchParams';
 import { useState } from 'react';
