@@ -1,3 +1,5 @@
+import style from '../customersOpinions.module.scss';
+
 export const ClientOpinionsCarolusel = () => {
-  return;
+  return <div className={style.carouselElement}></div>;
 };

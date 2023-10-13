@@ -31,5 +31,10 @@ $bgImageHeigth: 824px;
       color: map-get($theme-colors, lopi-green);
       line-height: var.$line-height-base;
     }
+
+    .carouselElement {
+      width: 640px;
+      height: 454px;
+    }
   }
 }
