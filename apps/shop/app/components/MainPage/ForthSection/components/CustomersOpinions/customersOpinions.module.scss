@@ -4,11 +4,15 @@ $theme-colors: var.$theme-colors;
 $spacer: var.$spacers;
 
 $bgImageHeigth: 824px;
+$carouselBackWidth: 582px;
+$carouselBackHeight: 300px;
 
 .customersOpinions {
   display: flex;
   justify-content: center;
+
   .bgImage {
+    z-index: -2;
     max-height: $bgImageHeigth;
   }
 
@@ -32,9 +36,85 @@ $bgImageHeigth: 824px;
       line-height: var.$line-height-base;
     }
 
-    .carouselElement {
-      width: 640px;
-      height: 454px;
+    .circle {
+      width: 10px;
+      height: 10px;
+    }
+
+    .opinionsCarousel {
+      display: flex;
+      align-items: center;
+
+      .carouselElement {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        margin-top: map-get($spacer, 6);
+        box-shadow: 0px 4px 16px 10px #0000000d;
+        background-color: map-get($theme-colors, lopi-white);
+        width: 640px;
+        height: 454px;
+        color: map-get($theme-colors, lopi-dark-green);
+
+        .ratingStars {
+          justify-content: center;
+          padding-top: map-get($spacer, 3);
+        }
+
+        .opinion {
+          font-weight: var.$font-weight-normal;
+          font-size: var.$font-size-xxl;
+        }
+
+        .author {
+          font-size: var.$font-size-sm;
+        }
+
+        .switchBetween {
+          padding-bottom: 20px;
+          width: 100%;
+          .navigationCircle {
+            display: flex;
+            justify-content: center;
+
+            .circle {
+              display: block;
+              margin: 2px;
+              border-radius: 50%;
+              background-color: map-get($theme-colors, lopi-grey);
+              width: 10px;
+              height: 10px;
+            }
+            .active {
+              background-color: map-get($theme-colors, lopi-green);
+            }
+          }
+        }
+      }
+
+      .carouselLeft {
+        transform: translateX(5%);
+      }
+
+      .carouselRight {
+        transform: translateX(-5%);
+      }
+
+      .caruselBack {
+        z-index: -1;
+        width: $carouselBackWidth;
+        height: $carouselBackHeight;
+
+        .opinion {
+          font-weight: var.$font-weight-thin;
+          font-size: var.$font-size-xl;
+        }
+
+        .author {
+          font-size: var.$font-size-xs;
+        }
+      }
     }
   }
 }

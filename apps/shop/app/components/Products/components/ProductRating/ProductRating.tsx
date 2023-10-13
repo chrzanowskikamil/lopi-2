@@ -1,16 +1,20 @@
 'use client';
 
-import style from './productRating.module.scss';
-
 import { FC } from 'react';
 import { IconWrapper } from '../../../Icons/IconWrapper';
+import style from './productRating.module.scss';
 
 type ProductRatingProps = {
   starsCount: number;
   review?: number;
+  className?: string;
 };
 
-const ProductRating: FC<ProductRatingProps> = ({ starsCount, review }) => {
+const ProductRating: FC<ProductRatingProps> = ({
+  starsCount,
+  review,
+  className,
+}) => {
   const FullStar = (
     <IconWrapper
       icon={
@@ -35,7 +39,7 @@ const ProductRating: FC<ProductRatingProps> = ({ starsCount, review }) => {
 
   return (
     <>
-      <div className={style.tileInfo}>
+      <div className={`${style.tileInfo} ${className}`}>
         {RatingStar}
         {review ? <span>({review})</span> : ''}
       </div>
