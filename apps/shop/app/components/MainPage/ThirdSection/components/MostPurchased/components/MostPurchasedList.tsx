@@ -1,6 +1,10 @@
 'use client';
 
 import { Container, Row } from 'react-bootstrap';
+import {
+  ENDING_ON_NUMBER,
+  STARTING_FROM_NUMBER,
+} from '../MostPurchasedVariables';
 
 import { FC } from 'react';
 import { Product } from '../../../../../../../types/ProductsResponse';
@@ -13,7 +17,7 @@ type MostPurchasedListTypes = {
 const MostPurchasedList: FC<MostPurchasedListTypes> = ({ productList }) => {
   const preparedProductList = () => {
     const pickedProductList = [];
-    for (let i = 1; i <= 4; i++) {
+    for (let i = STARTING_FROM_NUMBER; i <= ENDING_ON_NUMBER; i++) {
       pickedProductList.push(productList[i]);
     }
 
@@ -25,11 +29,9 @@ const MostPurchasedList: FC<MostPurchasedListTypes> = ({ productList }) => {
   });
 
   return (
-    <>
-      <Container>
-        <Row>{products}</Row>
-      </Container>
-    </>
+    <Container>
+      <Row>{products}</Row>
+    </Container>
   );
 };
 
