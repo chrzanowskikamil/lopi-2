@@ -1,0 +1,13 @@
+@use '../../../../../styles/shop-variables' as var;
+
+$theme-colors: var.$theme-colors;
+
+.bgPictureContainer {
+  z-index: 1;
+  color: map-get($theme-colors, lopi-dark-green);
+  .bgPicture {
+    transform: translate(-50%, 0);
+    opacity: #0f2615d9;
+    margin-left: 50%;
+  }
+}
