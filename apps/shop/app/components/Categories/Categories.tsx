@@ -1,10 +1,10 @@
 'use client';
 
+import { Breadcrumbs, CountableArray } from '@lopi-2/common';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { FC, useCallback, useMemo } from 'react';
 import { SortOrder, SortParams } from './CategoriesEnums';
 
-import { Breadcrumbs } from '@lopi-2/common';
 import { CrumbsFactory } from '@lopi-2/common';
 import { FetchedCategoryResponse } from '../../../../shop/types/FetchedCategoryResponse';
 import { INITIAL_ASCENDING_VALUE } from './CategoriesVariables';
@@ -22,6 +22,7 @@ interface CategoriesProps {
   categories: FetchedCategoryResponse[];
   products: ProductsResponse;
   categoryUUID: string;
+  productCounts: CountableArray;
 }
 
 export const Categories: FC<CategoriesProps> = ({
@@ -29,6 +30,7 @@ export const Categories: FC<CategoriesProps> = ({
   categories,
   products: initalProducts,
   categoryUUID,
+  productCounts,
 }) => {
   const categoriesReducer = useCategoriesReducer(initalProducts);
 
@@ -95,6 +97,7 @@ export const Categories: FC<CategoriesProps> = ({
             onSidebarFilter={categoriesReducer.onSidebarFilter}
             activeCategory={title}
             categories={categories}
+            productCountInCategories={productCounts}
           />
         </Col>
         <Col xl={10}>

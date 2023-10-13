@@ -29,31 +29,17 @@ interface SidebarProps {
   };
   activeCategory: string;
   categories: FetchedCategoryResponse[];
+  productCountInCategories: CountableArray;
 }
 
 export const Sidebar: FC<SidebarProps> = ({
   onSidebarFilter,
   activeCategory,
   categories,
+  productCountInCategories,
 }) => {
   const { getParam, setParam } = useSearchParams();
-
   const [setup, setSetup] = useState<boolean>();
-  const [productCountInCategoriesArray, setProductCountInCategoriesArray] =
-    useState<CountableArray>();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = [];
-      for (let i = 0; i < categories.length; i++) {
-        const number = await getCategoryQuantityByUUID(categories[i].uid);
-        data.push({ count: number });
-      }
-      setProductCountInCategoriesArray(data);
-    };
-
-    fetchData();
-  }, [categories]);
 
   const setupFunction = () => {
     if (getParam.availability === 'false') {
@@ -83,8 +69,8 @@ export const Sidebar: FC<SidebarProps> = ({
     >
       {item.name}
       <Badge bg="none" className={getBadgeClassName(item.name)}>
-        {productCountInCategoriesArray !== undefined
-          ? productCountInCategoriesArray[i].count
+        {productCountInCategories !== undefined
+          ? productCountInCategories[i].count
           : '?'}
       </Badge>
     </ListGroup.Item>
