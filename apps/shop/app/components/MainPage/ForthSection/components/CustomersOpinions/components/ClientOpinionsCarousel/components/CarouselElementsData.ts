@@ -8,7 +8,7 @@ export const carouselElementsData: CarouselElementsData[] = [
   {
     starCount: 5,
     opinion:
-      '“Znaleźliście mniejszy skarb! Wielka różnorodność kapsułek pozwala mi na eksperymentowanie z różnymi smakami kawy. Jesteście najlepsi!”',
+      '“Znaleźliście wielki skarb! Duża różnorodność kapsułek pozwala mi na eksperymentowanie z różnymi smakami kawy. Jesteście najlepsi!”',
     author: 'Marta S., Gdańsk',
   },
   {

@@ -1,11 +1,15 @@
 @use '../../../../../styles/shop-variables' as var;
+@import './keyframes.module';
 
 $theme-colors: var.$theme-colors;
 $spacer: var.$spacers;
-
 $bgImageHeigth: 824px;
+
+$carouselFrontWidth: 670px;
+$carouselFrontHeight: 454px;
 $carouselBackWidth: 582px;
 $carouselBackHeight: 300px;
+$animationDuration: 3s;
 
 .customersOpinions {
   display: flex;
@@ -45,16 +49,24 @@ $carouselBackHeight: 300px;
       display: flex;
       align-items: center;
 
+      height: $carouselFrontHeight;
+      .inactive:hover {
+        cursor: pointer;
+      }
       .carouselElement {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-
+        z-index: 5;
+        animation: slideforward $animationDuration;
+        animation-timing-function: ease-out;
         margin-top: map-get($spacer, 6);
         box-shadow: 0px 4px 16px 10px #0000000d;
         background-color: map-get($theme-colors, lopi-white);
-        width: 640px;
-        height: 454px;
+        padding-right: 20px;
+        padding-left: 20px;
+        width: $carouselFrontWidth;
+        height: $carouselFrontHeight;
         color: map-get($theme-colors, lopi-dark-green);
 
         .ratingStars {
@@ -62,18 +74,28 @@ $carouselBackHeight: 300px;
           padding-top: map-get($spacer, 3);
         }
 
+        .opinion,
+        .author {
+          animation-duration: $animationDuration;
+          animation-fill-mode: forwards;
+        }
+
         .opinion {
+          animation: forwardfontchangebig $animationDuration;
           font-weight: var.$font-weight-normal;
           font-size: var.$font-size-xxl;
         }
 
         .author {
+          animation: forwardfontchangesmall $animationDuration;
           font-size: var.$font-size-sm;
         }
 
         .switchBetween {
+          z-index: 15;
           padding-bottom: 20px;
           width: 100%;
+
           .navigationCircle {
             display: flex;
             justify-content: center;
@@ -86,6 +108,7 @@ $carouselBackHeight: 300px;
               width: 10px;
               height: 10px;
             }
+
             .active {
               background-color: map-get($theme-colors, lopi-green);
             }
@@ -99,21 +122,93 @@ $carouselBackHeight: 300px;
 
       .carouselRight {
         transform: translateX(-5%);
+        z-index: 6;
       }
 
       .caruselBack {
-        z-index: -1;
+        z-index: 4;
+        animation: slidebackward $animationDuration;
         width: $carouselBackWidth;
         height: $carouselBackHeight;
 
+        .opinion,
+        .author {
+          animation-duration: $animationDuration;
+          animation-fill-mode: forwards;
+        }
+
         .opinion {
+          animation: backwardfontchangebig $animationDuration;
           font-weight: var.$font-weight-thin;
           font-size: var.$font-size-xl;
         }
 
         .author {
+          animation: backwardfontchangesmall $animationDuration;
           font-size: var.$font-size-xs;
         }
+      }
+      .caruselRightBack {
+        z-index: 4;
+        animation: sliderightbackward $animationDuration;
+        animation-timing-function: ease-out;
+        width: $carouselBackWidth;
+        height: $carouselBackHeight;
+
+        .opinion,
+        .author {
+          animation-duration: $animationDuration;
+          animation-fill-mode: forwards;
+        }
+
+        .opinion {
+          animation: backwardfontchangebig $animationDuration;
+          font-weight: var.$font-weight-thin;
+          font-size: var.$font-size-xl;
+        }
+
+        .author {
+          animation: backwardfontchangesmall $animationDuration;
+          font-size: var.$font-size-xs;
+        }
+      }
+      .caruselLeftBack {
+        z-index: 3;
+        animation: slideleftbackward $animationDuration;
+        animation-timing-function: ease-out;
+        width: $carouselBackWidth;
+        height: $carouselBackHeight;
+
+        .opinion,
+        .author {
+          animation-duration: $animationDuration;
+          animation-fill-mode: forwards;
+        }
+
+        .opinion {
+          animation: backwardfontchangebig $animationDuration;
+          font-weight: var.$font-weight-thin;
+          font-size: var.$font-size-xl;
+        }
+
+        .author {
+          animation: backwardfontchangesmall $animationDuration;
+          font-size: var.$font-size-xs;
+        }
+      }
+
+      .carouselBackRight {
+        z-index: 3;
+      }
+
+      .caruselLeftActive {
+        transform: translateX(30%);
+        animation: slideleftactive $animationDuration;
+      }
+
+      .caruselRightActive {
+        transform: translateX(-30%);
+        animation: sliderightactive $animationDuration;
       }
     }
   }

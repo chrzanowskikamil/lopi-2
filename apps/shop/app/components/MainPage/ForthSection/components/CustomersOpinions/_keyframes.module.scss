@@ -1,0 +1,213 @@
+@use '../../../../../styles/shop-variables' as var;
+
+// Variables
+$theme-colors: var.$theme-colors;
+$spacer: var.$spacers;
+$bgImageHeigth: 824px;
+
+$carouselFrontWidth: 670px;
+$carouselFrontHeight: 454px;
+$carouselBackWidth: 582px;
+$carouselBackHeight: 300px;
+
+// Keyframes
+@keyframes slideforward {
+  from {
+    transform: translateX(0);
+    width: $carouselBackWidth;
+    height: $carouselBackHeight;
+  }
+  25% {
+    transform: translateX(-10%);
+    width: $carouselBackWidth;
+    height: $carouselBackHeight;
+  }
+
+  50% {
+    font-size: var.$font-size-xxl;
+  }
+
+  100% {
+    transform: translateX(0);
+    width: $carouselFrontWidth;
+    height: $carouselFrontHeight;
+    font-size: var.$font-size-xxl;
+  }
+}
+
+@keyframes slidebackward {
+  from {
+    z-index: 6;
+    width: $carouselFrontWidth;
+    height: $carouselFrontHeight;
+    font-size: var.$font-size-xxl;
+  }
+
+  25% {
+    transform: translateX(-10%);
+    font-size: var.$font-size-xl;
+  }
+
+  50% {
+    z-index: 4;
+  }
+
+  to {
+    width: $carouselBackWidth;
+    height: $carouselBackHeight;
+    font-size: var.$font-size-sm;
+  }
+}
+
+@keyframes slideleftactive {
+  0% {
+    transform: translateX(0);
+    width: $carouselBackWidth;
+    height: $carouselBackHeight;
+  }
+
+  25% {
+    transform: translateX(-15%);
+    width: $carouselBackWidth;
+    height: $carouselBackHeight;
+  }
+
+  100% {
+    transform: translateX(30%);
+  }
+}
+
+@keyframes sliderightactive {
+  0% {
+    transform: translateX(0);
+    width: $carouselBackWidth;
+    height: $carouselBackHeight;
+  }
+
+  25% {
+    transform: translateX(15%);
+    width: $carouselBackWidth;
+    height: $carouselBackHeight;
+  }
+
+  100% {
+    transform: translateX(-30%);
+    font-size: var.$font-size-xl;
+  }
+}
+
+@keyframes forwardfontchangebig {
+  from {
+    font-weight: var.$font-weight-thin;
+    font-size: var.$font-size-xl;
+  }
+  25% {
+    font-weight: var.$font-weight-thin;
+    font-size: var.$font-size-xl;
+  }
+
+  to {
+    font-weight: var.$font-weight-normal;
+    font-size: var.$font-size-xxl;
+  }
+}
+
+@keyframes forwardfontchangesmall {
+  from {
+    font-size: var.$font-size-xs;
+  }
+  25% {
+    font-size: var.$font-size-xs;
+  }
+
+  to {
+    font-size: var.$font-size-sm;
+  }
+}
+
+@keyframes backwardfontchangebig {
+  from {
+    font-weight: var.$font-weight-normal;
+    font-size: var.$font-size-xxl;
+  }
+
+  25% {
+    font-weight: var.$font-weight-thin;
+    font-size: var.$font-size-xl;
+  }
+
+  to {
+    font-weight: var.$font-weight-thin;
+    font-size: var.$font-size-xl;
+  }
+}
+
+@keyframes backwardfontchangesmall {
+  from {
+    font-size: var.$font-size-sm;
+  }
+
+  to {
+    font-size: var.$font-size-xs;
+  }
+}
+
+@keyframes backwardindexchanges {
+  from {
+    font-size: var.$font-size-sm;
+  }
+
+  to {
+    font-size: var.$font-size-xs;
+  }
+}
+
+@keyframes sliderightbackward {
+  from {
+    transform: translateX(-30%);
+    z-index: 5;
+    width: $carouselFrontWidth;
+    height: $carouselFrontHeight;
+    font-size: var.$font-size-xxl;
+  }
+
+  25% {
+    font-size: var.$font-size-xl;
+  }
+
+  30% {
+    transform: translateX(15%);
+    font-size: var.$font-size-xl;
+  }
+
+  to {
+    width: $carouselBackWidth;
+    height: $carouselBackHeight;
+    font-size: var.$font-size-sm;
+  }
+}
+
+@keyframes slideleftbackward {
+  from {
+    transform: translateX(30%);
+    z-index: 10;
+    width: $carouselFrontWidth;
+    height: $carouselFrontHeight;
+    font-size: var.$font-size-xxl;
+  }
+
+  25% {
+    font-size: var.$font-size-xl;
+  }
+
+  30% {
+    transform: translateX(-15%);
+    font-size: var.$font-size-xl;
+  }
+
+  to {
+    width: $carouselBackWidth;
+    height: $carouselBackHeight;
+    font-size: var.$font-size-sm;
+  }
+}

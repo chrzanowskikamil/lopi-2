@@ -8,6 +8,7 @@ type CarouselElementType = {
   author: string;
   className: string;
   navigation?: JSX.Element;
+  onClick: () => void;
 };
 
 export const CarouselElement: FC<CarouselElementType> = ({
@@ -16,9 +17,10 @@ export const CarouselElement: FC<CarouselElementType> = ({
   opinion,
   author,
   navigation,
+  onClick,
 }) => {
   return (
-    <div className={`${style.carouselElement} ${className}`}>
+    <div className={`${style.carouselElement} ${className}`} onClick={onClick}>
       <ProductRating starsCount={starCount} className={style.ratingStars} />
       <div className={style.opinion}>{opinion}</div>
       <div className={style.author}>{author}</div>
