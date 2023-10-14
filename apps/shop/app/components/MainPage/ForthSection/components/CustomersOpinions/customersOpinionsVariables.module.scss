@@ -1,0 +1,53 @@
+@use '../../../../../styles/shop-variables' as var;
+
+$bgImageHeigth: 824px;
+
+//animation
+
+$animationDuration: 2s;
+$animationTiming: ease-out;
+$animationFillMode: forwards;
+
+//for media
+//element
+
+$carouselFrontWidth: 670px;
+$carouselFrontHeight: 454px;
+
+$carouselBackWidth: 450px;
+$carouselBackHeight: 300px;
+
+// fonts
+
+$fontSizeTitleBig: var.$font-size-xxl;
+$fontSizeTitleSmall: var.$font-size-xl;
+
+$fontSizeAuthorBig: var.$font-size-sm;
+
+$fontSizeAuthorSmall: var.$font-size-xs;
+
+//translate params
+
+$middleTransition: -10%;
+
+$leftActive: 30%;
+$leftTransition: -15%;
+$leftBackToLeft: 10%;
+
+$rightActive: -30%;
+$rightTransition: 15%;
+$rightBackToLeft: -10%;
+
+// stars
+
+$starSizeBig: 16px;
+$starSizeSmall: 12px;
+
+//less important
+//nav circle
+
+$circleWidth: 10px;
+$circleHeight: 10px;
+
+//box shadow
+$boxShadowColor: #0000000d;

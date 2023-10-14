@@ -13,11 +13,20 @@ export const ClientOpinionsCarolusel = () => {
   };
 
   const navigaion = (
-    <div className={style.navigationCircle}>
-      <div className={`${style.circle} ${getNavigationActive(0)}`}></div>
-      <div className={`${style.circle} ${getNavigationActive(1)}`}></div>
-      <div className={`${style.circle} ${getNavigationActive(2)}`}></div>
-    </div>
+    <nav className={style.navigationCircle}>
+      <div
+        className={`${style.circle} ${getNavigationActive(0)}`}
+        onClick={() => setCurrentOpinionIndex(0)}
+      ></div>
+      <div
+        className={`${style.circle} ${getNavigationActive(1)}`}
+        onClick={() => setCurrentOpinionIndex(1)}
+      ></div>
+      <div
+        className={`${style.circle} ${getNavigationActive(2)}`}
+        onClick={() => setCurrentOpinionIndex(2)}
+      ></div>
+    </nav>
   );
 
   return (
@@ -32,6 +41,7 @@ export const ClientOpinionsCarolusel = () => {
         opinion={carouselData[0].opinion}
         author={carouselData[0].author}
         onClick={() => setCurrentOpinionIndex(0)}
+        starsIconClass={style.starsIconClass}
       />
       <CarouselElement
         className={`${
@@ -44,6 +54,7 @@ export const ClientOpinionsCarolusel = () => {
         author={carouselData[1].author}
         navigation={navigaion}
         onClick={() => setCurrentOpinionIndex(1)}
+        starsIconClass={style.starsIconClass}
       />
       <CarouselElement
         className={`${style.carouselRight} ${
@@ -55,6 +66,7 @@ export const ClientOpinionsCarolusel = () => {
         opinion={carouselData[2].opinion}
         author={carouselData[2].author}
         onClick={() => setCurrentOpinionIndex(2)}
+        starsIconClass={style.starsIconClass}
       />
     </div>
   );

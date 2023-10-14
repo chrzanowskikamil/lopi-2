@@ -1,15 +1,9 @@
 @use '../../../../../styles/shop-variables' as var;
+@use './customersOpinionsVariables.module.scss' as v;
 @import './keyframes.module';
 
 $theme-colors: var.$theme-colors;
 $spacer: var.$spacers;
-$bgImageHeigth: 824px;
-
-$carouselFrontWidth: 670px;
-$carouselFrontHeight: 454px;
-$carouselBackWidth: 582px;
-$carouselBackHeight: 300px;
-$animationDuration: 3s;
 
 .customersOpinions {
   display: flex;
@@ -17,7 +11,7 @@ $animationDuration: 3s;
 
   .bgImage {
     z-index: -2;
-    max-height: $bgImageHeigth;
+    max-height: v.$bgImageHeigth;
   }
 
   .titleArea {
@@ -25,12 +19,13 @@ $animationDuration: 3s;
     position: absolute;
     flex-direction: column;
     padding-top: map-get($spacer, 53);
+    width: 100%;
     text-align: center;
 
     .title {
       color: map-get($theme-colors, lopi-dark-green);
       font-weight: var.$font-weight-bold;
-      font-size: var.$font-size-xxl;
+      font-size: v.$fontSizeTitleBig;
       line-height: var.$line-height-lg;
       text-transform: uppercase;
     }
@@ -41,72 +36,81 @@ $animationDuration: 3s;
     }
 
     .circle {
-      width: 10px;
-      height: 10px;
+      width: v.$circleWidth;
+      height: v.$circleHeight;
     }
 
     .opinionsCarousel {
       display: flex;
       align-items: center;
+      height: v.$carouselFrontHeight;
 
-      height: $carouselFrontHeight;
       .inactive:hover {
         cursor: pointer;
       }
+
       .carouselElement {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         z-index: 5;
-        animation: slideforward $animationDuration;
-        animation-timing-function: ease-out;
+        animation: slideforward v.$animationDuration;
+        animation-timing-function: v.$animationTiming;
         margin-top: map-get($spacer, 6);
-        box-shadow: 0px 4px 16px 10px #0000000d;
+        box-shadow: 0 map-get($spacer, 12) map-get($spacer, 3)
+          map-get($spacer, 7) v.$boxShadowColor;
         background-color: map-get($theme-colors, lopi-white);
-        padding-right: 20px;
-        padding-left: 20px;
-        width: $carouselFrontWidth;
-        height: $carouselFrontHeight;
+        padding-right: map-get($spacer, 31);
+        padding-left: map-get($spacer, 31);
+        width: v.$carouselFrontWidth;
+        height: v.$carouselFrontHeight;
         color: map-get($theme-colors, lopi-dark-green);
 
         .ratingStars {
           justify-content: center;
+
           padding-top: map-get($spacer, 3);
+        }
+
+        .starsIconClass {
+          animation: starsforward v.$animationDuration;
+          font-size: v.$starSizeBig;
         }
 
         .opinion,
         .author {
-          animation-duration: $animationDuration;
-          animation-fill-mode: forwards;
+          animation-duration: v.$animationDuration;
+          animation-fill-mode: v.$animationFillMode;
         }
 
         .opinion {
-          animation: forwardfontchangebig $animationDuration;
+          animation: forwardfontchangebig v.$animationDuration;
           font-weight: var.$font-weight-normal;
-          font-size: var.$font-size-xxl;
+          font-size: v.$fontSizeTitleBig;
         }
 
         .author {
-          animation: forwardfontchangesmall $animationDuration;
-          font-size: var.$font-size-sm;
+          animation: forwardfontchangesmall v.$animationDuration;
+          font-size: v.$fontSizeAuthorBig;
         }
 
         .switchBetween {
           z-index: 15;
-          padding-bottom: 20px;
+          padding-bottom: map-get($spacer, 31);
           width: 100%;
 
           .navigationCircle {
             display: flex;
             justify-content: center;
+            padding: map-get($spacer, 7);
 
             .circle {
               display: block;
-              margin: 2px;
+              margin: map-get($spacer, 1);
               border-radius: 50%;
               background-color: map-get($theme-colors, lopi-grey);
-              width: 10px;
-              height: 10px;
+              width: map-get($spacer, 7);
+              height: map-get($spacer, 7);
             }
 
             .active {
@@ -117,83 +121,100 @@ $animationDuration: 3s;
       }
 
       .carouselLeft {
-        transform: translateX(5%);
+        transform: translateX(v.$leftBackToLeft);
       }
 
       .carouselRight {
-        transform: translateX(-5%);
+        transform: translateX(v.$rightBackToLeft);
         z-index: 6;
       }
 
       .caruselBack {
         z-index: 4;
-        animation: slidebackward $animationDuration;
-        width: $carouselBackWidth;
-        height: $carouselBackHeight;
+        animation: slidebackward v.$animationDuration;
+        width: v.$carouselBackWidth;
+        height: v.$carouselBackHeight;
+
+        .starsIconClass {
+          animation: starsbackward v.$animationDuration;
+          font-size: v.$starSizeSmall;
+        }
 
         .opinion,
         .author {
-          animation-duration: $animationDuration;
-          animation-fill-mode: forwards;
+          animation-duration: v.$animationDuration;
+          animation-fill-mode: v.$animationFillMode;
         }
 
         .opinion {
-          animation: backwardfontchangebig $animationDuration;
+          animation: backwardfontchangebig v.$animationDuration;
           font-weight: var.$font-weight-thin;
-          font-size: var.$font-size-xl;
+          font-size: v.$fontSizeTitleSmall;
         }
 
         .author {
-          animation: backwardfontchangesmall $animationDuration;
-          font-size: var.$font-size-xs;
+          animation: backwardfontchangesmall v.$animationDuration;
+          font-size: v.$fontSizeAuthorSmall;
         }
       }
+
       .caruselRightBack {
         z-index: 4;
-        animation: sliderightbackward $animationDuration;
-        animation-timing-function: ease-out;
-        width: $carouselBackWidth;
-        height: $carouselBackHeight;
+        animation: sliderightbackward v.$animationDuration;
+        animation-timing-function: v.$animationTiming;
+        width: v.$carouselBackWidth;
+        height: v.$carouselBackHeight;
+
+        .starsIconClass {
+          animation: starsbackward v.$animationDuration;
+          font-size: v.$starSizeSmall;
+        }
 
         .opinion,
         .author {
-          animation-duration: $animationDuration;
-          animation-fill-mode: forwards;
+          animation-duration: v.$animationDuration;
+          animation-fill-mode: v.$animationFillMode;
         }
 
         .opinion {
-          animation: backwardfontchangebig $animationDuration;
+          animation: backwardfontchangebig v.$animationDuration;
           font-weight: var.$font-weight-thin;
-          font-size: var.$font-size-xl;
+          font-size: v.$fontSizeTitleSmall;
         }
 
         .author {
-          animation: backwardfontchangesmall $animationDuration;
-          font-size: var.$font-size-xs;
+          animation: backwardfontchangesmall v.$animationDuration;
+          font-size: v.$fontSizeAuthorSmall;
         }
       }
+
       .caruselLeftBack {
         z-index: 3;
-        animation: slideleftbackward $animationDuration;
-        animation-timing-function: ease-out;
-        width: $carouselBackWidth;
-        height: $carouselBackHeight;
+        animation: slideleftbackward v.$animationDuration;
+        animation-timing-function: v.$animationTiming;
+        width: v.$carouselBackWidth;
+        height: v.$carouselBackHeight;
+
+        .starsIconClass {
+          animation: starsbackward v.$animationDuration;
+          font-size: v.$starSizeSmall;
+        }
 
         .opinion,
         .author {
-          animation-duration: $animationDuration;
-          animation-fill-mode: forwards;
+          animation-duration: v.$animationDuration;
+          animation-fill-mode: v.$animationFillMode;
         }
 
         .opinion {
-          animation: backwardfontchangebig $animationDuration;
+          animation: backwardfontchangebig v.$animationDuration;
           font-weight: var.$font-weight-thin;
-          font-size: var.$font-size-xl;
+          font-size: v.$fontSizeTitleSmall;
         }
 
         .author {
-          animation: backwardfontchangesmall $animationDuration;
-          font-size: var.$font-size-xs;
+          animation: backwardfontchangesmall v.$animationDuration;
+          font-size: v.$fontSizeAuthorSmall;
         }
       }
 
@@ -202,13 +223,13 @@ $animationDuration: 3s;
       }
 
       .caruselLeftActive {
-        transform: translateX(30%);
-        animation: slideleftactive $animationDuration;
+        transform: translateX(v.$leftActive);
+        animation: slideleftactive v.$animationDuration;
       }
 
       .caruselRightActive {
-        transform: translateX(-30%);
-        animation: sliderightactive $animationDuration;
+        transform: translateX(v.$rightActive);
+        animation: sliderightactive v.$animationDuration;
       }
     }
   }

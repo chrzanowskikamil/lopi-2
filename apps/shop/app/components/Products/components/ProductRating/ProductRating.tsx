@@ -8,17 +8,25 @@ type ProductRatingProps = {
   starsCount: number;
   review?: number;
   className?: string;
+  starsIconClass?: string;
+  onClick?: () => void;
 };
 
 const ProductRating: FC<ProductRatingProps> = ({
   starsCount,
   review,
   className,
+  starsIconClass,
+  onClick,
 }) => {
   const FullStar = (
     <IconWrapper
       icon={
-        <i className={`${style.star && style.starOrange} bi bi-star-fill`}></i>
+        <i
+          className={`${
+            style.star && style.starOrange
+          } ${starsIconClass} bi bi-star-fill`}
+        ></i>
       }
     />
   );
@@ -26,7 +34,11 @@ const ProductRating: FC<ProductRatingProps> = ({
   const EmptyStar = (
     <IconWrapper
       icon={
-        <i className={`${style.star && style.starGrey} bi bi-star-fill`}></i>
+        <i
+          className={`${
+            style.star && style.starGrey
+          } ${starsIconClass} bi bi-star-fill`}
+        ></i>
       }
     />
   );
@@ -39,7 +51,7 @@ const ProductRating: FC<ProductRatingProps> = ({
 
   return (
     <>
-      <div className={`${style.tileInfo} ${className}`}>
+      <div className={`${style.tileInfo} ${className}`} onClick={onClick}>
         {RatingStar}
         {review ? <span>({review})</span> : ''}
       </div>

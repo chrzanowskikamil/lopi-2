@@ -1,51 +1,48 @@
 @use '../../../../../styles/shop-variables' as var;
+@use './customersOpinionsVariables.module.scss' as v;
 
 // Variables
+
 $theme-colors: var.$theme-colors;
 $spacer: var.$spacers;
-$bgImageHeigth: 824px;
-
-$carouselFrontWidth: 670px;
-$carouselFrontHeight: 454px;
-$carouselBackWidth: 582px;
-$carouselBackHeight: 300px;
 
 // Keyframes
+
 @keyframes slideforward {
   from {
     transform: translateX(0);
-    width: $carouselBackWidth;
-    height: $carouselBackHeight;
+    width: v.$carouselBackWidth;
+    height: v.$carouselBackHeight;
   }
   25% {
-    transform: translateX(-10%);
-    width: $carouselBackWidth;
-    height: $carouselBackHeight;
+    transform: translateX(v.$middleTransition);
+    width: v.$carouselBackWidth;
+    height: v.$carouselBackHeight;
   }
 
   50% {
-    font-size: var.$font-size-xxl;
+    font-size: v.$fontSizeTitleBig;
   }
 
   100% {
     transform: translateX(0);
-    width: $carouselFrontWidth;
-    height: $carouselFrontHeight;
-    font-size: var.$font-size-xxl;
+    width: v.$carouselFrontWidth;
+    height: v.$carouselFrontHeight;
+    font-size: v.$fontSizeTitleBig;
   }
 }
 
 @keyframes slidebackward {
   from {
     z-index: 6;
-    width: $carouselFrontWidth;
-    height: $carouselFrontHeight;
-    font-size: var.$font-size-xxl;
+    width: v.$carouselFrontWidth;
+    height: v.$carouselFrontHeight;
+    font-size: v.$fontSizeTitleBig;
   }
 
   25% {
-    transform: translateX(-10%);
-    font-size: var.$font-size-xl;
+    transform: translateX(v.$middleTransition);
+    font-size: v.$fontSizeTitleSmall;
   }
 
   50% {
@@ -53,161 +50,167 @@ $carouselBackHeight: 300px;
   }
 
   to {
-    width: $carouselBackWidth;
-    height: $carouselBackHeight;
-    font-size: var.$font-size-sm;
+    width: v.$carouselBackWidth;
+    height: v.$carouselBackHeight;
   }
 }
 
 @keyframes slideleftactive {
   0% {
     transform: translateX(0);
-    width: $carouselBackWidth;
-    height: $carouselBackHeight;
+    width: v.$carouselBackWidth;
+    height: v.$carouselBackHeight;
   }
 
   25% {
-    transform: translateX(-15%);
-    width: $carouselBackWidth;
-    height: $carouselBackHeight;
+    transform: translateX(v.$leftTransition);
+    width: v.$carouselBackWidth;
+    height: v.$carouselBackHeight;
   }
 
   100% {
-    transform: translateX(30%);
+    transform: translateX(v.$leftActive);
   }
 }
 
 @keyframes sliderightactive {
   0% {
     transform: translateX(0);
-    width: $carouselBackWidth;
-    height: $carouselBackHeight;
+    width: v.$carouselBackWidth;
+    height: v.$carouselBackHeight;
   }
 
   25% {
-    transform: translateX(15%);
-    width: $carouselBackWidth;
-    height: $carouselBackHeight;
+    transform: translateX(v.$rightTransition);
+    width: v.$carouselBackWidth;
+    height: v.$carouselBackHeight;
   }
 
   100% {
-    transform: translateX(-30%);
-    font-size: var.$font-size-xl;
+    transform: translateX(v.$rightActive);
   }
 }
 
 @keyframes forwardfontchangebig {
   from {
     font-weight: var.$font-weight-thin;
-    font-size: var.$font-size-xl;
+    font-size: v.$fontSizeTitleSmall;
   }
   25% {
     font-weight: var.$font-weight-thin;
-    font-size: var.$font-size-xl;
+    font-size: v.$fontSizeTitleSmall;
   }
 
   to {
     font-weight: var.$font-weight-normal;
-    font-size: var.$font-size-xxl;
+    font-size: v.$fontSizeTitleBig;
   }
 }
 
 @keyframes forwardfontchangesmall {
   from {
-    font-size: var.$font-size-xs;
+    font-size: v.$fontSizeAuthorSmall;
   }
   25% {
-    font-size: var.$font-size-xs;
+    font-size: v.$fontSizeAuthorSmall;
   }
 
   to {
-    font-size: var.$font-size-sm;
+    font-size: v.$fontSizeAuthorBig;
   }
 }
 
 @keyframes backwardfontchangebig {
   from {
     font-weight: var.$font-weight-normal;
-    font-size: var.$font-size-xxl;
+    font-size: v.$fontSizeTitleBig;
   }
 
   25% {
     font-weight: var.$font-weight-thin;
-    font-size: var.$font-size-xl;
+    font-size: v.$fontSizeTitleSmall;
   }
 
   to {
     font-weight: var.$font-weight-thin;
-    font-size: var.$font-size-xl;
+    font-size: v.$fontSizeTitleSmall;
   }
 }
 
 @keyframes backwardfontchangesmall {
   from {
-    font-size: var.$font-size-sm;
+    font-size: v.$fontSizeAuthorBig;
   }
 
   to {
-    font-size: var.$font-size-xs;
-  }
-}
-
-@keyframes backwardindexchanges {
-  from {
-    font-size: var.$font-size-sm;
-  }
-
-  to {
-    font-size: var.$font-size-xs;
+    font-size: v.$fontSizeAuthorSmall;
   }
 }
 
 @keyframes sliderightbackward {
   from {
-    transform: translateX(-30%);
+    transform: translateX(v.$rightActive);
     z-index: 5;
-    width: $carouselFrontWidth;
-    height: $carouselFrontHeight;
-    font-size: var.$font-size-xxl;
+    width: v.$carouselFrontWidth;
+    height: v.$carouselFrontHeight;
+    font-size: v.$fontSizeTitleBig;
   }
 
   25% {
-    font-size: var.$font-size-xl;
+    font-size: v.$fontSizeTitleSmall;
   }
 
   30% {
-    transform: translateX(15%);
-    font-size: var.$font-size-xl;
+    transform: translateX(v.$rightTransition);
+    font-size: v.$fontSizeTitleSmall;
   }
 
   to {
-    width: $carouselBackWidth;
-    height: $carouselBackHeight;
-    font-size: var.$font-size-sm;
+    width: v.$carouselBackWidth;
+    height: v.$carouselBackHeight;
+    font-size: v.$fontSizeAuthorBig;
   }
 }
 
 @keyframes slideleftbackward {
   from {
-    transform: translateX(30%);
+    transform: translateX(v.$leftActive);
     z-index: 10;
-    width: $carouselFrontWidth;
-    height: $carouselFrontHeight;
-    font-size: var.$font-size-xxl;
+    width: v.$carouselFrontWidth;
+    height: v.$carouselFrontHeight;
+    font-size: v.$fontSizeTitleBig;
   }
 
   25% {
-    font-size: var.$font-size-xl;
+    font-size: v.$fontSizeTitleSmall;
   }
 
   30% {
-    transform: translateX(-15%);
-    font-size: var.$font-size-xl;
+    transform: translateX(v.$leftTransition);
+    font-size: v.$fontSizeTitleSmall;
   }
 
   to {
-    width: $carouselBackWidth;
-    height: $carouselBackHeight;
-    font-size: var.$font-size-sm;
+    width: v.$carouselBackWidth;
+    height: v.$carouselBackHeight;
+    font-size: v.$fontSizeAuthorBig;
+  }
+}
+
+@keyframes starsbackward {
+  from {
+    font-size: v.$starSizeBig;
+  }
+  to {
+    font-size: v.$starSizeSmall;
+  }
+}
+
+@keyframes starsforward {
+  from {
+    font-size: v.$starSizeSmall;
+  }
+  to {
+    font-size: v.$starSizeBig;
   }
 }
