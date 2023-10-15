@@ -43,7 +43,7 @@ $spacer: var.$spacers;
     .opinionsCarousel {
       display: flex;
       align-items: center;
-      height: v.$carouselFrontHeight;
+      height: v.$carouselFontHeight;
 
       .inactive:hover {
         cursor: pointer;
@@ -62,8 +62,8 @@ $spacer: var.$spacers;
         background-color: map-get($theme-colors, lopi-white);
         padding-right: map-get($spacer, 31);
         padding-left: map-get($spacer, 31);
-        width: v.$carouselFrontWidth;
-        height: v.$carouselFrontHeight;
+        width: v.$carouselFontWidth;
+        height: v.$carouselFontHeight;
         color: map-get($theme-colors, lopi-dark-green);
 
         .ratingStars {

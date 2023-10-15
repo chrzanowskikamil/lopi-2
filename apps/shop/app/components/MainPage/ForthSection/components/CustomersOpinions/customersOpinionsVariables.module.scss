@@ -1,5 +1,7 @@
 @use '../../../../../styles/shop-variables' as var;
 
+$breakpoint: var.$grid-breakpoints;
+
 $bgImageHeigth: 824px;
 
 //animation
@@ -8,11 +10,18 @@ $animationDuration: 2s;
 $animationTiming: ease-out;
 $animationFillMode: forwards;
 
+//nav circle
+
+$circleWidth: 10px;
+$circleHeight: 10px;
+
+//box shadow
+$boxShadowColor: #0000000d;
+
 //for media
 //element
-
-$carouselFrontWidth: 670px;
-$carouselFrontHeight: 454px;
+$carouselFontWidth: 670px;
+$carouselFontHeight: 454px;
 
 $carouselBackWidth: 450px;
 $carouselBackHeight: 300px;
@@ -43,11 +52,36 @@ $rightBackToLeft: -10%;
 $starSizeBig: 16px;
 $starSizeSmall: 12px;
 
-//less important
-//nav circle
+@media (min-width: map-get($breakpoint, sm)) {
+  $carouselFontWidth: 10px;
+  $carouselFontHeight: 10px;
 
-$circleWidth: 10px;
-$circleHeight: 10px;
+  $carouselBackWidth: 10px;
+  $carouselBackHeight: 10px;
 
-//box shadow
-$boxShadowColor: #0000000d;
+  // fonts
+
+  $fontSizeTitleBig: var.$font-size-sm;
+  $fontSizeTitleSmall: var.$font-size-xs;
+
+  $fontSizeAuthorBig: var.$font-size-xxs;
+
+  $fontSizeAuthorSmall: var.$font-size-xxxs;
+
+  //translate params
+
+  $middleTransition: -10%;
+
+  $leftActive: 30%;
+  $leftTransition: -15%;
+  $leftBackToLeft: 10%;
+
+  $rightActive: -30%;
+  $rightTransition: 15%;
+  $rightBackToLeft: -10%;
+
+  // stars
+
+  $starSizeBig: 16px;
+  $starSizeSmall: 12px;
+}

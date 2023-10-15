@@ -7,7 +7,7 @@ const Index = async () => {
     <>
       <HeroSection />
       <ThirdSection />
-          <ForthSection />
+      <ForthSection />
     </>
   );
 };

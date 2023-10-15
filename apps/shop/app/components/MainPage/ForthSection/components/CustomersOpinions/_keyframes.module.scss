@@ -26,8 +26,8 @@ $spacer: var.$spacers;
 
   100% {
     transform: translateX(0);
-    width: v.$carouselFrontWidth;
-    height: v.$carouselFrontHeight;
+    width: v.$carouselFontWidth;
+    height: v.$carouselFontHeight;
     font-size: v.$fontSizeTitleBig;
   }
 }
@@ -35,8 +35,8 @@ $spacer: var.$spacers;
 @keyframes slidebackward {
   from {
     z-index: 6;
-    width: v.$carouselFrontWidth;
-    height: v.$carouselFrontHeight;
+    width: v.$carouselFontWidth;
+    height: v.$carouselFontHeight;
     font-size: v.$fontSizeTitleBig;
   }
 
@@ -151,8 +151,8 @@ $spacer: var.$spacers;
   from {
     transform: translateX(v.$rightActive);
     z-index: 5;
-    width: v.$carouselFrontWidth;
-    height: v.$carouselFrontHeight;
+    width: v.$carouselFontWidth;
+    height: v.$carouselFontHeight;
     font-size: v.$fontSizeTitleBig;
   }
 
@@ -176,8 +176,8 @@ $spacer: var.$spacers;
   from {
     transform: translateX(v.$leftActive);
     z-index: 10;
-    width: v.$carouselFrontWidth;
-    height: v.$carouselFrontHeight;
+    width: v.$carouselFontWidth;
+    height: v.$carouselFontHeight;
     font-size: v.$fontSizeTitleBig;
   }
 
