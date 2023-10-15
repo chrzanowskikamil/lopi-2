@@ -1,0 +1,98 @@
+@use '../../styles/shop-variables' as var;
+
+$palette: var.$theme-colors;
+$spacer: var.$spacers;
+$breakpoint: var.$grid-breakpoints;
+
+$containerWidth: 100vw;
+$containerHeight: 803px;
+$containerHeightMobile: 550px;
+$paragraphFontSize: 20px;
+$titleCarouselPadding: 0 5px;
+
+$titleWidth: 85vw;
+$titleFontSize: 80px;
+$titleFontWeight: 700;
+$titleLineHeight: 95px;
+$imageMobileHeight: 250px;
+$imageFilter: contrast(0.8);
+$paragraphCarouselMargin: 28px;
+$titleCarouselFontSize: 30px;
+
+.carousel {
+  width: $containerWidth;
+  height: $containerHeightMobile;
+  text-align: center;
+  position: relative;
+
+  @media (min-width: map-get($breakpoint, md)) {
+    height: $containerHeight;
+
+    div > div {
+      //carousel-caption-desktop
+      display: flex;
+      width: $titleWidth;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+      padding: map-get($spacer, 31);
+      left: 0;
+      top: 0;
+
+      h1 {
+        text-align: start;
+        margin: 0;
+        width: $titleWidth;
+        line-height: $titleLineHeight;
+        font-size: $titleFontSize;
+      }
+
+      p {
+        font-size: $paragraphFontSize;
+      }
+
+      button {
+        margin-top: map-get($spacer, 3);
+        background-color: map-get($palette, lopi-orange);
+        border-color: map-get($palette, lopi-orange);
+        color: map-get($palette, lopi-brown);
+      }
+    }
+  }
+
+  img {
+    height: $imageMobileHeight;
+    filter: $imageFilter;
+    object-fit: cover;
+
+    @media (min-width: map-get($breakpoint, md)) {
+      width: $containerWidth;
+      height: $containerHeight;
+      object-fit: cover;
+    }
+  }
+
+  p {
+    color: map-get($palette, lopi-orange);
+    font-size: $paragraphFontSize;
+    margin-top: $paragraphCarouselMargin;
+  }
+
+  h1 {
+    width: $titleWidth;
+    margin: auto;
+    margin-bottom: map-get($spacer, 4);
+    text-align: center;
+    font-size: $titleCarouselFontSize;
+    font-weight: $titleFontWeight;
+    padding: $titleCarouselPadding;
+  }
+
+  button {
+    background-color: map-get($palette, lopi-brown);
+    border-color: map-get($palette, lopi-orange);
+    font-weight: $titleFontWeight;
+    text-transform: uppercase;
+    color: map-get($palette, lopi-orange);
+  }
+}

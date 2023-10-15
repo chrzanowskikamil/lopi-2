@@ -1,5 +1,6 @@
 import { Categories } from '../../../components/Categories/Categories';
 import { getCategories } from '../../../../actions/getCategories';
+import { getCategoryQuantityByUUID } from '../../../../actions/getCategoryQuantityByUUID';
 import { getProducts } from '../../../../actions/getProducts';
 
 export async function generateStaticParams() {
@@ -17,6 +18,17 @@ const CategoriesPage = async ({ params }: { params: { category: string } }) => {
     (el) => el.name === params.category
   )[0].uid;
 
+  const productCountInCategoriesArray = async () => {
+    const data = [];
+    for (let i = 0; i < allCategories.length; i++) {
+      const number = await getCategoryQuantityByUUID(allCategories[i].uid);
+      data.push({ count: number });
+    }
+
+    return data;
+  };
+
+  const productCounts = await productCountInCategoriesArray();
   const products = await getProducts(categoryUUID);
 
   return (
@@ -26,6 +38,7 @@ const CategoriesPage = async ({ params }: { params: { category: string } }) => {
         categories={allCategories}
         products={products}
         categoryUUID={categoryUUID}
+        productCounts={productCounts}
       />
     </>
   );

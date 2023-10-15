@@ -9,6 +9,7 @@ import {
 import { FC } from 'react';
 import { Product } from '../../../../../../../types/ProductsResponse';
 import ProductTileCol from '../../../../../Products/components/tileShop/ProductTileCol';
+import style from '../mostPurchased.module.scss';
 
 type MostPurchasedListTypes = {
   productList: Product[];
@@ -29,7 +30,7 @@ const MostPurchasedList: FC<MostPurchasedListTypes> = ({ productList }) => {
   });
 
   return (
-    <Container>
+    <Container className={style.mostPurchaseedList}>
       <Row>{products}</Row>
     </Container>
   );

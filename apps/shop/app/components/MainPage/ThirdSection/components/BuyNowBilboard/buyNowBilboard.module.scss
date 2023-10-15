@@ -53,6 +53,9 @@ $min-bannerPicture-height: 300px;
     }
 
     .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       margin-top: map-get($spacer, 7);
       border: var.$btn-border-width-sm solid map-get($palette, lopi-orange);
       border-radius: var.$border-radius;

@@ -1,7 +1,5 @@
 import * as ErrorTypes from '../types/ApiErrors';
 
-import { REVALIDATE_TIME } from '@lopi-2/common';
-
 export async function getCategoryQuantityByUUID(
   categoryUUID: string
 ): Promise<number> {
@@ -10,7 +8,7 @@ export async function getCategoryQuantityByUUID(
     if (!apiUrl) throw new Error(ErrorTypes.ENVIROMENT_ERROR);
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}categories/${categoryUUID}/product-quantity`,
-      { next: { revalidate: REVALIDATE_TIME } }
+      { next: { revalidate: false } }
     );
 
     if (!res.ok)
