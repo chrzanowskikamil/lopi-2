@@ -4,6 +4,30 @@ $theme-colors: var.$theme-colors;
 $spacer: var.$spacers;
 $breakpoint: var.$grid-breakpoints;
 
+.carousel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: map-get($theme-colors, lopi-dark-green);
+  width: 100vw;
+  height: 441px;
+
+  @media (min-width: map-get($breakpoint, md)) {
+    display: none;
+  }
+
+  img {
+    margin-bottom: 30px;
+    margin-left: 30px;
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.carouselItems {
+  width: 100%;
+}
+
 .ourCustomers {
   display: flex;
   position: relative;
@@ -11,56 +35,50 @@ $breakpoint: var.$grid-breakpoints;
   align-items: center;
   width: 100%;
 
-  .bgPictureContainer {
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
+  @media (max-width: map-get($breakpoint, md)) {
+    display: none;
+  }
+
+  .opacityBlock {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 85%;
     background-color: map-get($theme-colors, lopi-dark-green);
     width: 100%;
+    height: 100%;
 
-    .opacityBlock {
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 85%;
-      background-color: map-get($theme-colors, lopi-dark-green);
-      width: 100%;
-      height: 100%;
+    .title {
+      display: inline-block;
+      position: relative;
+      transform: translate(-50%, 0);
+      margin-top: map-get($spacer, 2);
+      margin-left: 50%;
+      color: map-get($theme-colors, lopi-orange);
+      font-weight: var.$font-weight-bold;
+      font-size: var.$font-size-sm;
+      text-transform: uppercase;
 
-      .title {
-        display: inline-block;
-        position: relative;
-        transform: translate(-50%, 0);
-        margin-top: map-get($spacer, 2);
-        margin-left: 50%;
-        color: map-get($theme-colors, lopi-orange);
-        font-weight: var.$font-weight-bold;
-        font-size: var.$font-size-sm;
-        text-transform: uppercase;
+      @media (min-width: map-get($breakpoint, md)) {
+        margin-top: map-get($spacer, 4);
+        font-size: var.$font-size-base;
+      }
 
-        @media (min-width: map-get($breakpoint, md)) {
-          margin-top: map-get($spacer, 4);
-          font-size: var.$font-size-base;
-        }
-
-        @media (min-width: map-get($breakpoint, lg)) {
-          margin-top: map-get($spacer, 41);
-          font-size: var.$font-size-lg;
-        }
+      @media (min-width: map-get($breakpoint, lg)) {
+        margin-top: map-get($spacer, 41);
+        font-size: var.$font-size-lg;
       }
     }
   }
+}
 
-  .companyLogoList {
-    display: flex;
-    position: absolute;
-    top: 0;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-  }
+.companyLogoList {
+  display: flex;
+  position: absolute;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
 }
