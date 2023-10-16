@@ -29,13 +29,8 @@ $breakpoint: var.$grid-breakpoints;
 .carouselItems {
   width: 100%;
   .carouselItem {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    // display: flex;
-    // transform: translateX(-50%);
-    // margin-left: 50%;
     width: 100%;
+    text-align: center;
   }
 }
 
