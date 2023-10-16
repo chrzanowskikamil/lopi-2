@@ -1,337 +1,42 @@
 @use '../../../../../styles/shop-variables' as var;
 @use './customersOpinionsVariables.module.scss' as v;
-@import './keyframes.module';
 
 $theme-colors: var.$theme-colors;
 $spacer: var.$spacers;
 $breakpoint: var.$grid-breakpoints;
 
-.customersOpinions {
-  display: flex;
-  justify-content: center;
+.bgImage {
+  z-index: -2;
+  min-height: 90vh;
+  max-height: 90vh;
+}
 
-  .bgImage {
-    z-index: -2;
-    max-height: 90vh;
+.titleArea {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  padding-top: map-get($spacer, 3);
+  width: 100%;
+  text-align: center;
+
+  @media (min-width: map-get($breakpoint, xl)) {
+    padding-top: map-get($spacer, 41);
   }
 
-  .titleArea {
-    display: flex;
-    position: absolute;
-    flex-direction: column;
-    padding-top: map-get($spacer, 3);
-    width: 100%;
-    text-align: center;
+  .title {
+    color: map-get($theme-colors, lopi-dark-green);
+    font-weight: var.$font-weight-bold;
+    font-size: v.$fontSizeTitleLG;
+    line-height: var.$line-height-lg;
+    text-transform: uppercase;
 
     @media (min-width: map-get($breakpoint, xl)) {
-      padding-top: map-get($spacer, 41);
+      font-size: v.$fontSizeTitleXXL;
     }
+  }
 
-    .title {
-      color: map-get($theme-colors, lopi-dark-green);
-      font-weight: var.$font-weight-bold;
-      font-size: v.$fontSizeTitleLG;
-      line-height: var.$line-height-lg;
-      text-transform: uppercase;
-
-      @media (min-width: map-get($breakpoint, xl)) {
-        font-size: v.$fontSizeTitleXXL;
-      }
-    }
-
-    .subtitle {
-      color: map-get($theme-colors, lopi-green);
-      line-height: var.$line-height-base;
-    }
-
-    .opinionsCarousel {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: v.$carouselFrontHeightLG;
-
-      @media (min-width: map-get($breakpoint, xl)) {
-        height: v.$carouselFrontHeightXL;
-      }
-
-      .inactive:hover {
-        cursor: pointer;
-      }
-
-      .carouselElement {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        z-index: 5;
-        animation: slideforward v.$animationDuration;
-        animation-timing-function: v.$animationTiming;
-        margin-top: map-get($spacer, 6);
-        margin-bottom: map-get($spacer, 5);
-        box-shadow: 0 map-get($spacer, 12) map-get($spacer, 3)
-          map-get($spacer, 7) v.$boxShadowColor;
-        background-color: map-get($theme-colors, lopi-white);
-        padding-right: map-get($spacer, 31);
-        padding-left: map-get($spacer, 31);
-        width: v.$carouselFrontWidthLG;
-        height: v.$carouselFrontHeightLG;
-        color: map-get($theme-colors, lopi-dark-green);
-
-        @media (min-width: map-get($breakpoint, xl)) {
-          margin-top: map-get($spacer, 70);
-          width: v.$carouselFrontWidthXL;
-          height: v.$carouselFrontHeightXL;
-        }
-
-        .ratingStars {
-          justify-content: center;
-
-          padding-top: map-get($spacer, 3);
-        }
-
-        .starsIconClass {
-          animation: starsforward v.$animationDuration;
-          font-size: v.$starSizeSM;
-
-          @media (min-width: map-get($breakpoint, xl)) {
-            font-size: v.$starSizeXL;
-          }
-        }
-
-        .opinion,
-        .author {
-          animation-duration: v.$animationDuration;
-          animation-fill-mode: v.$animationFillMode;
-        }
-
-        .opinion {
-          animation: forwardfontchangebig v.$animationDuration;
-          font-weight: var.$font-weight-normal;
-          font-size: v.$fontSizeTitleLG;
-
-          @media (min-width: map-get($breakpoint, xl)) {
-            font-size: v.$fontSizeTitleXXL;
-          }
-        }
-
-        .author {
-          animation: forwardfontchangesmall v.$animationDuration;
-          font-size: v.$fontSizeAuthorXXS;
-
-          @media (min-width: map-get($breakpoint, xl)) {
-            font-size: v.$fontSizeAuthorSM;
-          }
-        }
-
-        .switchBetween {
-          z-index: 15;
-          padding-bottom: map-get($spacer, 31);
-          width: 100%;
-
-          .navigationCircle {
-            display: flex;
-            justify-content: center;
-            padding: map-get($spacer, 7);
-
-            .circle {
-              display: block;
-              margin: map-get($spacer, 1);
-              border-radius: 50%;
-              background-color: map-get($theme-colors, lopi-grey);
-              width: v.$circleWidthSM;
-              height: v.$circleHeightSM;
-
-              @media (min-width: map-get($breakpoint, xl)) {
-                width: v.$circleWidthLG;
-                height: v.$circleHeightLG;
-              }
-            }
-
-            .active {
-              background-color: map-get($theme-colors, lopi-green);
-            }
-          }
-        }
-      }
-
-      .carouselLeft {
-        transform: translateX(v.$leftBackToLeftLG);
-
-        @media (min-width: map-get($breakpoint, xl)) {
-          transform: translateX(v.$leftBackToLeftXL);
-        }
-      }
-
-      .carouselRight {
-        transform: translateX(v.$rightBackToLeftLG);
-        z-index: 6;
-
-        @media (min-width: map-get($breakpoint, xl)) {
-          transform: translateX(v.$rightBackToLeftXL);
-        }
-      }
-
-      .caruselBack {
-        z-index: 4;
-        animation: slidebackward v.$animationDuration;
-        width: v.$carouselBackWidthLG;
-        height: v.$carouselBackHeightLG;
-
-        @media (min-width: map-get($breakpoint, xl)) {
-          width: v.$carouselBackWidthXL;
-          height: v.$carouselBackHeightXL;
-        }
-
-        .starsIconClass {
-          animation: starsbackward v.$animationDuration;
-
-          font-size: v.$starSizeXS;
-
-          @media (min-width: map-get($breakpoint, xl)) {
-            font-size: v.$starSizeLG;
-          }
-        }
-
-        .opinion,
-        .author {
-          animation-duration: v.$animationDuration;
-          animation-fill-mode: v.$animationFillMode;
-        }
-
-        .opinion {
-          animation: backwardfontchangebig v.$animationDuration;
-          font-weight: var.$font-weight-thin;
-          font-size: v.$fontSizeTitleSM;
-
-          @media (min-width: map-get($breakpoint, xl)) {
-            font-size: v.$fontSizeTitleXL;
-          }
-        }
-
-        .author {
-          animation: backwardfontchangesmall v.$animationDuration;
-          font-size: v.$fontSizeAuthorXXS;
-
-          @media (min-width: map-get($breakpoint, xl)) {
-            font-size: v.$fontSizeAuthorXS;
-          }
-        }
-      }
-
-      .caruselRightBack {
-        z-index: 4;
-        animation: sliderightbackward v.$animationDuration;
-        animation-timing-function: v.$animationTiming;
-        width: v.$carouselBackWidthLG;
-        height: v.$carouselBackHeightLG;
-
-        @media (min-width: map-get($breakpoint, xl)) {
-          width: v.$carouselBackWidthXL;
-          height: v.$carouselBackHeightXL;
-        }
-
-        .starsIconClass {
-          animation: starsbackward v.$animationDuration;
-          font-size: v.$starSizeXS;
-
-          @media (min-width: map-get($breakpoint, xl)) {
-            font-size: v.$starSizeLG;
-          }
-        }
-
-        .opinion,
-        .author {
-          animation-duration: v.$animationDuration;
-          animation-fill-mode: v.$animationFillMode;
-        }
-
-        .opinion {
-          animation: backwardfontchangebig v.$animationDuration;
-          font-weight: var.$font-weight-thin;
-          font-size: v.$fontSizeTitleSM;
-
-          @media (min-width: map-get($breakpoint, xl)) {
-            font-size: v.$fontSizeTitleXL;
-          }
-        }
-
-        .author {
-          animation: backwardfontchangesmall v.$animationDuration;
-          font-size: v.$fontSizeAuthorXXXS;
-
-          @media (min-width: map-get($breakpoint, xl)) {
-            font-size: v.$fontSizeAuthorXS;
-          }
-        }
-      }
-
-      .caruselLeftBack {
-        z-index: 3;
-        animation: slideleftbackward v.$animationDuration;
-        animation-timing-function: v.$animationTiming;
-        width: v.$carouselBackWidthLG;
-        height: v.$carouselBackHeightLG;
-
-        @media (min-width: map-get($breakpoint, xl)) {
-          width: v.$carouselBackWidthXL;
-          height: v.$carouselBackHeightXL;
-        }
-
-        .starsIconClass {
-          animation: starsbackward v.$animationDuration;
-          font-size: v.$starSizeXS;
-
-          @media (min-width: map-get($breakpoint, xl)) {
-            font-size: v.$starSizeLG;
-          }
-        }
-
-        .opinion,
-        .author {
-          animation-duration: v.$animationDuration;
-          animation-fill-mode: v.$animationFillMode;
-        }
-
-        .opinion {
-          animation: backwardfontchangebig v.$animationDuration;
-          font-weight: var.$font-weight-thin;
-          font-size: v.$fontSizeTitleSM;
-
-          @media (min-width: map-get($breakpoint, xl)) {
-            font-size: v.$fontSizeTitleXL;
-          }
-        }
-
-        .author {
-          animation: backwardfontchangesmall v.$animationDuration;
-          font-size: v.$fontSizeAuthorXXXS;
-
-          @media (min-width: map-get($breakpoint, xl)) {
-            font-size: v.$fontSizeAuthorXS;
-          }
-        }
-      }
-
-      .carouselBackRight {
-        z-index: 3;
-      }
-
-      .caruselLeftActive {
-        transform: translateX(v.$leftActiveXL);
-        animation: slideleftactive v.$animationDuration;
-
-        @media (min-width: map-get($breakpoint, xl)) {
-          transform: translateX(v.$leftActiveXL);
-        }
-      }
-
-      .caruselRightActive {
-        transform: translateX(v.$rightActiveXL);
-        animation: sliderightactive v.$animationDuration;
-
-        @media (min-width: map-get($breakpoint, xl)) {
-          transform: translateX(v.$rightActiveXL);
-        }
-      }
-    }
+  .subtitle {
+    color: map-get($theme-colors, lopi-green);
+    line-height: var.$line-height-base;
   }
 }

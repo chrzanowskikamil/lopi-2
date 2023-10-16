@@ -1,0 +1,19 @@
+@use '../../../../../../../../styles/shop-variables' as var;
+@use '../../../customersOpinionsVariables.module.scss' as v;
+
+$theme-colors: var.$theme-colors;
+$spacer: var.$spacers;
+
+.carouselElement {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px;
+  box-shadow: 0 map-get($spacer, 12) map-get($spacer, 3) map-get($spacer, 7)
+    v.$boxShadowColor;
+  background-color: map-get($theme-colors, lopi-white);
+  padding-top: 40px;
+  padding-bottom: 40px;
+  height: 60vh;
+}

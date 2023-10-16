@@ -1,0 +1,18 @@
+@use '../../../../../styles/shop-variables' as var;
+
+$theme-colors: var.$theme-colors;
+
+.galeryContainer {
+  background-color: map-get($theme-colors, lopi-grey-dark);
+  width: 100%;
+  .galery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+    margin-top: 100px;
+    margin-left: 50%;
+
+    max-width: 1440px;
+  }
+}

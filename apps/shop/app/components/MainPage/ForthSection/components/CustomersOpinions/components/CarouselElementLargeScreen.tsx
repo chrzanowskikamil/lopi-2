@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import ProductRating from '../../../../../../../Products/components/ProductRating/ProductRating';
-import style from '../../../customersOpinions.module.scss';
+import ProductRating from '../../../../../Products/components/ProductRating/ProductRating';
+import style from './ClientOpinionsCarousel/ClientOpinionsCaroulseLargeScreen/clientOpinionsCarouselLargeScreen.module.scss';
 
-type CarouselElementType = {
+type CarouselElementLargeScreenType = {
   starCount: number;
   opinion: string;
   author: string;
@@ -12,7 +12,7 @@ type CarouselElementType = {
   starsIconClass?: string;
 };
 
-export const CarouselElement: FC<CarouselElementType> = ({
+export const CarouselElementLargeScreen: FC<CarouselElementLargeScreenType> = ({
   className,
   starCount,
   opinion,
@@ -22,7 +22,7 @@ export const CarouselElement: FC<CarouselElementType> = ({
   starsIconClass,
 }) => {
   return (
-    <div className={`${style.carouselElement} ${className}`}>
+    <div className={`${style.carouselElement} ${className} `}>
       <ProductRating
         starsCount={starCount}
         className={style.ratingStars}

@@ -1,11 +1,18 @@
 'use client';
 
-import { CarouselElement } from './components/CarouselElement';
-import { carouselElementsData as carouselData } from './components/CarouselElementsData';
-import style from '../../customersOpinions.module.scss';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 
-export const ClientOpinionsCarolusel = () => {
+import { CarouselElementLargeScreen } from '../../CarouselElementLargeScreen';
+import { carouselElementsData as carouselData } from '../components/CarouselElementsData';
+import style from './clientOpinionsCarouselLargeScreen.module.scss';
+
+type ClientOpinionsCaroluselLargeScreenProps = {
+  className: string;
+};
+
+export const ClientOpinionsCaroluselLargeScreen: FC<
+  ClientOpinionsCaroluselLargeScreenProps
+> = ({ className }) => {
   const [currentOpinionIndex, setCurrentOpinionIndex] = useState(1);
 
   const getNavigationActive = (index: number) => {
@@ -30,8 +37,8 @@ export const ClientOpinionsCarolusel = () => {
   );
 
   return (
-    <div className={style.opinionsCarousel}>
-      <CarouselElement
+    <div className={`${style.opinionsCarousel}  ${className}`}>
+      <CarouselElementLargeScreen
         className={`${style.carouselLeft}  ${
           currentOpinionIndex === 0
             ? style.caruselLeftActive
@@ -43,7 +50,7 @@ export const ClientOpinionsCarolusel = () => {
         onClick={() => setCurrentOpinionIndex(0)}
         starsIconClass={style.starsIconClass}
       />
-      <CarouselElement
+      <CarouselElementLargeScreen
         className={`${
           currentOpinionIndex === 1
             ? ''
@@ -56,7 +63,7 @@ export const ClientOpinionsCarolusel = () => {
         onClick={() => setCurrentOpinionIndex(1)}
         starsIconClass={style.starsIconClass}
       />
-      <CarouselElement
+      <CarouselElementLargeScreen
         className={`${style.carouselRight} ${
           currentOpinionIndex === 2
             ? style.caruselRightActive
