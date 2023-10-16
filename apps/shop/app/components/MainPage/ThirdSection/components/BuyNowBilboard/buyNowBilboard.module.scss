@@ -30,7 +30,7 @@ $min-bannerPicture-height: 300px;
 
   .contentContainer {
     display: flex;
-    justify-content: space-between;
+
     align-items: center;
     padding-bottom: map-get($spacer, 6);
     width: 100%;
@@ -79,8 +79,7 @@ $min-bannerPicture-height: 300px;
 
   .bannerPictureContainer {
     display: flex;
-    align-content: flex-end;
-
+    flex-direction: row-reverse;
     .bannerPicture {
       min-width: $min-bannerPicture-width;
       max-width: $max-bannerPicture-width;
