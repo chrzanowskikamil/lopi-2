@@ -105,10 +105,6 @@ $breakpoint: var.$grid-breakpoints;
 
     .bgImage {
       z-index: -2;
-      max-height: 90vh;
-      // @media (min-width: map-get($breakpoint, xl)) {
-      //   max-height: 60vh;
-      // }
     }
 
     .titleArea {

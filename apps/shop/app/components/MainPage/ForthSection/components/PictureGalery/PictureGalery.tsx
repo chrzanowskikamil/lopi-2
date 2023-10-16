@@ -16,11 +16,11 @@ export const PictureGalery = async () => {
         {/* `'d-none d-md-flex'` */}
         {/* `'d-none d-md-flex'` */}
         <div className={style.galery}>
-          <Image src={pictureOne} alt={''} />
-          <Image src={pictureTwo} alt={''} />
-          <Image src={pictureThree} alt={''} />
-          <Image src={pictureFour} alt={''} />
-          <Image src={pictureFive} alt={''} />
+          <Image src={pictureOne} alt={''} className={style.imageElement} />
+          <Image src={pictureTwo} alt={''} className={style.imageElement} />
+          <Image src={pictureThree} alt={''} className={style.imageElement} />
+          <Image src={pictureFour} alt={''} className={style.imageElement} />
+          <Image src={pictureFive} alt={''} className={style.imageElement} />
         </div>
       </div>
       {/* 

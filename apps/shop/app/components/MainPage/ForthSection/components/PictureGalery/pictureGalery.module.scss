@@ -1,6 +1,7 @@
 @use '../../../../../styles/shop-variables' as var;
 
 $theme-colors: var.$theme-colors;
+$breakpoint: var.$grid-breakpoints;
 
 .galeryContainer {
   background-color: map-get($theme-colors, lopi-grey-dark);
@@ -12,7 +13,14 @@ $theme-colors: var.$theme-colors;
     transform: translateX(-50%);
     margin-top: 100px;
     margin-left: 50%;
-
     max-width: 1440px;
+    .imageElement {
+      width: 170px;
+      height: 170px;
+      @media (min-width: map-get($breakpoint, xl)) {
+        width: 290px;
+        height: 290px;
+      }
+    }
   }
 }
