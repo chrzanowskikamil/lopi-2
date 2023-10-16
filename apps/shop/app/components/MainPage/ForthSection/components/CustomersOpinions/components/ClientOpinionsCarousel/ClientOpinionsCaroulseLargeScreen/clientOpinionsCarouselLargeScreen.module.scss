@@ -32,7 +32,6 @@ $breakpoint: var.$grid-breakpoints;
 
   .ratingStars {
     justify-content: center;
-
     padding-top: map-get($spacer, 3);
   }
 
@@ -107,6 +106,9 @@ $breakpoint: var.$grid-breakpoints;
     .bgImage {
       z-index: -2;
       max-height: 90vh;
+      // @media (min-width: map-get($breakpoint, xl)) {
+      //   max-height: 60vh;
+      // }
     }
 
     .titleArea {

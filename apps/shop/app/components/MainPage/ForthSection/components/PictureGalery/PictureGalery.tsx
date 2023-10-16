@@ -12,7 +12,7 @@ import style from './pictureGalery.module.scss';
 export const PictureGalery = async () => {
   return (
     <>
-      <div className={`${style.galeryContainer} 'd-none d-md-flex`}>
+      <div className={`${style.galeryContainer}  'd-none d-md-flex'`}>
         <div className={style.galery}>
           <Image src={pictureOne} alt={''} />
           <Image src={pictureTwo} alt={''} />
