@@ -10,6 +10,7 @@ import forthCompanyPicture from '../../../../../assets/PNG/forthsection/customer
 import secoundCompanyPicture from '../../../../../assets/PNG/forthsection/customers-galerry-two.png';
 import style from './ourCustomers.module.scss';
 import thirdCompanyPicture from '../../../../../assets/PNG/forthsection/customers-galerry-three.png';
+
 const OurCustomersCarousel: FC = () => {
   const carouselItems = [
     {
@@ -35,7 +36,7 @@ const OurCustomersCarousel: FC = () => {
       {carouselItems.map((item, index) => {
         if (index % 2 === 0) {
           return (
-            <Carousel.Item key={index}>
+            <Carousel.Item key={index} className={style.carouselItem}>
               <Image
                 src={carouselItems[index].src}
                 alt={carouselItems[index].alt}
