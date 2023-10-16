@@ -1,0 +1,93 @@
+@use '../../../styles/shop-variables' as var;
+
+$palette: var.$theme-colors;
+$breakpoints: var.$grid-breakpoints;
+$borderBottom: 1px solid map-get($palette, lopi-green);
+$containerWidth: 100%;
+$containerMobilePadding: 60px 12px;
+$promotionTileMargin: 15px 0;
+$imageMobileHeight: 252px;
+$imageDesktopWidth: 600px;
+$imageDesktopHeight: 411px;
+$infoContainerWidth: 479px;
+$infoContainerHeight: 200px;
+$infoContainerTransform: translate(13%, -35%);
+$titleFontSize: 25px;
+$titleFontWeight: 700;
+$titleMargin: 20px;
+$titlePadding: 0 25px;
+$descriptionFontSize: 15px;
+$descriptionFontWeight: 400;
+$descriptionPadding: 0 25px;
+
+.container {
+  width: $containerWidth;
+  display: flex;
+  flex-direction: column;
+  padding: $containerMobilePadding;
+
+  @media (min-width: map-get($breakpoints, md)) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.promotionTile {
+  display: flex;
+  flex-direction: column;
+  margin: $promotionTileMargin;
+
+  @media (min-width: map-get($breakpoints, md)) {
+    margin: 0;
+  }
+
+  > img {
+    height: $imageMobileHeight;
+
+    @media (min-width: map-get($breakpoints, md)) {
+      width: $imageDesktopWidth;
+      height: $imageDesktopHeight;
+    }
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: map-get($breakpoints, md)) {
+      width: $infoContainerWidth;
+      height: $infoContainerHeight;
+      align-items: center;
+      background-color: map-get($palette, lopi-white);
+      transform: $infoContainerTransform;
+    }
+
+    > h3 {
+      color: map-get($palette, lopi-brown);
+      text-align: center;
+      font-size: $titleFontSize;
+      font-weight: $titleFontWeight;
+      text-transform: uppercase;
+      margin-top: $titleMargin;
+      padding: $titlePadding;
+    }
+
+    > p {
+      color: map-get($palette, lopi-green);
+      text-align: center;
+      font-size: $descriptionFontSize;
+      font-weight: $descriptionFontWeight;
+      padding: $descriptionPadding;
+    }
+
+    > button {
+      background-color: transparent;
+      border: none;
+      border-bottom: $borderBottom;
+      border-radius: 0;
+      color: map-get($palette, lopi-green);
+      text-transform: uppercase;
+    }
+  }
+}

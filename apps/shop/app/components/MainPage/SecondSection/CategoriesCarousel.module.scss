@@ -1,0 +1,11 @@
+$carouselArrowWidth: 30px;
+
+.carousel {
+  > a {
+    width: $carouselArrowWidth;
+  }
+}
+
+.carouselItem {
+  display: flex;
+}
