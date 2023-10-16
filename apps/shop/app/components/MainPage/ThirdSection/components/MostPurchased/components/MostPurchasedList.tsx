@@ -1,6 +1,6 @@
 'use client';
 
-import { Container, Row } from 'react-bootstrap';
+import { Carousel, Container, Row } from 'react-bootstrap';
 import {
   ENDING_ON_NUMBER,
   STARTING_FROM_NUMBER,
@@ -25,13 +25,46 @@ const MostPurchasedList: FC<MostPurchasedListTypes> = ({ productList }) => {
     return pickedProductList;
   };
 
-  const products = preparedProductList().map((product) => {
+  const productsBigScreen = preparedProductList().map((product) => {
     return <ProductTileCol col={4} product={product} key={product.uid} />;
+  });
+
+  const productsCarousel = preparedProductList().map((product, i) => {
+    return (
+      <Carousel.Item key={i}>
+        <ProductTileCol
+          col={4}
+          product={product}
+          key={product.uid}
+          className={style.productCarousel}
+        />
+      </Carousel.Item>
+    );
   });
 
   return (
     <Container className={style.mostPurchaseedList}>
-      <Row>{products}</Row>
+      {/* FOR BIG SCREENS */}
+      <Row className="d-none  d-md-flex ">{productsBigScreen}</Row>
+
+      {/* FOR SMALL SCREEN */}
+      <Row className="d-flex  d-md-none">
+        <Carousel
+          indicators={false}
+          touch={true}
+          bsPrefix={style.carousel}
+          nextIcon={
+            <i
+              className={`${style.carouselArrow} bi bi-arrow-right-circle`}
+            ></i>
+          }
+          prevIcon={
+            <i className={`${style.carouselArrow} bi bi-arrow-left-circle`}></i>
+          }
+        >
+          {productsCarousel}
+        </Carousel>
+      </Row>
     </Container>
   );
 };

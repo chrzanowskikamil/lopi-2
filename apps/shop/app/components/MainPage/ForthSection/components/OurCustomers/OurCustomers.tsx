@@ -32,7 +32,13 @@ const OurCustomersCarousel: FC = () => {
   ];
 
   return (
-    <Carousel className={style.carouselItems} controls={false}>
+    <Carousel
+      className={style.carouselItems}
+      controls={false}
+      touch={true}
+      interval={2000}
+      indicatorLabels={['a', 'b']}
+    >
       {carouselItems.map((item, index) => {
         if (index % 2 === 0) {
           return (

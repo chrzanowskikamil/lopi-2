@@ -1,17 +1,11 @@
-import style from './tileProduct.module.scss';
-
-import Image from 'next/image';
-
-import { FC } from 'react';
-
-import Price from './components/Price';
-
 import AddToCart from './components/AddtoCart';
-
 import { Col } from 'react-bootstrap';
-
+import { FC } from 'react';
+import Image from 'next/image';
+import Price from './components/Price';
 import ProductRating from '../ProductRating/ProductRating';
 import Status from './components/Status';
+import style from './tileProduct.module.scss';
 import { useRouter } from 'next/navigation';
 
 interface ProductTileColProps {
@@ -24,16 +18,21 @@ interface ProductTileColProps {
     discountPrice: number;
   };
   col: number;
+  className?: string;
 }
 interface ImageUrl {
   imageUrl: string;
 }
 
-const ProductTileCol: FC<ProductTileColProps> = ({ product, col }) => {
+const ProductTileCol: FC<ProductTileColProps> = ({
+  product,
+  col,
+  className,
+}) => {
   const router = useRouter();
 
   return (
-    <Col className={style.product} xl={col} key={product.sku}>
+    <Col className={`${style.product} ${className}`} xl={col} key={product.sku}>
       <ul className={style.tile}>
         <div className={style.imageArea}>
           <Status status={'Current'} />

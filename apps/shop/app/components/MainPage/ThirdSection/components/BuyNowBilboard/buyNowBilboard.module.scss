@@ -80,6 +80,7 @@ $min-bannerPicture-height: 300px;
   .bannerPictureContainer {
     display: flex;
     flex-direction: row-reverse;
+
     .bannerPicture {
       min-width: $min-bannerPicture-width;
       max-width: $max-bannerPicture-width;
