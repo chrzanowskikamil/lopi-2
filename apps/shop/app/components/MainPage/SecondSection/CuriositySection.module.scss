@@ -1,0 +1,52 @@
+@use '../../../styles/shop-variables' as var;
+
+$palette: var.$theme-colors;
+$breakpoints: var.$grid-breakpoints;
+$imageMobileHeight: 349px;
+$imageDesktopWidth: 100%;
+$imageDesktopHeight: 647px;
+$imageFilter: brightness(0.6);
+$titleFontSize: 18px;
+$titleMobilePadding: 90px 32px;
+$titleFontWeight: 600;
+$titleTransform: translateY(10%);
+$titleDesktopTransform: translateY(50%);
+$titleDesktopWidth: 516px;
+$titleDesktopHeight: 24px;
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  > img {
+    height: $imageMobileHeight;
+    object-fit: cover;
+    filter: $imageFilter;
+    position: relative;
+
+    @media (min-width: map-get($breakpoints, md)) {
+      width: $imageDesktopWidth;
+      height: $imageDesktopHeight;
+    }
+  }
+
+  > h4 {
+    color: map-get($palette, lopi-orange);
+    position: absolute;
+    font-size: $titleFontSize;
+    text-align: center;
+    padding: $titleMobilePadding;
+    transform: $titleTransform;
+    font-weight: $titleFontWeight;
+    word-wrap: break-word;
+
+    @media (min-width: map-get($breakpoints, md)) {
+      transform: $titleDesktopTransform;
+      right: 0;
+      width: $titleDesktopWidth;
+      font-weight: normal;
+      line-height: $titleDesktopHeight;
+      text-align: end;
+    }
+  }
+}

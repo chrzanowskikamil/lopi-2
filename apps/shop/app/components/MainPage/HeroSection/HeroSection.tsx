@@ -6,7 +6,7 @@ import { carouselItems } from './heroData';
 
 export const HeroSection: FC = () => {
   return (
-    <section>
+    <section className={style.section}>
       <Carousel items={carouselItems} className={style.carousel} />
       <DiscoverySection />
     </section>

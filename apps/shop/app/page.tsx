@@ -1,10 +1,12 @@
+import { HeroSection } from './components/MainPage/HeroSection/HeroSection';
+import { SecondSection } from './components/MainPage/SecondSection/SecondSection';
 import { ThirdSection } from './components/MainPage/ThirdSection/ThirdSection';
-import { HeroSection } from './components/HeroSection/HeroSection';
 
 const Index = async () => {
   return (
     <>
       <HeroSection />
+      <SecondSection />
       <ThirdSection />
     </>
   );

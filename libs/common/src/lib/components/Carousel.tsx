@@ -23,8 +23,8 @@ interface CarouselButtonProps {
 
 export interface CarouselItemsProps {
   image: CarouselImageProps;
-  caption: CarouselCaptionProps;
-  button: CarouselButtonProps;
+  caption?: CarouselCaptionProps;
+  button?: CarouselButtonProps;
 }
 
 interface CarouselProps {
@@ -36,9 +36,9 @@ const DesktopView: FC<CarouselItemsProps> = ({ image, caption, button }) => (
   <div className="d-none d-md-block">
     <Image {...image} />
     <BootstrapCarousel.Caption>
-      <p>{caption.cafeName}</p>
-      <h1>{caption.title}</h1>
-      <Button title={button.buttonText} />
+      <p>{caption?.cafeName}</p>
+      <h1>{caption?.title}</h1>
+      <Button title={button?.buttonText} />
     </BootstrapCarousel.Caption>
   </div>
 );
@@ -46,9 +46,9 @@ const DesktopView: FC<CarouselItemsProps> = ({ image, caption, button }) => (
 const MobileView: FC<CarouselItemsProps> = ({ image, caption, button }) => (
   <div className="d-block d-md-none h-80">
     <Image {...image} />
-    <p>{caption.cafeName}</p>
-    <h1>{caption.title}</h1>
-    <Button title={button.buttonText} />
+    <p>{caption?.cafeName}</p>
+    <h1>{caption?.title}</h1>
+    <Button title={button?.buttonText} />
   </div>
 );
 
