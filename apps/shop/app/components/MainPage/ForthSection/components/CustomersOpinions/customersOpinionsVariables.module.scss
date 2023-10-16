@@ -20,68 +20,37 @@ $boxShadowColor: #0000000d;
 
 //for media
 //element
-$carouselFontWidth: 670px;
-$carouselFontHeight: 454px;
+$carouselFrontWidth: 620px;
+$carouselFrontHeight: 454px;
 
-$carouselBackWidth: 450px;
-$carouselBackHeight: 300px;
+$carouselBackWidth: 420px;
+$carouselBackHeight: 370px;
 
 // fonts
 
-$fontSizeTitleBig: var.$font-size-xxl;
-$fontSizeTitleSmall: var.$font-size-xl;
+$fontSizeTitleXXL: var.$font-size-xxl;
+$fontSizeTitleXL: var.$font-size-xl;
+$fontSizeTitleLG: var.$font-size-lg;
+$fontSizeTitleSM: var.$font-size-sm;
 
-$fontSizeAuthorBig: var.$font-size-sm;
-
-$fontSizeAuthorSmall: var.$font-size-xs;
+$fontSizeAuthorSM: var.$font-size-sm;
+$fontSizeAuthorXS: var.$font-size-xs;
+$fontSizeAuthorXXS: var.$font-size-xxs;
+$fontSizeAuthorXXXS: var.$font-size-xxxs;
 
 //translate params
 
-$middleTransition: -10%;
+$middleTransition: 0%;
 
-$leftActive: 30%;
-$leftTransition: -15%;
+$leftActive: 20%;
+$leftTransition: -10%;
 $leftBackToLeft: 10%;
 
-$rightActive: -30%;
-$rightTransition: 15%;
+$rightActive: -20%;
+$rightTransition: 10%;
 $rightBackToLeft: -10%;
 
 // stars
 
 $starSizeBig: 16px;
 $starSizeSmall: 12px;
-
-@media (min-width: map-get($breakpoint, sm)) {
-  $carouselFontWidth: 10px;
-  $carouselFontHeight: 10px;
-
-  $carouselBackWidth: 10px;
-  $carouselBackHeight: 10px;
-
-  // fonts
-
-  $fontSizeTitleBig: var.$font-size-sm;
-  $fontSizeTitleSmall: var.$font-size-xs;
-
-  $fontSizeAuthorBig: var.$font-size-xxs;
-
-  $fontSizeAuthorSmall: var.$font-size-xxxs;
-
-  //translate params
-
-  $middleTransition: -10%;
-
-  $leftActive: 30%;
-  $leftTransition: -15%;
-  $leftBackToLeft: 10%;
-
-  $rightActive: -30%;
-  $rightTransition: 15%;
-  $rightBackToLeft: -10%;
-
-  // stars
-
-  $starSizeBig: 16px;
-  $starSizeSmall: 12px;
-}

@@ -5,6 +5,7 @@
 
 $theme-colors: var.$theme-colors;
 $spacer: var.$spacers;
+$breakpoint: var.$grid-breakpoints;
 
 // Keyframes
 
@@ -14,35 +15,34 @@ $spacer: var.$spacers;
     width: v.$carouselBackWidth;
     height: v.$carouselBackHeight;
   }
+
   25% {
-    transform: translateX(v.$middleTransition);
     width: v.$carouselBackWidth;
     height: v.$carouselBackHeight;
   }
 
   50% {
-    font-size: v.$fontSizeTitleBig;
+    font-size: v.$fontSizeTitleXXL;
   }
 
   100% {
     transform: translateX(0);
-    width: v.$carouselFontWidth;
-    height: v.$carouselFontHeight;
-    font-size: v.$fontSizeTitleBig;
+    width: v.$carouselFrontWidth;
+    height: v.$carouselFrontHeight;
+    font-size: v.$fontSizeTitleXXL;
   }
 }
 
 @keyframes slidebackward {
   from {
     z-index: 6;
-    width: v.$carouselFontWidth;
-    height: v.$carouselFontHeight;
-    font-size: v.$fontSizeTitleBig;
+    width: v.$carouselFrontWidth;
+    height: v.$carouselFrontHeight;
+    font-size: v.$fontSizeTitleXXL;
   }
 
   25% {
-    transform: translateX(v.$middleTransition);
-    font-size: v.$fontSizeTitleSmall;
+    font-size: v.$fontSizeTitleXL;
   }
 
   50% {
@@ -94,56 +94,58 @@ $spacer: var.$spacers;
 @keyframes forwardfontchangebig {
   from {
     font-weight: var.$font-weight-thin;
-    font-size: v.$fontSizeTitleSmall;
+    font-size: v.$fontSizeTitleXL;
   }
+
   25% {
     font-weight: var.$font-weight-thin;
-    font-size: v.$fontSizeTitleSmall;
+    font-size: v.$fontSizeTitleXL;
   }
 
   to {
     font-weight: var.$font-weight-normal;
-    font-size: v.$fontSizeTitleBig;
+    font-size: v.$fontSizeTitleXXL;
   }
 }
 
 @keyframes forwardfontchangesmall {
   from {
-    font-size: v.$fontSizeAuthorSmall;
+    font-size: v.$fontSizeAuthorSM;
   }
+
   25% {
-    font-size: v.$fontSizeAuthorSmall;
+    font-size: v.$fontSizeAuthorSM;
   }
 
   to {
-    font-size: v.$fontSizeAuthorBig;
+    font-size: v.$fontSizeAuthorXS;
   }
 }
 
 @keyframes backwardfontchangebig {
   from {
     font-weight: var.$font-weight-normal;
-    font-size: v.$fontSizeTitleBig;
+    font-size: v.$fontSizeTitleXXL;
   }
 
   25% {
     font-weight: var.$font-weight-thin;
-    font-size: v.$fontSizeTitleSmall;
+    font-size: v.$fontSizeTitleXL;
   }
 
   to {
     font-weight: var.$font-weight-thin;
-    font-size: v.$fontSizeTitleSmall;
+    font-size: v.$fontSizeTitleXL;
   }
 }
 
 @keyframes backwardfontchangesmall {
   from {
-    font-size: v.$fontSizeAuthorBig;
+    font-size: v.$fontSizeAuthorXS;
   }
 
   to {
-    font-size: v.$fontSizeAuthorSmall;
+    font-size: v.$fontSizeAuthorSM;
   }
 }
 
@@ -151,24 +153,26 @@ $spacer: var.$spacers;
   from {
     transform: translateX(v.$rightActive);
     z-index: 5;
-    width: v.$carouselFontWidth;
-    height: v.$carouselFontHeight;
-    font-size: v.$fontSizeTitleBig;
+    width: v.$carouselFrontWidth;
+    height: v.$carouselFrontHeight;
+    font-size: v.$fontSizeTitleXXL;
   }
 
   25% {
-    font-size: v.$fontSizeTitleSmall;
+    z-index: 2;
+    font-size: v.$fontSizeTitleXL;
   }
 
   30% {
     transform: translateX(v.$rightTransition);
-    font-size: v.$fontSizeTitleSmall;
+
+    font-size: v.$fontSizeTitleXL;
   }
 
   to {
     width: v.$carouselBackWidth;
     height: v.$carouselBackHeight;
-    font-size: v.$fontSizeAuthorBig;
+    font-size: v.$fontSizeAuthorXS;
   }
 }
 
@@ -176,24 +180,24 @@ $spacer: var.$spacers;
   from {
     transform: translateX(v.$leftActive);
     z-index: 10;
-    width: v.$carouselFontWidth;
-    height: v.$carouselFontHeight;
-    font-size: v.$fontSizeTitleBig;
+    width: v.$carouselFrontWidth;
+    height: v.$carouselFrontHeight;
+    font-size: v.$fontSizeTitleXXL;
   }
 
   25% {
-    font-size: v.$fontSizeTitleSmall;
+    font-size: v.$fontSizeTitleXL;
   }
 
   30% {
     transform: translateX(v.$leftTransition);
-    font-size: v.$fontSizeTitleSmall;
+    font-size: v.$fontSizeTitleXL;
   }
 
   to {
     width: v.$carouselBackWidth;
     height: v.$carouselBackHeight;
-    font-size: v.$fontSizeAuthorBig;
+    font-size: v.$fontSizeAuthorXS;
   }
 }
 
@@ -201,6 +205,7 @@ $spacer: var.$spacers;
   from {
     font-size: v.$starSizeBig;
   }
+
   to {
     font-size: v.$starSizeSmall;
   }
@@ -210,6 +215,7 @@ $spacer: var.$spacers;
   from {
     font-size: v.$starSizeSmall;
   }
+
   to {
     font-size: v.$starSizeBig;
   }
