@@ -6,9 +6,9 @@ import { ThirdSection } from './components/MainPage/ThirdSection/ThirdSection';
 const Index = async () => {
   return (
     <>
-      {/* <HeroSection />
+      <HeroSection />
       <SecondSection />
-      <ThirdSection /> */}
+      <ThirdSection />
       <ForthSection />
     </>
   );
