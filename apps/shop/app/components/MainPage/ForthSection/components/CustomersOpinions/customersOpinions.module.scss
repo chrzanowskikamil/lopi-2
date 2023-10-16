@@ -12,23 +12,31 @@ $breakpoint: var.$grid-breakpoints;
 
   .bgImage {
     z-index: -2;
-    max-height: v.$bgImageHeigth;
+    max-height: 90vh;
   }
 
   .titleArea {
     display: flex;
     position: absolute;
     flex-direction: column;
-    padding-top: map-get($spacer, 53);
+    padding-top: map-get($spacer, 3);
     width: 100%;
     text-align: center;
+
+    @media (min-width: map-get($breakpoint, xl)) {
+      padding-top: map-get($spacer, 41);
+    }
 
     .title {
       color: map-get($theme-colors, lopi-dark-green);
       font-weight: var.$font-weight-bold;
-      font-size: v.$fontSizeTitleXXL;
+      font-size: v.$fontSizeTitleLG;
       line-height: var.$line-height-lg;
       text-transform: uppercase;
+
+      @media (min-width: map-get($breakpoint, xl)) {
+        font-size: v.$fontSizeTitleXXL;
+      }
     }
 
     .subtitle {
@@ -36,16 +44,15 @@ $breakpoint: var.$grid-breakpoints;
       line-height: var.$line-height-base;
     }
 
-    .circle {
-      width: v.$circleWidth;
-      height: v.$circleHeight;
-    }
-
     .opinionsCarousel {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: v.$carouselFrontHeight;
+      height: v.$carouselFrontHeightLG;
+
+      @media (min-width: map-get($breakpoint, xl)) {
+        height: v.$carouselFrontHeightXL;
+      }
 
       .inactive:hover {
         cursor: pointer;
@@ -59,18 +66,21 @@ $breakpoint: var.$grid-breakpoints;
         animation: slideforward v.$animationDuration;
         animation-timing-function: v.$animationTiming;
         margin-top: map-get($spacer, 6);
+        margin-bottom: map-get($spacer, 5);
         box-shadow: 0 map-get($spacer, 12) map-get($spacer, 3)
           map-get($spacer, 7) v.$boxShadowColor;
         background-color: map-get($theme-colors, lopi-white);
         padding-right: map-get($spacer, 31);
         padding-left: map-get($spacer, 31);
+        width: v.$carouselFrontWidthLG;
+        height: v.$carouselFrontHeightLG;
+        color: map-get($theme-colors, lopi-dark-green);
 
         @media (min-width: map-get($breakpoint, xl)) {
-          width: v.$carouselFrontWidth;
-          height: v.$carouselFrontHeight;
+          margin-top: map-get($spacer, 70);
+          width: v.$carouselFrontWidthXL;
+          height: v.$carouselFrontHeightXL;
         }
-
-        color: map-get($theme-colors, lopi-dark-green);
 
         .ratingStars {
           justify-content: center;
@@ -80,7 +90,11 @@ $breakpoint: var.$grid-breakpoints;
 
         .starsIconClass {
           animation: starsforward v.$animationDuration;
-          font-size: v.$starSizeBig;
+          font-size: v.$starSizeSM;
+
+          @media (min-width: map-get($breakpoint, xl)) {
+            font-size: v.$starSizeXL;
+          }
         }
 
         .opinion,
@@ -92,12 +106,20 @@ $breakpoint: var.$grid-breakpoints;
         .opinion {
           animation: forwardfontchangebig v.$animationDuration;
           font-weight: var.$font-weight-normal;
-          font-size: v.$fontSizeTitleXXL;
+          font-size: v.$fontSizeTitleLG;
+
+          @media (min-width: map-get($breakpoint, xl)) {
+            font-size: v.$fontSizeTitleXXL;
+          }
         }
 
         .author {
           animation: forwardfontchangesmall v.$animationDuration;
-          font-size: v.$fontSizeAuthorXS;
+          font-size: v.$fontSizeAuthorXXS;
+
+          @media (min-width: map-get($breakpoint, xl)) {
+            font-size: v.$fontSizeAuthorSM;
+          }
         }
 
         .switchBetween {
@@ -115,8 +137,13 @@ $breakpoint: var.$grid-breakpoints;
               margin: map-get($spacer, 1);
               border-radius: 50%;
               background-color: map-get($theme-colors, lopi-grey);
-              width: map-get($spacer, 7);
-              height: map-get($spacer, 7);
+              width: v.$circleWidthSM;
+              height: v.$circleHeightSM;
+
+              @media (min-width: map-get($breakpoint, xl)) {
+                width: v.$circleWidthLG;
+                height: v.$circleHeightLG;
+              }
             }
 
             .active {
@@ -127,24 +154,41 @@ $breakpoint: var.$grid-breakpoints;
       }
 
       .carouselLeft {
-        transform: translateX(v.$leftBackToLeft);
+        transform: translateX(v.$leftBackToLeftLG);
+
+        @media (min-width: map-get($breakpoint, xl)) {
+          transform: translateX(v.$leftBackToLeftXL);
+        }
       }
 
       .carouselRight {
-        transform: translateX(v.$rightBackToLeft);
+        transform: translateX(v.$rightBackToLeftLG);
         z-index: 6;
+
+        @media (min-width: map-get($breakpoint, xl)) {
+          transform: translateX(v.$rightBackToLeftXL);
+        }
       }
 
       .caruselBack {
         z-index: 4;
         animation: slidebackward v.$animationDuration;
+        width: v.$carouselBackWidthLG;
+        height: v.$carouselBackHeightLG;
+
         @media (min-width: map-get($breakpoint, xl)) {
-          width: v.$carouselBackWidth;
-          height: v.$carouselBackHeight;
+          width: v.$carouselBackWidthXL;
+          height: v.$carouselBackHeightXL;
         }
+
         .starsIconClass {
           animation: starsbackward v.$animationDuration;
-          font-size: v.$starSizeSmall;
+
+          font-size: v.$starSizeXS;
+
+          @media (min-width: map-get($breakpoint, xl)) {
+            font-size: v.$starSizeLG;
+          }
         }
 
         .opinion,
@@ -156,12 +200,20 @@ $breakpoint: var.$grid-breakpoints;
         .opinion {
           animation: backwardfontchangebig v.$animationDuration;
           font-weight: var.$font-weight-thin;
-          font-size: v.$fontSizeTitleXL;
+          font-size: v.$fontSizeTitleSM;
+
+          @media (min-width: map-get($breakpoint, xl)) {
+            font-size: v.$fontSizeTitleXL;
+          }
         }
 
         .author {
           animation: backwardfontchangesmall v.$animationDuration;
-          font-size: v.$fontSizeAuthorSM;
+          font-size: v.$fontSizeAuthorXXS;
+
+          @media (min-width: map-get($breakpoint, xl)) {
+            font-size: v.$fontSizeAuthorXS;
+          }
         }
       }
 
@@ -169,12 +221,21 @@ $breakpoint: var.$grid-breakpoints;
         z-index: 4;
         animation: sliderightbackward v.$animationDuration;
         animation-timing-function: v.$animationTiming;
-        width: v.$carouselBackWidth;
-        height: v.$carouselBackHeight;
+        width: v.$carouselBackWidthLG;
+        height: v.$carouselBackHeightLG;
+
+        @media (min-width: map-get($breakpoint, xl)) {
+          width: v.$carouselBackWidthXL;
+          height: v.$carouselBackHeightXL;
+        }
 
         .starsIconClass {
           animation: starsbackward v.$animationDuration;
-          font-size: v.$starSizeSmall;
+          font-size: v.$starSizeXS;
+
+          @media (min-width: map-get($breakpoint, xl)) {
+            font-size: v.$starSizeLG;
+          }
         }
 
         .opinion,
@@ -186,12 +247,20 @@ $breakpoint: var.$grid-breakpoints;
         .opinion {
           animation: backwardfontchangebig v.$animationDuration;
           font-weight: var.$font-weight-thin;
-          font-size: v.$fontSizeTitleXL;
+          font-size: v.$fontSizeTitleSM;
+
+          @media (min-width: map-get($breakpoint, xl)) {
+            font-size: v.$fontSizeTitleXL;
+          }
         }
 
         .author {
           animation: backwardfontchangesmall v.$animationDuration;
-          font-size: v.$fontSizeAuthorSM;
+          font-size: v.$fontSizeAuthorXXXS;
+
+          @media (min-width: map-get($breakpoint, xl)) {
+            font-size: v.$fontSizeAuthorXS;
+          }
         }
       }
 
@@ -199,12 +268,21 @@ $breakpoint: var.$grid-breakpoints;
         z-index: 3;
         animation: slideleftbackward v.$animationDuration;
         animation-timing-function: v.$animationTiming;
-        width: v.$carouselBackWidth;
-        height: v.$carouselBackHeight;
+        width: v.$carouselBackWidthLG;
+        height: v.$carouselBackHeightLG;
+
+        @media (min-width: map-get($breakpoint, xl)) {
+          width: v.$carouselBackWidthXL;
+          height: v.$carouselBackHeightXL;
+        }
 
         .starsIconClass {
           animation: starsbackward v.$animationDuration;
-          font-size: v.$starSizeSmall;
+          font-size: v.$starSizeXS;
+
+          @media (min-width: map-get($breakpoint, xl)) {
+            font-size: v.$starSizeLG;
+          }
         }
 
         .opinion,
@@ -216,12 +294,20 @@ $breakpoint: var.$grid-breakpoints;
         .opinion {
           animation: backwardfontchangebig v.$animationDuration;
           font-weight: var.$font-weight-thin;
-          font-size: v.$fontSizeTitleXL;
+          font-size: v.$fontSizeTitleSM;
+
+          @media (min-width: map-get($breakpoint, xl)) {
+            font-size: v.$fontSizeTitleXL;
+          }
         }
 
         .author {
           animation: backwardfontchangesmall v.$animationDuration;
-          font-size: v.$fontSizeAuthorSM;
+          font-size: v.$fontSizeAuthorXXXS;
+
+          @media (min-width: map-get($breakpoint, xl)) {
+            font-size: v.$fontSizeAuthorXS;
+          }
         }
       }
 
@@ -230,13 +316,21 @@ $breakpoint: var.$grid-breakpoints;
       }
 
       .caruselLeftActive {
-        transform: translateX(v.$leftActive);
+        transform: translateX(v.$leftActiveXL);
         animation: slideleftactive v.$animationDuration;
+
+        @media (min-width: map-get($breakpoint, xl)) {
+          transform: translateX(v.$leftActiveXL);
+        }
       }
 
       .caruselRightActive {
-        transform: translateX(v.$rightActive);
+        transform: translateX(v.$rightActiveXL);
         animation: sliderightactive v.$animationDuration;
+
+        @media (min-width: map-get($breakpoint, xl)) {
+          transform: translateX(v.$rightActiveXL);
+        }
       }
     }
   }

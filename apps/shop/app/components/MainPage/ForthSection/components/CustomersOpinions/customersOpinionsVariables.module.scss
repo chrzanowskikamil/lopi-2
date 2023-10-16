@@ -12,45 +12,66 @@ $animationFillMode: forwards;
 
 //nav circle
 
-$circleWidth: 10px;
-$circleHeight: 10px;
+$circleWidthLG: 10px;
+$circleHeightLG: 10px;
+
+$circleWidthSM: 7px;
+$circleHeightSM: 7px;
 
 //box shadow
 $boxShadowColor: #0000000d;
 
 //for media
 //element
-$carouselFrontWidth: 620px;
-$carouselFrontHeight: 454px;
+$carouselFrontWidthLG: 800px;
+$carouselFrontHeightLG: 300px;
 
-$carouselBackWidth: 420px;
-$carouselBackHeight: 370px;
+$carouselBackWidthLG: 420px;
+$carouselBackHeightLG: 270px;
 
-// fonts
+$carouselFrontWidthXL: 620px;
+$carouselFrontHeightXL: 454px;
 
-$fontSizeTitleXXL: var.$font-size-xxl;
-$fontSizeTitleXL: var.$font-size-xl;
-$fontSizeTitleLG: var.$font-size-lg;
-$fontSizeTitleSM: var.$font-size-sm;
-
-$fontSizeAuthorSM: var.$font-size-sm;
-$fontSizeAuthorXS: var.$font-size-xs;
-$fontSizeAuthorXXS: var.$font-size-xxs;
-$fontSizeAuthorXXXS: var.$font-size-xxxs;
+$carouselBackWidthXL: 420px;
+$carouselBackHeightXL: 370px;
 
 //translate params
 
 $middleTransition: 0%;
 
-$leftActive: 20%;
-$leftTransition: -10%;
-$leftBackToLeft: 10%;
+$leftActiveLG: 20%;
+$leftTransitionLG: -5%;
+$leftBackToLeftLG: 10%;
 
-$rightActive: -20%;
-$rightTransition: 10%;
-$rightBackToLeft: -10%;
+$rightActiveLG: -20%;
+$rightTransitionLG: 5%;
+$rightBackToLeftLG: -10%;
 
+$leftActiveXL: 20%;
+$leftTransitionXL: -10%;
+$leftBackToLeftXL: 10%;
+
+$rightActiveXL: -20%;
+$rightTransitionXL: 10%;
+$rightBackToLeftXL: -10%;
+
+// fonts
+
+$fontSizeTitleXXL: var.$font-size-xxl;
+$fontSizeTitleXL: var.$font-size-xl;
+
+$fontSizeTitleLG: var.$font-size-sm;
+$fontSizeTitleSM: var.$font-size-xs;
+
+$fontSizeAuthorSM: var.$font-size-sm;
+$fontSizeAuthorXS: var.$font-size-xs;
+
+$fontSizeAuthorXXS: var.$font-size-xxs;
+$fontSizeAuthorXXXS: var.$font-size-xxxs;
 // stars
 
-$starSizeBig: 16px;
-$starSizeSmall: 12px;
+$starSizeXL: 16px;
+$starSizeLG: 12px;
+
+$starSizeSM: 10px;
+$starSizeXS: 8px;
