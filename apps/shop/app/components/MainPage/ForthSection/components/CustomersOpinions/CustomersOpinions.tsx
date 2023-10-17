@@ -6,7 +6,9 @@ import bgCoffeBeans from '../../../../../assets/PNG/forthsection/bg-coffee-beans
 import style from './customersOpinions.module.scss';
 
 export const CustomersOpinions: FC = () => (
-  <section className="d-flex justify-content-center">
+  <section
+    className={`d-flex justify-content-center ${style.customersOpinionsSection}`}
+  >
     <Image
       src={bgCoffeBeans}
       alt={'Bg picture. Small contour of coffee beans.'}

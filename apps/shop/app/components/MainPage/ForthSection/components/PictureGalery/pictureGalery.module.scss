@@ -4,6 +4,7 @@ $theme-colors: var.$theme-colors;
 $breakpoint: var.$grid-breakpoints;
 
 .galeryContainer {
+  margin-top: 70px;
   background-color: map-get($theme-colors, lopi-grey-dark);
   width: 100%;
   max-width: 100vw;
@@ -13,7 +14,7 @@ $breakpoint: var.$grid-breakpoints;
     justify-content: center;
     align-items: center;
     transform: translateX(-50%);
-    // margin-top: 100px;pa
+
     margin-left: 50%;
     max-width: 1440px;
     .imageElement {

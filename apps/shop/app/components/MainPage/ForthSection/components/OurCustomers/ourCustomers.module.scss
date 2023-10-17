@@ -8,10 +8,7 @@ $breakpoint: var.$grid-breakpoints;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // transform: translateX(-50%);
-  // margin-left: 50%;
   background-color: map-get($theme-colors, lopi-dark-green);
-  // width: 100%;
   height: 441px;
 
   @media (min-width: map-get($breakpoint, md)) {
