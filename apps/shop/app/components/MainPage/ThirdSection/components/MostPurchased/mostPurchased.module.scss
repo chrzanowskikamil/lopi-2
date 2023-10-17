@@ -21,11 +21,13 @@ $brickHeight: 160px;
 
   .mostPurchaseedList {
     z-index: 3;
+
     .carouselArrow {
       padding-bottom: 20px;
       color: orange;
       font-size: 40px;
     }
+
     .productCarousel {
       display: flex;
       justify-content: center;
@@ -75,6 +77,7 @@ $brickHeight: 160px;
   .buttonContainer {
     margin: 10px;
     width: 100%;
+
     .button {
       transform: translateX(-50%);
       margin-top: map-get($spacer, 6);

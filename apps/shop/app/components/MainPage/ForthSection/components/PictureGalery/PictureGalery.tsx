@@ -1,6 +1,5 @@
 'use client';
 
-import { Carousel } from 'react-bootstrap';
 import Image from 'next/image';
 import pictureFive from '../../../../../assets/PNG/forthsection/pictureGalery/womanMakeingCoffee.png';
 import pictureFour from '../../../../../assets/PNG/forthsection/pictureGalery/coffeeInGlasses.png';
@@ -14,11 +13,31 @@ export const PictureGalery = async () => {
     <>
       <div className={style.galeryContainer}>
         <div className={style.galery}>
-          <Image src={pictureOne} alt={''} className={style.imageElement} />
-          <Image src={pictureTwo} alt={''} className={style.imageElement} />
-          <Image src={pictureThree} alt={''} className={style.imageElement} />
-          <Image src={pictureFour} alt={''} className={style.imageElement} />
-          <Image src={pictureFive} alt={''} className={style.imageElement} />
+          <Image
+            src={pictureOne}
+            alt={'coffeeBanner'}
+            className={style.imageElement}
+          />
+          <Image
+            src={pictureTwo}
+            alt={'coffeeExpresAcesories'}
+            className={style.imageElement}
+          />
+          <Image
+            src={pictureThree}
+            alt={'coffeeInCups'}
+            className={style.imageElement}
+          />
+          <Image
+            src={pictureFour}
+            alt={'coffeeInGlasses'}
+            className={style.imageElement}
+          />
+          <Image
+            src={pictureFive}
+            alt={'womanMakeingCoffee'}
+            className={style.imageElement}
+          />
         </div>
       </div>
     </>

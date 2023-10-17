@@ -4,22 +4,29 @@ $theme-colors: var.$theme-colors;
 $spacer: var.$spacers;
 $breakpoint: var.$grid-breakpoints;
 
+$carouselHeight: 441px;
+
+$carouselImgWidth: 150px;
+$carouselImgHeight: 150px;
+
+$carouselIndicatorsSize: 15px;
+
 .carousel {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: map-get($theme-colors, lopi-dark-green);
-  height: 441px;
+  height: $carouselHeight;
 
   @media (min-width: map-get($breakpoint, md)) {
     display: none;
   }
 
   img {
-    margin-bottom: 30px;
-    margin-left: 30px;
-    width: 150px;
-    height: 150px;
+    margin-bottom: map-get($spacer, 40);
+    margin-left: map-get($spacer, 40);
+    width: $carouselImgWidth;
+    height: $carouselImgHeight;
   }
 }
 
@@ -31,8 +38,8 @@ $breakpoint: var.$grid-breakpoints;
     margin-top: map-get($spacer, 3);
     border-radius: 50%;
     background-color: map-get($theme-colors, lopi-white);
-    width: 15px !important;
-    height: 15px !important;
+    width: $carouselIndicatorsSize !important;
+    height: $carouselIndicatorsSize !important;
   }
 
   .carouselItem {
