@@ -2,7 +2,7 @@ import { CustomersOpinions } from './components/CustomersOpinions/CustomersOpini
 import { OurCustomers } from './components/OurCustomers/OurCustomers';
 import { PictureGalery } from './components/PictureGalery/PictureGalery';
 
-export const ForthSection = async () => {
+export const FourthSection = async () => {
   return (
     <>
       <OurCustomers />
