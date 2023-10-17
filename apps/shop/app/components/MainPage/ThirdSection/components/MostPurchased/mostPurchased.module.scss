@@ -18,9 +18,24 @@ $brickHeight: 160px;
     transform: translateX(-50%);
     margin-left: 50%;
   }
+
   .mostPurchaseedList {
     z-index: 3;
+
+    .carouselArrow {
+      padding-bottom: 20px;
+      color: orange;
+      font-size: 40px;
+    }
+
+    .productCarousel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
   }
+
   .bgPictureBottom {
     display: flex;
     position: absolute;
@@ -60,6 +75,7 @@ $brickHeight: 160px;
   }
 
   .buttonContainer {
+    margin: 10px;
     width: 100%;
 
     .button {

@@ -1,0 +1,447 @@
+@use '../../../../../styles/shop-variables' as var;
+@use './customersOpinionsVariables.module.scss' as v;
+
+// Variables
+
+$theme-colors: var.$theme-colors;
+$spacer: var.$spacers;
+$breakpoint: var.$grid-breakpoints;
+
+// Keyframes
+
+@keyframes slideforward {
+  from {
+    transform: translateX(0);
+    width: v.$carouselBackWidthLG;
+    height: v.$carouselBackHeightLG;
+  }
+
+  25% {
+    width: v.$carouselBackWidthLG;
+    height: v.$carouselBackHeightLG;
+  }
+
+  50% {
+    font-size: v.$fontSizeTitleLG;
+  }
+
+  100% {
+    transform: translateX(0);
+    width: v.$carouselFrontWidthLG;
+    height: v.$carouselFrontHeightLG;
+    font-size: v.$fontSizeTitleLG;
+  }
+}
+
+@keyframes slidebackward {
+  from {
+    z-index: 6;
+    width: v.$carouselFrontWidthLG;
+    height: v.$carouselFrontHeightLG;
+    font-size: v.$fontSizeTitleLG;
+  }
+
+  25% {
+    font-size: v.$fontSizeTitleSM;
+  }
+
+  50% {
+    z-index: 4;
+  }
+
+  to {
+    width: v.$carouselBackWidthLG;
+    height: v.$carouselBackHeightLG;
+  }
+}
+
+@keyframes slideleftactive {
+  0% {
+    transform: translateX(0);
+    width: v.$carouselBackWidthLG;
+    height: v.$carouselBackHeightLG;
+  }
+
+  25% {
+    transform: translateX(v.$leftTransitionLG);
+    width: v.$carouselBackWidthLG;
+    height: v.$carouselBackHeightLG;
+  }
+
+  100% {
+    transform: translateX(v.$leftActiveLG);
+  }
+}
+
+@keyframes sliderightactive {
+  0% {
+    transform: translateX(0);
+    width: v.$carouselBackWidthLG;
+    height: v.$carouselBackHeightLG;
+  }
+
+  25% {
+    transform: translateX(v.$rightTransitionLG);
+    width: v.$carouselBackWidthLG;
+    height: v.$carouselBackHeightLG;
+  }
+
+  100% {
+    transform: translateX(v.$rightActiveLG);
+  }
+}
+
+@keyframes forwardfontchangebig {
+  from {
+    font-weight: var.$font-weight-thin;
+    font-size: v.$fontSizeTitleSM;
+  }
+
+  25% {
+    font-weight: var.$font-weight-thin;
+    font-size: v.$fontSizeTitleSM;
+  }
+
+  to {
+    font-weight: var.$font-weight-normal;
+    font-size: v.$fontSizeTitleLG;
+  }
+}
+
+@keyframes forwardfontchangesmall {
+  from {
+    font-size: v.$fontSizeAuthorXXS;
+  }
+
+  25% {
+    font-size: v.$fontSizeAuthorXXS;
+  }
+
+  to {
+    font-size: v.$fontSizeAuthorXS;
+  }
+}
+
+@keyframes backwardfontchangebig {
+  from {
+    font-weight: var.$font-weight-normal;
+    font-size: v.$fontSizeTitleLG;
+  }
+
+  25% {
+    font-weight: var.$font-weight-thin;
+    font-size: v.$fontSizeTitleSM;
+  }
+
+  to {
+    font-weight: var.$font-weight-thin;
+    font-size: v.$fontSizeTitleSM;
+  }
+}
+
+@keyframes backwardfontchangesmall {
+  from {
+    font-size: v.$fontSizeAuthorXXS;
+  }
+
+  to {
+    font-size: v.$fontSizeAuthorXXXS;
+  }
+}
+
+@keyframes sliderightbackward {
+  from {
+    transform: translateX(v.$rightActiveLG);
+    z-index: 5;
+    width: v.$carouselFrontWidthLG;
+    height: v.$carouselFrontHeightLG;
+    font-size: v.$fontSizeTitleLG;
+  }
+
+  25% {
+    z-index: 2;
+    font-size: v.$fontSizeTitleSM;
+  }
+
+  30% {
+    transform: translateX(v.$rightTransitionLG);
+    font-size: v.$fontSizeTitleSM;
+  }
+
+  to {
+    width: v.$carouselBackWidthLG;
+    height: v.$carouselBackHeightLG;
+    font-size: v.$fontSizeAuthorXXS;
+  }
+}
+
+@keyframes slideleftbackward {
+  from {
+    transform: translateX(v.$leftActiveLG);
+    z-index: 10;
+    width: v.$carouselFrontWidthLG;
+    height: v.$carouselFrontHeightLG;
+    font-size: v.$fontSizeTitleLG;
+  }
+
+  25% {
+    font-size: v.$fontSizeTitleSM;
+  }
+
+  30% {
+    transform: translateX(v.$leftTransitionLG);
+    font-size: v.$fontSizeTitleSM;
+  }
+
+  to {
+    width: v.$carouselBackWidthLG;
+    height: v.$carouselBackHeightLG;
+    font-size: v.$fontSizeAuthorXXS;
+  }
+}
+
+@keyframes starsbackward {
+  from {
+    font-size: v.$starSizeSM;
+  }
+
+  to {
+    font-size: v.$starSizeXS;
+  }
+}
+
+@keyframes starsforward {
+  from {
+    font-size: v.$starSizeXS;
+  }
+
+  to {
+    font-size: v.$starSizeSM;
+  }
+}
+
+//  HERE GOES XL
+
+@media (min-width: map-get($breakpoint, xl)) {
+  @keyframes slideforward {
+    from {
+      transform: translateX(0);
+      width: v.$carouselBackWidthXL;
+      height: v.$carouselBackHeightXL;
+    }
+
+    25% {
+      width: v.$carouselBackWidthXL;
+      height: v.$carouselBackHeightXL;
+    }
+
+    50% {
+      font-size: v.$fontSizeTitleXXL;
+    }
+
+    100% {
+      transform: translateX(0);
+      width: v.$carouselFrontWidthXL;
+      height: v.$carouselFrontHeightXL;
+      font-size: v.$fontSizeTitleXXL;
+    }
+  }
+
+  @keyframes slidebackward {
+    from {
+      z-index: 6;
+
+      width: v.$carouselFrontWidthXL;
+      height: v.$carouselFrontHeightXL;
+      font-size: v.$fontSizeTitleXXL;
+    }
+
+    25% {
+      font-size: v.$fontSizeTitleXL;
+    }
+
+    50% {
+      z-index: 4;
+    }
+
+    to {
+      width: v.$carouselBackWidthXL;
+      height: v.$carouselBackHeightXL;
+    }
+  }
+
+  @keyframes slideleftactive {
+    0% {
+      transform: translateX(0);
+      width: v.$carouselBackWidthXL;
+      height: v.$carouselBackHeightXL;
+    }
+
+    25% {
+      transform: translateX(v.$leftTransitionXL);
+
+      width: v.$carouselBackWidthXL;
+      height: v.$carouselBackHeightXL;
+    }
+
+    100% {
+      transform: translateX(v.$leftActiveXL);
+    }
+  }
+
+  @keyframes sliderightactive {
+    0% {
+      transform: translateX(0);
+
+      width: v.$carouselBackWidthXL;
+      height: v.$carouselBackHeightXL;
+    }
+
+    25% {
+      transform: translateX(v.$rightTransitionXL);
+
+      width: v.$carouselBackWidthXL;
+      height: v.$carouselBackHeightXL;
+    }
+
+    100% {
+      transform: translateX(v.$rightActiveXL);
+    }
+  }
+
+  @keyframes forwardfontchangebig {
+    from {
+      font-size: v.$fontSizeTitleXL;
+    }
+
+    25% {
+      font-weight: var.$font-weight-thin;
+
+      font-size: v.$fontSizeTitleXL;
+    }
+
+    to {
+      font-weight: var.$font-weight-normal;
+
+      font-size: v.$fontSizeTitleXXL;
+    }
+  }
+
+  @keyframes forwardfontchangesmall {
+    from {
+      font-size: v.$fontSizeAuthorXS;
+    }
+
+    25% {
+      font-size: v.$fontSizeAuthorXS;
+    }
+
+    to {
+      font-size: v.$fontSizeAuthorSM;
+    }
+  }
+
+  @keyframes backwardfontchangebig {
+    from {
+      font-weight: var.$font-weight-normal;
+
+      font-size: v.$fontSizeTitleXXL;
+    }
+
+    25% {
+      font-weight: var.$font-weight-thin;
+
+      font-size: v.$fontSizeTitleXL;
+    }
+
+    to {
+      font-weight: var.$font-weight-thin;
+
+      font-size: v.$fontSizeTitleXL;
+    }
+  }
+
+  @keyframes backwardfontchangesmall {
+    from {
+      font-size: v.$fontSizeAuthorSM;
+    }
+
+    to {
+      font-size: v.$fontSizeAuthorXS;
+    }
+  }
+
+  @keyframes sliderightbackward {
+    from {
+      transform: translateX(v.$rightActiveXL);
+      z-index: 5;
+      width: v.$carouselFrontWidthXL;
+      height: v.$carouselFrontHeightXL;
+      font-size: v.$fontSizeTitleXXL;
+    }
+
+    25% {
+      z-index: 2;
+      font-size: v.$fontSizeTitleXL;
+    }
+
+    30% {
+      transform: translateX(v.$rightTransitionXL);
+
+      font-size: v.$fontSizeTitleXL;
+    }
+
+    to {
+      width: v.$carouselBackWidthXL;
+      height: v.$carouselBackHeightXL;
+      font-size: v.$fontSizeAuthorSM;
+    }
+  }
+
+  @keyframes slideleftbackward {
+    from {
+      transform: translateX(v.$leftActiveXL);
+      z-index: 10;
+
+      width: v.$carouselFrontWidthXL;
+      height: v.$carouselFrontHeightXL;
+      font-size: v.$fontSizeTitleXXL;
+    }
+
+    25% {
+      font-size: v.$fontSizeTitleXL;
+    }
+
+    30% {
+      transform: translateX(v.$leftTransitionXL);
+
+      font-size: v.$fontSizeTitleXL;
+    }
+
+    to {
+      width: v.$carouselBackWidthXL;
+      height: v.$carouselBackHeightXL;
+      font-size: v.$fontSizeAuthorSM;
+    }
+  }
+
+  @keyframes starsbackward {
+    from {
+      font-size: v.$starSizeXL;
+    }
+
+    to {
+      font-size: v.$starSizeLG;
+    }
+  }
+
+  @keyframes starsforward {
+    from {
+      font-size: v.$starSizeLG;
+    }
+
+    to {
+      font-size: v.$starSizeXL;
+    }
+  }
+}

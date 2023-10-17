@@ -4,6 +4,9 @@
 //fonts:
 //fontsize:
 $font-size-base: 1rem;
+$font-size-xxxs: $font-size-base * 0.5;
+$font-size-xxs: $font-size-base * 0.6;
+$font-size-xs: $font-size-base * 0.75;
 $font-size-sm: $font-size-base * 0.875;
 $font-size-lg: $font-size-base * 1.25 !default;
 $font-size-xl: $font-size-base * 1.6 !default;
@@ -15,9 +18,11 @@ $h1-font-size: 1.875rem;
 //lineheights:
 $line-height-small: 1;
 $line-height-base: 1.5;
-$font-size-sm: $font-size-base * 0.875;
+$line-height-lg: 2;
+$line-height-xl: 3;
 
 //font-weigths:
+$font-weight-thin: 300;
 $font-weight-normal: 400;
 $font-weight-medium: 500 !default;
 $font-weight-bold: 700;
@@ -46,8 +51,7 @@ $theme-colors: (
   'lopi-grey': #c9cdc7,
   'lopi-grey-light': #d9d9d9,
   'lopi-grey-dark': #707070,
-
-  'lopi-blue-lighth': #05f2f2,
+  'lopi-blue-light': #05f2f2,
   //$backgroud-light: #f2f2f2;
 );
 
@@ -79,6 +83,7 @@ $spacers: (
   54: $spacer * 5,
   60: $spacer * 3.75,
   70: $spacer * 8,
+  71: $spacer * 10,
   75: $spacer * 13,
 );
 

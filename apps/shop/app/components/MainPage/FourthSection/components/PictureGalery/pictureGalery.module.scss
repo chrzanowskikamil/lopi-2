@@ -1,0 +1,36 @@
+@use '../../../../../styles/shop-variables' as var;
+
+$theme-colors: var.$theme-colors;
+$breakpoint: var.$grid-breakpoints;
+
+$maxWidth: 1440px;
+
+$galeryImageElementSizeSM: 170px;
+$galeryImageElementSizeXL: 290px;
+
+.galeryContainer {
+  margin-top: 70px;
+  background-color: map-get($theme-colors, lopi-grey-dark);
+  width: 100%;
+  max-width: 100vw;
+  overflow: hidden;
+
+  .galery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+    margin-left: 50%;
+    max-width: $maxWidth;
+
+    .imageElement {
+      width: $galeryImageElementSizeSM;
+      height: $galeryImageElementSizeSM;
+
+      @media (min-width: map-get($breakpoint, xl)) {
+        width: $galeryImageElementSizeXL;
+        height: $galeryImageElementSizeXL;
+      }
+    }
+  }
+}

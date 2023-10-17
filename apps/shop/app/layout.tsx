@@ -1,9 +1,10 @@
 import './styles/shop-global.scss';
-import { Quicksand } from 'next/font/google';
-import NavBar from './components/NavBar/NavBar';
+
 import { Footer } from './components/Footer/Footer';
 import { InfoBanner } from './components/InfoBanner/InfoBanner';
+import NavBar from './components/NavBar/NavBar';
 import { Providers } from './contexts/Providers';
+import { Quicksand } from 'next/font/google';
 
 export const metadata = {
   title: 'Welcome to shop',

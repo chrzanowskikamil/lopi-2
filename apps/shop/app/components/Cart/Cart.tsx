@@ -1,11 +1,13 @@
 'use client';
-import style from './Cart.module.scss';
+
 import { FC, useState } from 'react';
+
 import { Button } from '@lopi-2/common';
+import { CartItems } from './components/CartItems/CartItems';
+import { EmptyCartMessage } from './components/EmptyCartMessage/EmptyCartMessage';
 import { IconWrapper } from '../Icons/IconWrapper';
 import { Offcanvas } from 'react-bootstrap';
-import { EmptyCartMessage } from './components/EmptyCartMessage/EmptyCartMessage';
-import { CartItems } from './components/CartItems/CartItems';
+import style from './Cart.module.scss';
 import { useCart } from '../../contexts/CartContext';
 
 export const Cart: FC = () => {

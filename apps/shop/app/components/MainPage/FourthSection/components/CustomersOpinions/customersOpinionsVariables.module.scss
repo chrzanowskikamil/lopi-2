@@ -1,0 +1,77 @@
+@use '../../../../../styles/shop-variables' as var;
+
+$breakpoint: var.$grid-breakpoints;
+
+$bgImageHeigth: 824px;
+
+//animation
+
+$animationDuration: 2s;
+$animationTiming: ease-out;
+$animationFillMode: forwards;
+
+//nav circle
+
+$circleWidthLG: 10px;
+$circleHeightLG: 10px;
+
+$circleWidthSM: 7px;
+$circleHeightSM: 7px;
+
+//box shadow
+$boxShadowColor: #0000000d;
+
+//for media
+//element
+$carouselFrontWidthLG: 800px;
+$carouselFrontHeightLG: 60vh;
+
+$carouselBackWidthLG: 420px;
+$carouselBackHeightLG: 40vh;
+
+$carouselFrontWidthXL: 620px;
+$carouselFrontHeightXL: 60vh;
+
+$carouselBackWidthXL: 420px;
+$carouselBackHeightXL: 55vh;
+
+//translate params
+
+$middleTransition: 0%;
+
+$leftActiveLG: 20%;
+$leftTransitionLG: -5%;
+$leftBackToLeftLG: 10%;
+
+$rightActiveLG: -20%;
+$rightTransitionLG: 5%;
+$rightBackToLeftLG: -10%;
+
+$leftActiveXL: 20%;
+$leftTransitionXL: -10%;
+$leftBackToLeftXL: 10%;
+
+$rightActiveXL: -20%;
+$rightTransitionXL: 10%;
+$rightBackToLeftXL: -10%;
+
+// fonts
+
+$fontSizeTitleXXL: var.$font-size-xxl;
+$fontSizeTitleXL: var.$font-size-xl;
+
+$fontSizeTitleLG: var.$font-size-lg;
+$fontSizeTitleSM: var.$font-size-sm;
+
+$fontSizeAuthorSM: var.$font-size-sm;
+$fontSizeAuthorXS: var.$font-size-xs;
+
+$fontSizeAuthorXXS: var.$font-size-xxs;
+$fontSizeAuthorXXXS: var.$font-size-xxxs;
+// stars
+
+$starSizeXL: 16px;
+$starSizeLG: 12px;
+
+$starSizeSM: 10px;
+$starSizeXS: 8px;

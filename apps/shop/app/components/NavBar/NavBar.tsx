@@ -1,13 +1,12 @@
 'use client';
 
-import Navbar from 'react-bootstrap/Navbar';
+import { Container, Nav } from 'react-bootstrap';
 
+import { CategoryDropdown } from './CategoryDropdown';
 import { FC } from 'react';
 import Link from 'next/link';
-
 import { Logo } from '../../assets/SvgIcons/Logo';
-import { Container, Nav } from 'react-bootstrap';
-import { CategoryDropdown } from './CategoryDropdown';
+import Navbar from 'react-bootstrap/Navbar';
 import { RightNavIcons } from './RightNavIcons';
 import { SearchComponent } from './SearchComponent';
 

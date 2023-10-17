@@ -1,11 +1,11 @@
 'use client';
 
-import styles from './Breadcrumbs.module.scss';
 import { Breadcrumb } from 'react-bootstrap';
-import { IoHomeOutline } from 'react-icons/io5';
-import { FC } from 'react';
-import Link from 'next/link';
 import { Crumb } from '../../models';
+import { FC } from 'react';
+import { IoHomeOutline } from 'react-icons/io5';
+import Link from 'next/link';
+import styles from './Breadcrumbs.module.scss';
 
 interface BreadcrumbsProps {
   crumbs: Crumb[];

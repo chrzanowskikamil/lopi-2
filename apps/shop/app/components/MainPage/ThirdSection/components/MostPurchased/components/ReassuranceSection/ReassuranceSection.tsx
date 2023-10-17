@@ -1,12 +1,13 @@
 'use client';
 
 import { Container, Row } from 'react-bootstrap';
+
+import { FC } from 'react';
 import Image from 'next/image';
 import { ReassuranceBrick } from './components/ReassuranceBrick';
-import style from '../../mostPurchased.module.scss';
-import bgCoffeCheriesBottom from '../../../../../../../assets/PNG/thirdsection/bg-coffee-cheries-bottom.png';
 import { ReassuranceDataProps } from './reassuranceSectionData';
-import { FC } from 'react';
+import bgCoffeCheriesBottom from '../../../../../../../assets/PNG/thirdsection/bg-coffee-cheries-bottom.png';
+import style from '../../mostPurchased.module.scss';
 
 type ReassuranceSectionDataProps = {
   reassuranceData: ReassuranceDataProps[];
