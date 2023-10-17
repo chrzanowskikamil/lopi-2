@@ -7,7 +7,7 @@ import style from './customersOpinions.module.scss';
 
 export const CustomersOpinions: FC = () => (
   <section
-    className={`d-flex justify-content-center ${style.customersOpinionsSection}`}
+    className={`d-flex justify-content-center  ${style.customersOpinionsSection}`}
   >
     <Image
       src={bgCoffeBeans}

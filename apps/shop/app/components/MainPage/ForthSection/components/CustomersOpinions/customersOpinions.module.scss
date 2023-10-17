@@ -7,9 +7,9 @@ $breakpoint: var.$grid-breakpoints;
 
 .bgImage {
   z-index: -2;
-  min-height: 70vh;
+  height: 45vh;
   @media (min-width: map-get($breakpoint, xl)) {
-    min-height: 80vh;
+    min-height: 70vh;
   }
 }
 
@@ -28,7 +28,7 @@ $breakpoint: var.$grid-breakpoints;
   .title {
     color: map-get($theme-colors, lopi-dark-green);
     font-weight: var.$font-weight-bold;
-    font-size: v.$fontSizeTitleLG;
+    font-size: v.$fontSizeTitleXXL;
     line-height: var.$line-height-lg;
     text-transform: uppercase;
 
@@ -39,6 +39,7 @@ $breakpoint: var.$grid-breakpoints;
 
   .subtitle {
     color: map-get($theme-colors, lopi-green);
+    font-size: v.$fontSizeTitleLG;
     line-height: var.$line-height-base;
   }
 }

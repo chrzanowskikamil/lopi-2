@@ -13,7 +13,7 @@ $breakpoint: var.$grid-breakpoints;
   z-index: 5;
   animation: slideforward v.$animationDuration;
   animation-timing-function: v.$animationTiming;
-  margin-top: map-get($spacer, 6);
+  margin-top: map-get($spacer, 70);
   margin-bottom: map-get($spacer, 5);
   box-shadow: 0 map-get($spacer, 12) map-get($spacer, 3) map-get($spacer, 7)
     v.$boxShadowColor;
