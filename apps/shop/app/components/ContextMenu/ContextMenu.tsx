@@ -9,20 +9,26 @@ import { clientCode, director } from './ContextBuilder';
 import { FC } from 'react';
 import style from './contextMenu.module.scss';
 
-export const CartContextMenu: FC = () => {
-  const elements = clientCode(director);
+type CartContextMenuProps = {
+  children?: JSX.Element;
+  uid: string;
+  id: number;
+};
+export const CartContextMenu: FC<CartContextMenuProps> = ({
+  children,
+  uid,
+  id,
+}) => {
+  console.log(uid);
+  const elements = clientCode(director, uid);
 
   console.log(`${elements.parts}`);
 
   return (
     <div>
-      <ContextMenuTrigger id={'id'}>
-        <div className={`well ${style.contextMenuTrigger}`}>
-          Right click to see the menu
-        </div>
-      </ContextMenuTrigger>
+      <ContextMenuTrigger id={`${id}`}>{children}</ContextMenuTrigger>
 
-      <ReactContextMenu id="id" className={style.contextMenu}>
+      <ReactContextMenu id={`${id}`} className={style.contextMenu}>
         {...elements.parts}
       </ReactContextMenu>
     </div>

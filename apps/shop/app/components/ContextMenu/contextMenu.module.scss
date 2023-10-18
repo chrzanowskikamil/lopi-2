@@ -6,13 +6,23 @@ $theme-colors: var.$theme-colors;
   display: inline-block;
   transform: translateX(-50%);
   margin-left: 50%;
-  border: 1px solid brown;
+  border: 1px solid map-get($theme-colors, lopi-brown);
   width: 300px;
   line-height: 40px;
   text-align: center;
 }
 
 .contextMenu {
-  border: 1px solid brown;
+  z-index: 20;
+  border: 1px solid map-get($theme-colors, lopi-brown);
   background: map-get($theme-colors, lopi-white);
+}
+
+.contextMenuItem {
+  border: 1px solid map-get($theme-colors, lopi-brown);
+  background: map-get($theme-colors, lopi-white);
+}
+.contextMenuItem:hover {
+  cursor: pointer;
+  background: map-get($theme-colors, lopi-grey);
 }

@@ -1,4 +1,3 @@
-import { CartContextMenu } from './components/ContextMenu/ContextMenu';
 // import { FourthSection } from './components/MainPage/FourthSection/FourthSection';
 // import { HeroSection } from './components/MainPage/HeroSection/HeroSection';
 // import { SecondSection } from './components/MainPage/SecondSection/SecondSection';
@@ -7,11 +6,10 @@ import { CartContextMenu } from './components/ContextMenu/ContextMenu';
 const Index = async () => {
   return (
     <>
-      <CartContextMenu />
-      {/* <HeroSection /> */}
-      {/* <SecondSection /> */}
-      {/* <ThirdSection /> */}
-      {/* <FourthSection /> */}
+      {/* <HeroSection />
+      <SecondSection />
+      <ThirdSection />
+      <FourthSection /> */}
     </>
   );
 };

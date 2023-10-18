@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { MenuItem } from 'react-contextmenu';
+import style from './contextMenu.module.scss';
 import { useCart } from '../../contexts/CartContext';
 
 interface ContextBuilder {
@@ -11,33 +12,35 @@ interface ContextBuilder {
 }
 
 export class ContextConcreteBuilder implements ContextBuilder {
-  private contextMenu!: ContextMenu1;
+  private contextMenu!: ContextMenu;
+  private uid: string;
 
-  constructor() {
+  constructor(uid: string) {
+    this.uid = uid;
     this.reset();
   }
 
   public reset(): void {
-    this.contextMenu = new ContextMenu1();
+    this.contextMenu = new ContextMenu();
   }
 
   public includeAddProductButton(): void {
-    this.contextMenu.parts.push(<ProductButton />);
+    this.contextMenu.parts.push(<ProductButton uid={this.uid} />);
   }
 
   public includeIncreaseProductCountButton(): void {
-    this.contextMenu.parts.push(<IncreaseProductCountButton />);
+    this.contextMenu.parts.push(<IncreaseProductCountButton uid={this.uid} />);
   }
 
   public includeDecreaseProductCountButton(): void {
-    this.contextMenu.parts.push(<DecreaseProductCountButton />);
+    this.contextMenu.parts.push(<DecreaseProductCountButton uid={this.uid} />);
   }
 
   public includeCopyProductLink(): void {
-    this.contextMenu.parts.push(<CopyProductLink />);
+    this.contextMenu.parts.push(<CopyProductLink uid={this.uid} />);
   }
 
-  public getProduct(): ContextMenu1 {
+  public getProduct(): ContextMenu {
     const result = this.contextMenu;
     this.reset();
 
@@ -45,7 +48,7 @@ export class ContextConcreteBuilder implements ContextBuilder {
   }
 }
 
-export class ContextMenu1 {
+export class ContextMenu {
   public parts: JSX.Element[] = [];
 
   public currentBuildListed(): void {
@@ -60,7 +63,7 @@ class Director {
     this.builder = builder;
   }
 
-  public buildFullFeaturedContext(): void {
+  public buildFullFeaturedCartContextMenu(): void {
     this.builder.includeAddProductButton();
     this.builder.includeIncreaseProductCountButton();
     this.builder.includeDecreaseProductCountButton();
@@ -68,24 +71,27 @@ class Director {
   }
 }
 
-export function clientCode(director: Director) {
-  const builder = new ContextConcreteBuilder();
+export function clientCode(director: Director, uid: string) {
+  const builder = new ContextConcreteBuilder(uid);
   director.setBuilder(builder);
-  director.buildFullFeaturedContext();
+  director.buildFullFeaturedCartContextMenu();
 
   return builder.getProduct();
 }
 
 export const director = new Director();
 
-//componenst
+//components secrion
 
-const ProductButton: FC = () => {
+type CartContextMenuButtonProps = {
+  uid: string;
+};
+
+const ProductButton: FC<CartContextMenuButtonProps> = ({ uid }) => {
   const { addProduct } = useCart();
 
   const handleAddProduct = () => {
-    addProduct('7cc3b7f5-11d2-4034-b975-d6ebbeadca14', 1);
-    // Handle other actions if needed
+    addProduct(uid, 1);
   };
 
   return (
@@ -93,17 +99,20 @@ const ProductButton: FC = () => {
       data={{ foo: 'includeAddProductButton' }}
       onClick={handleAddProduct}
       key={'1'}
+      className={style.contextMenuItem}
     >
       AddProduct.
     </MenuItem>
   );
 };
 
-const IncreaseProductCountButton: FC = () => {
+const IncreaseProductCountButton: FC<CartContextMenuButtonProps> = ({
+  uid,
+}) => {
   const { increaseQuantity } = useCart();
 
   const handleIncreaseProductCount = () => {
-    increaseQuantity('7cc3b7f5-11d2-4034-b975-d6ebbeadca14');
+    increaseQuantity(uid);
   };
 
   return (
@@ -111,17 +120,20 @@ const IncreaseProductCountButton: FC = () => {
       data={{ foo: 'includeIncreaseProductCountButton' }}
       onClick={handleIncreaseProductCount}
       key={'2'}
+      className={style.contextMenuItem}
     >
       Increase count in cart.
     </MenuItem>
   );
 };
 
-const DecreaseProductCountButton: FC = () => {
+const DecreaseProductCountButton: FC<CartContextMenuButtonProps> = ({
+  uid,
+}) => {
   const { decreaseQuantity } = useCart();
 
   const handleDecreaseProductCount = () => {
-    decreaseQuantity('7cc3b7f5-11d2-4034-b975-d6ebbeadca14');
+    decreaseQuantity(uid);
   };
 
   return (
@@ -129,14 +141,15 @@ const DecreaseProductCountButton: FC = () => {
       data={{ foo: 'includeDecreaseProductCountButton' }}
       onClick={handleDecreaseProductCount}
       key={'3'}
+      className={style.contextMenuItem}
     >
       Dencrease count in cart.
     </MenuItem>
   );
 };
-const CopyProductLink: FC = () => {
+const CopyProductLink: FC<CartContextMenuButtonProps> = ({ uid }) => {
   const findLink = () => {
-    alert('FindLink!');
+    alert(`FindLink for ${uid}!`);
   };
 
   return (
@@ -144,6 +157,7 @@ const CopyProductLink: FC = () => {
       data={{ foo: 'includeDecreaseProductCountButton' }}
       onClick={findLink}
       key={'4'}
+      className={style.contextMenuItem}
     >
       Copy link
     </MenuItem>
