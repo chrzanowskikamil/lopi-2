@@ -1,4 +1,5 @@
 import AddToCart from './components/AddtoCart';
+import { CartContextMenu } from '../../../ContextMenu/ContextMenu';
 import { Col } from 'react-bootstrap';
 import { FC } from 'react';
 import Image from 'next/image';
@@ -19,6 +20,7 @@ interface ProductTileColProps {
   };
   col: number;
   className?: string;
+  index: number;
 }
 interface ImageUrl {
   imageUrl: string;
@@ -28,35 +30,38 @@ const ProductTileCol: FC<ProductTileColProps> = ({
   product,
   col,
   className,
+  index,
 }) => {
   const router = useRouter();
 
   return (
     <Col className={`${style.product} ${className}`} xl={col} key={product.sku}>
-      <ul className={style.tile}>
-        <div className={style.imageArea}>
-          <Status status={'Current'} />
-          <AddToCart productUid={product.uid} />
-          <Image
-            src={
-              product.imageUrls[0] !== undefined
-                ? product.imageUrls[0].imageUrl
-                : 'https://storage.googleapis.com/download/storage/v1/b/lopi-2-dev.appspot.com/o/images%2F13018714-7a1c-4708-ba39-004c5121678a.png?generation=1692295691288884&alt=media'
-            }
-            width={300}
-            height={300}
-            alt="picture"
-            className={style.tileImage}
-            onClick={() => router.push(`productdetails/${product.uid}`)}
+      <CartContextMenu key={index} uid={product.uid} id={index}>
+        <ul className={style.tile}>
+          <div className={style.imageArea}>
+            <Status status={'Current'} />
+            <AddToCart productUid={product.uid} />
+            <Image
+              src={
+                product.imageUrls[0] !== undefined
+                  ? product.imageUrls[0].imageUrl
+                  : 'https://storage.googleapis.com/download/storage/v1/b/lopi-2-dev.appspot.com/o/images%2F13018714-7a1c-4708-ba39-004c5121678a.png?generation=1692295691288884&alt=media'
+              }
+              width={300}
+              height={300}
+              alt="picture"
+              className={style.tileImage}
+              onClick={() => router.push(`productdetails/${product.uid}`)}
+            />
+          </div>
+          <ProductRating starsCount={4} review={4} />
+          <div className={style.productName}>{product.name}</div>
+          <Price
+            price={product.regularPrice}
+            currentPrice={product.discountPrice}
           />
-        </div>
-        <ProductRating starsCount={4} review={4} />
-        <div className={style.productName}>{product.name}</div>
-        <Price
-          price={product.regularPrice}
-          currentPrice={product.discountPrice}
-        />
-      </ul>
+        </ul>
+      </CartContextMenu>
     </Col>
   );
 };

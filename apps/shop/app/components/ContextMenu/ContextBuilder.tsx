@@ -81,7 +81,7 @@ export function clientCode(director: Director, uid: string) {
 
 export const director = new Director();
 
-//components secrion
+//components section
 
 type CartContextMenuButtonProps = {
   uid: string;
@@ -98,7 +98,7 @@ const ProductButton: FC<CartContextMenuButtonProps> = ({ uid }) => {
     <MenuItem
       data={{ foo: 'includeAddProductButton' }}
       onClick={handleAddProduct}
-      key={'1'}
+      key={`1${uid}`}
       className={style.contextMenuItem}
     >
       AddProduct.
@@ -119,7 +119,7 @@ const IncreaseProductCountButton: FC<CartContextMenuButtonProps> = ({
     <MenuItem
       data={{ foo: 'includeIncreaseProductCountButton' }}
       onClick={handleIncreaseProductCount}
-      key={'2'}
+      key={`2${uid}`}
       className={style.contextMenuItem}
     >
       Increase count in cart.
@@ -140,7 +140,7 @@ const DecreaseProductCountButton: FC<CartContextMenuButtonProps> = ({
     <MenuItem
       data={{ foo: 'includeDecreaseProductCountButton' }}
       onClick={handleDecreaseProductCount}
-      key={'3'}
+      key={`3${uid}`}
       className={style.contextMenuItem}
     >
       Dencrease count in cart.
@@ -148,15 +148,15 @@ const DecreaseProductCountButton: FC<CartContextMenuButtonProps> = ({
   );
 };
 const CopyProductLink: FC<CartContextMenuButtonProps> = ({ uid }) => {
-  const findLink = () => {
-    alert(`FindLink for ${uid}!`);
+  const saveLinkToClipboard = (e) => {
+    e.clipboardData.setData('text/plain', `${location}productdetails/${uid}`);
   };
 
   return (
     <MenuItem
       data={{ foo: 'includeDecreaseProductCountButton' }}
-      onClick={findLink}
-      key={'4'}
+      onClick={(e) => saveLinkToClipboard(e)}
+      key={`4${uid}`}
       className={style.contextMenuItem}
     >
       Copy link

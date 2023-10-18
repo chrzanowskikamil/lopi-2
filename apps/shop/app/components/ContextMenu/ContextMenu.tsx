@@ -19,18 +19,15 @@ export const CartContextMenu: FC<CartContextMenuProps> = ({
   uid,
   id,
 }) => {
-  console.log(uid);
   const elements = clientCode(director, uid);
 
-  console.log(`${elements.parts}`);
-
   return (
-    <div>
-      <ContextMenuTrigger id={`${id}`}>{children}</ContextMenuTrigger>
+    <>
+      <ContextMenuTrigger id={`${uid}`}>{children}</ContextMenuTrigger>
 
-      <ReactContextMenu id={`${id}`} className={style.contextMenu}>
+      <ReactContextMenu id={`${uid}`} className={style.contextMenu}>
         {...elements.parts}
       </ReactContextMenu>
-    </div>
+    </>
   );
 };
