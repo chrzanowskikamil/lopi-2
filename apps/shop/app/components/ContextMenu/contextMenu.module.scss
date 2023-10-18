@@ -1,0 +1,18 @@
+@use '../../styles/shop-variables' as var;
+
+$theme-colors: var.$theme-colors;
+
+.contextMenuTrigger {
+  display: inline-block;
+  transform: translateX(-50%);
+  margin-left: 50%;
+  border: 1px solid brown;
+  width: 300px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.contextMenu {
+  border: 1px solid brown;
+  background: map-get($theme-colors, lopi-white);
+}
