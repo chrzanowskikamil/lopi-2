@@ -1,18 +1,21 @@
+import * as CartContextModule from '../../../contexts/CartContext';
+
 import { fireEvent, render } from '@testing-library/react';
 
 import { IncreaseProductCountButton } from '../ContextBuilderButtons';
 
-jest.mock('../../../contexts/CartContext', () => {
-  return {
-    useCart: jest.fn(() => ({
-      increaseQuantity: jest.fn(),
-      cartData: { cartItems: [{ product: { uid: '123' }, quantity: 1 }] },
-    })),
-  };
-});
+// Define the mock for useCart
+jest.mock('../../../contexts/CartContext', () => ({
+  useCart: jest.fn(() => ({
+    increaseQuantity: jest.fn(),
+    cartData: { cartItems: [{ product: { uid: '123' }, quantity: 1 }] },
+  })),
+}));
 
 test('IncreaseProductCountButton calls increaseQuantity when clicked', () => {
   const elementUid = '123';
+
+  const { increaseQuantity } = CartContextModule.useCart();
 
   const { container } = render(<IncreaseProductCountButton uid={elementUid} />);
 
@@ -26,10 +29,6 @@ test('IncreaseProductCountButton calls increaseQuantity when clicked', () => {
   if (increaseButton) {
     fireEvent.click(increaseButton);
 
-    const mockIncreaseQuantity = jest.fn();
-    jest.mock('../../../contexts/CartContext', () => ({
-      useCart: jest.fn(() => ({ increaseQuantity: mockIncreaseQuantity })),
-    }));
-    expect(mockIncreaseQuantity).toHaveBeenCalledWith(elementUid);
+    expect(increaseQuantity).toHaveBeenCalledWith(elementUid);
   }
 });

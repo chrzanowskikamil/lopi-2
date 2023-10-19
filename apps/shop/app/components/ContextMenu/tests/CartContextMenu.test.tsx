@@ -4,23 +4,10 @@ import { fireEvent, render } from '@testing-library/react';
 
 import { CartContextMenu } from '../CartContextMenu';
 import { CartProvider } from '../../../contexts/CartContext';
-import React from 'react';
 
 describe('CartContextMenu', () => {
   const uid = '123';
   const id = 'cart-context-menu';
-
-  it('renders the children', () => {
-    const { getByText } = render(
-      <CartProvider>
-        <CartContextMenu uid={uid} id={id}>
-          <div>Test Child</div>
-        </CartContextMenu>
-      </CartProvider>
-    );
-
-    expect(getByText('Test Child')).toBeInTheDocument();
-  });
 
   it('renders the context menu trigger', () => {
     const { getByText } = render(
@@ -31,6 +18,7 @@ describe('CartContextMenu', () => {
       </CartProvider>
     );
 
+    expect(getByText('Test Child')).toBeInTheDocument();
     expect(getByText('Test Child')).toHaveAttribute('data-context-menu');
   });
 
