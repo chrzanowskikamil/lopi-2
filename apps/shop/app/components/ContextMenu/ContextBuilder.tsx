@@ -26,19 +26,33 @@ export class ContextConcreteBuilder implements ContextBuilder {
   }
 
   public includeAddProductButton(): void {
-    this.contextMenu.parts.push(<AddProductToCartButton uid={this.uid} />);
+    this.contextMenu.parts.push(
+      <AddProductToCartButton uid={this.uid} key={'AddProductToCartButton'} />
+    );
   }
 
   public includeIncreaseProductCountButton(): void {
-    this.contextMenu.parts.push(<IncreaseProductCountButton uid={this.uid} />);
+    this.contextMenu.parts.push(
+      <IncreaseProductCountButton
+        uid={this.uid}
+        key={'IncreaseProductCountButton'}
+      />
+    );
   }
 
   public includeDecreaseProductCountButton(): void {
-    this.contextMenu.parts.push(<DecreaseProductCountButton uid={this.uid} />);
+    this.contextMenu.parts.push(
+      <DecreaseProductCountButton
+        uid={this.uid}
+        key={'DecreaseProductCountButton'}
+      />
+    );
   }
 
   public includeCopyProductLink(): void {
-    this.contextMenu.parts.push(<CopyProductLinkButton uid={this.uid} />);
+    this.contextMenu.parts.push(
+      <CopyProductLinkButton uid={this.uid} key={'CopyProductLinkButton'} />
+    );
   }
 
   public getProduct(): ContextMenu {

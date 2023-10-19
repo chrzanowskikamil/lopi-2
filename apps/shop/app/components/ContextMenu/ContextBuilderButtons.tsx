@@ -20,7 +20,6 @@ export const AddProductToCartButton: FC<CartContextMenuButtonProps> = ({
   return (
     <MenuItem
       onClick={handleAddProduct}
-      key={`AddProductToCartButton ${elementUid}`}
       className={style.contextMenuItem}
       disabled={found !== undefined}
     >
@@ -33,7 +32,6 @@ export const IncreaseProductCountButton: FC<CartContextMenuButtonProps> = ({
   uid: elementUid,
 }) => {
   const { increaseQuantity, cartData } = useCart();
-  console.log(cartData);
   const handleIncreaseProductCount = () => {
     increaseQuantity(elementUid);
   };
@@ -45,7 +43,6 @@ export const IncreaseProductCountButton: FC<CartContextMenuButtonProps> = ({
   return (
     <MenuItem
       onClick={handleIncreaseProductCount}
-      key={`IncreaseProductCountButton ${elementUid}`}
       className={style.contextMenuItem}
       disabled={maxedQuantity !== undefined}
     >
@@ -67,7 +64,6 @@ export const DecreaseProductCountButton: FC<CartContextMenuButtonProps> = ({
   return (
     <MenuItem
       onClick={handleDecreaseProductCount}
-      key={`DecreaseProductCountButton ${elementUid}`}
       className={style.contextMenuItem}
       disabled={found === undefined}
     >
@@ -84,11 +80,7 @@ export const CopyProductLinkButton: FC<CartContextMenuButtonProps> = ({
   };
 
   return (
-    <MenuItem
-      onClick={() => saveLinkToClipboard()}
-      key={`CopyProductLink ${uid}`}
-      className={style.contextMenuItem}
-    >
+    <MenuItem onClick={saveLinkToClipboard} className={style.contextMenuItem}>
       Copy link
     </MenuItem>
   );
