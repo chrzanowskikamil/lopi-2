@@ -15,7 +15,11 @@ export const CartProduct: FC = () => {
 
   const productsList = cartData?.cartItems.map((product, i) => {
     return (
-      <CartContextMenu key={i} uid={product.product.uid} id={}>
+      <CartContextMenu
+        key={product.product.uid}
+        uid={product.product.uid}
+        id={`CartProduct ${product.product.uid}`}
+      >
         <Fragment>
           <Container className={style.product}>
             <Image

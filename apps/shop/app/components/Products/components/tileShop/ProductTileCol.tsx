@@ -36,7 +36,11 @@ const ProductTileCol: FC<ProductTileColProps> = ({
 
   return (
     <Col className={`${style.product} ${className}`} xl={col} key={product.sku}>
-      <CartContextMenu key={index} uid={product.uid} id={index}>
+      <CartContextMenu
+        key={index}
+        uid={product.uid}
+        id={`Product Tile ${product.uid}`}
+      >
         <ul className={style.tile}>
           <div className={style.imageArea}>
             <Status status={'Current'} />

@@ -87,19 +87,21 @@ type CartContextMenuButtonProps = {
   uid: string;
 };
 
-const ProductButton: FC<CartContextMenuButtonProps> = ({ uid }) => {
-  const { addProduct } = useCart();
-
+const ProductButton: FC<CartContextMenuButtonProps> = ({ uid: elementUid }) => {
+  const { addProduct, cartData } = useCart();
   const handleAddProduct = () => {
-    addProduct(uid, 1);
+    addProduct(elementUid, 1);
   };
+
+  const found = cartData?.cartItems.find((el) => el.product.uid === elementUid);
 
   return (
     <MenuItem
       data={{ foo: 'includeAddProductButton' }}
       onClick={handleAddProduct}
-      key={`1${uid}`}
+      key={`1${elementUid}`}
       className={style.contextMenuItem}
+      disabled={found !== undefined}
     >
       AddProduct.
     </MenuItem>
@@ -107,20 +109,25 @@ const ProductButton: FC<CartContextMenuButtonProps> = ({ uid }) => {
 };
 
 const IncreaseProductCountButton: FC<CartContextMenuButtonProps> = ({
-  uid,
+  uid: elementUid,
 }) => {
-  const { increaseQuantity } = useCart();
-
+  const { increaseQuantity, cartData } = useCart();
+  console.log(cartData);
   const handleIncreaseProductCount = () => {
-    increaseQuantity(uid);
+    increaseQuantity(elementUid);
   };
+
+  const maxedQuantity = cartData?.cartItems.find(
+    (el) => el.product.uid === elementUid && el.product.quantity === el.quantity
+  );
 
   return (
     <MenuItem
       data={{ foo: 'includeIncreaseProductCountButton' }}
       onClick={handleIncreaseProductCount}
-      key={`2${uid}`}
+      key={`2${elementUid}`}
       className={style.contextMenuItem}
+      disabled={maxedQuantity !== undefined}
     >
       Increase count in cart.
     </MenuItem>
@@ -128,34 +135,36 @@ const IncreaseProductCountButton: FC<CartContextMenuButtonProps> = ({
 };
 
 const DecreaseProductCountButton: FC<CartContextMenuButtonProps> = ({
-  uid,
+  uid: elementUid,
 }) => {
-  const { decreaseQuantity } = useCart();
-
+  const { decreaseQuantity, cartData } = useCart();
   const handleDecreaseProductCount = () => {
-    decreaseQuantity(uid);
+    decreaseQuantity(elementUid);
   };
+
+  const found = cartData?.cartItems.find((el) => el.product.uid === elementUid);
 
   return (
     <MenuItem
       data={{ foo: 'includeDecreaseProductCountButton' }}
       onClick={handleDecreaseProductCount}
-      key={`3${uid}`}
+      key={`3${elementUid}`}
       className={style.contextMenuItem}
+      disabled={found === undefined}
     >
       Dencrease count in cart.
     </MenuItem>
   );
 };
 const CopyProductLink: FC<CartContextMenuButtonProps> = ({ uid }) => {
-  const saveLinkToClipboard = (e) => {
-    e.clipboardData.setData('text/plain', `${location}productdetails/${uid}`);
+  const saveLinkToClipboard = () => {
+    navigator.clipboard.writeText(`${location.origin}/productdetails/${uid}`);
   };
 
   return (
     <MenuItem
       data={{ foo: 'includeDecreaseProductCountButton' }}
-      onClick={(e) => saveLinkToClipboard(e)}
+      onClick={() => saveLinkToClipboard()}
       key={`4${uid}`}
       className={style.contextMenuItem}
     >

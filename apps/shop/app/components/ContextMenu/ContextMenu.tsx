@@ -12,7 +12,7 @@ import style from './contextMenu.module.scss';
 type CartContextMenuProps = {
   children?: JSX.Element;
   uid: string;
-  id: number;
+  id: string;
 };
 export const CartContextMenu: FC<CartContextMenuProps> = ({
   children,
@@ -23,9 +23,9 @@ export const CartContextMenu: FC<CartContextMenuProps> = ({
 
   return (
     <>
-      <ContextMenuTrigger id={`${uid}`}>{children}</ContextMenuTrigger>
+      <ContextMenuTrigger id={`${id}`}>{children}</ContextMenuTrigger>
 
-      <ReactContextMenu id={`${uid}`} className={style.contextMenu}>
+      <ReactContextMenu id={`${id}`} className={style.contextMenu}>
         {...elements.parts}
       </ReactContextMenu>
     </>
