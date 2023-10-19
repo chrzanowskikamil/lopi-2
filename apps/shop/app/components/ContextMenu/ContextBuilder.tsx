@@ -1,14 +1,15 @@
-import { FC } from 'react';
-import { MenuItem } from 'react-contextmenu';
-import style from './contextMenu.module.scss';
-import { useCart } from '../../contexts/CartContext';
+import {
+  AddProductToCartButton,
+  CopyProductLinkButton,
+  DecreaseProductCountButton,
+  IncreaseProductCountButton,
+} from './ContextBuilderButtons';
 
-interface ContextBuilder {
+export interface ContextBuilder {
   includeAddProductButton(): void;
   includeIncreaseProductCountButton(): void;
   includeDecreaseProductCountButton(): void;
   includeCopyProductLink(): void;
-  // Buttons might be in disabled mode while suggested action might not be available.
 }
 
 export class ContextConcreteBuilder implements ContextBuilder {
@@ -25,7 +26,7 @@ export class ContextConcreteBuilder implements ContextBuilder {
   }
 
   public includeAddProductButton(): void {
-    this.contextMenu.parts.push(<ProductButton uid={this.uid} />);
+    this.contextMenu.parts.push(<AddProductToCartButton uid={this.uid} />);
   }
 
   public includeIncreaseProductCountButton(): void {
@@ -37,7 +38,7 @@ export class ContextConcreteBuilder implements ContextBuilder {
   }
 
   public includeCopyProductLink(): void {
-    this.contextMenu.parts.push(<CopyProductLink uid={this.uid} />);
+    this.contextMenu.parts.push(<CopyProductLinkButton uid={this.uid} />);
   }
 
   public getProduct(): ContextMenu {
@@ -48,127 +49,6 @@ export class ContextConcreteBuilder implements ContextBuilder {
   }
 }
 
-export class ContextMenu {
+class ContextMenu {
   public parts: JSX.Element[] = [];
-
-  public currentBuildListed(): void {
-    console.log(`Product parts: ${this.parts.join(', ')}\n`);
-  }
 }
-
-class Director {
-  private builder!: ContextBuilder;
-
-  public setBuilder(builder: ContextBuilder): void {
-    this.builder = builder;
-  }
-
-  public buildFullFeaturedCartContextMenu(): void {
-    this.builder.includeAddProductButton();
-    this.builder.includeIncreaseProductCountButton();
-    this.builder.includeDecreaseProductCountButton();
-    this.builder.includeCopyProductLink();
-  }
-}
-
-export function clientCode(director: Director, uid: string) {
-  const builder = new ContextConcreteBuilder(uid);
-  director.setBuilder(builder);
-  director.buildFullFeaturedCartContextMenu();
-
-  return builder.getProduct();
-}
-
-export const director = new Director();
-
-//components section
-
-type CartContextMenuButtonProps = {
-  uid: string;
-};
-
-const ProductButton: FC<CartContextMenuButtonProps> = ({ uid: elementUid }) => {
-  const { addProduct, cartData } = useCart();
-  const handleAddProduct = () => {
-    addProduct(elementUid, 1);
-  };
-
-  const found = cartData?.cartItems.find((el) => el.product.uid === elementUid);
-
-  return (
-    <MenuItem
-      data={{ foo: 'includeAddProductButton' }}
-      onClick={handleAddProduct}
-      key={`1${elementUid}`}
-      className={style.contextMenuItem}
-      disabled={found !== undefined}
-    >
-      AddProduct.
-    </MenuItem>
-  );
-};
-
-const IncreaseProductCountButton: FC<CartContextMenuButtonProps> = ({
-  uid: elementUid,
-}) => {
-  const { increaseQuantity, cartData } = useCart();
-  console.log(cartData);
-  const handleIncreaseProductCount = () => {
-    increaseQuantity(elementUid);
-  };
-
-  const maxedQuantity = cartData?.cartItems.find(
-    (el) => el.product.uid === elementUid && el.product.quantity === el.quantity
-  );
-
-  return (
-    <MenuItem
-      data={{ foo: 'includeIncreaseProductCountButton' }}
-      onClick={handleIncreaseProductCount}
-      key={`2${elementUid}`}
-      className={style.contextMenuItem}
-      disabled={maxedQuantity !== undefined}
-    >
-      Increase count in cart.
-    </MenuItem>
-  );
-};
-
-const DecreaseProductCountButton: FC<CartContextMenuButtonProps> = ({
-  uid: elementUid,
-}) => {
-  const { decreaseQuantity, cartData } = useCart();
-  const handleDecreaseProductCount = () => {
-    decreaseQuantity(elementUid);
-  };
-
-  const found = cartData?.cartItems.find((el) => el.product.uid === elementUid);
-
-  return (
-    <MenuItem
-      data={{ foo: 'includeDecreaseProductCountButton' }}
-      onClick={handleDecreaseProductCount}
-      key={`3${elementUid}`}
-      className={style.contextMenuItem}
-      disabled={found === undefined}
-    >
-      Dencrease count in cart.
-    </MenuItem>
-  );
-};
-const CopyProductLink: FC<CartContextMenuButtonProps> = ({ uid }) => {
-  const saveLinkToClipboard = () => {
-    navigator.clipboard.writeText(`${location.origin}/productdetails/${uid}`);
-  };
-
-  return (
-    <MenuItem
-      data={{ foo: 'includeDecreaseProductCountButton' }}
-      onClick={() => saveLinkToClipboard()}
-      key={`4${uid}`}
-      className={style.contextMenuItem}
-    >
-      Copy link
-    </MenuItem>
-  );
-};

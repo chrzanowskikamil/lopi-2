@@ -4,9 +4,9 @@ import {
   ContextMenuTrigger,
   ContextMenu as ReactContextMenu,
 } from 'react-contextmenu';
-import { clientCode, director } from './ContextBuilder';
 
 import { FC } from 'react';
+import { clientCode } from './ContextDirector';
 import style from './contextMenu.module.scss';
 
 type CartContextMenuProps = {
@@ -19,7 +19,7 @@ export const CartContextMenu: FC<CartContextMenuProps> = ({
   uid,
   id,
 }) => {
-  const elements = clientCode(director, uid);
+  const elements = clientCode(uid);
 
   return (
     <>
