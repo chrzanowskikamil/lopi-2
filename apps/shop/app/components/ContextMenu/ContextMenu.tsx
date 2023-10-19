@@ -10,7 +10,7 @@ import { clientCode } from './ContextDirector';
 import style from './contextMenu.module.scss';
 
 type CartContextMenuProps = {
-  children?: JSX.Element;
+  children: JSX.Element;
   uid: string;
   id: string;
 };
