@@ -1,5 +1,5 @@
 import AddToCart from './components/AddtoCart';
-import { CartContextMenu } from '../../../ContextMenu/ContextMenu';
+import { CartContextMenu } from '../../../ContextMenu/CartContextMenu';
 import { Col } from 'react-bootstrap';
 import { FC } from 'react';
 import Image from 'next/image';

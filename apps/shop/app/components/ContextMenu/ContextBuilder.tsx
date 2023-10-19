@@ -63,6 +63,6 @@ export class ContextConcreteBuilder implements ContextBuilder {
   }
 }
 
-class ContextMenu {
+export class ContextMenu {
   public parts: JSX.Element[] = [];
 }

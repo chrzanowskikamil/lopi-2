@@ -4,7 +4,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { FC, useMemo } from 'react';
 
 import { Breadcrumbs } from '@lopi-2/common';
-import { CartContextMenu } from '../../ContextMenu/ContextMenu';
+import { CartContextMenu } from '../../ContextMenu/CartContextMenu';
 import { CartInteraction } from './components/CartInteraction/CartInteraction';
 import { CrumbsFactory } from '@lopi-2/common';
 import { DetailedInfo } from './components/DetailedInfo/DetailedInfo';

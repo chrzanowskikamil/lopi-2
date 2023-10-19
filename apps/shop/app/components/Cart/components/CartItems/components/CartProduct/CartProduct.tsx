@@ -1,7 +1,7 @@
 import { FC, Fragment } from 'react';
 
 import { Button } from '@lopi-2/common';
-import { CartContextMenu } from '../../../../../ContextMenu/ContextMenu';
+import { CartContextMenu } from '../../../../../ContextMenu/CartContextMenu';
 import { Container } from 'react-bootstrap';
 import { IconWrapper } from '../../../../../../components/Icons/IconWrapper';
 import Image from 'next/image';

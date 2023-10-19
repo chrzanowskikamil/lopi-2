@@ -36,7 +36,7 @@ interface CartContextProps {
   handleClearCart: () => void;
 }
 
-const CartContext = createContext<CartContextProps | null>(null);
+export const CartContext = createContext<CartContextProps | null>(null);
 
 export const useCart = () => {
   const context = useContext(CartContext);

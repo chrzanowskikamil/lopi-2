@@ -1,6 +1,6 @@
 import { ContextBuilder, ContextConcreteBuilder } from './ContextBuilder';
 
-class Director {
+export class Director {
   private builder!: ContextBuilder;
 
   public setBuilder(builder: ContextBuilder): void {
