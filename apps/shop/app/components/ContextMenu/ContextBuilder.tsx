@@ -32,6 +32,7 @@ export class ContextConcreteBuilder implements ContextBuilder {
   }
 
   public includeIncreaseProductCountButton(): void {
+    console.log(this.uid);
     this.contextMenu.parts.push(
       <IncreaseProductCountButton
         uid={this.uid}

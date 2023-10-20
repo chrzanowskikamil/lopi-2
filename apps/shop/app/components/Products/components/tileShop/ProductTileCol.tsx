@@ -21,6 +21,7 @@ interface ProductTileColProps {
   col: number;
   className?: string;
   index: number;
+  cartContextId?: string;
 }
 interface ImageUrl {
   imageUrl: string;
@@ -31,6 +32,7 @@ const ProductTileCol: FC<ProductTileColProps> = ({
   col,
   className,
   index,
+  cartContextId,
 }) => {
   const router = useRouter();
 
@@ -39,7 +41,7 @@ const ProductTileCol: FC<ProductTileColProps> = ({
       <CartContextMenu
         key={index}
         uid={product.uid}
-        id={`Product Tile ${product.uid}`}
+        id={`${cartContextId} ${product.uid}`}
       >
         <ul className={style.tile}>
           <div className={style.imageArea}>

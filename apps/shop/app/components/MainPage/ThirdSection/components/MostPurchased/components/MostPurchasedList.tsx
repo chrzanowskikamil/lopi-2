@@ -27,7 +27,13 @@ const MostPurchasedList: FC<MostPurchasedListTypes> = ({ productList }) => {
 
   const productsBigScreen = preparedProductList().map((product, i) => {
     return (
-      <ProductTileCol col={4} product={product} key={product.uid} index={i} />
+      <ProductTileCol
+        col={4}
+        product={product}
+        key={product.uid}
+        index={i}
+        cartContextId={'Products big screen.'}
+      />
     );
   });
 
@@ -40,6 +46,7 @@ const MostPurchasedList: FC<MostPurchasedListTypes> = ({ productList }) => {
           product={product}
           key={product.uid}
           className={style.productCarousel}
+          cartContextId={'Products carousel.'}
         />
       </Carousel.Item>
     );
