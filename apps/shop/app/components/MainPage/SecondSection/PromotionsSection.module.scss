@@ -21,14 +21,14 @@ $descriptionFontWeight: 400;
 $descriptionPadding: 0 25px;
 
 .container {
-  width: $containerWidth;
   display: flex;
   flex-direction: column;
   padding: $containerMobilePadding;
+  width: $containerWidth;
 
   @media (min-width: map-get($breakpoints, md)) {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 }
 
@@ -56,36 +56,36 @@ $descriptionPadding: 0 25px;
     align-items: center;
 
     @media (min-width: map-get($breakpoints, md)) {
+      align-items: center;
+      transform: $infoContainerTransform;
+      background-color: map-get($palette, lopi-white);
       width: $infoContainerWidth;
       height: $infoContainerHeight;
-      align-items: center;
-      background-color: map-get($palette, lopi-white);
-      transform: $infoContainerTransform;
     }
 
     > h3 {
-      color: map-get($palette, lopi-brown);
-      text-align: center;
-      font-size: $titleFontSize;
-      font-weight: $titleFontWeight;
-      text-transform: uppercase;
       margin-top: $titleMargin;
       padding: $titlePadding;
+      color: map-get($palette, lopi-brown);
+      font-weight: $titleFontWeight;
+      font-size: $titleFontSize;
+      text-align: center;
+      text-transform: uppercase;
     }
 
     > p {
-      color: map-get($palette, lopi-green);
-      text-align: center;
-      font-size: $descriptionFontSize;
-      font-weight: $descriptionFontWeight;
       padding: $descriptionPadding;
+      color: map-get($palette, lopi-green);
+      font-weight: $descriptionFontWeight;
+      font-size: $descriptionFontSize;
+      text-align: center;
     }
 
     > button {
-      background-color: transparent;
       border: none;
       border-bottom: $borderBottom;
       border-radius: 0;
+      background-color: transparent;
       color: map-get($palette, lopi-green);
       text-transform: uppercase;
     }
