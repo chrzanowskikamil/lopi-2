@@ -24,7 +24,6 @@ export const CartContextMenu: FC<CartContextMenuProps> = ({
   return (
     <>
       <ContextMenuTrigger id={`${id}`}>{children}</ContextMenuTrigger>
-
       <ReactContextMenu id={`${id}`} className={style.contextMenu}>
         {elements.parts}
       </ReactContextMenu>
