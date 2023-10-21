@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { MenuItem } from 'react-contextmenu';
+import { Item } from 'react-contexify';
 import style from './contextMenu.module.scss';
 import { useCart } from '../../contexts/CartContext';
 
@@ -18,13 +18,13 @@ export const AddProductToCartButton: FC<CartContextMenuButtonProps> = ({
   const found = cartData?.cartItems.find((el) => el.product.uid === elementUid);
 
   return (
-    <MenuItem
+    <Item
       onClick={handleAddProduct}
       className={`${style.contextMenuItem} ${style.addProductToCartButton}`}
       disabled={found !== undefined}
     >
       AddProduct.
-    </MenuItem>
+    </Item>
   );
 };
 
@@ -41,13 +41,13 @@ export const IncreaseProductCountButton: FC<CartContextMenuButtonProps> = ({
   );
 
   return (
-    <MenuItem
+    <Item
       onClick={handleIncreaseProductCount}
       className={`${style.contextMenuItem} ${style.increaseProductCountButton}`}
       disabled={maxedQuantity !== undefined}
     >
       Increase count in cart.
-    </MenuItem>
+    </Item>
   );
 };
 
@@ -64,13 +64,13 @@ export const DecreaseProductCountButton: FC<CartContextMenuButtonProps> = ({
   );
 
   return (
-    <MenuItem
+    <Item
       onClick={handleDecreaseProductCount}
       className={`${style.contextMenuItem} ${style.decreaseProductCountButton}`}
       disabled={found === undefined}
     >
       Dencrease count in cart.
-    </MenuItem>
+    </Item>
   );
 };
 
@@ -82,11 +82,11 @@ export const CopyProductLinkButton: FC<CartContextMenuButtonProps> = ({
   };
 
   return (
-    <MenuItem
+    <Item
       onClick={saveLinkToClipboard}
       className={`${style.contextMenuItem} ${style.copyProductLinkButton}`}
     >
       Copy link.
-    </MenuItem>
+    </Item>
   );
 };
