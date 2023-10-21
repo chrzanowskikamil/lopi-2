@@ -1,9 +1,9 @@
 import AddToCart from './components/AddtoCart';
-import { CartContextMenu } from '../../../ContextMenu/CartContextMenu';
 import { Col } from 'react-bootstrap';
 import { FC } from 'react';
 import Image from 'next/image';
 import Price from './components/Price';
+import { ProductContextMenu } from '../../../ContextMenu/ProductContextMenu';
 import ProductRating from '../ProductRating/ProductRating';
 import Status from './components/Status';
 import style from './tileProduct.module.scss';
@@ -38,9 +38,9 @@ const ProductTileCol: FC<ProductTileColProps> = ({
 
   return (
     <Col className={`${style.product} ${className}`} xl={col} key={product.sku}>
-      <CartContextMenu
+      <ProductContextMenu
         key={index}
-        uid={product.uid}
+        productUid={product.uid}
         id={`${cartContextId} ${product.uid}`}
       >
         <ul className={style.tile}>
@@ -67,7 +67,7 @@ const ProductTileCol: FC<ProductTileColProps> = ({
             currentPrice={product.discountPrice}
           />
         </ul>
-      </CartContextMenu>
+      </ProductContextMenu>
     </Col>
   );
 };

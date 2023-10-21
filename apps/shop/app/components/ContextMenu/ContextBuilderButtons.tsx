@@ -1,13 +1,14 @@
+import { AppRoutes } from '@lopi-2/common';
 import { FC } from 'react';
 import { Item } from 'react-contexify';
 import style from './contextMenu.module.scss';
 import { useCart } from '../../contexts/CartContext';
 
-type CartContextMenuButtonProps = {
+type CartContextMenuActionProps = {
   uid: string;
 };
 
-export const AddProductToCartButton: FC<CartContextMenuButtonProps> = ({
+export const AddProductToCartAction: FC<CartContextMenuActionProps> = ({
   uid: elementUid,
 }) => {
   const { addProduct, cartData } = useCart();
@@ -20,7 +21,7 @@ export const AddProductToCartButton: FC<CartContextMenuButtonProps> = ({
   return (
     <Item
       onClick={handleAddProduct}
-      className={`${style.contextMenuItem} ${style.addProductToCartButton}`}
+      className={`${style.contextMenuItem} ${style.addProductToCartAction}`}
       disabled={found !== undefined}
     >
       AddProduct.
@@ -28,7 +29,7 @@ export const AddProductToCartButton: FC<CartContextMenuButtonProps> = ({
   );
 };
 
-export const IncreaseProductCountButton: FC<CartContextMenuButtonProps> = ({
+export const IncreaseProductCountAction: FC<CartContextMenuActionProps> = ({
   uid: elementUid,
 }) => {
   const { increaseQuantity, cartData } = useCart();
@@ -43,7 +44,7 @@ export const IncreaseProductCountButton: FC<CartContextMenuButtonProps> = ({
   return (
     <Item
       onClick={handleIncreaseProductCount}
-      className={`${style.contextMenuItem} ${style.increaseProductCountButton}`}
+      className={`${style.contextMenuItem} ${style.increaseProductCountAction}`}
       disabled={maxedQuantity !== undefined}
     >
       Increase count in cart.
@@ -51,7 +52,7 @@ export const IncreaseProductCountButton: FC<CartContextMenuButtonProps> = ({
   );
 };
 
-export const DecreaseProductCountButton: FC<CartContextMenuButtonProps> = ({
+export const DecreaseProductCountAction: FC<CartContextMenuActionProps> = ({
   uid: elementUid,
 }) => {
   const { decreaseQuantity, cartData } = useCart();
@@ -66,7 +67,7 @@ export const DecreaseProductCountButton: FC<CartContextMenuButtonProps> = ({
   return (
     <Item
       onClick={handleDecreaseProductCount}
-      className={`${style.contextMenuItem} ${style.decreaseProductCountButton}`}
+      className={`${style.contextMenuItem} ${style.decreaseProductCountAction}`}
       disabled={found === undefined}
     >
       Dencrease count in cart.
@@ -74,17 +75,19 @@ export const DecreaseProductCountButton: FC<CartContextMenuButtonProps> = ({
   );
 };
 
-export const CopyProductLinkButton: FC<CartContextMenuButtonProps> = ({
+export const CopyProductLinkAction: FC<CartContextMenuActionProps> = ({
   uid,
 }) => {
   const saveLinkToClipboard = () => {
-    navigator.clipboard.writeText(`${location.origin}/productdetails/${uid}`);
+    navigator.clipboard.writeText(
+      `${location.origin}${AppRoutes.getSpecifedProductPath(uid)}`
+    );
   };
 
   return (
     <Item
       onClick={saveLinkToClipboard}
-      className={`${style.contextMenuItem} ${style.copyProductLinkButton}`}
+      className={`${style.contextMenuItem} ${style.copyProductLinkAction}`}
     >
       Copy link.
     </Item>

@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 
 import { fireEvent, render } from '@testing-library/react';
 
-import { CartContextMenu } from '../CartContextMenu';
+import { CartContextMenu } from '../ProductContextMenu';
 import { CartProvider } from '../../../contexts/CartContext';
 import { ContextConcreteBuilder } from '../ContextBuilder';
 import { Director } from '../ContextDirector';

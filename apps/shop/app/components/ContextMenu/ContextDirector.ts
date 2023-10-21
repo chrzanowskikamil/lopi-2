@@ -1,6 +1,6 @@
 import { ContextBuilder, ContextConcreteBuilder } from './ContextBuilder';
 
-export class Director {
+export class ContextDirector {
   private builder!: ContextBuilder;
 
   public setBuilder(builder: ContextBuilder): void {
@@ -8,14 +8,14 @@ export class Director {
   }
 
   public buildFullFeaturedCartContextMenu(): void {
-    this.builder.includeAddProductButton();
-    this.builder.includeIncreaseProductCountButton();
-    this.builder.includeDecreaseProductCountButton();
-    this.builder.includeCopyProductLink();
+    this.builder.withAddProduct();
+    this.builder.withIncreaseProductCount();
+    this.builder.withDecreaseProductCount();
+    this.builder.withCopyProductLink();
   }
 }
 
-export function clientCode(uid: string) {
+export function buildProductWithContextBuilder(uid: string) {
   const builder = new ContextConcreteBuilder(uid);
   director.setBuilder(builder);
   director.buildFullFeaturedCartContextMenu();
@@ -23,4 +23,4 @@ export function clientCode(uid: string) {
   return builder.getProduct();
 }
 
-export const director = new Director();
+export const director = new ContextDirector();

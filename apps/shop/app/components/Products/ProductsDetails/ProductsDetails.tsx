@@ -4,12 +4,12 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { FC, useMemo } from 'react';
 
 import { Breadcrumbs } from '@lopi-2/common';
-import { CartContextMenu } from '../../ContextMenu/CartContextMenu';
 import { CartInteraction } from './components/CartInteraction/CartInteraction';
 import { CrumbsFactory } from '@lopi-2/common';
 import { DetailedInfo } from './components/DetailedInfo/DetailedInfo';
 import Image from 'next/image';
 import { Product } from '../../../../types/ProductsResponse';
+import { ProductContextMenu } from '../../ContextMenu/ProductContextMenu';
 import { ProductInfo } from './components/ProductInfo/ProductInfo';
 import { SimilarProducts } from './components/SimilarProducts/SimilarProducts';
 import { SocialsArea } from './components/SocialsArea/SocialsArea';
@@ -36,7 +36,10 @@ export const ProductsDetails: FC<ProductsDetailsProps> = ({
           <Breadcrumbs crumbs={crumbs} className={style.breadcrumbs} />
         </Col>
       </Row>
-      <CartContextMenu uid={product.uid} id={`Product Details ${product.uid}`}>
+      <ProductContextMenu
+        productUid={product.uid}
+        id={`Product Details ${product.uid}`}
+      >
         <Row>
           <Col xl={6}>
             <Image
@@ -75,7 +78,7 @@ export const ProductsDetails: FC<ProductsDetailsProps> = ({
             </Container>
           </Col>
         </Row>
-      </CartContextMenu>
+      </ProductContextMenu>
 
       <DetailedInfo description={product.description} />
       <SimilarProducts similarProducts={upSellProducts} />

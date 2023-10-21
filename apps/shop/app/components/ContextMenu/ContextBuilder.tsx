@@ -1,23 +1,27 @@
 import {
-  AddProductToCartButton,
-  CopyProductLinkButton,
-  DecreaseProductCountButton,
-  IncreaseProductCountButton,
+  AddProductToCartAction,
+  CopyProductLinkAction,
+  DecreaseProductCountAction,
+  IncreaseProductCountAction,
 } from './ContextBuilderButtons';
 
 export interface ContextBuilder {
-  includeAddProductButton(): void;
-  includeIncreaseProductCountButton(): void;
-  includeDecreaseProductCountButton(): void;
-  includeCopyProductLink(): void;
+  withAddProduct(): void;
+  withIncreaseProductCount(): void;
+  withDecreaseProductCount(): void;
+  withCopyProductLink(): void;
+}
+
+export class ContextMenu {
+  public parts: JSX.Element[] = [];
 }
 
 export class ContextConcreteBuilder implements ContextBuilder {
   private contextMenu!: ContextMenu;
   private uid: string;
 
-  constructor(uid: string) {
-    this.uid = uid;
+  constructor(productUid: string) {
+    this.uid = productUid;
     this.reset();
   }
 
@@ -25,34 +29,33 @@ export class ContextConcreteBuilder implements ContextBuilder {
     this.contextMenu = new ContextMenu();
   }
 
-  public includeAddProductButton(): void {
+  public withAddProduct(): void {
     this.contextMenu.parts.push(
-      <AddProductToCartButton uid={this.uid} key={'AddProductToCartButton'} />
+      <AddProductToCartAction uid={this.uid} key={'AddProductToCartButton'} />
     );
   }
 
-  public includeIncreaseProductCountButton(): void {
-    console.log(this.uid);
+  public withIncreaseProductCount(): void {
     this.contextMenu.parts.push(
-      <IncreaseProductCountButton
+      <IncreaseProductCountAction
         uid={this.uid}
         key={'IncreaseProductCountButton'}
       />
     );
   }
 
-  public includeDecreaseProductCountButton(): void {
+  public withDecreaseProductCount(): void {
     this.contextMenu.parts.push(
-      <DecreaseProductCountButton
+      <DecreaseProductCountAction
         uid={this.uid}
         key={'DecreaseProductCountButton'}
       />
     );
   }
 
-  public includeCopyProductLink(): void {
+  public withCopyProductLink(): void {
     this.contextMenu.parts.push(
-      <CopyProductLinkButton uid={this.uid} key={'CopyProductLinkButton'} />
+      <CopyProductLinkAction uid={this.uid} key={'CopyProductLinkButton'} />
     );
   }
 
@@ -62,8 +65,4 @@ export class ContextConcreteBuilder implements ContextBuilder {
 
     return result;
   }
-}
-
-export class ContextMenu {
-  public parts: JSX.Element[] = [];
 }

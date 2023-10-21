@@ -6,21 +6,21 @@ import { Menu, useContextMenu } from 'react-contexify';
 
 import { FC } from 'react';
 import React from 'react';
-import { clientCode } from './ContextDirector';
+import { buildProductWithContextBuilder } from './ContextDirector';
 import style from './contextMenu.module.scss';
 
-type CartContextMenuProps = {
+type ProductContextMenuProps = {
   children: JSX.Element | JSX.Element[];
-  uid: string;
+  productUid: string;
   id: string;
 };
 
-export const CartContextMenu: FC<CartContextMenuProps> = ({
+export const ProductContextMenu: FC<ProductContextMenuProps> = ({
   children,
-  uid,
+  productUid,
   id,
 }) => {
-  const elements = clientCode(uid);
+  const elements = buildProductWithContextBuilder(productUid);
 
   const { show } = useContextMenu({
     id,
