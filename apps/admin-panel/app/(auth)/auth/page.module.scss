@@ -1,0 +1,98 @@
+@use '../../styles/admin-variables' as var;
+
+$breakpoints: var.$grid-breakpoints;
+$bgImgMobile: url('/bgImgMobile.png');
+$bgImgDesktop: url('/bgImgDesktop.png');
+$containerWidth: 100%;
+$containerHeight: 100%;
+$bgcontainerHeight: 100px;
+$imageMobileWidth: 100%;
+$containerWidthDesktop: 50%;
+$containerHeightDesktop: 100vh;
+$containerWidthXxl: 50%;
+$containerWidthXxlMin: 740px;
+$titleFontSize: 33px;
+$titleColor: #232d42;
+$titlePadding: 40px 12px;
+$logoMargin: 50px;
+$logoPadding: 0 140px;
+$svgPadding: 8px;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: $containerWidth;
+  height: $containerHeight;
+
+  @media (min-width: map-get($breakpoints, lg)) {
+    width: $containerWidth;
+    height: $containerHeightDesktop;
+  }
+
+  > header {
+    @media (min-width: map-get($breakpoints, lg)) {
+      height: $containerHeight;
+    }
+  }
+
+  > section {
+    @media (min-width: map-get($breakpoints, lg)) {
+      width: $containerWidth;
+      height: $containerHeight;
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .logo {
+    @media (min-width: map-get($breakpoints, lg)) {
+      width: $containerWidth;
+      margin-bottom: $logoMargin;
+    }
+  }
+
+  @media (min-width: map-get($breakpoints, lg)) {
+    flex-direction: row-reverse;
+  }
+}
+
+.bgContainer {
+  width: $containerWidth;
+  height: $bgcontainerHeight;
+  background-image: $bgImgMobile;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @media (min-width: map-get($breakpoints, lg)) {
+    max-width: $containerWidthDesktop;
+    background-image: $bgImgDesktop;
+  }
+}
+
+.bgImgMobile {
+  width: $imageMobileWidth;
+  object-fit: cover;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: $titleFontSize;
+  padding: $titlePadding;
+
+  @media (min-width: map-get($breakpoints, lg)) {
+    padding: $logoPadding;
+  }
+
+  > p {
+    color: $titleColor;
+    margin: 0;
+  }
+
+  > svg {
+    margin-left: $svgPadding;
+  }
+}

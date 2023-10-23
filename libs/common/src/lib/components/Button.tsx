@@ -5,7 +5,8 @@ import { Button as BootstrapButton } from 'react-bootstrap';
 import { ButtonVariant } from 'react-bootstrap/types';
 
 interface ButtonProps {
-  title: string | ReactNode;
+  title?: string | ReactNode;
+  children?: ReactNode;
   className?: string;
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';

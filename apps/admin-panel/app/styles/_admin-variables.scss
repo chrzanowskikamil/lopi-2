@@ -1,4 +1,4 @@
-//@import "bootstrap/scss/variables";
+// @import 'bootstrap/scss/variables';
 //Implement configs according to the ones from bootstrap scss files
 
 $font-white: white;
@@ -6,10 +6,22 @@ $blue-light: #05f2f2;
 
 $backgroud-light: #f2f2f2;
 
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1440px,
+);
+
 $theme-colors: (
-  'primary': #8b097a,
+  'primary': #150713,
   'secondary': pink,
   'dark': #000,
+  'admin-dark-gray': #6c757d,
+  'admin-light-gray': #cfd4d9,
+  'admin-orange': #ff9d42,
 );
 
 $globalConfig: (
