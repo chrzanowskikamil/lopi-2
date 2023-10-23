@@ -1,13 +1,11 @@
 import {
-  createContext,
   FC,
   ReactNode,
+  createContext,
   useContext,
   useEffect,
   useState,
 } from 'react';
-import { CartProductsResponse } from '../../types/CartProductsResponse';
-import { DeliveryMethodResponse } from '../../types/DeliveryMethodResponse';
 import {
   addToCart,
   clearCart,
@@ -15,6 +13,9 @@ import {
   removeFromCart,
   updateCartQuantity,
 } from '../../actions/cartApi';
+
+import { CartProductsResponse } from '../../types/CartProductsResponse';
+import { DeliveryMethodResponse } from '../../types/DeliveryMethodResponse';
 import { getDeliveryMethod } from '../../actions/orderApi';
 
 interface CartContextProps {

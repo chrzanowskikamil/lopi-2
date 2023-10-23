@@ -51,8 +51,16 @@ export const ProductsDisplay: FC<ProductsDisplayProps> = ({
     return filteredProducts;
   };
 
-  const RenderedProducts = sortBySearchParams().map((product) => {
-    return <ProductTileCol col={4} product={product} key={product.uid} />;
+  const RenderedProducts = sortBySearchParams().map((product, i) => {
+    return (
+      <ProductTileCol
+        col={4}
+        product={product}
+        key={product.uid}
+        index={i}
+        cartContextId={'Categories render.'}
+      />
+    );
   });
 
   return (

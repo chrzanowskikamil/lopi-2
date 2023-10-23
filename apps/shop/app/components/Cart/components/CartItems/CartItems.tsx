@@ -1,8 +1,8 @@
-import style from './CartItems.module.scss';
-import { FC } from 'react';
-import Link from 'next/link';
 import { CartProduct } from './components/CartProduct/CartProduct';
 import { CartSummary } from './components/CartSummary/CartSummary';
+import { FC } from 'react';
+import Link from 'next/link';
+import style from './CartItems.module.scss';
 
 interface CartItemsProps {
   handleClose: VoidFunction;
