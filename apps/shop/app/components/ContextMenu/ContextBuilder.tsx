@@ -3,7 +3,7 @@ import {
   CopyProductLinkAction,
   DecreaseProductCountAction,
   IncreaseProductCountAction,
-} from './ContextBuilderButtons';
+} from './ContextBuilderActions';
 
 export interface ContextBuilder {
   withAddProduct(): void;
@@ -31,15 +31,18 @@ export class ContextConcreteBuilder implements ContextBuilder {
 
   public withAddProduct(): void {
     this.contextMenu.parts.push(
-      <AddProductToCartAction uid={this.uid} key={'AddProductToCartButton'} />
+      <AddProductToCartAction
+        productUid={this.uid}
+        key={'AddProductToCartAction'}
+      />
     );
   }
 
   public withIncreaseProductCount(): void {
     this.contextMenu.parts.push(
       <IncreaseProductCountAction
-        uid={this.uid}
-        key={'IncreaseProductCountButton'}
+        productUid={this.uid}
+        key={'IncreaseProductCountAction'}
       />
     );
   }
@@ -47,15 +50,18 @@ export class ContextConcreteBuilder implements ContextBuilder {
   public withDecreaseProductCount(): void {
     this.contextMenu.parts.push(
       <DecreaseProductCountAction
-        uid={this.uid}
-        key={'DecreaseProductCountButton'}
+        productUid={this.uid}
+        key={'DecreaseProductCountAction'}
       />
     );
   }
 
   public withCopyProductLink(): void {
     this.contextMenu.parts.push(
-      <CopyProductLinkAction uid={this.uid} key={'CopyProductLinkButton'} />
+      <CopyProductLinkAction
+        productUid={this.uid}
+        key={'CopyProductLinkAction'}
+      />
     );
   }
 

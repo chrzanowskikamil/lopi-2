@@ -1,26 +1,26 @@
 import { ContextConcreteBuilder, ContextMenu } from '../ContextBuilder';
 
-describe('Director', () => {
+describe('Context director builds', () => {
   it('should build a full-featured cart context menu', () => {
     const uid = 'testUid';
-    const builder = new ContextConcreteBuilder(uid);
+    const contextBuilder = new ContextConcreteBuilder(uid);
 
-    builder.includeAddProductButton();
-    builder.includeIncreaseProductCountButton();
-    builder.includeDecreaseProductCountButton();
-    builder.includeCopyProductLink();
+    contextBuilder.withAddProduct();
+    contextBuilder.withIncreaseProductCount();
+    contextBuilder.withDecreaseProductCount();
+    contextBuilder.withCopyProductLink();
 
-    const contextMenu = builder.getProduct();
+    const contextMenu = contextBuilder.getProduct();
 
     expect(contextMenu).toBeInstanceOf(ContextMenu);
 
     expect(contextMenu.parts).toBeInstanceOf(Array);
 
     const expectedComponentTypes = [
-      'AddProductToCartButton',
-      'IncreaseProductCountButton',
-      'DecreaseProductCountButton',
-      'CopyProductLinkButton',
+      'AddProductToCartAction',
+      'IncreaseProductCountAction',
+      'DecreaseProductCountAction',
+      'CopyProductLinkAction',
     ];
 
     expectedComponentTypes.forEach((componentType) => {

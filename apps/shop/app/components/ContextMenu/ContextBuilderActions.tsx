@@ -5,18 +5,19 @@ import style from './contextMenu.module.scss';
 import { useCart } from '../../contexts/CartContext';
 
 type CartContextMenuActionProps = {
-  uid: string;
+  productUid: string;
+  disabled?: boolean;
 };
 
 export const AddProductToCartAction: FC<CartContextMenuActionProps> = ({
-  uid: elementUid,
+  productUid,
 }) => {
   const { addProduct, cartData } = useCart();
   const handleAddProduct = () => {
-    addProduct(elementUid, 1);
+    addProduct(productUid, 1);
   };
 
-  const found = cartData?.cartItems.find((el) => el.product.uid === elementUid);
+  const found = cartData?.cartItems.find((el) => el.product.uid === productUid);
 
   return (
     <Item
@@ -30,15 +31,15 @@ export const AddProductToCartAction: FC<CartContextMenuActionProps> = ({
 };
 
 export const IncreaseProductCountAction: FC<CartContextMenuActionProps> = ({
-  uid: elementUid,
+  productUid,
 }) => {
   const { increaseQuantity, cartData } = useCart();
   const handleIncreaseProductCount = () => {
-    increaseQuantity(elementUid);
+    increaseQuantity(productUid);
   };
 
   const maxedQuantity = cartData?.cartItems.find(
-    (el) => el.product.uid === elementUid && el.product.quantity === el.quantity
+    (el) => el.product.uid === productUid && el.product.quantity === el.quantity
   );
 
   return (
@@ -53,15 +54,15 @@ export const IncreaseProductCountAction: FC<CartContextMenuActionProps> = ({
 };
 
 export const DecreaseProductCountAction: FC<CartContextMenuActionProps> = ({
-  uid: elementUid,
+  productUid,
 }) => {
   const { decreaseQuantity, cartData } = useCart();
   const handleDecreaseProductCount = () => {
-    decreaseQuantity(elementUid);
+    decreaseQuantity(productUid);
   };
 
   const found = cartData?.cartItems.find(
-    (el) => el.product.uid === elementUid && el.quantity > 1
+    (el) => el.product.uid === productUid && el.quantity > 1
   );
 
   return (
@@ -76,11 +77,12 @@ export const DecreaseProductCountAction: FC<CartContextMenuActionProps> = ({
 };
 
 export const CopyProductLinkAction: FC<CartContextMenuActionProps> = ({
-  uid,
+  productUid,
+  disabled = false,
 }) => {
   const saveLinkToClipboard = () => {
     navigator.clipboard.writeText(
-      `${location.origin}${AppRoutes.getSpecifedProductPath(uid)}`
+      `${location.origin}${AppRoutes.getSpecifedProductPath(productUid)}`
     );
   };
 
@@ -88,6 +90,7 @@ export const CopyProductLinkAction: FC<CartContextMenuActionProps> = ({
     <Item
       onClick={saveLinkToClipboard}
       className={`${style.contextMenuItem} ${style.copyProductLinkAction}`}
+      disabled={disabled}
     >
       Copy link.
     </Item>

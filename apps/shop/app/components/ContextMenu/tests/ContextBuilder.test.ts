@@ -1,9 +1,9 @@
 import {
-  AddProductToCartButton,
-  CopyProductLinkButton,
-  DecreaseProductCountButton,
-  IncreaseProductCountButton,
-} from '../ContextBuilderButtons';
+  AddProductToCartAction,
+  CopyProductLinkAction,
+  DecreaseProductCountAction,
+  IncreaseProductCountAction,
+} from '../ContextBuilderActions';
 import { ContextConcreteBuilder, ContextMenu } from '../ContextBuilder';
 
 describe('ContextConcreteBuilder', () => {
@@ -11,8 +11,8 @@ describe('ContextConcreteBuilder', () => {
     const uid = 'yourUid';
     const builder = new ContextConcreteBuilder(uid);
 
-    builder.includeAddProductButton();
-    builder.includeCopyProductLink();
+    builder.withAddProduct();
+    builder.withCopyProductLink();
 
     const contextMenu = builder.getProduct();
 
@@ -23,7 +23,7 @@ describe('ContextConcreteBuilder', () => {
     const uid = 'yourUid';
     const builder = new ContextConcreteBuilder(uid);
 
-    builder.includeAddProductButton();
+    builder.withAddProduct();
     builder.reset();
 
     const contextMenu = builder.getProduct();
@@ -34,75 +34,53 @@ describe('ContextConcreteBuilder', () => {
     const contextMenu = new ContextMenu();
     expect(contextMenu.parts).toEqual([]);
   });
-  it('should include specific buttons', () => {
+
+  it('should build actions in the correct order', () => {
     const uid = 'yourUid';
     const builder = new ContextConcreteBuilder(uid);
 
-    builder.includeAddProductButton();
-    builder.includeCopyProductLink();
-
-    const contextMenu = builder.getProduct();
-
-    expect(
-      contextMenu.parts.some((part) => part.type === AddProductToCartButton) &&
-        contextMenu.parts.some((part) => part.type === CopyProductLinkButton)
-    ).toBe(true);
-
-    expect(
-      contextMenu.parts.some(
-        (part) => part.type === IncreaseProductCountButton
-      ) &&
-        contextMenu.parts.some(
-          (part) => part.type === DecreaseProductCountButton
-        )
-    ).toBe(false);
-  });
-  it('should build buttons in the correct order', () => {
-    const uid = 'yourUid';
-    const builder = new ContextConcreteBuilder(uid);
-
-    builder.includeAddProductButton();
-    builder.includeIncreaseProductCountButton();
-    builder.includeCopyProductLink();
-    builder.includeDecreaseProductCountButton();
+    builder.withAddProduct();
+    builder.withIncreaseProductCount();
+    builder.withCopyProductLink();
+    builder.withDecreaseProductCount();
 
     const contextMenu = builder.getProduct();
 
     expect(contextMenu.parts.length).toBe(4);
-    expect(contextMenu.parts[0].type).toBe(AddProductToCartButton);
-    expect(contextMenu.parts[1].type).toBe(IncreaseProductCountButton);
-    expect(contextMenu.parts[2].type).toBe(CopyProductLinkButton);
-    expect(contextMenu.parts[3].type).toBe(DecreaseProductCountButton);
+    expect(contextMenu.parts[0].type).toBe(AddProductToCartAction);
+    expect(contextMenu.parts[1].type).toBe(IncreaseProductCountAction);
+    expect(contextMenu.parts[2].type).toBe(CopyProductLinkAction);
+    expect(contextMenu.parts[3].type).toBe(DecreaseProductCountAction);
   });
-  it('should accumulate buttons when called multiple times', () => {
+  it('should accumulate actions when called multiple times', () => {
     const uid = 'yourUid';
     const builder = new ContextConcreteBuilder(uid);
 
-    builder.includeAddProductButton();
-    builder.includeAddProductButton();
+    builder.withAddProduct();
+    builder.withAddProduct();
 
     const contextMenu = builder.getProduct();
 
     expect(contextMenu.parts.length).toBe(2);
-    expect(contextMenu.parts[0].type).toBe(AddProductToCartButton);
-    expect(contextMenu.parts[1].type).toBe(AddProductToCartButton);
+    expect(contextMenu.parts[0].type).toBe(AddProductToCartAction);
+    expect(contextMenu.parts[1].type).toBe(AddProductToCartAction);
   });
-  it('should set the uid prop for AddProductToCartButton', () => {
+  it('should set the uid prop for AddProductToCartAction', () => {
     const uid = 'yourUid';
     const builder = new ContextConcreteBuilder(uid);
 
-    builder.includeAddProductButton();
+    builder.withAddProduct();
 
     const contextMenu = builder.getProduct();
 
-    const addProductButton = contextMenu.parts.find(
-      (part) => part.type === AddProductToCartButton
+    const addProductAction = contextMenu.parts.find(
+      (part) => part.type === AddProductToCartAction
     );
 
-    if (addProductButton) {
-      expect(addProductButton.props.uid).toBe(uid);
+    if (addProductAction) {
+      expect(addProductAction.props.productUid).toBe(uid);
     } else {
-      fail('AddProductToCartButton not found in context menu parts');
+      fail('AddProductToCartAction not found in context menu parts');
     }
   });
 });

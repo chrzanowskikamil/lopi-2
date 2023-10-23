@@ -36,16 +36,17 @@ export const ProductContextMenu: FC<ProductContextMenuProps> = ({
   }
 
   return (
-    <div>
+    <div role="menu">
       <div
         onContextMenu={(e) =>
           handleContextMenu(e as React.MouseEvent<HTMLDivElement>)
         }
         className={style.contextMenuTriger}
+        role="context-menu-triger"
       >
         {children}
       </div>
-      <Menu id={`${id}`} className={style.contextMenu}>
+      <Menu id={`${id}`} className={style.contextMenu} role="context-menu">
         {elements.parts}
       </Menu>
     </div>
