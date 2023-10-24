@@ -52,11 +52,11 @@ export const BasicInfoTabele = () => {
 
         <Row className={`${style.paginationRow}  d-flex align-items-center`}>
           <Col>
-            <Button>poprzednia</Button>
+            <Button className={style.paginationRowButton}>poprzednia</Button>
           </Col>
           <Col>1 z 2</Col>
           <Col>
-            <Button>następne</Button>
+            <Button className={style.paginationRowButton}>następna</Button>
           </Col>
         </Row>
       </Container>
