@@ -4,12 +4,33 @@ $palette: var.$theme-colors;
 
 $border-radius: 8px;
 $border-width: 1px;
+
+.buttonColor {
+  border: 1px map-get($palette, admin-green) solid !important;
+  color: map-get($palette, admin-green) !important;
+
+  &:active {
+    border-color: map-get($palette, admin-green) !important;
+    background-color: map-get($palette, admin-green) !important;
+    color: #ffffff !important;
+  }
+}
+
 .basicInfoSectionContainer {
   margin: 0 40px;
   width: 90%;
+
   .addButton {
+    border-color: map-get($palette, admin-green);
+    background-color: map-get($palette, admin-green);
+    color: map-get($palette, admin-white);
     font-size: 18px;
     text-transform: uppercase;
+    &:active {
+      border-color: map-get($palette, admin-green);
+      background-color: map-get($palette, admin-white);
+      color: map-get($palette, admin-green);
+    }
   }
   .basicInfoTabele {
     margin-top: 16px;
@@ -18,13 +39,10 @@ $border-width: 1px;
     background-color: map-get($palette, admin-white);
 
     .basicInfoTableSearchContainer {
-      .searchIcon {
-        padding: 20px;
-      }
-      .searchBar {
-        width: 50%;
-      }
+      border: 1px map-get($palette, admin-orange) solid;
+      color: map-get($palette, admin-orange);
     }
+
     .titleRow {
       border-top-right-radius: $border-radius;
       border-top-left-radius: $border-radius;

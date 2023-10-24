@@ -1,7 +1,8 @@
 'use client';
 
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 
+import { SearchForm } from '../components/SearchForm/SearchForm';
 import style from './BasicInfoTabele.module.scss';
 
 export const BasicInfoTabele = () => {
@@ -37,18 +38,9 @@ export const BasicInfoTabele = () => {
           </Button>
         </Col>
         <Col
-          className={`${style.basicInfoTableSearchContainer} d-flex align-items-center`}
+          className={`${style.basicInfoTableSearchContainer} d-flex align-items-center justify-content-end`}
         >
-          <i className={`${style.searchIcon} bi bi-search`}></i>
-          <Form.Control
-            type="text"
-            placeholder={'Search'}
-            className={style.searchBar}
-          />
-
-          <Button type="submit" className={style.button}>
-            Szukaj
-          </Button>
+          <SearchForm buttonClassName={style.buttonColor} />
         </Col>
       </Row>
       <Container className={`${style.basicInfoTabele}`}>

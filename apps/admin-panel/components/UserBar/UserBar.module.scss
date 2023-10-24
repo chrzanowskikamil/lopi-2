@@ -7,13 +7,15 @@ $palette: var.$theme-colors;
   position: relative;
   justify-content: space-between;
   background-color: #ffffff;
+  padding-left: 40px;
   width: 100%;
-
+  
   .userPanelContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-right: 10px;
+    height: 100px;
 
     .userPanel {
       display: flex;
