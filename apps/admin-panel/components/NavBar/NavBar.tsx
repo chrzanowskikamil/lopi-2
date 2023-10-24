@@ -14,7 +14,7 @@ const NavBar: React.FC = () => {
   return (
     <BootstrapNavbar
       collapseOnSelect
-      className={`${style.navbar} d-flex flex-column h-100 d-inline-block w-25 justify-content-between`}
+      className={`${style.navbar} d-flex flex-column h-100 d-inline-block justify-content-between`}
     >
       <BootstrapNavbar.Brand
         href="/"
@@ -23,7 +23,7 @@ const NavBar: React.FC = () => {
         onClick={() => setActive('')}
       >
         <Logo
-          className={`${style.logo} d-flex flex-row justify-content-around align-items-around mt-4`}
+          className={`${style.logo} d-flex flex-row justify-content-around align-items-around `}
         />
       </BootstrapNavbar.Brand>
       <BootstrapNavbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -42,7 +42,7 @@ const NavBar: React.FC = () => {
             }`}
             onClick={() => setActive('')}
           >
-            <i className="bi bi-house"></i> Strona główna
+            <i className={`${style.navbarIcon} bi bi-house`}></i> Strona główna
           </Nav.Link>
           <Nav.Link
             href="/products"
@@ -52,7 +52,7 @@ const NavBar: React.FC = () => {
             }`}
             onClick={() => setActive('products')}
           >
-            <i className="bi bi-box"></i> Produkty
+            <i className={`${style.navbarIcon} bi bi-box`}></i> Produkty
           </Nav.Link>
           <Nav.Link
             href="/category"
@@ -62,7 +62,7 @@ const NavBar: React.FC = () => {
               active === 'category' ? style.active : ''
             }`}
           >
-            <i className="bi bi-card-list"></i> Kategorie
+            <i className={`${style.navbarIcon} bi bi-card-list`}></i> Kategorie
           </Nav.Link>
           <Nav.Link
             href="/settings"
@@ -72,12 +72,12 @@ const NavBar: React.FC = () => {
               active === 'settings' ? style.active : ''
             }`}
           >
-            <i className="bi bi-gear"></i> Ustawienia
+            <i className={`${style.navbarIcon} bi bi-gear`}></i> Ustawienia
           </Nav.Link>
         </Nav>
       </BootstrapNavbar.Collapse>
       <Button variant="outline-success" className={style.logoutButton}>
-        <i className="bi bi-box-arrow-right"></i>
+        <i className={`${style.navbarIcon} bi bi-box-arrow-right`}></i>
         <span className={style.logoutButtonText}>Wyloguj</span>
       </Button>
     </BootstrapNavbar>

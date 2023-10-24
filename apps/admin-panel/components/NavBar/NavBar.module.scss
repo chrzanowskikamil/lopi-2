@@ -1,30 +1,57 @@
 @use '../../app/styles/admin-variables' as var;
 
 $palette: var.$theme-colors;
+$breakpoints: var.$grid-breakpoints;
+
+$titleFontSize: 33px;
+$svgPadding: 8px;
+$logoPadding: 15px 140px;
 
 .navbar {
   background-color: map-get($palette, admin-blue);
+  padding-bottom: 0;
+  width: 20%;
+  min-width: 215px;
+  max-width: 255px;
 
   .logo {
-    color: var.$font-white;
-    font-size: 32px;
+    display: flex;
+    align-items: center;
+    padding: $logoPadding;
+    font-size: $titleFontSize;
+
+    > p {
+      margin: 0;
+      color: map-get($palette, admin-white);
+    }
+
+    > svg {
+      margin-left: $svgPadding;
+    }
   }
 
   .navbarCollapse {
     .navbarNav {
+      margin-top: 40px;
       background-color: map-get($palette, admin-blue-light);
 
       .navbarNavElement {
-        padding: 10px 0 10px 28px;
-
+        display: flex;
+        padding-left: 18px;
         width: 100%;
         color: map-get($palette, admin-dark-gray);
+        line-height: 40px;
+
+        .navbarIcon {
+          padding-right: 12px;
+          font-size: 20px;
+        }
       }
 
       .navbarNavElement.active {
         border-left: 3px map-get($palette, admin-orange) solid;
         background-color: map-get($palette, admin-blue-lighter);
-        padding-left: 36px;
+        padding-left: 28px;
         color: map-get($palette, admin-orange);
       }
     }
@@ -33,14 +60,18 @@ $palette: var.$theme-colors;
   .logoutButton {
     display: flex;
     justify-content: start;
+    align-items: center;
     border-top: 1px map-get($palette, admin-blue-light) solid;
     padding-left: 16px;
     width: 100%;
+    height: 60px;
     color: map-get($palette, admin-dark-gray);
     font-size: 20px;
 
     .logoutButtonText {
-      padding-left: 16px;
+      padding-left: 12px;
+      font-size: 16px;
+      line-height: 20px;
     }
   }
 }

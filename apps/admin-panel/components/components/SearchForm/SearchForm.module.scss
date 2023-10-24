@@ -1,0 +1,45 @@
+@use '../../../app/styles/admin-variables' as var;
+
+$palette: var.$theme-colors;
+
+.userBarSearchContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+
+  .searchIcon {
+    margin-left: 40px;
+    border-top: 1px solid map-get($palette, admin-light-gray);
+    border-bottom: 1px solid map-get($palette, admin-light-gray);
+    border-left: 1px solid map-get($palette, admin-light-gray);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding-right: 12px;
+    padding-left: 12px;
+    height: 38px;
+    color: map-get($palette, admin-dark-gray);
+    line-height: 38px;
+  }
+
+  .searchBar {
+    border-color: map-get($palette, admin-light-gray);
+    border-top-right-radius: 5px;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 0;
+    width: 160px;
+    height: 38px;
+  }
+  .searchBar:focus {
+    box-shadow: none;
+  }
+
+  .button {
+    margin-left: 8px;
+    border: 1px map-get($palette, admin-orange) solid;
+    background-color: #ffffff;
+    color: map-get($palette, admin-orange);
+    text-transform: uppercase;
+  }
+}

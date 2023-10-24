@@ -10,7 +10,7 @@ export const BasicInfoTabele = () => {
 
     for (let i = 0; i < 5; i++) {
       outcomeArray.push(
-        <Row className={style.infoList}>
+        <Row className={`${style.infoList} d-flex align-items-center`}>
           <Col>Image.jpg</Col>
           <Col>KategoryTitle</Col>
           <Col>Count</Col>
@@ -32,8 +32,8 @@ export const BasicInfoTabele = () => {
     >
       <Row>
         <Col>
-          <Button>
-            <i className="bi bi-plus"></i>Dodaj
+          <Button className={style.addButton}>
+            <i className={`${style.plusIcon} bi bi-plus-lg`}></i>dodaj
           </Button>
         </Col>
         <Col
@@ -52,7 +52,7 @@ export const BasicInfoTabele = () => {
         </Col>
       </Row>
       <Container className={`${style.basicInfoTabele}`}>
-        <Row className={style.titleRow}>
+        <Row className={`${style.titleRow} d-flex align-items-center`}>
           <Col>Zdjęcie</Col>
           <Col>Kategorie</Col>
           <Col>Ilość</Col>
@@ -63,7 +63,7 @@ export const BasicInfoTabele = () => {
 
         {infoList()}
 
-        <Row className={style.paginationRow}>
+        <Row className={`${style.paginationRow}  d-flex align-items-center`}>
           <Col>
             <Button>poprzednia</Button>
           </Col>
