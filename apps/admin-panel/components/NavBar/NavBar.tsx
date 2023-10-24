@@ -1,49 +1,85 @@
 'use client';
 
-import Link from 'next/link';
-
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
 import BootstrapNavbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Button } from 'react-bootstrap';
+import Link from 'next/link';
+import { Logo } from '../../public/svg/Logo';
+import Nav from 'react-bootstrap/Nav';
+import style from './NavBar.module.scss';
+import { useState } from 'react';
 
 const NavBar: React.FC = () => {
+  const [active, setActive] = useState<string>('');
+
   return (
     <BootstrapNavbar
       collapseOnSelect
-      expand="lg"
-      data-bs-theme="dark"
-      bg="dark"
+      className={`${style.navbar} d-flex flex-column h-100 d-inline-block w-25 justify-content-between`}
     >
-      <Container>
-        <BootstrapNavbar.Brand href="/" as={Link}>
-          &lt;AdminPanel/&gt;
-        </BootstrapNavbar.Brand>
-        <BootstrapNavbar.Toggle aria-controls="responsive-navbar-nav" />
-        <BootstrapNavbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="/category" as={Link}>
-              Category Edit
-            </Nav.Link>
-            <Nav.Link href="/products" as={Link}>
-              Products Edit
-            </Nav.Link>
-            <NavDropdown title="Empty" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Empty</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Empty</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Empty</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Empty</NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-          <Nav>
-            <Nav.Link href="#deets">Empty</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
-              Empty
-            </Nav.Link>
-          </Nav>
-        </BootstrapNavbar.Collapse>
-      </Container>
+      <BootstrapNavbar.Brand
+        href="/"
+        as={Link}
+        className=" w-100 d-flex justify-content-center"
+        onClick={() => setActive('')}
+      >
+        <Logo
+          className={`${style.logo} d-flex flex-row justify-content-around align-items-around mt-4`}
+        />
+      </BootstrapNavbar.Brand>
+      <BootstrapNavbar.Toggle aria-controls="responsive-navbar-nav" />
+      <BootstrapNavbar.Collapse
+        id="responsive-navbar-nav"
+        className={`${style.navbarCollapse} d-flex flex-column justify-content-start w-100`}
+      >
+        <Nav
+          className={`${style.navbarNav} pe-auto flex-column align-items-start w-100`}
+        >
+          <Nav.Link
+            href="/"
+            as={Link}
+            className={`${style.navbarNavElement} ${
+              active === '' ? style.active : ''
+            }`}
+            onClick={() => setActive('')}
+          >
+            <i className="bi bi-house"></i> Strona główna
+          </Nav.Link>
+          <Nav.Link
+            href="/products"
+            as={Link}
+            className={`${style.navbarNavElement} ${
+              active === 'products' ? style.active : ''
+            }`}
+            onClick={() => setActive('products')}
+          >
+            <i className="bi bi-box"></i> Produkty
+          </Nav.Link>
+          <Nav.Link
+            href="/category"
+            as={Link}
+            onClick={() => setActive('category')}
+            className={`${style.navbarNavElement} ${
+              active === 'category' ? style.active : ''
+            }`}
+          >
+            <i className="bi bi-card-list"></i> Kategorie
+          </Nav.Link>
+          <Nav.Link
+            href="/settings"
+            as={Link}
+            onClick={() => setActive('settings')}
+            className={`${style.navbarNavElement} ${
+              active === 'settings' ? style.active : ''
+            }`}
+          >
+            <i className="bi bi-gear"></i> Ustawienia
+          </Nav.Link>
+        </Nav>
+      </BootstrapNavbar.Collapse>
+      <Button variant="outline-success" className={style.logoutButton}>
+        <i className="bi bi-box-arrow-right"></i>
+        <span className={style.logoutButtonText}>Wyloguj</span>
+      </Button>
     </BootstrapNavbar>
   );
 };

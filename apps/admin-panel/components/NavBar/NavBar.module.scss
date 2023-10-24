@@ -1,0 +1,46 @@
+@use '../../app/styles/admin-variables' as var;
+
+$palette: var.$theme-colors;
+
+.navbar {
+  background-color: map-get($palette, admin-blue);
+
+  .logo {
+    color: var.$font-white;
+    font-size: 32px;
+  }
+
+  .navbarCollapse {
+    .navbarNav {
+      background-color: map-get($palette, admin-blue-light);
+
+      .navbarNavElement {
+        padding: 10px 0 10px 28px;
+
+        width: 100%;
+        color: map-get($palette, admin-dark-gray);
+      }
+
+      .navbarNavElement.active {
+        border-left: 3px map-get($palette, admin-orange) solid;
+        background-color: map-get($palette, admin-blue-lighter);
+        padding-left: 36px;
+        color: map-get($palette, admin-orange);
+      }
+    }
+  }
+
+  .logoutButton {
+    display: flex;
+    justify-content: start;
+    border-top: 1px map-get($palette, admin-blue-light) solid;
+    padding-left: 16px;
+    width: 100%;
+    color: map-get($palette, admin-dark-gray);
+    font-size: 20px;
+
+    .logoutButtonText {
+      padding-left: 16px;
+    }
+  }
+}
