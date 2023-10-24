@@ -1,0 +1,39 @@
+@use '../../app/styles/admin-variables' as var;
+
+$palette: var.$theme-colors;
+
+$border-radius: 10px;
+$border-width: 1px;
+.basicInfoSectionContainer {
+  margin: 0 40px;
+  width: 90%;
+  .basicInfoTabele {
+    margin-top: 16px;
+    border: $border-width map-get($palette, admin-dark-gray) solid;
+    border-radius: $border-radius;
+    background-color: map-get($palette, admin-white);
+
+    .basicInfoTableSearchContainer {
+      .searchIcon {
+        padding: 20px;
+      }
+      .searchBar {
+        width: 50%;
+      }
+    }
+    .titleRow {
+      border-top-right-radius: $border-radius;
+      border-top-left-radius: $border-radius;
+      background-color: map-get($palette, admin-gray);
+    }
+    .infoList {
+      border-top: $border-width map-get($palette, admin-dark-gray) solid;
+    }
+    .paginationRow {
+      border-top: $border-width map-get($palette, admin-dark-gray) solid;
+      border-bottom-right-radius: $border-radius;
+      border-bottom-left-radius: $border-radius;
+      background-color: map-get($palette, admin-gray);
+    }
+  }
+}

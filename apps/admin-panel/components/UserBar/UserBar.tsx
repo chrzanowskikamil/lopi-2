@@ -20,8 +20,10 @@ export const UserBar = () => {
       </div>
       <div className={style.userPanelContainer}>
         <div className={style.userPanel}>
-          <i className="bi bi-chat-square-text"></i>{' '}
-          <i className="bi bi-bell"></i>
+          <div className={style.iconContainer}>
+            <i className={`${style.iconColor} bi bi-chat-square-text`}></i>
+            <i className={`${style.iconColor} bi bi-bell`}></i>
+          </div>
           <div className={style.minature}></div>
           <div className={style.userData}>
             <span>Sławomir Kowalski</span>
