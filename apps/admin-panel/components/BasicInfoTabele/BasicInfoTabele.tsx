@@ -3,29 +3,24 @@
 import { Button, Col, Container, Row } from 'react-bootstrap';
 
 import { SearchForm } from '../components/SearchForm/SearchForm';
+import { basicInfoTabeleData } from './basicInfoTabeleData';
 import style from './BasicInfoTabele.module.scss';
 
 export const BasicInfoTabele = () => {
-  const infoList = () => {
-    const outcomeArray = [];
-
-    for (let i = 0; i < 5; i++) {
-      outcomeArray.push(
-        <Row className={`${style.infoList} d-flex align-items-center`}>
-          <Col>Image.jpg</Col>
-          <Col>KategoryTitle</Col>
-          <Col>Count</Col>
-          <Col>SoldCount</Col>
-          <Col>ActiveBar</Col>
-          <Col>
-            <i className="bi bi-pencil"></i>
-          </Col>
-        </Row>
-      );
-    }
-
-    return outcomeArray;
-  };
+  const infoList = basicInfoTabeleData.map((item, i) => {
+    return (
+      <Row className={`${style.infoList} d-flex align-items-center`} key={i}>
+        <Col>{item.picture}</Col>
+        <Col>{item.category}</Col>
+        <Col>{item.count}</Col>
+        <Col>{item.soldCount}</Col>
+        <Col>{item.status}</Col>
+        <Col>
+          <i className="bi bi-pencil"></i>
+        </Col>
+      </Row>
+    );
+  });
 
   return (
     <Container
@@ -53,7 +48,7 @@ export const BasicInfoTabele = () => {
           <Col></Col>
         </Row>
 
-        {infoList()}
+        {...infoList}
 
         <Row className={`${style.paginationRow}  d-flex align-items-center`}>
           <Col>
