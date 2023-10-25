@@ -25,7 +25,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pl" className={`${lato.className}  h-100`}>
-      <body className={` d-flex h-100`}>
+      <body className="d-flex h-100">
         <NavBar />
         <main className="d-flex w-100 h-100 flex-column align-items-center">
           <UserBar />

@@ -1,5 +1,6 @@
 import { Col, Row } from 'react-bootstrap';
 
+import { BasicInfoStatus } from './components/BasicInfoStatus/BasicInfoStatus/BasicInfoStatus';
 import { BasicInfoTabeleDataProps } from '../../basicInfoTabeleData';
 import { FC } from 'react';
 import style from './BasicInfoTabeleElement.module.scss';
@@ -17,13 +18,9 @@ export const BasicInfoTabeleElement: FC<BasicInfoTabeleElementProps> = ({
       <Col>{item.category}</Col>
       <Col>{item.count}</Col>
       <Col>{item.soldCount}</Col>
-      {item.status === 'Active' ? (
-        <Col className={`${style.status} ${style.activeStatus} `}>Aktywny</Col>
-      ) : (
-        <Col className={`${style.status} ${style.inactiveStatus}`}>
-          Nieaktywy
-        </Col>
-      )}
+      <Col>
+        <BasicInfoStatus status={item.status} />
+      </Col>
       <Col>
         <i className={`${style.tabeleDataIcon} bi bi-pencil`}></i>
       </Col>

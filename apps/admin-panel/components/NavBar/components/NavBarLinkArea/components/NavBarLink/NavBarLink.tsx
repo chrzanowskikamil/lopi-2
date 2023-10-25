@@ -10,6 +10,7 @@ type NavBarLinkType = {
   setActive: (href: string) => void;
   bootstrapIcon: string;
 };
+
 export const NavBarLink: FC<NavBarLinkType> = ({
   pageName,
   href,
