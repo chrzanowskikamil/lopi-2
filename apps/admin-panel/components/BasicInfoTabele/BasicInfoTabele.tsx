@@ -32,7 +32,7 @@ export const BasicInfoTabele = () => {
 
   return (
     <Container
-      className={`${style.basicInfoSectionContainer}  d-flex justify-content-center flex-column`}
+      className={`${style.basicInfoSectionContainer} d-flex flex-column justify-content-center`}
     >
       <Row>
         <Col>

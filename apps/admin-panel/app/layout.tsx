@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="pl" className="h-100">
       <body className="d-flex h-100">
         <NavBar />
-        <main className="d-flex w-100 h-100 flex-column">
+        <main className="d-flex w-100 h-100 flex-column align-items-center">
           <UserBar />
           {children}
         </main>

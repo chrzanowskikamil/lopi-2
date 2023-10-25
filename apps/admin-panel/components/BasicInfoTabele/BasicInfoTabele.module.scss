@@ -4,6 +4,7 @@ $palette: var.$theme-colors;
 
 $border-radius: 8px;
 $border-width: 1px;
+$breakpoint: var.$grid-breakpoints;
 
 .buttonColor {
   border: 1px map-get($palette, admin-green) solid !important;
@@ -20,6 +21,10 @@ $border-width: 1px;
   margin: 0 40px;
   padding-top: 16px;
   width: 90%;
+  height: auto;
+  @media (min-width: map-get($breakpoint, xxl)) {
+    padding-top: 40px;
+  }
   .addButton {
     border-color: map-get($palette, admin-green);
     background-color: map-get($palette, admin-green);
@@ -55,12 +60,12 @@ $border-width: 1px;
       height: 70px;
       text-align: center;
       .status {
-        opacity: 40%;
         border-radius: 14px;
+        height: 25px;
         color: map-get($palette, dark);
       }
       .activeStatus {
-        opacity: 40%;
+        opacity: 70%;
         background-color: map-get($palette, admin-green);
       }
       .inactiveStatus {
