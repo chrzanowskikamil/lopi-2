@@ -7,13 +7,13 @@ import styles from './page.module.scss';
 export default async function Index() {
   return (
     <ToastProvider>
+      <BasicInfoTabele />
       <div className={styles.page}>
         <Link href={AppRoutes.getLoginPath()} passHref>
           Go to auth
         </Link>
         <Common />
       </div>
-      <BasicInfoTabele />
     </ToastProvider>
   );
 }

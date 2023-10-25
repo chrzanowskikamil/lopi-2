@@ -14,9 +14,17 @@ export const BasicInfoTabele = () => {
         <Col>{item.category}</Col>
         <Col>{item.count}</Col>
         <Col>{item.soldCount}</Col>
-        <Col>{item.status}</Col>
+        {item.status === 'Active' ? (
+          <Col className={`${style.status} ${style.activeStatus} `}>
+            Aktywny
+          </Col>
+        ) : (
+          <Col className={`${style.status} ${style.inactiveStatus}`}>
+            Nieaktywy
+          </Col>
+        )}
         <Col>
-          <i className="bi bi-pencil"></i>
+          <i className={`${style.tabeleDataIcon} bi bi-pencil`}></i>
         </Col>
       </Row>
     );
@@ -54,8 +62,8 @@ export const BasicInfoTabele = () => {
           <Col>
             <Button className={style.paginationRowButton}>poprzednia</Button>
           </Col>
-          <Col>1 z 2</Col>
-          <Col>
+          <Col className="text-center">1 z 2</Col>
+          <Col className="d-flex justify-content-end">
             <Button className={style.paginationRowButton}>następna</Button>
           </Col>
         </Row>
