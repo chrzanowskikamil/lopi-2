@@ -1,0 +1,9 @@
+@use '../../../../app/styles/admin-variables' as var;
+
+$palette: var.$theme-colors;
+$spacers: var.$spacers;
+
+.navbarNav {
+  margin-top: map-get($spacers, 43);
+  background-color: map-get($palette, admin-blue-light);
+}

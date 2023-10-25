@@ -1,0 +1,13 @@
+@use '../../../../app/styles/admin-variables' as var;
+
+$palette: var.$theme-colors;
+
+$titleRowHeight: 50px;
+
+.titleRow {
+  border-top-right-radius: var.$border-radius-lg;
+  border-top-left-radius: var.$border-radius-lg;
+  background-color: map-get($palette, admin-gray);
+  height: $titleRowHeight;
+  text-align: center;
+}

@@ -6,6 +6,11 @@ $blue-light: #05f2f2;
 
 $backgroud-light: #f2f2f2;
 
+$font-size-root: null !default;
+$font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
+$font-size-sm: $font-size-base * 0.875 !default;
+$font-size-lg: $font-size-base * 1.25 !default;
+
 $spacer: 1rem !default;
 $spacers: (
   0: 0,
@@ -13,6 +18,7 @@ $spacers: (
   2: $spacer * 0.5,
   21: $spacer * 0.75,
   3: $spacer,
+  31: $spacer * 1.25,
   4: $spacer * 1.5,
   41: $spacer * 1.75,
   42: $spacer * 2,
@@ -71,3 +77,4 @@ $border-radius-xl: 1rem !default;
 $line-height-base: 1.5 !default;
 $line-height-sm: 1.25 !default;
 $line-height-lg: 2 !default;
+$line-height-xl: 2.5 !default;

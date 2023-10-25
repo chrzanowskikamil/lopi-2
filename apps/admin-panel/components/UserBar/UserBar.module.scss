@@ -1,21 +1,25 @@
 @use '../../app/styles/admin-variables' as var;
 
 $palette: var.$theme-colors;
+$spacers: var.$spacers;
+
+$userPanelContainerHeight: 100px;
+$userBarWidth: 100%;
 
 .userBar {
   display: flex;
   position: relative;
   justify-content: space-between;
-  background-color: #ffffff;
-  padding-left: 40px;
-  width: 100%;
+  background-color: map-get($palette, admin-white);
+  padding-left: map-get($spacers, 43);
+  width: $userBarWidth;
 
   .userPanelContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-right: 10px;
-    height: 100px;
+    padding-right: map-get($spacers, 21);
+    height: $userPanelContainerHeight;
 
     .userPanel {
       display: flex;
@@ -25,19 +29,19 @@ $palette: var.$theme-colors;
         color: map-get($palette, admin-orange);
 
         .userPanelIcon {
-          padding-right: 20px;
-          font-size: 20px;
+          padding-right: map-get($spacers, 31);
+          font-size: var.$font-size-lg;
         }
       }
 
       .userMinature {
-        margin-right: 16px;
+        margin-right: map-get($spacers, 3);
       }
 
       .userData {
         display: flex;
         flex-direction: column;
-        margin-right: 40px;
+        margin-right: map-get($spacers, 43);
 
         .userName {
           color: map-get($palette, dark);

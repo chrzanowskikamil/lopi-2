@@ -1,0 +1,32 @@
+@use '../../../../app/styles/admin-variables' as var;
+
+$palette: var.$theme-colors;
+
+$infoListHeight: 70px;
+$activeStatusHeight: 25px;
+$activeStatusOpacity: 70%;
+
+.infoList {
+  border-top: var.$border-width map-get($palette, admin-light-gray) solid;
+  height: $infoListHeight;
+  text-align: center;
+
+  .status {
+    border-radius: var.$border-radius-xl;
+    height: $activeStatusHeight;
+    color: map-get($palette, dark);
+  }
+
+  .activeStatus {
+    opacity: $activeStatusOpacity;
+    background-color: map-get($palette, admin-green);
+  }
+
+  .inactiveStatus {
+    background-color: map-get($palette, admin-red);
+  }
+
+  .tabeleDataIcon {
+    color: map-get($palette, dark);
+  }
+}

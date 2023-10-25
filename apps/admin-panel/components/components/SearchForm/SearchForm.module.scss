@@ -12,6 +12,7 @@ $searchBarWidth: 160px;
   align-items: center;
 
   .searchIcon {
+    cursor: pointer;
     border-top: var.$border-width solid map-get($palette, admin-light-gray);
     border-bottom: var.$border-width solid map-get($palette, admin-light-gray);
     border-left: var.$border-width solid map-get($palette, admin-light-gray);

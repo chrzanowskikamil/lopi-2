@@ -4,98 +4,28 @@ $palette: var.$theme-colors;
 $spacers: var.$spacers;
 $breakpoint: var.$grid-breakpoints;
 
-$paginationRowHeight: 80px;
 $infoSectionContainerWidht: 90%;
-$titleRowHeight: 50px;
-$infoListHeight: 70px;
-$activeStatusHeight: 25px;
-$activeStatusOpacity: 70%;
-
-.buttonColor {
-  border: var.$border-width map-get($palette, admin-green) solid !important;
-  color: map-get($palette, admin-green) !important;
-
-  &:active {
-    border-color: map-get($palette, admin-green) !important;
-    background-color: map-get($palette, admin-green) !important;
-    color: map-get($palette, admin-white) !important;
-  }
-}
 
 .basicInfoSectionContainer {
   margin: 0 map-get($spacers, 43);
   padding-top: map-get($spacers, 3);
   width: $infoSectionContainerWidht;
   height: auto;
+
   @media (min-width: map-get($breakpoint, xxl)) {
     padding-top: map-get($spacers, 43);
   }
-  .addButton {
-    border-color: map-get($palette, admin-green);
-    background-color: map-get($palette, admin-green);
-    color: map-get($palette, admin-white);
-    text-transform: uppercase;
-    &:active {
-      border-color: map-get($palette, admin-green);
-      background-color: map-get($palette, admin-white);
-      color: map-get($palette, admin-green);
-    }
-  }
+
   .basicInfoTabele {
     margin-top: map-get($spacers, 3);
     border: var.$border-width map-get($palette, admin-light-gray) solid;
     border-radius: var.$border-radius-lg;
     background-color: map-get($palette, admin-white);
     color: map-get($palette, admin-dark-gray);
+
     .basicInfoTableSearchContainer {
       border: var.$border-width map-get($palette, admin-orange) solid;
       color: map-get($palette, admin-orange);
-    }
-
-    .titleRow {
-      border-top-right-radius: var.$border-radius-lg;
-      border-top-left-radius: var.$border-radius-lg;
-      background-color: map-get($palette, admin-gray);
-      height: $titleRowHeight;
-      text-align: center;
-    }
-    .infoList {
-      border-top: var.$border-width map-get($palette, admin-light-gray) solid;
-      height: $infoListHeight;
-      text-align: center;
-      .status {
-        border-radius: var.$border-radius-xl;
-        height: $activeStatusHeight;
-        color: map-get($palette, dark);
-      }
-      .activeStatus {
-        opacity: $activeStatusOpacity;
-        background-color: map-get($palette, admin-green);
-      }
-      .inactiveStatus {
-        background-color: map-get($palette, admin-red);
-      }
-      .tabeleDataIcon {
-        color: map-get($palette, dark);
-      }
-    }
-    .paginationRow {
-      border-top: var.$border-width map-get($palette, admin-light-gray) solid;
-      border-bottom-right-radius: var.$border-radius-lg;
-      border-bottom-left-radius: var.$border-radius-lg;
-      height: $paginationRowHeight;
-      .paginationRowButton {
-        margin-right: map-get($spacers, 41);
-        margin-left: map-get($spacers, 41);
-        border: var.$border-width map-get($palette, admin-light-gray) solid;
-        background-color: map-get($palette, admin-white);
-        color: map-get($palette, admin-dark-gray);
-        &:active {
-          border-color: map-get($palette, admin-light-gray);
-          background-color: map-get($palette, admin-light-gray);
-          color: map-get($palette, admin-white);
-        }
-      }
     }
   }
 }

@@ -1,12 +1,13 @@
 'use client';
 
+import { FC } from 'react';
 import Image from 'next/image';
 import { SearchForm } from '../components/SearchForm/SearchForm';
 import { StaticImageData } from 'next/image';
 import UserMinature from '../../public/assets/UserMinature.png';
 import style from './UserBar.module.scss';
 
-export const UserBar = () => {
+export const UserBar:FC = () => {
   const userMinature: StaticImageData = UserMinature;
 
   return (
