@@ -7,7 +7,7 @@ import { StaticImageData } from 'next/image';
 import UserMinature from '../../public/assets/UserMinature.png';
 import style from './UserBar.module.scss';
 
-export const UserBar:FC = () => {
+export const UserBar: FC = () => {
   const userMinature: StaticImageData = UserMinature;
 
   return (
