@@ -1,6 +1,10 @@
 @use '../../../app/styles/admin-variables' as var;
 
 $palette: var.$theme-colors;
+$spacers: var.$spacers;
+
+$searchBarElementsHeight: 38px;
+$searchBarWidth: 160px;
 
 .userBarSearchContainer {
   display: flex;
@@ -8,42 +12,48 @@ $palette: var.$theme-colors;
   align-items: center;
 
   .searchIcon {
-    border-top: 1px solid map-get($palette, admin-light-gray);
-    border-bottom: 1px solid map-get($palette, admin-light-gray);
-    border-left: 1px solid map-get($palette, admin-light-gray);
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    background-color: #ffffff;
-    padding-right: 12px;
-    padding-left: 12px;
-    height: 38px;
+    border-top: var.$border-width solid map-get($palette, admin-light-gray);
+    border-bottom: var.$border-width solid map-get($palette, admin-light-gray);
+    border-left: var.$border-width solid map-get($palette, admin-light-gray);
+    border-top-left-radius: var.$border-radius;
+    border-bottom-left-radius: var.$border-radius;
+    background-color: map-get($palette, admin-white);
+    padding-right: map-get($spacers, 21);
+    padding-left: map-get($spacers, 21);
+    height: $searchBarElementsHeight;
     color: map-get($palette, admin-dark-gray);
-    line-height: 38px;
+    line-height: $searchBarElementsHeight;
   }
 
   .searchBar {
     border-color: map-get($palette, admin-light-gray);
-    border-top-right-radius: 5px;
-    border-top-left-radius: 0;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 0;
-    width: 160px;
-    height: 38px;
+    border-top-right-radius: var.$border-radius;
+    border-top-left-radius: var.$border-radius-null;
+    border-bottom-right-radius: var.$border-radius;
+    border-bottom-left-radius: var.$border-radius-null;
+    width: $searchBarWidth;
+    height: $searchBarElementsHeight;
+
+    &::placeholder {
+      color: map-get($palette, admin-light-gray);
+    }
   }
+
   .searchBar:focus {
     box-shadow: none;
   }
 
   .button {
-    margin-left: 8px;
-    border: 1px map-get($palette, admin-orange) solid;
-    background-color: #ffffff;
+    margin-left: map-get($spacers, 2);
+    border: var.$border-width map-get($palette, admin-orange) solid;
+    background-color: map-get($palette, admin-white);
     color: map-get($palette, admin-orange);
     text-transform: uppercase;
+
     &:active {
       border-color: map-get($palette, admin-orange);
       background-color: map-get($palette, admin-orange);
-      color: #ffffff;
+      color: map-get($palette, admin-white);
     }
   }
 }
