@@ -1,8 +1,11 @@
+$pageWidth: 100px;
+$pageHeigth: 100px;
+
 .page {
   display: flex;
   justify-content: center;
   align-items: center;
   background: #d3d3d3;
-  width: 100px;
-  height: 100px;
+  width: $pageWidth;
+  height: $pageHeigth;
 }
