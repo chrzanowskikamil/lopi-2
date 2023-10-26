@@ -1,0 +1,56 @@
+@use '../../app/styles/admin-variables' as var;
+
+$palette: var.$theme-colors;
+$spacers: var.$spacers;
+
+$userPanelContainerHeight: 100px;
+$userBarWidth: 100%;
+
+.userBar {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  background-color: map-get($palette, admin-white);
+  padding-left: map-get($spacers, 4);
+  width: $userBarWidth;
+
+  .userPanelContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: map-get($spacers, 2);
+    height: $userPanelContainerHeight;
+
+    .userPanel {
+      display: flex;
+      align-items: center;
+
+      .iconContainer {
+        color: map-get($palette, admin-orange);
+
+        .userPanelIcon {
+          padding-right: map-get($spacers, 3);
+          font-size: var.$font-size-lg;
+        }
+      }
+
+      .userMinature {
+        margin-right: map-get($spacers, 3);
+      }
+
+      .userData {
+        display: flex;
+        flex-direction: column;
+        margin-right: map-get($spacers, 4);
+
+        .userName {
+          color: map-get($palette, dark);
+        }
+
+        .userRole {
+          color: map-get($palette, admin-dark-gray);
+        }
+      }
+    }
+  }
+}

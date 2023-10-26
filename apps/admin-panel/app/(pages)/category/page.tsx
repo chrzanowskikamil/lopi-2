@@ -1,15 +1,14 @@
 'use client';
 
+import Accordion from 'react-bootstrap/Accordion';
 import AddCategory from '../../../components/CategoryManagment/AddCategory/AddCategory';
 import EditCategoryChoice from '../../../components/CategoryManagment/EditCategory/EditCategoryChoice';
 import RemoveCategory from '../../../components/CategoryManagment/RemoveCategory/RemoveCategory';
 
-import Accordion from 'react-bootstrap/Accordion';
-
 const Categories: React.FC = () => {
   return (
     <>
-      <Accordion defaultActiveKey="0">
+      <Accordion defaultActiveKey="0" className="w-100 h-100">
         <Accordion.Item eventKey="0">
           <Accordion.Header>Adding category area.</Accordion.Header>
           <Accordion.Body>

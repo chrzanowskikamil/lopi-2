@@ -1,0 +1,26 @@
+@use '../../app/styles/admin-variables' as var;
+
+$palette: var.$theme-colors;
+$spacers: var.$spacers;
+$breakpoint: var.$grid-breakpoints;
+
+$infoSectionContainerWidht: 90%;
+
+.basicInfoSectionContainer {
+  margin: 0 map-get($spacers, 4);
+  padding-top: map-get($spacers, 3);
+  width: $infoSectionContainerWidht;
+  height: auto;
+
+  @media (min-width: map-get($breakpoint, xxl)) {
+    padding-top: map-get($spacers, 4);
+  }
+
+  .basicInfoTable {
+    margin-top: map-get($spacers, 3);
+    border: var.$border-width map-get($palette, admin-light-gray) solid;
+    border-radius: var.$border-radius-lg;
+    background-color: map-get($palette, admin-white);
+    color: map-get($palette, admin-dark-gray);
+  }
+}

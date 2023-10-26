@@ -1,0 +1,15 @@
+@use '../../../../app/styles/admin-variables' as var;
+
+$palette: var.$theme-colors;
+
+$infoListHeight: 70px;
+
+.infoList {
+  border-top: var.$border-width map-get($palette, admin-light-gray) solid;
+  height: $infoListHeight;
+  text-align: center;
+
+  .tabeleDataIcon {
+    color: map-get($palette, dark);
+  }
+}
