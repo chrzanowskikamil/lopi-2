@@ -58,7 +58,7 @@ $logoutButtonHeight: 60px;
     font-size: var.$font-size-lg;
 
     .logoutButtonText {
-      padding-left: map-get($spacers, 21);
+      padding-left: map-get($spacers, 2);
       font-size: var.$font-size-base;
       line-height: var.$line-height-sm;
     }

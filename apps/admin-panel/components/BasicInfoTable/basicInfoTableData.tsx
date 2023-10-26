@@ -5,7 +5,7 @@ import Kolumbia from '../../public/assets/Kolumbia.png';
 import Kostaryka from '../../public/assets/Kostaryka.png';
 import Wietnam from '../../public/assets/Wietnam.png';
 
-export type BasicInfoTabeleDataProps = {
+export type BasicInfoTableDataProps = {
   picture: JSX.Element;
   category: string;
   count: number;
@@ -13,7 +13,7 @@ export type BasicInfoTabeleDataProps = {
   status: 'Active' | 'Inactive';
 };
 
-export const basicInfoTabeleData: BasicInfoTabeleDataProps[] = [
+export const basicInfoTableData: BasicInfoTableDataProps[] = [
   {
     picture: <Image src={Etiopia} alt={'Coffe'} />,
     category: 'Ethiopia',

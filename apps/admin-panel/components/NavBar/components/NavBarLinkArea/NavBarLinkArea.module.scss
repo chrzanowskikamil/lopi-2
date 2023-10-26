@@ -4,6 +4,6 @@ $palette: var.$theme-colors;
 $spacers: var.$spacers;
 
 .navbarNav {
-  margin-top: map-get($spacers, 43);
+  margin-top: map-get($spacers, 4);
   background-color: map-get($palette, admin-blue-light);
 }

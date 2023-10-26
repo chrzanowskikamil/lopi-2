@@ -12,8 +12,8 @@ $paginationRowHeight: 80px;
   height: $paginationRowHeight;
 
   .paginationRowButton {
-    margin-right: map-get($spacers, 41);
-    margin-left: map-get($spacers, 41);
+    margin-right: map-get($spacers, 4);
+    margin-left: map-get($spacers, 4);
     border: var.$border-width map-get($palette, admin-light-gray) solid;
     background-color: map-get($palette, admin-white);
     color: map-get($palette, admin-dark-gray);

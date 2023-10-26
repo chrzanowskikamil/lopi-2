@@ -9,22 +9,24 @@ type NavBarLinkArea = {
   setActive: (href: string) => void;
 };
 export const NavBarLinkArea: FC<NavBarLinkArea> = ({ active, setActive }) => {
-  const outcome = navBarLinkAreaData.map((item, i) => (
-    <NavBarLink
-      key={i}
-      pageName={item.pageName}
-      href={item.href}
-      active={active}
-      setActive={setActive}
-      bootstrapIcon={item.bootstrapIcon}
-    />
-  ));
+  const outcome = () => {
+    return navBarLinkAreaData.map((item, i) => (
+      <NavBarLink
+        key={i}
+        pageName={item.pageName}
+        href={item.href}
+        active={active}
+        setActive={setActive}
+        bootstrapIcon={item.bootstrapIcon}
+      />
+    ));
+  };
 
   return (
     <Nav
       className={`${style.navbarNav} pe-auto flex-column align-items-start w-100`}
     >
-      {outcome}
+      {outcome()}
     </Nav>
   );
 };

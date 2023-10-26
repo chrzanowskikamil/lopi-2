@@ -11,14 +11,14 @@ $userBarWidth: 100%;
   position: relative;
   justify-content: space-between;
   background-color: map-get($palette, admin-white);
-  padding-left: map-get($spacers, 43);
+  padding-left: map-get($spacers, 4);
   width: $userBarWidth;
 
   .userPanelContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-right: map-get($spacers, 21);
+    padding-right: map-get($spacers, 2);
     height: $userPanelContainerHeight;
 
     .userPanel {
@@ -29,7 +29,7 @@ $userBarWidth: 100%;
         color: map-get($palette, admin-orange);
 
         .userPanelIcon {
-          padding-right: map-get($spacers, 31);
+          padding-right: map-get($spacers, 3);
           font-size: var.$font-size-lg;
         }
       }
@@ -41,7 +41,7 @@ $userBarWidth: 100%;
       .userData {
         display: flex;
         flex-direction: column;
-        margin-right: map-get($spacers, 43);
+        margin-right: map-get($spacers, 4);
 
         .userName {
           color: map-get($palette, dark);

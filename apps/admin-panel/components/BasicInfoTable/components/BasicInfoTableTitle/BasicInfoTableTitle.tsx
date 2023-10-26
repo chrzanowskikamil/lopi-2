@@ -1,9 +1,9 @@
 import { Col, Row } from 'react-bootstrap';
 
 import { FC } from 'react';
-import style from './BasicInfoTabeleTitle.module.scss';
+import style from './BasicInfoTableTitle.module.scss';
 
-export const BasicInfoTabeleTitle: FC = () => {
+export const BasicInfoTableTitle: FC = () => {
   return (
     <Row className={`${style.titleRow} d-flex align-items-center`}>
       <Col>Zdjęcie</Col>

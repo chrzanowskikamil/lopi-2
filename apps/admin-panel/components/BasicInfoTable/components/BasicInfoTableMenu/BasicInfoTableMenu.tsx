@@ -2,9 +2,9 @@ import { Button, Col, Row } from 'react-bootstrap';
 
 import { FC } from 'react';
 import { SearchForm } from '../../../components/SearchForm/SearchForm';
-import style from './BasicInfoTabeleMenu.module.scss';
+import style from './BasicInfoTableMenu.module.scss';
 
-export const BasicInfoTabeleMenu: FC = () => {
+export const BasicInfoTableMenu: FC = () => {
   return (
     <Row>
       <Col>

@@ -1,10 +1,10 @@
-import { BasicInfoTabele } from '../components/BasicInfoTabele/BasicInfoTabele';
+import { BasicInfoTable } from '../components/BasicInfoTable/BasicInfoTable';
 import { ToastProvider } from '@lopi-2/common';
 
 export default async function Index() {
   return (
     <ToastProvider>
-      <BasicInfoTabele />
+      <BasicInfoTable />
     </ToastProvider>
   );
 }

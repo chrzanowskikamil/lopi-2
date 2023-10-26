@@ -1,19 +1,19 @@
 import { Col, Row } from 'react-bootstrap';
 
 import { BasicInfoStatus } from './components/BasicInfoStatus/BasicInfoStatus/BasicInfoStatus';
-import { BasicInfoTabeleDataProps } from '../../basicInfoTabeleData';
+import { BasicInfoTableDataProps } from '../../basicInfoTableData';
 import { FC } from 'react';
-import style from './BasicInfoTabeleElement.module.scss';
+import style from './BasicInfoTableElement.module.scss';
 
-type BasicInfoTabeleElementProps = {
-  item: BasicInfoTabeleDataProps;
+type BasicInfoTableElementProps = {
+  item: BasicInfoTableDataProps;
 };
 
-export const BasicInfoTabeleElement: FC<BasicInfoTabeleElementProps> = ({
+export const BasicInfoTableElement: FC<BasicInfoTableElementProps> = ({
   item,
 }) => {
   return (
-    <Row className={`${style.infoList} d-flex align-items-center`}>
+    <Row className={`${style.infoList} align-items-center`}>
       <Col>{item.picture}</Col>
       <Col>{item.category}</Col>
       <Col>{item.count}</Col>
@@ -22,7 +22,7 @@ export const BasicInfoTabeleElement: FC<BasicInfoTabeleElementProps> = ({
         <BasicInfoStatus status={item.status} />
       </Col>
       <Col>
-        <i className={`${style.tabeleDataIcon} bi bi-pencil`}></i>
+        <i className={`${style.tableDataIcon} bi bi-pencil`}></i>
       </Col>
     </Row>
   );
