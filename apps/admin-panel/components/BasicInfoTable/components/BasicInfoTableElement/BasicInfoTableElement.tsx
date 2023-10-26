@@ -1,6 +1,6 @@
 import { Col, Row } from 'react-bootstrap';
 
-import { BasicInfoStatus } from './components/BasicInfoStatus/BasicInfoStatus/BasicInfoStatus';
+import { BasicInfoStatus } from './components/BasicInfoStatus/BasicInfoStatus';
 import { BasicInfoTableDataProps } from '../../basicInfoTableData';
 import { FC } from 'react';
 import style from './BasicInfoTableElement.module.scss';

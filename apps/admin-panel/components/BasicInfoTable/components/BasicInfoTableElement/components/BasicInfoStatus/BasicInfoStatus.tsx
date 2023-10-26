@@ -1,5 +1,6 @@
 import { Col } from 'react-bootstrap';
 import { FC } from 'react';
+import { exhaustiveCheck } from '@lopi-2/common';
 import style from './BasicInfoStatus.module.scss';
 
 type BasicInfoStatusProps = { status: 'Active' | 'Inactive' };
@@ -20,9 +21,7 @@ export const BasicInfoStatus: FC<BasicInfoStatusProps> = ({ status }) => {
       break;
     }
     default: {
-      const exhaustiveCheck: never = status;
-
-      return exhaustiveCheck;
+      exhaustiveCheck(status);
     }
   }
 
