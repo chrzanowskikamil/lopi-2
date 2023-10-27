@@ -22,7 +22,7 @@ export async function getProducts(
   const {
     size = DEFAULT_PAGE_SIZE,
     page = INITIAL_CURRENT_PAGE,
-    sortOrder = SortOrder.NAME,
+    sortOrder = SortOrder.PRICE,
     ascending = INITIAL_ASCENDING_VALUE,
   } = possibleSearchOptions;
 
