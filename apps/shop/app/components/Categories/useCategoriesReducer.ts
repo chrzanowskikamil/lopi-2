@@ -97,15 +97,15 @@ export const useCategoriesReducer = ({ content }: { content: Product[] }) => {
   const initialState = {
     allProducts: content,
     sortType:
-      getParam.sort === SortParams.PRICE_ASC ||
-      getParam.sort === SortParams.PRICE_DSC
-        ? SortOrder.PRICE
-        : SortOrder.NAME,
-    sortOrder:
       getParam.sort === SortParams.PRODUCT_NAME_ASC ||
       getParam.sort === SortParams.PRODUCT_NAME_DSC
-        ? true
-        : false,
+        ? SortOrder.NAME
+        : SortOrder.PRICE,
+    sortOrder:
+      getParam.sort === SortParams.PRODUCT_NAME_DSC ||
+      getParam.sort === SortParams.PRICE_DSC
+        ? false
+        : true,
     currentPage: INITIAL_CURRENT_PAGE,
     lowerMoneyValueFilter:
       getParam.filterPriceLow === null
