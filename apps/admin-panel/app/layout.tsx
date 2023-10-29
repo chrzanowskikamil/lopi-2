@@ -1,8 +1,7 @@
 import './styles/admin-global.scss';
+import { Providers } from '@lopi-2/common';
 
 import { Lato } from 'next/font/google';
-import NavBar from '../components/NavBar/NavBar';
-import { UserBar } from '../components/UserBar/UserBar';
 
 export const metadata = {
   title: 'Welcome to admin-panel',
@@ -24,11 +23,7 @@ export default function RootLayout({
   return (
     <html lang="pl" className={`${lato.className}  h-100`}>
       <body className="d-flex h-100">
-        <NavBar />
-        <main className="d-flex w-100 h-100 flex-column align-items-center">
-          <UserBar />
-          {children}
-        </main>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

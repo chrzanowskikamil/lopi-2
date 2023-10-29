@@ -8,9 +8,11 @@ import Link from 'next/link';
 import { Logo } from '../../public/svg/Logo';
 import { NavBarLinkArea } from './components/NavBarLinkArea/NavBarLinkArea';
 import style from './NavBar.module.scss';
+import { useAuth } from '@lopi-2/common';
 
 const NavBar: FC = () => {
   const [active, setActive] = useState<string>('/');
+  const { logout, isAuthenticated } = useAuth();
 
   return (
     <BootstrapNavbar
@@ -37,7 +39,12 @@ const NavBar: FC = () => {
         <NavBarLinkArea active={active} setActive={setActive} />
       </BootstrapNavbar.Collapse>
 
-      <Button variant="outline-success" className={style.logoutButton}>
+      <Button
+        disabled={!isAuthenticated}
+        onClick={logout}
+        variant="outline-success"
+        className={style.logoutButton}
+      >
         <i className={`${style.navbarIcon} bi bi-box-arrow-right`}></i>
         <span className={style.logoutButtonText}>Wyloguj</span>
       </Button>

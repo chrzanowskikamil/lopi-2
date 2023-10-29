@@ -1,7 +1,6 @@
 import style from './page.module.scss';
 import { Lato } from 'next/font/google';
 import { Logo } from '../../../public/svg/Logo';
-import { ToastProvider } from '@lopi-2/common';
 
 export const metadata = {
   title: 'Log in to admin-panel',
@@ -21,14 +20,12 @@ export default function AuthPageLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ToastProvider>
-      <div className={`${lato.className} ${style.container}`}>
-        <header className={style.bgContainer}></header>
-        <section>
-          <Logo className={style.logo} />
-          {children}
-        </section>
-      </div>
-    </ToastProvider>
+    <div className={`${lato.className} ${style.container}`}>
+      <header className={style.bgContainer}></header>
+      <section>
+        <Logo className={style.logo} />
+        {children}
+      </section>
+    </div>
   );
 }

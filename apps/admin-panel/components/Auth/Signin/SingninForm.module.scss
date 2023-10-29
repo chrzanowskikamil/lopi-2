@@ -1,0 +1,124 @@
+@use '../../../app/styles/admin-variables' as var;
+
+$pallete: var.$theme-colors;
+$breakpoint: var.$grid-breakpoints;
+$containerWidth: 100%;
+$containerWidthDesktop: 436px;
+$labelMargin: 8px;
+$labelPadding: 0 2px;
+$labelMarginDesktop: 2px 0;
+$formContainerWidthDesktop: 200px;
+$borderWidth: 1px;
+$inputWidth: 100%;
+$inputHeight: 48px;
+$inputMarginDesktop: 15px;
+$inputWidthDesktop: 436px;
+$formFeedbackPadding: 8px 0;
+$formFeedbackPaddingDesktop: 5px 0;
+$buttonsContainerWidth: 100%;
+$buttonHeight: 48px;
+$buttonMargin: 40px 0 28px 0;
+$linkMargin: 0 4px;
+$forgotPassowrdContainerWidth: 350px;
+$forgotPasswordContainerMargin: 10px;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+
+  @media (min-width: map-get($breakpoint, md)) {
+    width: $containerWidthDesktop;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  > div > label {
+    color: map-get($pallete, admin-dark-gray);
+    margin-top: $labelMargin;
+    padding: $labelPadding;
+
+    @media (min-width: map-get($breakpoint, md)) {
+      margin: $labelMarginDesktop;
+    }
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: $containerWidth;
+
+    @media (min-width: map-get($breakpoint, md)) {
+      width: $formContainerWidthDesktop;
+    }
+
+    > input {
+      background-color: transparent;
+      border: $borderWidth solid map-get($pallete, admin-light-gray);
+      width: $containerWidth;
+      height: $inputHeight;
+
+      &::placeholder {
+        color: map-get($pallete, admin-dark-gray);
+      }
+
+      @media (min-width: map-get($breakpoint, md)) {
+        margin-top: $inputMarginDesktop;
+        width: $inputWidthDesktop;
+      }
+    }
+  }
+
+  div > div {
+    padding: $formFeedbackPadding;
+
+    @media (min-width: map-get($breakpoint, md)) {
+      padding: $formFeedbackPaddingDesktop;
+    }
+  }
+
+  .passwordLabelContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: map-get($pallete, admin-dark-gray);
+
+    @media (min-width: map-get($breakpoint, md)) {
+      width: $containerWidthDesktop;
+    }
+
+    > a {
+      width: $forgotPassowrdContainerWidth;
+      color: map-get($pallete, admin-dark-gray);
+      margin-top: $forgotPasswordContainerMargin;
+      text-align: end;
+    }
+  }
+
+  .buttonsContainer {
+    display: flex;
+    width: $buttonsContainerWidth;
+    flex-direction: column;
+
+    > button {
+      background-color: map-get($pallete, admin-orange);
+      border-color: map-get($pallete, admin-orange);
+      height: $buttonHeight;
+      text-transform: uppercase;
+      margin: $buttonMargin;
+    }
+
+    > footer {
+      display: flex;
+      color: map-get($pallete, admin-dark-gray);
+
+      > a {
+        color: map-get($pallete, admin-orange);
+        margin: $linkMargin;
+      }
+    }
+  }
+}

@@ -6,18 +6,9 @@ import { AppRoutes, Button, useSignup } from '@lopi-2/common';
 import { Formik } from 'formik';
 import { Form } from 'react-bootstrap';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 export const SignupForm: FC = () => {
-  const router = useRouter();
-  const loginPath = AppRoutes.getLoginPath();
-
-  const handleRedirect = () => {
-    router.push(loginPath);
-  };
-
-  const { initialValues, onSubmit, validationSchema } =
-    useSignup(handleRedirect);
+  const { initialValues, onSubmit, validationSchema } = useSignup();
 
   return (
     <>
@@ -153,7 +144,7 @@ export const SignupForm: FC = () => {
               />
               <footer className={style.footer}>
                 <p>Masz już konto?</p>
-                <Link href={loginPath}>Zaloguj się!</Link>
+                <Link href={AppRoutes.getLoginPath()}>Zaloguj się!</Link>
               </footer>
             </div>
           </Form>

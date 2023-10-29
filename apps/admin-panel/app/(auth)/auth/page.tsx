@@ -1,11 +1,5 @@
-import { AppRoutes } from '@lopi-2/common';
-import Link from 'next/link';
+import { SigninComponent } from '../../../components/Auth/Signin/SigninComponent';
 
 export default async function AuthPage() {
-  return (
-    <>
-      <h1>Logowanie</h1>
-      <Link href={AppRoutes.getRegisterPath()}>Rejestracja </Link>
-    </>
-  );
+  return <SigninComponent />;
 }
