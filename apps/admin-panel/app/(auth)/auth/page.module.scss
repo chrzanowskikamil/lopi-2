@@ -61,7 +61,7 @@ $svgPadding: 8px;
 
 .bgContainer {
   width: $containerWidth;
-  height: $bgcontainerHeight;
+  min-height: $bgcontainerHeight;
   background-image: $bgImgMobile;
   background-size: cover;
   background-repeat: no-repeat;
