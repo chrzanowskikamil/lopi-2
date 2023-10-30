@@ -22,6 +22,7 @@ export const SortDropdown: FC<SortDropdownProps> = ({ sortedProducts }) => {
     SortParams.PRODUCT_NAME_DSC,
   ];
 
+  // temp
   const items = dropdownItems.map((item) => (
     <Dropdown.Item
       key={item}

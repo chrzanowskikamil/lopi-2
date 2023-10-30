@@ -1,10 +1,13 @@
 'use client';
 import style from './AccountActivation.module.scss';
-import { AppRoutes, exhaustiveCheck } from '@lopi-2/common';
+import {
+  AppRoutes,
+  exhaustiveCheck,
+  useAccountActivation,
+} from '@lopi-2/common';
 import { FC, useEffect } from 'react';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useAccountActivation } from '@lopi-2/common';
 import { useProgressBar } from '../../../../hooks/useProgressBar';
 import {
   AccountActivationErrorMessage,
@@ -28,6 +31,7 @@ export const AccountActivation: FC = () => {
     intervalTime: PROGRESS_INTERVAL,
   });
 
+  // temp
   useEffect(() => {
     if (progress === 0) {
       router.push(AppRoutes.getLoginPath());
