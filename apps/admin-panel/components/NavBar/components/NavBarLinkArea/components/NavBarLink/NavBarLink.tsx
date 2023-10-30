@@ -24,7 +24,7 @@ export const NavBarLink: FC<NavBarLinkType> = ({
       className={`${style.navbarNavElement} ${
         active === href ? style.active : style.inactive
       }`}
-      href={`${href}`}
+      href={href}
       as={Link}
     >
       <i className={`${style.navbarIcon} ${bootstrapIcon}`}></i> {pageName}

@@ -1,7 +1,7 @@
 import NavBar from '../../components/NavBar/NavBar';
 import { UserBar } from '../../components/UserBar/UserBar';
 
-export default function AuthPageLayout({
+export default function PagesLayout({
   children,
 }: {
   children: React.ReactNode;
