@@ -1,0 +1,21 @@
+@use '../../../../app/styles/admin-variables' as var;
+
+$palette: var.$theme-colors;
+$containerHeight: 250px;
+$containerPadding: 20px 40px;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: $containerHeight;
+  padding: $containerPadding;
+  word-wrap: break-word;
+
+  > button {
+    background-color: map-get($palette, admin-orange);
+    border-color: map-get($palette, admin-orange);
+    text-transform: uppercase;
+  }
+}

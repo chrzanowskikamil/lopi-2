@@ -5,8 +5,8 @@ import { Toast, ToastContainer } from 'react-bootstrap';
 const TOAST_STYLES = {
   SUCCESS: '#28a745',
   WARNING: '#dc3545',
-  MARGIN: '1rem',
-  DELAY: 3000,
+  MARGIN: '0.5rem',
+  DELAY: 5000,
 };
 
 interface ToastContextProps {
@@ -69,14 +69,14 @@ export const ToastProvider: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <ToastContext.Provider value={{ state, showToast }}>
       {children}
-      <ToastContainer position="top-center" className="position-fixed">
+      <ToastContainer position="top-start" className="position-fixed">
         <Toast
           onClose={hideToast}
           show={state.isVisible}
           delay={TOAST_STYLES.DELAY}
           autohide
           style={{
-            marginTop: TOAST_STYLES.MARGIN,
+            margin: TOAST_STYLES.MARGIN,
             backgroundColor:
               state.type === 'success'
                 ? TOAST_STYLES.SUCCESS

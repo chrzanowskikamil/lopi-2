@@ -1,0 +1,33 @@
+@use '../../../../app/styles/admin-variables' as var;
+
+$palette: var.$theme-colors;
+$spinnerSize: 50px;
+$linkMargin: 5px;
+$linkFontWeight: 900;
+$progressBarWidth: 130px;
+$progressBarHeight: 5px;
+$progressBarBorderRadius: 2px;
+$progressBarColor: #20c997;
+
+.spinner {
+  width: $spinnerSize;
+  height: $spinnerSize;
+  background-color: map-get($palette, admin-orange);
+}
+
+.successMessage {
+  color: map-get($palette, admin-orange);
+  margin-left: $linkMargin;
+  font-weight: $linkFontWeight;
+}
+
+.progressBar {
+  width: $progressBarWidth;
+  height: $progressBarHeight;
+  border-radius: $progressBarBorderRadius;
+  background-color: $progressBarColor;
+
+  > div {
+    background-color: map-get($palette, admin-orange);
+  }
+}

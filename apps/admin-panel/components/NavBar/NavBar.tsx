@@ -12,7 +12,7 @@ import { useAuth } from '@lopi-2/common';
 
 const NavBar: FC = () => {
   const [active, setActive] = useState<string>('/');
-  const { logout, isAuthenticated } = useAuth();
+  const { logout } = useAuth();
 
   return (
     <BootstrapNavbar
@@ -40,7 +40,6 @@ const NavBar: FC = () => {
       </BootstrapNavbar.Collapse>
 
       <Button
-        disabled={!isAuthenticated}
         onClick={logout}
         variant="outline-success"
         className={style.logoutButton}

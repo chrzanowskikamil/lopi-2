@@ -12,14 +12,29 @@ export const useAdminAuth = (): IAuthHook => {
   const { showToast } = useToast();
   const router = useRouter();
 
+  // TODO : consider with @bitjanisz to handle this in different way
+  // !!
+  const getStorageUser = () => {
+    if (typeof window !== 'undefined') {
+      return !!localStorage.getItem('user');
+    }
+
+    return false;
+  };
+  // !!
+  // TODO : consider with @bitjanisz to handle this in different way
+
   const [user, setUser] = useState<User | null>(null);
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(
+    getStorageUser()
+  );
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user') || 'null');
     setUser(storedUser);
     setIsAuthenticated(!!storedUser);
-  }, []);
+  }, [isAuthenticated]);
 
   const login = useCallback(
     async (credentials: AuthCredentials) => {
@@ -41,6 +56,7 @@ export const useAdminAuth = (): IAuthHook => {
     showToast('Zostałeś wylogowany', 'success');
     localStorage.removeItem('user');
     setUser(null);
+    setIsAuthenticated(false);
     router.push(AppRoutes.getLoginPath());
   }, [router, showToast]);
 
