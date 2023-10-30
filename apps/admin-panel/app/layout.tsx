@@ -1,7 +1,7 @@
 import './styles/admin-global.scss';
-import { Providers } from '@lopi-2/common';
 
 import { Lato } from 'next/font/google';
+import { Providers } from '@lopi-2/common';
 
 export const metadata = {
   title: 'Welcome to admin-panel',
@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pl" className={`${lato.className}  h-100`}>
-      <body className="d-flex h-100">
+      <body className="d-flex h-100 flex-row">
         <Providers>{children}</Providers>
       </body>
     </html>

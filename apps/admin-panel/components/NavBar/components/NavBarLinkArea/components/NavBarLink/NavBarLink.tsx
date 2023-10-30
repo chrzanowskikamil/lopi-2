@@ -20,12 +20,12 @@ export const NavBarLink: FC<NavBarLinkType> = ({
 }) => {
   return (
     <Nav.Link
-      href={`${href}`}
-      as={Link}
       onClick={() => setActive(href)}
       className={`${style.navbarNavElement} ${
         active === href ? style.active : style.inactive
       }`}
+      href={href}
+      as={Link}
     >
       <i className={`${style.navbarIcon} ${bootstrapIcon}`}></i> {pageName}
     </Nav.Link>
