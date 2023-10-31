@@ -4,7 +4,7 @@ import style from './ClientOpinionsCarousel/ClientOpinionsCaroulseLargeScreen/cl
 
 type CarouselElementLargeScreenType = {
   starCount: number;
-  opinion: string;
+  opinion: JSX.Element;
   author: string;
   className: string;
   navigation?: JSX.Element;
