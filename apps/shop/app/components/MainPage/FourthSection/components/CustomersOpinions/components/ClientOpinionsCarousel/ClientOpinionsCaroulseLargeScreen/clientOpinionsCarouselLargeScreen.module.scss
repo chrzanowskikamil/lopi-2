@@ -22,6 +22,8 @@ $breakpoint: var.$grid-breakpoints;
   padding-left: map-get($spacer, 31);
   width: v.$carouselFrontWidthLG;
   height: v.$carouselFrontHeightLG;
+  min-height: 300px;
+  overflow: hidden;
   color: map-get($theme-colors, lopi-dark-green);
 
   @media (min-width: map-get($breakpoint, xl)) {
@@ -65,7 +67,7 @@ $breakpoint: var.$grid-breakpoints;
     font-size: v.$fontSizeAuthorXXS;
 
     @media (min-width: map-get($breakpoint, xl)) {
-      font-size: v.$fontSizeAuthorSM;
+      font-size: v.$fontSizeAuthorXS;
     }
   }
 
@@ -170,7 +172,7 @@ $breakpoint: var.$grid-breakpoints;
 
     .author {
       animation: backwardfontchangesmall v.$animationDuration;
-      font-size: v.$fontSizeAuthorXXS;
+      font-size: v.$fontSizeAuthorXXXS;
 
       @media (min-width: map-get($breakpoint, xl)) {
         font-size: v.$fontSizeAuthorXS;
@@ -287,8 +289,8 @@ $breakpoint: var.$grid-breakpoints;
 
   .caruselRightActive {
     transform: translateX(v.$rightActiveXL);
+    z-index: 5;
     animation: sliderightactive v.$animationDuration;
-
     @media (min-width: map-get($breakpoint, xl)) {
       transform: translateX(v.$rightActiveXL);
     }

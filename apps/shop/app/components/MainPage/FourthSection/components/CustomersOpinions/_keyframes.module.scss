@@ -110,15 +110,15 @@ $breakpoint: var.$grid-breakpoints;
 
 @keyframes forwardfontchangesmall {
   from {
-    font-size: v.$fontSizeAuthorXXS;
+    font-size: v.$fontSizeAuthorXXXS;
   }
 
   25% {
-    font-size: v.$fontSizeAuthorXXS;
+    font-size: v.$fontSizeAuthorXXXS;
   }
 
   to {
-    font-size: v.$fontSizeAuthorXS;
+    font-size: v.$fontSizeAuthorXXS;
   }
 }
 
@@ -171,7 +171,7 @@ $breakpoint: var.$grid-breakpoints;
   to {
     width: v.$carouselBackWidthLG;
     height: v.$carouselBackHeightLG;
-    font-size: v.$fontSizeAuthorXXS;
+    // font-size: v.$fontSizeAuthorXXS;
   }
 }
 
@@ -196,7 +196,7 @@ $breakpoint: var.$grid-breakpoints;
   to {
     width: v.$carouselBackWidthLG;
     height: v.$carouselBackHeightLG;
-    font-size: v.$fontSizeAuthorXXS;
+    // font-size: v.$fontSizeAuthorXXS;
   }
 }
 
@@ -311,12 +311,11 @@ $breakpoint: var.$grid-breakpoints;
 
   @keyframes forwardfontchangebig {
     from {
+      font-weight: var.$font-weight-thin;
       font-size: v.$fontSizeTitleXL;
     }
 
     25% {
-      font-weight: var.$font-weight-thin;
-
       font-size: v.$fontSizeTitleXL;
     }
 
@@ -349,8 +348,6 @@ $breakpoint: var.$grid-breakpoints;
     }
 
     25% {
-      font-weight: var.$font-weight-thin;
-
       font-size: v.$fontSizeTitleXL;
     }
 
@@ -381,7 +378,6 @@ $breakpoint: var.$grid-breakpoints;
     }
 
     25% {
-      z-index: 2;
       font-size: v.$fontSizeTitleXL;
     }
 
@@ -394,7 +390,7 @@ $breakpoint: var.$grid-breakpoints;
     to {
       width: v.$carouselBackWidthXL;
       height: v.$carouselBackHeightXL;
-      font-size: v.$fontSizeAuthorSM;
+      // font-size: v.$fontSizeAuthorSM;
     }
   }
 
@@ -421,7 +417,7 @@ $breakpoint: var.$grid-breakpoints;
     to {
       width: v.$carouselBackWidthXL;
       height: v.$carouselBackHeightXL;
-      font-size: v.$fontSizeAuthorSM;
+      // font-size: v.$fontSizeAuthorSM;
     }
   }
 
