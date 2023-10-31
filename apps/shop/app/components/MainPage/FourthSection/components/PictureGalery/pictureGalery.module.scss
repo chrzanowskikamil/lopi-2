@@ -8,13 +8,18 @@ $maxWidth: 1440px;
 $galeryImageElementSizeSM: 170px;
 $galeryImageElementSizeXL: 290px;
 
+$galeryContainerMarginTopLG: 120px;
+$galeryContainerMarginTopXL: 70px;
+
 .galeryContainer {
-  margin-top: 70px;
+  margin-top: $galeryContainerMarginTopLG;
   background-color: map-get($theme-colors, lopi-grey-dark);
   width: 100%;
   max-width: 100vw;
   overflow: hidden;
-
+  @media (min-width: map-get($breakpoint, sm)) {
+    margin-top: $galeryContainerMarginTopXL;
+  }
   .galery {
     display: flex;
     justify-content: center;
