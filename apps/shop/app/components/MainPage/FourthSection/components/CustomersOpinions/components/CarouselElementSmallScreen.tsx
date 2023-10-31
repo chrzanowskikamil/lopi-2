@@ -4,7 +4,7 @@ import style from './ClientOpinionsCarousel/ClientOpinionsCorouselSmallScreen/ci
 
 type CarouselElementSmallScreenType = {
   starCount: number;
-  opinion: string;
+  opinion: JSX.Element;
   author: string;
   className: string;
   navigation?: JSX.Element;
