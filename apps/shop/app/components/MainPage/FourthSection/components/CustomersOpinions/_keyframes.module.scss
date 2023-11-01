@@ -57,7 +57,8 @@ $breakpoint: var.$grid-breakpoints;
 
 @keyframes slideleftactive {
   0% {
-    transform: translateX(0);
+    transform: translateX(v.$leftBackToLeftLG);
+    z-index: 1;
     width: v.$carouselBackWidthLG;
     height: v.$carouselBackHeightLG;
   }
@@ -70,12 +71,14 @@ $breakpoint: var.$grid-breakpoints;
 
   100% {
     transform: translateX(v.$leftActiveLG);
+    z-index: 10;
   }
 }
 
 @keyframes sliderightactive {
   0% {
-    transform: translateX(0);
+    transform: translateX(v.$rightBackToLeftLG);
+    z-index: 1;
     width: v.$carouselBackWidthLG;
     height: v.$carouselBackHeightLG;
   }
@@ -88,6 +91,7 @@ $breakpoint: var.$grid-breakpoints;
 
   100% {
     transform: translateX(v.$rightActiveLG);
+    z-index: 10;
   }
 }
 
@@ -152,14 +156,13 @@ $breakpoint: var.$grid-breakpoints;
 @keyframes sliderightbackward {
   from {
     transform: translateX(v.$rightActiveLG);
-    z-index: 5;
+    z-index: 7;
     width: v.$carouselFrontWidthLG;
     height: v.$carouselFrontHeightLG;
     font-size: v.$fontSizeTitleLG;
   }
 
   25% {
-    z-index: 2;
     font-size: v.$fontSizeTitleSM;
   }
 
@@ -177,7 +180,7 @@ $breakpoint: var.$grid-breakpoints;
 @keyframes slideleftbackward {
   from {
     transform: translateX(v.$leftActiveLG);
-    z-index: 10;
+    z-index: 7;
     width: v.$carouselFrontWidthLG;
     height: v.$carouselFrontHeightLG;
     font-size: v.$fontSizeTitleLG;
@@ -248,7 +251,6 @@ $breakpoint: var.$grid-breakpoints;
   @keyframes slidebackward {
     from {
       z-index: 6;
-
       width: v.$carouselFrontWidthXL;
       height: v.$carouselFrontHeightXL;
       font-size: v.$fontSizeTitleXXL;
@@ -270,14 +272,14 @@ $breakpoint: var.$grid-breakpoints;
 
   @keyframes slideleftactive {
     0% {
-      transform: translateX(0);
+      transform: translateX(v.$leftBackToLeftXL);
+      z-index: 4;
       width: v.$carouselBackWidthXL;
       height: v.$carouselBackHeightXL;
     }
 
     25% {
       transform: translateX(v.$leftTransitionXL);
-
       width: v.$carouselBackWidthXL;
       height: v.$carouselBackHeightXL;
     }
@@ -289,8 +291,8 @@ $breakpoint: var.$grid-breakpoints;
 
   @keyframes sliderightactive {
     0% {
-      transform: translateX(0);
-
+      transform: translateX(v.$rightBackToLeftXL);
+      z-index: 3;
       width: v.$carouselBackWidthXL;
       height: v.$carouselBackHeightXL;
     }
@@ -369,7 +371,7 @@ $breakpoint: var.$grid-breakpoints;
   @keyframes sliderightbackward {
     from {
       transform: translateX(v.$rightActiveXL);
-      z-index: 5;
+      z-index: 7;
       width: v.$carouselFrontWidthXL;
       height: v.$carouselFrontHeightXL;
       font-size: v.$fontSizeTitleXXL;
@@ -386,6 +388,7 @@ $breakpoint: var.$grid-breakpoints;
     }
 
     to {
+      z-index: 1;
       width: v.$carouselBackWidthXL;
       height: v.$carouselBackHeightXL;
     }
@@ -412,6 +415,7 @@ $breakpoint: var.$grid-breakpoints;
     }
 
     to {
+      z-index: 1;
       width: v.$carouselBackWidthXL;
       height: v.$carouselBackHeightXL;
     }
