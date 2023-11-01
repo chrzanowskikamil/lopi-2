@@ -22,7 +22,7 @@ export const CarouselElementLargeScreen: FC<CarouselElementLargeScreenType> = ({
   starsIconClass,
 }) => {
   return (
-    <div className={`${style.carouselElement} ${className} `}>
+    <div className={`${style.carouselElement} ${className} `} onClick={onClick}>
       <ProductRating
         starsCount={starCount}
         className={style.ratingStars}

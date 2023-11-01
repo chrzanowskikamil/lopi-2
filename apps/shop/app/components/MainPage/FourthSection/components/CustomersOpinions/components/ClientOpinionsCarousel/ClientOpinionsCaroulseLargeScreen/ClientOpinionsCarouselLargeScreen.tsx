@@ -23,15 +23,24 @@ export const ClientOpinionsCaroluselLargeScreen: FC<
     <nav className={style.navigationCircle}>
       <div
         className={`${style.circle} ${getNavigationActive(0)}`}
-        onClick={() => setCurrentOpinionIndex(0)}
+        onClick={(e) => {
+          e.stopPropagation();
+          setCurrentOpinionIndex(0);
+        }}
       ></div>
       <div
         className={`${style.circle} ${getNavigationActive(1)}`}
-        onClick={() => setCurrentOpinionIndex(1)}
+        onClick={(e) => {
+          e.stopPropagation();
+          setCurrentOpinionIndex(1);
+        }}
       ></div>
       <div
         className={`${style.circle} ${getNavigationActive(2)}`}
-        onClick={() => setCurrentOpinionIndex(2)}
+        onClick={(e) => {
+          e.stopPropagation();
+          setCurrentOpinionIndex(2);
+        }}
       ></div>
     </nav>
   );
