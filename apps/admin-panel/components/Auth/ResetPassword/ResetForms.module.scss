@@ -1,0 +1,116 @@
+@use '../../../app/styles/admin-variables' as var;
+
+$pallete: var.$theme-colors;
+$breakpoint: var.$grid-breakpoints;
+$containerMobileHeight: 100%;
+$containerDesktopHeight: 500px;
+$containerMobilePadding: 0 12px;
+$linkContainerWidth: 168px;
+$titleWidth: 100%;
+$titleColor: #000;
+$titleFontSize: 32px;
+$titleFontWeight: 900;
+$paragraphDesktopWidth: 436px;
+$formWidth: 100%;
+$formHeight: 200px;
+$inputDesktopWidth: 436px;
+$inputHeight: 48px;
+$labelMargin: 6px 0;
+$labelFontSize: 16px;
+$buttonWidth: 100%;
+$buttonDesktopWidth: 436px;
+$buttonHeight: 48px;
+$buttonBorderRadius: 5px;
+$buttonFontSize: 20px;
+$buttonFontWeight: 900;
+$buttonMargin: 40px 0;
+
+.container {
+  height: $containerMobileHeight;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  color: map-get($pallete, admin-dark-gray);
+  padding: $containerMobilePadding;
+
+  @media (min-width: map-get($breakpoint, md)) {
+    height: $containerDesktopHeight;
+  }
+
+  > a {
+    width: $linkContainerWidth;
+    display: flex;
+    justify-content: space-between;
+    color: map-get($pallete, admin-dark-gray);
+    text-decoration: none;
+  }
+
+  > h1 {
+    width: $titleWidth;
+    color: $titleColor;
+    font-size: $titleFontSize;
+    font-weight: $titleFontWeight;
+    text-align: center;
+  }
+
+  > p {
+    @media (min-width: map-get($breakpoint, md)) {
+      width: $paragraphDesktopWidth;
+      align-self: center;
+    }
+  }
+
+  > form {
+    width: $formWidth;
+    height: $formHeight;
+
+    @media (min-width: map-get($breakpoint, md)) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    > div {
+      @media (min-width: map-get($breakpoint, md)) {
+        display: flex;
+        flex-direction: column;
+      }
+
+      > input {
+        height: $inputHeight;
+        background-color: transparent;
+
+        @media (min-width: map-get($breakpoint, md)) {
+          width: $inputDesktopWidth;
+        }
+      }
+
+      > div {
+        font-size: $labelFontSize;
+        margin: $labelMargin;
+      }
+
+      > label {
+        margin: $labelMargin;
+      }
+    }
+
+    > button {
+      width: $buttonWidth;
+      height: $buttonHeight;
+      border: none;
+      border-radius: $buttonBorderRadius;
+      background-color: map-get($pallete, admin-orange);
+      color: map-get($pallete, admin-white);
+      font-size: $buttonFontSize;
+      font-weight: $buttonFontWeight;
+      margin: $buttonMargin;
+      text-transform: uppercase;
+
+      @media (min-width: map-get($breakpoint, md)) {
+        width: $buttonDesktopWidth;
+      }
+    }
+  }
+}

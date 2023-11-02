@@ -39,7 +39,6 @@ $dividerFontSize: 16px;
 
 .socialButton {
   display: flex;
-  background-color: transparent;
   border: $borderWidth solid map-get($pallete, admin-light-gray);
   border-radius: $buttonBorderRadius;
   color: map-get($pallete, admin-dark-gray);
@@ -48,6 +47,13 @@ $dividerFontSize: 16px;
   width: $buttonWidth;
   height: $buttonHeight;
   margin: $buttonMargin;
+
+  &:disabled {
+    background-color: transparent;
+    border-color: map-get($pallete, admin-light-gray);
+    color: map-get($pallete, admin-light-gray);
+    cursor: not-allowed;
+  }
 
   > i {
     margin: $svgMargin;

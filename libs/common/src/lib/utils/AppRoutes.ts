@@ -3,6 +3,11 @@ export abstract class AppRoutes {
   static readonly getLoginPath = () => '/auth/';
 
   static readonly getRegisterPath = () => `${AppRoutes.getLoginPath()}/signup`;
+  static readonly getInitResetPasswordPath = () =>
+    `${AppRoutes.getLoginPath()}/forget-password`;
+
+  static readonly getResetPasswordPath = () =>
+    `${AppRoutes.getLoginPath()}/reset`;
 
   static readonly getCategoryPath = () => '/category';
   static readonly getProductPath = () => '/productdetails';
