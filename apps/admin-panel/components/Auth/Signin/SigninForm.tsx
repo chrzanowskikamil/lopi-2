@@ -35,6 +35,7 @@ export const SigninForm: FC = () => {
                 value={values.username}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                placeholder={isValid ? '' : 'Email'}
                 isValid={touched.username && !errors.username}
                 isInvalid={touched.username && !!errors.username}
               />
@@ -53,6 +54,7 @@ export const SigninForm: FC = () => {
                 value={values.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                placeholder={isValid ? '' : 'Hasło'}
                 isValid={touched.password && !errors.password}
                 isInvalid={touched.password && !!errors.password}
               />
