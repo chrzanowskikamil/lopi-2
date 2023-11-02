@@ -1,0 +1,62 @@
+@use '../../../app/styles//admin-variables' as var;
+$pallete: var.$theme-colors;
+$breakpoint: var.$grid-breakpoints;
+$mobileContainerHeight: 100%;
+$desktopContainerWidth: 436px;
+$desktopContainerHeight: 400px;
+$containerPadding: 0 12px;
+$handThumbsUpColor: #00928b;
+$handThumbsUpFontSize: 40px;
+$titleFontSize: 32px;
+$titleFontWeight: 900;
+$titleMargin: 0 0 0 14px;
+$buttonMobileWidth: 100%;
+$buttonHeight: 48px;
+$buttonBorderRadius: 5px;
+$buttonFontSize: 20px;
+
+.container {
+  height: $mobileContainerHeight;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: $containerPadding;
+
+  @media (min-width: map-get($breakpoint, md)) {
+    width: $desktopContainerWidth;
+    height: $desktopContainerHeight;
+  }
+
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > span {
+      color: map-get($pallete, 'admin-green');
+      font-size: $handThumbsUpFontSize;
+    }
+
+    > h1 {
+      color: map-get($pallete, dark);
+      font-size: $titleFontSize;
+      font-weight: $titleFontWeight;
+      margin: $titleMargin;
+    }
+  }
+
+  > p {
+    color: map-get($pallete, 'admin-dark-gray');
+  }
+
+  > button {
+    width: $buttonMobileWidth;
+    height: $buttonHeight;
+    background-color: map-get($pallete, admin-orange);
+    border-color: map-get($pallete, admin-orange);
+    border-radius: $buttonBorderRadius;
+    font-size: $buttonFontSize;
+    text-transform: uppercase;
+  }
+}

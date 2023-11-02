@@ -12,7 +12,7 @@ export const SocialProviderButton: FC<SocialProviderButtonProps> = ({
   className,
 }) => {
   return (
-    <button className={className}>
+    <button disabled className={className}>
       {Icon}
       <span>{title}</span>
     </button>

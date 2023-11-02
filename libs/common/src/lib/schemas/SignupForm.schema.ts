@@ -24,7 +24,17 @@ export const SignupFormSchema = object({
       validationConstans.REQUIRED_FIELD_MESSAGE,
       noWhiteSpacesTest.testFunction
     ),
-  phoneNumber: string(),
+  phoneNumber: string()
+    .required(validationConstans.REQUIRED_FIELD_MESSAGE)
+    .min(
+      validationConstans.PHONE_NUMBER_MIN_LENGTH,
+      validationConstans.PHONE_NUMBER_MESSAGE
+    )
+    .test(
+      noWhiteSpacesTest.name,
+      validationConstans.PHONE_NUMBER_MESSAGE,
+      noWhiteSpacesTest.testFunction
+    ),
   username: string()
     .email(validationConstans.INVALID_EMAIL_MESSAGE)
     .required(validationConstans.REQUIRED_FIELD_MESSAGE),

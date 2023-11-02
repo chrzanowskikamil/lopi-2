@@ -35,6 +35,7 @@ export const SignupForm: FC = () => {
                 value={values.firstName}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                placeholder={isValid ? '' : 'Imię'}
                 isValid={touched.firstName && !errors.firstName}
                 isInvalid={touched.firstName && !!errors.firstName}
               />
@@ -53,6 +54,7 @@ export const SignupForm: FC = () => {
                 value={values.lastName}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                placeholder={isValid ? '' : 'Nazwisko'}
                 isValid={touched.lastName && !errors.lastName}
                 isInvalid={touched.lastName && !!errors.lastName}
               />
@@ -71,6 +73,7 @@ export const SignupForm: FC = () => {
                 value={values.username}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                placeholder={isValid ? '' : 'Email'}
                 isValid={touched.username && !errors.username}
                 isInvalid={touched.username && !!errors.username}
               />
@@ -89,6 +92,7 @@ export const SignupForm: FC = () => {
                 value={values.phoneNumber}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                placeholder={isValid ? '' : 'Telefon'}
                 isValid={touched.phoneNumber && !errors.phoneNumber}
                 isInvalid={touched.phoneNumber && !!errors.phoneNumber}
               />
@@ -107,6 +111,7 @@ export const SignupForm: FC = () => {
                 value={values.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                placeholder={isValid ? '' : 'Hasło'}
                 isValid={touched.password && !errors.password}
                 isInvalid={touched.password && !!errors.password}
               />
@@ -125,6 +130,7 @@ export const SignupForm: FC = () => {
                 value={values.confirmPassword}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                placeholder={isValid ? '' : 'Powtórz hasło'}
                 isValid={touched.confirmPassword && !errors.confirmPassword}
                 isInvalid={touched.confirmPassword && !!errors.confirmPassword}
               />

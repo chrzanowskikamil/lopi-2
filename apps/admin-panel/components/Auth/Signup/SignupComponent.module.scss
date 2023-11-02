@@ -49,6 +49,13 @@ $dividerFontSize: 16px;
   height: $buttonHeight;
   margin: $buttonMargin;
 
+  &:disabled {
+    background-color: transparent;
+    border-color: map-get($pallete, admin-light-gray);
+    color: map-get($pallete, admin-light-gray);
+    cursor: not-allowed;
+  }
+
   > i {
     margin: $svgMargin;
     margin-right: auto;
