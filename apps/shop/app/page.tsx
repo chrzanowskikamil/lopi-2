@@ -6,12 +6,12 @@ import style from './index.module.scss';
 
 const Index = async () => {
   return (
-    <main className={style.main}>
+    <div className={style.indexPage}>
       <HeroSection />
       <SecondSection />
       <ThirdSection />
       <FourthSection />
-    </main>
+    </div>
   );
 };
 export default Index;

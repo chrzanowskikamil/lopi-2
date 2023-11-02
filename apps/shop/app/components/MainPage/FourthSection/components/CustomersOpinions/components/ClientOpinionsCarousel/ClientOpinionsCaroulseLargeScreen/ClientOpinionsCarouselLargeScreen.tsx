@@ -19,29 +19,18 @@ export const ClientOpinionsCaroluselLargeScreen: FC<
     return index === currentOpinionIndex ? style.active : '';
   };
 
-  const navigaion = (
+  const navigation = (
     <nav className={style.navigationCircle}>
-      <div
-        className={`${style.circle} ${getNavigationActive(0)}`}
-        onClick={(e) => {
-          e.stopPropagation();
-          setCurrentOpinionIndex(0);
-        }}
-      ></div>
-      <div
-        className={`${style.circle} ${getNavigationActive(1)}`}
-        onClick={(e) => {
-          e.stopPropagation();
-          setCurrentOpinionIndex(1);
-        }}
-      ></div>
-      <div
-        className={`${style.circle} ${getNavigationActive(2)}`}
-        onClick={(e) => {
-          e.stopPropagation();
-          setCurrentOpinionIndex(2);
-        }}
-      ></div>
+      {[0, 1, 2].map((index) => (
+        <div
+          key={index}
+          className={`${style.circle} ${getNavigationActive(index)}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            setCurrentOpinionIndex(index);
+          }}
+        ></div>
+      ))}
     </nav>
   );
 
@@ -68,7 +57,7 @@ export const ClientOpinionsCaroluselLargeScreen: FC<
         starCount={carouselData[1].starCount}
         opinion={carouselData[1].opinion}
         author={carouselData[1].author}
-        navigation={navigaion}
+        navigation={navigation}
         onClick={() => setCurrentOpinionIndex(1)}
         starsIconClass={style.starsIconClass}
       />
