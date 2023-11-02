@@ -14,7 +14,8 @@ $containerWidthXxlMin: 740px;
 $titleFontSize: 33px;
 $titleColor: #232d42;
 $titlePadding: 40px 12px;
-$logoMargin: 50px;
+$logoDesktopWidth: 436px;
+$logoMargin: 35px;
 $logoPadding: 0 140px;
 $svgPadding: 8px;
 
@@ -27,6 +28,7 @@ $svgPadding: 8px;
   @media (min-width: map-get($breakpoints, lg)) {
     width: $containerWidth;
     height: $containerHeightDesktop;
+    align-items: center;
   }
 
   > header {
@@ -44,13 +46,6 @@ $svgPadding: 8px;
       align-self: center;
       align-items: center;
       justify-content: center;
-    }
-  }
-
-  .logo {
-    @media (min-width: map-get($breakpoints, lg)) {
-      width: $containerWidth;
-      margin-bottom: $logoMargin;
     }
   }
 
@@ -78,13 +73,15 @@ $svgPadding: 8px;
 }
 
 .logo {
+  width: $containerWidth;
   display: flex;
   align-items: center;
   font-size: $titleFontSize;
   padding: $titlePadding;
 
   @media (min-width: map-get($breakpoints, lg)) {
-    padding: $logoPadding;
+    width: $logoDesktopWidth;
+    margin-bottom: $logoMargin;
   }
 
   > p {

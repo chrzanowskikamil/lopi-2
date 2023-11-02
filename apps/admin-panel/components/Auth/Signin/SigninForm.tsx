@@ -66,7 +66,9 @@ export const SigninForm: FC = () => {
                 ) : (
                   <Form.Label>Hasło</Form.Label>
                 )}
-                <Link href={'/'}>Nie pamiętasz hasła?</Link>
+                <Link href={AppRoutes.getInitResetPasswordPath()}>
+                  Nie pamiętasz hasła?
+                </Link>
               </div>
             </Form.Group>
             <div className={style.buttonsContainer}>

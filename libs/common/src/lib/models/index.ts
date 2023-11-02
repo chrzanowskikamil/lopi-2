@@ -3,3 +3,4 @@ export * from './Crumb';
 export * from './Product';
 export * from './User';
 export * from './AuthCredentials';
+export * from './ResetPasswordCredentials';
