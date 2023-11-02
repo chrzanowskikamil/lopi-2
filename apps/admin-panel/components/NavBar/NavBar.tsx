@@ -9,9 +9,11 @@ import { Logo } from '../../public/svg/Logo';
 import { NavBarLinkArea } from './components/NavBarLinkArea/NavBarLinkArea';
 import style from './NavBar.module.scss';
 import { useAuth } from '@lopi-2/common';
+import { usePathname } from 'next/navigation';
 
 const NavBar: FC = () => {
-  const [active, setActive] = useState<string>('/');
+  const pathname = usePathname();
+  const [active, setActive] = useState<string>(pathname);
   const { logout } = useAuth();
 
   return (
