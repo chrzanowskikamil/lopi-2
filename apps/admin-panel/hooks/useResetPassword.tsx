@@ -1,14 +1,15 @@
 'use client';
 import { useCallback, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import {
+  AppRoutes,
+  initResetPassword,
   IPasswordResetHook,
   PasswordResetStatus,
-} from '../types/IPasswordResetHook';
-import { ResetPasswordCredentials } from '../models';
-import { initResetPassword, resetPassword } from '../../api';
-import { AppRoutes } from '../utils';
-import { useToast } from '../contexts';
-import { useRouter, useSearchParams } from 'next/navigation';
+  resetPassword,
+  ResetPasswordCredentials,
+  useToast,
+} from '@lopi-2/common';
 
 export const useResetPassword = (): IPasswordResetHook => {
   const params = useSearchParams();

@@ -1,7 +1,7 @@
 import './styles/admin-global.scss';
 
 import { Lato } from 'next/font/google';
-import { Providers } from '@lopi-2/common';
+import { Providers } from '../contexts/providers';
 
 export const metadata = {
   title: 'Welcome to admin-panel',

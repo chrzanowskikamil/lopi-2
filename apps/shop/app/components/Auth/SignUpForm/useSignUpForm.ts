@@ -1,5 +1,6 @@
 import { register } from '@lopi-2/common';
 import { signUpFormSchema } from './SignUpForm.schema';
+
 export interface RegisterFormValues {
   name: string;
   lastName: string;
@@ -28,7 +29,7 @@ export const useSignUpForm = () => {
       console.error(`Błąd rejestracji ${error}`);
     }
 
-    // const resposne = await fetch('/api/signin', {
+    // const resposne = await fetch('/security/signin', {
     //   method: 'POST',
     //   headers: { 'Content-Type': 'application/json' },
     //   body: JSON.stringify(values),

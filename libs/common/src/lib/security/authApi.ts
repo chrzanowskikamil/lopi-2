@@ -2,7 +2,7 @@ import {
   AuthCredentials,
   ResetPasswordCredentials,
   SignupValues,
-} from '../lib/models';
+} from '../models';
 
 export async function createUser(body: SignupValues) {
   try {

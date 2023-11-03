@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { activateUser } from '../../api';
+import { activateUser } from '../security';
 
 type ActivationStatus = 'pending' | 'success' | 'error';
 

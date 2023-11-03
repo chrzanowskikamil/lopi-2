@@ -1,19 +1,22 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
-import { AppRoutes } from '../utils';
-import { createUser, loginUser } from '../../api';
-import { IAuthHook } from '../types/IAuthHook';
-import { AuthCredentials, SignupValues, User } from '../models';
-import { useToast } from '../contexts';
 import { useRouter } from 'next/navigation';
+import {
+  AppRoutes,
+  AuthCredentials,
+  createUser,
+  IAuthHook,
+  loginUser,
+  SignupValues,
+  User,
+  useToast,
+} from '@lopi-2/common';
 
 export const useAdminAuth = (): IAuthHook => {
   const { showToast } = useToast();
   const router = useRouter();
 
-  // TODO : consider with @bitjanisz to handle this in different way
-  // !!
   const getStorageUser = () => {
     if (typeof window !== 'undefined') {
       return !!localStorage.getItem('user');
@@ -21,8 +24,6 @@ export const useAdminAuth = (): IAuthHook => {
 
     return false;
   };
-  // !!
-  // TODO : consider with @bitjanisz to handle this in different way
 
   const [user, setUser] = useState<User | null>(null);
 
