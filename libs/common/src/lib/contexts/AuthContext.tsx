@@ -1,6 +1,6 @@
 'use client';
 import { createContext, useContext } from 'react';
-import { IAuthHook } from '../types/IAuthHook';
+import { IAuthHook } from '../types';
 import { ChildrenFC } from '../models';
 
 interface AuthProviderProps {
