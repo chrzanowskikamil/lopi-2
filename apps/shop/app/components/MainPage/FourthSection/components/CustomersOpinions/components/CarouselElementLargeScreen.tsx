@@ -4,7 +4,7 @@ import style from './ClientOpinionsCarousel/ClientOpinionsCaroulseLargeScreen/cl
 
 type CarouselElementLargeScreenType = {
   starCount: number;
-  opinion: string;
+  opinion: JSX.Element;
   author: string;
   className: string;
   navigation?: JSX.Element;
@@ -22,7 +22,7 @@ export const CarouselElementLargeScreen: FC<CarouselElementLargeScreenType> = ({
   starsIconClass,
 }) => {
   return (
-    <div className={`${style.carouselElement} ${className} `}>
+    <div className={`${style.carouselElement} ${className} `} onClick={onClick}>
       <ProductRating
         starsCount={starCount}
         className={style.ratingStars}

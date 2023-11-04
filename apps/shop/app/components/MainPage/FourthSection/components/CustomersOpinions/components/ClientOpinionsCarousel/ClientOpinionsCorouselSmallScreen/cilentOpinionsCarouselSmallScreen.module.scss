@@ -10,14 +10,15 @@ $spacer: var.$spacers;
   justify-content: space-around;
   align-items: center;
   margin: map-get($spacer, 7);
-  margin-top: map-get($spacer, 41);
+  margin-top: map-get($spacer, 3);
   margin-right: map-get($spacer, 7);
   margin-bottom: map-get($spacer, 7);
   margin-left: map-get($spacer, 7);
   box-shadow: 0 map-get($spacer, 12) map-get($spacer, 3) map-get($spacer, 7)
     v.$boxShadowColor;
   background-color: map-get($theme-colors, lopi-white);
-  padding-right: map-get($spacer, 41);
-  padding-left: map-get($spacer, 41);
+  padding-right: map-get($spacer, 4);
+  padding-left: map-get($spacer, 4);
   height: 35vh;
+  min-height: 70vh;
 }

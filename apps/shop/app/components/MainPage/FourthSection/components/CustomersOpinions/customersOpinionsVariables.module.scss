@@ -12,8 +12,8 @@ $animationFillMode: forwards;
 
 //nav circle
 
-$circleWidthLG: 10px;
-$circleHeightLG: 10px;
+$circleWidthLG: 8px;
+$circleHeightLG: 8px;
 
 $circleWidthSM: 7px;
 $circleHeightSM: 7px;
@@ -23,16 +23,16 @@ $boxShadowColor: #0000000d;
 
 //for media
 //element
-$carouselFrontWidthLG: 800px;
+$carouselFrontWidthLG: 250px;
 $carouselFrontHeightLG: 60vh;
 
-$carouselBackWidthLG: 420px;
-$carouselBackHeightLG: 40vh;
+$carouselBackWidthLG: 250px;
+$carouselBackHeightLG: 55vh;
 
-$carouselFrontWidthXL: 620px;
+$carouselFrontWidthXL: 360px;
 $carouselFrontHeightXL: 60vh;
 
-$carouselBackWidthXL: 420px;
+$carouselBackWidthXL: 360px;
 $carouselBackHeightXL: 55vh;
 
 //translate params
@@ -40,11 +40,11 @@ $carouselBackHeightXL: 55vh;
 $middleTransition: 0%;
 
 $leftActiveLG: 20%;
-$leftTransitionLG: -5%;
+$leftTransitionLG: -10%;
 $leftBackToLeftLG: 10%;
 
 $rightActiveLG: -20%;
-$rightTransitionLG: 5%;
+$rightTransitionLG: 10%;
 $rightBackToLeftLG: -10%;
 
 $leftActiveXL: 20%;
@@ -57,21 +57,21 @@ $rightBackToLeftXL: -10%;
 
 // fonts
 
-$fontSizeTitleXXL: var.$font-size-xxl;
-$fontSizeTitleXL: var.$font-size-xl;
+$fontSizeTitleXXL: var.$font-size-lg;
+$fontSizeTitleXL: var.$font-size-lg;
 
 $fontSizeTitleLG: var.$font-size-lg;
-$fontSizeTitleSM: var.$font-size-sm;
+$fontSizeTitleSM: var.$font-size-lg;
 
-$fontSizeAuthorSM: var.$font-size-sm;
+$fontSizeAuthorSM: var.$font-size-xs;
 $fontSizeAuthorXS: var.$font-size-xs;
 
 $fontSizeAuthorXXS: var.$font-size-xxs;
 $fontSizeAuthorXXXS: var.$font-size-xxxs;
 // stars
 
-$starSizeXL: 16px;
+$starSizeXL: 14px;
 $starSizeLG: 12px;
 
-$starSizeSM: 10px;
-$starSizeXS: 8px;
+$starSizeSM: 11px;
+$starSizeXS: 9px;
