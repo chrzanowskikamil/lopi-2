@@ -110,15 +110,15 @@ export const useCategoriesReducer = ({ content }: { content: Product[] }) => {
     lowerMoneyValueFilter:
       getParam.filterPriceLow === null
         ? THE_LOWEST_MONEY_VALUE
-        : parseInt(getParam.filterPriceLow),
+        : parseInt(getParam.filterPriceLow as any),
     higherMoneyValueFilter:
       getParam.filterPriceHigh === null
         ? THE_HIGHEST_MONEY_VALUE
-        : parseInt(getParam.filterPriceHigh),
+        : parseInt(getParam.filterPriceHigh as any),
     availability:
       getParam.availability === null
         ? true
-        : stringToBoolan(getParam.availability),
+        : stringToBoolan(getParam.availability as any),
   };
 
   const [state, dispatch] = useReducer(categoriesReducer, initialState);
