@@ -1,4 +1,4 @@
-import { AuthCredentials, SignupValues } from '../models';
+import { AuthCredentials } from '../models';
 import { User } from '../models/User';
 
 export type IAuthHook = {
@@ -6,5 +6,4 @@ export type IAuthHook = {
   isAuthenticated: boolean;
   logout: VoidFunction;
   login: (credentials: AuthCredentials) => void;
-  register: (values: SignupValues) => void;
 };

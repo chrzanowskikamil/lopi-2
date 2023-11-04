@@ -9,3 +9,4 @@ export * from './lib/types/index';
 export * from './lib/hooks/index';
 export * from './lib/security/';
 export * from './lib/contexts/index';
+export * from './lib/schemas/index';

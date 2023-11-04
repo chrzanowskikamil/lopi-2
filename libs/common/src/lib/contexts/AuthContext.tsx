@@ -13,13 +13,12 @@ export const AuthProvider: ChildrenFC<AuthProviderProps> = ({
   authHook,
   children,
 }) => {
-  const { user, login, logout, register, isAuthenticated } = authHook();
+  const { user, login, logout, isAuthenticated } = authHook();
 
   const providerValue = {
     user,
     login,
     logout,
-    register,
     isAuthenticated,
   };
 
