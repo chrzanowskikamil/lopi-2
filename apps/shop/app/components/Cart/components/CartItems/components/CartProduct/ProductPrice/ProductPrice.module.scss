@@ -1,0 +1,19 @@
+@use '../../../../../../../styles/shop-variables';
+@use '../../../../../../../styles/mixins/shop-mixins';
+
+$pallete: shop-variables.$theme-colors;
+$priceStrikeThroughFontSize: 12px;
+$priceStrikeThroughSpacer: 4px;
+
+.price {
+  align-self: flex-end;
+  color: map-get($pallete, lopi-orange);
+}
+
+.priceStrikeThrough {
+  align-self: flex-end;
+  padding: $priceStrikeThroughSpacer 0;
+  color: map-get($pallete, lopi-grey);
+  font-size: $priceStrikeThroughFontSize;
+  text-decoration: line-through;
+}

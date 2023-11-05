@@ -1,0 +1,103 @@
+@use '../../../app/styles/admin-variables' as var;
+
+$pallete: var.$theme-colors;
+$breakpoint: var.$grid-breakpoints;
+$containerPadding: 0 12px;
+$containerWidth: 100%;
+$titleFontSize: 32px;
+$titlePadding: 30px;
+$titleFontWeight: 900;
+$buttonBorderRadius: 5px;
+$buttonWidth: 100%;
+$buttonWidthDesktop: 436px;
+$buttonHeight: 48px;
+$buttonMargin: 10px 0;
+$borderWidth: 1px;
+$svgMargin: 12px;
+$dividerWidth: 100%;
+$dividerWidthDesktop: 436px;
+$dividerTextMargin: 0 16px;
+$dividerPadding: 28px 0;
+$dividerFontSize: 16px;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $containerPadding;
+
+  @media (min-width: map-get($breakpoint, md)) {
+    width: $containerWidth;
+  }
+
+  > h1 {
+    font-size: $titleFontSize;
+    padding-bottom: $titlePadding;
+    font-weight: $titleFontWeight;
+  }
+}
+
+.socialButton {
+  display: flex;
+  border: $borderWidth solid map-get($pallete, admin-light-gray);
+  border-radius: $buttonBorderRadius;
+  color: map-get($pallete, admin-dark-gray);
+  align-items: center;
+  justify-content: center;
+  width: $buttonWidth;
+  height: $buttonHeight;
+  margin: $buttonMargin;
+
+  &:disabled {
+    background-color: transparent;
+    border-color: map-get($pallete, admin-light-gray);
+    color: map-get($pallete, admin-light-gray);
+    cursor: not-allowed;
+  }
+
+  > i {
+    margin: $svgMargin;
+    margin-right: auto;
+  }
+
+  > span:last-child {
+    margin-right: auto;
+  }
+
+  @media (min-width: map-get($breakpoint, md)) {
+    width: $buttonWidthDesktop;
+  }
+}
+
+.socialProviderButton span:first-child {
+  margin-right: auto;
+}
+
+.socialProviderButton span:last-child {
+  margin-right: auto;
+}
+
+.divider {
+  width: $dividerWidth;
+  display: flex;
+  align-items: center;
+  color: map-get($pallete, admin-dark-gray);
+  padding: $dividerPadding;
+  font-size: $dividerFontSize;
+  text-transform: uppercase;
+
+  @media (min-width: map-get($breakpoint, md)) {
+    width: $dividerWidthDesktop;
+  }
+
+  > span {
+    margin: $dividerTextMargin;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    width: $dividerWidth;
+    border-bottom: $borderWidth solid map-get($pallete, admin-light-gray);
+  }
+}

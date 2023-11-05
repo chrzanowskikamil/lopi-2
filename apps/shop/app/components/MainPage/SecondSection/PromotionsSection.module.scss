@@ -1,0 +1,93 @@
+@use '../../../styles/shop-variables' as var;
+
+$palette: var.$theme-colors;
+$breakpoints: var.$grid-breakpoints;
+$borderBottom: 1px solid map-get($palette, lopi-green);
+$containerWidth: 100%;
+$containerMobilePadding: 60px 12px;
+$promotionTileMargin: 15px 0;
+$imageMobileHeight: 252px;
+$imageDesktopWidth: 600px;
+$imageDesktopHeight: 411px;
+$infoContainerWidth: 479px;
+$infoContainerHeight: 200px;
+$infoContainerTransform: translate(13%, -35%);
+$titleFontSize: 25px;
+$titleFontWeight: 700;
+$titleMargin: 20px;
+$titlePadding: 0 25px;
+$descriptionFontSize: 15px;
+$descriptionFontWeight: 400;
+$descriptionPadding: 0 25px;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: $containerMobilePadding;
+  width: $containerWidth;
+
+  @media (min-width: map-get($breakpoints, md)) {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+.promotionTile {
+  display: flex;
+  flex-direction: column;
+  margin: $promotionTileMargin;
+
+  @media (min-width: map-get($breakpoints, md)) {
+    margin: 0;
+  }
+
+  > img {
+    height: $imageMobileHeight;
+
+    @media (min-width: map-get($breakpoints, md)) {
+      width: $imageDesktopWidth;
+      height: $imageDesktopHeight;
+    }
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: map-get($breakpoints, md)) {
+      align-items: center;
+      transform: $infoContainerTransform;
+      background-color: map-get($palette, lopi-white);
+      width: $infoContainerWidth;
+      height: $infoContainerHeight;
+    }
+
+    > h3 {
+      margin-top: $titleMargin;
+      padding: $titlePadding;
+      color: map-get($palette, lopi-brown);
+      font-weight: $titleFontWeight;
+      font-size: $titleFontSize;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    > p {
+      padding: $descriptionPadding;
+      color: map-get($palette, lopi-green);
+      font-weight: $descriptionFontWeight;
+      font-size: $descriptionFontSize;
+      text-align: center;
+    }
+
+    > button {
+      border: none;
+      border-bottom: $borderBottom;
+      border-radius: 0;
+      background-color: transparent;
+      color: map-get($palette, lopi-green);
+      text-transform: uppercase;
+    }
+  }
+}

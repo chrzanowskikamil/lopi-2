@@ -1,0 +1,120 @@
+@use '../../../../styles/shop-variables';
+
+@use '../../../../styles/mixins/shop-mixins';
+
+$sidebarWidth: 267px;
+$sidebarHeight: 455px;
+$sidebarTitleBorderWidth: 1px;
+$sidebarTitleFontSize: 15px;
+
+$spacer: shop-variables.$spacers;
+$pallete: shop-variables.$theme-colors;
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-self: self-start;
+  width: $sidebarWidth;
+  height: $sidebarHeight;
+}
+
+.title {
+  display: flex;
+  margin: map-get($spacer, 8);
+  border-bottom: $sidebarTitleBorderWidth solid map-get($pallete, lopi-grey);
+  padding-bottom: map-get($spacer, 7);
+  font-size: $sidebarTitleFontSize;
+  text-transform: uppercase;
+
+  &:last-child {
+    border: none;
+  }
+}
+
+.categoryList {
+  display: flex;
+  opacity: 0.7;
+  opacity: 0.7;
+  margin-bottom: map-get($spacer, 35);
+  text-transform: capitalize;
+}
+
+.timeRangeSlider {
+  margin-left: 5%;
+  width: 90%;
+}
+
+.label {
+  opacity: 0.7;
+  margin: map-get($spacer, 31) 0 map-get($spacer, 7) map-get($spacer, 8);
+}
+
+.listItem {
+  @include shop-mixins.sidebar-list-items();
+}
+
+.activeListItem {
+  @include shop-mixins.sidebar-list-items();
+  color: map-get($pallete, lopi-orange);
+}
+
+.badge {
+  @include shop-mixins.sidebar-badge();
+  border: $sidebarTitleBorderWidth solid map-get($pallete, lopi-green);
+  color: map-get($pallete, lopi-green);
+}
+
+.activeBadge {
+  @include shop-mixins.sidebar-badge();
+  border: $sidebarTitleBorderWidth solid map-get($pallete, lopi-orange);
+  color: map-get($pallete, lopi-orange);
+}
+
+.available {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  z-index: 1;
+  margin-top: map-get($spacer, 22);
+  margin-bottom: map-get($spacer, 4);
+  box-shadow: none;
+
+  padding: 0 map-get($spacer, 22);
+
+  font-size: $sidebarTitleFontSize;
+
+  & :hover {
+    cursor: pointer;
+  }
+
+  > label {
+    color: black;
+
+    .formchecklabel {
+      text-decoration: none;
+    }
+  }
+
+  & :hover {
+    cursor: pointer;
+  }
+
+  > label {
+    color: black;
+
+    .formchecklabel {
+      text-decoration: none;
+    }
+  }
+
+  & input[type='checkbox'] {
+    box-shadow: none;
+    border: none;
+  }
+
+  & input:checked {
+    box-shadow: none;
+    background-color: map-get($pallete, lopi-orange);
+  }
+}

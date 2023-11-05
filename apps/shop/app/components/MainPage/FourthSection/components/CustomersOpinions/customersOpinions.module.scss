@@ -1,0 +1,45 @@
+@use '../../../../../styles/shop-variables' as var;
+@use './customersOpinionsVariables.module.scss' as v;
+
+$theme-colors: var.$theme-colors;
+$spacer: var.$spacers;
+$breakpoint: var.$grid-breakpoints;
+
+.bgImage {
+  z-index: -2;
+  height: 80vh;
+  @media (min-width: map-get($breakpoint, xl)) {
+    min-height: 70vh;
+  }
+}
+
+.titleArea {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  padding-top: map-get($spacer, 3);
+  width: 100%;
+  text-align: center;
+
+  @media (min-width: map-get($breakpoint, xl)) {
+    padding-top: map-get($spacer, 41);
+  }
+
+  .title {
+    color: map-get($theme-colors, lopi-dark-green);
+    font-weight: var.$font-weight-bold;
+    font-size: v.$fontSizeTitleXXL;
+    line-height: var.$line-height-lg;
+    text-transform: uppercase;
+
+    @media (min-width: map-get($breakpoint, xl)) {
+      font-size: v.$fontSizeTitleXXL;
+    }
+  }
+
+  .subtitle {
+    color: map-get($theme-colors, lopi-green);
+    font-size: v.$fontSizeTitleLG;
+    line-height: var.$line-height-base;
+  }
+}

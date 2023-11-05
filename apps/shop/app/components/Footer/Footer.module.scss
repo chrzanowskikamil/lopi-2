@@ -1,0 +1,155 @@
+@use '../../styles/shop-variables';
+
+$footerMobileMaxHeight: 850px;
+$footerSubscriptionExtraSmall: 290px;
+$footerSubscriptionSmall: 320px;
+$footerBottomMobileHeight: 194px;
+$footerBottomMobileHeight: 272px;
+$footerLGFooterGroupWidth: 1000px;
+$footerLGFooterBottomWidth: 167px;
+$footerLGFooterBottomMarginLeft: 150px;
+$footerLGFooterSubscriptionFormInputWidth: 117px;
+$footerXXLFooterBottomWidth: 400px;
+
+$palette: shop-variables.$theme-colors;
+$spacers: shop-variables.$spacers;
+
+.footer {
+  background: map-get($palette, lopi-dark-green);
+  color: map-get($palette, lopi-white);
+
+  .footerCol {
+    margin-top: map-get($spacers, 5);
+  }
+}
+
+.footerDesktop {
+  display: none;
+}
+
+.footerMiddle,
+.footerTop {
+  .footerElement {
+    margin: map-get($spacers, 12);
+  }
+}
+
+.footerMobile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: map-get($palette, lopi-dark-green);
+  padding-top: map-get($spacers, 3);
+  width: 100%;
+  max-height: $footerMobileMaxHeight;
+  overflow: hidden;
+  color: map-get($palette, lopi-white);
+  font-weight: shop-variables.$font-weight-normal;
+  font-size: shop-variables.$font-size-base;
+  line-height: shop-variables.$line-height-base;
+
+  .footerTitle {
+    margin-bottom: map-get($spacers, 3) !important;
+    color: map-get($palette, lopi-orange);
+    font-weight: shop-variables.$font-weight-bold;
+    font-size: shop-variables.$font-size-sm;
+    text-transform: uppercase;
+  }
+
+  .footerTop,
+  .footerMiddle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    > ul > li {
+      margin-bottom: map-get($spacers, 13);
+    }
+  }
+
+  .footerTop {
+    margin: 0 map-get($spacers, 4);
+
+    .footerContactInfo {
+      margin-top: map-get($spacers, 3);
+    }
+  }
+
+  .footerMiddle {
+    margin: map-get($spacers, 5) map-get($spacers, 4) 0 map-get($spacers, 4);
+  }
+
+  .element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: map-get($spacers, 31);
+
+    .footerBottom {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-sizing: border-box;
+      //width: 100%;
+      width: $footerSubscriptionExtraSmall;
+      height: $footerBottomMobileHeight;
+      overflow: hidden;
+
+      //TODO: handle
+      //@include media-breakpoint-up(sm) {
+      //  width: $footerSubscriptionSmall;
+      //}
+    }
+  }
+}
+
+.footerSocial {
+  display: flex;
+  align-items: center;
+  padding-top: map-get($spacers, 40);
+
+  .footerSocialElements {
+    margin-right: map-get($spacers, 3);
+    color: map-get($palette, lopi-orange);
+    .footerIcon {
+      color: map-get($palette, lopi-orange);
+      font-size: shop-variables.$font-size-base;
+    }
+  }
+}
+
+.footerSubscriptionForm {
+  display: flex;
+  flex-direction: row;
+  margin-top: map-get($spacers, 4);
+  color: map-get($palette, lopi-orange);
+
+  .footerSubscriptionFormInput {
+    background: map-get($palette, lopi-dark-green);
+    width: $footerBottomMobileHeight;
+
+    &:enabled {
+      border: none;
+      border-bottom: map-get($palette, lopi-orange) solid
+        shop-variables.$border-width;
+      color: map-get($palette, lopi-white);
+    }
+  }
+
+  .footerSubscriptionFormInput::placeholder {
+    color: map-get($palette, lopi-white);
+  }
+
+  .footerSubscriptionFormButton {
+    margin-left: map-get($spacers, 21);
+    border-bottom: map-get($palette, lopi-orange) solid
+      shop-variables.$border-width;
+    width: map-get($spacers, 41);
+    color: map-get($palette, lopi-orange);
+    text-align: center;
+    .mailIcon {
+      color: map-get($palette, lopi-orange);
+      font-size: shop-variables.$font-size-lg;
+    }
+  }
+}

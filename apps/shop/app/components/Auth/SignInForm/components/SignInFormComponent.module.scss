@@ -1,0 +1,115 @@
+@use '../../../../../app/styles/shop-variables';
+@use '../../../../styles/mixins/shop-mixins';
+
+$pallette: shop-variables.$theme-colors;
+$spacer: shop-variables.$spacers;
+$formBorderWidth: 1px;
+$formWidth: 450px;
+$formMinHeight: 320px;
+$formMaxHeight: 432px;
+$formTopPadding: 50px;
+$formMargin: 30px;
+$inputGap: 6px;
+$buttonTopPosition: 45%;
+$buttonTransformY: translateY(-45%);
+$forgotPasswordMarginTop: 6px;
+$forgotButtonWidth: 175px;
+$forgotButtonFontSize: 15px;
+$forgotPasswordLineHeight: 28px;
+$fontFamily: 'Quicksand', sans-serif;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: map-get($spacer, 31);
+  margin: $formMargin $formMargin map-get($spacer, 31) $formMargin;
+  border: $formBorderWidth solid map-get($pallette, lopi-grey-light);
+  padding: $formTopPadding map-get($spacer, 40) map-get($spacer, 40)
+    map-get($spacer, 40);
+  width: $formWidth;
+  min-height: $formMinHeight;
+  max-height: $formMaxHeight;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  gap: $inputGap;
+  padding: map-get($spacer, 21);
+  text-align: start;
+}
+
+.inputWithIcon {
+  @include shop-mixins.flex-center();
+  position: relative;
+  align-self: center;
+}
+
+.showPasswordButton {
+  position: absolute;
+  top: $buttonTopPosition;
+  right: map-get($spacer, 31);
+  align-self: center;
+  transform: $buttonTransformY;
+  border: none;
+  background: none;
+
+  &:hover,
+  &:focus {
+    box-shadow: none;
+    background: none;
+    color: map-get($pallette, lopi-orange);
+  }
+}
+
+.forgotPassword {
+  display: inline-flex;
+  margin-top: $forgotPasswordMarginTop;
+  border-bottom: $formBorderWidth solid map-get($pallette, lopi-green);
+  padding: map-get($spacer, 10) map-get($spacer, 22);
+  width: $forgotButtonWidth;
+  color: map-get($pallette, lopi-green);
+  font-style: normal;
+  font-size: $forgotButtonFontSize;
+  line-height: $forgotPasswordLineHeight;
+  font-family: $fontFamily;
+  text-decoration: none;
+}
+
+.submitButton {
+  border: $formBorderWidth solid map-get($pallette, lopi-orange);
+  background-color: map-get($pallette, lopi-brown);
+  padding: map-get($spacer, 7 $spacer);
+  color: map-get($pallette, lopi-orange);
+
+  &:disabled {
+    background-color: map-get($pallette, lopi-grey);
+    color: map-get($pallette, lopi-black);
+  }
+
+  &:hover {
+    background-color: map-get($pallette, lopi-orange);
+  }
+
+  &:focus {
+    background-color: map-get($pallette, lopi-orange);
+    box-shadow: none;
+    border: 0;
+  }
+}
+
+.createAccount {
+  border-width: $formBorderWidth;
+  border-color: map-get($pallette, lopi-orange);
+  padding: map-get($spacer, 7 $spacer);
+  color: map-get($pallette, lopi-orange);
+
+  &:hover {
+    background-color: map-get($pallette, lopi-orange);
+  }
+
+  &:focus {
+    background-color: map-get($pallette, lopi-orange);
+  }
+}

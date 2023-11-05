@@ -1,0 +1,104 @@
+@use '../../../../../styles/shop-variables' as var;
+
+$theme-colors: var.$theme-colors;
+$spacer: var.$spacers;
+$breakpoint: var.$grid-breakpoints;
+
+$carouselHeight: 441px;
+
+$carouselImgWidth: 150px;
+$carouselImgHeight: 150px;
+
+$carouselIndicatorsSize: 15px;
+
+.carousel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: map-get($theme-colors, lopi-dark-green);
+  height: $carouselHeight;
+
+  @media (min-width: map-get($breakpoint, md)) {
+    display: none;
+  }
+
+  img {
+    margin-bottom: map-get($spacer, 40);
+    margin-left: map-get($spacer, 40);
+    width: $carouselImgWidth;
+    height: $carouselImgHeight;
+  }
+}
+
+.carouselItems {
+  width: 100%;
+
+  [aria-label] {
+    transform: translateY(20px);
+    margin-top: map-get($spacer, 3);
+    border-radius: 50%;
+    background-color: map-get($theme-colors, lopi-white);
+    width: $carouselIndicatorsSize !important;
+    height: $carouselIndicatorsSize !important;
+  }
+
+  .carouselItem {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.ourCustomers {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  @media (max-width: map-get($breakpoint, md)) {
+    display: none;
+  }
+
+  .opacityBlock {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 85%;
+    background-color: map-get($theme-colors, lopi-dark-green);
+    width: 100%;
+    height: 100%;
+
+    .title {
+      display: inline-block;
+      position: relative;
+      transform: translate(-50%, 0);
+      margin-top: map-get($spacer, 2);
+      margin-left: 50%;
+      color: map-get($theme-colors, lopi-orange);
+      font-weight: var.$font-weight-bold;
+      font-size: var.$font-size-sm;
+      text-transform: uppercase;
+
+      @media (min-width: map-get($breakpoint, md)) {
+        margin-top: map-get($spacer, 4);
+        font-size: var.$font-size-base;
+      }
+
+      @media (min-width: map-get($breakpoint, lg)) {
+        margin-top: map-get($spacer, 41);
+        font-size: var.$font-size-lg;
+      }
+    }
+  }
+}
+
+.companyLogoList {
+  display: flex;
+  position: absolute;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,49 @@
+@use '../../../../../styles/shop-variables';
+
+$palette: shop-variables.$theme-colors;
+$spacers: shop-variables.$spacers;
+
+.details {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  margin-top: map-get($spacers, 70);
+  border-bottom: shop-variables.$btn-border-width-sm solid
+    map-get($palette, lopi-grey);
+  padding: 0;
+  color: map-get($palette, lopi-green);
+  font-size: shop-variables.$font-size-lg;
+  line-height: shop-variables.$line-height-base;
+  text-align: left;
+
+  .description {
+    cursor: pointer;
+    padding-right: map-get($spacers, 5);
+  }
+
+  .addationalInfo {
+    cursor: pointer;
+    padding-right: map-get($spacers, 5);
+    padding-left: map-get($spacers, 5);
+  }
+
+  .opinions {
+    cursor: pointer;
+    padding-right: map-get($spacers, 5);
+    padding-left: map-get($spacers, 5);
+  }
+}
+
+.onScope {
+  border-bottom: shop-variables.$btn-border-width-sm solid
+    map-get($palette, lopi-dark-green);
+  padding: 0 0 map-get($spacers, 5) 0;
+  color: black;
+}
+
+.info {
+  margin-top: map-get($spacers, 5);
+  margin-bottom: map-get($spacers, 5);
+  padding: 0;
+  color: map-get($palette, lopi-dark-green);
+}

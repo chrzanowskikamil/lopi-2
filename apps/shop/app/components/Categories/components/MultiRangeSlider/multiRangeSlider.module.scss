@@ -1,0 +1,107 @@
+@use '../../../../styles/shop-variables';
+
+$spacer: shop-variables.$spacers;
+$border-widths: shop-variables.$border-widths;
+$pallete: shop-variables.$theme-colors;
+
+$slider-height: 5px;
+$thumb-width: 18px;
+$thumb-height: 18px;
+$thumb_whole_width: 200px;
+$container-heigth: 100px;
+
+.label {
+  opacity: 0.7;
+  margin-top: map-get($spacer, 31);
+  margin-left: map-get($spacer, 31);
+}
+.containerSlider {
+  justify-content: center;
+  align-items: center;
+  margin-top: map-get($spacer, 31);
+  margin-left: 10%;
+  height: $container-heigth;
+}
+
+.slider {
+  position: relative;
+  width: $thumb_whole_width;
+}
+
+.sliderTrack,
+.sliderRange {
+  position: absolute;
+}
+
+.sliderTrack,
+.sliderRange {
+  border-radius: map-get($border-widths, 3);
+  height: $slider-height;
+}
+.sliderTrack {
+  z-index: 1;
+  background-color: map-get($pallete, lopi-grey);
+  width: 100%;
+}
+
+.sliderRange {
+  z-index: 2;
+  background-color: map-get($pallete, lopi-orange);
+}
+
+/* Removing the default appearance */
+.thumb,
+.thumb::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.thumb {
+  position: absolute;
+  outline: none;
+  width: $thumb_whole_width;
+  height: 0;
+  pointer-events: none;
+}
+
+.thumbZindexThree {
+  z-index: 3;
+}
+
+.thumbZindexFour {
+  z-index: 4;
+}
+
+.thumbZindexFive {
+  z-index: 5;
+}
+
+/* For Chrome browsers */
+.thumb::-webkit-slider-thumb {
+  position: relative;
+  cursor: pointer;
+  margin-top: map-get($spacer, 12);
+  box-shadow: 0 0 map-get($border-widths, 1) map-get($border-widths, 1)
+    map-get($pallete, lopi-grey);
+  border: none;
+  border-radius: 50%;
+  background-color: #ff9a17;
+  width: $thumb-width;
+  height: $thumb-height;
+  pointer-events: all;
+}
+
+/* For Firefox browsers */
+.thumb::-moz-range-thumb {
+  position: relative;
+  cursor: pointer;
+  margin-top: map-get($spacer, 12);
+  box-shadow: 0 0 map-get($border-widths, 1) map-get($border-widths, 1)
+    map-get($pallete, lopi-grey);
+  border: none;
+  border-radius: 50%;
+  background-color: #f1f5f7;
+  width: $thumb-width;
+  height: $thumb-height;
+  pointer-events: all;
+}

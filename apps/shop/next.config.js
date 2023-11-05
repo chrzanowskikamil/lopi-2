@@ -7,6 +7,12 @@ const { composePlugins, withNx } = require('@nx/next');
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
  **/
 const nextConfig = {
+  /* This is required if we want to upload images from our backend.
+  /* We store our images there and this adds this adress to
+  /*  trusted ones. */
+  images: {
+    domains: ['storage.googleapis.com'],
+  },
   nx: {
     // Set this to true if you would like to use SVGR
     // See: https://github.com/gregberge/svgr

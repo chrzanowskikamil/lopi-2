@@ -1,0 +1,26 @@
+@use '../../../styles/shop-variables';
+
+$productsGap: 72px 6px;
+$productsMargin: 20px 67px;
+$productWidth: 330px;
+$productHeight: 400px;
+$productFontSize: 15px;
+
+$spacer: shop-variables.$spacers;
+
+.products {
+  justify-content: space-evenly;
+  gap: $productsGap;
+  margin: $productsMargin;
+  padding: map-get($spacer, 3) map-get($spacer, 7);
+  width: 100%;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: $productWidth;
+  height: $productHeight;
+  font-size: $productFontSize;
+}

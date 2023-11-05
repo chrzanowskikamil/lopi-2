@@ -1,0 +1,40 @@
+@use '../../../../app/styles/admin-variables' as var;
+
+$palette: var.$theme-colors;
+
+.buttonColor {
+  border: var.$border-width map-get($palette, admin-green) solid !important;
+  color: map-get($palette, admin-green) !important;
+
+  &:active {
+    border-color: map-get($palette, admin-green) !important;
+    background-color: map-get($palette, admin-green) !important;
+    color: map-get($palette, admin-white) !important;
+  }
+}
+
+.addButton {
+  border-color: map-get($palette, admin-green);
+  background-color: map-get($palette, admin-green);
+  color: map-get($palette, admin-white);
+  text-transform: uppercase;
+
+  &:hover {
+    border-color: map-get($palette, admin-white) !important;
+    background-color: map-get($palette, admin-green) !important;
+    color: map-get($palette, admin-white) !important;
+  }
+
+  &:active {
+    border-color: map-get($palette, admin-green) !important;
+    background-color: map-get($palette, admin-white) !important;
+    color: map-get($palette, admin-green) !important;
+  }
+}
+
+.basicInfoTabele {
+  .basicInfoTableSearchContainer {
+    border: var.$border-width map-get($palette, admin-orange) solid;
+    color: map-get($palette, admin-orange);
+  }
+}

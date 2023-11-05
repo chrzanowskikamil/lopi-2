@@ -1,0 +1,32 @@
+@use '../../../../styles/shop-variables';
+@use '../../../../styles/mixins/shop-mixins';
+
+$palette: shop-variables.$theme-colors;
+$spacer: shop-variables.$spacers;
+$h1Margin: 25px 0;
+$maxWidthSection: 100%;
+$heightSection: 100%;
+$borderWidth: 1px;
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  > h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: $h1Margin;
+  }
+
+  > .section {
+    max-width: $maxWidthSection;
+    height: $heightSection;
+    display: flex;
+    justify-content: flex-start;
+  }
+}

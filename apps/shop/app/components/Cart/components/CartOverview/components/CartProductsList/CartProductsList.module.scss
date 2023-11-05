@@ -1,0 +1,58 @@
+@use '../../../../../../styles/shop-variables';
+@use '../../../../../../styles/mixins/shop-mixins';
+
+$palette: shop-variables.$theme-colors;
+$spacer: shop-variables.$spacers;
+$borderWidth: 1px;
+$productsHeight: 90%;
+$productWidth: 100%;
+$productsDetailsWidth: 400px;
+
+.products {
+  height: $productsHeight;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.product {
+  display: flex;
+  padding: map-get($spacer, 7) 0;
+  width: $productWidth;
+  border-bottom: $borderWidth solid map-get($palette, lopi-grey);
+}
+
+.productsDetails {
+  display: flex;
+  width: $productsDetailsWidth;
+  margin: 0 map-get($spacer, 8);
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  > p:last-child {
+    color: map-get($palette, lopi-orange);
+  }
+
+  > p {
+    font-weight: 400;
+
+    > span {
+      margin-left: map-get($spacer, 8);
+      color: map-get($palette, lopi-grey-light);
+    }
+  }
+}
+
+.menu {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+
+  > button {
+    @include shop-mixins.flex-center;
+    color: map-get($palette, lopi-black);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+}

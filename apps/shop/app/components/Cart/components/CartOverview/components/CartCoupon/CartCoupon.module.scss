@@ -1,0 +1,46 @@
+@use '../../../../../../styles/shop-variables';
+@use '../../../../../../styles/mixins/shop-mixins';
+
+$palette: shop-variables.$theme-colors;
+$spacer: shop-variables.$spacers;
+$borderWidth: 1px;
+$inputFontSize: 12px;
+$inputWidth: 336px;
+$buttonWidth: 168px;
+$buttonHeight: 53px;
+$buttonBorderRadius: 6px;
+$buttonMargin: 30px;
+
+.cartCoupon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .cartInput {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: map-get($palette, lopi-green);
+    font-size: $inputFontSize;
+
+    > input {
+      width: $inputWidth;
+      background-color: transparent;
+      border: none;
+      border-bottom: $borderWidth solid map-get($palette, lopi-grey);
+    }
+  }
+
+  > button {
+    @include shop-mixins.flex-center;
+    width: $buttonWidth;
+    height: $buttonHeight;
+    margin-left: $buttonMargin;
+    padding: map-get($spacer, 7) map-get($spacer, 3);
+    background-color: transparent;
+    border: $borderWidth solid map-get($palette, lopi-orange);
+    border-radius: $buttonBorderRadius;
+    color: map-get($palette, lopi-orange);
+    cursor: pointer;
+  }
+}

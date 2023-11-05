@@ -1,0 +1,70 @@
+@use '../../../styles/shop-variables';
+@use '../../../styles/mixins/shop-mixins';
+
+$palette: shop-variables.$theme-colors;
+$spacer: shop-variables.$spacers;
+$breakpoint: shop-variables.$grid-breakpoints;
+
+$containerHeight: 474px;
+$titleFontSize: 30px;
+$backgroundImage: '/hero-cta-image.png';
+$backgroundColor: rgba(89, 45, 29, 0.6);
+$titleWidth: 90vw;
+$titleMargin: 40px;
+$titleFontWeight: 700;
+$paragraphPadding: 0 20px;
+$paragraphMobileWidth: 633px;
+$buttonMargin: 40px 0;
+
+.container {
+  @include shop-mixins.flex-center();
+  flex-direction: column;
+  position: relative;
+  height: $containerHeight;
+  background-image: url($backgroundImage);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &::before {
+    content: '';
+    background: $backgroundColor;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  h2 {
+    width: $titleWidth;
+    padding: map-get($spacer, 22);
+    margin-top: $titleMargin;
+    color: map-get($palette, lopi-white);
+    font-size: $titleFontSize;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: $titleFontWeight;
+    z-index: 1;
+  }
+
+  p {
+    color: map-get($palette, lopi-orange);
+    text-align: center;
+    padding: $paragraphPadding;
+    z-index: 1;
+
+    @media (min-width: map-get($breakpoint, md)) {
+      width: $paragraphMobileWidth;
+    }
+  }
+
+  button {
+    background-color: map-get($palette, lopi-white);
+    border: none;
+    color: map-get($palette, lopi-black);
+    text-transform: uppercase;
+    margin: $buttonMargin;
+    z-index: 1;
+  }
+}

@@ -1,0 +1,27 @@
+@use '../../styles/shop-variables';
+
+$pallete: shop-variables.$theme-colors;
+$spacer: shop-variables.$spacers;
+$button-width: 155px;
+
+.title {
+  margin-top: map-get($spacer, 40);
+  color: map-get($pallete, lopi-black);
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.button {
+  margin: map-get($spacer, 60) 0;
+  border-color: map-get($pallete, lopi-orange);
+  background-color: transparent;
+  width: $button-width;
+  color: map-get($pallete, lopi-orange);
+
+  &:hover {
+    border-color: map-get($pallete, lopi-orange);
+    background-color: map-get($pallete, lopi-orange);
+    color: map-get($pallete, lopi-white);
+  }
+}

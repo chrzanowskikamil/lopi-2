@@ -1,0 +1,46 @@
+@use '../../../../../../apps/shop/app/styles/shop-variables';
+@import '../../../../../../apps/shop/app/styles/mixins/flex-center';
+
+$pallette: shop-variables.$theme-colors;
+$backdropColor: rgba(0, 0, 0, 0.4);
+$titleMarginBottom: -130px;
+$titleBorderWidth: 1px;
+$titleSpacer: 6px;
+$titleWidth: 160px;
+$titleFontColor: #212529;
+$titleFontSize: 20px;
+$fontFamily: 'Quicksand', sans-serif;
+
+.container {
+  background: $backdropColor;
+}
+
+.header {
+  border: none;
+}
+
+.title {
+  position: relative;
+  z-index: 1;
+  background-color: map-get($pallette, lopi-white);
+  margin-bottom: $titleMarginBottom;
+  border-bottom: $titleBorderWidth solid map-get($pallette, lopi-orange);
+  padding-bottom: $titleSpacer;
+  width: $titleWidth;
+  color: $titleFontColor;
+  font-size: $titleFontSize;
+  font-family: $fontFamily;
+  text-align: center;
+}
+
+.content {
+  @include flex-center();
+  border-radius: 0;
+  border: none;
+  background-color: transparent;
+}
+
+.body {
+  @include flex-center();
+  background-color: map-get($pallette, lopi-white);
+}

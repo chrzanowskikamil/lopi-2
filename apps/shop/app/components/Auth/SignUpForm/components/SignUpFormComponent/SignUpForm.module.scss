@@ -1,0 +1,95 @@
+@use '../../../../../styles/shop-variables';
+@use '../../../../../styles/mixins/shop-mixins';
+
+$pallette: shop-variables.$theme-colors;
+$spacer: shop-variables.$spacers;
+$formBorderWidth: 1px;
+$formGap: 25px;
+$formMargin: 30px;
+$formTopPadding: 50px;
+$formWidth: 518px;
+$formHeight: 528px;
+$inputGap: 6px;
+$buttonTopPosition: 45%;
+$buttonTransformY: translateY(-45%);
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: $formGap;
+  margin: $formMargin;
+  border: $formBorderWidth solid map-get($pallette, lopi-grey-light);
+  padding: $formTopPadding map-get($spacer, 40) map-get($spacer, 40)
+    map-get($spacer, 40);
+  min-width: $formWidth;
+  min-height: $formHeight;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $inputGap;
+  padding: map-get($spacer, 21);
+  text-align: start;
+}
+
+.inputWithIcon {
+  @include shop-mixins.flex-center();
+  position: relative;
+  align-self: center;
+}
+
+.showPasswordButton {
+  position: absolute;
+  top: $buttonTopPosition;
+  right: map-get($spacer, 31);
+  align-self: center;
+  transform: $buttonTransformY;
+  border: none;
+  background: none;
+
+  &:hover,
+  &:focus {
+    box-shadow: none;
+    background: none;
+    color: map-get($pallette, lopi-orange);
+  }
+}
+
+.submitButton {
+  margin-top: map-get($spacer, 7);
+  border: $formBorderWidth solid map-get($pallette, lopi-orange);
+  background-color: map-get($pallette, lopi-brown);
+  color: map-get($pallette, lopi-orange);
+  &:disabled {
+    background-color: map-get($pallette, lopi-grey);
+    color: map-get($pallette, lopi-black);
+  }
+
+  &:hover {
+    background-color: map-get($pallette, lopi-orange);
+  }
+
+  &:focus {
+    background-color: map-get($pallette, lopi-orange);
+    box-shadow: none;
+    border: 0;
+  }
+}
+
+.loginButton {
+  border-width: $formBorderWidth;
+  border-color: map-get($pallette, lopi-orange);
+  padding: map-get($spacer, 7 $spacer);
+  color: map-get($pallette, lopi-orange);
+
+  &:hover {
+    background-color: map-get($pallette, lopi-orange);
+  }
+
+  &:focus {
+    background-color: map-get($pallette, lopi-orange);
+  }
+}

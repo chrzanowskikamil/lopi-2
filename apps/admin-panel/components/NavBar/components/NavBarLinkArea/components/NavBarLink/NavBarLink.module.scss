@@ -1,0 +1,40 @@
+@use '../../../../../../app/styles/admin-variables' as var;
+
+$palette: var.$theme-colors;
+$spacers: var.$spacers;
+$border-widths: var.$border-widths;
+
+$navbarElementWidth: 100%;
+
+.navbarNavElement {
+  display: flex;
+  align-items: center;
+  padding-left: map-get($spacers, 3);
+  width: $navbarElementWidth;
+  color: map-get($palette, admin-dark-gray);
+  line-height: var.$line-height-xl;
+
+  &:active {
+    color: map-get($palette, admin-dark-gray);
+  }
+
+  &:hover {
+    color: map-get($palette, admin-dark-gray);
+  }
+
+  .navbarIcon {
+    padding-right: map-get($spacers, 2);
+    font-size: var.$font-size-lg;
+  }
+}
+
+.navbarNavElement.active {
+  border-left: map-get($border-widths, 3) map-get($palette, admin-orange) solid;
+  background-color: map-get($palette, admin-blue-lighter);
+  padding-left: map-get($spacers, 4) !important;
+  color: map-get($palette, admin-orange) !important;
+}
+
+.navbarNavElement.inactive {
+  color: map-get($palette, admin-dark-gray) !important;
+}

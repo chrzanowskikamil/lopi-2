@@ -1,0 +1,66 @@
+@use '../../app/styles/admin-variables' as var;
+
+$palette: var.$theme-colors;
+$spacers: var.$spacers;
+$breakpoints: var.$grid-breakpoints;
+
+// navbar
+$navbarMinWidth: 215px;
+$navbarMaxWidth: 255px;
+$navbarWidth: 20%;
+
+$navbarElementWidth: 100%;
+
+//others
+
+$titleFontSize: 33px;
+$svgPadding: 8px;
+$logoPadding: 15px 140px;
+
+$logoutButtonHeight: 60px;
+
+.navbar {
+  background-color: map-get($palette, admin-blue);
+  padding-bottom: map-get($spacers, 0);
+  width: $navbarWidth;
+  min-width: $navbarMinWidth;
+  max-width: $navbarMaxWidth;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    padding: $logoPadding;
+    font-size: $titleFontSize;
+
+    > p {
+      margin: map-get($spacers, 0);
+      color: map-get($palette, admin-white);
+    }
+
+    > svg {
+      margin-left: $svgPadding;
+    }
+  }
+
+  .navBarColapse {
+    color: white !important;
+  }
+
+  .logoutButton {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-top: var.$border-width map-get($palette, admin-blue-light) solid;
+    padding-left: map-get($spacers, 3);
+    width: $navbarElementWidth;
+    height: $logoutButtonHeight;
+    color: map-get($palette, admin-dark-gray);
+    font-size: var.$font-size-lg;
+
+    .logoutButtonText {
+      padding-left: map-get($spacers, 2);
+      font-size: var.$font-size-base;
+      line-height: var.$line-height-sm;
+    }
+  }
+}

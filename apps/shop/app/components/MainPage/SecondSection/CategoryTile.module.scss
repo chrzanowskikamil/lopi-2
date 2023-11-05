@@ -1,0 +1,33 @@
+@use '../../../styles/shop-variables' as var;
+
+$pallete: var.$theme-colors;
+$tileHeight: 534px;
+$imageWidth: 100%;
+$imageFilter: contrast(0.8);
+$linkFontSize: 20px;
+$linkFontWeight: 700;
+$linkMargin: 36px;
+
+.categoryTile {
+  display: flex;
+  position: relative;
+  flex-grow: 1;
+  height: $tileHeight;
+
+  > img {
+    width: $imageWidth;
+    filter: $imageFilter;
+    object-fit: cover;
+  }
+
+  > a {
+    position: absolute;
+    align-self: flex-end;
+    font-size: $linkFontSize;
+    font-weight: $linkFontWeight;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: map-get($pallete, lopi-orange);
+    margin: $linkMargin;
+  }
+}

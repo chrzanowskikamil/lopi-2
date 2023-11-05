@@ -1,0 +1,27 @@
+@use '../../../../app/styles/admin-variables' as var;
+
+$palette: var.$theme-colors;
+$spacers: var.$spacers;
+
+$paginationRowHeight: 80px;
+
+.paginationRow {
+  border-top: var.$border-width map-get($palette, admin-light-gray) solid;
+  border-bottom-right-radius: var.$border-radius-lg;
+  border-bottom-left-radius: var.$border-radius-lg;
+  height: $paginationRowHeight;
+
+  .paginationRowButton {
+    margin-right: map-get($spacers, 4);
+    margin-left: map-get($spacers, 4);
+    border: var.$border-width map-get($palette, admin-light-gray) solid;
+    background-color: map-get($palette, admin-white);
+    color: map-get($palette, admin-dark-gray);
+
+    &:active {
+      border-color: map-get($palette, admin-light-gray);
+      background-color: map-get($palette, admin-light-gray);
+      color: map-get($palette, admin-white);
+    }
+  }
+}

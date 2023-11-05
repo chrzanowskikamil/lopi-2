@@ -1,0 +1,123 @@
+@use '../../../../../styles/shop-variables' as var;
+
+$spacer: var.$spacers;
+$theme-colors: var.$theme-colors;
+$border-widths: var.$border-widths;
+$breakpoint: var.$grid-breakpoints;
+
+$brickHeight: 160px;
+
+.mostPurchased {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+  .bgPictureUpper {
+    display: flex;
+    position: absolute;
+    transform: translateX(-50%);
+    margin-left: 50%;
+  }
+
+  .mostPurchaseedList {
+    z-index: 3;
+
+    .carouselArrow {
+      padding-bottom: 20px;
+      color: orange;
+      font-size: 40px;
+    }
+
+    .productCarousel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+  }
+
+  .bgPictureBottom {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    align-items: flex-end;
+    transform: translate(-50%, 0);
+    z-index: 2;
+    margin-left: 50%;
+
+    @media (min-width: map-get($breakpoint, xxxs)) {
+      transform: translate(-50%, -300%);
+    }
+
+    @media (min-width: map-get($breakpoint, xs)) {
+      transform: translate(-50%, -180%);
+    }
+
+    @media (min-width: map-get($breakpoint, sm)) {
+      transform: translate(-50%, -90%);
+    }
+
+    @media (min-width: map-get($breakpoint, md)) {
+      transform: translate(-50%, -12%);
+    }
+
+    @media (min-width: map-get($breakpoint, lg)) {
+      transform: translate(-50%, 0%);
+    }
+  }
+
+  .title {
+    position: relative;
+    padding-top: map-get($spacer, 6);
+    padding-bottom: map-get($spacer, 5);
+    text-align: center;
+  }
+
+  .buttonContainer {
+    width: 100%;
+
+    .button {
+      transform: translateX(-50%);
+      margin-top: map-get($spacer, 6);
+      margin-left: 50%;
+      border: map-get($border-widths, 2) solid
+        map-get($theme-colors, lopi-brown);
+      background-color: map-get($theme-colors, lopi-white);
+      width: map-get($spacer, 75);
+      color: map-get($theme-colors, lopi-brown);
+      font-weight: var.$font-weight-bold;
+    }
+  }
+}
+
+.brickContainer {
+  margin-top: map-get($spacer, 6);
+
+  .brick {
+    display: flex;
+    align-items: center;
+    opacity: 100%;
+    z-index: 2;
+    margin: map-get($spacer, 3);
+    box-shadow: map-get($spacer, 0) map-get($spacer, 12) map-get($spacer, 3)
+      map-get($spacer, 7) #0000000d;
+    background-color: map-get($theme-colors, lopi-white);
+    height: $brickHeight;
+
+    .iconBrick {
+      color: map-get($theme-colors, lopi-orange);
+      font-size: var.$font-size-xxxl;
+    }
+
+    .textBrick {
+      padding-left: map-get($spacer, 3);
+
+      .titleBrick {
+        color: map-get($theme-colors, lopi-dark-green);
+        font-weight: var.$font-weight-bold;
+        text-transform: uppercase;
+      }
+    }
+  }
+}

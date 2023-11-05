@@ -1,0 +1,77 @@
+@use '../../../styles/shop-variables';
+@use '../../../styles/mixins/shop-mixins';
+
+$palette: shop-variables.$theme-colors;
+$spacer: shop-variables.$spacers;
+$titleContainerHeight: 68px;
+$titleMarginBottom: 60px;
+$titleFontSize: 16px;
+$titleFontWeight: 700;
+$iconSize: 20px;
+$containerMinHeight: 441px;
+$iconBorderRadius: 50%;
+$orderContainerSpacer: 100px 120px;
+$orderTitleFontWeight: 400;
+$orderTitleMarginBottom: 40px;
+$orderTitleFontSize: 26px;
+$summaryContainerMaxWidth: 550px;
+$summaryContainerSpacer: 40px 60px;
+$borderBottomWidth: 1px;
+$summaryMarginBottom: 12px;
+
+.titleContainer {
+  display: flex;
+  padding: 0;
+  margin-bottom: $titleMarginBottom;
+  background-color: map-get($palette, lopi-dark-green);
+  height: $titleContainerHeight;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  color: map-get($palette, lopi-white);
+  font-size: $titleFontSize;
+  font-weight: $titleFontWeight;
+  margin: 0 map-get($spacer, 21);
+
+  > div i {
+    @include shop-mixins.flex-center();
+    width: $iconSize;
+    height: $iconSize;
+    background-color: map-get($palette, lopi-orange);
+    border-radius: $iconBorderRadius;
+    color: map-get($palette, lopi-dark-green);
+    margin: 0 map-get($spacer, 2);
+  }
+}
+
+.orderContainer {
+  padding: $orderContainerSpacer;
+
+  div > h2 {
+    font-weight: $orderTitleFontWeight;
+    margin-bottom: $orderTitleMarginBottom;
+    font-size: $orderTitleFontSize;
+  }
+
+  .summaryContainer {
+    display: flex;
+    max-width: $summaryContainerMaxWidth;
+    min-height: $containerMinHeight;
+    flex-direction: column;
+    padding: $summaryContainerSpacer;
+    border: $borderBottomWidth solid map-get($palette, lopi-green);
+
+    > div > div {
+      display: flex;
+      border: none;
+      justify-content: space-between;
+      background-color: transparent;
+      color: map-get($palette, lopi-dark-gray);
+      padding-left: 0;
+      margin-bottom: $summaryMarginBottom;
+      border-bottom: $borderBottomWidth solid map-get($palette, lopi-grey-light);
+    }
+  }
+}

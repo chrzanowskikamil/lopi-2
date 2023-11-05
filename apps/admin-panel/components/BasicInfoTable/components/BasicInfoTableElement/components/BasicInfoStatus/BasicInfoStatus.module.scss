@@ -1,0 +1,21 @@
+@use '../../../../../../app/styles/admin-variables' as var;
+
+$palette: var.$theme-colors;
+
+$activeStatusHeight: 25px;
+$activeStatusOpacity: 70%;
+
+.status {
+  border-radius: var.$border-radius-xl;
+  height: $activeStatusHeight;
+  color: map-get($palette, dark);
+}
+
+.activeStatus {
+  opacity: $activeStatusOpacity;
+  background-color: map-get($palette, admin-green);
+}
+
+.inactiveStatus {
+  background-color: map-get($palette, admin-red);
+}

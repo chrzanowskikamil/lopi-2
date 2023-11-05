@@ -1,0 +1,55 @@
+@use '../../../../../../styles/shop-variables';
+@use '../../../../../../styles/mixins/shop-mixins';
+
+$pallete: shop-variables.$theme-colors;
+$spacer: shop-variables.$spacers;
+$footerWidth: 100%;
+$itemListHeight: 40px;
+$borderWidth: 1px;
+$buttonBorderRadius: 6px;
+$buttonHeight: 40px;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: $footerWidth;
+  margin-top: auto;
+
+  .itemList {
+    border: none;
+    padding: 0 map-get($spacer, 21);
+    height: $itemListHeight;
+    display: inline-flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .itemList:last-child {
+    border-top: $borderWidth solid map-get($pallete, lopi-grey);
+
+    > span {
+      font-weight: 700;
+    }
+  }
+
+  > button {
+    @include shop-mixins.flex-center;
+    background-color: map-get($pallete, lopi-brown);
+    border: $borderWidth solid map-get($pallete, lopi-orange);
+    border-radius: $buttonBorderRadius;
+    height: $buttonHeight;
+    color: map-get($pallete, lopi-orange);
+    margin-top: map-get($spacer, 7);
+
+    &:hover {
+      cursor: pointer;
+      background-color: map-get($pallete, lopi-black);
+    }
+
+    > a {
+      text-decoration: none;
+      color: map-get($pallete, lopi-orange);
+    }
+  }
+}

@@ -1,0 +1,14 @@
+@use '../../styles/shop-variables';
+
+$palette: shop-variables.$theme-colors;
+
+.wrapper {
+  color: map-get($palette, lopi-white);
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
