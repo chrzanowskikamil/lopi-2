@@ -43,7 +43,7 @@ export const ClientOpinionsCaroluselLargeScreen: FC<
             : `${style.caruselLeftBack} ${style.carouselBackLeft} ${style.inactive}`
         }`}
         starCount={carouselData[0].starCount}
-        opinion={carouselData[0].opinion}
+        opinion={<>{carouselData[0].opinion}</>}
         author={carouselData[0].author}
         onClick={() => setCurrentOpinionIndex(0)}
         starsIconClass={style.starsIconClass}
@@ -55,7 +55,7 @@ export const ClientOpinionsCaroluselLargeScreen: FC<
             : `${style.caruselBack} ${style.inactive}`
         } `}
         starCount={carouselData[1].starCount}
-        opinion={carouselData[1].opinion}
+        opinion={<>{carouselData[1].opinion}</>}
         author={carouselData[1].author}
         navigation={navigation}
         onClick={() => setCurrentOpinionIndex(1)}
@@ -68,7 +68,7 @@ export const ClientOpinionsCaroluselLargeScreen: FC<
             : `${style.caruselRightBack} ${style.carouselBackRight} ${style.inactive}`
         }`}
         starCount={carouselData[2].starCount}
-        opinion={carouselData[2].opinion}
+        opinion={<>{carouselData[2].opinion}</>}
         author={carouselData[2].author}
         onClick={() => setCurrentOpinionIndex(2)}
         starsIconClass={style.starsIconClass}
