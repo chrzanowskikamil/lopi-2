@@ -22,9 +22,9 @@ export const carouselElementsData: CarouselElementsData[] = [
     starCount: 5,
     opinion: (
       <span>
-        &rdquo;Bean&nbsp;Nook&nbsp;to prawdziwy&nbsp;zakątek&nbsp;dla
+        &rdquo;Bean&nbsp;Nook&nbsp;to<br />prawdziwy&nbsp;zakątek&nbsp;dla
         miłośników&nbsp;kawy. Ich&nbsp;ekspresy&nbsp;do&nbsp;kawy
-        są&nbsp;znakomite, a wybór&nbsp;kaw&nbsp;mielonych mnie zachwycił.
+        są&nbsp;znakomite,<br />a wybór&nbsp;kaw&nbsp;mielonych mnie zachwycił.
         <br />
         Polecam wszystkim!&rdquo;
       </span>
