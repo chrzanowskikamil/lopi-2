@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type CarouselElementsData = {
   starCount: number;
   opinion: JSX.Element;
