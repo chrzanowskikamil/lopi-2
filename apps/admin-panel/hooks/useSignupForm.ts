@@ -1,9 +1,8 @@
-import { SignupFormSchema } from '../../lib/schemas/SignupForm.schema';
-import { useAuth } from '../contexts/AuthContext';
-import { SignupValues } from '../models';
+import { SignupFormSchema, SignupValues } from '@lopi-2/common';
+import { useRegistration } from './useRegistration';
 
-export const useSignup = () => {
-  const { register } = useAuth();
+export const useSignupForm = () => {
+  const { register } = useRegistration();
 
   const initialValues: SignupValues = {
     firstName: '',

@@ -2,13 +2,14 @@
 
 import style from './SignupForm.module.scss';
 import { FC } from 'react';
-import { AppRoutes, Button, useSignup } from '@lopi-2/common';
+import { AppRoutes, Button } from '@lopi-2/common';
 import { Formik } from 'formik';
 import { Form } from 'react-bootstrap';
 import Link from 'next/link';
+import { useSignupForm } from '../../../hooks/useSignupForm';
 
 export const SignupForm: FC = () => {
-  const { initialValues, onSubmit, validationSchema } = useSignup();
+  const { initialValues, onSubmit, validationSchema } = useSignupForm();
 
   return (
     <>

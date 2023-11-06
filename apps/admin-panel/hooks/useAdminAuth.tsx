@@ -5,10 +5,8 @@ import { useRouter } from 'next/navigation';
 import {
   AppRoutes,
   AuthCredentials,
-  createUser,
   IAuthHook,
   loginUser,
-  SignupValues,
   User,
   useToast,
 } from '@lopi-2/common';
@@ -61,22 +59,5 @@ export const useAdminAuth = (): IAuthHook => {
     router.push(AppRoutes.getLoginPath());
   }, [router, showToast]);
 
-  const register = useCallback(
-    async (values: SignupValues) => {
-      const response = await createUser(values);
-      if (response instanceof Error) {
-        showToast(response.message, 'warning');
-        throw new Error(response.message);
-      } else {
-        showToast(
-          'Rejestracja przebiegła pomyślnie. Sprawdź swoją pocztę aby aktywować konto',
-          'success'
-        );
-        router.push(AppRoutes.getLoginPath());
-      }
-    },
-    [router, showToast]
-  );
-
-  return { user, login, logout, register, isAuthenticated };
+  return { user, login, logout, isAuthenticated };
 };
