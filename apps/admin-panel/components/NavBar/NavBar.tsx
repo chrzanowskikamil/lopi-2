@@ -18,7 +18,7 @@ const NavBar: FC = () => {
 
   useEffect(() => {
     setActive(pathname);
-  },[pathname])
+  }, [pathname]);
 
   return (
     <BootstrapNavbar
