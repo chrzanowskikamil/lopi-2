@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, useState } from 'react';
+import { FC, use, useEffect, useState } from 'react';
 
 import BootstrapNavbar from 'react-bootstrap/Navbar';
 import { Button } from 'react-bootstrap';
@@ -15,6 +15,10 @@ const NavBar: FC = () => {
   const pathname = usePathname();
   const [active, setActive] = useState<string>(pathname);
   const { logout } = useAuth();
+
+  useEffect(() => {
+    setActive(pathname);
+  }, [pathname]);
 
   return (
     <BootstrapNavbar
