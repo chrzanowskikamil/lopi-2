@@ -6,6 +6,7 @@
     "run-all": "nx run-many --parallel --target=serve --projects=shop,admin-panel",
     "run-shop": "nx serve shop",
     "run-admin": "nx serve admin-panel",
+    "run-admin-prod": "nx serve admin-panel --production",
     "build-all": "nx run-many --parallel --target=build --projects=shop,admin-panel",
     "build-shop": "nx build shop",
     "build-admin": "nx build admin-panel",

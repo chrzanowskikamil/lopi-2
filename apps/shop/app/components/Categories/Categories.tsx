@@ -1,15 +1,13 @@
 'use client';
 
-import { Breadcrumbs, CountableArray } from '@lopi-2/common';
+import { Breadcrumbs, CountableArray, CrumbsFactory } from '@lopi-2/common';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { FC, useCallback, useMemo } from 'react';
 import { SortOrder, SortParams } from './CategoriesEnums';
-
-import { CrumbsFactory } from '@lopi-2/common';
-import { FetchedCategoryResponse } from '../../../../shop/types/FetchedCategoryResponse';
+import { FetchedCategoryResponse } from '../../../types/FetchedCategoryResponse';
 import { INITIAL_ASCENDING_VALUE } from './CategoriesVariables';
 import { ProductsDisplay } from '../Products/ProductsDisplay/ProductsDisplay';
-import { ProductsResponse } from '../../../../shop/types/ProductsResponse';
+import { ProductsResponse } from '../../../types/ProductsResponse';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { SortDropdown } from './components/SortDropdown/SortDropdown';
 import { getProducts } from '../../../actions/getProducts';

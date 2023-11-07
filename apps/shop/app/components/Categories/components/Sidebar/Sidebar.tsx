@@ -1,29 +1,25 @@
 'use client';
 
-import { AppRoutes, CountableArray } from '@lopi-2/common';
-import { Badge, Form, ListGroup } from 'react-bootstrap';
-import MultiRangeSlider, {
-  RangeSliderValues,
-} from '../MultiRangeSlider/MultiRangeSlider';
 import {
-  THE_HIGHEST_MONEY_VALUE,
-  THE_LOWEST_MONEY_VALUE,
-} from '../../CategoriesVariables';
+  AppRoutes,
+  CountableArray,
+  MultiRangeSlider,
+  RangeSliderValues,
+} from '@lopi-2/common';
+import { Badge, Form, ListGroup } from 'react-bootstrap';
 
 import { FC } from 'react';
-import { FetchedCategoryResponse } from '../../../../../../shop/types/FetchedCategoryResponse';
+import { FetchedCategoryResponse } from '../../../../../types/FetchedCategoryResponse';
 import Link from 'next/link';
 import styles from './Sidebar.module.scss';
-import { useSearchParams } from '../../../../hooks/useSearchParams';
-import { useState } from 'react';
 
 interface SidebarProps {
   onSidebarFilter: {
     onAvailabilityFilterChange: (param: boolean) => void;
     availability: boolean;
-    lowerMoneyValueFilter: number;
+    minPriceFilterValue: number;
+    maxPriceFilterValue: number;
     onLowerMoneyValueFilterChange: (param: number) => void;
-    higherMoneyValueFilter: number;
     onHigherMoneyValueFilterChange: (param: number) => void;
   };
   activeCategory: string;
@@ -37,20 +33,6 @@ export const Sidebar: FC<SidebarProps> = ({
   categories,
   productCountInCategories,
 }) => {
-  const { getParam, setParam } = useSearchParams();
-  const [setup, setSetup] = useState<boolean>();
-
-  const setupFunction = () => {
-    if (getParam.availability === 'false') {
-      onSidebarFilter.onAvailabilityFilterChange(false);
-    }
-    setSetup(true);
-  };
-
-  if (!setup) {
-    setupFunction();
-  }
-
   const getItemClassName = (item: string) =>
     activeCategory === item ? styles.activeListItem : styles.listItem;
 
@@ -76,43 +58,41 @@ export const Sidebar: FC<SidebarProps> = ({
   ));
 
   const handleRangeSlider = (e: RangeSliderValues) => {
-    if (onSidebarFilter.lowerMoneyValueFilter !== e.min) {
-      if (getParam.filterPriceLow !== e.min.toString()) {
-        onSidebarFilter.onLowerMoneyValueFilterChange(e.min);
-        setParam('filterPriceLow', e.min.toString());
-      }
+    if (onSidebarFilter.minPriceFilterValue !== e.minValue) {
+      onSidebarFilter.onLowerMoneyValueFilterChange(e.minValue);
     }
-    if (onSidebarFilter.higherMoneyValueFilter !== e.max) {
-      if (getParam.filterPriceHigh !== e.max.toString()) {
-        onSidebarFilter.onHigherMoneyValueFilterChange(e.max);
-        setParam('filterPriceHigh', e.max.toString());
-      }
+    if (onSidebarFilter.maxPriceFilterValue !== e.maxValue) {
+      onSidebarFilter.onHigherMoneyValueFilterChange(e.maxValue);
     }
   };
 
   return (
     <aside className={styles.sidebar}>
       <h2 className={styles.title}>Kategorie</h2>
+
       <ListGroup as="ol" className={styles.categoryList}>
         {renderedList}
       </ListGroup>
+
       <MultiRangeSlider
-        min={THE_LOWEST_MONEY_VALUE}
-        max={THE_HIGHEST_MONEY_VALUE}
+        minValue={onSidebarFilter.minPriceFilterValue}
+        maxValue={onSidebarFilter.maxPriceFilterValue}
+        // TODO: it should pass value based on the max price of the visible products
+        maxValueLimit={200}
         onChange={(e: RangeSliderValues) => handleRangeSlider(e)}
       />
+
       <Form.Check
         aria-label="Available"
         className={styles.available}
         label="DOSTĘPNOŚĆ"
         type="switch"
         id="productAvailabilitySwitch"
-        onChange={() => {
+        onChange={() =>
           onSidebarFilter.onAvailabilityFilterChange(
             !onSidebarFilter.availability
-          );
-          setParam('availability', (!onSidebarFilter.availability).toString());
-        }}
+          )
+        }
         checked={onSidebarFilter.availability}
       />
     </aside>

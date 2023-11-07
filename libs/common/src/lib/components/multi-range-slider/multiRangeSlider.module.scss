@@ -1,8 +1,8 @@
-@use '../../../../styles/shop-variables';
+@use '../../styles/variables';
 
-$spacer: shop-variables.$spacers;
-$border-widths: shop-variables.$border-widths;
-$pallete: shop-variables.$theme-colors;
+$spacer: variables.$spacers;
+$border-widths: variables.$border-widths;
+$pallete: variables.$theme-colors;
 
 $slider-height: 5px;
 $thumb-width: 18px;
@@ -62,18 +62,6 @@ $container-heigth: 100px;
   width: $thumb_whole_width;
   height: 0;
   pointer-events: none;
-}
-
-.thumbZindexThree {
-  z-index: 3;
-}
-
-.thumbZindexFour {
-  z-index: 4;
-}
-
-.thumbZindexFive {
-  z-index: 5;
 }
 
 /* For Chrome browsers */

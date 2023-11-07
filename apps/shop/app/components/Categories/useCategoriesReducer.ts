@@ -1,33 +1,17 @@
-import {
-  INITIAL_CURRENT_PAGE,
-  THE_HIGHEST_MONEY_VALUE,
-  THE_LOWEST_MONEY_VALUE,
-} from './CategoriesVariables';
+import { INITIAL_CURRENT_PAGE } from './CategoriesVariables';
 import { SortOrder, SortParams } from './CategoriesEnums';
 
 import { Product } from '../../../types/ProductsResponse';
 import { useReducer } from 'react';
-import { useSearchParams } from '../../hooks/useSearchParams';
-
-export interface CategoriesReducerProps {
-  state: StateProps;
-  onProductsSort: (
-    allProducts: Product[],
-    sortType: string,
-    sortOrder: boolean
-  ) => void;
-  onShowMore: (allProducts: Product[], pageNumber: number) => void;
-  onHigherMoneyValueFilterChange: (higherMoneyValue: number) => void;
-  onLowerMoneyValueFilterChange: (lowerMoneyValue: number) => void;
-  onAvailabilityFilterChange: (availabilityValue: boolean) => void;
-}
+import { useSearchParams as useSearchParamsOld } from '../../hooks/useSearchParams';
+import { useSearchParams } from '@lopi-2/common';
 
 export interface StateProps {
-  higherMoneyValueFilter: number;
+  maxPriceFilterValue: number;
   sortType: string;
   sortOrder: boolean;
   currentPage: number;
-  lowerMoneyValueFilter: number;
+  minPriceFilterValue: number;
   availability: boolean;
   allProducts: Product[];
 }
@@ -40,8 +24,8 @@ type ActionProps =
       sortOrder: boolean;
     }
   | { type: 'on_show_more'; allProducts: Product[]; pageNumber: number }
-  | { type: 'on_higher_money_value_filter_change'; higherMoneyValue: number }
-  | { type: 'on_lower_money_value_filter_change'; lowerMoneyValue: number }
+  | { type: 'on_higher_money_value_filter_change'; maxPriceFilterValue: number }
+  | { type: 'on_lower_money_value_filter_change'; minPriceFilterValue: number }
   | { type: 'on_availability_filter_change'; availabilityValue: boolean };
 
 const categoriesReducer = (state: StateProps, action: ActionProps) => {
@@ -65,13 +49,13 @@ const categoriesReducer = (state: StateProps, action: ActionProps) => {
     case 'on_higher_money_value_filter_change': {
       return {
         ...state,
-        higherMoneyValueFilter: action.higherMoneyValue,
+        maxPriceFilterValue: action.maxPriceFilterValue,
       };
     }
     case 'on_lower_money_value_filter_change': {
       return {
         ...state,
-        lowerMoneyValueFilter: action.lowerMoneyValue,
+        minPriceFilter: action.minPriceFilterValue,
       };
     }
     case 'on_availability_filter_change': {
@@ -88,11 +72,8 @@ const categoriesReducer = (state: StateProps, action: ActionProps) => {
 };
 
 export const useCategoriesReducer = ({ content }: { content: Product[] }) => {
-  const { getParam } = useSearchParams();
-
-  const stringToBoolan = (arg: string): boolean => {
-    return arg === 'true';
-  };
+  const { getParam } = useSearchParamsOld();
+  const searchParams = useSearchParams();
 
   const initialState = {
     allProducts: content,
@@ -107,18 +88,9 @@ export const useCategoriesReducer = ({ content }: { content: Product[] }) => {
         ? false
         : true,
     currentPage: INITIAL_CURRENT_PAGE,
-    lowerMoneyValueFilter:
-      getParam.filterPriceLow === null
-        ? THE_LOWEST_MONEY_VALUE
-        : parseInt(getParam.filterPriceLow as any),
-    higherMoneyValueFilter:
-      getParam.filterPriceHigh === null
-        ? THE_HIGHEST_MONEY_VALUE
-        : parseInt(getParam.filterPriceHigh as any),
-    availability:
-      getParam.availability === null
-        ? true
-        : stringToBoolan(getParam.availability as any),
+    minPriceFilterValue: searchParams.params.minPrice,
+    maxPriceFilterValue: searchParams.params.maxPrice,
+    availability: searchParams.params.availability,
   };
 
   const [state, dispatch] = useReducer(categoriesReducer, initialState);
@@ -144,21 +116,25 @@ export const useCategoriesReducer = ({ content }: { content: Product[] }) => {
     });
   };
 
-  const onHigherMoneyValueFilterChange = (higherMoneyValue: number) => {
+  const onHigherMoneyValueFilterChange = (maxPrice: number) => {
+    searchParams.applyParams({ maxPrice });
     dispatch({
       type: 'on_higher_money_value_filter_change',
-      higherMoneyValue,
+      maxPriceFilterValue: maxPrice,
     });
   };
 
-  const onLowerMoneyValueFilterChange = (lowerMoneyValue: number) => {
+  const onLowerMoneyValueFilterChange = (minPrice: number) => {
+    searchParams.applyParams({ minPrice });
     dispatch({
       type: 'on_lower_money_value_filter_change',
-      lowerMoneyValue,
+      minPriceFilterValue: minPrice,
     });
   };
 
   const onAvailabilityFilterChange = (availabilityValue: boolean) => {
+    searchParams.applyParams({ availability: availabilityValue });
+
     dispatch({
       type: 'on_availability_filter_change',
       availabilityValue,
@@ -175,16 +151,16 @@ export const useCategoriesReducer = ({ content }: { content: Product[] }) => {
     },
 
     onProductsDisplay: {
-      lowerMoneyValueFilter: state.lowerMoneyValueFilter,
-      higherMoneyValueFilter: state.higherMoneyValueFilter,
+      minPriceFilterValue: state.minPriceFilterValue,
+      maxPriceFilterValue: state.maxPriceFilterValue,
       availability: state.availability,
       allProducts: state.allProducts,
     },
 
     onSidebarFilter: {
       onAvailabilityFilterChange,
-      lowerMoneyValueFilter: state.lowerMoneyValueFilter,
-      higherMoneyValueFilter: state.higherMoneyValueFilter,
+      minPriceFilterValue: state.minPriceFilterValue,
+      maxPriceFilterValue: state.maxPriceFilterValue,
       onLowerMoneyValueFilterChange,
       onHigherMoneyValueFilterChange,
       availability: state.availability,

@@ -7,8 +7,8 @@ import style from './Products.module.scss';
 
 interface ProductsDisplayProps {
   onProductsDisplay: {
-    lowerMoneyValueFilter: number;
-    higherMoneyValueFilter: number;
+    minPriceFilterValue: number;
+    maxPriceFilterValue: number;
     availability: boolean;
     allProducts: Product[];
   };
@@ -17,8 +17,8 @@ interface ProductsDisplayProps {
 export const ProductsDisplay: FC<ProductsDisplayProps> = ({
   onProductsDisplay,
 }) => {
-  const filterPriceLow = onProductsDisplay.lowerMoneyValueFilter;
-  const filterPriceHight = onProductsDisplay.higherMoneyValueFilter;
+  const filterPriceLow = onProductsDisplay.minPriceFilterValue;
+  const filterPriceHight = onProductsDisplay.maxPriceFilterValue;
   const availible = onProductsDisplay.availability;
 
   const sortBySearchParams = () => {

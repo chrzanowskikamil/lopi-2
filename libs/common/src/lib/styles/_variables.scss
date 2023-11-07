@@ -1,0 +1,60 @@
+//Making bootstrap sharable between application is quite challenging
+// and require some further investigation.
+// For now let's keep it stupid simple and just copy paste maps from other places of the app
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.2,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  6: $spacer * 6,
+  7: $spacer * 0.625,
+  8: $spacer * 0.938,
+  9: $spacer * 0.313,
+  12: $spacer * 0.25,
+  13: $spacer * 0.4,
+  21: $spacer * 0.75,
+  22: $spacer * 0.875,
+  31: $spacer * 1.25,
+  35: $spacer * 2.188,
+  40: $spacer * 2,
+  41: $spacer * 2.5,
+  51: $spacer * 3.5,
+  52: $spacer * 4,
+  53: $spacer * 4.5,
+  54: $spacer * 5,
+  60: $spacer * 3.75,
+  70: $spacer * 8,
+  71: $spacer * 10,
+  75: $spacer * 13,
+);
+
+$border-width: 1px;
+$border-widths: (
+  1: 1px,
+  2: 2px,
+  3: 3px,
+  4: 4px,
+  5: 5px,
+);
+
+$theme-colors: (
+  //BOOTSTRAP COLORS
+  'primary': #0f2615,
+  //APP ADDITIONAL COLORS
+  'lopi-black': #000,
+  'lopi-dark-green': #0f2615,
+  'lopi-dark-gray': #707070,
+  'lopi-green': #4b5945,
+  'lopi-white': #f2efe9,
+  'lopi-orange': #ff9a17,
+  'lopi-brown': #592d1d,
+  'lopi-grey': #c9cdc7,
+  'lopi-grey-light': #d9d9d9,
+  'lopi-grey-dark': #707070,
+  'lopi-blue-light': #05f2f2,
+  //$backgroud-light: #f2f2f2;
+);
