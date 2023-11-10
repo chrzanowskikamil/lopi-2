@@ -1,10 +1,10 @@
 import { CheckoutFormSchema } from './CheckoutForm.schema';
 import { OrderResponse } from '../../../../../types/OrderResponse';
 import { createOrder } from '../../../../../actions/orderApi';
-import { useFormik } from 'formik';
-import { useRouter } from 'next/navigation';
 import { useCart } from '../../../../contexts/CartContext';
+import { useFormik } from 'formik';
 import { useOrderContext } from '../../../../contexts/OrderContext';
+import { useRouter } from 'next/navigation';
 
 interface AddressSchema {
   street: string;
@@ -31,6 +31,11 @@ export interface CheckoutFormValues {
   paymentMethodName: string;
   termsAccepted: boolean;
 }
+
+export type SumaryNotificationData = {
+  orderUuid: string;
+  email: string;
+};
 
 export const useCheckoutForm = () => {
   const { cartData } = useCart();
