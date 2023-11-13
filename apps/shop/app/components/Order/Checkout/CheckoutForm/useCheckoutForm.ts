@@ -33,6 +33,11 @@ export interface CheckoutFormValues {
   termsAccepted: boolean;
 }
 
+export type SumaryNotificationData = {
+  orderUuid: string;
+  email: string;
+};
+
 export const useCheckoutForm = () => {
   const { cartData, handleClearCart } = useCart();
   const { setOrderData } = useOrderContext();
