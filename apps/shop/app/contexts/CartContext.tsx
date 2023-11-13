@@ -20,6 +20,8 @@ import { getDeliveryMethod } from '../../actions/orderApi';
 
 interface CartContextProps {
   cartData: CartProductsResponse | null;
+  afterSubmitCartData: CartProductsResponse | null;
+  clearAfterSubmitCartData: () => void;
   totalPrice: number;
   deliveryPrice: number;
   totalCost: number;
@@ -50,15 +52,23 @@ export const useCart = () => {
 
 export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [cartData, setCartData] = useState<CartProductsResponse | null>(null);
+  const [afterSubmitCartData, setAfterSubmitCartData] =
+    useState<CartProductsResponse | null>(null);
+
   const [deliveryMethod, setDeliveryMethod] =
     useState<DeliveryMethodResponse | null>(null);
   const [deliveryPrice, setDeliveryPrice] = useState(0);
-  const cartItems = cartData?.cartItems || [];
+  const cartItems = afterSubmitCartData?.cartItems || [];
+
+  const setCartState = (cart: CartProductsResponse | null) => {
+    setCartData(cart);
+    setAfterSubmitCartData(cart);
+  };
 
   useEffect(() => {
     getCartProducts()
       .then((res) => {
-        setCartData(res);
+        setCartState(res);
       })
       .catch((error) => {
         console.error('Failed to get cart products', error);
@@ -89,7 +99,7 @@ export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
     try {
       await addToCart(uid, quantity);
       const updatedCart = await getCartProducts();
-      setCartData(updatedCart);
+      setCartState(updatedCart);
     } catch (error) {
       console.error('Failed to add product to cart', error);
     }
@@ -99,7 +109,7 @@ export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
     try {
       await removeFromCart(uid);
       const updatedCart = await getCartProducts();
-      setCartData(updatedCart);
+      setCartState(updatedCart);
     } catch (error) {
       console.error('Failed to delete product from cart', error);
     }
@@ -115,7 +125,7 @@ export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
         if (newQuantity > 0) {
           await updateCartQuantity(uid, newQuantity);
           const updatedCart = await getCartProducts();
-          setCartData(updatedCart);
+          setCartState(updatedCart);
         }
       }
     } catch (error) {
@@ -168,10 +178,16 @@ export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const totalCost = totalPrice + deliveryPrice;
 
+  const clearAfterSubmitCartData = () => {
+    setAfterSubmitCartData(null);
+  };
+
   return (
     <CartContext.Provider
       value={{
         cartData,
+        afterSubmitCartData,
+        clearAfterSubmitCartData,
         totalPrice,
         deliveryPrice,
         totalCost,

@@ -1,17 +1,14 @@
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-
-import style from '../ProductManagment.module.scss';
-
-import React from 'react';
-import { FC } from 'react';
-
-import { useFormikContext } from 'formik';
-
 import {
   ProductReducerProps,
   ValuesOnDispatchProps,
 } from '../ProductReducerHook';
+
+import Button from 'react-bootstrap/Button';
+import { FC } from 'react';
+import Modal from 'react-bootstrap/Modal';
+import React from 'react';
+import style from '../ProductManagment.module.scss';
+import { useFormikContext } from 'formik';
 
 interface SaveChangesModalProps extends ProductReducerProps {
   title: string;

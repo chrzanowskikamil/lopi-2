@@ -1,10 +1,6 @@
 'use client';
 import { AppRoutes, SignupValues, createUser, useToast } from '@lopi-2/common';
-// import { AppRoutes } from '../utils';
-// import { SignupValues } from '../models';
-// import { createUser } from '../security';
 import { useRouter } from 'next/navigation';
-// import { useToast } from '../contexts';
 
 export const useRegistration = () => {
   const { showToast } = useToast();

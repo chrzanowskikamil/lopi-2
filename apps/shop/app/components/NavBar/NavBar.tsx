@@ -10,39 +10,42 @@ import Navbar from 'react-bootstrap/Navbar';
 import { RightNavIcons } from './RightNavIcons';
 import { SearchComponent } from './SearchComponent';
 
-const NavBar: FC = () => {
-  return (
-    <Navbar expand="lg" variant={'dark'} className={'lopi-navbar'}>
-      <Container fluid>
-        <Navbar.Toggle aria-controls="lopi-nav" className={''} />
+const NavBar: FC = () => (
+  <Navbar
+    expand="lg"
+    variant={'dark'}
+    className={'lopi-navbar'}
+    collapseOnSelect={true}
+  >
+    <Container fluid>
+      <Navbar.Toggle aria-controls="lopi-nav" className={''} />
 
-        {/*FOR LARGE SCREEN ONLY*/}
-        <SearchComponent className={'ms-2 me-auto d-block d-sm-none'} />
+      {/*FOR LARGE SCREEN ONLY*/}
+      <SearchComponent className={'ms-2 me-auto d-block d-lg-none'} />
 
-        {/*FOR SMALL SCREENS*/}
-        <RightNavIcons className={'d-flex align-items-center d-sm-none'} />
+      {/*FOR SMALL SCREENS*/}
+      <RightNavIcons className={'d-flex align-items-center d-lg-none'} />
 
-        <Navbar.Collapse id="lopi-nav">
-          <Nav>
-            <CategoryDropdown />
+      <Navbar.Collapse id="lopi-nav" className={''}>
+        <Nav>
+          <CategoryDropdown />
 
-            <NavLogo />
-          </Nav>
-        </Navbar.Collapse>
+          <NavLogo />
+        </Nav>
+      </Navbar.Collapse>
 
-        {/*LARGE SCREENS*/}
-        <RightNavIcons className={'d-none d-sm-flex align-items-center'} />
-      </Container>
-    </Navbar>
-  );
-};
+      {/*LARGE SCREENS*/}
+      <RightNavIcons className={'d-none d-lg-flex align-items-center'} />
+    </Container>
+  </Navbar>
+);
 
 const NavLogo = () => (
   <Navbar.Brand
     href="/"
     as={Link as any}
     passHref
-    className={'d-none d-md-block position-absolute lopi-nav-logo'}
+    className={'d-none d-lg-block position-absolute lopi-nav-logo'}
   >
     <Logo />
   </Navbar.Brand>

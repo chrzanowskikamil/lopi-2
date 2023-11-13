@@ -3,31 +3,51 @@
 
 $palette: shop-variables.$theme-colors;
 $spacer: shop-variables.$spacers;
+$breakpoint: shop-variables.$grid-breakpoints;
+
 $borderWidth: 1px;
 $productsHeight: 90%;
-$productWidth: 100%;
-$productsDetailsWidth: 400px;
 
 .products {
-  height: $productsHeight;
   display: flex;
   flex-direction: column;
   padding: 0;
+  height: $productsHeight;
 }
 
 .product {
   display: flex;
-  padding: map-get($spacer, 7) 0;
-  width: $productWidth;
+  position: relative;
+  justify-content: space-around;
   border-bottom: $borderWidth solid map-get($palette, lopi-grey);
+  padding: map-get($spacer, 7) 0;
+  width: 100%;
+
+  .productListElement {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    @media (min-width: map-get($breakpoint, md)) {
+      flex-direction: row;
+    }
+
+    .categoryNameStyle {
+      min-width: 160px;
+    }
+  }
 }
 
 .productsDetails {
   display: flex;
-  width: $productsDetailsWidth;
-  margin: 0 map-get($spacer, 8);
   flex-direction: column;
   justify-content: space-evenly;
+  // margin: 0 map-get($spacer, 8);
+  // @media (min-width: map-get($breakpoint, md)) {
+  //   flex-direction: row;
+  // }
 
   > p:last-child {
     color: map-get($palette, lopi-orange);
@@ -45,14 +65,17 @@ $productsDetailsWidth: 400px;
 
 .menu {
   display: flex;
-  align-items: flex-start;
   justify-content: space-evenly;
+  align-items: flex-start;
+}
+.deleteButton {
+  position: absolute;
+  top: 0;
+  right: 0;
 
-  > button {
-    @include shop-mixins.flex-center;
-    color: map-get($palette, lopi-black);
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-  }
+  @include shop-mixins.flex-center;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: map-get($palette, lopi-black);
 }

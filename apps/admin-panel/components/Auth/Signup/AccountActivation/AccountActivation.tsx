@@ -31,7 +31,6 @@ export const AccountActivation: FC = () => {
     intervalTime: PROGRESS_INTERVAL,
   });
 
-  // temp
   useEffect(() => {
     if (progress === 0) {
       router.push(AppRoutes.getLoginPath());

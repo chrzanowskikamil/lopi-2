@@ -11,22 +11,23 @@ $borderWidth: 1px;
 .main {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  overflow: hidden;
 
   > h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: $h1Margin;
     font-weight: 700;
     text-transform: uppercase;
-    margin: $h1Margin;
   }
 
   > .section {
-    max-width: $maxWidthSection;
-    height: $heightSection;
     display: flex;
     justify-content: flex-start;
+    max-width: $maxWidthSection;
+    height: $heightSection;
   }
 }

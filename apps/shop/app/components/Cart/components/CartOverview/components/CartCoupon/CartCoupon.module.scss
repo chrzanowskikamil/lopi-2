@@ -5,16 +5,22 @@ $palette: shop-variables.$theme-colors;
 $spacer: shop-variables.$spacers;
 $borderWidth: 1px;
 $inputFontSize: 12px;
-$inputWidth: 336px;
+// $inputWidth: ;
 $buttonWidth: 168px;
 $buttonHeight: 53px;
 $buttonBorderRadius: 6px;
 $buttonMargin: 30px;
 
+$cartCuponTopPadding: 50px;
+$cartCuponBottomPadding: 50px;
+$cartCuponBottom: 30px;
+
 .cartCoupon {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  padding: $cartCuponTopPadding $cartCuponBottom $cartCuponBottomPadding
+    $cartCuponBottom;
 
   .cartInput {
     display: flex;
@@ -24,23 +30,23 @@ $buttonMargin: 30px;
     font-size: $inputFontSize;
 
     > input {
-      width: $inputWidth;
-      background-color: transparent;
       border: none;
       border-bottom: $borderWidth solid map-get($palette, lopi-grey);
+      background-color: transparent;
+      // width: $inputWidth;
     }
   }
 
   > button {
     @include shop-mixins.flex-center;
-    width: $buttonWidth;
-    height: $buttonHeight;
+    cursor: pointer;
     margin-left: $buttonMargin;
-    padding: map-get($spacer, 7) map-get($spacer, 3);
-    background-color: transparent;
     border: $borderWidth solid map-get($palette, lopi-orange);
     border-radius: $buttonBorderRadius;
+    background-color: transparent;
+    padding: map-get($spacer, 7) map-get($spacer, 3);
+    // width: $buttonWidth;
+    height: $buttonHeight;
     color: map-get($palette, lopi-orange);
-    cursor: pointer;
   }
 }

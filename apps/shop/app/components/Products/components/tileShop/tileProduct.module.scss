@@ -1,54 +1,50 @@
 @use '../../../.././styles/shop-variables';
-
+$breakpoint: shop-variables.$grid-breakpoints;
 $palette: shop-variables.$theme-colors;
 $spacers: shop-variables.$spacers;
 
-$productWidth: 330px;
-$productHeight: 400px;
+$productWidth: 165px;
+$productHeight: 248px;
+$productWidthDesktop: 300px;
+$productHeightDesktop: 430px;
+$imageWidthDesktop: 330px;
+$imageHeightDesktop: 300px;
+$productMargin: 42px;
 $productFontSize: 15px;
+$tilePadding: 8px;
 
 .product {
   display: flex;
-  flex-direction: column;
-  margin: auto;
   width: $productWidth;
   height: $productHeight;
-  font-size: $productFontSize;
-}
+  padding: 0;
+  margin-bottom: $productMargin;
 
-.tileContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 100px;
-  background-color: map-get($palette, lopi-white);
-  padding-top: map-get($spacers, 31);
-  min-width: 280px;
-  max-width: 1640px;
-  list-style: none;
+  @media (min-width: map-get($breakpoint, xl)) {
+    width: $productWidthDesktop;
+    height: $productHeightDesktop;
+  }
 }
 
 .tile {
-  float: left;
-  margin-bottom: 90px;
-  width: 330px;
-  min-width: 280px;
-  height: 423px;
+  display: flex;
+  flex-direction: column;
+  padding: $tilePadding;
 
   .imageArea {
+    display: flex;
     position: relative;
 
     .tileImage {
-      width: 330px;
-      height: 330px;
+      @media (min-width: map-get($breakpoint, xl)) {
+        width: $imageWidthDesktop;
+        height: $imageHeightDesktop;
+      }
     }
 
     .tileStatus {
       position: absolute;
-      margin: map-get($spacers, 3) 0 0 map-get($spacers, 3);
-
       background-color: #05f2f2;
-      width: 60px;
       color: white;
       font-weight: shop-variables.$font-weight-normal;
       font-size: shop-variables.$font-size-sm;
@@ -68,7 +64,7 @@ $productFontSize: 15px;
     bottom: 0;
     left: 50%;
     transform: translate(-50%, 40%);
-    width: 90%;
+    width: 70%;
     font-size: shop-variables.$font-size-base;
     text-transform: uppercase;
   }

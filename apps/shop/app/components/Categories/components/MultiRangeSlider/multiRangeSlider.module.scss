@@ -1,13 +1,16 @@
 @use '../../../../styles/shop-variables';
 
+$breakpoints: shop-variables.$grid-breakpoints;
 $spacer: shop-variables.$spacers;
 $border-widths: shop-variables.$border-widths;
 $pallete: shop-variables.$theme-colors;
 
+$containerMarginLeft: 20px;
 $slider-height: 5px;
 $thumb-width: 18px;
 $thumb-height: 18px;
-$thumb_whole_width: 200px;
+$thumb_whole_width_mobile: 300px;
+$silider-desktop-width: 240px;
 $container-heigth: 100px;
 
 .label {
@@ -15,17 +18,22 @@ $container-heigth: 100px;
   margin-top: map-get($spacer, 31);
   margin-left: map-get($spacer, 31);
 }
+
 .containerSlider {
   justify-content: center;
   align-items: center;
   margin-top: map-get($spacer, 31);
-  margin-left: 10%;
+  margin-left: $containerMarginLeft;
   height: $container-heigth;
 }
 
 .slider {
   position: relative;
-  width: $thumb_whole_width;
+  width: $thumb_whole_width_mobile;
+
+  @media (min-width: map-get($breakpoints, lg)) {
+    width: $silider-desktop-width;
+  }
 }
 
 .sliderTrack,
@@ -59,9 +67,13 @@ $container-heigth: 100px;
 .thumb {
   position: absolute;
   outline: none;
-  width: $thumb_whole_width;
+  width: $thumb_whole_width_mobile;
   height: 0;
   pointer-events: none;
+
+  @media (min-width: map-get($breakpoints, lg)) {
+    width: $silider-desktop-width;
+  }
 }
 
 .thumbZindexThree {

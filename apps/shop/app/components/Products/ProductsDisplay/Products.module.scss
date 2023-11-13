@@ -1,26 +1,14 @@
 @use '../../../styles/shop-variables';
-
-$productsGap: 72px 6px;
-$productsMargin: 20px 67px;
-$productWidth: 330px;
-$productHeight: 400px;
-$productFontSize: 15px;
-
-$spacer: shop-variables.$spacers;
+$breakpoints: shop-variables.$grid-breakpoints;
+$productsMargin: 60px;
 
 .products {
-  justify-content: space-evenly;
-  gap: $productsGap;
-  margin: $productsMargin;
-  padding: map-get($spacer, 3) map-get($spacer, 7);
-  width: 100%;
-}
-
-.product {
   display: flex;
-  flex-direction: column;
-  margin: auto;
-  width: $productWidth;
-  height: $productHeight;
-  font-size: $productFontSize;
+  justify-content: space-around;
+  margin-top: $productsMargin;
+
+  @media (min-width: map-get($breakpoints, lg)) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

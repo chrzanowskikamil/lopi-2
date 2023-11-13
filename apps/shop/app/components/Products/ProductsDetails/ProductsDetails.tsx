@@ -42,17 +42,19 @@ export const ProductsDetails: FC<ProductsDetailsProps> = ({
       >
         <Row>
           <Col xl={6}>
-            <Image
-              src={
-                product.imageUrls[0] !== undefined
-                  ? product.imageUrls[0].imageUrl
-                  : 'https://storage.googleapis.com/download/storage/v1/b/lopi-2-dev.appspot.com/o/images%2F13018714-7a1c-4708-ba39-004c5121678a.png?generation=1692295691288884&alt=media'
-              }
-              width={300}
-              height={300}
-              alt="picture"
-              className={style.detailsImage}
-            />
+            <div className={style.imageContainer}>
+              <Image
+                src={
+                  product.imageUrls[0] !== undefined
+                    ? product.imageUrls[0].imageUrl
+                    : 'https://storage.googleapis.com/download/storage/v1/b/lopi-2-dev.appspot.com/o/images%2F13018714-7a1c-4708-ba39-004c5121678a.png?generation=1692295691288884&alt=media'
+                }
+                width={300}
+                height={300}
+                alt="picture"
+                className={style.detailsImage}
+              />
+            </div>
           </Col>
           <Col xl={6}>
             <Container>

@@ -1,15 +1,37 @@
 @use '../../styles/shop-variables';
 
+$breakpoints: shop-variables.$grid-breakpoints;
 $pallete: shop-variables.$theme-colors;
 $spacer: shop-variables.$spacers;
+$titleFontWeight: 700;
+$sortButtonMargin: 300px;
 $button-width: 155px;
 
 .title {
   margin-top: map-get($spacer, 40);
   color: map-get($pallete, lopi-black);
-  font-weight: 700;
+  font-weight: $titleFontWeight;
   text-align: center;
   text-transform: uppercase;
+}
+
+.sortButtonDesktop {
+  display: none;
+
+  @media (min-width: map-get($breakpoints, xl)) {
+    display: block;
+    margin-left: $sortButtonMargin;
+  }
+}
+
+.filterButtonsMobile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (min-width: map-get($breakpoints, xl)) {
+    display: none;
+  }
 }
 
 .button {

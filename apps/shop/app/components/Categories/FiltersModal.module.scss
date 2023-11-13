@@ -1,0 +1,43 @@
+@use '../../styles/shop-variables';
+
+$pallete: shop-variables.$theme-colors;
+$modalTitle: 150px;
+$marginTitle: 50px;
+$titleBorder: 1px solid map-get($pallete, lopi-orange);
+$iconMargin: 0 2px;
+$iconSize: 18px;
+
+.filterButton {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: map-get($pallete, lopi-green);
+  text-align: center;
+
+  > span {
+    margin: $iconMargin;
+
+    > div > i {
+      width: $iconSize;
+      height: $iconSize;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: map-get($pallete, lopi-green);
+    }
+  }
+}
+
+.closeButton {
+  border: none;
+}
+
+.modalTitle {
+  align-self: center;
+  width: $modalTitle;
+  text-align: center;
+  margin-top: $marginTitle;
+  border-bottom: $titleBorder;
+}

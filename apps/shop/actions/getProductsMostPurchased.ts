@@ -24,7 +24,8 @@ export async function getProductsMostPurchased(): Promise<Product[]> {
 
     const products: Product[] = await res.json();
 
-    return products;
+    //TODO: this should be limited on the BE side
+    return products.slice(0, 4);
   } catch (error) {
     if (isSyntaxError(error)) {
       throw alert('No more products in this category.');

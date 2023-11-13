@@ -11,7 +11,7 @@ import {
 } from '../../CategoriesVariables';
 
 import { FC } from 'react';
-import { FetchedCategoryResponse } from '../../../../../../shop/types/FetchedCategoryResponse';
+import { FetchedCategoryResponse } from '../../../../../types/FetchedCategoryResponse';
 import Link from 'next/link';
 import styles from './Sidebar.module.scss';
 import { useSearchParams } from '../../../../hooks/useSearchParams';
@@ -96,6 +96,7 @@ export const Sidebar: FC<SidebarProps> = ({
       <ListGroup as="ol" className={styles.categoryList}>
         {renderedList}
       </ListGroup>
+      <h3 className={styles.title}>Cena</h3>
       <MultiRangeSlider
         min={THE_LOWEST_MONEY_VALUE}
         max={THE_HIGHEST_MONEY_VALUE}
