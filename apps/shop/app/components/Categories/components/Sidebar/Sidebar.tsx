@@ -74,6 +74,7 @@ export const Sidebar: FC<SidebarProps> = ({
         {renderedList}
       </ListGroup>
 
+      <h3 className={styles.title}>Cena</h3>
       <MultiRangeSlider
         minValue={onSidebarFilter.minPriceFilterValue}
         maxValue={onSidebarFilter.maxPriceFilterValue}

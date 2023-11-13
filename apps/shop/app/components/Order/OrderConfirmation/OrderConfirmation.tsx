@@ -1,11 +1,12 @@
 'use client';
 
-import style from './OrderConfirmation.module.scss';
-import { FC } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+
+import { FC } from 'react';
 import { IconWrapper } from '../../Icons/IconWrapper';
 import { OrderDetails } from './components/OrderDetails/OrderDetails';
 import { OrderSummary } from '../OrderSummary/OrderSummary';
+import style from './OrderConfirmation.module.scss';
 
 export const OrderConfirmation: FC = () => {
   return (

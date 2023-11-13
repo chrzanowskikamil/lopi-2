@@ -1,5 +1,5 @@
-import style from './CartCoupon.module.scss';
 import { Container } from 'react-bootstrap';
+import style from './CartCoupon.module.scss';
 
 export const CartCoupon = () => {
   return (

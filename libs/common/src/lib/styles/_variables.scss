@@ -58,3 +58,15 @@ $theme-colors: (
   'lopi-blue-light': #05f2f2,
   //$backgroud-light: #f2f2f2;
 );
+
+$grid-breakpoints: (
+  xxxs: 0,
+  xxs: 375px,
+  xs: 425px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+  xxxl: 1600px,
+);

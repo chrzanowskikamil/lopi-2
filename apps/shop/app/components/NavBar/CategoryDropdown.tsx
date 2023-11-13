@@ -17,7 +17,7 @@ export const CategoryDropdown = () => {
   }, []);
 
   return (
-    <NavDropdown title="Kategorie" id="basic-nav-dropdown">
+    <NavDropdown title="Kategorie" id="basic-nav-dropdown" autoClose={true}>
       {categories.map((category) => (
         <NavDropdown.Item
           key={category}

@@ -7,6 +7,7 @@ $sidebarHeight: 455px;
 $sidebarTitleBorderWidth: 1px;
 $sidebarTitleFontSize: 15px;
 
+$breakpoints: shop-variables.$grid-breakpoints;
 $spacer: shop-variables.$spacers;
 $pallete: shop-variables.$theme-colors;
 
@@ -15,8 +16,11 @@ $pallete: shop-variables.$theme-colors;
   flex-direction: column;
   justify-content: stretch;
   align-self: self-start;
-  width: $sidebarWidth;
-  height: $sidebarHeight;
+
+  @media (min-width: map-get($breakpoints, lg)) {
+    height: $sidebarHeight;
+    width: $sidebarWidth;
+  }
 }
 
 .title {
@@ -34,7 +38,6 @@ $pallete: shop-variables.$theme-colors;
 
 .categoryList {
   display: flex;
-  opacity: 0.7;
   opacity: 0.7;
   margin-bottom: map-get($spacer, 35);
   text-transform: capitalize;
@@ -76,13 +79,13 @@ $pallete: shop-variables.$theme-colors;
   flex-direction: row-reverse;
   justify-content: space-between;
   z-index: 1;
-  margin-top: map-get($spacer, 22);
-  margin-bottom: map-get($spacer, 4);
   box-shadow: none;
-
   padding: 0 map-get($spacer, 22);
-
   font-size: $sidebarTitleFontSize;
+
+  @media (min-width: map-get($breakpoints, lg)) {
+    margin-top: map-get($spacer, 40);
+  }
 
   & :hover {
     cursor: pointer;

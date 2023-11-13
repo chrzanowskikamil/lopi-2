@@ -6,6 +6,10 @@ import { getProducts } from '../../../../actions/getProducts';
 export async function generateStaticParams() {
   const categories = await getCategories();
 
+  if (!categories.length) {
+    return [];
+  }
+
   return categories.map((categoryName) => ({
     category: categoryName.name,
   }));
@@ -13,6 +17,9 @@ export async function generateStaticParams() {
 
 const CategoriesPage = async ({ params }: { params: { category: string } }) => {
   const allCategories = await getCategories();
+  if (!allCategories.length) {
+    return <h1>There are no categories</h1>;
+  }
 
   const categoryUUID = allCategories.filter(
     (el) => el.name === params.category

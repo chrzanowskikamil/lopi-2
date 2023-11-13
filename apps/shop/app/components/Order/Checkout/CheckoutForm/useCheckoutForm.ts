@@ -1,10 +1,11 @@
+import { AppRoutes } from '@lopi-2/common';
 import { CheckoutFormSchema } from './CheckoutForm.schema';
 import { OrderResponse } from '../../../../../types/OrderResponse';
 import { createOrder } from '../../../../../actions/orderApi';
-import { useFormik } from 'formik';
-import { useRouter } from 'next/navigation';
 import { useCart } from '../../../../contexts/CartContext';
+import { useFormik } from 'formik';
 import { useOrderContext } from '../../../../contexts/OrderContext';
+import { useRouter } from 'next/navigation';
 
 interface AddressSchema {
   street: string;
@@ -33,7 +34,7 @@ export interface CheckoutFormValues {
 }
 
 export const useCheckoutForm = () => {
-  const { cartData } = useCart();
+  const { cartData, handleClearCart } = useCart();
   const { setOrderData } = useOrderContext();
   const router = useRouter();
 
@@ -76,15 +77,10 @@ export const useCheckoutForm = () => {
         values
       );
       setOrderData(orderResponse);
-      router.push('/order-summary');
 
-      // TODO: Implement function to clear cart
-      // At the moment we havent information
-      // about products in cart from orderResponse.
-      // Now if we clear cart, we will not see products
-      // in order-summary page.
+      router.push(AppRoutes.getOrderSummary());
 
-      // handleClearCart();
+      handleClearCart();
     } catch (error) {
       console.error(`Failed to create order: ${error}`);
     }

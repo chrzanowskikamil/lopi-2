@@ -1,81 +1,94 @@
 @use '../../../../../../styles/shop-variables';
 @use '../../../../../../styles/mixins/shop-mixins';
 
+$breakpoint: shop-variables.$grid-breakpoints;
 $palette: shop-variables.$theme-colors;
 $spacer: shop-variables.$spacers;
-$summaryWidth: 482px;
-$summaryHeight: 776px;
+$summaryHeight: 70vh;
 $summaryBorderRadius: 4px;
 $summaryPadding: 40px 60px;
+$summaryPaddingTop: 60px;
 $summaryMarginLeft: 40px;
 $summaryMarginBottom: 50px;
 $summaryH2FontSize: 26px;
+$summaryH2FontSizeSmall: 16px;
 $summaryH2FontWeight: 400;
 $summaryParagraphFontWeight: 700;
 $summarySpanMarginLeft: 150px;
 $summaryTotalMarginTop: 50px;
 $summaryTotalMargin: 42px 0;
-$summaryTotalButtonWidth: 362px;
+$summaryTotalButtonWidth: 100%;
 $summaryTotalButtonHeight: 53px;
 $summaryTotalButtonBorderRadius: 6px;
 $summaryTotalButtonFontWeight: 600;
 $borderWidth: 1px;
 
 .summary {
-  width: $summaryWidth;
-  height: $summaryHeight;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-aroun;
+  align-items: flex-start;
+  margin-bottom: $summaryMarginBottom;
+  margin-left: 0;
   border: $borderWidth solid map-get($palette, lopi-green);
   border-radius: $summaryBorderRadius;
   padding: $summaryPadding;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  margin-left: $summaryMarginLeft;
-  margin-bottom: $summaryMarginBottom;
+  padding-top: $summaryPaddingTop;
+  height: 100%;
+  min-height: $summaryHeight;
 
   > h2 {
-    font-weight: $summaryH2FontWeight;
-    font-size: $summaryH2FontSize;
     margin-bottom: map-get($spacer, 40);
+    font-weight: $summaryH2FontWeight;
+    font-size: $summaryH2FontSizeSmall;
+    @media (min-width: map-get($breakpoint, xxs)) {
+      font-size: $summaryH2FontSize;
+    }
   }
 
   > p {
-    color: map-get($palette, lopi-dark-gray);
     display: flex;
-    text-transform: uppercase;
     justify-content: space-around;
+    color: map-get($palette, lopi-dark-gray);
+    text-transform: uppercase;
 
     > span {
+      width: 100%;
       text-transform: lowercase;
-      margin-left: $summarySpanMarginLeft;
     }
   }
 
   .total {
-    margin-top: $summaryTotalMarginTop;
-    padding: 0;
-    border-top: $borderWidth solid map-get($palette, lopi-grey);
     display: flex;
     flex-direction: column;
+    margin-top: $summaryTotalMarginTop;
+    border-top: $borderWidth solid map-get($palette, lopi-grey);
+    padding: 0;
+    width: 100%;
 
     > p {
-      margin: $summaryTotalMargin;
-      text-transform: uppercase;
-      font-weight: $summaryParagraphFontWeight;
       display: flex;
       justify-content: space-between;
+      margin: $summaryTotalMargin;
+      font-weight: $summaryParagraphFontWeight;
+      text-transform: uppercase;
     }
 
     > button {
+      font-size: 12px;
       @include shop-mixins.flex-center();
-      width: $summaryTotalButtonWidth;
-      height: $summaryTotalButtonHeight;
-      background-color: map-get($palette, lopi-brown);
+      cursor: pointer;
       border: $borderWidth solid map-get($palette, lopi-orange);
       border-radius: $summaryBorderRadius;
+      background-color: map-get($palette, lopi-brown);
+      width: $summaryTotalButtonWidth;
+      height: $summaryTotalButtonHeight;
       color: map-get($palette, lopi-orange);
       font-weight: $summaryTotalButtonFontWeight;
-      cursor: pointer;
+
+      @media (min-width: map-get($breakpoint, xxs)) {
+        font-size: 16px;
+      }
     }
   }
 }

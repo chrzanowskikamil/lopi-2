@@ -1,13 +1,13 @@
-import style from './OrderSummary.module.scss';
+import { CostList } from './CostList';
 import { FC } from 'react';
 import { ListGroup } from 'react-bootstrap';
+import style from './OrderSummary.module.scss';
 import { useCart } from '../../../contexts/CartContext';
-import { CostList } from './CostList';
 
 export const OrderSummary: FC = () => {
-  const { cartData, getPriceDetails } = useCart();
+  const { afterSubmitCartData, getPriceDetails } = useCart();
 
-  const productsList = cartData?.cartItems.map((product) => {
+  const productsList = afterSubmitCartData?.cartItems.map((product) => {
     const { regularPrice, discountPrice } = getPriceDetails(
       product.product.uid
     );

@@ -1,5 +1,6 @@
 'use client';
 
+import styles from './Categories.module.scss';
 import { Breadcrumbs, CountableArray, CrumbsFactory } from '@lopi-2/common';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { FC, useCallback, useMemo } from 'react';
@@ -12,8 +13,8 @@ import { Sidebar } from './components/Sidebar/Sidebar';
 import { SortDropdown } from './components/SortDropdown/SortDropdown';
 import { getProducts } from '../../../actions/getProducts';
 import { loadMoreProducts } from './useCategoriesPagination';
-import styles from './Categories.module.scss';
 import { useCategoriesReducer } from './useCategoriesReducer';
+import { FiltersModal } from './FiltersModal';
 
 interface CategoriesProps {
   title: string;
@@ -85,12 +86,25 @@ export const Categories: FC<CategoriesProps> = ({
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col className={styles.filterButtonsMobile}>
+          <FiltersModal>
+            <Sidebar
+              onSidebarFilter={categoriesReducer.onSidebarFilter}
+              activeCategory={title}
+              categories={categories}
+              productCountInCategories={productCounts}
+            />
+          </FiltersModal>
           <SortDropdown sortedProducts={sortProductsByParams} />
         </Col>
       </Row>
       <Row>
-        <Col xl={2}>
+        <Col className={styles.sortButtonDesktop}>
+          <SortDropdown sortedProducts={sortProductsByParams} />
+        </Col>
+      </Row>
+      <Row>
+        <Col className="d-none d-xl-flex" xl={4}>
           <Sidebar
             onSidebarFilter={categoriesReducer.onSidebarFilter}
             activeCategory={title}
@@ -98,7 +112,7 @@ export const Categories: FC<CategoriesProps> = ({
             productCountInCategories={productCounts}
           />
         </Col>
-        <Col xl={10}>
+        <Col xl={8}>
           <ProductsDisplay
             onProductsDisplay={categoriesReducer.onProductsDisplay}
           />

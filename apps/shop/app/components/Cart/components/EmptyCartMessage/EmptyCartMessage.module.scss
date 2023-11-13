@@ -9,14 +9,14 @@ $iconSize: 35px;
 
 .body {
   @include shop-mixins.flex-center;
-  height: $bodyHeight;
   flex-direction: column;
+  height: $bodyHeight;
 }
 
 .icon {
   @include shop-mixins.flex-center;
-  background-color: map-get($pallete, lopi-black);
   border-radius: 50%;
+  background-color: map-get($pallete, lopi-black);
   width: $bgIconSize;
   height: $bgIconSize;
   font-size: $iconSize;
