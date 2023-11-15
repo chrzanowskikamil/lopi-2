@@ -73,7 +73,6 @@ export const Sidebar: FC<SidebarProps> = ({
       <ListGroup as="ol" className={styles.categoryList}>
         {renderedList}
       </ListGroup>
-
       <h3 className={styles.title}>Cena</h3>
       <MultiRangeSlider
         minValue={onSidebarFilter.minPriceFilterValue}
