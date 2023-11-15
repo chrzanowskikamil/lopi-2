@@ -16,9 +16,9 @@ type GetProductType = {
 };
 
 export async function getProducts(
-  categoryUUID: string | undefined,
+  categoryUUID: string,
   possibleSearchOptions: GetProductType = {}
-): Promise<ProductsResponse | undefined> {
+): Promise<ProductsResponse> {
   const {
     size = DEFAULT_PAGE_SIZE,
     page = INITIAL_CURRENT_PAGE,
@@ -49,24 +49,21 @@ export async function getProducts(
       } else return false;
     }
   };
-  if (!categoryUUID) {
-    return undefined;
-  } else {
-    try {
-      const res = await fetch(url, { next: { revalidate: REVALIDATE_TIME } });
 
-      if (!res.ok) throw new Error(`Server responsed with ${res.statusText}`);
+  try {
+    const res = await fetch(url, { next: { revalidate: REVALIDATE_TIME } });
 
-      const product: ProductsResponse = await res.json();
+    if (!res.ok) throw new Error(`Server responsed with ${res.statusText}`);
 
-      return product;
-    } catch (error) {
-      if (isSyntaxError(error)) {
-        throw alert('No more products in this category.');
-      } else {
-        console.error(`Fetching error: ${error}`);
-        throw error;
-      }
+    const product: ProductsResponse = await res.json();
+
+    return product;
+  } catch (error) {
+    if (isSyntaxError(error)) {
+      throw alert('No more products in this category.');
+    } else {
+      console.error(`Fetching error: ${error}`);
+      throw error;
     }
   }
 }
