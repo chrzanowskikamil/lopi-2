@@ -29,7 +29,7 @@ export const OrderDetails: FC = () => {
   return (
     <div className={style.orderDetailsContainer}>
       <h2>Szczegóły zamówienia</h2>
-      <div className={style.detailsGrid}>
+      <div className={style.detailsList}>
         {OrderInfoList.map((item) => (
           <div key={item.label} className={style.detailItem}>
             <span className={style.detailLabel}>{item.label}</span>

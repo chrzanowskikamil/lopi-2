@@ -1,10 +1,12 @@
 @use '../../../../styles/shop-variables';
 
+$breakpoints: shop-variables.$grid-breakpoints;
 $palette: shop-variables.$theme-colors;
 $spacer: shop-variables.$spacers;
 $checkoutFormMargin: 30px;
 $titleFontWeight: 400;
 $titleMarginBottom: 30px;
+$mobileTitleFontSize: 16px;
 $titleFontSize: 26px;
 $borderBottomSize: 1px;
 $formCheckMargin: 30px 0;
@@ -14,13 +16,18 @@ $inputCheckBorderRadius: 2px;
 $linkFontWeight: 700;
 
 .checkoutFormContainer {
-  margin-right: $checkoutFormMargin;
+  @media (min-width: map-get($breakpoints, xl)) {
+    margin-right: $checkoutFormMargin;
+  }
 
   h2 {
-    font-weight: $titleFontSize;
-    margin-bottom: $checkoutFormMargin;
-    font-size: $titleFontSize;
-    color: map-get($palette, lopi-dark-green);
+    color: map-get($palette, lopi-green);
+    font-size: $mobileTitleFontSize;
+
+    @media (min-width: map-get($breakpoints, xl)) {
+      margin-bottom: $checkoutFormMargin;
+      font-size: $titleFontSize;
+    }
   }
 }
 

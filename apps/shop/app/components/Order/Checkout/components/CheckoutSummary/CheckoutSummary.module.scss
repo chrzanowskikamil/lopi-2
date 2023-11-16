@@ -1,27 +1,31 @@
 @use '../../../../../styles/shop-variables';
 @use '../../../../../styles/mixins/shop-mixins';
 
+$breakpoints: shop-variables.$grid-breakpoints;
 $palette: shop-variables.$theme-colors;
 $summaryContainerMinHeight: 864px;
+$mobileSummaryContainerSpacer: 20px 44px;
 $summaryContainerSpacer: 60px 80px;
 $borderBottomSize: 1px;
+$mobileSummaryButtonWidth: 256px;
+$mobileSummaryButtonHeight: 32px;
 $summaryButtonWidth: 462px;
 $summaryButtonHeight: 53px;
 $summaryBorderRadius: 4px;
 $summaryButtonFontWeight: 600;
 
 .summaryContainer {
+  padding: $mobileSummaryContainerSpacer;
   min-height: $summaryContainerMinHeight;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: $summaryContainerSpacer;
   border: $borderBottomSize solid map-get($palette, $key: lopi-green);
 
   > button {
     @include shop-mixins.flex-center();
-    width: $summaryButtonWidth;
-    height: $summaryButtonHeight;
+    width: $mobileSummaryButtonWidth;
+    height: $mobileSummaryButtonHeight;
     background-color: map-get($palette, lopi-brown);
     border: $borderBottomSize solid map-get($palette, lopi-orange);
     border-radius: $summaryBorderRadius;
@@ -30,5 +34,10 @@ $summaryButtonFontWeight: 600;
     text-decoration: none;
     cursor: pointer;
     margin: auto 0;
+
+    @media (min-width: map-get($breakpoints, xl)) {
+      width: $summaryButtonWidth;
+      height: $summaryButtonHeight;
+    }
   }
 }
