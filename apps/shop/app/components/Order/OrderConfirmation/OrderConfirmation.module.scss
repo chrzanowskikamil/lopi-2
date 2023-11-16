@@ -1,6 +1,7 @@
 @use '../../../styles/shop-variables';
 @use '../../../styles/mixins/shop-mixins';
 
+$breakpoints: shop-variables.$grid-breakpoints;
 $palette: shop-variables.$theme-colors;
 $spacer: shop-variables.$spacers;
 $titleContainerHeight: 68px;
@@ -11,13 +12,16 @@ $iconSize: 20px;
 $containerMinHeight: 441px;
 $iconBorderRadius: 50%;
 $orderContainerSpacer: 100px 120px;
+$XLorderContainerWidth: 80vw;
 $orderTitleFontWeight: 400;
 $orderTitleMarginBottom: 40px;
+$mobileOrderTitleFontSize: 16px;
 $orderTitleFontSize: 26px;
 $summaryContainerMaxWidth: 550px;
 $summaryContainerSpacer: 40px 60px;
 $borderBottomWidth: 1px;
 $summaryMarginBottom: 12px;
+$summaryContainerMargin: 32px;
 
 .titleContainer {
   display: flex;
@@ -47,21 +51,35 @@ $summaryMarginBottom: 12px;
 }
 
 .orderContainer {
-  padding: $orderContainerSpacer;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: map-get($breakpoints, lg)) {
+    flex-direction: row;
+    padding: $orderContainerSpacer;
+  }
+
+  @media (min-width: map-get($breakpoints, xxxl)) {
+    width: $XLorderContainerWidth;
+    margin: 0 auto;
+  }
 
   div > h2 {
+    font-size: $mobileOrderTitleFontSize;
     font-weight: $orderTitleFontWeight;
     margin-bottom: $orderTitleMarginBottom;
-    font-size: $orderTitleFontSize;
+    font-size: $titleFontSize;
+
+    @media (min-width: map-get($breakpoints, lg)) {
+      font-size: $orderTitleFontSize;
+    }
   }
 
   .summaryContainer {
     display: flex;
-    max-width: $summaryContainerMaxWidth;
-    min-height: $containerMinHeight;
     flex-direction: column;
-    padding: $summaryContainerSpacer;
     border: $borderBottomWidth solid map-get($palette, lopi-green);
+    margin-bottom: $summaryContainerMargin;
 
     > div > div {
       display: flex;

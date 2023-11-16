@@ -1,7 +1,7 @@
+import style from './OrderSummary.module.scss';
 import { CostList } from './CostList';
 import { FC } from 'react';
 import { ListGroup } from 'react-bootstrap';
-import style from './OrderSummary.module.scss';
 import { useCart } from '../../../contexts/CartContext';
 
 export const OrderSummary: FC = () => {

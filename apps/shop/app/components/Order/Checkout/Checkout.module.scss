@@ -1,22 +1,35 @@
 @use '../../../styles/shop-variables';
 @use '../../../styles/mixins/shop-mixins';
 
+$breakpoints: shop-variables.$grid-breakpoints;
 $palette: shop-variables.$theme-colors;
 $spacer: shop-variables.$spacers;
-$checkoutContainerSpacer: 60px 40px;
+$mobileCheckoutContainerSpacer: 26px 16px;
+$mobileTitleFontSize: 16px;
+$mobileTitleMargin: 24px;
+$desktopCheckoutContainerSpacer: 60px 40px;
 $titleFontWeight: 700;
 $borderBottomSize: 1px;
 $borderRadiusTextarea: 4px;
 $titleMarginBottom: 40px;
 
 .checkoutContainer {
-  padding: $checkoutContainerSpacer;
+  padding: $mobileCheckoutContainerSpacer;
+
+  @media (min-width: map-get($breakpoints, xl)) {
+    padding: $desktopCheckoutContainerSpacer;
+  }
 
   .title {
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: $titleFontWeight;
-    margin-bottom: $titleMarginBottom;
+    font-size: $mobileTitleFontSize;
+    margin-bottom: $mobileTitleMargin;
+
+    @media (min-width: map-get($breakpoints, xl)) {
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: $titleFontWeight;
+      margin-bottom: $titleMarginBottom;
+    }
   }
 }
 

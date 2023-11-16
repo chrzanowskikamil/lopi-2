@@ -1,29 +1,56 @@
 @use '../../../../../styles/shop-variables';
 
+$breakpoints: shop-variables.$grid-breakpoints;
 $palette: shop-variables.$theme-colors;
+$mobileContainerWidth: 100%;
 $containerWidth: 550px;
 $containerHeight: 441px;
+$mobileFontSize: 12px;
+$desktopFontSize: 16px;
+$detailsListMarginBottom: 35px;
 $containerItemWidth: 250px;
 $itemMargin: 10px 0;
 $detailValuePadding: 6px 0;
 
 .orderDetailsContainer {
-  max-width: $containerWidth;
+  width: $mobileContainerWidth;
   max-height: $containerHeight;
+
+  @media (min-width: map-get($breakpoints, xl)) {
+    min-width: $containerWidth;
+  }
 }
 
-.detailsGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+.detailsList {
+  width: $mobileContainerWidth;
+  display: flex;
+  flex-direction: column;
+  font-size: $mobileFontSize;
+  margin-bottom: $detailsListMarginBottom;
+
+  @media (min-width: map-get($breakpoints, xl)) {
+    width: $containerWidth;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    font-size: $desktopFontSize;
+  }
 }
 
 .detailItem {
+  width: $mobileContainerWidth;
   display: flex;
-  flex-direction: column;
-  width: $containerItemWidth;
+  align-items: center;
+  justify-content: space-between;
   word-wrap: break-word;
   margin: $itemMargin;
+
+  @media (min-width: map-get($breakpoints, xl)) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
 }
 
 .detailLabel {
@@ -33,5 +60,4 @@ $detailValuePadding: 6px 0;
 .detailValue {
   color: map-get($palette, lopi-dark-gray);
   word-wrap: break-word;
-  padding: $detailValuePadding 0;
 }
