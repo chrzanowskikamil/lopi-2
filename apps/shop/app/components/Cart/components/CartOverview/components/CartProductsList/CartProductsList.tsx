@@ -1,6 +1,6 @@
 import { Col, Container, Row } from 'react-bootstrap';
 
-import { Button } from '@lopi-2/common';
+import { Button, NO_IMAGE_URL } from '@lopi-2/common';
 import Image from 'next/image';
 import { QuantityController } from '../../../CartItems/components/CartProduct/QuantityController/QuantityController';
 import style from './CartProductsList.module.scss';
@@ -18,7 +18,7 @@ export const CartProductsList = () => {
                 alt={product.product.name}
                 width={160}
                 height={160}
-                src={product.product.imageUrls[0].imageUrl}
+                src={product?.product?.imageUrls?.[0]?.imageUrl || NO_IMAGE_URL}
               />
 
               <div className={style.productsDetails}>

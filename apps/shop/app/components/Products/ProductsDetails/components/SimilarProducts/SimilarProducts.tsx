@@ -5,7 +5,7 @@ import { Row } from 'react-bootstrap';
 import style from './similarProducts.module.scss';
 
 interface SimilarProductsProps {
-  similarProducts: Product[];
+  similarProducts: (Product | null)[];
 }
 
 export const SimilarProducts: FC<SimilarProductsProps> = ({
@@ -16,9 +16,11 @@ export const SimilarProducts: FC<SimilarProductsProps> = ({
       <span>Podobne produkty</span>
       <div className={style.container}>
         <Row className={style.products}>
-          {similarProducts.map((el, i) => (
-            <ProductTileCol product={el} col={3} key={i} index={i} />
-          ))}
+          {similarProducts.map((product, i) =>
+            product !== null ? (
+              <ProductTileCol product={product} col={3} key={i} index={i} />
+            ) : null
+          )}
         </Row>
       </div>
     </div>
