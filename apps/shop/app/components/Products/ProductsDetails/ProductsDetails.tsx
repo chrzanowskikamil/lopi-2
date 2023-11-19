@@ -3,7 +3,7 @@
 import { Col, Container, Row } from 'react-bootstrap';
 import { FC, useMemo } from 'react';
 
-import { Breadcrumbs } from '@lopi-2/common';
+import { Breadcrumbs, NO_IMAGE_URL } from '@lopi-2/common';
 import { CartInteraction } from './components/CartInteraction/CartInteraction';
 import { CrumbsFactory } from '@lopi-2/common';
 import { DetailedInfo } from './components/DetailedInfo/DetailedInfo';
@@ -17,7 +17,7 @@ import style from './productsDetailed.module.scss';
 
 interface ProductsDetailsProps {
   product: Product;
-  upSellProducts: Product[];
+  upSellProducts: (Product | null)[];
 }
 
 export const ProductsDetails: FC<ProductsDetailsProps> = ({
@@ -47,7 +47,7 @@ export const ProductsDetails: FC<ProductsDetailsProps> = ({
                 src={
                   product.imageUrls[0] !== undefined
                     ? product.imageUrls[0].imageUrl
-                    : 'https://storage.googleapis.com/download/storage/v1/b/lopi-2-dev.appspot.com/o/images%2F13018714-7a1c-4708-ba39-004c5121678a.png?generation=1692295691288884&alt=media'
+                    : NO_IMAGE_URL
                 }
                 width={300}
                 height={300}

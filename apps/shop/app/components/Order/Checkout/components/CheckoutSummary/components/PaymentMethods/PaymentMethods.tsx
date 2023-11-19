@@ -14,7 +14,7 @@ export const PaymentMethods: FC<PaymentMethodsProps> = ({
   formRef,
   paymentMethod,
 }) => {
-  const paymentMethodsList = paymentMethod.methodResponseDTOList.map(
+  const paymentMethodsList = paymentMethod?.methodResponseDTOList.map(
     (method) => {
       return (
         <ListGroup.Item key={method.name}>

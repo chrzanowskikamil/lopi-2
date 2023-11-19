@@ -8,6 +8,7 @@ import ProductRating from '../ProductRating/ProductRating';
 import Status from './components/Status';
 import style from './tileProduct.module.scss';
 import { useRouter } from 'next/navigation';
+import { NO_IMAGE_URL } from '@lopi-2/common';
 
 interface ProductTileColProps {
   product: {
@@ -37,34 +38,34 @@ const ProductTileCol: FC<ProductTileColProps> = ({
   const router = useRouter();
 
   return (
-    <Col className={`${style.product} ${className}`} xl={col} key={product.sku}>
+    <Col
+      className={`${style.product} ${className}`}
+      xl={col}
+      key={product?.sku}
+    >
       <ProductContextMenu
         key={index}
-        productUid={product.uid}
-        id={`${cartContextId} ${product.uid}`}
+        productUid={product?.uid}
+        id={`${cartContextId} ${product?.uid}`}
       >
         <ul className={style.tile}>
           <div className={style.imageArea}>
             <Status status={'Current'} />
-            <AddToCart productUid={product.uid} />
+            <AddToCart productUid={product?.uid} />
             <Image
-              src={
-                product.imageUrls[0] !== undefined
-                  ? product.imageUrls[0].imageUrl
-                  : 'https://storage.googleapis.com/download/storage/v1/b/lopi-2-dev.appspot.com/o/images%2F13018714-7a1c-4708-ba39-004c5121678a.png?generation=1692295691288884&alt=media'
-              }
+              src={product?.imageUrls?.[0]?.imageUrl || NO_IMAGE_URL}
               width={300}
               height={300}
               alt="picture"
               className={style.tileImage}
-              onClick={() => router.push(`productdetails/${product.uid}`)}
+              onClick={() => router.push(`productdetails/${product?.uid}`)}
             />
           </div>
           <ProductRating starsCount={4} review={4} />
-          <div className={style.productName}>{product.name}</div>
+          <div className={style.productName}>{product?.name}</div>
           <Price
-            price={product.regularPrice}
-            currentPrice={product.discountPrice}
+            price={product?.regularPrice}
+            currentPrice={product?.discountPrice}
           />
         </ul>
       </ProductContextMenu>

@@ -25,7 +25,7 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({
     statute: <Link href="/statute">Regulaminem</Link>,
   };
 
-  const deliveryMethodOptions = deliveryMethod.map((method) => {
+  const shipmentOptions = deliveryMethod?.map((method) => {
     return (
       <option key={method.name} value={method.name}>
         {method.name} - {method.cost.toFixed(2)} zł
@@ -164,7 +164,7 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({
           }}
         >
           <option>Rodzaj dostawy</option>
-          {deliveryMethodOptions}
+          {shipmentOptions}
         </Form.Select>
       </Form.Group>
       <Form.Group controlId="shippingAddressStreet">
