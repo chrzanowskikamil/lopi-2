@@ -1,3 +1,4 @@
+import { useReactivateAccount } from '../../../../hooks/useReactivateAccount';
 import style from './AccountActivationMessages.module.scss';
 import { AppRoutes, Button } from '@lopi-2/common';
 import Link from 'next/link';
@@ -34,11 +35,23 @@ export const AccountActivationSuccessMessage: FC<SuccessMessageProps> = ({
   );
 };
 
-export const AccountActivationErrorMessage: FC = () => {
+interface AccountActivationErrorMessageProps {
+  encodedUsername: string;
+  tokenValue: string;
+}
+
+export const AccountActivationErrorMessage: FC<
+  AccountActivationErrorMessageProps
+> = ({ encodedUsername, tokenValue }) => {
+  const { reactiveAccount } = useReactivateAccount();
+
   return (
     <>
       <h1>Wystąpił błąd podczas aktywacji konta</h1>
-      <Button title="Spróbuj jeszcze raz"></Button>
+      <Button
+        title="Spróbuj jeszcze raz"
+        onClick={() => reactiveAccount(encodedUsername, tokenValue)}
+      ></Button>
     </>
   );
 };

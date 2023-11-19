@@ -29,13 +29,14 @@ export const AccountActivation: FC = () => {
     initialValue: START_PROGRESS_VALUE,
     decrement: PROGRESS_STEP,
     intervalTime: PROGRESS_INTERVAL,
+    shouldShowProgress: status === 'success',
   });
 
   useEffect(() => {
-    if (progress === 0) {
+    if (progress === 0 && status === 'success') {
       router.push(AppRoutes.getLoginPath());
     }
-  }, [progress]);
+  }, [progress, status]);
 
   const CurrentComponent = () => {
     switch (status) {
@@ -44,7 +45,12 @@ export const AccountActivation: FC = () => {
       case 'success':
         return <AccountActivationSuccessMessage countdown={progress} />;
       case 'error':
-        return <AccountActivationErrorMessage />;
+        return (
+          <AccountActivationErrorMessage
+            encodedUsername={encodedUsername}
+            tokenValue={tokenValue}
+          />
+        );
       default:
         return exhaustiveCheck(status);
     }

@@ -70,6 +70,40 @@ export async function activateUser(
   }
 }
 
+export async function reactivateUser(
+  encodedUsername: string,
+  tokenValue: string
+) {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}auth/reactivate`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ encodedUsername, tokenValue }),
+      }
+    );
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.message);
+    }
+
+    if (res.status >= 200 && res.status < 300) {
+      return data;
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('Something went wrong');
+    }
+  }
+}
+
 export async function loginUser(credentials: AuthCredentials) {
   try {
     const res = await fetch(
