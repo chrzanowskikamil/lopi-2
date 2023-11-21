@@ -1,4 +1,5 @@
 import { Categories } from '../../../components/Categories/Categories';
+import { ProductsResponse } from '../../../../types/ProductsResponse';
 import { getCategories } from '../../../../actions/getCategories';
 import { getCategoryQuantityByUUID } from '../../../../actions/getCategoryQuantityByUUID';
 import { getProducts } from '../../../../actions/getProducts';
@@ -24,21 +25,12 @@ export async function generateStaticParams() {
 
 const CategoriesPage = async ({ params }: { params: { category: string } }) => {
   const allCategories = await getCategories();
-
-  if (!allCategories.length) {
-    return (
-      <h1 className="d-flex justify-content-center pt-4">
-        There are no categories
-      </h1>
-    );
-  }
+  const categoryName = decodeURI(params.category);
 
   const getCategoryUUID = (): string | undefined => {
-    if (
-      allCategories.filter((el) => el.name === params.category)[0] !== undefined
-    ) {
-      return allCategories.filter((el) => el.name === params.category)[0].uid;
-    } else return undefined;
+    const category = allCategories.find((el) => el.name === categoryName);
+
+    return category?.uid;
   };
 
   const categoryUUID = getCategoryUUID();
@@ -57,18 +49,22 @@ const CategoriesPage = async ({ params }: { params: { category: string } }) => {
 
   const products = await getProducts(categoryUUID);
 
-  if (!products) {
+  const checkIfProductsExist = (products: ProductsResponse | undefined) => {
+    return !products || !products.content || products.content.length === 0;
+  };
+
+  if (checkIfProductsExist(products)) {
     return (
       <h1 className="d-flex justify-content-center pt-4">
         There are no products in this category
       </h1>
     );
-  } else if (categoryUUID !== undefined) {
+  } else if (categoryUUID !== undefined && products !== undefined) {
     {
       return (
         <>
           <Categories
-            title={params.category}
+            title={categoryName}
             categories={allCategories}
             products={products}
             categoryUUID={categoryUUID}

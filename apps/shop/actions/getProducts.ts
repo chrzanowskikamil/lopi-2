@@ -63,7 +63,7 @@ export async function getProducts(
       return product;
     } catch (error) {
       if (isSyntaxError(error)) {
-        throw alert('No more products in this category.');
+        console.error('No more products in this category.');
       } else {
         console.error(`Fetching error: ${error}`);
         throw error;
