@@ -1,37 +1,61 @@
-import ModalSaveChanges from '../Components/ModalSaveChanges';
-import ModalCloseWindow from '../Components/ModalCloseWindow';
+import { FormikValues, useFormikContext } from 'formik';
 
-import { PopupProps } from '../PopupPropsTypes';
+import { CategoryReducerProps } from '../CategoryReducerHook';
+import ModalSaveChanges from '../Components/SaveChangesModal';
+import { OnLeaveSubmitModal } from '../Components/OnLeaveSubmitModal';
+import { useAddCategoryMutation } from '../../../redux/reduxSlices/categories/categoriesApiSlice';
 
-const AddCategoryPopup: React.FC<PopupProps> = ({
-  handleInPopupSubmit,
-  closeSubmitedPopup,
-  state,
-  ...others
+type AddCategoryProps = {
+  name: string;
+  description: string;
+  icon: string;
+  imagePath: string;
+};
+
+export const AddCategoryPopup: React.FC<CategoryReducerProps> = ({
+  categoryReducer,
 }) => {
+  const [addCategory, responseAdd] = useAddCategoryMutation();
+  const { values } = useFormikContext<FormikValues>();
+
   const title = 'You have just created a new category.';
+
   const body = (
     <>
-      <p>
+      <span>
         Category name: &nbsp;
-        {state.inputData.categoryName}.
-      </p>
-      <p> Product count: &nbsp;{state.inputData.productCount}.</p>
-      <p>Product visibility: &nbsp;{state.inputData.terms ? 'Yes' : 'No'}.</p>
-      <p>Picture: &nbsp;{state.inputData.file}.</p>
+        {values.categoryName}.
+      </span>
+      <br />
+      <span> Product description: &nbsp;{values.description}.</span>
+      <br />
+      <span>Product icon URL: &nbsp;{values.icon}.</span>
+      <br />
+      <span>Image URL: &nbsp;{values.imagePath}.</span>
     </>
   );
 
-  return !state.popupSubmited ? (
+  const handleClick = () => {
+    const addCategoryData: AddCategoryProps = {
+      name: values.categoryName,
+      description: values.description,
+      icon: values.icon,
+      imagePath: values.imagePath,
+    };
+    addCategory(addCategoryData);
+  };
+
+  return !categoryReducer.state.popupSubmited ? (
     <ModalSaveChanges
-      handleInPopupSubmit={handleInPopupSubmit}
-      others={others}
+      handleClick={handleClick}
+      categoryReducer={categoryReducer}
       title={title}
       body={body}
     />
   ) : (
-    <ModalCloseWindow closeSubmitedPopup={closeSubmitedPopup} others={others} />
+    <OnLeaveSubmitModal
+      categoryReducer={categoryReducer}
+      response={responseAdd}
+    />
   );
 };
-
-export default AddCategoryPopup;

@@ -2,13 +2,13 @@ import AddToCart from './components/AddtoCart';
 import { Col } from 'react-bootstrap';
 import { FC } from 'react';
 import Image from 'next/image';
+import { NO_IMAGE_URL } from '@lopi-2/common';
 import Price from './components/Price';
 import { ProductContextMenu } from '../../../ContextMenu/ProductContextMenu';
 import ProductRating from '../ProductRating/ProductRating';
 import Status from './components/Status';
 import style from './tileProduct.module.scss';
 import { useRouter } from 'next/navigation';
-import { NO_IMAGE_URL } from '@lopi-2/common';
 
 interface ProductTileColProps {
   product: {

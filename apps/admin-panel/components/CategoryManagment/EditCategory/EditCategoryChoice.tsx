@@ -1,42 +1,74 @@
 'use client';
 
-import style from '../CategoryManagment.module.scss';
-
-import { useState } from 'react';
-
-import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-
+import { CategorySchema } from '../Category.schema';
+import { Container } from 'react-bootstrap';
 import EditCategory from './EditCategory';
+import Form from 'react-bootstrap/Form';
+import { Formik } from 'formik';
+import style from '../CategoryManagment.module.scss';
+import useCategoryReducer from '../CategoryReducerHook';
+import { useFetchCategoriesQuery } from '../../../redux/reduxSlices/categories/categoriesApiSlice';
 
 const EditCategoryChoice: React.FC = () => {
-  const [toEdit, setToEdit] = useState('');
+  const categories = useFetchCategoriesQuery();
+  const categoryReducer = useCategoryReducer();
 
   return (
     <>
-      <Container>
-        <h1>Edit category:</h1>
-        <Form.Select
-          aria-label="Default select example"
-          onChange={(e) => setToEdit(e.target.value)}
-        >
-          <option value={undefined}>Choose category you want to edit.</option>
-          <option>Shoes 3 true file.jpg</option>
-          <option>T-shirts 7 false file.png</option>
-          <option>Throusers 0 false file.svg</option>
-        </Form.Select>
-        {toEdit == '' || toEdit == 'Choose category you want to edit.' ? (
+      <Formik
+        validationSchema={CategorySchema}
+        onSubmit={(values) => categoryReducer.onSubmit(values)}
+        initialValues={{
+          categoryName: '',
+          description: '',
+          icon: '',
+          imagePath: '',
+          selectedCategoryUid: '',
+          selectedValue: 'Choose category you want to edit.',
+        }}
+      >
+        {({ values, setFieldValue }) => (
           <>
-            <Button disabled type="submit" className={style.soloButton}>
-              Change category
-            </Button>
+            <Container>
+              <h1>Edit category:</h1>
+              <Form.Select
+                aria-label="Default select example"
+                onChange={(e) => {
+                  setFieldValue('selectedValue', e.currentTarget.value);
+                  const selectedCategory = categories.data?.find(
+                    (category) => category.name === e.currentTarget.value
+                  );
+
+                  setFieldValue(
+                    'selectedCategoryUid',
+                    selectedCategory?.uid || ''
+                  );
+                }}
+                value={values.selectedValue}
+              >
+                <option value={'Choose category you want to edit.'}>
+                  Choose category you want to edit.
+                </option>
+                {categories.data?.map((category, i) => (
+                  <option key={i} value={category.name}>
+                    {category.name}
+                  </option>
+                ))}
+              </Form.Select>
+              {values.selectedValue == '' ||
+              values.selectedValue == 'Choose category you want to edit.' ? (
+                <Button disabled type="submit" className={style.soloButton}>
+                  Change category
+                </Button>
+              ) : (
+                ''
+              )}
+            </Container>
+            <EditCategory categoryReducer={categoryReducer} />
           </>
-        ) : (
-          ''
         )}
-      </Container>
-      <EditCategory category={toEdit} />
+      </Formik>
     </>
   );
 };

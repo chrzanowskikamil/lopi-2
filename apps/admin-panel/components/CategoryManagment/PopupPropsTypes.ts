@@ -7,12 +7,11 @@ export type PopupProps = {
     modalShow: boolean;
     inputData: {
       categoryName: string;
-      productCount: string | null | number;
-      terms: boolean;
-      file: null | string;
+      description: string;
+      icon: string;
+      imagePath: string;
     };
   };
-
   show: boolean;
   onHide: VoidFunction;
 };

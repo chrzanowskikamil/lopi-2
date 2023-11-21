@@ -18,12 +18,12 @@ export const BuyNowBilboard: FC<BuyNowBilboardProps> = ({
   bilboardProduct,
 }) => {
   const router = useRouter();
-  let subtitle = '';
+  const subtitle = '';
 
   const splitDescriptionSubtitle = () => {
-    const output = bilboardProduct.shortDescription.split('.')[0] + '. ';
+    const subtitle = bilboardProduct.shortDescription.split('.')[0] + '. ';
 
-    return (subtitle = output);
+    return subtitle;
   };
 
   const splitDescriptionDescription = () => {

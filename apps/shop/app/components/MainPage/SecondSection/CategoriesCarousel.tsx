@@ -1,9 +1,11 @@
 'use client';
-import style from './CategoriesCarousel.module.scss';
-import { Carousel } from 'react-bootstrap';
+
 import { FC, useState } from 'react';
-import { FetchedCategoryResponse } from '../../../../types/FetchedCategoryResponse';
+
+import { Carousel } from 'react-bootstrap';
 import { CategoryTile } from './CategoryTile';
+import { FetchedCategoryResponse } from '../../../../types/FetchedCategoryResponse';
+import style from './CategoriesCarousel.module.scss';
 
 interface CategoriesCarouselProps {
   categories: FetchedCategoryResponse[];

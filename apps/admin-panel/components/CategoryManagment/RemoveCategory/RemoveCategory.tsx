@@ -1,53 +1,65 @@
 'use client';
 
-import style from '../CategoryManagment.module.scss';
-
 import * as formik from 'formik';
 
-import { useState } from 'react';
-
-import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
+import { Container } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-
-import OnRemovePopup from './RemoveCategoryPopup';
+import { OnRemovePopup } from './RemoveCategoryPopup';
+import style from '../CategoryManagment.module.scss';
+import useCategoryReducer from '../CategoryReducerHook';
+import { useFetchCategoriesQuery } from '../../../redux/reduxSlices/categories/categoriesApiSlice';
 
 const RemoveCategory: React.FC = () => {
   const { Formik } = formik;
-
-  const [modalShow, setModalShow] = useState(false);
-  const [toEdit, setToEdit] = useState('');
+  const categoryReducer = useCategoryReducer();
+  const categories = useFetchCategoriesQuery();
 
   return (
     <Container>
       <h1>Remove category:</h1>
 
       <Formik
-        onSubmit={() => {
-          setModalShow(true);
+        onSubmit={(values) => categoryReducer.onSubmit(values)}
+        initialValues={{
+          categoryName: '',
+          description: '',
+          icon: '',
+          imagePath: '',
+          selectedCategoryUid: '',
+          selectedValue: 'Choose category you want gone.',
         }}
-        initialValues={{}}
       >
-        {({ handleSubmit, handleReset }) => (
+        {({ handleSubmit, values, setFieldValue }) => (
           <Form noValidate onSubmit={handleSubmit}>
             <Form.Select
               aria-label="Default select example"
-              onChange={(e) => setToEdit(e.target.value)}
+              onChange={(e) => {
+                setFieldValue('selectedValue', e.currentTarget.value);
+                const selectedCategory = categories.data?.find(
+                  (category) => category.name === e.currentTarget.value
+                );
+
+                setFieldValue(
+                  'selectedCategoryUid',
+                  selectedCategory?.uid || ''
+                );
+              }}
+              value={values.selectedValue}
             >
-              <option>Choose category you want gone.</option>
-              <option>Shoes</option>
-              <option>T-shirts</option>
-              <option>Throusers</option>
+              <option value={'Choose category you want gone.'}>
+                Choose category you want gone.
+              </option>
+              {categories.data?.map((category, i) => (
+                <option key={i} value={category.name}>
+                  {category.name}
+                </option>
+              ))}
             </Form.Select>
             <br />
-            <OnRemovePopup
-              show={modalShow}
-              onHide={() => setModalShow(false)}
-              category={toEdit}
-              reset={handleReset}
-            />
+            <OnRemovePopup categoryReducer={categoryReducer} />
 
-            {toEdit === '' || toEdit === 'Choose category you want gone.' ? (
+            {values.selectedValue === 'Choose category you want gone.' ? (
               <Button
                 variant="primary"
                 type="submit"
@@ -60,7 +72,7 @@ const RemoveCategory: React.FC = () => {
               <Button
                 variant="primary"
                 type="submit"
-                onClick={() => setModalShow(true)}
+                onClick={() => handleSubmit()}
                 className={style.soloButton}
               >
                 Delete Category

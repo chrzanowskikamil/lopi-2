@@ -1,79 +1,37 @@
-import { useState } from 'react';
+import { FormikValues, useFormikContext } from 'formik';
 
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import { CategoryReducerProps } from '../CategoryReducerHook';
+import ModalSaveChanges from '../Components/SaveChangesModal';
+import { OnLeaveSubmitModal } from '../Components/OnLeaveSubmitModal';
+import { useRemoveCategoryMutation } from '../../../redux/reduxSlices/categories/categoriesApiSlice';
 
-type OnRemovePopupProps = {
-  show: boolean;
-  category: string;
-  onHide: VoidFunction;
-  reset: VoidFunction;
-};
+export const OnRemovePopup: React.FC<CategoryReducerProps> = ({
+  categoryReducer,
+}) => {
+  const [removeCategory, responseRemove] = useRemoveCategoryMutation();
+  const { values } = useFormikContext<FormikValues>();
 
-const OnRemovePopup: React.FC<OnRemovePopupProps> = ({ reset, ...others }) => {
-  const [submiting, setSubmiting] = useState(false);
+  const title = `Remove.`;
 
-  const handleSubmit = () => {
-    setSubmiting(true);
+  const body = (
+    <p>Are you sure you want to remove {values.selectedValue} category?</p>
+  );
+
+  const handleClick = () => {
+    removeCategory(values.selectedCategoryUid);
   };
 
-  const closeWindow = () => {
-    return (
-      others.onHide(),
-      setTimeout(() => {
-        setSubmiting(false);
-      }, 500)
-    );
-  };
-
-  return !submiting ? (
-    <Modal
-      {...others}
-      size="sm"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          <h5> Are you sure you want to remove {others.category} category?</h5>
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Footer>
-        {' '}
-        <Button variant="secondary" onClick={others.onHide}>
-          No
-        </Button>
-        <Button variant="primary" onClick={handleSubmit} type="submit">
-          Yes
-        </Button>
-      </Modal.Footer>
-    </Modal>
+  return !categoryReducer.state.popupSubmited ? (
+    <ModalSaveChanges
+      handleClick={handleClick}
+      categoryReducer={categoryReducer}
+      title={title}
+      body={body}
+    />
   ) : (
-    <Modal
-      {...others}
-      size="sm"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-      backdrop={true}
-      onHide={() => {
-        closeWindow();
-      }}
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          <h4>Data send. </h4>
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <p>Success!</p>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="primary" onClick={closeWindow}>
-          Close the window.
-        </Button>
-      </Modal.Footer>
-    </Modal>
+    <OnLeaveSubmitModal
+      categoryReducer={categoryReducer}
+      response={responseRemove}
+    />
   );
 };
-
-export default OnRemovePopup;

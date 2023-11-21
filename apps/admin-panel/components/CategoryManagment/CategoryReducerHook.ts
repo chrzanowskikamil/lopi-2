@@ -1,7 +1,7 @@
 import { useReducer } from 'react';
 
-export interface ProductReducerProps {
-  productReducer: {
+export interface CategoryReducerProps {
+  categoryReducer: {
     state: StateProps;
     onSubmit: (values: ValuesOnDispatchProps) => Promise<void>;
     onHide: (values: ValuesOnDispatchProps) => void;
@@ -9,37 +9,53 @@ export interface ProductReducerProps {
     closeSubmitedPopup: (values: ValuesOnDispatchProps) => void;
   };
 }
-export interface StateProps {
+
+interface StateProps {
   blocked: boolean;
   modalShow: boolean;
   popupSubmited: boolean;
   inputData: {
-    categoryPick: string;
-    productPick: string;
-    productName: string;
-    productCount: string | number;
-    terms: boolean;
-    file: null | string;
+    categoryName: string;
+    description: string;
+    icon: string;
+    imagePath: string;
   };
+  selectedCategoryUid: string;
+  selectedValue: string;
 }
+
 interface ActionProps {
   type:
     | 'on_submit'
     | 'on_hide'
     | 'on_submit_popup'
     | 'close_submited_popup'
-    | 'category_pick';
+    | 'on_edit';
   values: {
-    categoryPick: string;
-    productPick: string;
-    productName: string;
-    productCount: string | number;
-    terms: boolean;
-    file: null | string;
+    categoryName: string;
+    description: string;
+    icon: string;
+    imagePath: string;
+    selectedCategoryUid: string;
+    selectedValue: string;
   };
 }
 
-const productReducer = (state: StateProps, action: ActionProps) => {
+export const initialState: StateProps = {
+  blocked: false,
+  modalShow: false,
+  popupSubmited: false,
+  inputData: {
+    categoryName: '',
+    description: '',
+    icon: '',
+    imagePath: '',
+  },
+  selectedCategoryUid: '',
+  selectedValue: '',
+};
+
+export const categoryReducer = (state: StateProps, action: ActionProps) => {
   switch (action.type) {
     case 'on_submit': {
       return {
@@ -70,37 +86,28 @@ const productReducer = (state: StateProps, action: ActionProps) => {
         modalShow: false,
       };
     }
+    case 'on_edit': {
+      return {
+        ...state,
+        inputData: action.values,
+      };
+    }
     default: {
-      return state;
+      throw Error('Unknown action: ' + action.type);
     }
   }
 };
 
-const initialState: StateProps = {
-  blocked: false,
-  modalShow: false,
-  popupSubmited: false,
-  inputData: {
-    categoryPick: 'Choose category you want add product to.',
-    productPick: 'Choose product you want to edit.',
-    productName: '',
-    productCount: '',
-    terms: true,
-    file: null,
-  },
-};
-
 export interface ValuesOnDispatchProps {
-  categoryPick: string;
-  productPick: string;
-  productName: string;
-  productCount: string | number;
-  terms: boolean;
-  file: null | string;
+  categoryName: string;
+  description: string;
+  icon: string;
+  imagePath: string;
+  selectedCategoryUid: string;
+  selectedValue: string;
 }
-
-const useProductReducer = () => {
-  const [state, dispatch] = useReducer(productReducer, initialState);
+const useCategoryReducer = () => {
+  const [state, dispatch] = useReducer(categoryReducer, initialState);
 
   const onSubmit = async (values: ValuesOnDispatchProps) => {
     dispatch({
@@ -127,4 +134,4 @@ const useProductReducer = () => {
   return { state, onSubmit, onHide, onSubmitPopup, closeSubmitedPopup };
 };
 
-export default useProductReducer;
+export default useCategoryReducer;

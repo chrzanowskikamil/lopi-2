@@ -1,9 +1,9 @@
-import style from './CategoryTile.module.scss';
+import { AppRoutes } from '@lopi-2/common';
 import { FC } from 'react';
+import { FetchedCategoryResponse } from '../../../../../shop/types/FetchedCategoryResponse';
 import Image from 'next/image';
 import Link from 'next/link';
-import { AppRoutes } from '@lopi-2/common';
-import { FetchedCategoryResponse } from '../../../../../shop/types/FetchedCategoryResponse';
+import style from './CategoryTile.module.scss';
 
 interface CategoryTileProps {
   category: FetchedCategoryResponse;
