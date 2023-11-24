@@ -21,20 +21,6 @@ export async function generateStaticParams() {
         };
     })
     .filter(Boolean);
-  if (!categories.length) {
-    return [];
-  }
-
-  return categories
-    .map((categoryName) => {
-      if (categoryName.name === 'name' || categoryName.name === null) {
-        return;
-      } else
-        return {
-          category: categoryName.name,
-        };
-    })
-    .filter(Boolean);
 }
 
 const CategoriesPage = async ({ params }: { params: { category: string } }) => {
@@ -69,9 +55,12 @@ const CategoriesPage = async ({ params }: { params: { category: string } }) => {
 
   if (checkIfProductsExist(products)) {
     return (
-      <h1 className="d-flex justify-content-center pt-4">
-        There are no products in this category
-      </h1>
+      <div
+        className="d-flex justify-content-center pt-4"
+        style={{ height: '60vh' }}
+      >
+        <h1>There are no products in this category</h1>
+      </div>
     );
   } else if (categoryUUID !== undefined && products !== undefined) {
     {

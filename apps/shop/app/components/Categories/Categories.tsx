@@ -1,10 +1,11 @@
 'use client';
 
-import { Breadcrumbs, CountableArray, CrumbsFactory } from '@lopi-2/common';
+import { Breadcrumbs, CountableArray } from '@lopi-2/common';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { FC, useCallback, useMemo } from 'react';
 import { SortOrder, SortParams } from './CategoriesEnums';
 
+import { CrumbsFactory } from '@lopi-2/common';
 import { FetchedCategoryResponse } from '../../../types/FetchedCategoryResponse';
 import { FiltersModal } from './FiltersModal';
 import { INITIAL_ASCENDING_VALUE } from './CategoriesVariables';
