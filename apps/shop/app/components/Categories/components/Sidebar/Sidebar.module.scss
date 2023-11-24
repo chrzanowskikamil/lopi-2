@@ -79,7 +79,6 @@ $pallete: shop-variables.$theme-colors;
   justify-content: space-between;
   z-index: 1;
   box-shadow: none;
-  padding: 0 map-get($spacer, 22);
   padding: 0 map-get($spacer, 22) map-get($spacer, 22) map-get($spacer, 22);
   font-size: $sidebarTitleFontSize;
 

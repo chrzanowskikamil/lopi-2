@@ -18,7 +18,7 @@ $button-width: 155px;
 .sortButtonDesktop {
   display: none;
 
-  @media (min-width: map-get($breakpoints, xl)) {
+  @media (min-width: map-get($breakpoints, lg)) {
     display: block;
     margin-left: $sortButtonMargin;
   }
@@ -26,10 +26,10 @@ $button-width: 155px;
 
 .filterButtonsMobile {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 
-  @media (min-width: map-get($breakpoints, xl)) {
+  @media (min-width: map-get($breakpoints, lg)) {
     display: none;
   }
 }

@@ -108,7 +108,7 @@ export const Categories: FC<CategoriesProps> = ({
         </Col>
       </Row>
       <Row>
-        <Col className="d-none d-xl-flex" xl={4}>
+        <Col className="d-none d-lg-flex" lg={4}>
           <Sidebar
             onSidebarFilter={categoriesReducer.onSidebarFilter}
             activeCategory={title}
@@ -116,7 +116,7 @@ export const Categories: FC<CategoriesProps> = ({
             productCountInCategories={productCounts}
           />
         </Col>
-        <Col xl={8}>
+        <Col lg={8}>
           <ProductsDisplay
             onProductsDisplay={categoriesReducer.onProductsDisplay}
           />
