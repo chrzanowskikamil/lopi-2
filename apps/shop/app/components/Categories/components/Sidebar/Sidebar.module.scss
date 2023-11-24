@@ -18,7 +18,6 @@ $pallete: shop-variables.$theme-colors;
   align-self: self-start;
 
   @media (min-width: map-get($breakpoints, lg)) {
-    height: $sidebarHeight;
     width: $sidebarWidth;
   }
 }
@@ -80,7 +79,7 @@ $pallete: shop-variables.$theme-colors;
   justify-content: space-between;
   z-index: 1;
   box-shadow: none;
-  padding: 0 map-get($spacer, 22);
+  padding: 0 map-get($spacer, 22) map-get($spacer, 22) map-get($spacer, 22);
   font-size: $sidebarTitleFontSize;
 
   @media (min-width: map-get($breakpoints, lg)) {

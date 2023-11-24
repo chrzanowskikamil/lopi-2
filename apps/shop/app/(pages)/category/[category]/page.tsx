@@ -55,9 +55,12 @@ const CategoriesPage = async ({ params }: { params: { category: string } }) => {
 
   if (checkIfProductsExist(products)) {
     return (
-      <h1 className="d-flex justify-content-center pt-4">
-        There are no products in this category
-      </h1>
+      <div
+        className="d-flex justify-content-center pt-4"
+        style={{ height: '60vh' }}
+      >
+        <h1>There are no products in this category</h1>
+      </div>
     );
   } else if (categoryUUID !== undefined && products !== undefined) {
     {
