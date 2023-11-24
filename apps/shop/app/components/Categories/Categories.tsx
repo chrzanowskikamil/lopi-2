@@ -21,7 +21,7 @@ import { useCategoriesReducer } from './useCategoriesReducer';
 interface CategoriesProps {
   title: string;
   categories: FetchedCategoryResponse[];
-  products: ProductsResponse;
+  products: ProductsResponse | undefined;
   categoryUUID: string;
   productCounts: CountableArray;
 }
@@ -33,8 +33,7 @@ export const Categories: FC<CategoriesProps> = ({
   categoryUUID,
   productCounts,
 }) => {
-  const categoriesReducer = useCategoriesReducer(initalProducts);
-
+  const categoriesReducer = useCategoriesReducer(initalProducts?.content);
   const sortProductsByParams = useCallback(
     async (sortParam: string) => {
       const sortParams = sortParam;

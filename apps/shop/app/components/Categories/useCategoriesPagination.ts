@@ -6,7 +6,7 @@ export const loadMoreProducts = async (
     sortOrder: boolean;
     sortType: string;
     currentPage: number;
-    allProducts: Product[];
+    allProducts: Product[] | undefined;
     onShowMore: (allProducts: Product[], pageNumber: number) => void;
   },
   categoryUUID: string
@@ -19,7 +19,10 @@ export const loadMoreProducts = async (
     ascending: onLoadMoreProducts.sortOrder,
   });
 
-  if (newProducts !== undefined) {
+  if (
+    newProducts !== undefined &&
+    onLoadMoreProducts.allProducts !== undefined
+  ) {
     onLoadMoreProducts.onShowMore(
       [...onLoadMoreProducts.allProducts, ...newProducts.content],
       nextPage

@@ -1,10 +1,10 @@
-import { INITIAL_CURRENT_PAGE } from './CategoriesVariables';
 import { SortOrder, SortParams } from './CategoriesEnums';
 
+import { INITIAL_CURRENT_PAGE } from './CategoriesVariables';
 import { Product } from '../../../types/ProductsResponse';
 import { useReducer } from 'react';
-import { useSearchParams as useSearchParamsOld } from '../../hooks/useSearchParams';
 import { useSearchParams } from '@lopi-2/common';
+import { useSearchParams as useSearchParamsOld } from '../../hooks/useSearchParams';
 
 export interface StateProps {
   maxPriceFilterValue: number;
@@ -13,7 +13,7 @@ export interface StateProps {
   currentPage: number;
   minPriceFilterValue: number;
   availability: boolean;
-  allProducts: Product[];
+  allProducts: Product[] | undefined;
 }
 
 type ActionProps =
@@ -71,7 +71,7 @@ const categoriesReducer = (state: StateProps, action: ActionProps) => {
   }
 };
 
-export const useCategoriesReducer = ({ content }: { content: Product[] }) => {
+export const useCategoriesReducer = (content: Product[] | undefined) => {
   const { getParam } = useSearchParamsOld();
   const searchParams = useSearchParams();
 

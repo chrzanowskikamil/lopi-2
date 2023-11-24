@@ -10,7 +10,7 @@ interface ProductsDisplayProps {
     minPriceFilterValue: number;
     maxPriceFilterValue: number;
     availability: boolean;
-    allProducts: Product[];
+    allProducts: Product[] | undefined;
   };
 }
 
@@ -22,33 +22,37 @@ export const ProductsDisplay: FC<ProductsDisplayProps> = ({
   const availible = onProductsDisplay.availability;
 
   const sortBySearchParams = () => {
-    const productArray = [...onProductsDisplay.allProducts];
+    if (onProductsDisplay.allProducts === undefined) {
+      return [];
+    } else {
+      const productArray = [...onProductsDisplay.allProducts];
 
-    const filteredProducts = productArray.filter((product) => {
-      const price =
-        product.discountPrice !== null
-          ? product.discountPrice
-          : product.regularPrice;
+      const filteredProducts = productArray.filter((product) => {
+        const price =
+          product.discountPrice !== null
+            ? product.discountPrice
+            : product.regularPrice;
 
-      const priceInFilterRange =
-        (!!filterPriceLow && price < filterPriceLow) ||
-        (!!filterPriceHight && price >= filterPriceHight);
+        const priceInFilterRange =
+          (!!filterPriceLow && price < filterPriceLow) ||
+          (!!filterPriceHight && price >= filterPriceHight);
 
-      const productAvailiblityFilter =
-        (availible && product.status !== 'ACTIVE') ||
-        (!availible && product.status === 'ACTIVE');
+        const productAvailiblityFilter =
+          (availible && product.status !== 'ACTIVE') ||
+          (!availible && product.status === 'ACTIVE');
 
-      if (priceInFilterRange) {
-        return false;
-      }
-      if (productAvailiblityFilter) {
-        return false;
-      }
+        if (priceInFilterRange) {
+          return false;
+        }
+        if (productAvailiblityFilter) {
+          return false;
+        }
 
-      return true;
-    });
+        return true;
+      });
 
-    return filteredProducts;
+      return filteredProducts;
+    }
   };
 
   const RenderedProducts = sortBySearchParams().map((product, i) => {
@@ -62,12 +66,24 @@ export const ProductsDisplay: FC<ProductsDisplayProps> = ({
       />
     );
   });
-
-  return (
-    <>
-      <Container>
-        <Row className={style.products}>{...RenderedProducts}</Row>
-      </Container>
-    </>
-  );
+  if (onProductsDisplay.allProducts === undefined) {
+    return (
+      <>
+        <Container>
+          <Row>
+            <h3 className="d-flex pt-5 w-100 justify-content-center">
+              There are no products in this category
+            </h3>
+          </Row>
+        </Container>
+      </>
+    );
+  } else if (onProductsDisplay.allProducts !== undefined)
+    return (
+      <>
+        <Container>
+          <Row className={style.products}>{...RenderedProducts}</Row>
+        </Container>
+      </>
+    );
 };

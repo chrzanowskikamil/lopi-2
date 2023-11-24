@@ -1,5 +1,4 @@
 import { Categories } from '../../../components/Categories/Categories';
-import { ProductsResponse } from '../../../../types/ProductsResponse';
 import { getCategories } from '../../../../actions/getCategories';
 import { getCategoryQuantityByUUID } from '../../../../actions/getCategoryQuantityByUUID';
 import { getProducts } from '../../../../actions/getProducts';
@@ -49,20 +48,7 @@ const CategoriesPage = async ({ params }: { params: { category: string } }) => {
 
   const products = await getProducts(categoryUUID);
 
-  const checkIfProductsExist = (products: ProductsResponse | undefined) => {
-    return !products || !products.content || products.content.length === 0;
-  };
-
-  if (checkIfProductsExist(products)) {
-    return (
-      <div
-        className="d-flex justify-content-center pt-4"
-        style={{ height: '60vh' }}
-      >
-        <h1>There are no products in this category</h1>
-      </div>
-    );
-  } else if (categoryUUID !== undefined && products !== undefined) {
+  if (categoryUUID) {
     {
       return (
         <>
