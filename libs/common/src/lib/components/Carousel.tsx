@@ -1,9 +1,9 @@
 'use client';
 
 import { Carousel as BootstrapCarousel } from 'react-bootstrap';
-import Image from 'next/dist/client/image';
 import { Button } from './Button';
 import { FC } from 'react';
+import Image from 'next/dist/client/image';
 
 interface CarouselImageProps {
   src: string;

@@ -25,6 +25,7 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "../../apps/shop/types/FetchedCategoryResponse.ts",
-    "../../apps/shop/types/ApiErrors.ts"
+    "src/lib/types/ApiErrors.ts",
+    "../../apps/admin-panel/hooks/useAccountActivation.tsx"
   ]
 }

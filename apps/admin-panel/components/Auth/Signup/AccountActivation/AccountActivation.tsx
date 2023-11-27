@@ -1,19 +1,17 @@
 'use client';
-import style from './AccountActivation.module.scss';
-import {
-  AppRoutes,
-  exhaustiveCheck,
-  useAccountActivation,
-} from '@lopi-2/common';
-import { FC, useEffect } from 'react';
 
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useProgressBar } from '../../../../hooks/useProgressBar';
 import {
   AccountActivationErrorMessage,
   AccountActivationMessage,
   AccountActivationSuccessMessage,
 } from './AccountActivationMessages';
+import { AppRoutes, exhaustiveCheck } from '@lopi-2/common';
+import { FC, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+
+import style from './AccountActivation.module.scss';
+import { useAccountActivation } from '../../../../hooks/useAccountActivation';
+import { useProgressBar } from '../../../../hooks/useProgressBar';
 
 const START_PROGRESS_VALUE = 100;
 const PROGRESS_STEP = 2;

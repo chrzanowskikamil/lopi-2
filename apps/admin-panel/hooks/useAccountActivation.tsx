@@ -1,6 +1,8 @@
 'use client';
+
 import { useEffect, useState } from 'react';
-import { activateUser } from '../security';
+
+import { activateUser } from '@lopi-2/common';
 
 type ActivationStatus = 'pending' | 'success' | 'error';
 

@@ -19,6 +19,21 @@ interface EditCategoryProps extends AddCategoryProps {
   previousUid: string;
 }
 
+const unversalHeaders = () => {
+  return {
+    accept: '*/*',
+    Authorization: `Bearer ${getToken()}`,
+  };
+};
+
+const unversalHeadersAppJson = () => {
+  return {
+    accept: '*/*',
+    Authorization: `Bearer ${getToken()}`,
+    'Content-Type': 'application/json',
+  };
+};
+
 export const categoriesApiSlice = createApi({
   reducerPath: ReduxReducerPaths.categoriesApiSlice,
   baseQuery: fetchBaseQuery({
@@ -34,11 +49,7 @@ export const categoriesApiSlice = createApi({
 
     addCategory: builder.mutation<void, AddCategoryProps>({
       query(add) {
-        const headers = {
-          accept: '*/*',
-          Authorization: `Bearer ${getToken()}`,
-          'Content-Type': 'application/json',
-        };
+        const headers = unversalHeadersAppJson();
 
         return {
           url: `/categories`,
@@ -57,11 +68,7 @@ export const categoriesApiSlice = createApi({
 
     editCategory: builder.mutation<void, EditCategoryProps>({
       query(edit) {
-        const headers = {
-          accept: '*/*',
-          Authorization: `Bearer ${getToken()}`,
-          'Content-Type': 'application/json',
-        };
+        const headers = unversalHeadersAppJson();
 
         return {
           url: `/categories/${edit.previousUid}`,
@@ -80,10 +87,7 @@ export const categoriesApiSlice = createApi({
 
     removeCategory: builder.mutation<void, string>({
       query(uid) {
-        const headers = {
-          accept: '*/*',
-          Authorization: `Bearer ${getToken()}`,
-        };
+        const headers = unversalHeaders();
 
         return {
           url: `/categories/${uid}`,

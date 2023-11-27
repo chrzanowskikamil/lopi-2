@@ -24,7 +24,9 @@
     "**/*.js",
     "**/*.jsx",
     "../../apps/shop/.next/types/**/*.ts",
-    "../../dist/apps/shop/.next/types/**/*.ts"
+    "../../dist/apps/shop/.next/types/**/*.ts",
+    "../../libs/common/src/lib/helpers/apiCallsWrench.ts",
+    "../../libs/common/src/lib/types/ApiErrors.ts"
   ],
   "exclude": [
     "node_modules",

@@ -1,25 +1,19 @@
-import { REVALIDATE_TIME } from '@lopi-2/common';
 import { Product } from '../types/ProductsResponse';
+import { wrenchRevalidate } from '@lopi-2/common';
 
 export async function getProduct(uid: string): Promise<Product | null> {
-  try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}products/${uid}
-      `,
-      { next: { revalidate: REVALIDATE_TIME } }
-    );
+  return wrenchRevalidate
+    .url(`products/${uid}`)
+    .get()
+    .res(async (res) => {
+      if (!res.ok) {
+        console.error(`Server responded with ${res.statusText}`);
 
-    if (!res.ok) {
-      console.error(`Server responsed with ${res.statusText}`);
+        return null;
+      } else {
+        const product: Product = await res.json();
 
-      return null;
-    }
-
-    const product: Product = await res.json();
-
-    return product;
-  } catch (error) {
-    console.error(`Fetching error: ${error}`);
-    throw error;
-  }
+        return product;
+      }
+    });
 }

@@ -1,10 +1,18 @@
 import { getProduct } from './getProduct';
+import { wrenchCredencials } from '@lopi-2/common';
+
+type ProductProductsResponse = { products: { uid: string }[] };
 
 export const getUpsellProducts = async () => {
+  const getProductsTable: ProductProductsResponse = await wrenchCredencials
+    .url('products')
+    .get()
+    .json();
+
   const similarProducts = await Promise.all([
-    getProduct('deacbd60-9d26-4d4c-bc08-af872a0245d6'),
-    getProduct('f7d21472-688c-4049-95ce-a466a14cfcf0'),
-    getProduct('dc8ba2a5-ae58-4494-a429-e59c0eee1617'),
+    getProduct(getProductsTable.products[0].uid),
+    getProduct(getProductsTable.products[1].uid),
+    getProduct(getProductsTable.products[2].uid),
   ]);
 
   return similarProducts;

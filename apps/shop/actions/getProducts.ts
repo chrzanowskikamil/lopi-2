@@ -5,8 +5,8 @@ import {
 } from '../app/components/Categories/CategoriesVariables';
 
 import { ProductsResponse } from '../types/ProductsResponse';
-import { REVALIDATE_TIME } from '@lopi-2/common';
 import { SortOrder } from '../app/components/Categories/CategoriesEnums';
+import { wrenchRevalidate } from '@lopi-2/common';
 
 type GetProductType = {
   size?: number;
@@ -33,12 +33,6 @@ export async function getProducts(
     ascending: String(ascending),
   });
 
-  const url = `
-  ${
-    process.env.NEXT_PUBLIC_API_BASE_URL
-  }products/by-category/${categoryUUID}/sorted?${queryParams.toString()}
-    `;
-
   const isSyntaxError = (error: unknown) => {
     if (error instanceof Error) {
       if (
@@ -53,21 +47,26 @@ export async function getProducts(
   if (!categoryUUID) {
     return undefined;
   } else {
-    try {
-      const res = await fetch(url, { next: { revalidate: REVALIDATE_TIME } });
+    return wrenchRevalidate
+      .url(
+        `products/by-category/${categoryUUID}/sorted?${queryParams.toString()}`
+      )
+      .get()
+      .res(async (res) => {
+        if (!res.ok) {
+          console.log(new Error(`Server responsed with ${res.statusText}`));
+        } else {
+          const product: ProductsResponse = await res.json();
 
-      if (!res.ok) throw new Error(`Server responsed with ${res.statusText}`);
+          return product;
+        }
+      })
+      .catch((error) => {
+        if (isSyntaxError(error)) {
+          console.error('No more products in this category.');
 
-      const product: ProductsResponse = await res.json();
-
-      return product;
-    } catch (error) {
-      if (isSyntaxError(error)) {
-        console.error('No more products in this category.');
-      } else {
-        console.error(`Fetching error: ${error}`);
-        throw error;
-      }
-    }
+          return undefined;
+        }
+      });
   }
 }

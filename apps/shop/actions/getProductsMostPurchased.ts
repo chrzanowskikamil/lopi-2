@@ -1,5 +1,5 @@
 import { Product } from '../types/ProductsResponse';
-import { REVALIDATE_TIME } from '@lopi-2/common';
+import { wrenchRevalidate } from '@lopi-2/common';
 
 export async function getProductsMostPurchased(): Promise<Product[]> {
   const isSyntaxError = (error: unknown) => {
@@ -13,25 +13,22 @@ export async function getProductsMostPurchased(): Promise<Product[]> {
     }
   };
 
-  try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}products/promotions
-      `,
-      { next: { revalidate: REVALIDATE_TIME } }
-    );
+  return wrenchRevalidate
+    .url('products/promotions')
+    .get()
+    .res(async (res) => {
+      if (!res.ok) throw new Error(`Server responsed with ${res.statusText}`);
 
-    if (!res.ok) throw new Error(`Server responsed with ${res.statusText}`);
+      const products: Product[] = await res.json();
 
-    const products: Product[] = await res.json();
-
-    //TODO: this should be limited on the BE side
-    return products.slice(0, 4);
-  } catch (error) {
-    if (isSyntaxError(error)) {
-      throw alert('No more products in this category.');
-    } else {
-      console.error(`Fetching error: ${error}`);
-      throw error;
-    }
-  }
+      //  //TODO: this should be limited on the BE side
+      return products.slice(0, 4);
+    })
+    .catch((error) => {
+      if (isSyntaxError(error)) {
+        throw new Error('No more products in this category.');
+      } else {
+        return error;
+      }
+    });
 }
