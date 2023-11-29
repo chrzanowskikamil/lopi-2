@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { getPaymentStatus } from '../../actions/orderApi';
 
 export const useStatusPayment = () => {
-  const storedOrderId = typeof window !== 'undefined' ? localStorage.getItem('payUOrderId') : null;
+  const storedOrderId =
+    typeof window !== 'undefined' ? localStorage.getItem('payUOrderId') : null;
   const orderData = storedOrderId ? { orderId: storedOrderId } : null;
   const orderId = orderData?.orderId;
   const [paymentStatus, setPaymentStatus] = useState<string | null>(null);

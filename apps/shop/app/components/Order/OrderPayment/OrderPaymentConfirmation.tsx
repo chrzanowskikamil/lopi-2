@@ -27,9 +27,8 @@ export const OrderPaymentConfirmation: FC = () => {
           <h2>Status płatności PayU</h2>
           {paymentStatus === PaymentStatus.COMPLETED && <CompletedPayment />}
           {paymentStatus === PaymentStatus.NEW && <NewPayment />}
-          {paymentStatus !== PaymentStatus.COMPLETED && paymentStatus !== PaymentStatus.NEW && (
-            <InProgressPayment />
-          )}
+          {paymentStatus !== PaymentStatus.COMPLETED &&
+            paymentStatus !== PaymentStatus.NEW && <InProgressPayment />}
         </Col>
       </Row>
     </Container>

@@ -6,9 +6,7 @@ export const CompletedPayment: FC = () => {
   return (
     <>
       <p>Płatność została zrealizowana! Dziękujemy i zapraszamy ponownie!</p>
-      <Link href={AppRoutes.getHomePath()}>
-        &lt; powrót do strony głównej
-      </Link>
+      <Link href={AppRoutes.getHomePath()}>&lt; powrót do strony głównej</Link>
     </>
   );
 };

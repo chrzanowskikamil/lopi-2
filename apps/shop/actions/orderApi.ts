@@ -114,9 +114,7 @@ export async function createPayUOrder(orderUuid: string | undefined) {
 }
 
 export async function getPaymentStatus(orderUuid: string) {
-
   try {
-
     return wrenchCredencials
       .url(`payu/orders/${orderUuid}`)
       .get()
@@ -131,9 +129,7 @@ export async function getPaymentStatus(orderUuid: string) {
         const payUOrderStatusResponse: PayUOrderStatusResponse =
           await res.json();
 
-        if (
-          payUOrderStatusResponse.orders?.length > 0
-        ) {
+        if (payUOrderStatusResponse.orders?.length > 0) {
           const firstOrder = payUOrderStatusResponse.orders[0];
           const orderStatus = firstOrder.status;
 
@@ -148,5 +144,4 @@ export async function getPaymentStatus(orderUuid: string) {
     console.error(`Getting payment status error: ${error}`);
     throw error;
   }
-
 }
