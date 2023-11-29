@@ -55,7 +55,7 @@ export const useCategoriesReducer = ({ content }: { content: Product[] }) => {
   const [state, dispatch] = useReducer(categoriesReducer, initialState);
 
   const onChangeParams = async (
-    params: any,
+    params: { sortType: string; sortOrder: boolean; availability: boolean },
     categoryUUID: string = state.currentCategoryUUID
   ) => {
     try {
