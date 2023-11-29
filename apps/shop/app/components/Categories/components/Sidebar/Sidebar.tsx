@@ -5,6 +5,7 @@ import {
   CountableArray,
   MultiRangeSlider,
   RangeSliderValues,
+  useSearchParams,
 } from '@lopi-2/common';
 import { Badge, Form, ListGroup } from 'react-bootstrap';
 
@@ -12,27 +13,22 @@ import { FC } from 'react';
 import { FetchedCategoryResponse } from '../../../../../types/FetchedCategoryResponse';
 import Link from 'next/link';
 import styles from './Sidebar.module.scss';
+import { useCategoriesContext } from '../../../../contexts/CategoriesContext';
 
 interface SidebarProps {
-  onSidebarFilter: {
-    onAvailabilityFilterChange: (param: boolean) => void;
-    availability: boolean;
-    minPriceFilterValue: number;
-    maxPriceFilterValue: number;
-    onLowerMoneyValueFilterChange: (param: number) => void;
-    onHigherMoneyValueFilterChange: (param: number) => void;
-  };
   activeCategory: string;
   categories: FetchedCategoryResponse[];
   productCountInCategories: CountableArray;
 }
 
 export const Sidebar: FC<SidebarProps> = ({
-  onSidebarFilter,
   activeCategory,
   categories,
   productCountInCategories,
 }) => {
+  const { categoriesReducer } = useCategoriesContext();
+  const { applyParams, params } = useSearchParams();
+
   const getItemClassName = (item: string) =>
     activeCategory === item ? styles.activeListItem : styles.listItem;
 
@@ -58,11 +54,11 @@ export const Sidebar: FC<SidebarProps> = ({
   ));
 
   const handleRangeSlider = (e: RangeSliderValues) => {
-    if (onSidebarFilter.minPriceFilterValue !== e.minValue) {
-      onSidebarFilter.onLowerMoneyValueFilterChange(e.minValue);
+    if (params.minPrice !== e.minValue) {
+      applyParams({ minPrice: e.minValue });
     }
-    if (onSidebarFilter.maxPriceFilterValue !== e.maxValue) {
-      onSidebarFilter.onHigherMoneyValueFilterChange(e.maxValue);
+    if (params.maxPrice !== e.maxValue) {
+      applyParams({ maxPrice: e.maxValue });
     }
   };
 
@@ -75,10 +71,8 @@ export const Sidebar: FC<SidebarProps> = ({
       </ListGroup>
       <h3 className={styles.title}>Cena</h3>
       <MultiRangeSlider
-        minValue={onSidebarFilter.minPriceFilterValue}
-        maxValue={onSidebarFilter.maxPriceFilterValue}
-        // TODO: it should pass value based on the max price of the visible products
-        maxValueLimit={200}
+        categoriesReducer={categoriesReducer}
+        params={params}
         onChange={(e: RangeSliderValues) => handleRangeSlider(e)}
       />
 
@@ -88,12 +82,10 @@ export const Sidebar: FC<SidebarProps> = ({
         label="DOSTĘPNOŚĆ"
         type="switch"
         id="productAvailabilitySwitch"
-        onChange={() =>
-          onSidebarFilter.onAvailabilityFilterChange(
-            !onSidebarFilter.availability
-          )
-        }
-        checked={onSidebarFilter.availability}
+        onChange={() => {
+          return applyParams({ availability: !params.availability });
+        }}
+        checked={params.availability}
       />
     </aside>
   );

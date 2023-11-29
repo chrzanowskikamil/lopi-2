@@ -1,10 +1,10 @@
 import { Product } from '../../../../shop/types/ProductsResponse';
+import { SearchParamTypes } from '@lopi-2/common';
 import { getProducts } from '../../../../shop/actions/getProducts';
 
 export const loadMoreProducts = async (
+  params: Partial<SearchParamTypes>,
   onLoadMoreProducts: {
-    sortOrder: boolean;
-    sortType: string;
     currentPage: number;
     allProducts: Product[] | undefined;
     onShowMore: (allProducts: Product[], pageNumber: number) => void;
@@ -15,8 +15,8 @@ export const loadMoreProducts = async (
 
   const newProducts = await getProducts(categoryUUID, {
     page: nextPage,
-    sortOrder: onLoadMoreProducts.sortType,
-    ascending: onLoadMoreProducts.sortOrder,
+    sortType: params.sortType,
+    sortOrder: params.sortOrder,
   });
 
   if (

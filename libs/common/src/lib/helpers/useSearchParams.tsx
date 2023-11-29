@@ -1,8 +1,10 @@
+import { SortKeys, SortParams, SortType } from './searchParamsEnums';
 import {
+  useSearchParams as useNextSearchParams,
   usePathname,
   useRouter,
-  useSearchParams as useNextSearchParams,
 } from 'next/navigation';
+
 import { SearchParamTypes } from './searchParametersModels';
 
 interface SearchParamsHook {
@@ -12,10 +14,6 @@ interface SearchParamsHook {
     replace?: boolean
   ) => void;
 }
-
-const AVAILABILITY_KEY = 'availability';
-const MIN_PRICE = 'minPrice';
-const MAX_PRICE = 'maxPrice';
 
 export const useSearchParams = (): SearchParamsHook => {
   const searchParams = useNextSearchParams()!;
@@ -37,24 +35,70 @@ export const useSearchParams = (): SearchParamsHook => {
 
   return {
     params: {
-      availability: coerceBoolean(
-        searchParams?.get(AVAILABILITY_KEY) || 'true'
-      ),
-      minPrice: Math.max(Number(searchParams?.get(MIN_PRICE)), 0),
-      maxPrice: Math.max(Number(searchParams?.get(MAX_PRICE)), 100),
+      sortName: sortControler(searchParams?.get(SortKeys.SORT_NAME)),
+      sortType: sortTypeControler(searchParams?.get(SortKeys.SORT_NAME)),
+      sortOrder: sortOrderControler(searchParams?.get(SortKeys.SORT_NAME)),
+      availability: coerceBoolean(searchParams?.get(SortKeys.AVAILABILITY)),
+      minPrice: Math.max(Number(searchParams?.get(SortKeys.MIN_PRICE)), 0),
+      maxPrice: Math.max(Number(searchParams?.get(SortKeys.MAX_PRICE)), 0),
     },
     applyParams,
   };
 };
 
-const coerceBoolean = (param: string | null): boolean => {
+const coerceBoolean = (param: string | null) => {
   switch (param) {
     case 'true':
       return true;
     case 'false':
       return false;
     default:
+      return true;
+  }
+};
+
+const sortControler = (sort: string | null): string => {
+  switch (sort) {
+    case SortParams.PRICE_ASC:
+      return SortParams.PRICE_ASC;
+    case SortParams.PRICE_DSC:
+      return SortParams.PRICE_DSC;
+    case SortParams.PRODUCT_NAME_ASC:
+      return SortParams.PRODUCT_NAME_ASC;
+    case SortParams.PRODUCT_NAME_DSC:
+      return SortParams.PRODUCT_NAME_DSC;
+    default:
+      return SortParams.PRICE_ASC;
+  }
+};
+
+export const sortTypeControler = (sort: string | null): string => {
+  switch (sort) {
+    case SortParams.PRICE_ASC:
+      return SortType.PRICE;
+    case SortParams.PRICE_DSC:
+      return SortType.PRICE;
+    case SortParams.PRODUCT_NAME_ASC:
+      return SortType.NAME;
+    case SortParams.PRODUCT_NAME_DSC:
+      return SortType.NAME;
+    default:
+      return SortType.PRICE;
+  }
+};
+
+export const sortOrderControler = (sort: string | null) => {
+  switch (sort) {
+    case SortParams.PRICE_ASC:
+      return true;
+    case SortParams.PRICE_DSC:
       return false;
+    case SortParams.PRODUCT_NAME_ASC:
+      return true;
+    case SortParams.PRODUCT_NAME_DSC:
+      return false;
+    default:
+      return true;
   }
 };
 

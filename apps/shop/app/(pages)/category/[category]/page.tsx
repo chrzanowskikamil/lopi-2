@@ -55,7 +55,6 @@ const CategoriesPage = async ({ params }: { params: { category: string } }) => {
           <Categories
             title={categoryName}
             categories={allCategories}
-            products={products}
             categoryUUID={categoryUUID}
             productCounts={productCounts}
           />

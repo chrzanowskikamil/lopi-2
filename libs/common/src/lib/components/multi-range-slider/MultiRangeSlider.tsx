@@ -1,6 +1,8 @@
 'use client';
 
-import React, { FC, useEffect, useRef, useState, useTransition } from 'react';
+import { FC, useEffect, useRef, useState, useTransition } from 'react';
+
+import { Product } from '@lopi-2/common';
 import style from './multiRangeSlider.module.scss';
 
 export interface RangeSliderValues {
@@ -8,29 +10,50 @@ export interface RangeSliderValues {
   maxValue: number;
 }
 
-interface MultiRangeSliderProps extends RangeSliderValues {
+interface MultiRangeSliderProps {
+  categoriesReducer: { onProductsDisplay: { allProducts: Product[] } };
+  params: { maxPrice: number };
   onChange: (value: RangeSliderValues) => void;
-  maxValueLimit: number;
 }
 
 const DEFAULT_MIN_VALUE = 0;
 
 export const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
-  minValue,
-  maxValue,
-  maxValueLimit,
+  categoriesReducer,
+  params,
   onChange,
 }) => {
-  const [minVal, setMinVal] = useState<number>(minValue);
-  const [maxVal, setMaxVal] = useState<number>(maxValue);
+  const [minVal, setMinVal] = useState<number>(0);
+  const [maxVal, setMaxVal] = useState<number>(params.maxPrice);
 
   const [, startTransition] = useTransition();
 
   const minInputRef = useRef<HTMLInputElement>(null);
   const maxInputRef = useRef<HTMLInputElement>(null);
   const rangeInputRef = useRef<HTMLInputElement>(null);
+  const rangeFullInputRef = useRef<HTMLInputElement>(null);
 
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
+
+  const getHighestPriceProducts = () => {
+    const highestPrice = categoriesReducer.onProductsDisplay.allProducts.reduce(
+      (highest, product) => {
+        const { regularPrice } = product;
+        const price = regularPrice;
+
+        return price > highest ? price : highest;
+      },
+      0
+    );
+
+    return highestPrice;
+  };
+
+  const maxValueLimit = getHighestPriceProducts();
+
+  useEffect(() => {
+    setMaxVal(maxValueLimit);
+  }, [maxValueLimit]);
 
   useEffect(() => {
     startTransition(() => {
@@ -44,35 +67,43 @@ export const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
     });
   }, [minVal, maxVal]);
 
-  // const getPercent = useCallback(
-  //   (value: number) =>
-  //     Math.round(((value - minValue) / (maxValue - minValue)) * 100),
-  //   [minValue, maxValue]
-  // );
+  useEffect(() => {
+    const fillRange = (
+      maxValueLimit: number,
+      maxVal: number,
+      minVal: number,
+      dependency: number
+    ) => {
+      const percentage =
+        (maxVal / maxValueLimit) * dependency -
+        (minVal / maxValueLimit) * dependency;
 
-  // TODO: find more clear way of counting this
-  // useEffect(() => {
-  //   if (maxInputRef.current) {
-  //     const minPercent = getPercent(minVal);
-  //     const maxPercent = getPercent(+maxInputRef.current.value);
-  //
-  //     if (rangeInputRef.current) {
-  //       rangeInputRef.current.style.left = `${minPercent}%`;
-  //       rangeInputRef.current.style.width = `${maxPercent - minPercent}%`;
-  //     }
-  //   }
-  // }, [minVal, getPercent]);
+      return `${percentage}px`;
+    };
 
-  // useEffect(() => {
-  //   if (minInputRef.current) {
-  //     const minPercent = getPercent(+minInputRef.current.value);
-  //     const maxPercent = getPercent(maxVal);
-  //
-  //     if (rangeInputRef.current) {
-  //       rangeInputRef.current.style.width = `${maxPercent - minPercent}%`;
-  //     }
-  //   }
-  // }, [maxVal, getPercent]);
+    const leftSpace = (
+      maxValueLimit: number,
+      minVal: number,
+      dependency: number
+    ) => {
+      return (minVal / maxValueLimit) * dependency + 'px';
+    };
+
+    if (rangeInputRef.current && rangeFullInputRef.current) {
+      rangeInputRef.current.style.width = fillRange(
+        maxValueLimit,
+        maxVal,
+        minVal,
+        rangeFullInputRef.current.clientWidth
+      );
+
+      rangeInputRef.current.style.left = leftSpace(
+        maxValueLimit,
+        minVal,
+        rangeFullInputRef.current.clientWidth
+      );
+    }
+  }, [minVal, maxVal, rangeFullInputRef]);
 
   return (
     <div className={style.containerSlider}>
@@ -81,6 +112,7 @@ export const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
         min={DEFAULT_MIN_VALUE}
         value={minVal}
         ref={minInputRef}
+        max={maxValueLimit}
         onChange={(event) => {
           const value = Math.min(+event.target.value, maxVal - 1);
           setMinVal(value);
@@ -91,7 +123,7 @@ export const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
       <input
         type="range"
         max={maxValueLimit}
-        value={maxVal}
+        value={maxVal !== 0 ? maxVal : maxValueLimit}
         ref={maxInputRef}
         onChange={(event) => {
           const value = Math.max(+event.target.value, minVal + 1);
@@ -102,12 +134,12 @@ export const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
       />
 
       <div className={`${style.slider}`}>
-        <div className={`${style.sliderTrack}`} />
+        <div ref={rangeFullInputRef} className={`${style.sliderTrack}`} />
         <div ref={rangeInputRef} className={`${style.sliderRange}`} />
       </div>
 
       <div className={`${style.label}`}>
-        Cena: {minVal} PLN - {maxVal}
+        Cena: {minVal} PLN - {maxVal !== 0 ? maxVal : maxValueLimit}
         PLN
       </div>
     </div>

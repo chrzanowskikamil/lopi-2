@@ -1,72 +1,35 @@
 import { Container, Row } from 'react-bootstrap';
 
-import { FC } from 'react';
+import { ChildrenFC } from '@lopi-2/common';
 import { Product } from '../../../../types/ProductsResponse';
 import ProductTileCol from '../components/tileShop/ProductTileCol';
 import style from './Products.module.scss';
+import { useCategoriesContext } from '../../../contexts/CategoriesContext';
+import { useSearchParams } from '@lopi-2/common';
 
-interface ProductsDisplayProps {
-  onProductsDisplay: {
-    minPriceFilterValue: number;
-    maxPriceFilterValue: number;
-    availability: boolean;
-    allProducts: Product[] | undefined;
-  };
-}
+export const ProductsDisplay: ChildrenFC = () => {
+  const { categoriesReducer } = useCategoriesContext();
+  const { allProducts } = categoriesReducer.onProductsDisplay;
+  const { params } = useSearchParams();
 
-export const ProductsDisplay: FC<ProductsDisplayProps> = ({
-  onProductsDisplay,
-}) => {
-  const filterPriceLow = onProductsDisplay.minPriceFilterValue;
-  const filterPriceHight = onProductsDisplay.maxPriceFilterValue;
-  const availible = onProductsDisplay.availability;
-
-  const sortBySearchParams = () => {
-    if (onProductsDisplay.allProducts === undefined) {
-      return [];
-    } else {
-      const productArray = [...onProductsDisplay.allProducts];
-
-      const filteredProducts = productArray.filter((product) => {
-        const price =
-          product.discountPrice !== null
-            ? product.discountPrice
-            : product.regularPrice;
-
-        const priceInFilterRange =
-          (!!filterPriceLow && price < filterPriceLow) ||
-          (!!filterPriceHight && price >= filterPriceHight);
-
-        const productAvailiblityFilter =
-          (availible && product.status !== 'ACTIVE') ||
-          (!availible && product.status === 'ACTIVE');
-
-        if (priceInFilterRange) {
-          return false;
-        }
-        if (productAvailiblityFilter) {
-          return false;
-        }
-
-        return true;
-      });
-
-      return filteredProducts;
-    }
-  };
-
-  const RenderedProducts = sortBySearchParams().map((product, i) => {
-    return (
-      <ProductTileCol
-        col={4}
-        product={product}
-        key={product.uid}
-        index={i}
-        cartContextId={'Categories render.'}
-      />
-    );
+  const RenderedProducts = allProducts.map((product: Product, i: number) => {
+    if (
+      params.maxPrice < product.regularPrice ||
+      params.minPrice >= product.regularPrice
+    )
+      return;
+    else
+      return (
+        <ProductTileCol
+          col={4}
+          product={product}
+          key={product.uid}
+          index={i}
+          cartContextId={'Categories render.'}
+        />
+      );
   });
-  if (onProductsDisplay.allProducts === undefined) {
+  if (allProducts === undefined) {
     return (
       <>
         <Container>
@@ -78,7 +41,7 @@ export const ProductsDisplay: FC<ProductsDisplayProps> = ({
         </Container>
       </>
     );
-  } else if (onProductsDisplay.allProducts !== undefined)
+  } else if (allProducts !== undefined)
     return (
       <>
         <Container>

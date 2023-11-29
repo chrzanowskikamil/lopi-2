@@ -1,19 +1,18 @@
-import Link from 'next/link';
-import styles from './SortDropdown.module.scss';
-import { FC } from 'react';
+import {
+  ChildrenFC,
+  SortParams,
+  sortOrderControler,
+  sortTypeControler,
+  useSearchParams,
+} from '@lopi-2/common';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
-import { usePathname } from 'next/navigation';
-import { SortParams } from '../../CategoriesEnums';
-import { useSearchParams } from '../../../../hooks/useSearchParams';
 
-interface SortDropdownProps {
-  sortedProducts: (item: string) => void;
-}
+import styles from './SortDropdown.module.scss';
+import { useCategoriesContext } from '../../../../contexts/CategoriesContext';
 
-export const SortDropdown: FC<SortDropdownProps> = ({ sortedProducts }) => {
-  const pathname = usePathname();
-
-  const { getParam, createSortQueryString } = useSearchParams();
+export const SortDropdown: ChildrenFC = () => {
+  const { params, applyParams } = useSearchParams();
+  const { handleChangeParams } = useCategoriesContext();
 
   const dropdownItems = [
     SortParams.PRICE_ASC,
@@ -22,22 +21,27 @@ export const SortDropdown: FC<SortDropdownProps> = ({ sortedProducts }) => {
     SortParams.PRODUCT_NAME_DSC,
   ];
 
+  const handleClick = ({ item }: { item: string }) => {
+    handleChangeParams({
+      ...params,
+      sortType: sortTypeControler(item),
+      sortOrder: sortOrderControler(item),
+    });
+    applyParams({ sortName: item });
+  };
+
   const items = dropdownItems.map((item) => (
-    <Dropdown.Item
-      key={item}
-      as={Link}
-      href={pathname + '?' + createSortQueryString(item)}
-      onClick={() => sortedProducts(item)}
-    >
+    <Dropdown.Item key={item} onClick={() => handleClick({ item })}>
       {item}
     </Dropdown.Item>
   ));
+  console.log(params.sortName);
 
   return (
     <DropdownButton
       bsPrefix={styles.dropdown}
       id="sort-button"
-      title={getParam.sort === null ? 'Sortowanie' : getParam.sort}
+      title={params.sortName}
     >
       {items}
     </DropdownButton>

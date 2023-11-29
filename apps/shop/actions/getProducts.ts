@@ -1,18 +1,22 @@
 import {
   DEFAULT_PAGE_SIZE,
-  INITIAL_ASCENDING_VALUE,
+  INITIAL_AVAILABLITY_VALUE,
   INITIAL_CURRENT_PAGE,
+  INITIAL_SORT_ORDER_VALUE,
+  INITIAL_STATUS_VALUE,
 } from '../app/components/Categories/CategoriesVariables';
 
 import { ProductsResponse } from '../types/ProductsResponse';
-import { SortOrder } from '../app/components/Categories/CategoriesEnums';
+import { SortType } from '@lopi-2/common';
 import { wrenchRevalidate } from '@lopi-2/common';
 
 type GetProductType = {
   size?: number;
   page?: number;
-  sortOrder?: string;
-  ascending?: boolean;
+  sortType?: string;
+  sortOrder?: boolean;
+  status?: string;
+  available?: boolean;
 };
 
 export async function getProducts(
@@ -22,15 +26,19 @@ export async function getProducts(
   const {
     size = DEFAULT_PAGE_SIZE,
     page = INITIAL_CURRENT_PAGE,
-    sortOrder = SortOrder.PRICE,
-    ascending = INITIAL_ASCENDING_VALUE,
+    sortType = SortType.PRICE,
+    sortOrder = INITIAL_SORT_ORDER_VALUE,
+    status = INITIAL_STATUS_VALUE,
+    available = INITIAL_AVAILABLITY_VALUE,
   } = possibleSearchOptions;
 
   const queryParams = new URLSearchParams({
     pageIndex: String(page),
     pageSize: String(size),
-    orderColumn: String(sortOrder),
-    ascending: String(ascending),
+    orderColumn: String(sortType),
+    ascending: String(sortOrder),
+    status: String(status),
+    available: String(available),
   });
 
   const isSyntaxError = (error: unknown) => {
