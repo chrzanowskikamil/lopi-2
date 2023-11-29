@@ -1,5 +1,6 @@
 import { INITIAL_CURRENT_PAGE } from './CategoriesVariables';
 import { Product } from '../../../types/ProductsResponse';
+import { SearchParamTypes } from '@lopi-2/common';
 import { getProducts } from '../../../actions/getProducts';
 import { useReducer } from 'react';
 
@@ -55,7 +56,7 @@ export const useCategoriesReducer = ({ content }: { content: Product[] }) => {
   const [state, dispatch] = useReducer(categoriesReducer, initialState);
 
   const onChangeParams = async (
-    params: { sortType: string; sortOrder: boolean; availability: boolean },
+    params: Partial<SearchParamTypes>,
     categoryUUID: string = state.currentCategoryUUID
   ) => {
     try {
