@@ -1,0 +1,45 @@
+@use '../../../styles/shop-variables';
+
+$breakpoints: shop-variables.$grid-breakpoints;
+$palette: shop-variables.$theme-colors;
+$spacer: shop-variables.$spacers;
+$containerWidth: 100%;
+$mobileFontSize: 12px;
+$desktopFontSize: 16px;
+$mobileContainerPadding: 10px 8px;
+$titleFontWeight: 500;
+$borderBottomWidth: 1px;
+
+.container {
+  width: $containerWidth;
+  font-size: $mobileFontSize;
+  display: flex;
+  flex-direction: column;
+  padding: $mobileContainerPadding;
+
+  @media (min-width: map-get($breakpoints, xl)) {
+    font-size: $desktopFontSize;
+  }
+
+  > p {
+    font-weight: $titleFontWeight;
+    border-bottom: $borderBottomWidth solid map-get($palette, lopi-grey-light);
+    padding-bottom: map-get($spacer, 31);
+    margin-bottom: map-get($spacer, 31);
+  }
+
+  .productListGroup {
+    border-radius: 0;
+    border-bottom: $borderBottomWidth solid map-get($palette, lopi-grey-light);
+  }
+
+  .listItem {
+    display: flex;
+    border: none;
+    justify-content: space-between;
+    background-color: transparent;
+    color: map-get($palette, lopi-dark-gray);
+    margin-bottom: map-get($spacer, 7);
+    padding-left: 0;
+  }
+}
