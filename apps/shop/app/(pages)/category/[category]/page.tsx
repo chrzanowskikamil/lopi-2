@@ -1,4 +1,5 @@
 import { Categories } from '../../../components/Categories/Categories';
+import { ProductsResponse } from '../../../../types/ProductsResponse';
 import { getCategories } from '../../../../actions/getCategories';
 import { getCategoryQuantityByUUID } from '../../../../actions/getCategoryQuantityByUUID';
 import { getProducts } from '../../../../actions/getProducts';

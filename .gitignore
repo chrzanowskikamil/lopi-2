@@ -46,5 +46,6 @@ next-env.d.ts
 # Environment variables
 .env
 local.env
+.env.local
 .env.production
 .env.development

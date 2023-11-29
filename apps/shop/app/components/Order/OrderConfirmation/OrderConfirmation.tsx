@@ -1,14 +1,16 @@
 'use client';
-import style from './OrderConfirmation.module.scss';
-import { FC } from 'react';
+
 import { Col, Container, Row } from 'react-bootstrap';
+
+import { Button } from '@lopi-2/common';
+import { FC } from 'react';
+import { IconWrapper } from '../../Icons/IconWrapper';
 import { OrderDetails } from './components/OrderDetails/OrderDetails';
 import { OrderSummary } from '../OrderSummary/OrderSummary';
-import { IconWrapper } from '../../Icons/IconWrapper';
-import { useOrderContext } from '../../../contexts/OrderContext';
-import { createPayUOrder } from '../../../../actions/orderApi';
-import { Button } from '@lopi-2/common';
 import { PaymentMethod } from './PaymentMethod';
+import { createPayUOrder } from '../../../../actions/orderApi';
+import style from './OrderConfirmation.module.scss';
+import { useOrderContext } from '../../../contexts/OrderContext';
 
 export const OrderConfirmation: FC = () => {
   const { orderData } = useOrderContext();
